@@ -2,6 +2,7 @@
 
 #include <glib.h>
 #include <mpd/async.h>
+#include <sys/socket.h>
 
 //--------------------------
 
@@ -31,13 +32,14 @@ void PollingThread::finish()
 {
     int * atom = (int*)&(this->finished);
     g_atomic_int_set(atom,1);
-    
+
     std::cout << "Joining thread!" << std::endl;
     this->polling_thread->join();
 }
 
 //--------------------------
-
+/*
+// Periodic polling version - ugly.
 void PollingThread::poll()
 {
     while(this->finished == false)
@@ -71,6 +73,17 @@ void PollingThread::poll()
         Glib::usleep(1000);
     }
     std::cout << "Done." << std::endl;
+}
+*/
+
+void PollingThread::poll()
+{
+    while(this->finished == false)
+    {
+        enum mpd_idle mask = mpd_run_idle(this->mpd_con);
+        //g_printerr("Received event: %s\n",mpd_idle_name(mask));
+    }
+    g_printerr("- Idle thread finished like a boss\n");
 }
 
 //--------------------------
@@ -110,80 +123,3 @@ void PollingThread::song_changed_callback(struct mpd_status * status)
         mpd_song_free(song);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-       struct mpd_song *song;
-       enum mpd_idle event;
-       while(true)
-       {
-       event = mpd_run_idle(my_con.get_conn());
-       printf("Received event: %s\n",mpd_idle_name(event));
-
-       switch(event)
-       {
-       case MPD_IDLE_PLAYER: 
-       { 
-       mpd_status * status = mpd_run_status(my_con.get_conn());
-       if(status != NULL)
-       {
-
-       mpd_song_free(song);
-       }
-       mpd_status_free(status);
-       }
-       else
-       {
-       cerr << "Could not get status" << endl;
-       }
-
-       break;
-       }
-       }
-       }
-       */

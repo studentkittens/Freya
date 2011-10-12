@@ -37,7 +37,7 @@ MPDConnection::MPDConnection()
 
 MPDConnection::~MPDConnection()
 {
-    //this->disconnect();
+    this->disconnect();
 }
 
 //-------------------
@@ -70,7 +70,6 @@ bool MPDConnection::connect(const char * hostname, unsigned int port, unsigned i
             std::cout << "- Starting polling thread." << std::endl;
             this->polling_object = new PollingThread(this->mpd_con);
             result = true;
-            Glib::usleep(100);
         }
         else
         {

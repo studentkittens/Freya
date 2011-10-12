@@ -1,0 +1,41 @@
+\chapter{Abhängigkeiten}
+
+\section{Allgemeine Abhängigkeiten}
+
+\renewcommand{\labelitemi}{•}
+\begin{itemize}
+	\item gtkmm-3.0
+	\item libmpdclient
+	\item libglyr
+\end{itemize}
+
+\section{Entwicklungsabhängigkeiten}
+\begin{itemize}
+	\item git (Versionsverwaltung)
+	\renewcommand{\labelitemi}{--}
+	\begin{itemize}
+		\item git commit -a -m ("'Commit-Message"' Übertragen)
+		\item git push (Änderungen auf den Github-Server laden)
+		\item git pull (Änderungen von dem Github-Server laden)
+	\end{itemize}
+	\renewcommand{\labelitemi}{•}
+	\item cmake (Buildsystem)
+	\renewcommand{\labelitemi}{--}
+	\begin{itemize}
+		\item cmake . (Buildfiles erstellen)
+		\item make (Kompilieren)
+		\item sudo make install (Installieren)
+	\end{itemize}
+	\renewcommand{\labelitemi}{•}
+	\item Editor nach Wahl (gVim, nano, Codeblocks, etc)
+	\item Glade (Oberflächendesigner)
+	\renewcommand{\labelitemi}{--}
+	\begin{itemize}
+		\item Erstellt ein XML File, kann von gtk geladen werden.
+		\item Callbacks und Signale müssen im Code gehandelt werden.
+	\end{itemize}
+	\renewcommand{\labelitemi}{•}
+	\item Primäre Entwicklerplattform: Linux
+\end{itemize}
+
+BEGRÜNDUNG!!!

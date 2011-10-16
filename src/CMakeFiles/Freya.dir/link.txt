@@ -1,0 +1,1 @@
+/usr/lib/colorgcc/bin/c++       CMakeFiles/Freya.dir/main.cc.o CMakeFiles/Freya.dir/PollingThread.cc.o CMakeFiles/Freya.dir/MPDConnection.cc.o  -o ../bin/Freya -rdynamic -lglibmm-2.4 -lgobject-2.0 -lsigc-2.0 -lgthread-2.0 -lrt -lglib-2.0 -lmpdclient 

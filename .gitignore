@@ -1,0 +1,17 @@
+# Ignore compiled output
+*.o
+bin/
+
+# Ignore CMake output
+MakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+
+# vim swap files
+*.swp
+*.swo
+*.swn
+
+

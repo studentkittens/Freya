@@ -17,7 +17,7 @@ SET(FREYA_VERSION_NAME  "Terrifying Tarantula")
 # CFlags and warnlevel / build config 
 # ------------------------------------------------
 
-SET(COMMON_FLAGS "-Wall -Wstrict-prototypes -std=c99 -W -Wno-unused-parameter -Wno-strict-prototypes -ggdb3")
+SET(COMMON_FLAGS "-Wall -Wstrict-prototypes -std=c++0x -W -Wno-unused-parameter -Wno-strict-prototypes -ggdb3")
 SET(CMAKE_C_FLAGS_RELEASE "${COMMON_FLAGS} ${CMAKE_C_FLAGS} -Os -march=native -s")
 SET(CMAKE_C_FLAGS_DEBUG   "${COMMON_FLAGS} ${CMAKE_C_FLAGS} -ggdb3")
 SET(CMAKE_C_FLAGS "        ${COMMON_FLAGS} ${CMAKE_C_FLAGS}")

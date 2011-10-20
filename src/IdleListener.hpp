@@ -18,7 +18,9 @@ class IdleListener
      */
     void leave(void);
 
-    mpd_connection * get_connection();
+    /* Checks if connection is in idle mode
+     */
+    bool is_idling(void);
 
    //-----------------//
     // Classmembers    //
@@ -78,7 +80,7 @@ class IdleListener
     bool recv_parseable(void);
     gboolean io_callback(Glib::IOCondition condition);
     bool parse_response(char *line);
-    void invoke(void);
+    void invoke_user_callback(void);
     void create_watch(enum mpd_async_event events);
 
     //-----------------//
@@ -103,7 +105,7 @@ class IdleListener
     /* What IO events did happen? */
     enum mpd_async_event io_eventmask;
 
-    /* */
+    /**/
     int idle_events;
 
     /* A functor representing the io_callback */

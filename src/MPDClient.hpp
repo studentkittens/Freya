@@ -8,6 +8,7 @@ typedef struct mpd_connection mpd_connection;
 
 class MPDClient
 {
+    /* Be my friend - dear Listener */
     friend class IdleListener;
 
     public:
@@ -19,8 +20,9 @@ class MPDClient
     bool connect(void);
     bool disconnect(void);
 
-    private:
+    mpd_connection * mpd_conn;
 
+    private:
     /* Instancemethods */
 
     /* Returns mpd_conn */
@@ -39,7 +41,6 @@ class MPDClient
 
     /* The connection from libmpdclient to MPD
      */
-    mpd_connection * mpd_conn;
 };
 
 #endif

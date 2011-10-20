@@ -28,14 +28,9 @@ IdleListener::~IdleListener()
 
 //--------------------------------
 
-mpd_connection * IdleListener::get_connection()
+bool IdleListener::is_idling(void)
 {
-   if(this->is_idle)
-   {
-       this->leave();
-   } 
-
-   return this->conn;
+    return this->is_idle;
 }
 
 //--------------------------------
@@ -58,11 +53,19 @@ bool IdleListener::check_async_error(void)
 
 //--------------------------------
 
-void IdleListener::invoke(void)
+void IdleListener::invoke_user_callback(void)
 {
 	if (this->idle_events != 0)
     {
         g_printerr("Got event: %s\n",mpd_idle_name((enum mpd_idle)this->idle_events));
+
+        this->leave();
+
+        /* Reset status */
+        this->idle_events = 0;
+
+        //  <--- Call callback here ---> //
+
         this->enter();
     }
 }
@@ -76,18 +79,6 @@ bool IdleListener::parse_response(char *line)
     result = mpd_parser_feed(this->parser, line);
     switch (result) 
     {
-        case MPD_PARSER_MALFORMED:
-
-            this->io_eventmask = (enum mpd_async_event)0;
-            this->check_async_error();
-            return false;
-
-        case MPD_PARSER_SUCCESS:
-
-            this->io_eventmask = (enum mpd_async_event)0;
-            this->invoke();
-            return true;
-
         case MPD_PARSER_ERROR:
 
             this->io_eventmask = (enum mpd_async_event)0;
@@ -102,9 +93,23 @@ bool IdleListener::parse_response(char *line)
 
             if (g_strcmp0(mpd_parser_get_name(this->parser),"changed") == 0)
             {
-                this->idle_events |= mpd_idle_name_parse(mpd_parser_get_value(this->parser));
+                const char * value = mpd_parser_get_value(this->parser);
+                this->idle_events |= mpd_idle_name_parse(value);
             }
             break;
+
+        case MPD_PARSER_MALFORMED:
+
+            this->io_eventmask = (enum mpd_async_event)0;
+            this->check_async_error();
+            return false;
+
+        case MPD_PARSER_SUCCESS:
+
+            this->io_eventmask = (enum mpd_async_event)0;
+            this->invoke_user_callback();
+            return true;
+
     }
     return true;
 }
@@ -177,7 +182,7 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
     }
     else if (events != this->io_eventmask) 
     {
-        cerr << "different mask -> removing watch and adding new" << endl;
+        //cerr << "different mask -> removing watch and adding new" << endl;
 
         /* different event mask: make new watch */
         this->create_watch(events);
@@ -192,51 +197,73 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
 
 bool IdleListener::enter(void)
 {
-    if(mpd_async_send_command(this->async_conn, "idle", NULL) == false)
+    if(this->is_idling() == false)
     {
-        check_async_error();
+        if(mpd_async_send_command(this->async_conn, "idle", NULL) == false)
+        {
+            check_async_error();
+            return false;
+        }
+
+        /* Get a bitmask of events that needs to be watched */
+        enum mpd_async_event events = mpd_async_events(this->async_conn);
+
+        /* Indicate we get into idlemode */
+        this->is_idle = true;
+
+        /* Add a watch on the socket */
+        this->create_watch(events);
+
+        return true;
+    }
+    else
+    {
+        cerr << "Enter: Already idling." << endl;
         return false;
     }
-
-    /* Get a bitmask of events that needs to be watched */
-    enum mpd_async_event events = mpd_async_events(this->async_conn);
-
-    /* Indicate we get into idlemode */
-    this->is_idle = true;
-
-    /* Add a watch on the socket */
-    this->create_watch(events);
-
-    return true;
 }
 
 //--------------------------------
 
 void IdleListener::leave(void)
 {
-    this->io_functor.disconnect();
-	this->io_eventmask = (enum mpd_async_event)0;
-
-    /* Any new events? */
-	enum mpd_idle new_idle_events = 
-        (this->idle_events == 0)
-		? mpd_run_noidle(this->conn)
-		: mpd_recv_idle(this->conn, false);
-
-	if (new_idle_events == 0 && mpd_connection_get_error(this->conn) != MPD_ERROR_SUCCESS) 
+    if(this->is_idling() == true)
     {
-		g_printerr("Error while leaving idle mode: %s\n",mpd_connection_get_error_message(this->conn));
-	}
+        if(this->io_functor.connected())    
+        {
+            this->io_eventmask = (enum mpd_async_event)0;
+
+            /* Any new events? */
+            enum mpd_idle new_idle_events = (enum mpd_idle)0;
+            if(this->idle_events == 0)
+            {
+                new_idle_events = mpd_run_noidle(this->conn);
+            }
+
+            if (new_idle_events == 0 && mpd_connection_get_error(this->conn) != MPD_ERROR_SUCCESS) 
+            {
+                g_printerr("Error while leaving idle mode: %s\n",mpd_connection_get_error_message(this->conn));
+            }
+            else
+            {
+                /* Indicate we left */
+                this->is_idle = false;
+
+                /* Mix in new events */
+//                this->idle_events |= new_idle_events;
+
+                /* Disconnect the watchdog for now */
+                this->io_functor.disconnect();
+            }
+        }
+        else
+        {
+            g_printerr("IOFunctor alread disconnected!");
+        }
+    }
     else
     {
-        /* Indicate we left */
-        this->is_idle = false;
-
-        /* Mix in new events */
-        this->idle_events |= new_idle_events;
-
-        /* Announce them */
-        this->invoke();
+        g_printerr("Cannot leave when already left (Dude!).\n");
     }
 }
 

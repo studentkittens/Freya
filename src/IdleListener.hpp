@@ -106,7 +106,7 @@ class IdleListener
     enum mpd_async_event io_eventmask;
 
     /**/
-    int idle_events;
+    unsigned idle_events;
 
     /* A functor representing the io_callback */
     sigc::connection io_functor;

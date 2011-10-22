@@ -11,7 +11,7 @@ typedef struct
 } shell_data;
 
 
-gboolean stdin_io(GIOChannel *source, GIOCondition condition, gpointer data)
+gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer data)
 {
     gboolean  retv = true;
 
@@ -23,18 +23,50 @@ gboolean stdin_io(GIOChannel *source, GIOCondition condition, gpointer data)
     switch(c)
     {
         case 'q': 
-            /* Quit mainloop */
-            g_main_loop_ref(main_loop);
-            g_main_loop_quit(main_loop);
-            retv = false;
-            break;
-
+            {
+                /* Quit mainloop */
+                g_main_loop_ref(main_loop);
+                g_main_loop_quit(main_loop);
+                retv = false;
+                break;
+            }
         case 'n':
-            client->send_command("next"); 
-            break;
+            {
+                client->send_command("next"); 
+                break;
+            }
+        case 'x':
+            {
+                client->send_command("previous");
+                break;
+            }
+        case 's':
+            {
+                client->send_command("stop");
+                break;
+            }
         case 'p':
-            client->send_command("previous");
-            break;
+            {
+                client->send_command("play");
+                break;
+            }
+        case 'P':
+            {
+                client->send_command("pause");
+                break;
+            }
+        case 'c':
+            {
+                MPDConnectionHandler * conn = client->get_connection_handler();
+                conn->connect();
+                break;
+            }
+        case 'd':
+            {
+                MPDConnectionHandler * conn = client->get_connection_handler();
+                conn->disconnect();
+                break;
+            }
     }
 
     /* Unread characters left on the stream*/
@@ -61,9 +93,9 @@ int main(int argc, char *argv[])
     shell_data data;
     data.client = &freya;
     data.loop   = app_loop->gobj();
-         
+
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
-    g_io_add_watch(stdin_chan,G_IO_IN,stdin_io,(gpointer)&data); 
+    g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data); 
 
     /* Start listening to events */
     app_loop->run();

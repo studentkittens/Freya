@@ -55,15 +55,30 @@ void IdleListener::invoke_user_callback(void)
 {
 	if (this->idle_events != 0)
     {
-        g_printerr("Got event: %s\n",mpd_idle_name((enum mpd_idle)this->idle_events));
-
+        /* Leave for callback - which is gonna be active */
         this->leave();
 
-        /* Reset status */
+        /* Print a list of all occured events */
+        g_printerr("--> A list of occured events:\n");
+        for(unsigned mask = 1; /* None */; mask = mask << 1)
+        {
+            const char * event_name = mpd_idle_name((enum mpd_idle)mask);
+            if(event_name == NULL)
+                break;
+
+            if(this->idle_events & mask)
+            {
+                g_printerr("  :%s\n",event_name);
+                //  <-- Call callback here --> //
+            }
+        }
+        g_printerr("<--\n");
+
+
+        /* Delete old events  */
         this->idle_events = 0;
 
-        //  <--- Call callback here ---> //
-        
+        /* Re-enter idle mode */
         this->enter();
     }
 }
@@ -180,8 +195,6 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
     }
     else if (events != this->io_eventmask) 
     {
-        //cerr << "different mask -> removing watch and adding new" << endl;
-
         /* different event mask: make new watch */
         this->create_watch(events);
         this->io_eventmask = events;
@@ -229,42 +242,42 @@ void IdleListener::leave(void)
     {
         if(this->io_functor.connected())    
         {
+            bool is_fatal = false;
+            enum mpd_idle new_idle_events = (enum mpd_idle)0;
+
+            /* New game - new dices */
             this->io_eventmask = (enum mpd_async_event)0;
 
-            /* Any new events? */
-            enum mpd_idle new_idle_events = (enum mpd_idle)0;
+            /* Make sure no idling is running */
             if(this->idle_events == 0)
-            {
                 new_idle_events = mpd_run_noidle(this->conn);
-            }
+            
 
+            /* Check for errors that may happened shortly */            
             if (new_idle_events == 0 && mpd_connection_get_error(this->conn) != MPD_ERROR_SUCCESS) 
             {
                 g_printerr("Error while leaving idle mode: %s\n",mpd_connection_get_error_message(this->conn));
+                is_fatal = (mpd_connection_clear_error(this->conn) == false);
             }
-            else
+
+            if(is_fatal == false)
             {
                 /* Indicate we left */
                 this->is_idle = false;
 
                 /* Mix in new events */
-                // TODO
-//                this->idle_events |= new_idle_events;
+                // TODO: Does this even make sense?
+                //this->idle_events |= new_idle_events;
+                //this->invoke_user_callback();
 
                 /* Disconnect the watchdog for now */
                 this->io_functor.disconnect();
             }
         }
-        else
-        {
-            g_printerr("IOFunctor already disconnected.\n");
-            g_printerr("Did the server die?\n");
-        }
+        else g_printerr("IOFunctor already disconnected -.\n");
     }
-    else
-    {
-        g_printerr("Cannot leave when already left (Dude!).\n");
-    }
+    else g_printerr("Cannot leave when already left (Dude!).\n");
+    
 }
 
 //--------------------------------

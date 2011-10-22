@@ -3,33 +3,33 @@
 
 #include "includes.hpp"
 #include "IdleListener.hpp"
+#include "MPDConnection.hpp"
 
-typedef struct mpd_connection mpd_connection;
-
-class MPDClient
+class MPDConnectionHandler
 {
     /* Be my friend - dear Listener */
     friend class IdleListener;
 
     public:
+
     /* Publicinstance */
-    MPDClient();
-    ~MPDClient();
+     MPDConnectionHandler();
+    ~MPDConnectionHandler();
 
     /* Init */
     bool connect(void);
     bool disconnect(void);
 
-    mpd_connection * mpd_conn;
-
-    private:
-    /* Instancemethods */
-
     /* Returns mpd_conn */
     mpd_connection * get_connection(void);
 
+    /* Returns listener */
+    IdleListener * get_listener(void);
+
     /* Checks errors and logs them */
     bool check_error(void);
+
+    private:
 
     /* ------------------ */
 
@@ -37,10 +37,11 @@ class MPDClient
      * Since there will be only one a 'real' Observer is
      * pointless here.
      * */
-    IdleListener * idle_observer;
+    IdleListener * listener;
 
     /* The connection from libmpdclient to MPD
      */
+    MPDConnection * conn;
 };
 
 #endif

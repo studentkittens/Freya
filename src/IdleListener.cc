@@ -37,8 +37,6 @@ bool IdleListener::is_idling(void)
 //--------------------------------
 //--------------------------------
 //--------------------------------
-//--------------------------------
-//--------------------------------
 
 bool IdleListener::check_async_error(void)
 {
@@ -65,7 +63,7 @@ void IdleListener::invoke_user_callback(void)
         this->idle_events = 0;
 
         //  <--- Call callback here ---> //
-
+        
         this->enter();
     }
 }
@@ -250,6 +248,7 @@ void IdleListener::leave(void)
                 this->is_idle = false;
 
                 /* Mix in new events */
+                // TODO
 //                this->idle_events |= new_idle_events;
 
                 /* Disconnect the watchdog for now */

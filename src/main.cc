@@ -1,15 +1,46 @@
-#include "MPDClient.hpp"
+#include "MPDClientHandler.hpp"
 #include "IdleListener.hpp"
 
 using namespace Glib;
 
+typedef struct
+{
+    MPDClientHandler * client;
+    GMainLoop * loop;
+
+} shell_data;
+
+
 gboolean stdin_io(GIOChannel *source, GIOCondition condition, gpointer data)
 {
-    cerr << "Exiting" << endl;
-    int c = 0;
+    gboolean  retv = true;
+
+    shell_data * watch_data = (shell_data *)data;
+    GMainLoop * main_loop = watch_data->loop;
+    MPDClientHandler * client = watch_data->client;
+
+    int c = getchar();
+    switch(c)
+    {
+        case 'q': 
+            /* Quit mainloop */
+            g_main_loop_ref(main_loop);
+            g_main_loop_quit(main_loop);
+            retv = false;
+            break;
+
+        case 'n':
+            client->send_command("next"); 
+            break;
+        case 'p':
+            client->send_command("previous");
+            break;
+    }
+
+    /* Unread characters left on the stream*/
     while ((c = getchar()) != EOF && c != '\n'); 
-    exit(0);
-    return false;
+
+    return retv;
 }
 
 //--------------------------------------
@@ -21,17 +52,23 @@ gboolean stdin_io(GIOChannel *source, GIOCondition condition, gpointer data)
 
 int main(int argc, char *argv[])
 {
-    /* This is already wrong. Instancing a model.. */
-    MPDClient freya;
-    freya.connect();
+    /* TODO: This connects automagically at the moment */
+    MPDClientHandler freya;
 
+    /* Eventloop */
+    RefPtr<MainLoop> app_loop = MainLoop::create(false);
+
+    shell_data data;
+    data.client = &freya;
+    data.loop   = app_loop->gobj();
+         
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
-    g_io_add_watch(stdin_chan,G_IO_IN,stdin_io,NULL); 
+    g_io_add_watch(stdin_chan,G_IO_IN,stdin_io,(gpointer)&data); 
 
     /* Start listening to events */
-    RefPtr<MainLoop> app_loop = MainLoop::create(false);
     app_loop->run();
     app_loop->unreference();
+    g_io_channel_unref(stdin_chan);
 
     return EXIT_SUCCESS;
 }

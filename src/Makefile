@@ -150,29 +150,77 @@ IdleListener.cc.s:
 	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/IdleListener.cc.s
 .PHONY : IdleListener.cc.s
 
-MPDClient.o: MPDClient.cc.o
-.PHONY : MPDClient.o
+MPDClientHandler.o: MPDClientHandler.cc.o
+.PHONY : MPDClientHandler.o
 
 # target to build an object file
-MPDClient.cc.o:
-	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDClient.cc.o
-.PHONY : MPDClient.cc.o
+MPDClientHandler.cc.o:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDClientHandler.cc.o
+.PHONY : MPDClientHandler.cc.o
 
-MPDClient.i: MPDClient.cc.i
-.PHONY : MPDClient.i
+MPDClientHandler.i: MPDClientHandler.cc.i
+.PHONY : MPDClientHandler.i
 
 # target to preprocess a source file
-MPDClient.cc.i:
-	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDClient.cc.i
-.PHONY : MPDClient.cc.i
+MPDClientHandler.cc.i:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDClientHandler.cc.i
+.PHONY : MPDClientHandler.cc.i
 
-MPDClient.s: MPDClient.cc.s
-.PHONY : MPDClient.s
+MPDClientHandler.s: MPDClientHandler.cc.s
+.PHONY : MPDClientHandler.s
 
 # target to generate assembly for a file
-MPDClient.cc.s:
-	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDClient.cc.s
-.PHONY : MPDClient.cc.s
+MPDClientHandler.cc.s:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDClientHandler.cc.s
+.PHONY : MPDClientHandler.cc.s
+
+MPDConnection.o: MPDConnection.cc.o
+.PHONY : MPDConnection.o
+
+# target to build an object file
+MPDConnection.cc.o:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDConnection.cc.o
+.PHONY : MPDConnection.cc.o
+
+MPDConnection.i: MPDConnection.cc.i
+.PHONY : MPDConnection.i
+
+# target to preprocess a source file
+MPDConnection.cc.i:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDConnection.cc.i
+.PHONY : MPDConnection.cc.i
+
+MPDConnection.s: MPDConnection.cc.s
+.PHONY : MPDConnection.s
+
+# target to generate assembly for a file
+MPDConnection.cc.s:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDConnection.cc.s
+.PHONY : MPDConnection.cc.s
+
+MPDConnectionHandler.o: MPDConnectionHandler.cc.o
+.PHONY : MPDConnectionHandler.o
+
+# target to build an object file
+MPDConnectionHandler.cc.o:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDConnectionHandler.cc.o
+.PHONY : MPDConnectionHandler.cc.o
+
+MPDConnectionHandler.i: MPDConnectionHandler.cc.i
+.PHONY : MPDConnectionHandler.i
+
+# target to preprocess a source file
+MPDConnectionHandler.cc.i:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDConnectionHandler.cc.i
+.PHONY : MPDConnectionHandler.cc.i
+
+MPDConnectionHandler.s: MPDConnectionHandler.cc.s
+.PHONY : MPDConnectionHandler.s
+
+# target to generate assembly for a file
+MPDConnectionHandler.cc.s:
+	cd /home/chris/Freya && $(MAKE) -f src/CMakeFiles/client.dir/build.make src/CMakeFiles/client.dir/MPDConnectionHandler.cc.s
+.PHONY : MPDConnectionHandler.cc.s
 
 main.o: main.cc.o
 .PHONY : main.o
@@ -235,9 +283,15 @@ help:
 	@echo "... IdleListener.o"
 	@echo "... IdleListener.i"
 	@echo "... IdleListener.s"
-	@echo "... MPDClient.o"
-	@echo "... MPDClient.i"
-	@echo "... MPDClient.s"
+	@echo "... MPDClientHandler.o"
+	@echo "... MPDClientHandler.i"
+	@echo "... MPDClientHandler.s"
+	@echo "... MPDConnection.o"
+	@echo "... MPDConnection.i"
+	@echo "... MPDConnection.s"
+	@echo "... MPDConnectionHandler.o"
+	@echo "... MPDConnectionHandler.i"
+	@echo "... MPDConnectionHandler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

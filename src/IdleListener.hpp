@@ -22,9 +22,9 @@ class IdleListener
      */
     bool is_idling(void);
 
-   //-----------------//
-    // Classmembers    //
-    //-----------------//
+    //---------------//
+    // Classmembers  //
+    //---------------//
     
     /**
      * Utility (therefore static) function to

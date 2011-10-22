@@ -14,6 +14,9 @@ class MPDClientHandler
     /* Go to next song */
     bool send_command(const char * command);
 
+    /* Get the underlying connection handler */
+    MPDConnectionHandler * get_connection_handler(void);
+
     private:
 
     void go_idle(void);

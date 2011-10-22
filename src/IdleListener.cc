@@ -161,7 +161,7 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
         return false;
 
     /* There is incoming data - receive them */
-    if((condition & G_IO_IN) != 0) 
+    if((condition & G_IO_IN) || (condition & G_IO_PRI)) 
     {
         if(this->recv_parseable() == false) 
         {
@@ -257,7 +257,8 @@ void IdleListener::leave(void)
         }
         else
         {
-            g_printerr("IOFunctor alread disconnected!");
+            g_printerr("IOFunctor already disconnected.\n");
+            g_printerr("Did the server die?\n");
         }
     }
     else

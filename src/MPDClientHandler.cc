@@ -56,7 +56,7 @@ void MPDClientHandler::go_busy(void)
 bool MPDClientHandler::send_command(const char * command)
 {
     bool result = false;
-    if(command != NULL)
+    if(command != NULL && this->conn->is_connected())
     {
         /* Go into active mode */
         go_busy();
@@ -70,4 +70,11 @@ bool MPDClientHandler::send_command(const char * command)
         go_idle();
     }
     return result;
+}
+
+//-------------------------------
+
+MPDConnectionHandler * MPDClientHandler::get_connection_handler(void)
+{
+    return this->conn;
 }

@@ -60,6 +60,8 @@ void IdleListener::invoke_user_callback(void)
 
         /* Print a list of all occured events */
         g_printerr("--> A list of occured events:\n");
+
+        /* Iterare over the enum */
         for(unsigned mask = 1; /* None */; mask = mask << 1)
         {
             const char * event_name = mpd_idle_name((enum mpd_idle)mask);
@@ -164,7 +166,7 @@ void IdleListener::create_watch(enum mpd_async_event events)
     }
 
     /* Add a watch for this, io_callback() gets called whenever data is available */
-    this->io_functor = Glib::signal_io().connect(sigc::mem_fun(this,&IdleListener::io_callback), this->async_socket_fd,condition);
+    this->io_functor = Glib::signal_io().connect(sigc::mem_fun(this,&IdleListener::io_callback), this->async_socket_fd,condition, Glib::PRIORITY_HIGH);
 }
 
 //--------------------------------

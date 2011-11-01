@@ -3,10 +3,9 @@
 
 //--------------------------------------
 
-MPDConnectionHandler::MPDConnectionHandler()
+MPDConnectionHandler::MPDConnectionHandler() : conn()
 {
     this->listener = NULL;
-    this->conn     = new MPDConnection();
 }
 
 //--------------------------------------
@@ -17,17 +16,14 @@ MPDConnectionHandler::~MPDConnectionHandler()
         delete this->listener;
     
     this->disconnect();
-
-    if(this->conn != NULL)
-        delete this->conn;
 }
 
 //--------------------------------------
 
 mpd_connection * MPDConnectionHandler::get_connection(void)
 {
-    if(this->conn->is_connected())
-        return this->conn->get_connection();
+    if(this->conn.is_connected())
+        return this->conn.get_connection();
     else
         return NULL;
 }
@@ -36,7 +32,7 @@ mpd_connection * MPDConnectionHandler::get_connection(void)
 
 IdleListener * MPDConnectionHandler::get_listener(void)
 {
-    if(this->conn->is_connected())
+    if(this->conn.is_connected())
         return this->listener;
     else
         return NULL;
@@ -46,9 +42,10 @@ IdleListener * MPDConnectionHandler::get_listener(void)
 //
 gboolean MPDConnectionHandler::idle_reconnect(void)
 {
-    bool retv = (this->connect() == false);
-    g_usleep(100000);
-    return retv;
+    /* Did the connect work? */
+    gboolean retv = this->connect();
+    g_printerr("%c",(retv) ? ']' : '.');
+    return (retv == false);
 }
 
 //--------------------------------------
@@ -61,7 +58,9 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
             break;
         case MPD_ERROR_CLOSED:
             this->disconnect();
-            Glib::signal_idle().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),G_PRIORITY_DEFAULT_IDLE);
+            // TODO: Add a option for the reconnect interval
+            g_printerr("Attempting to reconnect: [");
+            Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),5000,G_PRIORITY_DEFAULT_IDLE);
             break;
         case MPD_ERROR_SERVER:
         case MPD_ERROR_OOM:
@@ -81,10 +80,10 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
 bool MPDConnectionHandler::check_error(void)
 {
     gboolean result = false;
-    if(this->conn->is_connected() == false)
+    if(this->conn.is_connected() == false)
         return result;
 
-    mpd_connection * conn = this->conn->get_connection();
+    mpd_connection * conn = this->conn.get_connection();
     if(conn != NULL)
     {
         /* Check for errors at this connection and log them */
@@ -121,14 +120,14 @@ bool MPDConnectionHandler::connect(void)
     mpd_connection * mpd_conn = mpd_connection_new("localhost", 6600, 30000);
     if(mpd_conn != NULL)
     {
-        this->conn->set_connection(mpd_conn);
+        this->conn.set_connection(mpd_conn);
         if(this->check_error())
         {
             mpd_connection_free(mpd_conn);
-            this->conn->set_connection(NULL);
+            this->conn.set_connection(NULL);
         }
 
-        if(this->conn->is_connected())
+        if(this->conn.is_connected())
         {
             this->listener = new IdleListener(mpd_conn);
             this->listener->enter();
@@ -137,14 +136,14 @@ bool MPDConnectionHandler::connect(void)
             // TODO: Send password
         }
     }
-    return this->conn->is_connected(); 
+    return this->conn.is_connected(); 
 }
 
 //--------------------------------------
 
 bool MPDConnectionHandler::disconnect(void)
 {
-    if(this->conn->is_connected())
+    if(this->conn.is_connected())
     {
         cerr << "Disconnect" << endl;
         if(this->listener != NULL)
@@ -154,10 +153,10 @@ bool MPDConnectionHandler::disconnect(void)
             this->listener = NULL;
         }
 
-        mpd_connection * mpd_conn = this->conn->get_connection();
+        mpd_connection * mpd_conn = this->conn.get_connection();
         mpd_connection_free(mpd_conn);
 
-        this->conn->set_connection(NULL);
+        this->conn.set_connection(NULL);
         return true;
     }
     return false;
@@ -167,7 +166,7 @@ bool MPDConnectionHandler::disconnect(void)
 
 bool MPDConnectionHandler::is_connected(void)
 {
-    return this->conn->is_connected();
+    return this->conn.is_connected();
 }
 
 //--------------------------------------

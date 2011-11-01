@@ -28,7 +28,7 @@ class MPDClientHandler
     // Instancevars //
 
     /* The wrapped up mpd_connection */
-    MPDConnectionHandler * conn;
+    MPDConnectionHandler conn;
 };
 
 #endif

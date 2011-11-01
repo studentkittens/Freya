@@ -53,7 +53,7 @@ class MPDConnectionHandler
 
     /* The connection from libmpdclient to MPD
      */
-    MPDConnection * conn;
+    MPDConnection conn;
 };
 
 #endif

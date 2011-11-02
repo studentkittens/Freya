@@ -13,9 +13,12 @@ class FreyaAvahiHandler
 {
     public:
 
-    FreyaAvahiHandler();
-    ~FreyaAvahiHandler();
-    FreyaAvahiView& get_window(void);
+        FreyaAvahiHandler();
+        ~FreyaAvahiHandler();
+        FreyaAvahiView& get_window(void);
+        bool is_connected(void);
+
+        sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int>& get_signal(void);
 
     private:
         /* methods */
@@ -40,10 +43,12 @@ class FreyaAvahiHandler
                 const char *name, const char *type, const char *domain, 
                 AVAHI_GCC_UNUSED AvahiLookupResultFlags flags, void * userdata); 
 
+        void check_client_error(const gchar * prefix_message);
+
         /* vars */
         AvahiClient * client;
         AvahiGLibPoll * glib_poll;
-        FreyaAvahiView window;
+        FreyaAvahiView * window;
 };
 
 #endif // FREYA_AVAHI_HANDLER_HH 

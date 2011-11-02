@@ -9,7 +9,8 @@ FreyaAvahiView::FreyaAvahiView(void) : m_Button_Cancel("Cancel"), m_Button_Selec
     set_border_width(5);
     set_default_size(400, 200);
 
-    server_counter = 0;
+    /* Modality */
+    set_modal(true);
 
     add(m_VBox);
 
@@ -23,6 +24,8 @@ FreyaAvahiView::FreyaAvahiView(void) : m_Button_Cancel("Cancel"), m_Button_Selec
     m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
 
     m_ButtonBox.pack_start(m_Status_Label,true,true,3);
+    m_ButtonBox.set_child_secondary(m_Status_Label,true);
+
     m_ButtonBox.pack_start(m_Button_Cancel, Gtk::PACK_SHRINK);
     m_ButtonBox.pack_start(m_Button_Select, Gtk::PACK_SHRINK);
     m_ButtonBox.set_border_width(5);
@@ -61,7 +64,11 @@ void FreyaAvahiView::on_button_select(void)
     if(iter) 
     {
         Gtk::TreeModel::Row row = *iter;
-        std::cout << "Selected: " << row[m_Columns.m_col_name] << std::endl;
+        signal_select.emit(
+                row[m_Columns.m_col_ip],
+                row[m_Columns.m_col_hostname],
+                row[m_Columns.m_col_name],
+                row[m_Columns.m_col_port]);
     }
     hide();
 }

@@ -13,6 +13,9 @@ class FreyaAvahiView : public Gtk::Window
         void server_delete(const char * name);
         void set_status(const char * message);
 
+        /* Select callback */
+        sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int> signal_select;
+
     protected:
         //Signal handlers:
         void on_button_cancel();
@@ -45,10 +48,6 @@ class FreyaAvahiView : public Gtk::Window
         Gtk::Button m_Button_Cancel;
         Gtk::Button m_Button_Select;
         Gtk::Label  m_Status_Label;
-
-    private:
-
-        unsigned int server_counter;
 };
 
 #endif //GTKMM_FREYAAVAHIVIEW_H

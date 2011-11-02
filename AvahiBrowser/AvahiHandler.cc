@@ -107,7 +107,7 @@ void FreyaAvahiHandler::service_browser_callback(AvahiServiceBrowser *b, AvahiIf
             /* The object is new on the network.*/
             g_message("-- NEW: %s %s %s",name,type,domain);
             if(avahi_service_resolver_new(full_client, interface, protocol, name, type, domain,
-                                         (AvahiLookupFlags)AVAHI_PROTO_UNSPEC, (AvahiLookupFlags)0, 
+                                         (AvahiLookupFlags)AVAHI_PROTO_INET, (AvahiLookupFlags)0, 
                                          FreyaAvahiHandler::wrap_resolve_callback, this)  
                                          == NULL)
             {
@@ -172,7 +172,6 @@ FreyaAvahiHandler::FreyaAvahiHandler(void)
     /* Check the error return code */
     if(this->client != NULL && avahi_client_get_state(this->client) != AVAHI_CLIENT_CONNECTING)
     {
-        g_message("Doing init");
         avahi_service_browser_new(this->client,
                 AVAHI_IF_UNSPEC,
                 AVAHI_PROTO_UNSPEC,
@@ -183,11 +182,14 @@ FreyaAvahiHandler::FreyaAvahiHandler(void)
     }
     else
     {
-        check_client_error("Initializing Avahi");
+        if(client != NULL)
+        {
+            check_client_error("Initializing Avahi");
+        }
+
         delete this->window;
         this->window = NULL;
     }
-    g_message("Exit.");
 }
 
 /* DTor */

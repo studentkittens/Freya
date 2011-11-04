@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkWindow" id="MainWindow">
     <property name="width_request">480</property>
     <property name="height_request">360</property>
@@ -662,6 +667,15 @@ audio-volume-medium</property>
                                             <property name="height">1</property>
                                           </packing>
                                         </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1035,6 +1049,15 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                                             <property name="height">1</property>
                                           </packing>
                                         </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1230,10 +1253,14 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkImage" id="image1">
+                  <object class="GtkButton" id="button6">
+                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-redo</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image1</property>
+                    <property name="relief">none</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1243,10 +1270,14 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="image2">
+                  <object class="GtkButton" id="button7">
+                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-refresh</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image2</property>
+                    <property name="relief">none</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -1256,10 +1287,14 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="image3">
+                  <object class="GtkButton" id="button8">
+                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-connect</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image4</property>
+                    <property name="relief">none</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -1269,10 +1304,14 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="image4">
+                  <object class="GtkButton" id="button9">
+                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-disconnect</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image5</property>
+                    <property name="relief">none</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -1282,23 +1321,14 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="image5">
+                  <object class="GtkButton" id="button10">
+                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-yes</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkImage" id="image6">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-dialog-warning</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image3</property>
+                    <property name="relief">none</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -1308,13 +1338,21 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
+                  <object class="GtkButton" id="button11">
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image6</property>
+                    <property name="relief">none</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
                 </child>
               </object>
               <packing>
@@ -1371,9 +1409,40 @@ ist auch ein Dummy, aber einer der besonders viel kann, nämlich einen grooooooo
       </object>
     </child>
   </object>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="upper">100</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-redo</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-goto-last</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-dialog-warning</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-connect</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-disconnect</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-network</property>
+    <property name="icon-size">2</property>
   </object>
 </interface>

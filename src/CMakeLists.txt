@@ -1,12 +1,11 @@
-ADD_EXECUTABLE(mpd_shell mpd_shell.cc)
-TARGET_LINK_LIBRARIES(mpd_shell ${GLIBPKG_LIBRARIES} ${LIBMPDCLIENT_LIBRARIES})
+ADD_EXECUTABLE(Freya MainWindow.cc)
+TARGET_LINK_LIBRARIES(Freya ${GTKMM3_PACKAGE_LIBRARIES})
 
 ADD_EXECUTABLE(client 
-           MPDConnection.cc
-           MPDConnectionHandler.cc 
-           MPDClientHandler.cc
-           IdleListener.cc
-           main.cc 
-           )
+               MPDConnection.cc
+               MPDConnectionHandler.cc 
+               MPDClientHandler.cc
+               IdleListener.cc
+               main.cc)
 
-TARGET_LINK_LIBRARIES(client ${GLIBPKG_LIBRARIES} ${LIBMPDCLIENT_LIBRARIES})
+TARGET_LINK_LIBRARIES(client ${GTKMM3_PACKAGE_LIBRARIES} ${LIBMPDCLIENT_LIBRARIES})

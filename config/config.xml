@@ -7,7 +7,7 @@
             <host>blabal</host>
         </connection>
         <notify>
-            <signal>1</signal>
+            <signal>0</signal>
         </notify>
     </settings>
     <plugins>

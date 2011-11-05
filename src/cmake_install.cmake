@@ -1,4 +1,4 @@
-# Install script for directory: /home/chris/Freya/src
+# Install script for directory: /home/christoph/dev/c++/Freya/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

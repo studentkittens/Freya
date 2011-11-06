@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPDConnectionHandler.html#a1a67b4cce3a13f515ec9f8e9229503b9" title="MPDConnectionHandler::get_connection" alt="" coords="256,5,515,32"/>
+<area shape="rect" id="node5" href="$classMPDConnectionHandler.html#ab4c4021acf4e043979606ed594ccfb53" title="MPDConnectionHandler::get_listener" alt="" coords="266,56,505,83"/>
+<area shape="rect" id="node7" href="$classMPDConnectionHandler.html#a10833493ed0c4a3e9078d5f5f63d1009" title="MPDConnectionHandler::check_error" alt="" coords="266,107,505,133"/>
+<area shape="rect" id="node9" href="$classMPDConnectionHandler.html#a17a2e3a366999b3690901982a11b8117" title="MPDConnectionHandler::connect" alt="" coords="614,107,831,133"/>
+<area shape="rect" id="node18" href="$classMPDConnectionHandler.html#aebfcb4dfe430e99574ef2c0456d02ca4" title="MPDConnectionHandler::disconnect" alt="" coords="268,208,503,235"/>
+<area shape="rect" id="node25" href="$classMPDConnectionHandler.html#a651fc2b30f08e572980d540070213d09" title="MPDConnectionHandler::is_connected" alt="" coords="261,284,509,311"/>
+<area shape="rect" id="node11" href="$classMPDClientHandler.html#abd756d3ebc5c05b089210b0a123fbb5c" title="MPDClientHandler::MPDClientHandler" alt="" coords="931,107,1179,133"/>
+<area shape="rect" id="node13" href="$test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="993,157,1116,184"/>
+<area shape="rect" id="node15" href="$test__client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1227,157,1277,184"/>
+<area shape="rect" id="node20" href="$classMPDClientHandler.html#a5543318862c27db00bf0890fa7694662" title="MPDClientHandler::~MPDClientHandler" alt="" coords="595,208,851,235"/>
+<area shape="rect" id="node22" href="$classMPDConnectionHandler.html#ae17f468b0865754332a5796b42e05ecc" title="MPDConnectionHandler::~MPDConnectionHandler" alt="" coords="563,259,883,285"/>
+<area shape="rect" id="node27" href="$classMPDClientHandler.html#a33c32dc5022572c10b07f7685bad48fe" title="MPDClientHandler::send_command" alt="" coords="607,309,838,336"/>
+</map>

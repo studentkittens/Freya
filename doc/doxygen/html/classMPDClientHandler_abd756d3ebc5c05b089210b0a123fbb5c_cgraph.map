@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPDConnectionHandler.html#a17a2e3a366999b3690901982a11b8117" title="MPDConnectionHandler::connect" alt="" coords="302,81,519,108"/>
+<area shape="rect" id="node5" href="$classMPDConnection.html#a460a4556a48301153e0950b9826d56b2" title="MPDConnection::set_connection" alt="" coords="581,5,795,32"/>
+<area shape="rect" id="node7" href="$classMPDConnectionHandler.html#a10833493ed0c4a3e9078d5f5f63d1009" title="MPDConnectionHandler::check_error" alt="" coords="569,107,807,133"/>
+<area shape="rect" id="node9" href="$classMPDConnection.html#a772fb7a6a53de28ecaa0c4d214247d3c" title="MPDConnection::is_connected" alt="" coords="863,56,1065,83"/>
+<area shape="rect" id="node14" href="$classIdleListener.html#a22b4332b195f9970f69078f1d00eddc3" title="IdleListener::enter" alt="" coords="625,157,751,184"/>
+<area shape="rect" id="node11" href="$classMPDConnection.html#a971726128345c7490a530aaa794649f3" title="MPDConnection::get_connection" alt="" coords="857,107,1071,133"/>
+<area shape="rect" id="node16" href="$classIdleListener.html#acf825054545a28277d674b99222cd80c" title="IdleListener::is_idling" alt="" coords="892,157,1036,184"/>
+</map>

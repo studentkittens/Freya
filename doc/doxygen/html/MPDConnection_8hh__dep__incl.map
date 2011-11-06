@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$MPDConnectionHandler_8hh.html" title="src/MPD/MPDConnectionHandler.hh" alt="" coords="215,80,451,107"/>
+<area shape="rect" id="node13" href="$MPDConnection_8cc.html" title="src/MPD/MPDConnection.cc" alt="" coords="476,80,668,107"/>
+<area shape="rect" id="node5" href="$MPDClientHandler_8hh.html" title="src/MPD/MPDClientHandler.hh" alt="" coords="108,155,313,181"/>
+<area shape="rect" id="node11" href="$MPDConnectionHandler_8cc.html" title="src/MPD/MPDConnectionHandler.cc" alt="" coords="337,155,573,181"/>
+<area shape="rect" id="node7" href="$MPDClientHandler_8cc.html" title="src/MPD/MPDClientHandler.cc" alt="" coords="5,229,211,256"/>
+<area shape="rect" id="node9" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="235,229,391,256"/>
+</map>

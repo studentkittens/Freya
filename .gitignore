@@ -1,5 +1,6 @@
 # Ignore compiled output
 *.o
+*.a
 bin/
 
 # Ignore CMake output
@@ -16,4 +17,6 @@ Makefile
 *.swo
 *.swn
 
-
+# logs
+valg.log
+logfile.txt

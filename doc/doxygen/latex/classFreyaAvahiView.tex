@@ -1,0 +1,208 @@
+\hypertarget{classFreyaAvahiView}{
+\section{\-Freya\-Avahi\-View \-Class \-Reference}
+\label{classFreyaAvahiView}\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}}
+}
+
+
+{\ttfamily \#include $<$\-Avahi\-View.\-hh$>$}
+
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classFreyaAvahiView_1_1ModelColumns}{\-Model\-Columns}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFreyaAvahiView_a7eb789d9d2dea481cf1dcccfe1f9d815}{\-Freya\-Avahi\-View} (void)
+\begin{DoxyCompactList}\small\item\em \-C\-Tor ///. \end{DoxyCompactList}\item 
+virtual \hyperlink{classFreyaAvahiView_af29f8465096bb3927445c80fd4ea9ec1}{$\sim$\-Freya\-Avahi\-View} (void)
+\begin{DoxyCompactList}\small\item\em \-D\-Tor ///. \end{DoxyCompactList}\item 
+void \hyperlink{classFreyaAvahiView_a7296757df9bd41a86407b83c17f9f3bf}{server\-\_\-append} (const char $\ast$ip, const char $\ast$hostname, const char $\ast$name, unsigned int port)
+\begin{DoxyCompactList}\small\item\em \-User functions ///. \end{DoxyCompactList}\item 
+void \hyperlink{classFreyaAvahiView_acf9db4960f3f7ee7fe8c72214fe7b488}{server\-\_\-delete} (const char $\ast$name)
+\item 
+void \hyperlink{classFreyaAvahiView_a1d4b0d23701e0c4500fd4eed311e83c7}{set\-\_\-status} (const char $\ast$message)
+\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+sigc\-::signal$<$ void, \*
+\-Glib\-::ustring, \-Glib\-::ustring, \*
+\-Glib\-::ustring, unsigned int $>$ \hyperlink{classFreyaAvahiView_a5b23deb59958d5e0d0776ea794255036}{signal\-\_\-select}
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classFreyaAvahiView_a238089db0631391462cc2cd37ab8d4f3}{on\-\_\-button\-\_\-cancel} ()
+\begin{DoxyCompactList}\small\item\em \-Event \-Callbacks ////. \end{DoxyCompactList}\item 
+void \hyperlink{classFreyaAvahiView_a29376be4aefd6d88dfac2fb4c5a5efa9}{on\-\_\-button\-\_\-select} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFreyaAvahiView_1_1ModelColumns}{\-Model\-Columns} \hyperlink{classFreyaAvahiView_a9c24ec63950f241dcfdc2625502dc5cc}{m\-\_\-\-Columns}
+\item 
+\-Gtk\-::\-V\-Box \hyperlink{classFreyaAvahiView_a2795d496bd3c74fc895e86ed8eedaa95}{m\-\_\-\-V\-Box}
+\item 
+\-Gtk\-::\-Scrolled\-Window \hyperlink{classFreyaAvahiView_a6e41d967e114d4df82378b8e4b34046f}{m\-\_\-\-Scrolled\-Window}
+\item 
+\-Gtk\-::\-Tree\-View \hyperlink{classFreyaAvahiView_ac65ebb1ece218ba64db9e8dd2a48ef87}{m\-\_\-\-Tree\-View}
+\item 
+\-Glib\-::\-Ref\-Ptr$<$ \-Gtk\-::\-List\-Store $>$ \hyperlink{classFreyaAvahiView_ad0265da7aa184158e137539bfa32c861}{m\-\_\-ref\-Tree\-Model}
+\item 
+\-Gtk\-::\-H\-Button\-Box \hyperlink{classFreyaAvahiView_a4f564cb1916b44f76df7bbe45e7d8f5d}{m\-\_\-\-Button\-Box}
+\item 
+\-Gtk\-::\-Button \hyperlink{classFreyaAvahiView_ae027532f98721bfc72a7995900661157}{m\-\_\-\-Button\-\_\-\-Cancel}
+\item 
+\-Gtk\-::\-Button \hyperlink{classFreyaAvahiView_a1a889ec913f877d2f0060cc75a8c04f5}{m\-\_\-\-Button\-\_\-\-Select}
+\item 
+\-Gtk\-::\-Label \hyperlink{classFreyaAvahiView_a4acd1137b7a41375d37a88d8576297bc}{m\-\_\-\-Status\-\_\-\-Label}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classFreyaAvahiView_a7eb789d9d2dea481cf1dcccfe1f9d815}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}}
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{\-Freya\-Avahi\-View}]{\setlength{\rightskip}{0pt plus 5cm}\-Freya\-Avahi\-View\-::\-Freya\-Avahi\-View (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classFreyaAvahiView_a7eb789d9d2dea481cf1dcccfe1f9d815}
+
+
+\-C\-Tor ///. 
+
+\hypertarget{classFreyaAvahiView_af29f8465096bb3927445c80fd4ea9ec1}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!$\sim$\-Freya\-Avahi\-View@{$\sim$\-Freya\-Avahi\-View}}
+\index{$\sim$\-Freya\-Avahi\-View@{$\sim$\-Freya\-Avahi\-View}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{$\sim$\-Freya\-Avahi\-View}]{\setlength{\rightskip}{0pt plus 5cm}\-Freya\-Avahi\-View\-::$\sim$\-Freya\-Avahi\-View (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classFreyaAvahiView_af29f8465096bb3927445c80fd4ea9ec1}
+
+
+\-D\-Tor ///. 
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classFreyaAvahiView_a238089db0631391462cc2cd37ab8d4f3}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!on\-\_\-button\-\_\-cancel@{on\-\_\-button\-\_\-cancel}}
+\index{on\-\_\-button\-\_\-cancel@{on\-\_\-button\-\_\-cancel}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{on\-\_\-button\-\_\-cancel}]{\setlength{\rightskip}{0pt plus 5cm}void \-Freya\-Avahi\-View\-::on\-\_\-button\-\_\-cancel (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a238089db0631391462cc2cd37ab8d4f3}
+
+
+\-Event \-Callbacks ////. 
+
+\hypertarget{classFreyaAvahiView_a29376be4aefd6d88dfac2fb4c5a5efa9}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!on\-\_\-button\-\_\-select@{on\-\_\-button\-\_\-select}}
+\index{on\-\_\-button\-\_\-select@{on\-\_\-button\-\_\-select}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{on\-\_\-button\-\_\-select}]{\setlength{\rightskip}{0pt plus 5cm}void \-Freya\-Avahi\-View\-::on\-\_\-button\-\_\-select (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a29376be4aefd6d88dfac2fb4c5a5efa9}
+\hypertarget{classFreyaAvahiView_a7296757df9bd41a86407b83c17f9f3bf}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!server\-\_\-append@{server\-\_\-append}}
+\index{server\-\_\-append@{server\-\_\-append}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{server\-\_\-append}]{\setlength{\rightskip}{0pt plus 5cm}void \-Freya\-Avahi\-View\-::server\-\_\-append (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ip, }
+\item[{const char $\ast$}]{hostname, }
+\item[{const char $\ast$}]{name, }
+\item[{unsigned int}]{port}
+\end{DoxyParamCaption}
+)}}
+\label{classFreyaAvahiView_a7296757df9bd41a86407b83c17f9f3bf}
+
+
+\-User functions ///. 
+
+\hypertarget{classFreyaAvahiView_acf9db4960f3f7ee7fe8c72214fe7b488}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!server\-\_\-delete@{server\-\_\-delete}}
+\index{server\-\_\-delete@{server\-\_\-delete}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{server\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}void \-Freya\-Avahi\-View\-::server\-\_\-delete (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{classFreyaAvahiView_acf9db4960f3f7ee7fe8c72214fe7b488}
+\hypertarget{classFreyaAvahiView_a1d4b0d23701e0c4500fd4eed311e83c7}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!set\-\_\-status@{set\-\_\-status}}
+\index{set\-\_\-status@{set\-\_\-status}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{set\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}void \-Freya\-Avahi\-View\-::set\-\_\-status (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{message}
+\end{DoxyParamCaption}
+)}}
+\label{classFreyaAvahiView_a1d4b0d23701e0c4500fd4eed311e83c7}
+
+
+\subsection{\-Field \-Documentation}
+\hypertarget{classFreyaAvahiView_ae027532f98721bfc72a7995900661157}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Button\-\_\-\-Cancel@{m\-\_\-\-Button\-\_\-\-Cancel}}
+\index{m\-\_\-\-Button\-\_\-\-Cancel@{m\-\_\-\-Button\-\_\-\-Cancel}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Button\-\_\-\-Cancel}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-Button {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Button\-\_\-\-Cancel}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_ae027532f98721bfc72a7995900661157}
+\hypertarget{classFreyaAvahiView_a1a889ec913f877d2f0060cc75a8c04f5}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Button\-\_\-\-Select@{m\-\_\-\-Button\-\_\-\-Select}}
+\index{m\-\_\-\-Button\-\_\-\-Select@{m\-\_\-\-Button\-\_\-\-Select}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Button\-\_\-\-Select}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-Button {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Button\-\_\-\-Select}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a1a889ec913f877d2f0060cc75a8c04f5}
+\hypertarget{classFreyaAvahiView_a4f564cb1916b44f76df7bbe45e7d8f5d}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Button\-Box@{m\-\_\-\-Button\-Box}}
+\index{m\-\_\-\-Button\-Box@{m\-\_\-\-Button\-Box}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Button\-Box}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-H\-Button\-Box {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Button\-Box}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a4f564cb1916b44f76df7bbe45e7d8f5d}
+\hypertarget{classFreyaAvahiView_a9c24ec63950f241dcfdc2625502dc5cc}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Columns@{m\-\_\-\-Columns}}
+\index{m\-\_\-\-Columns@{m\-\_\-\-Columns}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Columns}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Model\-Columns} {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Columns}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a9c24ec63950f241dcfdc2625502dc5cc}
+\hypertarget{classFreyaAvahiView_ad0265da7aa184158e137539bfa32c861}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-ref\-Tree\-Model@{m\-\_\-ref\-Tree\-Model}}
+\index{m\-\_\-ref\-Tree\-Model@{m\-\_\-ref\-Tree\-Model}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-ref\-Tree\-Model}]{\setlength{\rightskip}{0pt plus 5cm}\-Glib\-::\-Ref\-Ptr$<$\-Gtk\-::\-List\-Store$>$ {\bf \-Freya\-Avahi\-View\-::m\-\_\-ref\-Tree\-Model}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_ad0265da7aa184158e137539bfa32c861}
+\hypertarget{classFreyaAvahiView_a6e41d967e114d4df82378b8e4b34046f}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Scrolled\-Window@{m\-\_\-\-Scrolled\-Window}}
+\index{m\-\_\-\-Scrolled\-Window@{m\-\_\-\-Scrolled\-Window}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Scrolled\-Window}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-Scrolled\-Window {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Scrolled\-Window}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a6e41d967e114d4df82378b8e4b34046f}
+\hypertarget{classFreyaAvahiView_a4acd1137b7a41375d37a88d8576297bc}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Status\-\_\-\-Label@{m\-\_\-\-Status\-\_\-\-Label}}
+\index{m\-\_\-\-Status\-\_\-\-Label@{m\-\_\-\-Status\-\_\-\-Label}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Status\-\_\-\-Label}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-Label {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Status\-\_\-\-Label}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a4acd1137b7a41375d37a88d8576297bc}
+\hypertarget{classFreyaAvahiView_ac65ebb1ece218ba64db9e8dd2a48ef87}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-Tree\-View@{m\-\_\-\-Tree\-View}}
+\index{m\-\_\-\-Tree\-View@{m\-\_\-\-Tree\-View}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-Tree\-View}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-Tree\-View {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-Tree\-View}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_ac65ebb1ece218ba64db9e8dd2a48ef87}
+\hypertarget{classFreyaAvahiView_a2795d496bd3c74fc895e86ed8eedaa95}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!m\-\_\-\-V\-Box@{m\-\_\-\-V\-Box}}
+\index{m\-\_\-\-V\-Box@{m\-\_\-\-V\-Box}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{m\-\_\-\-V\-Box}]{\setlength{\rightskip}{0pt plus 5cm}\-Gtk\-::\-V\-Box {\bf \-Freya\-Avahi\-View\-::m\-\_\-\-V\-Box}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classFreyaAvahiView_a2795d496bd3c74fc895e86ed8eedaa95}
+\hypertarget{classFreyaAvahiView_a5b23deb59958d5e0d0776ea794255036}{
+\index{\-Freya\-Avahi\-View@{\-Freya\-Avahi\-View}!signal\-\_\-select@{signal\-\_\-select}}
+\index{signal\-\_\-select@{signal\-\_\-select}!FreyaAvahiView@{\-Freya\-Avahi\-View}}
+\subsubsection[{signal\-\_\-select}]{\setlength{\rightskip}{0pt plus 5cm}sigc\-::signal$<$void,\-Glib\-::ustring,\-Glib\-::ustring,\-Glib\-::ustring, unsigned int$>$ {\bf \-Freya\-Avahi\-View\-::signal\-\_\-select}}}
+\label{classFreyaAvahiView_a5b23deb59958d5e0d0776ea794255036}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/\-Avahi\-Browser/\hyperlink{AvahiView_8hh}{\-Avahi\-View.\-hh}\item 
+src/\-Avahi\-Browser/\hyperlink{AvahiView_8cc}{\-Avahi\-View.\-cc}\end{DoxyCompactItemize}

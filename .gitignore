@@ -4,6 +4,7 @@ bin/
 
 # Ignore CMake output
 MakeCache.txt
+CMakeCache.txt
 CMakeFiles/
 src/CMakeFiles/
 cmake_install.cmake

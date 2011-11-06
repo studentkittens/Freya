@@ -1,0 +1,116 @@
+\hypertarget{Cmdparser_8cc}{
+\section{src/\-Cmdparser.cc \-File \-Reference}
+\label{Cmdparser_8cc}\index{src/\-Cmdparser.\-cc@{src/\-Cmdparser.\-cc}}
+}
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$cstring$>$}\*
+{\ttfamily \#include $<$cstdlib$>$}\*
+{\ttfamily \#include $<$vector$>$}\*
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classCmdOption}{\-Cmd\-Option}
+\item 
+class \hyperlink{classCmdArgParser}{\-Cmd\-Arg\-Parser}
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef bool($\ast$ \hyperlink{Cmdparser_8cc_a630a2fcd70be2057ccf9ac05dc67a463}{option\-\_\-callback} )(const char $\ast$optarg, void $\ast$user\-\_\-ptr)
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffc}{\-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E} \{ \hyperlink{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffcadf37d98fb2cd5a90e8304e53976cb8d0}{\-O\-P\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D}, 
+\hyperlink{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffca4eaff09fbc7042cb05e653f98a5e2855}{\-O\-P\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N\-A\-L}, 
+\hyperlink{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffcaf0e248dd08c57d448aa8976d46ee9312}{\-O\-P\-T\-I\-O\-N\-\_\-\-N\-O\-A\-R\-G\-U\-M\-E\-N\-T}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{Cmdparser_8cc_ae4fd6e67edcd849c5c9bc17f3700db45}{help\-\_\-action} (const char $\ast$optarg, void $\ast$userptr)
+\item 
+static bool \hyperlink{Cmdparser_8cc_a58948e55dcfef040517122278f1c26ad}{config\-\_\-action} (const char $\ast$optarg, void $\ast$userptr)
+\item 
+static bool \hyperlink{Cmdparser_8cc_a5e692afc2daaa0644c0378ec3029cfa7}{test\-\_\-action} (const char $\ast$optarg, void $\ast$userptr)
+\item 
+int \hyperlink{Cmdparser_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{Cmdparser_8cc_a630a2fcd70be2057ccf9ac05dc67a463}{
+\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!option\-\_\-callback@{option\-\_\-callback}}
+\index{option\-\_\-callback@{option\-\_\-callback}!Cmdparser.cc@{\-Cmdparser.\-cc}}
+\subsubsection[{option\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}typedef bool($\ast$ {\bf option\-\_\-callback})(const char $\ast$optarg, void $\ast$user\-\_\-ptr)}}
+\label{Cmdparser_8cc_a630a2fcd70be2057ccf9ac05dc67a463}
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\hypertarget{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffc}{
+\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!\-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E@{\-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E}}
+\index{\-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E@{\-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E}!Cmdparser.cc@{\-Cmdparser.\-cc}}
+\subsubsection[{\-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-O\-P\-T\-I\-O\-N\-\_\-\-T\-Y\-P\-E}}}
+\label{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffc}
+\begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-O\-P\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D@{\-O\-P\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D}!\-Cmdparser.\-cc@{\-Cmdparser.\-cc}}\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!\-O\-P\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D@{\-O\-P\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D}}\item[{\em 
+\hypertarget{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffcadf37d98fb2cd5a90e8304e53976cb8d0}{
+\-O\-P\-T\-I\-O\-N\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D}
+\label{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffcadf37d98fb2cd5a90e8304e53976cb8d0}
+}]\index{\-O\-P\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N\-A\-L@{\-O\-P\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N\-A\-L}!\-Cmdparser.\-cc@{\-Cmdparser.\-cc}}\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!\-O\-P\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N\-A\-L@{\-O\-P\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N\-A\-L}}\item[{\em 
+\hypertarget{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffca4eaff09fbc7042cb05e653f98a5e2855}{
+\-O\-P\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N\-A\-L}
+\label{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffca4eaff09fbc7042cb05e653f98a5e2855}
+}]\index{\-O\-P\-T\-I\-O\-N\-\_\-\-N\-O\-A\-R\-G\-U\-M\-E\-N\-T@{\-O\-P\-T\-I\-O\-N\-\_\-\-N\-O\-A\-R\-G\-U\-M\-E\-N\-T}!\-Cmdparser.\-cc@{\-Cmdparser.\-cc}}\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!\-O\-P\-T\-I\-O\-N\-\_\-\-N\-O\-A\-R\-G\-U\-M\-E\-N\-T@{\-O\-P\-T\-I\-O\-N\-\_\-\-N\-O\-A\-R\-G\-U\-M\-E\-N\-T}}\item[{\em 
+\hypertarget{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffcaf0e248dd08c57d448aa8976d46ee9312}{
+\-O\-P\-T\-I\-O\-N\-\_\-\-N\-O\-A\-R\-G\-U\-M\-E\-N\-T}
+\label{Cmdparser_8cc_aafe320ecc2bd334e1ff9fe12076ccffcaf0e248dd08c57d448aa8976d46ee9312}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{Cmdparser_8cc_a58948e55dcfef040517122278f1c26ad}{
+\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!config\-\_\-action@{config\-\_\-action}}
+\index{config\-\_\-action@{config\-\_\-action}!Cmdparser.cc@{\-Cmdparser.\-cc}}
+\subsubsection[{config\-\_\-action}]{\setlength{\rightskip}{0pt plus 5cm}static bool config\-\_\-action (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{optarg, }
+\item[{void $\ast$}]{userptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{Cmdparser_8cc_a58948e55dcfef040517122278f1c26ad}
+\hypertarget{Cmdparser_8cc_ae4fd6e67edcd849c5c9bc17f3700db45}{
+\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!help\-\_\-action@{help\-\_\-action}}
+\index{help\-\_\-action@{help\-\_\-action}!Cmdparser.cc@{\-Cmdparser.\-cc}}
+\subsubsection[{help\-\_\-action}]{\setlength{\rightskip}{0pt plus 5cm}static bool help\-\_\-action (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{optarg, }
+\item[{void $\ast$}]{userptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{Cmdparser_8cc_ae4fd6e67edcd849c5c9bc17f3700db45}
+\hypertarget{Cmdparser_8cc_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!main@{main}}
+\index{main@{main}!Cmdparser.cc@{\-Cmdparser.\-cc}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{Cmdparser_8cc_a0ddf1224851353fc92bfbff6f499fa97}
+\hypertarget{Cmdparser_8cc_a5e692afc2daaa0644c0378ec3029cfa7}{
+\index{\-Cmdparser.\-cc@{\-Cmdparser.\-cc}!test\-\_\-action@{test\-\_\-action}}
+\index{test\-\_\-action@{test\-\_\-action}!Cmdparser.cc@{\-Cmdparser.\-cc}}
+\subsubsection[{test\-\_\-action}]{\setlength{\rightskip}{0pt plus 5cm}static bool test\-\_\-action (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{optarg, }
+\item[{void $\ast$}]{userptr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{Cmdparser_8cc_a5e692afc2daaa0644c0378ec3029cfa7}

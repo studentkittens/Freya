@@ -1,0 +1,58 @@
+\hypertarget{LogHandler_8cc}{
+\section{src/\-Log\-Handler/\-Log\-Handler.cc \-File \-Reference}
+\label{LogHandler_8cc}\index{src/\-Log\-Handler/\-Log\-Handler.\-cc@{src/\-Log\-Handler/\-Log\-Handler.\-cc}}
+}
+{\ttfamily \#include \char`\"{}\-Log\-Handler.\-hh\char`\"{}}\*
+{\ttfamily \#include $<$string.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$time.\-h$>$}\*
+{\ttfamily \#include $<$glib.\-h$>$}\*
+{\ttfamily \#include $<$glib/gprintf.\-h$>$}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{LogHandler_8cc_a511df01696146d80383d83b07042bf50}{\-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E}~128
+\item 
+\#define \hyperlink{LogHandler_8cc_a87d30d2657caae38d671f052cb9cc0e7}{\-C\-O\-L\-\_\-\-R\-E\-D}~\char`\"{}$\backslash$x1b\mbox{[}31;01m\char`\"{}
+\item 
+\#define \hyperlink{LogHandler_8cc_a864e4193bd767df90391580c9a7c04d1}{\-C\-O\-L\-\_\-\-Y\-E\-L}~\char`\"{}$\backslash$x1b\mbox{[}33;01m\char`\"{}
+\item 
+\#define \hyperlink{LogHandler_8cc_a9cdb9d058a13d2b954d52c13ebf6f90d}{\-C\-O\-L\-\_\-\-G\-R\-E}~\char`\"{}$\backslash$x1b\mbox{[}32;01m\char`\"{}
+\item 
+\#define \hyperlink{LogHandler_8cc_a84a127ed8baebd354118b6d7518ca9fa}{\-C\-O\-L\-\_\-\-B\-L\-U}~\char`\"{}$\backslash$x1b\mbox{[}34;01m\char`\"{}
+\item 
+\#define \hyperlink{LogHandler_8cc_a238724201b34ad71b72c275be9933fa2}{\-C\-O\-L\-\_\-\-N\-C\-O}~\char`\"{}$\backslash$x1b\mbox{[}0m\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{LogHandler_8cc_a84a127ed8baebd354118b6d7518ca9fa}{
+\index{\-Log\-Handler.\-cc@{\-Log\-Handler.\-cc}!\-C\-O\-L\-\_\-\-B\-L\-U@{\-C\-O\-L\-\_\-\-B\-L\-U}}
+\index{\-C\-O\-L\-\_\-\-B\-L\-U@{\-C\-O\-L\-\_\-\-B\-L\-U}!LogHandler.cc@{\-Log\-Handler.\-cc}}
+\subsubsection[{\-C\-O\-L\-\_\-\-B\-L\-U}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-C\-O\-L\-\_\-\-B\-L\-U~\char`\"{}$\backslash$x1b\mbox{[}34;01m\char`\"{}}}
+\label{LogHandler_8cc_a84a127ed8baebd354118b6d7518ca9fa}
+\hypertarget{LogHandler_8cc_a9cdb9d058a13d2b954d52c13ebf6f90d}{
+\index{\-Log\-Handler.\-cc@{\-Log\-Handler.\-cc}!\-C\-O\-L\-\_\-\-G\-R\-E@{\-C\-O\-L\-\_\-\-G\-R\-E}}
+\index{\-C\-O\-L\-\_\-\-G\-R\-E@{\-C\-O\-L\-\_\-\-G\-R\-E}!LogHandler.cc@{\-Log\-Handler.\-cc}}
+\subsubsection[{\-C\-O\-L\-\_\-\-G\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-C\-O\-L\-\_\-\-G\-R\-E~\char`\"{}$\backslash$x1b\mbox{[}32;01m\char`\"{}}}
+\label{LogHandler_8cc_a9cdb9d058a13d2b954d52c13ebf6f90d}
+\hypertarget{LogHandler_8cc_a238724201b34ad71b72c275be9933fa2}{
+\index{\-Log\-Handler.\-cc@{\-Log\-Handler.\-cc}!\-C\-O\-L\-\_\-\-N\-C\-O@{\-C\-O\-L\-\_\-\-N\-C\-O}}
+\index{\-C\-O\-L\-\_\-\-N\-C\-O@{\-C\-O\-L\-\_\-\-N\-C\-O}!LogHandler.cc@{\-Log\-Handler.\-cc}}
+\subsubsection[{\-C\-O\-L\-\_\-\-N\-C\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-C\-O\-L\-\_\-\-N\-C\-O~\char`\"{}$\backslash$x1b\mbox{[}0m\char`\"{}}}
+\label{LogHandler_8cc_a238724201b34ad71b72c275be9933fa2}
+\hypertarget{LogHandler_8cc_a87d30d2657caae38d671f052cb9cc0e7}{
+\index{\-Log\-Handler.\-cc@{\-Log\-Handler.\-cc}!\-C\-O\-L\-\_\-\-R\-E\-D@{\-C\-O\-L\-\_\-\-R\-E\-D}}
+\index{\-C\-O\-L\-\_\-\-R\-E\-D@{\-C\-O\-L\-\_\-\-R\-E\-D}!LogHandler.cc@{\-Log\-Handler.\-cc}}
+\subsubsection[{\-C\-O\-L\-\_\-\-R\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-C\-O\-L\-\_\-\-R\-E\-D~\char`\"{}$\backslash$x1b\mbox{[}31;01m\char`\"{}}}
+\label{LogHandler_8cc_a87d30d2657caae38d671f052cb9cc0e7}
+\hypertarget{LogHandler_8cc_a864e4193bd767df90391580c9a7c04d1}{
+\index{\-Log\-Handler.\-cc@{\-Log\-Handler.\-cc}!\-C\-O\-L\-\_\-\-Y\-E\-L@{\-C\-O\-L\-\_\-\-Y\-E\-L}}
+\index{\-C\-O\-L\-\_\-\-Y\-E\-L@{\-C\-O\-L\-\_\-\-Y\-E\-L}!LogHandler.cc@{\-Log\-Handler.\-cc}}
+\subsubsection[{\-C\-O\-L\-\_\-\-Y\-E\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-C\-O\-L\-\_\-\-Y\-E\-L~\char`\"{}$\backslash$x1b\mbox{[}33;01m\char`\"{}}}
+\label{LogHandler_8cc_a864e4193bd767df90391580c9a7c04d1}
+\hypertarget{LogHandler_8cc_a511df01696146d80383d83b07042bf50}{
+\index{\-Log\-Handler.\-cc@{\-Log\-Handler.\-cc}!\-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E@{\-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E}}
+\index{\-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E@{\-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E}!LogHandler.cc@{\-Log\-Handler.\-cc}}
+\subsubsection[{\-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-T\-I\-M\-E\-\_\-\-B\-U\-F\-\_\-\-S\-I\-Z\-E~128}}
+\label{LogHandler_8cc_a511df01696146d80383d83b07042bf50}

@@ -1,11 +1,6 @@
-ADD_EXECUTABLE(Freya MainWindow.cc)
-TARGET_LINK_LIBRARIES(Freya ${GTKMM3_PACKAGE_LIBRARIES})
+ADD_SUBDIRECTORY(AvahiBrowser)
+ADD_SUBDIRECTORY(LogHandler)
+ADD_SUBDIRECTORY(MPD)
 
-ADD_EXECUTABLE(client 
-               MPDConnection.cc
-               MPDConnectionHandler.cc 
-               MPDClientHandler.cc
-               IdleListener.cc
-               main.cc)
-
-TARGET_LINK_LIBRARIES(client ${GTKMM3_PACKAGE_LIBRARIES} ${LIBMPDCLIENT_LIBRARIES})
+ADD_EXECUTABLE(test_mockup MainWindow.cc PlaylistTreeView.cc)
+TARGET_LINK_LIBRARIES(test_mockup ${GTKMM3_PACKAGE_LIBRARIES})

@@ -1,7 +1,7 @@
 #ifndef FREYA_IDLELISTENER_GUARD
 #define FREYA_IDLELISTENER_GUARD
 
-#include "includes.hpp"
+#include "../includes.hh"
 
 class IdleListener
 {

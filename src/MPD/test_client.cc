@@ -1,5 +1,5 @@
-#include "MPDClientHandler.hpp"
-#include "IdleListener.hpp"
+#include "MPDClientHandler.hh"
+#include "IdleListener.hh"
 
 using namespace Glib;
 
@@ -53,6 +53,11 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
         case 'P':
             {
                 client->send_command("pause");
+                break;
+            }
+        case 'L':
+            {
+                client->list_queue();
                 break;
             }
         case 'c':

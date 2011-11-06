@@ -1,8 +1,8 @@
 #ifndef FREYA_MPDCLIENTHANDLER
 #define FREYA_MPDCLIENTHANDLER 
 
-#include "includes.hpp"
-#include  "MPDConnectionHandler.hpp"
+#include "../includes.hh"
+#include  "MPDConnectionHandler.hh"
 
 class MPDClientHandler
 {
@@ -13,6 +13,9 @@ class MPDClientHandler
 
     /* Go to next song */
     bool send_command(const char * command);
+
+    /* List contents of current playlist */
+    void list_queue(void);
 
     /* Get the underlying connection handler */
     MPDConnectionHandler * get_connection_handler(void);

@@ -1,5 +1,5 @@
 #include <glibmm.h>
-#include "MPDConnectionHandler.hpp"
+#include "MPDConnectionHandler.hh"
 
 //--------------------------------------
 

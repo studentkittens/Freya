@@ -1,7 +1,7 @@
 #ifndef FREYA_MPDCONNECTION_H
 #define FREYA_MPDCONNECTION_H
 
-#include "includes.hpp"
+#include "../includes.hh"
 
 class MPDConnection
 {

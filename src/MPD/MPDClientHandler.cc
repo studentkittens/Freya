@@ -1,4 +1,4 @@
-#include "MPDClientHandler.hpp"
+#include "MPDClientHandler.hh"
 
 // Helper function
 mpd_connection * MPDClientHandler::get_conn_by_obj(void)
@@ -65,6 +65,28 @@ bool MPDClientHandler::send_command(const char * command)
         go_idle();
     }
     return result;
+}
+
+//-------------------------------
+
+void MPDClientHandler::list_queue(void)
+{
+    go_busy();
+
+    mpd_connection * conn = get_conn_by_obj();
+    if(conn && mpd_send_list_queue_meta(conn) != FALSE)
+    {
+        mpd_pair * pair = NULL;
+        while((pair = mpd_recv_pair(conn)))
+        {
+            //g_printerr("%s => %s\n",pair->name,pair->value);
+            mpd_return_pair(conn,pair);
+        }
+    }
+
+    g_print("Done.\n");
+
+    go_idle();
 }
 
 //-------------------------------

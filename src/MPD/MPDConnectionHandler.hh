@@ -1,9 +1,9 @@
 #ifndef FREYA_MPDCLIENT_GUARD
 #define FREYA_MPDCLIENT_GUARD
 
-#include "includes.hpp"
-#include "IdleListener.hpp"
-#include "MPDConnection.hpp"
+#include "../includes.hh"
+#include "IdleListener.hh"
+#include "MPDConnection.hh"
 
 class MPDConnectionHandler
 {

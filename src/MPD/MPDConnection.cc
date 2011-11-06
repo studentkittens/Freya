@@ -1,4 +1,4 @@
-#include "MPDConnection.hpp"
+#include "MPDConnection.hh"
 
 //----------------------------
 

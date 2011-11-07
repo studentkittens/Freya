@@ -1,13 +1,13 @@
 #include "ConfigModel.hh"
 #define outputfile "./config.xml"
 
-
 /*reads file from hdd*/
 ConfigModel::ConfigModel(char* pathtofile)
 {
     this->load(pathtofile);
 }
 
+/* ----------------------------------------- */
 
 /*saves config file on exit*/
 ConfigModel::~ConfigModel()
@@ -16,6 +16,7 @@ ConfigModel::~ConfigModel()
     xmlFreeDoc(fileDoc);
 }
 
+/* ----------------------------------------- */
 
 /*returns the doc pointer of users config.xml*/
 xmlDocPtr ConfigModel::getDocPtr()
@@ -23,6 +24,7 @@ xmlDocPtr ConfigModel::getDocPtr()
     return fileDoc;
 }
 
+/* ----------------------------------------- */
 
 /*xml file reader*/
 void ConfigModel::load(char* file)
@@ -56,7 +58,7 @@ void ConfigModel::load(char* file)
     }
 }
 
-
+/* ----------------------------------------- */
 
 /*save default config aka Mr fileDoc*/
 void ConfigModel::save()
@@ -64,6 +66,7 @@ void ConfigModel::save()
     save((char*)outputfile, fileDoc);
 }
 
+/* ----------------------------------------- */
 
 /*save alternative config*/
 void ConfigModel::save(char* altfile,xmlDocPtr doc)

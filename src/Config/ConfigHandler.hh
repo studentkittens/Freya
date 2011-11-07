@@ -1,8 +1,15 @@
+<<<<<<< HEAD:catCode/ConfigHandler.hh
 #ifndef CONFIGHANDLER_89V106EN
 
 #define CONFIGHANDLER_89V106EN
 
 #include <gtkmm.h>
+=======
+#ifndef CONFIGHANDLER_6JC28HEQ
+#define CONFIGHANDLER_6JC28HEQ
+
+#include <glibmm.h>
+>>>>>>> 1d6cd4ff339236199cfcc22e4b577a7e27fea1a6:src/Config/ConfigHandler.hh
 #include <libxml/parser.h>
 #include "ConfigModel.hh"
 
@@ -31,6 +38,10 @@ private:
 
 
 
+<<<<<<< HEAD:catCode/ConfigHandler.hh
+=======
+#endif /* end of include guard: ConfigHandler_6JC28HEQ */
+>>>>>>> 1d6cd4ff339236199cfcc22e4b577a7e27fea1a6:src/Config/ConfigHandler.hh
 
 
 

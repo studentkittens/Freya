@@ -1,5 +1,6 @@
 ADD_SUBDIRECTORY(AvahiBrowser)
 ADD_SUBDIRECTORY(LogHandler)
+ADD_SUBDIRECTORY(Config)
 ADD_SUBDIRECTORY(MPD)
 
 ADD_EXECUTABLE(test_mockup MainWindow.cc PlaylistTreeView.cc)

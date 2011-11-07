@@ -1,10 +1,10 @@
-#include "MPDConfigHandler.hh"
+#include "ConfigHandler.hh"
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
 MPDConfigHandler::MPDConfigHandler(char* pathtofile):cfgmodel(pathtofile)
 {}
-   
+
 
 MPDConfigHandler::~MPDConfigHandler()
 {}
@@ -14,7 +14,7 @@ MPDConfigHandler::~MPDConfigHandler()
 Glib::ustring& MPDConfigHandler::get_value(Glib::ustring url)
 {
     xmlDocPtr doc = cfgmodel.getDocPtr();
-    xmlNodePtr cur = NULL; 
+    xmlNodePtr cur = NULL;
 
     if (doc != NULL)
     {
@@ -69,7 +69,7 @@ xmlNodePtr MPDConfigHandler::traverse(char* url, xmlNodePtr cur)
         char* p2 = strchrnul((p1+1),URL_DELIMITER);
         int len = ABS(url-p1);
 
-        return this->_traverse(url,p1,p2,len,cur); 
+        return this->_traverse(url,p1,p2,len,cur);
     }
     else
     {
@@ -91,7 +91,7 @@ xmlNodePtr MPDConfigHandler::_traverse(char* url, char* p1, char* p2, int len, x
         while (NULL != cur)
         {
             /*check if len an string matches*/
-            if (len == strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))     
+            if (len == strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))
             {
                 /*if at last '.' position, print result*/
                 if(url == (p2+1))
@@ -103,10 +103,10 @@ xmlNodePtr MPDConfigHandler::_traverse(char* url, char* p1, char* p2, int len, x
                 {
                     url = (p2+1);
                     len = strlen(url);
-                    cur=cur->xmlChildrenNode;       /*jump to next level*/ 
+                    cur=cur->xmlChildrenNode;       /*jump to next level*/
                     this->_traverse(url,p1,p2,len,cur);
                 }
-                else 
+                else
                 {
                     url = (p1+1);
                     len = ABS(p2-url);

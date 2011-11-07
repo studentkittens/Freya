@@ -1,4 +1,4 @@
-#include "MPDConfigModel.hh"
+#include "ConfigModel.hh"
 #define outputfile "./config.xml"
 
 

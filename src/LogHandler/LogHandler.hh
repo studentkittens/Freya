@@ -2,7 +2,7 @@
 #define __LOGHANDLER
 
 #include <stdio.h>
-#include "Singleton.hh"
+#include "../Singleton.hh"
 #define LOGFILE_PATH "logfile.txt"
 
 /* Not supposed to used diretly, use the macros below */

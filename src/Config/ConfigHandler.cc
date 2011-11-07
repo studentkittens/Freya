@@ -65,11 +65,7 @@ void ConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
 /* ----------------------------------------- */
 
 /*subroutine for preparing traversation*/
-<<<<<<< HEAD:catCode/ConfigHandler.cc
-xmlNodePtr ConfigHandler::traverse(char* url, xmlNodePtr cur)
-=======
 xmlNodePtr ConfigHandler::traverse(char * url, xmlNodePtr cur)
->>>>>>> 1d6cd4ff339236199cfcc22e4b577a7e27fea1a6:src/Config/ConfigHandler.cc
 {
     if(NULL != url)
     {

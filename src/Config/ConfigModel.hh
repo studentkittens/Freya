@@ -1,13 +1,13 @@
-#ifndef MPDCONFIGMODEL_ATB3SUAE
-#define MPDCONFIGMODEL_ATB3SUAE
+#ifndef ConfigModel_ATB3SUAE
+#define ConfigModel_ATB3SUAE
 
 #include <libxml/parser.h>
 
-class MPDConfigModel
+class ConfigModel
 {
     public:
-        MPDConfigModel (char*);
-        ~MPDConfigModel ();
+        ConfigModel (char*);
+        ~ConfigModel ();
 
         /*loader and saver funcs for xml file*/
         void load(char*);
@@ -24,4 +24,4 @@ class MPDConfigModel
         xmlNodePtr curNode;
 };
 
-#endif /* end of include guard: MPDCONFIGMODEL_ATB3SUAE */
+#endif /* end of include guard: ConfigModel_ATB3SUAE */

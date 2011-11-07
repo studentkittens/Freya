@@ -3,19 +3,19 @@
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
-MPDConfigHandler::MPDConfigHandler(char* pathtofile):cfgmodel(pathtofile)
+ConfigHandler::ConfigHandler(char* pathtofile):cfgmodel(pathtofile)
 {}
 
 /* ----------------------------------------- */
 
-MPDConfigHandler::~MPDConfigHandler()
+ConfigHandler::~ConfigHandler()
 {}
 
 
 /* ----------------------------------------- */
 
 /*returns value of a given node if avaiable*/
-Glib::ustring& MPDConfigHandler::get_value(Glib::ustring url)
+Glib::ustring& ConfigHandler::get_value(Glib::ustring url)
 {
     xmlDocPtr doc = cfgmodel.getDocPtr();
     xmlNodePtr cur = NULL;
@@ -46,7 +46,7 @@ Glib::ustring& MPDConfigHandler::get_value(Glib::ustring url)
 /* ----------------------------------------- */
 
 /*sets given value if node avaiable*/
-void MPDConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
+void ConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
 {
     xmlDocPtr doc = cfgmodel.getDocPtr();
     if (NULL != doc)
@@ -65,7 +65,7 @@ void MPDConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
 /* ----------------------------------------- */
 
 /*subroutine for preparing traversation*/
-xmlNodePtr MPDConfigHandler::traverse(char * url, xmlNodePtr cur)
+xmlNodePtr ConfigHandler::traverse(char * url, xmlNodePtr cur)
 {
     if(NULL != url)
     {
@@ -86,7 +86,7 @@ xmlNodePtr MPDConfigHandler::traverse(char * url, xmlNodePtr cur)
 /* ----------------------------------------- */
 
 /*traverse and return node pointer or nothing*/
-xmlNodePtr MPDConfigHandler::_traverse(char* url, char* p1, char* p2, int len, xmlNodePtr cur)
+xmlNodePtr ConfigHandler::_traverse(char* url, char* p1, char* p2, int len, xmlNodePtr cur)
 {
     xmlNodePtr result = NULL;
 

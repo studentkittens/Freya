@@ -1,16 +1,15 @@
-#ifndef MPDCONFIGHANDLER_6JC28HEQ
-
-#define MPDCONFIGHANDLER_6JC28HEQ
+#ifndef CONFIGHANDLER_6JC28HEQ
+#define CONFIGHANDLER_6JC28HEQ
 
 #include <glibmm.h>
 #include <libxml/parser.h>
 #include "ConfigModel.hh"
 
-class MPDConfigHandler
+class ConfigHandler
 {
 public:
-    MPDConfigHandler (char*);
-    ~MPDConfigHandler ();
+    ConfigHandler (char*);
+    ~ConfigHandler ();
 
     /*getter and setter for given node*/
     Glib::ustring& get_value(Glib::ustring);
@@ -22,11 +21,11 @@ private:
     xmlNodePtr _traverse(char*, char*, char*, int, xmlNodePtr);
 
     /*model config member for data access*/
-    MPDConfigModel cfgmodel;
+    ConfigModel cfgmodel;
 };
 
 
-#endif /* end of include guard: MPDCONFIGHANDLER_6JC28HEQ */
+#endif /* end of include guard: ConfigHandler_6JC28HEQ */
 
 
 

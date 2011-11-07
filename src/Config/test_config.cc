@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    MPDConfigHandler xxx((char*)"./config.xml");
+    ConfigHandler xxx((char*)"./config.xml");
     if(!strcmp(argv[1],"set") && argc > 3)
     {
         xxx.set_value(argv[2],argv[3]);

@@ -6,7 +6,7 @@ using namespace std;
 /*main*/
 int main(int argc, char *argv[])
 {
-    MPDConfigHandler xxx((char*)"./config.xml");
+    ConfigHandler xxx((char*)"./config.xml");
     if (argc > 1)
     {
         xxx.set_value("settings.connection.host","katze");

@@ -3,14 +3,14 @@
 
 
 /*reads file from hdd*/
-MPDConfigModel::MPDConfigModel(char* pathtofile)
+ConfigModel::ConfigModel(char* pathtofile)
 {
     this->load(pathtofile);
 }
 
 
 /*saves config file on exit*/
-MPDConfigModel::~MPDConfigModel()
+ConfigModel::~ConfigModel()
 {
     this->save();
     xmlFreeDoc(fileDoc);
@@ -18,14 +18,14 @@ MPDConfigModel::~MPDConfigModel()
 
 
 /*returns the doc pointer of users config.xml*/
-xmlDocPtr MPDConfigModel::getDocPtr()
+xmlDocPtr ConfigModel::getDocPtr()
 {
     return fileDoc;
 }
 
 
 /*xml file reader*/
-void MPDConfigModel::load(char* file)
+void ConfigModel::load(char* file)
 {
     fileDoc = xmlParseFile(file);
 
@@ -59,14 +59,14 @@ void MPDConfigModel::load(char* file)
 
 
 /*save default config aka Mr fileDoc*/
-void MPDConfigModel::save()
+void ConfigModel::save()
 {
     save((char*)outputfile, fileDoc);
 }
 
 
 /*save alternative config*/
-void MPDConfigModel::save(char* altfile,xmlDocPtr doc)
+void ConfigModel::save(char* altfile,xmlDocPtr doc)
 {
     xmlSaveFile(altfile,doc);
 }

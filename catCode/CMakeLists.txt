@@ -1,0 +1,4 @@
+ADD_LIBRARY(FreyaConfigLib STATIC MPDConfigHandler.cc MPDConfigModel.cc)
+TARGET_LINK_LIBRARIES(FreyaConfigLib ${GLIBMM_PACKAGE_LIBRARIES} ${LIBXML2_PACKAGE_LIBRARIES})
+ADD_EXECUTABLE(test_config test_config.cc)
+TARGET_LINK_LIBRARIES(test_config FreyaConfigLib)

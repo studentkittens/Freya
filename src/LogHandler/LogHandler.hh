@@ -18,11 +18,7 @@
 
 
 /**
-everitylevel
-         * @param msg Actual message
-         * @param ... a va_list to allow printf style logging
-         */
-
+ * @brief Log severity, influencing the color. Not more.
  */
 enum LOGLEVEL {
     LOG_OK,

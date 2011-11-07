@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
         statusbar->push("This is the Statusbar");
 
         kit.run(*main_window);
+
     }
     catch(const Gtk::BuilderError& e)
     {

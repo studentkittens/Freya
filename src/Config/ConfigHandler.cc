@@ -1,14 +1,18 @@
 #include "ConfigHandler.hh"
+#include <cstring>
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
 MPDConfigHandler::MPDConfigHandler(char* pathtofile):cfgmodel(pathtofile)
 {}
 
+/* ----------------------------------------- */
 
 MPDConfigHandler::~MPDConfigHandler()
 {}
 
+
+/* ----------------------------------------- */
 
 /*returns value of a given node if avaiable*/
 Glib::ustring& MPDConfigHandler::get_value(Glib::ustring url)
@@ -39,7 +43,7 @@ Glib::ustring& MPDConfigHandler::get_value(Glib::ustring url)
     return *(copy);
 }
 
-
+/* ----------------------------------------- */
 
 /*sets given value if node avaiable*/
 void MPDConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
@@ -58,15 +62,15 @@ void MPDConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
     }
 }
 
-
+/* ----------------------------------------- */
 
 /*subroutine for preparing traversation*/
-xmlNodePtr MPDConfigHandler::traverse(char* url, xmlNodePtr cur)
+xmlNodePtr MPDConfigHandler::traverse(char * url, xmlNodePtr cur)
 {
-    if (NULL != url)
+    if(NULL != url)
     {
-        char* p1 = strchrnul(url,URL_DELIMITER);
-        char* p2 = strchrnul((p1+1),URL_DELIMITER);
+        char * p1 = strchrnul(url,URL_DELIMITER);
+        char * p2 = strchrnul((p1+1),URL_DELIMITER);
         int len = ABS(url-p1);
 
         return this->_traverse(url,p1,p2,len,cur);
@@ -79,7 +83,7 @@ xmlNodePtr MPDConfigHandler::traverse(char* url, xmlNodePtr cur)
 
 }
 
-
+/* ----------------------------------------- */
 
 /*traverse and return node pointer or nothing*/
 xmlNodePtr MPDConfigHandler::_traverse(char* url, char* p1, char* p2, int len, xmlNodePtr cur)
@@ -91,7 +95,7 @@ xmlNodePtr MPDConfigHandler::_traverse(char* url, char* p1, char* p2, int len, x
         while (NULL != cur)
         {
             /*check if len an string matches*/
-            if (len == strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))
+            if (len == (int)strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))
             {
                 /*if at last '.' position, print result*/
                 if(url == (p2+1))
@@ -125,7 +129,3 @@ xmlNodePtr MPDConfigHandler::_traverse(char* url, char* p1, char* p2, int len, x
         return result;
     }
 }
-
-
-
-

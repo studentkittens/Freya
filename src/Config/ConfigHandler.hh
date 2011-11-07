@@ -2,7 +2,7 @@
 
 #define MPDCONFIGHANDLER_6JC28HEQ
 
-#include <gtkmm.h>
+#include <glibmm.h>
 #include <libxml/parser.h>
 #include "ConfigModel.hh"
 

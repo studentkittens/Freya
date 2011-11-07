@@ -36,6 +36,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/chris/Freya/src/AvahiBrowser/cmake_install.cmake")
   INCLUDE("/home/chris/Freya/src/LogHandler/cmake_install.cmake")
+  INCLUDE("/home/chris/Freya/src/Config/cmake_install.cmake")
   INCLUDE("/home/chris/Freya/src/MPD/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)

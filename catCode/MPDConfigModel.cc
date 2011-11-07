@@ -61,7 +61,7 @@ void MPDConfigModel::load(char* file)
 /*save default config aka Mr fileDoc*/
 void MPDConfigModel::save()
 {
-    xmlSaveFile(outputfile, fileDoc);
+    save((char*)outputfile, fileDoc);
 }
 
 

@@ -1,15 +1,13 @@
 #include "MPDConfigHandler.hh"
-
+#define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
 MPDConfigHandler::MPDConfigHandler(char* pathtofile):cfgmodel(pathtofile)
-{
-    cfgmodel.getDocPtr();
-}
+{}
+   
 
-
-
-MPDConfigHandler::~MPDConfigHandler() {}
+MPDConfigHandler::~MPDConfigHandler()
+{}
 
 
 /*returns value of a given node if avaiable*/
@@ -25,12 +23,12 @@ Glib::ustring& MPDConfigHandler::get_value(Glib::ustring url)
         cur = (this->traverse((char*)url.c_str(),cur));
     }
 
-    Glib::ustring* copy;
-    xmlChar* key;
+    Glib::ustring* copy = NULL;
+    xmlChar* key = NULL;
 
     if (cur!=NULL)
     {
-        key = xmlNodeListGetString(doc, cur->xmlChildrenNode, 1);
+        key = xmlNodeListGetString(doc, cur->xmlChildrenNode, true);
         copy    = new Glib::ustring((char*)key);
         xmlFree(key);
     }
@@ -67,8 +65,8 @@ xmlNodePtr MPDConfigHandler::traverse(char* url, xmlNodePtr cur)
 {
     if (NULL != url)
     {
-        char* p1 = strchrnul(url,'.');
-        char* p2 = strchrnul((p1+1),'.');
+        char* p1 = strchrnul(url,URL_DELIMITER);
+        char* p2 = strchrnul((p1+1),URL_DELIMITER);
         int len = ABS(url-p1);
 
         return this->_traverse(url,p1,p2,len,cur); 

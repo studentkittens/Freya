@@ -22,5 +22,6 @@ using namespace std;
 /* Typdefs for the lazy */
 typedef struct mpd_connection mpd_connection;
 typedef struct mpd_status mpd_status;
+typedef struct mpd_entity mpd_entity;
 
 #endif

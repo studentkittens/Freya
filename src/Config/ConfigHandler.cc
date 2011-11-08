@@ -15,7 +15,7 @@ ConfigHandler::~ConfigHandler()
 /* ----------------------------------------- */
 
 /*returns value of a given node if avaiable*/
-Glib::ustring& ConfigHandler::get_value(Glib::ustring url)
+Glib::ustring ConfigHandler::get_value(Glib::ustring url)
 {
     xmlDocPtr doc = cfgmodel.getDocPtr();
     xmlNodePtr cur = NULL;
@@ -27,20 +27,19 @@ Glib::ustring& ConfigHandler::get_value(Glib::ustring url)
         cur = (this->traverse((char*)url.c_str(),cur));
     }
 
-    Glib::ustring* copy = NULL;
     xmlChar* key = NULL;
 
     if (cur!=NULL)
     {
         key = xmlNodeListGetString(doc, cur->xmlChildrenNode, true);
-        copy    = new Glib::ustring((char*)key);
+        Glib::ustring retv = Glib::ustring((char*)key);
         xmlFree(key);
+        return retv;
     }
     else
     {
-        copy    = new Glib::ustring((char*)"");
+        return Glib::ustring("");
     }
-    return *(copy);
 }
 
 /* ----------------------------------------- */

@@ -20,6 +20,14 @@ class MPDClientHandler
     /* Get the underlying connection handler */
     MPDConnectionHandler * get_connection_handler(void);
 
+    /* Playback */
+    bool playback_next(void);
+    bool playback_prev(void);
+    bool playback_stop(void);
+    bool playback_play(void);
+    bool playback_pause(void);
+    bool playback_toggle_play(void);
+    
     private:
 
     void go_idle(void);

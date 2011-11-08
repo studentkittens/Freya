@@ -2,7 +2,7 @@
 <freya>
     <settings>
         <connection>
-            <ip>127.0.0.1</ip>
+            <ip>localhost</ip>
             <port>6600</port>
             <host>blabal</host>
         </connection>

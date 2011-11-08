@@ -69,6 +69,48 @@ bool MPDClientHandler::send_command(const char * command)
 
 //-------------------------------
 
+bool MPDClientHandler::playback_play(void)
+{
+    return this->send_command("play");
+}
+
+//-------------------------------
+
+bool MPDClientHandler::playback_stop(void)
+{
+    return this->send_command("stop");
+}
+
+//-------------------------------
+
+bool MPDClientHandler::playback_next(void)
+{
+    return this->send_command("next");
+}
+
+//-------------------------------
+
+bool MPDClientHandler::playback_prev(void)
+{
+    return this->send_command("next");
+}
+
+//-------------------------------
+
+bool MPDClientHandler::playback_pause(void)
+{
+    return this->send_command("pause");
+}
+
+//-------------------------------
+
+bool MPDClientHandler::playback_toggle_play(void)
+{
+    return this->send_command("pause");
+}
+
+//-------------------------------
+
 void MPDClientHandler::list_queue(void)
 {
     go_busy();
@@ -76,16 +118,34 @@ void MPDClientHandler::list_queue(void)
     mpd_connection * conn = get_conn_by_obj();
     if(conn && mpd_send_list_queue_meta(conn) != FALSE)
     {
-        mpd_pair * pair = NULL;
-        while((pair = mpd_recv_pair(conn)))
+        mpd_entity * ent = NULL;
+        while((ent = mpd_recv_entity(conn)))
         {
-            //g_printerr("%s => %s\n",pair->name,pair->value);
-            mpd_return_pair(conn,pair);
+            switch(mpd_entity_get_type(ent))
+            {
+                case MPD_ENTITY_TYPE_UNKNOWN:
+                    
+                    break;
+                case MPD_ENTITY_TYPE_DIRECTORY:
+                    break;
+                case MPD_ENTITY_TYPE_SONG:
+                {
+                    const mpd_song * song = mpd_entity_get_song(ent);
+                    g_message("%s - %s - %s",
+                            mpd_song_get_tag(song,MPD_TAG_ARTIST,0),
+                            mpd_song_get_tag(song,MPD_TAG_ALBUM,0),
+                            mpd_song_get_tag(song,MPD_TAG_TITLE,0)
+                            );
+                    break;
+                }
+                case MPD_ENTITY_TYPE_PLAYLIST:
+                    break;
+            }
+            mpd_entity_free(ent);
         }
     }
 
     g_print("Done.\n");
-
     go_idle();
 }
 

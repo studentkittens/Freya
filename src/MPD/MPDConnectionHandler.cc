@@ -1,5 +1,6 @@
 #include <glibmm.h>
 #include "MPDConnectionHandler.hh"
+#include "../LogHandler/LogHandler.hh"
 
 //--------------------------------------
 
@@ -44,7 +45,6 @@ gboolean MPDConnectionHandler::idle_reconnect(void)
 {
     /* Did the connect work? */
     gboolean retv = this->connect();
-    g_printerr("%c",(retv) ? ']' : '.');
     return (retv == false);
 }
 
@@ -58,8 +58,7 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
             break;
         case MPD_ERROR_CLOSED:
             this->disconnect();
-            // TODO: Add a option for the reconnect interval
-            g_printerr("Attempting to reconnect: [");
+            Info("Starting reconnect campaign. Will try again every few seconds.");
             Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),5000,G_PRIORITY_DEFAULT_IDLE);
             break;
         case MPD_ERROR_SERVER:
@@ -130,10 +129,12 @@ bool MPDConnectionHandler::connect(void)
         if(this->conn.is_connected())
         {
             this->listener = new IdleListener(mpd_conn);
-            this->listener->enter();
 
 
             // TODO: Send password
+
+            /* Enter blocking mode */
+            this->listener->enter();
         }
     }
     return this->conn.is_connected(); 

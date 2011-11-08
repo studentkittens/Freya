@@ -47,7 +47,9 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
 
 int ConfigHandler::get_value_as_int(Glib::ustring url)
 {
-    int result = g_ascii_strtoll(url.c_str(),NULL,10);
+    char * strvalue = (char*)get_value(url).c_str();
+    int result = g_ascii_strtoll(strvalue,NULL,10);
+    g_free(strvalue);
 
     if (result || result == 0)
     {
@@ -83,7 +85,7 @@ void ConfigHandler::set_value_as_int(Glib::ustring url,int value)
 {
     char* copy = (char*)g_strdup_printf("%d",value);
     set_value(url, copy);       
-    xmlFree(copy);
+    g_free(copy);
 }
 
 

@@ -51,13 +51,13 @@ int ConfigHandler::get_value_as_int(Glib::ustring url)
     char * tmp = NULL;
     int result = g_ascii_strtoll(strvalue,&tmp,10);
 
-    if (NULL == tmp)
+    if (NULL != tmp && 0 != result)
     {
-        return result;
+        return -1;
     }
     else
     {
-        return -1;
+        return result;
     }
 }
 

@@ -4,6 +4,8 @@ PROJECT(Freya CXX)
 # Include pkg-config
 INCLUDE(FindPkgConfig)
 
+# some comment
+
 # ------------------------------------------------
 # Versioning 
 # ------------------------------------------------
@@ -12,6 +14,8 @@ SET(FREYA_VERSION_MINOR "0")
 SET(FREYA_VERSION_MICRO "0")
 SET(FREYA_VERSION_NAME  "Terrifying Tarantula") 
 # ------------------------------------------------
+
+# a new comment
 
 # ------------------------------------------------
 # CFlags and warnlevel / build config 

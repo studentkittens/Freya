@@ -2,8 +2,9 @@
 #define outputfile "./config.xml"
 
 /*reads file from hdd*/
-ConfigModel::ConfigModel(char* pathtofile)
+ConfigModel::ConfigModel()
 {
+    setpath((char*)outputfile);
     this->load(pathtofile);
 }
 
@@ -72,4 +73,9 @@ void ConfigModel::save()
 void ConfigModel::save(char* altfile,xmlDocPtr doc)
 {
     xmlSaveFile(altfile,doc);
+}
+
+void ConfigModel::setpath(char* path)
+{
+    pathtofile = path;
 }

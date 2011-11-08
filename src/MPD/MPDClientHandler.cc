@@ -106,6 +106,7 @@ bool MPDClientHandler::playback_pause(void)
 
 bool MPDClientHandler::playback_toggle_play(void)
 {
+    
     return this->send_command("pause");
 }
 

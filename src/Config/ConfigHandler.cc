@@ -3,7 +3,7 @@
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
-ConfigHandler::ConfigHandler(char* pathtofile):cfgmodel(pathtofile)
+ConfigHandler::ConfigHandler():cfgmodel()
 {}
 
 /* ----------------------------------------- */
@@ -19,6 +19,7 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
 {
     xmlDocPtr doc = cfgmodel.getDocPtr();
     xmlNodePtr cur = NULL;
+    xmlChar* key = NULL;
 
     if (doc != NULL)
     {
@@ -26,8 +27,6 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
         cur=cur->xmlChildrenNode;
         cur = (this->traverse((char*)url.c_str(),cur));
     }
-
-    xmlChar* key = NULL;
 
     if (cur!=NULL)
     {
@@ -41,6 +40,9 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
         return Glib::ustring("");
     }
 }
+
+
+
 
 /* ----------------------------------------- */
 

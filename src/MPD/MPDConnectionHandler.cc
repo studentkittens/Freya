@@ -15,7 +15,7 @@ MPDConnectionHandler::~MPDConnectionHandler()
 {
     if(this->listener != NULL)
         delete this->listener;
-    
+
     this->disconnect();
 }
 
@@ -54,23 +54,23 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
 {
     switch(err)
     {
-        case MPD_ERROR_SUCCESS:
-            break;
-        case MPD_ERROR_CLOSED:
-            this->disconnect();
-            Info("Starting reconnect campaign. Will try again every few seconds.");
-            Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),5000,G_PRIORITY_DEFAULT_IDLE);
-            break;
-        case MPD_ERROR_SERVER:
-        case MPD_ERROR_OOM:
-        case MPD_ERROR_ARGUMENT:
-        case MPD_ERROR_STATE:
-        case MPD_ERROR_TIMEOUT:
-        case MPD_ERROR_SYSTEM:
-        case MPD_ERROR_RESOLVER:
-        case MPD_ERROR_MALFORMED:
-        default:
-            break;
+    case MPD_ERROR_SUCCESS:
+        break;
+    case MPD_ERROR_CLOSED:
+        this->disconnect();
+        Info("Starting reconnect campaign. Will try again every few seconds.");
+        Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),5000,G_PRIORITY_DEFAULT_IDLE);
+        break;
+    case MPD_ERROR_SERVER:
+    case MPD_ERROR_OOM:
+    case MPD_ERROR_ARGUMENT:
+    case MPD_ERROR_STATE:
+    case MPD_ERROR_TIMEOUT:
+    case MPD_ERROR_SYSTEM:
+    case MPD_ERROR_RESOLVER:
+    case MPD_ERROR_MALFORMED:
+    default:
+        break;
     }
 }
 
@@ -89,9 +89,12 @@ bool MPDConnectionHandler::check_error(void)
         if(mpd_connection_get_error(conn) != MPD_ERROR_SUCCESS)
         {
             enum mpd_error err_code = mpd_connection_get_error(conn);
-            if(err_code == MPD_ERROR_SERVER) {
+            if(err_code == MPD_ERROR_SERVER)
+            {
                 g_printerr("ServerError #%d: ",mpd_connection_get_server_error(conn));
-            } else {
+            }
+            else
+            {
                 g_printerr("Error #%d: ",err_code);
             }
             g_printerr("%s\n",mpd_connection_get_error_message(conn));
@@ -137,7 +140,7 @@ bool MPDConnectionHandler::connect(void)
             this->listener->enter();
         }
     }
-    return this->conn.is_connected(); 
+    return this->conn.is_connected();
 }
 
 //--------------------------------------

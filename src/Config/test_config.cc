@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    ConfigHandler xxx((char*)"./config.xml");
+    ConfigHandler& xxx=  ConfigHandler::instance();
     if(argc > 3 && !strcmp(argv[1],"set"))
     {
         xxx.set_value(argv[2],argv[3]);

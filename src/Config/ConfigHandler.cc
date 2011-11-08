@@ -3,7 +3,7 @@
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
-ConfigHandler::ConfigHandler(char* pathtofile):cfgmodel(pathtofile)
+ConfigHandler::ConfigHandler():cfgmodel()
 {}
 
 /* ----------------------------------------- */
@@ -42,6 +42,9 @@ Glib::ustring& ConfigHandler::get_value(Glib::ustring url)
     }
     return *(copy);
 }
+
+
+
 
 /* ----------------------------------------- */
 

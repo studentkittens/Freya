@@ -3,15 +3,14 @@
 
 #include <glibmm.h>
 #include <libxml/parser.h>
-//#include "../Singleton.hh"
+#include "../Singleton.hh"
 #include "ConfigModel.hh"
 
 class ConfigHandler
 {
- //   DEF_SINGLETON( ConfigHandler )
+    DEF_SINGLETON( ConfigHandler )
 
 public:
-    ConfigHandler (char*);
     ~ConfigHandler ();
 
     /*getter and setter for given node*/
@@ -25,7 +24,7 @@ private:
 
     /*model config member for data access*/
     ConfigModel cfgmodel;
-  //  char* pathtofile = "./config.xml"; ?? oder als member ins model?
+   
 };
 
 #endif /* end of include guard: CONFIGHANDLER_89V106EN */

@@ -6,7 +6,7 @@
 class ConfigModel
 {
     public:
-        ConfigModel (char*);
+        ConfigModel ();
         ~ConfigModel ();
 
         /*loader and saver funcs for xml file*/
@@ -22,6 +22,8 @@ class ConfigModel
         /*xml document and xml node member*/
         xmlDocPtr fileDoc;
         xmlNodePtr curNode;
+        void setpath(char*);
+        char* pathtofile;
 };
 
 #endif /* end of include guard: ConfigModel_ATB3SUAE */

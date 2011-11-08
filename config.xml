@@ -4,7 +4,7 @@
         <connection>
             <ip>127.0.0.1</ip>
             <port>6600</port>
-            <host>blabal</host>
+            <host>katze</host>
         </connection>
         <notify>
             <signal>2</signal>

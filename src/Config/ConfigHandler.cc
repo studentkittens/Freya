@@ -46,7 +46,7 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
 int ConfigHandler::get_value_as_int(Glib::ustring url)
 {
     int result = g_ascii_strtoll(url.c_str(),NULL,10);
-   
+
     if (result || result == 0)
     {
         return result;
@@ -79,18 +79,9 @@ void ConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
 
 void ConfigHandler::set_value_as_int(Glib::ustring url,int value)
 {
-  xmlDocPtr doc = cfgmodel.getDocPtr();
-    if (NULL != doc)
-    {
-        /*prepare for traversing*/
-        xmlNodePtr cur = xmlDocGetRootElement(doc);
-        cur=cur->xmlChildrenNode;
-        cur = (this->traverse((char*)url.c_str(),cur));
-
-        /*insert into valid node*/
-        if (cur != NULL)
-            xmlNodeSetContent(cur, (xmlChar*)g_strdup_printf("%d",value));
-    }
+    char* copy = (char*)g_strdup_printf("%d",value);
+    set_value(url, copy);       
+    xmlFree(copy);
 }
 
 

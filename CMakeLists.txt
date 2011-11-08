@@ -13,6 +13,8 @@ SET(FREYA_VERSION_MICRO "0")
 SET(FREYA_VERSION_NAME  "Terrifying Tarantula") 
 # ------------------------------------------------
 
+# a new comment
+
 # ------------------------------------------------
 # CFlags and warnlevel / build config 
 # ------------------------------------------------

@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
     if(argc > 3 && !strcmp(argv[1],"set"))
     {
         xxx.set_value(argv[2],argv[3]);
-        Glib::ustring bla  = xxx.get_value((Glib::ustring)argv[2]);
-        g_message("value = '%s'",bla.c_str());
+        int bla  = xxx.get_value_as_int(Glib::ustring(argv[2]));
+        g_message("value = '%d'",bla);
     }
     else if(argc > 2 && !strcmp(argv[1],"get"))
     {

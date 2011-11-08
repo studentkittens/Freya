@@ -24,7 +24,7 @@ private:
 
     /*model config member for data access*/
     ConfigModel cfgmodel;
-   
+
 };
 
 #endif /* end of include guard: CONFIGHANDLER_89V106EN */

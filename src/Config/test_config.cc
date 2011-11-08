@@ -7,7 +7,7 @@ using namespace std;
 
 /*
  * Exammple:
- * ./bin/test_config get settings.notify.signal 
+ * ./bin/test_config get settings.notify.signal
  * ./bin/test_config set settings.notify.signal 2
  */
 

@@ -46,10 +46,10 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
 int ConfigHandler::get_value_as_int(Glib::ustring url)
 {
     char * strvalue = (char*)get_value(url).c_str();
-    int result = g_ascii_strtoll(strvalue,NULL,10);
-    g_free(strvalue);
+    char * tmp = NULL;
+    int result = g_ascii_strtoll(strvalue,&tmp,10);
 
-    if (result || result == 0)
+    if (NULL == tmp)
     {
         return result;
     }

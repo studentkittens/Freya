@@ -4,6 +4,8 @@ PROJECT(Freya CXX)
 # Include pkg-config
 INCLUDE(FindPkgConfig)
 
+# some comment
+
 # ------------------------------------------------
 # Versioning 
 # ------------------------------------------------

@@ -14,7 +14,7 @@ public:
     ~ConfigHandler ();
 
     /*getter and setter for given node*/
-    Glib::ustring& get_value(Glib::ustring);
+    Glib::ustring get_value(Glib::ustring);
     void set_value(Glib::ustring, Glib::ustring);
 
 private:

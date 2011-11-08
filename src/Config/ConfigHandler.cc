@@ -1,5 +1,6 @@
 #include "ConfigHandler.hh"
 #include <cstring>
+#include <glib.h>
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
@@ -44,7 +45,19 @@ Glib::ustring ConfigHandler::get_value(Glib::ustring url)
 }
 
 
-
+int ConfigHandler::get_value_as_int(Glib::ustring url)
+{
+    int result = g_ascii_strtoll(url.c_str(),NULL,10);
+   
+    if (result || result == 0)
+    {
+        return result;
+    }
+    else
+    {
+        return -1;
+    }
+}
 
 /* ----------------------------------------- */
 
@@ -64,6 +77,24 @@ void ConfigHandler::set_value(Glib::ustring url,Glib::ustring value)
             xmlNodeSetContent(cur, (xmlChar*)value.c_str());
     }
 }
+
+
+void ConfigHandler::set_value_as_int(Glib::ustring url,int value)
+{
+  xmlDocPtr doc = cfgmodel.getDocPtr();
+    if (NULL != doc)
+    {
+        /*prepare for traversing*/
+        xmlNodePtr cur = xmlDocGetRootElement(doc);
+        cur=cur->xmlChildrenNode;
+        cur = (this->traverse((char*)url.c_str(),cur));
+
+        /*insert into valid node*/
+        if (cur != NULL)
+            xmlNodeSetContent(cur, (xmlChar*)g_strdup_printf("%d",value));
+    }
+}
+
 
 /* ----------------------------------------- */
 

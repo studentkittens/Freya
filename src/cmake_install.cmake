@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: /home/chris/Freya/src
+=======
+# Install script for directory: /home/christoph/dev/c++/Freya/src
+>>>>>>> 07d5635ec1e6a7adcebd1c6d8fd48095b76c4ee0
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,10 +38,17 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+<<<<<<< HEAD
   INCLUDE("/home/chris/Freya/src/AvahiBrowser/cmake_install.cmake")
   INCLUDE("/home/chris/Freya/src/LogHandler/cmake_install.cmake")
   INCLUDE("/home/chris/Freya/src/Config/cmake_install.cmake")
   INCLUDE("/home/chris/Freya/src/MPD/cmake_install.cmake")
+=======
+  INCLUDE("/home/christoph/dev/c++/Freya/src/AvahiBrowser/cmake_install.cmake")
+  INCLUDE("/home/christoph/dev/c++/Freya/src/LogHandler/cmake_install.cmake")
+  INCLUDE("/home/christoph/dev/c++/Freya/src/Config/cmake_install.cmake")
+  INCLUDE("/home/christoph/dev/c++/Freya/src/MPD/cmake_install.cmake")
+>>>>>>> 07d5635ec1e6a7adcebd1c6d8fd48095b76c4ee0
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

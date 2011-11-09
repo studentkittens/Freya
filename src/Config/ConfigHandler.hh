@@ -30,10 +30,10 @@ private:
 
 };
 
-#define CONFIG_SET(X,Y) CONFIGHANDLER::INSTANCE.SET_VALUE(X,Y) 
-#define CONFIG_GET(X) CONFIGHANDLER::INSTANCE.GET_VALUE(X) 
+#define CONFIG_SET(x,y) ConfigHandler::instance().set_value(x,y) 
+#define CONFIG_GET(x) ConfigHandler::instance().get_value(x) 
 
-#define CONFIG_SET_AS_INT(X,Y) CONFIGHANDLER::INSTANCE.SET_VALUE_AS_INT(X,Y) 
-#define CONFIG_GET_AS_INT(X) CONFIGHANDLER::INSTANCE.GET_VALUE_AS_INT(X) 
+#define CONFIG_SET_AS_INT(x,y) ConfigHandler::instance().set_value_as_int(x,y) 
+#define CONFIG_GET_AS_INT(x) ConfigHandler::instance().get_value_as_int(x) 
 
 #endif /* end of include guard: CONFIGHANDLER_89V106EN */

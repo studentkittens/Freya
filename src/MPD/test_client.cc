@@ -66,6 +66,17 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 conn->connect();
                 break;
             }
+        case '>':
+            {
+                puts("");
+                char cmd[256] = {0};
+                if(fgets(cmd,255,stdin))
+                {
+                    puts(cmd);
+                    client->send_command(cmd);
+                }
+                break;
+            }
         case 'd':
             {
                 MPDConnectionHandler * conn = client->get_connection_handler();

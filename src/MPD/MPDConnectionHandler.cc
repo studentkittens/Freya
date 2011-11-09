@@ -47,6 +47,10 @@ gboolean MPDConnectionHandler::idle_reconnect(void)
 {
     /* Did the connect work? */
     gboolean retv = this->connect();
+    if(retv == true)
+    {
+        Info("Succesfully reconnected.");
+    }
     return (retv == false);
 }
 
@@ -61,7 +65,7 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
     case MPD_ERROR_CLOSED:
         this->disconnect();
         Info("Starting reconnect campaign. Will try again every few seconds.");
-        Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),5000,G_PRIORITY_DEFAULT_IDLE);
+        Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),1000,G_PRIORITY_DEFAULT_IDLE);
         break;
     case MPD_ERROR_SERVER:
     case MPD_ERROR_OOM:
@@ -99,13 +103,13 @@ bool MPDConnectionHandler::check_error(void)
                 Warning("Error #%d: ",err_code);
             }
 
-            Warning("%s\n",mpd_connection_get_error_message(conn));
+            Warning("%s",mpd_connection_get_error_message(conn));
 
             /* Clear nonfatal errors */
             if(mpd_connection_clear_error(conn) == false)
             {
-                Fatal("Mentioned error is fatal.\n");
-                Fatal("Freya will shutdown now therefore.\n");
+                Fatal("Mentioned error is fatal.");
+                Fatal("Freya will shutdown now therefore.");
             }
 
             /* Try to handle even fatal errors */
@@ -158,6 +162,7 @@ bool MPDConnectionHandler::disconnect(void)
         }
 
         mpd_connection_free(this->conn);
+        this->conn = NULL;
         return true;
     }
     return false;

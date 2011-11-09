@@ -44,7 +44,7 @@ bool IdleListener::check_async_error(void)
     bool result = false;
     if(this->async_conn != NULL && mpd_async_get_error(this->async_conn) != MPD_ERROR_SUCCESS)
     {
-        Warning("AsyncError: %s\n",mpd_async_get_error_message(this->async_conn));
+        Warning("AsyncError: %s",mpd_async_get_error_message(this->async_conn));
         result = true;
     }
     return result;
@@ -58,9 +58,6 @@ void IdleListener::invoke_user_callback(void)
     {
         /* Leave for callback - which is gonna be active */
         this->leave();
-
-        /* Print a list of all occured events */
-        Info("--> A list of occured events:\n");
 
         /* Iterare over the enum */
         for(unsigned mask = 1; /* None */; mask = mask << 1)
@@ -98,7 +95,7 @@ bool IdleListener::parse_response(char *line)
 
             this->io_eventmask = (enum mpd_async_event)0;
             this->check_async_error();
-            Error("Parser Error: %d - %s\n",
+            Error("Parser Error: %d - %s",
                   mpd_parser_get_server_error(this->parser),
                   mpd_parser_get_message(this->parser));
 

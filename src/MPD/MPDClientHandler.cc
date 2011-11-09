@@ -60,8 +60,17 @@ bool MPDClientHandler::send_command(const char * command)
         /* Send the command - throw away response */
         mpd_connection * mpd_conn = this->get_conn_by_obj();
         mpd_send_command(mpd_conn,command,NULL);
-        result = mpd_response_finish(mpd_conn);
 
+        mpd_pair * ent = NULL;
+        while((ent = mpd_recv_pair(mpd_conn)))
+        {
+            g_printerr("%s => %s\n",ent->name,ent->value);
+            mpd_return_pair(mpd_conn,ent);
+        }
+        /*
+        result = mpd_response_finish(mpd_conn);
+        
+        */
         /* Go back listening */
         go_idle();
     }

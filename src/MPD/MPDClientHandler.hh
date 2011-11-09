@@ -26,7 +26,6 @@ class MPDClientHandler
     bool playback_stop(void);
     bool playback_play(void);
     bool playback_pause(void);
-    bool playback_toggle_play(void);
     
     private:
 

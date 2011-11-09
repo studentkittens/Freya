@@ -13,16 +13,15 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    ConfigHandler& xxx=  ConfigHandler::instance();
     if(argc > 3 && !strcmp(argv[1],"set"))
     {
-        xxx.set_value(argv[2],argv[3]);
-        int bla  = xxx.get_value_as_int(Glib::ustring(argv[2]));
+        CONFIG_SET(argv[2],argv[3]);
+        int bla  = CONFIG_GET_AS_INT(Glib::ustring(argv[2]));
         g_message("value = '%d'",bla);
     }
     else if(argc > 2 && !strcmp(argv[1],"get"))
     {
-        Glib::ustring bla  = xxx.get_value((Glib::ustring)argv[2]);
+        Glib::ustring bla  = CONFIG_GET(Glib::ustring(argv[2]));
         g_message("value = '%s'",bla.c_str());
     }
     return EXIT_SUCCESS;

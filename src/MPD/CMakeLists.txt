@@ -1,4 +1,4 @@
-ADD_LIBRARY(FreyaMPDLib MPDConnection.cc MPDConnectionHandler.cc MPDClientHandler.cc IdleListener.cc)
+ADD_LIBRARY(FreyaMPDLib MPDConnectionHandler.cc MPDClientHandler.cc IdleListener.cc)
 TARGET_LINK_LIBRARIES(
     FreyaMPDLib 
     ${GLIBMM_PACKAGE_LIBRARIES}

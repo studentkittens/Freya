@@ -4,9 +4,11 @@
 
 //--------------------------------------
 
-MPDConnectionHandler::MPDConnectionHandler() : conn()
+MPDConnectionHandler::MPDConnectionHandler()
 {
     this->listener = NULL;
+    this->current_status = NULL;
+    this->conn = NULL;
 }
 
 //--------------------------------------
@@ -23,8 +25,8 @@ MPDConnectionHandler::~MPDConnectionHandler()
 
 mpd_connection * MPDConnectionHandler::get_connection(void)
 {
-    if(this->conn.is_connected())
-        return this->conn.get_connection();
+    if(this->is_connected())
+        return this->conn;
     else
         return NULL;
 }
@@ -33,7 +35,7 @@ mpd_connection * MPDConnectionHandler::get_connection(void)
 
 IdleListener * MPDConnectionHandler::get_listener(void)
 {
-    if(this->conn.is_connected())
+    if(this->is_connected())
         return this->listener;
     else
         return NULL;
@@ -79,11 +81,10 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
 bool MPDConnectionHandler::check_error(void)
 {
     gboolean result = false;
-    if(this->conn.is_connected() == false)
+    if(this->is_connected() == false)
         return result;
 
-    mpd_connection * conn = this->conn.get_connection();
-    if(conn != NULL)
+    if(is_connected())
     {
         /* Check for errors at this connection and log them */
         if(mpd_connection_get_error(conn) != MPD_ERROR_SUCCESS)
@@ -124,14 +125,14 @@ bool MPDConnectionHandler::connect(void)
     mpd_connection * mpd_conn = mpd_connection_new("localhost", 6600, 30000);
     if(mpd_conn != NULL)
     {
-        this->conn.set_connection(mpd_conn);
+        this->conn = mpd_conn;
         if(this->check_error())
         {
             mpd_connection_free(mpd_conn);
-            this->conn.set_connection(NULL);
+            this->conn = NULL;
         }
 
-        if(this->conn.is_connected())
+        if(this->is_connected())
         {
             this->listener = new IdleListener(mpd_conn);
 
@@ -139,14 +140,14 @@ bool MPDConnectionHandler::connect(void)
             this->listener->enter();
         }
     }
-    return this->conn.is_connected();
+    return this->is_connected();
 }
 
 //--------------------------------------
 
 bool MPDConnectionHandler::disconnect(void)
 {
-    if(this->conn.is_connected())
+    if(this->is_connected())
     {
         Info("Disconnecting");
         if(this->listener != NULL)
@@ -156,9 +157,7 @@ bool MPDConnectionHandler::disconnect(void)
             this->listener = NULL;
         }
 
-        mpd_connection * mpd_conn = this->conn.get_connection();
-        mpd_connection_free(mpd_conn);
-        this->conn.set_connection(NULL);
+        mpd_connection_free(this->conn);
         return true;
     }
     return false;
@@ -168,7 +167,7 @@ bool MPDConnectionHandler::disconnect(void)
 
 bool MPDConnectionHandler::is_connected(void)
 {
-    return this->conn.is_connected();
+    return !(this->conn == NULL);
 }
 
 //--------------------------------------

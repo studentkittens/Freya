@@ -3,7 +3,6 @@
 
 #include "../includes.hh"
 #include "IdleListener.hh"
-#include "MPDConnection.hh"
 
 class MPDConnectionHandler
 {
@@ -13,7 +12,7 @@ class MPDConnectionHandler
     public:
 
     /* Publicinstance */
-     MPDConnectionHandler();
+    MPDConnectionHandler();
     ~MPDConnectionHandler();
 
     /* Init */
@@ -38,12 +37,7 @@ class MPDConnectionHandler
      */
     gboolean idle_reconnect(void);
 
-    /* Tries to handle few errors or 
-     * check_error() - like lost connection
-     */
     void handle_errors(enum mpd_error err);
-
-    /* ------------------ */
 
     /* A IdleListener that may be attached to this Client
      * Since there will be only one a 'real' Observer is
@@ -53,7 +47,8 @@ class MPDConnectionHandler
 
     /* The connection from libmpdclient to MPD
      */
-    MPDConnection conn;
+    mpd_connection * conn;
+    mpd_status * current_status;
 };
 
 #endif

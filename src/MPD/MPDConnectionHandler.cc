@@ -91,18 +91,20 @@ bool MPDConnectionHandler::check_error(void)
             enum mpd_error err_code = mpd_connection_get_error(conn);
             if(err_code == MPD_ERROR_SERVER)
             {
-                g_printerr("ServerError #%d: ",mpd_connection_get_server_error(conn));
+                Warning("ServerErrorId #%d: ",mpd_connection_get_server_error(conn));
             }
             else
             {
-                g_printerr("Error #%d: ",err_code);
+                Warning("Error #%d: ",err_code);
             }
-            g_printerr("%s\n",mpd_connection_get_error_message(conn));
+
+            Warning("%s\n",mpd_connection_get_error_message(conn));
 
             /* Clear nonfatal errors */
             if(mpd_connection_clear_error(conn) == false)
             {
-                g_printerr("Mentioned error is fatal.\n");
+                Fatal("Mentioned error is fatal.\n");
+                Fatal("Freya will shutdown now therefore.\n");
             }
 
             /* Try to handle even fatal errors */
@@ -133,9 +135,6 @@ bool MPDConnectionHandler::connect(void)
         {
             this->listener = new IdleListener(mpd_conn);
 
-
-            // TODO: Send password
-
             /* Enter blocking mode */
             this->listener->enter();
         }
@@ -149,7 +148,7 @@ bool MPDConnectionHandler::disconnect(void)
 {
     if(this->conn.is_connected())
     {
-        cerr << "Disconnect" << endl;
+        Info("Disconnecting");
         if(this->listener != NULL)
         {
             this->listener->leave();
@@ -159,7 +158,6 @@ bool MPDConnectionHandler::disconnect(void)
 
         mpd_connection * mpd_conn = this->conn.get_connection();
         mpd_connection_free(mpd_conn);
-
         this->conn.set_connection(NULL);
         return true;
     }

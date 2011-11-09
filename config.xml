@@ -2,7 +2,7 @@
 <freya>
     <settings>
         <connection>
-            <ip>2</ip>
+            <ip>000</ip>
             <port>6600</port>
             <host>testbla</host>
         </connection>

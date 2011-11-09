@@ -1,4 +1,5 @@
 #include "IdleListener.hh"
+#include "../LogHandler/LogHandler.hh"
 
 //--------------------------------
 
@@ -43,7 +44,7 @@ bool IdleListener::check_async_error(void)
     bool result = false;
     if(this->async_conn != NULL && mpd_async_get_error(this->async_conn) != MPD_ERROR_SUCCESS)
     {
-        g_printerr("AsyncError: %s\n",mpd_async_get_error_message(this->async_conn));
+        Warning("AsyncError: %s\n",mpd_async_get_error_message(this->async_conn));
         result = true;
     }
     return result;
@@ -59,7 +60,7 @@ void IdleListener::invoke_user_callback(void)
         this->leave();
 
         /* Print a list of all occured events */
-        g_printerr("--> A list of occured events:\n");
+        Info("--> A list of occured events:\n");
 
         /* Iterare over the enum */
         for(unsigned mask = 1; /* None */; mask = mask << 1)
@@ -70,11 +71,10 @@ void IdleListener::invoke_user_callback(void)
 
             if(this->idle_events & mask)
             {
-                g_printerr("  :%s\n",event_name);
+                Info("  :%s",event_name);
                 //  <-- Call callback here --> //
             }
         }
-        g_printerr("<--\n");
 
 
         /* Delete old events  */
@@ -98,9 +98,9 @@ bool IdleListener::parse_response(char *line)
 
             this->io_eventmask = (enum mpd_async_event)0;
             this->check_async_error();
-            g_printerr("Parser Error: %d - %s\n",
-                    mpd_parser_get_server_error(this->parser),
-                    mpd_parser_get_message(this->parser));
+            Error("Parser Error: %d - %s\n",
+                  mpd_parser_get_server_error(this->parser),
+                  mpd_parser_get_message(this->parser));
 
             return false;
 
@@ -143,7 +143,6 @@ bool IdleListener::recv_parseable(void)
 
     if (mpd_async_get_error(this->async_conn) != MPD_ERROR_SUCCESS)
     {
-        cerr << "Cannot parse :-(" << endl;
         this->io_eventmask = (enum mpd_async_event)0;
         check_async_error();
         return false;
@@ -182,7 +181,7 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
     {
         if(this->recv_parseable() == false) 
         {
-            cerr << "Cannot parse?" << endl;
+            Error("Could not parse response");
             return false;
         }
     }
@@ -190,7 +189,8 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
     enum mpd_async_event events = mpd_async_events(this->async_conn);
     if (events == 0) 
     {
-        cerr << "no events -> removing watch" << endl;
+        Debug("no events -> removing watch");
+
         /* no events - disable watch */
         this->io_eventmask = (enum mpd_async_event)0;
         return false;
@@ -202,7 +202,6 @@ gboolean IdleListener::io_callback(Glib::IOCondition condition)
         this->io_eventmask = events;
         return false;
     }
-    cerr << "Keeping watch" << endl;
     return true;
 }
 
@@ -231,7 +230,7 @@ bool IdleListener::enter(void)
     }
     else
     {
-        cerr << "Enter: Already idling." << endl;
+        Warning("Cannot enter idling mode: Already idling.");
         return false;
     }
 }
@@ -254,11 +253,10 @@ void IdleListener::leave(void)
             if(this->idle_events == 0)
                 new_idle_events = mpd_run_noidle(this->conn);
             
-
             /* Check for errors that may happened shortly */            
             if (new_idle_events == 0 && mpd_connection_get_error(this->conn) != MPD_ERROR_SUCCESS) 
             {
-                g_printerr("Error while leaving idle mode: %s\n",mpd_connection_get_error_message(this->conn));
+                Error("Error while leaving idle mode: %s",mpd_connection_get_error_message(this->conn));
                 is_fatal = (mpd_connection_clear_error(this->conn) == false);
             }
 
@@ -276,9 +274,9 @@ void IdleListener::leave(void)
                 this->io_functor.disconnect();
             }
         }
-        else g_printerr("IOFunctor already disconnected -.\n");
+        else Error("IOFunctor already disconnected");
     }
-    else g_printerr("Cannot leave when already left (Dude!).\n");
+    else Warning("Cannot leave when already left (Dude!)");
     
 }
 

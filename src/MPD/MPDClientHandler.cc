@@ -8,6 +8,7 @@ mpd_connection * MPDClientHandler::get_conn_by_obj(void)
     return mpd_conn;
 }
 
+//-------------------------------
 
 MPDClientHandler::MPDClientHandler() : conn()
 {
@@ -145,8 +146,6 @@ void MPDClientHandler::list_queue(void)
             mpd_entity_free(ent);
         }
     }
-
-    g_print("Done.\n");
     go_idle();
 }
 

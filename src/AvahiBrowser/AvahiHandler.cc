@@ -1,4 +1,5 @@
 #include "AvahiHandler.hh"
+#include "../LogHandler/LogHandler.hh"
 
 /* What type of services to browse */
 #define MPD_AVAHI_SERVICE_TYPE "_mpd._tcp"
@@ -8,7 +9,7 @@ void FreyaAvahiHandler::check_client_error(const gchar * prefix_message)
     /* Print just a message for now */
     const gchar * error_message = avahi_strerror(avahi_client_errno(this->client));
     this->window->set_status(error_message);
-    g_warning("%s:%s",prefix_message,error_message);
+    Warning("%s:%s",prefix_message,error_message);
 }
 
 /* STATUS CALLBACK */
@@ -16,7 +17,7 @@ void FreyaAvahiHandler::check_client_error(const gchar * prefix_message)
 /* Callback for state changes on the Client */
 void FreyaAvahiHandler::client_callback (AVAHI_GCC_UNUSED AvahiClient *client, AvahiClientState state)
 {
-    g_message("Avahi Client State Change: %d", state);
+    Info("Avahi Client State Change: %d", state);
     if (state == AVAHI_CLIENT_FAILURE)
     {
         /* We we're disconnected from the Daemon */
@@ -71,8 +72,8 @@ void FreyaAvahiHandler::resolve_callback(
                 char addr[AVAHI_ADDRESS_STR_MAX];
                 avahi_address_snprint(addr, sizeof(addr), address);
 
-                g_message("=> '%s' of type '%s' in domain '%s':", name, type, domain);
-                g_message("=> %s:%u (%s)",host_name, port, addr);
+                Info("=> '%s' of type '%s' in domain '%s':", name, type, domain);
+                Info("=> %s:%u (%s)",host_name, port, addr);
 
                 /* Add in View */
                 this->window->server_append(addr,host_name, name, port);
@@ -105,7 +106,7 @@ void FreyaAvahiHandler::service_browser_callback(AvahiServiceBrowser *b, AvahiIf
     {
         case AVAHI_BROWSER_NEW:
             /* The object is new on the network.*/
-            g_message("-- NEW: %s %s %s",name,type,domain);
+            Info("-- NEW: %s %s %s",name,type,domain);
             if(avahi_service_resolver_new(full_client, interface, protocol, name, type, domain,
                                          (AvahiLookupFlags)AVAHI_PROTO_INET, (AvahiLookupFlags)0, 
                                          FreyaAvahiHandler::wrap_resolve_callback, this)  
@@ -118,17 +119,17 @@ void FreyaAvahiHandler::service_browser_callback(AvahiServiceBrowser *b, AvahiIf
             break;
         case AVAHI_BROWSER_REMOVE:
             /* The object has been removed from the network.*/
-            g_message("-- DEL: %s %s %s",name,type,domain);
+            Info("-- DEL: %s %s %s",name,type,domain);
             window->server_delete(name);
             break;
         case AVAHI_BROWSER_CACHE_EXHAUSTED:
             /* One-time event, to notify the user that all entries from the caches have been sent. */
-            g_message("-- Cache is exhausted. Whatever that means.");
+            Info("-- Cache is exhausted. Whatever that means.");
             break;
         case AVAHI_BROWSER_ALL_FOR_NOW:
             /* One-time event, to notify the user that more records will probably not show up in the near future, i.e.
              * all cache entries have been read and all static servers been queried */
-            g_message("-- Got all domains for now...");
+            Info("-- Got all domains for now...");
             window->set_status("Done with searching for now.   ");
             break;
         case AVAHI_BROWSER_FAILURE:

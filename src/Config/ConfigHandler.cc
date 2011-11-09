@@ -1,4 +1,5 @@
 #include "ConfigHandler.hh"
+#include "../LogHandler/LogHandler.hh"
 #include <cstring>
 #include <glib.h>
 #define URL_DELIMITER '.'
@@ -11,7 +12,6 @@ ConfigHandler::ConfigHandler():cfgmodel()
 
 ConfigHandler::~ConfigHandler()
 {}
-
 
 /* ----------------------------------------- */
 
@@ -101,10 +101,9 @@ xmlNodePtr ConfigHandler::traverse(char * url, xmlNodePtr cur)
     }
     else
     {
-        printf("nothing to do");
+        Warning("URL should not be NULL");
         return NULL;
     }
-
 }
 
 /* ----------------------------------------- */
@@ -149,7 +148,7 @@ xmlNodePtr ConfigHandler::_traverse(char* url, char* p1, char* p2, int len, xmlN
     }
     else
     {
-        printf("error: value not found\n");
+        Warning("URL '%s' does not yield a value.",url);
         return result;
     }
 }

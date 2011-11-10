@@ -2,13 +2,16 @@
 <freya>
     <settings>
         <connection>
-            <ip>000</ip>
             <port>6600</port>
+            <musicroot>~/chris/Musik</musicroot>
             <host>myFriendIsAMadCow</host>
+            <autoconnect>1</autoconnect>
+            <stoponexit>1</stoponexit>
+            <reconnecttimeout>2</reconnecttimeout>
         </connection>
-        <notify>
-            <signal>2</signal>
-        </notify>
+        <libnotify>
+            <signal>0</signal>
+        </libnotify>
     </settings>
     <plugins>
         <glyr>

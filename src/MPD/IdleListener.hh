@@ -2,11 +2,12 @@
 #define FREYA_IDLELISTENER_GUARD
 
 #include "../includes.hh"
+#include "MPDConnectionHandler.hh"
 
 class IdleListener
 {
     public:
-    IdleListener(mpd_connection * sync_conn);
+    IdleListener(MPDConnectionHandler * conn_obj);
     ~IdleListener();
 
     /* Enter idle mode

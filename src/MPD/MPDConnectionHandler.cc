@@ -138,7 +138,7 @@ bool MPDConnectionHandler::connect(void)
 
         if(this->is_connected())
         {
-            this->listener = new IdleListener(mpd_conn);
+            this->listener = new IdleListener(this);
 
             /* Enter blocking mode */
             this->listener->enter();

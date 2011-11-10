@@ -3,8 +3,9 @@
 
 //--------------------------------
 
-IdleListener::IdleListener(mpd_connection * sync_conn)
+IdleListener::IdleListener(MPDConnectionHandler * conn_obj)
 {
+    mpd_connection * sync_conn = conn_obj->get_connection();
     if(sync_conn != NULL)
     {
         this->conn = sync_conn;

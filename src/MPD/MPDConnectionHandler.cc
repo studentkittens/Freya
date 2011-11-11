@@ -43,7 +43,7 @@ IdleListener * MPDConnectionHandler::get_listener(void)
 
 //--------------------------------------
 //
-gboolean MPDConnectionHandler::idle_reconnect(void)
+gboolean MPDConnectionHandler::timeout_reconnect(void)
 {
     /* Did the connect work? */
     gboolean retv = this->connect();
@@ -65,7 +65,7 @@ void MPDConnectionHandler::handle_errors(enum mpd_error err)
     case MPD_ERROR_CLOSED:
         this->disconnect();
         Info("Starting reconnect campaign. Will try again every few seconds.");
-        Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::idle_reconnect),1000,G_PRIORITY_DEFAULT_IDLE);
+        Glib::signal_timeout().connect(sigc::mem_fun(*this, &MPDConnectionHandler::timeout_reconnect),1000,G_PRIORITY_DEFAULT_IDLE);
         break;
     case MPD_ERROR_SERVER:
     case MPD_ERROR_OOM:

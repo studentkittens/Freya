@@ -1,8 +1,11 @@
-#ifndef FREYA_MPDCLIENT_GUARD
-#define FREYA_MPDCLIENT_GUARD
+#ifndef FREYA_MPDCONNECTION_GUARD
+#define FREYA_MPDCONNECTION_GUARD
 
 #include "../includes.hh"
 #include "IdleListener.hh"
+
+/* Prototype class */
+class IdleListener;
 
 class MPDConnectionHandler
 {
@@ -35,7 +38,7 @@ class MPDConnectionHandler
      * if the connection was lost - if so it tries
      * to reconnect
      */
-    gboolean idle_reconnect(void);
+    gboolean timeout_reconnect(void);
 
     void handle_errors(enum mpd_error err);
 

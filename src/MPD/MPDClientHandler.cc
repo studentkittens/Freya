@@ -1,4 +1,5 @@
 #include "MPDClientHandler.hh"
+#include "../LogHandler/LogHandler.hh"
 
 // Helper function
 mpd_connection * MPDClientHandler::get_conn_by_obj(void)
@@ -67,10 +68,7 @@ bool MPDClientHandler::send_command(const char * command)
             g_printerr("%s => %s\n",ent->name,ent->value);
             mpd_return_pair(mpd_conn,ent);
         }
-        /*
-        result = mpd_response_finish(mpd_conn);
-        
-        */
+
         /* Go back listening */
         go_idle();
     }

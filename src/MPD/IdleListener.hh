@@ -4,6 +4,9 @@
 #include "../includes.hh"
 #include "MPDConnectionHandler.hh"
 
+/* Prototype class */
+class MPDConnectionHandler;
+
 class IdleListener
 {
     public:

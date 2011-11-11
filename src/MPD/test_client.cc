@@ -1,5 +1,6 @@
 #include "MPDClientHandler.hh"
 #include "IdleListener.hh"
+#include <cstring>
 
 using namespace Glib;
 
@@ -66,16 +67,18 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 conn->connect();
                 break;
             }
-        case '>':
+        case ':':
             {
-                puts("");
                 char cmd[256] = {0};
                 if(fgets(cmd,255,stdin))
                 {
-                    puts(cmd);
+                    char * nl = strrchr(cmd,'\n');
+                    if(nl != NULL) nl[0] = 0;
                     client->send_command(cmd);
                 }
-                break;
+
+                /* Do not unread newline */
+                return true;
             }
         case 'd':
             {
@@ -85,9 +88,8 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
             }
     }
 
-    /* Unread characters left on the stream*/
+    /* Unread characters left on the stream (if any) */
     while ((c = getchar()) != EOF && c != '\n'); 
-
     return retv;
 }
 

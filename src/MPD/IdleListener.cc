@@ -89,6 +89,8 @@ bool IdleListener::parse_response(char *line)
 {
 	enum mpd_parser_result result;
 
+    g_printerr("Response = %s\n",line);
+
     result = mpd_parser_feed(this->parser, line);
     switch (result) 
     {

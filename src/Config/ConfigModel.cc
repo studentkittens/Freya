@@ -1,5 +1,5 @@
 #include "ConfigModel.hh"
-#define outputfile "./config.xml"
+#include <string.h>
 
 /*reads file from hdd*/
 ConfigModel::ConfigModel()
@@ -23,6 +23,7 @@ ConfigModel::~ConfigModel()
 xmlDocPtr ConfigModel::getDocPtr()
 {
     return fileDoc;
+    //return defaultDoc;
 }
 
 /* ----------------------------------------- */
@@ -57,6 +58,10 @@ void ConfigModel::load(char* file)
         printf("ERROR: config.xml file not found.\n");
         fileDoc = NULL;
     }
+
+    /* load default config to ram */
+    //const char* tmp = defaultconfig.c_str();
+    //defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
 }
 
 /* ----------------------------------------- */

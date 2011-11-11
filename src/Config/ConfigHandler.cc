@@ -5,7 +5,7 @@
 #define URL_DELIMITER '.'
 
 /*ctor creates model which encapsulates the config*/
-ConfigHandler::ConfigHandler():cfgmodel()
+ConfigHandler::ConfigHandler()
 {}
 
 /* ----------------------------------------- */

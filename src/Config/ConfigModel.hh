@@ -1,5 +1,7 @@
 #ifndef ConfigModel_ATB3SUAE
 #define ConfigModel_ATB3SUAE
+#define outputfile "./config.xml"
+#include "./defaultcfg.inl"
 
 #include <libxml/parser.h>
 
@@ -21,6 +23,7 @@ public:
 private:
     /*xml document and xml node member*/
     xmlDocPtr fileDoc;
+    xmlDocPtr defaultDoc;
     xmlNodePtr curNode;
     void setpath(char*);
     char* pathtofile;

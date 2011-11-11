@@ -1,13 +1,13 @@
 #ifndef DEFAULTCFG_QANZVJMD
 #define DEFAULTCFG_QANZVJMD
-/*
+
 #ifndef _GLIBMM_USTRING_H
 #include <glibmm/ustring.h>
 
 #endif
-*/
-#include <glibmm/ustring.h>
-const Glib::ustring defaultconfig(
+
+
+static const Glib::ustring defaultconfig(
 	"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
 	"<freya>"
 	"    <settings>"

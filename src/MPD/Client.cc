@@ -241,4 +241,14 @@ namespace MPD
         }
         return result;
     }
-}
+
+    //--------------------
+
+    EventNotifier * Client::get_notify(void)
+    {
+        return (listener) ? listener->get_notify() : NULL;
+    }
+
+    //--------------------
+
+} // END NAMESPACE 

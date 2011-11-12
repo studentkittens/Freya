@@ -4,6 +4,8 @@
 
 #include "PlaylistTreeView.hh"
 
+#include "MPD/Client.hh"
+
 using namespace std;
 
 Gtk::Scale * time_scale = NULL;
@@ -22,6 +24,10 @@ class ModelColumns : public Gtk::TreeModel::ColumnRecord
         Gtk::TreeModelColumn<Glib::ustring> m_col_name;
 };
 
+void notify(enum mpd_idle, mpd_status * status)
+{
+    cerr << "Cool." << endl;
+}
 
 int main(int argc, char *argv[])
 {
@@ -64,6 +70,9 @@ int main(int argc, char *argv[])
         Gtk::Statusbar * statusbar = NULL;
         builder->get_widget("statusbar",statusbar);
         statusbar->push("This is the Statusbar");
+
+        MPD::Client client;
+        client.get_notify()->connect(sigc::ptr_fun(notify));
 
         kit.run(*main_window);
 

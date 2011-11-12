@@ -15,7 +15,7 @@ namespace Config
             "            <autoconnect>1</autoconnect>"
             "            <stoponexit>1</stoponexit>"
             "            <timeout>20</timeout>"
-            "            <reconnecttimeout>2</reconnecttimeout>"
+            "            <reconnectinterval>2</reconnectinterval>"
             "        </connection>"
             "        <libnotify>"
             "            <signal>0</signal>"

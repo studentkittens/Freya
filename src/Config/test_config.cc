@@ -1,7 +1,7 @@
 #include <iostream>
 #include <glibmm.h>
 #include <cstring>
-#include "ConfigHandler.hh"
+#include "Handler.hh"
 
 using namespace std;
 

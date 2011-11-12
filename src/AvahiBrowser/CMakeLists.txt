@@ -2,7 +2,7 @@
 PKG_CHECK_MODULES(AVAHI_PACKAGE avahi-glib avahi-client REQUIRED)
 INCLUDE_DIRECTORIES(${AVAHI_PACKAGE_INCLUDE_DIRS})
 
-ADD_LIBRARY(FreyaAvahiLib STATIC AvahiHandler.cc AvahiView.cc)
+ADD_LIBRARY(FreyaAvahiLib STATIC Browser.cc View.cc)
 TARGET_LINK_LIBRARIES(FreyaAvahiLib 
                       ${GTKMM3_PACKAGE_LIBRARIES}
                       ${AVAHI_PACKAGE_LIBRARIES}

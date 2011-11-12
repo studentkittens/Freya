@@ -74,7 +74,7 @@ namespace MPD
             /* What IO events did happen? */
             enum mpd_async_event io_eventmask;
 
-            /**/
+            /* The actual events (like "player","mixer".. etc) */
             unsigned idle_events;
 
             /* A functor representing the io_callback */

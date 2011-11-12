@@ -1,6 +1,4 @@
-#include <glibmm.h>
 #include "Connection.hh"
-#include "../LogHandler/LogHandler.hh"
 
 namespace MPD
 {
@@ -33,7 +31,12 @@ namespace MPD
 
     bool Connection::connect(void)
     {
-        mpd_connection * mpd_conn = mpd_connection_new("localhost", 6600, 30000);
+        /* Get connection settings */
+        int timeout = CONFIG_GET_AS_INT("settings.connection.timeout") * 1000; 
+        int port    = CONFIG_GET_AS_INT("settings.connection.port"); 
+        Glib::ustring str_host = CONFIG_GET("settings.connection.host").c_str();
+
+        mpd_connection * mpd_conn = mpd_connection_new(str_host.c_str(), port, timeout);
         if(mpd_conn != NULL)
         {
             conn = mpd_conn;

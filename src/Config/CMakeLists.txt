@@ -1,4 +1,4 @@
-ADD_LIBRARY(FreyaConfigLib STATIC ConfigHandler.cc ConfigModel.cc)
+ADD_LIBRARY(FreyaConfigLib STATIC Handler.cc Model.cc)
 TARGET_LINK_LIBRARIES(FreyaConfigLib
                      ${GLIBMM_PACKAGE_LIBRARIES}
                      ${LIBXML2_PACKAGE_LIBRARIES}

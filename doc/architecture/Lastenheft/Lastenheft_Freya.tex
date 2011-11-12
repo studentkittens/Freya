@@ -1,0 +1,55 @@
+\documentclass[11pt]{scrreprt}%oldschool: report
+
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
+\usepackage{fullpage} % kleinere Ränder
+
+\usepackage{comment} % für größere comments: \begin{comment} ... \end{comment}
+
+% *** für eingefügte (pdf-)Grafiken
+\usepackage[pdftex]{graphicx} 
+\pdfminorversion=6
+% ***
+
+\usepackage{enumerate} %für geschachtelte Aufzählungen
+
+% *** java listings
+\usepackage{listings} 
+\usepackage{courier} % courier schrift
+\lstset{numbers=left, numberstyle=\tiny, basicstyle=\ttfamily  ,numbersep=5pt, tabsize=2}
+\lstset{language=Java}
+% ***
+
+\usepackage{amsmath} %Matheformeln usw.
+\usepackage{amssymb} %mathfrak
+
+\usepackage[bookmarks=true]{hyperref} % hyperrefs aktivieren
+\setcounter{secnumdepth}{3} %Numerierung bis Tiefe 3, also ab \paragraph ohne
+
+%*** title usw.
+\title{Lastenheft}
+\subtitle{Teil der Software Engineering II Studienarbeit WS 2011/2012, Inf 3}
+\author{
+Christopher Pahl,\\
+Christoph Piechula,\\
+Eduard Schneider,\\
+und Marc Tigges}
+\date{\today}
+%***
+
+%newcommands
+%\newcommand{\neuesKommando}{Was zu tun ist}
+
+\begin{document}
+\maketitle
+\tableofcontents
+%\part{welcher Teil}
+\input{Zielbestimmungen}
+\input{Produkteinsatz}
+\input{Produktfunktionen}
+\input{Produktdaten}
+\input{Produktleistungen}
+\input{Qualitaetsanforderungen}
+\input{Ergaenzungen}
+
+\end{document}

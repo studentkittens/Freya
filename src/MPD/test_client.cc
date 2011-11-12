@@ -1,11 +1,13 @@
-#include "MPDClientHandler.hh"
-#include "IdleListener.hh"
+#include "Client.hh"
+#include "Listener.hh"
+#include <cstring>
 
 using namespace Glib;
+using namespace MPD;
 
 typedef struct
 {
-    MPDClientHandler * client;
+    MPD::Client * client;
     GMainLoop * loop;
 
 } shell_data;
@@ -17,7 +19,7 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
 
     shell_data * watch_data = (shell_data *)data;
     GMainLoop * main_loop = watch_data->loop;
-    MPDClientHandler * client = watch_data->client;
+    MPD::Client * client = watch_data->client;
 
     int c = getchar();
     switch(c)
@@ -62,21 +64,31 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
             }
         case 'c':
             {
-                MPDConnectionHandler * conn = client->get_connection_handler();
-                conn->connect();
+                client->connect();
                 break;
+            }
+        case ':':
+            {
+                char cmd[256] = {0};
+                if(fgets(cmd,255,stdin))
+                {
+                    char * nl = strrchr(cmd,'\n');
+                    if(nl != NULL) nl[0] = 0;
+                    client->send_command(cmd);
+                }
+
+                /* Do not unread newline */
+                return true;
             }
         case 'd':
             {
-                MPDConnectionHandler * conn = client->get_connection_handler();
-                conn->disconnect();
+                client->disconnect();
                 break;
             }
     }
 
-    /* Unread characters left on the stream*/
+    /* Unread characters left on the stream (if any) */
     while ((c = getchar()) != EOF && c != '\n'); 
-
     return retv;
 }
 
@@ -90,7 +102,7 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
 int main(int argc, char *argv[])
 {
     /* TODO: This connects automagically at the moment */
-    MPDClientHandler freya;
+    MPD::Client freya;
 
     /* Eventloop */
     RefPtr<MainLoop> app_loop = MainLoop::create(false);

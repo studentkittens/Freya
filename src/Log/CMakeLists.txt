@@ -1,4 +1,4 @@
-ADD_LIBRARY(FreyaLogHandlerLib STATIC LogHandler.cc)
+ADD_LIBRARY(FreyaLogHandlerLib STATIC Writer.cc)
 TARGET_LINK_LIBRARIES(FreyaLogHandlerLib ${GLIBMM_PACKAGE_LIBRARIES})
 
 ADD_EXECUTABLE(test_log test_log.cc)

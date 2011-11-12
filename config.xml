@@ -2,17 +2,21 @@
 <freya>
     <settings>
         <connection>
-            <ip>127.0.0.1</ip>
             <port>6600</port>
-            <host>blabal</host>
+            <musicroot>~/chris/Musik</musicroot>
+            <host>192.168.178.25</host>
+            <autoconnect>1</autoconnect>
+            <stoponexit>1</stoponexit>
+            <timeout>20</timeout>
+            <reconnectinterval>2</reconnectinterval>
         </connection>
-        <notify>
-            <signal>2</signal>
-        </notify>
+        <libnotify>
+            <signal>0</signal>
+        </libnotify>
     </settings>
     <plugins>
         <glyr>
-            <artimg>1</artimg>
+            <artimg>5</artimg>
             <artbio>0</artbio>
             <provider>all</provider>
         </glyr>

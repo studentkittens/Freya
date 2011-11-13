@@ -4,7 +4,6 @@
         <connection>
             <port>6600</port>
             <musicroot>/home/christoph/music/</musicroot>
-            <host>192.168.178.25</host>
             <autoconnect>1</autoconnect>
             <stoponexit>1</stoponexit>
             <timeout>20</timeout>

@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         Glib::ustring bla  = CONFIG_GET(Glib::ustring(argv[2]));
         g_message("value = '%s'",bla.c_str());
     }
-     else if(argc > 2 && !strcmp(argv[1],"set"))
+    else if(argc > 2 && !strcmp(argv[1],"set"))
     {
         CONFIG_SET(argv[2],argv[3]);
         Glib::ustring bla  = CONFIG_GET(Glib::ustring(argv[2]));

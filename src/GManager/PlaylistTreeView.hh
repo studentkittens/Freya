@@ -3,7 +3,7 @@
 
 #include <gtkmm.h>
 
-namespace GuiLogic
+namespace GManager
 {
     class PlaylistTreeView : public Gtk::Frame
     {

@@ -1,7 +1,7 @@
-#include <iostream>
 #include "PlaylistTreeView.hh"
+#include "../Log/Writer.hh"
 
-namespace GuiLogic
+namespace GManager
 {
     PlaylistTreeView::PlaylistTreeView(const Glib::RefPtr<Gtk::Builder>& builder)
     {
@@ -40,9 +40,17 @@ namespace GuiLogic
             pColumn->set_reorderable();
         }
 
-        Gtk::Box * main_box = NULL;
-        builder->get_widget("main_box",main_box);
-        main_box->pack_start(*this,true,true);
+        try
+        {
+            Gtk::Box * main_box = NULL;
+            builder->get_widget("main_box",main_box);
+            Gtk::manage(main_box);
+            main_box->pack_start(*this,true,true);
+        }
+        catch(const Gtk::BuilderError& e)
+        {
+            Error("BuilderFailure: %s",e.what().c_str());
+        }
 
         show_all();
     }

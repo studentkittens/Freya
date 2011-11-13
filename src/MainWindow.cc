@@ -1,13 +1,12 @@
 #include <gtkmm.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iostream>
 
-#include "PlaylistTreeView.hh"
-#include "PlaybackButtons.hh"
-#include "BrowserList.hh"
-#include "Statusbar.hh"
-#include "Timeslide.hh"
-
+#include "GManager/PlaylistTreeView.hh"
+#include "GManager/PlaybackButtons.hh"
+#include "GManager/BrowserList.hh"
+#include "GManager/Statusbar.hh"
+#include "GManager/Timeslide.hh"
 #include "MPD/Client.hh"
 
 using namespace std;
@@ -25,11 +24,11 @@ int main(int argc, char *argv[])
         MPD::Client client;
 
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
-        GuiLogic::PlaylistTreeView playlist_queue(builder);
-        GuiLogic::Timeslide timeslide(builder);
-        GuiLogic::Statusbar statusbar(builder);
-        GuiLogic::BrowserList browser_list(builder);
-        GuiLogic::PlaybackButtons buttons(&client,builder);
+        GManager::PlaylistTreeView playlist_queue(builder);
+        GManager::Timeslide timeslide(builder);
+        GManager::Statusbar statusbar(builder);
+        GManager::BrowserList browser_list(builder);
+        GManager::PlaybackButtons buttons(&client,builder);
 
         // Silly test
         client.get_notify()->connect(sigc::ptr_fun(notify));
@@ -49,4 +48,3 @@ int main(int argc, char *argv[])
 
     return EXIT_SUCCESS;
 }
-

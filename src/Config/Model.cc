@@ -27,7 +27,11 @@ namespace Config
     xmlDocPtr Model::getDocPtr()
     {
         return fileDoc;
-        //return defaultDoc;
+    }
+
+    xmlDocPtr Model::getDefaultDocPtr()
+    {
+        return defaultDoc;
     }
 
     /* ----------------------------------------- */
@@ -35,6 +39,10 @@ namespace Config
     /*xml file reader*/
     void Model::load(char* file)
     {
+        /* loads default document to memory */
+        loadDefaultDoc();
+
+        /* try loading config.xml from hdd */
         fileDoc = xmlParseFile(file);
 
         if(NULL != fileDoc)
@@ -66,9 +74,15 @@ namespace Config
             printf("ERROR: config.xml file not found.\n");
         }
 
-        /* load default config to ram */
-        //const char* tmp = defaultconfig.c_str();
-        //defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
+    }
+
+    /* ----------------------------------------- */
+    
+    /* loads default document */
+    void Model::loadDefaultDoc()
+    {
+        const char* tmp = defaultconfig.c_str();
+        defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
     }
 
     /* ----------------------------------------- */

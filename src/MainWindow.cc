@@ -68,14 +68,18 @@ int main(int argc, char *argv[])
         PlaylistTreeView ex;
         main_box->pack_start(ex,true,true);
 
+
         Gtk::Statusbar * statusbar = NULL;
         builder->get_widget("statusbar",statusbar);
         statusbar->push("This is the Statusbar");
 
         MPD::Client client;
+        Info("Enter Mainloop");
         client.get_notify()->connect(sigc::ptr_fun(notify));
 
         GuiLogic::PlaybackButtons buttons(&client,builder);
+
+        main_window->show_all();
 
         kit.run(*main_window);
 

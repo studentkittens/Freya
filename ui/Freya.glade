@@ -12,7 +12,6 @@
     <property name="can_focus">False</property>
     <property name="default_width">600</property>
     <property name="default_height">500</property>
-    <property name="icon_name">audio-x-generic</property>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -465,26 +464,16 @@ audio-volume-medium</property>
                         <property name="can_focus">True</property>
                         <property name="reorderable">True</property>
                         <property name="rules_hint">True</property>
+                        <property name="hover_expand">True</property>
                         <property name="enable_grid_lines">horizontal</property>
                         <child internal-child="selection">
                           <object class="GtkTreeSelection" id="treeview-selection1"/>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label4">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
                         <property name="expand">True</property>
                         <property name="fill">True</property>
-                        <property name="position">2</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>

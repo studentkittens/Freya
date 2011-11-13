@@ -125,11 +125,11 @@ xmlNodePtr Handler::traverse(const char * url, xmlNodePtr cur)
 {
     if(NULL != url)
     {
-        char * p1 = strchrnul((char*)url,URL_DELIMITER);
-        char * p2 = strchrnul((p1+1),URL_DELIMITER);
-        int len = ABS(url-p1);
+        char * marker_prev = strchrnul((char*)url,URL_DELIMITER);
+        char * marker_next = strchrnul((marker_prev+1),URL_DELIMITER);
+        int len = ABS(url-marker_prev);
 
-        xmlNodePtr node = this->_traverse(url,p1,p2,len,cur);
+        xmlNodePtr node = this->_traverse(url,marker_prev,marker_next,len,cur);
         if(node == NULL)
             Warning("%s does not exist in config",url);
 
@@ -145,7 +145,7 @@ xmlNodePtr Handler::traverse(const char * url, xmlNodePtr cur)
 /* ----------------------------------------- */
 
 /*traverse and return node pointer or nothing*/
-xmlNodePtr Handler::_traverse(const char* url, char* p1, char* p2, int len, xmlNodePtr cur)
+xmlNodePtr Handler::_traverse(const char* url, char* marker_prev, char* marker_next, int len, xmlNodePtr cur)
 {
     xmlNodePtr result = NULL;
 
@@ -157,26 +157,27 @@ xmlNodePtr Handler::_traverse(const char* url, char* p1, char* p2, int len, xmlN
             if (len == (int)strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))
             {
                 /*if at last '.' position, print result*/
-                if(url == (p2+1))
+                if(url == (marker_next+1))
                 {
                     result = cur;
                 }
-                /*set url ptr to next dot*/
-                else if (url == (p1+1))
-                {
-                    url = (p2+1);
-                    len = strlen(url);
-                    cur=cur->xmlChildrenNode;       /*jump to next level*/
-                    this->_traverse(url,p1,p2,len,cur);
-                }
                 else
                 {
-                    url = (p1+1);
-                    len = ABS(p2-url);
-                    cur=cur->xmlChildrenNode;       /*jump to next level*/
-                    this->_traverse(url,p1,p2,len,cur);
+                    /*set url ptr to next dot*/
+                    if (url == (marker_prev+1))
+                    {
+                        url = (marker_next+1);
+                        len = strlen(url);
+                    }
+                    else
+                    {
+                        url = (marker_prev+1);
+                        len = ABS(marker_next-url);
+                    }
+                    /*jump to next level*/
+                    cur=cur->xmlChildrenNode;
+                    this->_traverse(url,marker_prev,marker_next,len,cur);
                 }
-
             }
             cur = cur->next;
         }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkActionGroup" id="actiongroup1"/>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="upper">100</property>
     <property name="step_increment">1</property>
@@ -395,7 +396,6 @@ audio-volume-medium</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="yscale">0.86000001430511475</property>
-                    <property name="right_padding">8</property>
                     <child>
                       <object class="GtkScale" id="time_slide">
                         <property name="visible">True</property>
@@ -413,6 +413,7 @@ audio-volume-medium</property>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
+                    <property name="padding">4</property>
                     <property name="position">3</property>
                   </packing>
                 </child>
@@ -484,7 +485,6 @@ audio-volume-medium</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="padding">16</property>
                         <property name="position">3</property>
                       </packing>
                     </child>
@@ -494,14 +494,15 @@ audio-volume-medium</property>
                         <property name="can_focus">False</property>
                         <property name="has_tooltip">True</property>
                         <property name="border_width">3</property>
-                        <property name="row_spacing">2</property>
-                        <property name="column_spacing">2</property>
                         <child>
-                          <object class="GtkImage" id="image2">
+                          <object class="GtkButton" id="icon">
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="stock">gtk-harddisk</property>
-                            <property name="icon-size">2</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="image">image1</property>
+                            <property name="relief">none</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -511,36 +512,14 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="image3">
+                          <object class="GtkButton" id="icon1">
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="stock">gtk-cdrom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkImage" id="image4">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="stock">gtk-file</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkImage" id="image5">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="stock">gtk-dialog-error</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="image">image2</property>
+                            <property name="relief">none</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -550,10 +529,31 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="image6">
+                          <object class="GtkButton" id="icon2">
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="stock">gtk-dialog-warning</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="image">image3</property>
+                            <property name="relief">none</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="icon3">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="image">image4</property>
+                            <property name="relief">none</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -563,10 +563,31 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="image7">
+                          <object class="GtkButton" id="icon4">
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="stock">gtk-info</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="image">image5</property>
+                            <property name="relief">none</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="icon5">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="image">image6</property>
+                            <property name="relief">none</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -574,15 +595,6 @@ audio-volume-medium</property>
                             <property name="width">1</property>
                             <property name="height">1</property>
                           </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
                         </child>
                       </object>
                       <packing>
@@ -608,7 +620,7 @@ audio-volume-medium</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="padding">7</property>
+                    <property name="padding">1</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -636,7 +648,7 @@ audio-volume-medium</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="fill">True</property>
+                    <property name="fill">False</property>
                     <property name="pack_type">end</property>
                     <property name="position">1</property>
                   </packing>
@@ -668,6 +680,37 @@ audio-volume-medium</property>
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-revert-to-saved</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-info</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-justify-right</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-dialog-warning</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-justify-fill</property>
+    <property name="icon-size">3</property>
+  </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-dialog-question</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

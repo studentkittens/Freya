@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "PlaylistTreeView.hh"
+#include "PlaybackButtons.hh"
 
 #include "MPD/Client.hh"
 
@@ -73,6 +74,8 @@ int main(int argc, char *argv[])
 
         MPD::Client client;
         client.get_notify()->connect(sigc::ptr_fun(notify));
+
+        GuiLogic::PlaybackButtons buttons(&client,builder);
 
         kit.run(*main_window);
 

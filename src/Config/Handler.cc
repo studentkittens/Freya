@@ -36,7 +36,9 @@ namespace Config
         if (cur!=NULL)
         {
             key = xmlNodeListGetString(doc, cur->xmlChildrenNode, true);
+            g_message("%s",(const char*)key);
             Glib::ustring retv = Glib::ustring((char*)key);
+            g_message("%s",retv.c_str());
             xmlFree(key);
             return retv;
         }

@@ -6,7 +6,6 @@ namespace MPD
 
     Connection::Connection(void)
     {
-        current_status = NULL;
         conn = NULL;
     }
 

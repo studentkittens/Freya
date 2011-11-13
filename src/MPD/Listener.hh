@@ -2,9 +2,10 @@
 #define FREYA_LISTENER_GUARD
 
 #include "../includes.hh"
+#include "Status.hh"
 
 /* Typedef, so no error-prone rewriting of this sig */
-typedef sigc::signal<void,enum mpd_idle, mpd_status*> EventNotifier;
+typedef sigc::signal<void,enum mpd_idle, MPD::Status&> EventNotifier;
 
 namespace MPD
 {
@@ -32,6 +33,8 @@ namespace MPD
             //---------------//
 
         private:
+        
+            void update_status(void);    
 
             /**
              * Utility (therefore static) function to
@@ -84,7 +87,10 @@ namespace MPD
             sigc::connection io_functor;
 
             /* emit() is called on this on events */
-            EventNotifier * m_Notifier;
+            EventNotifier * mp_Notifier;
+
+            /* MPD Status */
+            Status * mp_Status;
     };
 }
 #endif

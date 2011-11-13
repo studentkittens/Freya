@@ -16,8 +16,13 @@ namespace MPD
             io_eventmask = (enum mpd_async_event)0;
             is_idle = false;
 
+            /* Update status expect this to be NULL */
+            mp_Status = NULL;
+
             g_assert(notifier);
-            m_Notifier = notifier;
+            mp_Notifier = notifier;
+
+            update_status();
         }
     }
 
@@ -32,13 +37,38 @@ namespace MPD
     }
 
     //--------------------------------
+    
+    void Listener::update_status(void)
+    {
+        if(is_idling())
+        {
+            leave();
+        }
+
+        if(mp_Status != NULL)
+        {
+            delete mp_Status;
+            mp_Status = NULL;
+        }
+
+        mpd_status * c_status = mpd_run_status(this->conn);
+        if(c_status != NULL)
+        {
+            mp_Status = new Status(*c_status);
+        }
+        else
+        {
+            Warning("Got an empty status, although being connected!");
+        }
+    }
+    
+    //--------------------------------
 
     bool Listener::is_idling(void)
     {
         return is_idle;
     }
 
-    //--------------------------------
     //--------------------------------
     //--------------------------------
     //--------------------------------
@@ -63,6 +93,9 @@ namespace MPD
             /* Leave for callback - which is gonna be active */
             leave();
 
+            /* Somethin changed.. update therefore */
+            update_status();
+
             /* Iterare over the enum (this is weird) */
             for(unsigned mask = 1; /* empty */; mask = mask << 1)
             {
@@ -76,7 +109,7 @@ namespace MPD
                     Info("  :%s",event_name);
 
                     /* Notify observers */
-                    m_Notifier->emit((enum mpd_idle)actual_event,NULL);
+                    mp_Notifier->emit((enum mpd_idle)actual_event,*mp_Status);
                 }
             }
 

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void notify(enum mpd_idle, mpd_status * status)
+void notify(enum mpd_idle, MPD::Status& status)
 {
     cerr << "Cool." << endl;
 }

@@ -42,13 +42,7 @@ namespace MPD
 
         private:
 
-            /**
-             * @brief 
-             */
             void go_idle(void);
-            /**
-             * @brief 
-             */
             void go_busy(void);
 
             gboolean timeout_reconnect(void);

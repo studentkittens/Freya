@@ -10,6 +10,8 @@ Model::Model()
 {
     setpath((char*)outputfile);
     this->load(pathtofile);
+    /* loads default document to memory */
+    this->loadDefaultDoc();
 }
 
 /* ----------------------------------------- */
@@ -18,8 +20,9 @@ Model::Model()
 Model::~Model()
 {
     this->save();
-//    xmlFreeDoc(defaultDoc);
+    xmlFreeDoc(defaultDoc);
     xmlFreeDoc(fileDoc);
+
 }
 
 /* ----------------------------------------- */
@@ -40,11 +43,9 @@ xmlDocPtr Model::getDefaultDocPtr()
 /*xml file reader*/
 void Model::load(char* file)
 {
-    /* loads default document to memory */
-    loadDefaultDoc();
-
     /* try loading config.xml from hdd */
     fileDoc = xmlParseFile(file);
+    xmlNodePtr curNode;
 
     if(NULL != fileDoc)
     {

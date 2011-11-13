@@ -29,7 +29,6 @@ private:
     /*xml document and xml node member*/
     xmlDocPtr fileDoc;
     xmlDocPtr defaultDoc;
-    xmlNodePtr curNode;
     void setpath(char*);
     char* pathtofile;
 };

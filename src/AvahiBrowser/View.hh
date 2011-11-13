@@ -25,17 +25,17 @@ namespace Avahi
 
             //Tree model columns:
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
-        {
-            public:
+            {
+                public:
 
-                ModelColumns()
-                { add(m_col_ip); add(m_col_hostname); add(m_col_name); add(m_col_port);}
+                    ModelColumns()
+                    { add(m_col_ip); add(m_col_hostname); add(m_col_name); add(m_col_port);}
 
-                Gtk::TreeModelColumn<Glib::ustring> m_col_ip;
-                Gtk::TreeModelColumn<Glib::ustring> m_col_hostname;
-                Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-                Gtk::TreeModelColumn<unsigned int>  m_col_port;
-        };
+                    Gtk::TreeModelColumn<Glib::ustring> m_col_ip;
+                    Gtk::TreeModelColumn<Glib::ustring> m_col_hostname;
+                    Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+                    Gtk::TreeModelColumn<unsigned int>  m_col_port;
+            };
 
             ModelColumns m_Columns;
 

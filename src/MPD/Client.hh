@@ -38,7 +38,7 @@ namespace MPD
              *
              * @return the sigc::signal 
              */
-            EventNotifier * get_notify(void);
+            EventNotifier& get_notify(void);
 
         private:
 
@@ -62,6 +62,9 @@ namespace MPD
 
             /* The event notifier */
             Listener * listener;
+
+            /* The slot which observers can connect to */
+            EventNotifier m_Notifier;
     };
 
 }

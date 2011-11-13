@@ -4,7 +4,7 @@ namespace MPD
 {
     //-------------------------------
 
-    Client::Client() : conn() 
+    Client::Client() : conn(), m_Notifier()
     {
         connect();
     }
@@ -23,7 +23,7 @@ namespace MPD
         if(conn.connect())
         {
             Info("Creating Listener");
-            listener = new Listener(conn.get_connection());
+            listener = new Listener(&m_Notifier,conn.get_connection());
             go_idle();
         }
     }
@@ -244,9 +244,9 @@ namespace MPD
 
     //--------------------
 
-    EventNotifier * Client::get_notify(void)
+    EventNotifier& Client::get_notify(void)
     {
-        return (listener) ? listener->get_notify() : NULL;
+        return m_Notifier; 
     }
 
     //--------------------

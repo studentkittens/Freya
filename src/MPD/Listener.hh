@@ -11,7 +11,7 @@ namespace MPD
     class Listener
     {
         public:
-            Listener(mpd_connection * sync_conn);
+            Listener(EventNotifier * notifier, mpd_connection * sync_conn);
             ~Listener();
 
             /* Enter idle mode
@@ -26,13 +26,6 @@ namespace MPD
             /* Checks if connection is in idle mode
             */
             bool is_idling(void);
-
-            /**
-             * @brief 
-             *
-             * @return a libsigc++ signal, see the typedef above
-             */
-            EventNotifier * get_notify(void);
 
             //---------------//
             // Classmembers  //
@@ -91,7 +84,7 @@ namespace MPD
             sigc::connection io_functor;
 
             /* emit() is called on this on events */
-            EventNotifier * notifier;
+            EventNotifier * m_Notifier;
     };
 }
 #endif

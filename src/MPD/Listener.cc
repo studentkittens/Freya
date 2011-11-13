@@ -4,7 +4,7 @@ namespace MPD
 {
     //--------------------------------
 
-    Listener::Listener(mpd_connection * sync_conn)
+    Listener::Listener(EventNotifier * notifier, mpd_connection * sync_conn)
     {
         if(sync_conn != NULL)
         {
@@ -16,7 +16,8 @@ namespace MPD
             io_eventmask = (enum mpd_async_event)0;
             is_idle = false;
 
-            notifier = new EventNotifier;
+            g_assert(notifier);
+            m_Notifier = notifier;
         }
     }
 
@@ -28,9 +29,6 @@ namespace MPD
         {
             mpd_parser_free(parser);
         }
-
-        g_assert(notifier);
-        delete notifier;
     }
 
     //--------------------------------
@@ -78,7 +76,7 @@ namespace MPD
                     Info("  :%s",event_name);
 
                     /* Notify observers */
-                    get_notify()->emit((enum mpd_idle)actual_event,NULL);
+                    m_Notifier->emit((enum mpd_idle)actual_event,NULL);
                 }
             }
 
@@ -270,11 +268,6 @@ namespace MPD
                     /* Indicate we left */
                     is_idle = false;
 
-                    /* Mix in new events */
-                    // TODO: Does this even make sense?
-                    //idle_events |= new_idle_events;
-                    //invoke_user_callback();
-
                     /* Disconnect the watchdog for now */
                     io_functor.disconnect();
                 }
@@ -283,13 +276,6 @@ namespace MPD
         }
         else Warning("Cannot leave when already left (Dude!)");
 
-    }
-
-    //--------------------------------
-
-    EventNotifier * Listener::get_notify(void)
-    {
-        return this->notifier;
     }
 
     //--------------------------------

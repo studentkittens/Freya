@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         GManager::PlaybackButtons buttons(&client,builder);
 
         // Silly test
-        client.get_notify()->connect(sigc::ptr_fun(notify));
+        client.get_notify().connect(sigc::ptr_fun(notify));
 
         Gtk::Window * main_window = NULL;
         builder->get_widget("FreyaMainWindow", main_window);

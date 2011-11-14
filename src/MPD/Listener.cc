@@ -15,6 +15,8 @@ namespace MPD
             idle_events = (enum mpd_idle)0;
             io_eventmask = (enum mpd_async_event)0;
             is_idle = false;
+
+            notifier = new EventNotifier;
         }
     }
 
@@ -26,6 +28,9 @@ namespace MPD
         {
             mpd_parser_free(parser);
         }
+
+        g_assert(notifier);
+        delete notifier;
     }
 
     //--------------------------------
@@ -60,20 +65,22 @@ namespace MPD
             /* Leave for callback - which is gonna be active */
             leave();
 
-            /* Iterare over the enum */
-            for(unsigned mask = 1; /* None */; mask = mask << 1)
+            /* Iterare over the enum (this is weird) */
+            for(unsigned mask = 1; /* empty */; mask = mask << 1)
             {
                 const char * event_name = mpd_idle_name((enum mpd_idle)mask);
                 if(event_name == NULL)
                     break;
 
-                if(idle_events & mask)
+                unsigned actual_event = idle_events & mask;
+                if(actual_event != 0)
                 {
                     Info("  :%s",event_name);
-                    //  <-- Call callback here --> //
+
+                    /* Notify observers */
+                    get_notify()->emit((enum mpd_idle)actual_event,NULL);
                 }
             }
-
 
             /* Delete old events  */
             idle_events = 0;
@@ -276,6 +283,13 @@ namespace MPD
         }
         else Warning("Cannot leave when already left (Dude!)");
 
+    }
+
+    //--------------------------------
+
+    EventNotifier * Listener::get_notify(void)
+    {
+        return this->notifier;
     }
 
     //--------------------------------

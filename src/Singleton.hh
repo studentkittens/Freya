@@ -1,3 +1,6 @@
+#ifndef FREYA_SINGLETON_GUARD
+#define FREYA_SINGLETON_GUARD
+
 /* Singleton macro. Taken from the C-Wikibooks pages:
  * http://de.wikibooks.org/wiki/C++-Programmierung:_Entwurfsmuster:_Singleton
  */
@@ -12,3 +15,5 @@
  private:                        \
     NAME();                      \
     NAME(const NAME&);
+
+#endif

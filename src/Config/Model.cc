@@ -5,90 +5,106 @@
 
 namespace Config
 {
-    /*reads file from hdd*/
-    Model::Model()
+/*reads file from hdd*/
+Model::Model()
+{
+    setpath((char*)outputfile);
+    this->load(pathtofile);
+    /* loads default document to memory */
+    this->loadDefaultDoc();
+}
+
+/* ----------------------------------------- */
+
+/*saves config file on exit*/
+Model::~Model()
+{
+    this->save();
+    xmlFreeDoc(defaultDoc);
+    xmlFreeDoc(fileDoc);
+
+}
+
+/* ----------------------------------------- */
+
+/*returns the doc pointer of users config.xml*/
+xmlDocPtr Model::getDocPtr()
+{
+    return fileDoc;
+}
+
+xmlDocPtr Model::getDefaultDocPtr()
+{
+    return defaultDoc;
+}
+
+/* ----------------------------------------- */
+
+/*xml file reader*/
+void Model::load(char* file)
+{
+    /* try loading config.xml from hdd */
+    fileDoc = xmlParseFile(file);
+    xmlNodePtr curNode;
+
+    if(NULL != fileDoc)
     {
-        setpath((char*)outputfile);
-        this->load(pathtofile);
-    }
-
-    /* ----------------------------------------- */
-
-    /*saves config file on exit*/
-    Model::~Model()
-    {
-        this->save();
-        xmlFreeDoc(fileDoc);
-    }
-
-    /* ----------------------------------------- */
-
-    /*returns the doc pointer of users config.xml*/
-    xmlDocPtr Model::getDocPtr()
-    {
-        return fileDoc;
-        //return defaultDoc;
-    }
-
-    /* ----------------------------------------- */
-
-    /*xml file reader*/
-    void Model::load(char* file)
-    {
-        fileDoc = xmlParseFile(file);
-
-        if(NULL != fileDoc)
+        curNode = xmlDocGetRootElement(fileDoc);
+        if (NULL != curNode)
         {
-            curNode = xmlDocGetRootElement(fileDoc);
-            if (NULL != curNode)
+            if (!(xmlStrcmp(curNode->name, (const xmlChar*) "freya")))
             {
-                if (!(xmlStrcmp(curNode->name, (const xmlChar*) "freya")))
-                {
-                    Info("Config succesfully read.");
-                }
-                else
-                {
-                    Error("File does not look like a Freya config file.");
-                    xmlFreeDoc(fileDoc);
-                    fileDoc = NULL;
-                    curNode = NULL;
-                }
+                Info("Config succesfully read.");
             }
             else
             {
-                Error("Empty config file / invalid XML");
+                Error("File does not look like a Freya config file.");
                 xmlFreeDoc(fileDoc);
                 fileDoc = NULL;
+                curNode = NULL;
             }
         }
         else
         {
-            printf("ERROR: config.xml file not found.\n");
+            Error("Empty config file / invalid XML");
+            xmlFreeDoc(fileDoc);
+            fileDoc = NULL;
         }
-
-        /* load default config to ram */
-        //const char* tmp = defaultconfig.c_str();
-        //defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
     }
-
-    /* ----------------------------------------- */
-
-    /*save default config aka Mr fileDoc*/
-    void Model::save()
+    else
     {
-        save((char*)outputfile, fileDoc);
+        Error("Config.xml file not found.");
     }
 
-    /* ----------------------------------------- */
+}
 
-    /*save alternative config*/
-    void Model::save(char* altfile,xmlDocPtr doc)
-    {
-        xmlSaveFile(altfile,doc);
-    }
+/* ----------------------------------------- */
 
-    void Model::setpath(char* path)
-    {
-        pathtofile = path;
-    }
+/* loads default document */
+void Model::loadDefaultDoc()
+{
+    const char* tmp = defaultconfig.c_str();
+    defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
+}
+
+/* ----------------------------------------- */
+
+/*save default config aka Mr fileDoc*/
+void Model::save()
+{
+    save((char*)outputfile, fileDoc);
+}
+
+/* ----------------------------------------- */
+
+/*save alternative config*/
+void Model::save(char* altfile,xmlDocPtr doc)
+{
+    xmlSaveFile(altfile,doc);
+}
+
+void Model::setpath(char* path)
+{
+    pathtofile = path;
+}
 }

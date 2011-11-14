@@ -30,6 +30,16 @@ namespace MPD
             bool playback_play(void);
             bool playback_pause(void);
 
+            /**
+             * @brief Get the notify sigc::signal
+             *
+             * Use connect() on it. This is called always once a new event
+             * happens. See the typedef in Listener.hh for the exact signature
+             *
+             * @return the sigc::signal 
+             */
+            EventNotifier * get_notify(void);
+
         private:
 
             /**

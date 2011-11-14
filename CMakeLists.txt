@@ -20,7 +20,7 @@ SET(FREYA_VERSION_NAME  "Terrifying Tarantula")
 # ------------------------------------------------
 # CFlags and warnlevel / build config 
 # ------------------------------------------------
-SET(COMMON_FLAGS "-Wall -Wextra -std=c++0x -Wno-unused-parameter -ggdb3")
+SET(COMMON_FLAGS "-Wall -Wextra -std=c++0x -Wno-unused-parameter -ggdb3 -pipe")
 SET(CMAKE_CXX_FLAGS_RELEASE "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS} -Os -march=native -s")
 SET(CMAKE_CXX_FLAGS_DEBUG   "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS} -ggdb3")
 SET(CMAKE_CXX_FLAGS         "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS}")

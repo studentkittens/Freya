@@ -3,6 +3,9 @@
 
 #include "../includes.hh"
 
+/* Typedef, so no error-prone rewriting of this sig */
+typedef sigc::signal<void,enum mpd_idle, mpd_status*> EventNotifier;
+
 namespace MPD
 {
     class Listener
@@ -23,6 +26,13 @@ namespace MPD
             /* Checks if connection is in idle mode
             */
             bool is_idling(void);
+
+            /**
+             * @brief 
+             *
+             * @return a libsigc++ signal, see the typedef above
+             */
+            EventNotifier * get_notify(void);
 
             //---------------//
             // Classmembers  //
@@ -79,6 +89,9 @@ namespace MPD
 
             /* A functor representing the io_callback */
             sigc::connection io_functor;
+
+            /* emit() is called on this on events */
+            EventNotifier * notifier;
     };
 }
 #endif

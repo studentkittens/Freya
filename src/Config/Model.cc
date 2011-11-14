@@ -54,7 +54,7 @@ void Model::load(char* file)
         {
             if (!(xmlStrcmp(curNode->name, (const xmlChar*) "freya")))
             {
-                Info("Config succesfully read.");
+                Success("Config succesfully read.");
             }
             else
             {

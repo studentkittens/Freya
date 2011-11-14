@@ -1,7 +1,3 @@
-#include <gtkmm.h>
-#include <cstdlib>
-#include <iostream>
-
 #include "GManager/PlaylistTreeView.hh"
 #include "GManager/PlaybackButtons.hh"
 #include "GManager/BrowserList.hh"
@@ -11,9 +7,9 @@
 
 using namespace std;
 
-void notify(enum mpd_idle, MPD::Status& status)
+void notify(enum mpd_idle, MPD::NotifyData& data)
 {
-    cerr << "Cool." << endl;
+    cerr << "View observer was told to update." << endl;
 }
 
 int main(int argc, char *argv[])
@@ -26,9 +22,9 @@ int main(int argc, char *argv[])
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
         GManager::PlaylistTreeView playlist_queue(builder);
         GManager::Timeslide timeslide(builder);
-        GManager::Statusbar statusbar(builder);
+        GManager::Statusbar statusbar(client,builder);
         GManager::BrowserList browser_list(builder);
-        GManager::PlaybackButtons buttons(&client,builder);
+        GManager::PlaybackButtons buttons(client,builder);
 
         // Silly test
         client.get_notify().connect(sigc::ptr_fun(notify));

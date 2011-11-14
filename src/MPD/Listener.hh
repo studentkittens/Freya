@@ -3,16 +3,18 @@
 
 #include "../includes.hh"
 #include "Status.hh"
+#include "NotifyData.hh"
+#include "Connection.hh"
 
 /* Typedef, so no error-prone rewriting of this sig */
-typedef sigc::signal<void,enum mpd_idle, MPD::Status&> EventNotifier;
+typedef sigc::signal<void,enum mpd_idle, MPD::NotifyData&> EventNotifier;
 
 namespace MPD
 {
     class Listener
     {
         public:
-            Listener(EventNotifier * notifier, mpd_connection * sync_conn);
+            Listener(EventNotifier * notifier, Connection& sync_conn);
             ~Listener();
 
             /* Enter idle mode
@@ -62,14 +64,11 @@ namespace MPD
             // Instancemembers //
             //-----------------//
 
-            /* Synchronous connection from MPDClient */
-            mpd_connection * conn;
-
             /* true if in idlemode */
             bool is_idle;
 
             /* A reponse parser */
-            struct mpd_parser * parser;
+            struct mpd_parser * mp_Parser;
 
             /* Non blocking connection */
             struct mpd_async  * async_conn;
@@ -91,6 +90,12 @@ namespace MPD
 
             /* MPD Status */
             Status * mp_Status;
+
+            /* Synchronous connection */
+            Connection * mp_Conn;
+
+            /* The data passed to the observer */
+            NotifyData m_NData;
     };
 }
 #endif

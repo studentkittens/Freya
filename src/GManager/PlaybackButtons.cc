@@ -3,12 +3,11 @@
 
 namespace GManager
 {
-    PlaybackButtons::PlaybackButtons(MPD::Client * instance, const Glib::RefPtr<Gtk::Builder>& builder) 
+    PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) 
     {
         try
         {
-            g_assert(instance);
-            this->client_instance = instance;
+            this->mp_Client = &instance;
 
             builder->get_widget("stop_button",stop_button);
             builder->get_widget("play_button",play_button);
@@ -44,34 +43,34 @@ namespace GManager
 
     void PlaybackButtons::on_button_stop(void)
     {
-        client_instance->playback_stop();
+        mp_Client->playback_stop();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_play(void)
     {
-        client_instance->playback_play();
+        mp_Client->playback_play();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_pause(void)
     {
-        client_instance->playback_pause();
+        mp_Client->playback_pause();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_prev(void)
     {
-        client_instance->playback_prev();
+        mp_Client->playback_prev();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_next(void)
     {
-        client_instance->playback_next();
+        mp_Client->playback_next();
     }
 }

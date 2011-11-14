@@ -4,40 +4,37 @@ namespace MPD
 {
     //--------------------------------
 
-    Listener::Listener(EventNotifier * notifier, mpd_connection * sync_conn)
+    Listener::Listener(EventNotifier * notifier, Connection& sync_conn) : m_NData(sync_conn)
     {
-        if(sync_conn != NULL)
-        {
-            conn = sync_conn;
-            parser = mpd_parser_new();
-            async_conn = mpd_connection_get_async(sync_conn);
-            async_socket_fd = mpd_async_get_fd(async_conn); 
-            idle_events = (enum mpd_idle)0;
-            io_eventmask = (enum mpd_async_event)0;
-            is_idle = false;
+        mp_Parser = mpd_parser_new();
+        async_conn = mpd_connection_get_async(sync_conn.get_connection());
+        async_socket_fd = mpd_async_get_fd(async_conn); 
 
-            /* Update status expect this to be NULL */
-            mp_Status = NULL;
+        idle_events = (enum mpd_idle)0;
+        io_eventmask = (enum mpd_async_event)0;
+        is_idle = false;
 
-            g_assert(notifier);
-            mp_Notifier = notifier;
+        g_assert(notifier);
+        mp_Notifier = notifier;
 
-            update_status();
-        }
+        g_assert(sync_conn.get_connection());
+        m_NData.update_status();
+        
+        mp_Conn = &sync_conn;
     }
 
     //--------------------------------
 
     Listener::~Listener()
     {
-        if(parser != NULL)
+        if(mp_Parser!= NULL)
         {
-            mpd_parser_free(parser);
+            mpd_parser_free(mp_Parser);
         }
     }
 
     //--------------------------------
-    
+
     void Listener::update_status(void)
     {
         if(is_idling())
@@ -51,7 +48,7 @@ namespace MPD
             mp_Status = NULL;
         }
 
-        mpd_status * c_status = mpd_run_status(this->conn);
+        mpd_status * c_status = mpd_run_status(mp_Conn->get_connection());
         if(c_status != NULL)
         {
             mp_Status = new Status(*c_status);
@@ -61,7 +58,7 @@ namespace MPD
             Warning("Got an empty status, although being connected!");
         }
     }
-    
+
     //--------------------------------
 
     bool Listener::is_idling(void)
@@ -94,7 +91,7 @@ namespace MPD
             leave();
 
             /* Somethin changed.. update therefore */
-            update_status();
+            m_NData.update_status();
 
             /* Iterare over the enum (this is weird) */
             for(unsigned mask = 1; /* empty */; mask = mask << 1)
@@ -106,10 +103,10 @@ namespace MPD
                 unsigned actual_event = idle_events & mask;
                 if(actual_event != 0)
                 {
-                    Info("  :%s",event_name);
+                    Debug("  :%s",event_name);
 
                     /* Notify observers */
-                    mp_Notifier->emit((enum mpd_idle)actual_event,*mp_Status);
+                    mp_Notifier->emit((enum mpd_idle)actual_event,m_NData);
                 }
             }
 
@@ -127,24 +124,24 @@ namespace MPD
     {
         enum mpd_parser_result result;
 
-        result = mpd_parser_feed(parser, line);
+        result = mpd_parser_feed(mp_Parser, line);
         switch (result) 
         {
             case MPD_PARSER_ERROR:
 
                 io_eventmask = (enum mpd_async_event)0;
                 check_async_error();
-                Error("Parser Error: %d - %s",
-                        mpd_parser_get_server_error(parser),
-                        mpd_parser_get_message(parser));
+                Error("ParserError: %d - %s",
+                        mpd_parser_get_server_error(mp_Parser),
+                        mpd_parser_get_message(mp_Parser));
 
                 return false;
 
             case MPD_PARSER_PAIR:
 
-                if (g_strcmp0(mpd_parser_get_name(parser),"changed") == 0)
+                if (g_strcmp0(mpd_parser_get_name(mp_Parser),"changed") == 0)
                 {
-                    const char * value = mpd_parser_get_value(parser);
+                    const char * value = mpd_parser_get_value(mp_Parser);
                     idle_events |= mpd_idle_name_parse(value);
                 }
                 break;
@@ -275,9 +272,9 @@ namespace MPD
 
     void Listener::leave(void)
     {
-        if(is_idling() == true)
+        if(is_idling() && mp_Conn->is_connected())
         {
-            if(io_functor.connected())    
+            if(io_functor.connected()) 
             {
                 bool is_fatal = false;
                 enum mpd_idle new_idle_events = (enum mpd_idle)0;
@@ -287,13 +284,15 @@ namespace MPD
 
                 /* Make sure no idling is running */
                 if(idle_events == 0)
-                    new_idle_events = mpd_run_noidle(conn);
+                {
+                    new_idle_events = mpd_run_noidle(mp_Conn->get_connection());
+                }
 
                 /* Check for errors that may happened shortly */            
-                if (new_idle_events == 0 && mpd_connection_get_error(conn) != MPD_ERROR_SUCCESS) 
+                if (new_idle_events == 0 && mpd_connection_get_error(mp_Conn->get_connection()) != MPD_ERROR_SUCCESS) 
                 {
-                    Error("Error while leaving idle mode: %s",mpd_connection_get_error_message(conn));
-                    is_fatal = (mpd_connection_clear_error(conn) == false);
+                    Error("Error while leaving idle mode: %s",mpd_connection_get_error_message(mp_Conn->get_connection()));
+                    is_fatal = (mpd_connection_clear_error(mp_Conn->get_connection()) == false);
                 }
 
                 if(is_fatal == false)

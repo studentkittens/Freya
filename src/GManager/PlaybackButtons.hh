@@ -11,7 +11,7 @@ namespace GManager
     {
         public:
 
-            PlaybackButtons(MPD::Client * client, const Glib::RefPtr<Gtk::Builder>& builder);
+            PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
             ~PlaybackButtons();
 
         private:
@@ -25,7 +25,7 @@ namespace GManager
             /* Widgets */
             Gtk::Button *stop_button, *play_button, *pause_button, *prev_button, *next_button;
 
-            MPD::Client * client_instance;
+            MPD::Client * mp_Client;
     };
 }
 

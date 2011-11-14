@@ -23,7 +23,7 @@ namespace MPD
         if(conn.connect())
         {
             Info("Creating Listener");
-            listener = new Listener(&m_Notifier,conn.get_connection());
+            listener = new Listener(&m_Notifier,conn);
             go_idle();
         }
     }
@@ -110,7 +110,7 @@ namespace MPD
 
     bool Client::playback_prev(void)
     {
-        return this->send_command("next");
+        return this->send_command("previous");
     }
 
     //-------------------------------

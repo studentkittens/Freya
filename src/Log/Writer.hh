@@ -16,7 +16,6 @@
 #define Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
 #define Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
 
-
 namespace Log
 {
     /**
@@ -40,6 +39,7 @@ namespace Log
         DEF_SINGLETON(Writer);
 
         public:
+
         ~Writer();
         /**
          * @brief Actual instance method called. Do not use directly! 

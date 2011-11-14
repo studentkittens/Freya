@@ -31,6 +31,13 @@ namespace MPD
             bool playback_pause(void);
 
             /**
+             * @brief Get the current MPD::Status
+             *
+             * @return A reference to it. Do not modify.
+             */
+            Status& get_status(void);
+
+            /**
              * @brief Get the notify sigc::signal
              *
              * Use connect() on it. This is called always once a new event

@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
         // Silly test
         client.get_notify().connect(sigc::ptr_fun(notify));
 
+        client.force_update();
+
         Gtk::Window * main_window = NULL;
         builder->get_widget("FreyaMainWindow", main_window);
         kit.run(*main_window);

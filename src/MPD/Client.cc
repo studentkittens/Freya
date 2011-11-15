@@ -45,8 +45,8 @@ namespace MPD
 
     void Client::go_idle(void)
     {
-        listener->enter();
         check_error();
+        listener->enter();
     }
 
     //-------------------------------
@@ -253,18 +253,71 @@ namespace MPD
     
     void Client::toggle_random(void)
     {
-        go_busy();
-        mpd_run_random(conn.get_connection(),!(get_status().get_random()));
-        go_idle();
+        if(conn.is_connected())
+        {
+            go_busy();
+            Debug("Before random");
+            mpd_run_random(conn.get_connection(),!(get_status()->get_random()));
+            Debug("After random");
+            go_idle();
+        }
     }
-    
-    //--------------------
 
-    Status& Client::get_status(void)
+    //--------------------
+    
+    void Client::toggle_single(void)
     {
         if(conn.is_connected())
         {
-            return listener->get_notify_data().get_status();
+            go_busy();
+            mpd_run_single(conn.get_connection(),!(get_status()->get_random()));
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    void Client::toggle_consume(void)
+    {
+        if(conn.is_connected())
+        {
+            go_busy();
+            mpd_run_consume(conn.get_connection(),!(get_status()->get_random()));
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    void Client::toggle_repeat(void)
+    {
+        if(conn.is_connected())
+        {
+            go_busy();
+            mpd_run_repeat(conn.get_connection(),!(get_status()->get_random()));
+            go_idle();
+        }
+    }
+
+    //--------------------
+    //
+    Status * Client::get_status(void)
+    {
+        if(conn.is_connected())
+        {
+            return &(listener->get_notify_data().get_status());
+        }
+        Warning("get_status() while being disconnected");
+        return NULL;
+    }
+
+    //--------------------
+    
+    void Client::force_update(void)
+    {
+        if(conn.is_connected())
+        {
+            listener->force_update();
         }
     }
 

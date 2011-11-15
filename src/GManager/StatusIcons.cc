@@ -13,13 +13,19 @@ namespace GManager
             Debug("Huh?!");
 
             builder->get_widget("icon_random",mp_Random);
-            Gtk::manage(mp_Random);
             mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_random));
+            Gtk::manage(mp_Random);
+
             builder->get_widget("icon_single",mp_Single);
+            mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_single));
             Gtk::manage(mp_Random);
+
             builder->get_widget("icon_repeat",mp_Repeat);
+            mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_repeat));
             Gtk::manage(mp_Random);
+
             builder->get_widget("icon_consume",mp_Consume);
+            mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_consume));
             Gtk::manage(mp_Random);
         }
         catch(const Gtk::BuilderError& e)
@@ -45,11 +51,14 @@ namespace GManager
     }
     void Statusicons::on_clicked_single(void)
     {
+       mp_Client->toggle_single(); 
     }
     void Statusicons::on_clicked_consume(void)
     {
+       mp_Client->toggle_consume(); 
     }
     void Statusicons::on_clicked_repeat(void)
     {
+       mp_Client->toggle_repeat(); 
     }
 }

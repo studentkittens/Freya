@@ -17,13 +17,12 @@ namespace GManager
         private:
 
             void on_button_stop(void);
-            void on_button_play(void);
             void on_button_pause(void);
             void on_button_next(void);
             void on_button_prev(void);
 
             /* Widgets */
-            Gtk::Button *stop_button, *play_button, *pause_button, *prev_button, *next_button;
+            Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
 
             MPD::Client * mp_Client;
     };

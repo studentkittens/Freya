@@ -61,8 +61,11 @@ namespace MPD
     {
         if (idle_events != 0)
         {
+            Debug("!!");
             /* Leave for callback - which is gonna be active */
             leave();
+
+            Debug("..");
 
             /* Somethin changed.. update therefore */
             m_NData.update_all();
@@ -218,6 +221,7 @@ namespace MPD
     {
         if(is_idling() == false)
         {
+            Debug("enter idle");
             if(mpd_async_send_command(async_conn, "idle", NULL) == false)
             {
                 check_async_error();
@@ -250,6 +254,7 @@ namespace MPD
         {
             if(io_functor.connected()) 
             {
+                Debug("Leaving...");
                 bool is_fatal = false;
                 enum mpd_idle new_idle_events = (enum mpd_idle)0;
 
@@ -283,10 +288,21 @@ namespace MPD
         else Warning("Cannot leave when already left (Dude!)");
 
     }
+    
+    //--------------------------------
 
     NotifyData& Listener::get_notify_data(void)
     {
         return m_NData;
+    }
+            
+    void Listener::force_update(void)
+    {
+        // TODO: this is more like a hack
+        idle_events = MPD_IDLE_PLAYER | MPD_IDLE_MIXER;
+        leave();
+        mpd_run_noidle(mp_Conn->get_connection());
+        invoke_user_callback();
     }
 
     //--------------------------------

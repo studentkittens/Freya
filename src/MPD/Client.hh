@@ -31,13 +31,16 @@ namespace MPD
             bool playback_pause(void);
 
             void toggle_random(void);
+            void toggle_consume(void);
+            void toggle_repeat(void);
+            void toggle_single(void);
 
             /**
              * @brief Get the current MPD::Status
              *
              * @return A reference to it. Do not modify.
              */
-            Status& get_status(void);
+            Status * get_status(void);
 
             /**
              * @brief Get the notify sigc::signal
@@ -48,6 +51,8 @@ namespace MPD
              * @return the sigc::signal 
              */
             EventNotifier& get_notify(void);
+
+            void force_update(void);
 
         private:
 

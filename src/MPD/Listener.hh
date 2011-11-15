@@ -36,6 +36,12 @@ namespace MPD
 
             NotifyData& get_notify_data(void);
 
+
+            /**
+             * @brief Emits callback forced with current data
+             */
+            void force_update(void); 
+
         private:
         
             /**

@@ -30,6 +30,8 @@ namespace MPD
             bool playback_play(void);
             bool playback_pause(void);
 
+            void toggle_random(void);
+
             /**
              * @brief Get the current MPD::Status
              *

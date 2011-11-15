@@ -34,10 +34,10 @@ namespace MPD
             // Classmembers  //
             //---------------//
 
+            NotifyData& get_notify_data(void);
+
         private:
         
-            void update_status(void);    
-
             /**
              * Utility (therefore static) function to
              * convert a GIOCondition bit mask to #mpd_async_event.

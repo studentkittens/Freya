@@ -495,7 +495,7 @@ audio-volume-medium</property>
                         <property name="has_tooltip">True</property>
                         <property name="border_width">3</property>
                         <child>
-                          <object class="GtkButton" id="icon">
+                          <object class="GtkButton" id="icon_repeat">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -512,7 +512,7 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="icon1">
+                          <object class="GtkButton" id="icon_info">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -529,7 +529,7 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="icon2">
+                          <object class="GtkButton" id="icon_random">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -546,7 +546,7 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="icon3">
+                          <object class="GtkButton" id="icon_consume">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -563,7 +563,7 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="icon4">
+                          <object class="GtkButton" id="icon_single">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>

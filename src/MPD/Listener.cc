@@ -284,6 +284,11 @@ namespace MPD
 
     }
 
+    NotifyData& Listener::get_notify_data(void)
+    {
+        return m_NData;
+    }
+
     //--------------------------------
     // Static methods
     //--------------------------------

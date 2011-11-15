@@ -250,5 +250,24 @@ namespace MPD
     }
 
     //--------------------
+    
+    void Client::toggle_random(void)
+    {
+        go_busy();
+        mpd_run_random(conn.get_connection(),!(get_status().get_random()));
+        go_idle();
+    }
+    
+    //--------------------
+
+    Status& Client::get_status(void)
+    {
+        if(conn.is_connected())
+        {
+            return listener->get_notify_data().get_status();
+        }
+    }
+
+    //--------------------
 
 } // END NAMESPACE 

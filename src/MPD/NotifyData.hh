@@ -3,6 +3,7 @@
 
 #include "Connection.hh"
 #include "Status.hh"
+#include "Statistics.hh"
 
 namespace MPD
 {
@@ -14,10 +15,14 @@ namespace MPD
 
             void update_status(void);
             Status& get_status(void);
+    
+            void update_statistics(void);
+            Statistics& get_statistics(void);
 
         private:
             Connection * mp_Conn;
             Status * mp_Status;
+            Statistics * mp_Statistics;
     };
 }
 

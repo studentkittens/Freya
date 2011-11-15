@@ -3,6 +3,7 @@ ADD_LIBRARY(FreyaMPDLib
             Client.cc
             Listener.cc
             Status.cc
+            Statistics.cc
             NotifyData.cc
             )
 

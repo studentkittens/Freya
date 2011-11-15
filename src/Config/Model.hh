@@ -3,7 +3,7 @@
 
 #include <libxml/parser.h>
 #include "./defaultcfg.inl"
-
+#include "../Init/Initpath.hh"
 #define outputfile "./config.xml"
 
 namespace Config
@@ -20,6 +20,8 @@ public:
     void save();
     /*save as different filename eg. config.xml.bak*/
     void save(char*, xmlDocPtr);
+    void write_default();
+    void write_default(char*);
 
     /*xml document getter*/
     xmlDocPtr getDocPtr();

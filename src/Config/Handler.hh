@@ -21,6 +21,7 @@ public:
     int get_value_as_int(Glib::ustring);
     void set_value(Glib::ustring, Glib::ustring);
     void set_value_as_int(Glib::ustring,int);
+    void write_default(char* configpath);
 
 private:
     /*internal traversing funcs*/

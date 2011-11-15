@@ -8,7 +8,9 @@ namespace Config
 /*reads file from hdd*/
 Model::Model()
 {
-    setpath((char*)outputfile);
+    //Initpath path;
+    //setpath((char*)path.path_to_config().c_str());
+    setpath((char*)"./config.xml");
     this->load(pathtofile);
     /* loads default document to memory */
     this->loadDefaultDoc();
@@ -96,6 +98,11 @@ void Model::save()
 }
 
 /* ----------------------------------------- */
+
+void Model::write_default(char* configpath)
+{
+    save((char*)configpath, defaultDoc);
+}
 
 /*save alternative config*/
 void Model::save(char* altfile,xmlDocPtr doc)

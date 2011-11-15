@@ -8,6 +8,7 @@ namespace MPD
        mp_Conn = &p_conn; 
        mp_Status = NULL;
        mp_Statistics = NULL;
+       mp_Song = NULL;
     }
 
     //------------------
@@ -16,10 +17,13 @@ namespace MPD
     {
         delete mp_Statistics;
         delete mp_Status;
+        delete mp_Song;
     }
 
     //------------------
-
+    // TODO: Unclutter.
+    //------------------
+ 
     void NotifyData::update_status(void)
     {
         if(mp_Status != NULL)
@@ -73,4 +77,41 @@ namespace MPD
     {
         return *(mp_Statistics);
     } 
+
+    //------------------
+
+    void NotifyData::update_song(void)
+    {
+        if(mp_Song != NULL)
+        {
+            delete mp_Song;
+            mp_Song = NULL;
+        }
+
+        mpd_song * c_song = mpd_run_current_song(mp_Conn->get_connection());
+        if(c_song != NULL)
+        {
+            mp_Song = new Song(*c_song);
+        }
+        else
+        {
+            Warning("Got empty song, although being connected!");
+        }
+    }
+    
+    //------------------
+   
+    Song& NotifyData::get_song(void)
+    {
+        return *(mp_Song);
+    } 
+    
+    //------------------
+
+    void NotifyData::update_all(void)
+    {
+        update_status();
+        update_statistics();
+        update_song();
+    }
 }

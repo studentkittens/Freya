@@ -3,6 +3,7 @@
 #include "GManager/BrowserList.hh"
 #include "GManager/Statusbar.hh"
 #include "GManager/Timeslide.hh"
+#include "GManager/TitleLabel.hh"
 #include "MPD/Client.hh"
 
 using namespace std;
@@ -25,6 +26,7 @@ int main(int argc, char *argv[])
         GManager::Statusbar statusbar(client,builder);
         GManager::BrowserList browser_list(builder);
         GManager::PlaybackButtons buttons(client,builder);
+        GManager::TitleLabel title_label(client,builder);
 
         // Silly test
         client.get_notify().connect(sigc::ptr_fun(notify));

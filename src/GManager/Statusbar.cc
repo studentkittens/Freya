@@ -44,6 +44,7 @@ namespace GManager
     {
         mp_Lastdata = &data;
         MPD::Status& status = data.get_status(); 
+        MPD::Statistics& stats = data.get_statistics(); 
 
         char elapsed[MAX_TIME_BUF] = {0};
         char totaltm[MAX_TIME_BUF] = {0};
@@ -52,13 +53,15 @@ namespace GManager
         format_time(status.get_total_time(), totaltm);
 
         g_free(mp_Message);
-        mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | songs_in_db | playtime_in_total",
+        mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u | %lu",
                 status.get_audio_sample_rate(),
                 status.get_audio_bits(),
                 status.get_kbit_rate(),
                 status.get_audio_channels() == 1 ? "Mono" : "Stereo",
                 elapsed,
-                totaltm
+                totaltm,
+                stats.get_number_of_songs(),
+                stats.get_db_play_time()
                 );
 
         m_Statusbar->push(mp_Message);

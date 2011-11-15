@@ -18,7 +18,7 @@ namespace MPD
         mp_Notifier = notifier;
 
         g_assert(sync_conn.get_connection());
-        m_NData.update_status();
+        m_NData.update_all();
         
         mp_Conn = &sync_conn;
     }
@@ -30,32 +30,6 @@ namespace MPD
         if(mp_Parser!= NULL)
         {
             mpd_parser_free(mp_Parser);
-        }
-    }
-
-    //--------------------------------
-
-    void Listener::update_status(void)
-    {
-        if(is_idling())
-        {
-            leave();
-        }
-
-        if(mp_Status != NULL)
-        {
-            delete mp_Status;
-            mp_Status = NULL;
-        }
-
-        mpd_status * c_status = mpd_run_status(mp_Conn->get_connection());
-        if(c_status != NULL)
-        {
-            mp_Status = new Status(*c_status);
-        }
-        else
-        {
-            Warning("Got an empty status, although being connected!");
         }
     }
 
@@ -91,7 +65,7 @@ namespace MPD
             leave();
 
             /* Somethin changed.. update therefore */
-            m_NData.update_status();
+            m_NData.update_all();
 
             /* Iterare over the enum (this is weird) */
             for(unsigned mask = 1; /* empty */; mask = mask << 1)

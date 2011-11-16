@@ -8,9 +8,9 @@ namespace Config
 /*reads file from hdd*/
 Model::Model()
 {
-    //Initpath path;
-    //setpath((char*)path.path_to_config().c_str());
-    setpath((char*)"./config.xml");
+    Initpath path;
+    Glib::ustring pfad = (char*)path.path_to_config().c_str();
+    setpath((char*)pfad.c_str());
     this->load(pathtofile);
     /* loads default document to memory */
     this->loadDefaultDoc();
@@ -75,7 +75,7 @@ void Model::load(char* file)
     }
     else
     {
-        Error("Config.xml file not found.");
+        Error("config.xml file not found.");
     }
 
 }

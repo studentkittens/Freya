@@ -24,6 +24,10 @@ namespace GManager
             /* Widgets */
             Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
             MPD::Client * mp_Client;
+
+            /* set_active() emits a signal, this would cause infinite loops of updating,
+             * ignore signals while recv. updates from client therefore. */
+            bool ignore_updates;
     };
 }
 

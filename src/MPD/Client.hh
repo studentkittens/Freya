@@ -45,9 +45,9 @@ namespace MPD
             /**
              * @brief Get the notify sigc::signal
              *
-             * Use connect() on it. This is called always once a new event
+             * Use connect() on it. This is called always once a ne, ...w event
              * happens. See the typedef in Listener.hh for the exact signature
-             *
+             *, ...
              * @return the sigc::signal 
              */
             EventNotifier& get_notify(void);

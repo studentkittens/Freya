@@ -11,7 +11,7 @@ using namespace std;
 
 void notify(enum mpd_idle, MPD::NotifyData& data)
 {
-    cerr << "View observer was told to update." << endl;
+    //cerr << "View observer was told to update." << endl;
 }
 
 int main(int argc, char *argv[])

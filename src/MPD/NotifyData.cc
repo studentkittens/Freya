@@ -28,6 +28,7 @@ namespace MPD
     {
         if(mp_Status != NULL)
         {
+            g_printerr("<=== %d %d\n",mp_Status->get_random(),mp_Status->get_single());
             delete mp_Status;
             mp_Status = NULL;
         }
@@ -36,6 +37,7 @@ namespace MPD
         if(c_status != NULL)
         {
             mp_Status = new Status(*c_status);
+            g_printerr("===> %d %d\n",mp_Status->get_random(),mp_Status->get_single());
         }
         else
         {
@@ -110,6 +112,7 @@ namespace MPD
 
     void NotifyData::update_all(void)
     {
+        Debug("Updating all current data");
         update_status();
         update_statistics();
         update_song();

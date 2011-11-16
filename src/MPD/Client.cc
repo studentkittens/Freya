@@ -256,9 +256,7 @@ namespace MPD
         if(conn.is_connected())
         {
             go_busy();
-            Debug("Before random");
             mpd_run_random(conn.get_connection(),!(get_status()->get_random()));
-            Debug("After random");
             go_idle();
         }
     }
@@ -270,7 +268,8 @@ namespace MPD
         if(conn.is_connected())
         {
             go_busy();
-            mpd_run_single(conn.get_connection(),!(get_status()->get_random()));
+            bool iss = get_status()->get_single();
+            mpd_run_single(conn.get_connection(),!(iss));
             go_idle();
         }
     }
@@ -282,7 +281,7 @@ namespace MPD
         if(conn.is_connected())
         {
             go_busy();
-            mpd_run_consume(conn.get_connection(),!(get_status()->get_random()));
+            mpd_run_consume(conn.get_connection(),!(get_status()->get_consume()));
             go_idle();
         }
     }
@@ -294,16 +293,16 @@ namespace MPD
         if(conn.is_connected())
         {
             go_busy();
-            mpd_run_repeat(conn.get_connection(),!(get_status()->get_random()));
+            mpd_run_repeat(conn.get_connection(),!(get_status()->get_repeat()));
             go_idle();
         }
     }
 
     //--------------------
-    //
+    
     Status * Client::get_status(void)
     {
-        if(conn.is_connected())
+        if(conn.is_connected() && !listener->is_idling())
         {
             return &(listener->get_notify_data().get_status());
         }

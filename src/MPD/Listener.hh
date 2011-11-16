@@ -63,7 +63,7 @@ namespace MPD
             bool recv_parseable(void);
             gboolean io_callback(Glib::IOCondition condition);
             bool parse_response(char *line);
-            void invoke_user_callback(void);
+            void invoke_user_callback(long overwrite_events);
             void create_watch(enum mpd_async_event events);
 
             //-----------------//

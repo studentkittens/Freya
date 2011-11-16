@@ -57,15 +57,15 @@ namespace MPD
 
     //--------------------------------
 
-    void Listener::invoke_user_callback(void)
+    void Listener::invoke_user_callback(long overwrite_events = -1)
     {
-        if (idle_events != 0)
+        if(idle_events != 0)
         {
-            Debug("!!");
             /* Leave for callback - which is gonna be active */
             leave();
 
-            Debug("..");
+            if(overwrite_events != -1)
+                idle_events = (unsigned)overwrite_events;
 
             /* Somethin changed.. update therefore */
             m_NData.update_all();
@@ -116,7 +116,7 @@ namespace MPD
 
             case MPD_PARSER_PAIR:
 
-                if (g_strcmp0(mpd_parser_get_name(mp_Parser),"changed") == 0)
+                if(g_strcmp0(mpd_parser_get_name(mp_Parser),"changed") == 0)
                 {
                     const char * value = mpd_parser_get_value(mp_Parser);
                     idle_events |= mpd_idle_name_parse(value);
@@ -221,7 +221,6 @@ namespace MPD
     {
         if(is_idling() == false)
         {
-            Debug("enter idle");
             if(mpd_async_send_command(async_conn, "idle", NULL) == false)
             {
                 check_async_error();
@@ -256,7 +255,6 @@ namespace MPD
             {
                 Debug("Leaving...");
                 bool is_fatal = false;
-                enum mpd_idle new_idle_events = (enum mpd_idle)0;
 
                 /* New game - new dices */
                 io_eventmask = (enum mpd_async_event)0;
@@ -264,11 +262,11 @@ namespace MPD
                 /* Make sure no idling is running */
                 if(idle_events == 0)
                 {
-                    new_idle_events = mpd_run_noidle(mp_Conn->get_connection());
+                    mpd_run_noidle(mp_Conn->get_connection());
                 }
 
                 /* Check for errors that may happened shortly */            
-                if (new_idle_events == 0 && mpd_connection_get_error(mp_Conn->get_connection()) != MPD_ERROR_SUCCESS) 
+                if(mpd_connection_get_error(mp_Conn->get_connection()) != MPD_ERROR_SUCCESS) 
                 {
                     Error("Error while leaving idle mode: %s",mpd_connection_get_error_message(mp_Conn->get_connection()));
                     is_fatal = (mpd_connection_clear_error(mp_Conn->get_connection()) == false);
@@ -286,23 +284,23 @@ namespace MPD
             else Error("IOFunctor already disconnected");
         }
         else Warning("Cannot leave when already left (Dude!)");
-
     }
-    
+
     //--------------------------------
 
     NotifyData& Listener::get_notify_data(void)
     {
         return m_NData;
     }
-            
+
+    //--------------------------------
+
     void Listener::force_update(void)
     {
         // TODO: this is more like a hack
-        idle_events = MPD_IDLE_PLAYER | MPD_IDLE_MIXER;
-        leave();
+        idle_events = (enum mpd_idle)1;
         mpd_run_noidle(mp_Conn->get_connection());
-        invoke_user_callback();
+        invoke_user_callback(UINT_MAX);
     }
 
     //--------------------------------

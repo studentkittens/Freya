@@ -302,7 +302,7 @@ namespace MPD
     
     Status * Client::get_status(void)
     {
-        if(conn.is_connected() && !listener->is_idling())
+        if(conn.is_connected())
         {
             return &(listener->get_notify_data().get_status());
         }
@@ -318,6 +318,26 @@ namespace MPD
         {
             listener->force_update();
         }
+    }
+
+    //--------------------
+    
+    void Client::set_volume(unsigned vol)
+    {
+        if(conn.is_connected())
+        {
+            go_busy();
+            mpd_run_set_volume(conn.get_connection(),vol);
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    unsigned Client::get_volume(void)
+    {
+        Status * st = this->get_status();
+        return (st) ? st->get_volume() : 0;
     }
 
     //--------------------

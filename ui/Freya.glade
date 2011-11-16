@@ -27,6 +27,11 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-refresh</property>
   </object>
+  <object class="GtkImage" id="image_single">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-jump-to</property>
+  </object>
   <object class="GtkWindow" id="FreyaMainWindow">
     <property name="width_request">650</property>
     <property name="height_request">510</property>
@@ -228,7 +233,7 @@
                     <property name="xalign">1</property>
                     <property name="left_padding">4</property>
                     <child>
-                      <object class="GtkVolumeButton" id="volumebutton">
+                      <object class="GtkVolumeButton" id="volume_button">
                         <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -770,11 +775,6 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-info</property>
-  </object>
-  <object class="GtkImage" id="image_single">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

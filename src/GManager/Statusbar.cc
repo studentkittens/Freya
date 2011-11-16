@@ -27,7 +27,7 @@ namespace GManager
 
     void Statusbar::format_time(unsigned time, char buffer[])
     {
-        sprintf(buffer,"%d:%d",time/60,time%60);
+        sprintf(buffer,"%d:%02d",time/60,time%60);
     }
 
     /* ------------------ */

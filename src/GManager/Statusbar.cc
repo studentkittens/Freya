@@ -1,5 +1,6 @@
 #include "Statusbar.hh"
 #include "../Log/Writer.hh"
+#include "../Utils/Utils.hh"
 
 #include <cstring>
 
@@ -10,18 +11,9 @@ namespace GManager
     Statusbar::Statusbar(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
     {
         client.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
-
-        try
-        {
-            builder->get_widget("statusbar",m_Statusbar);
-            Gtk::manage(m_Statusbar);
-            m_Statusbar->push("N/C");
-            mp_Message = NULL;
-        }
-        catch(const Gtk::BuilderError& e)
-        {
-            Error("BuilderFailure: %s",e.what().c_str());
-        }
+        BUILDER_GET(builder,"statusbar",m_Statusbar);
+        m_Statusbar->push("N/C");
+        mp_Message = NULL;
     }
 
     /* ------------------ */
@@ -30,7 +22,7 @@ namespace GManager
     {
         g_free(mp_Message);
     }
-    
+
     /* ------------------ */
 
     void Statusbar::format_time(unsigned time, char buffer[])
@@ -52,7 +44,9 @@ namespace GManager
         format_time(status.get_elapsed_time(),elapsed);
         format_time(status.get_total_time(), totaltm);
 
+        /* Free previous message, does nothing on NULL */
         g_free(mp_Message);
+
         mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u | %lu",
                 status.get_audio_sample_rate(),
                 status.get_audio_bits(),

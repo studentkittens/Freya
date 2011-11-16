@@ -22,7 +22,7 @@ namespace GManager
             void on_clicked_repeat(void);
 
             /* Widgets */
-            Gtk::Button *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
+            Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
             MPD::Client * mp_Client;
     };
 }

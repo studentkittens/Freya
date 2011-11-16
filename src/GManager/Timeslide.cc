@@ -1,22 +1,14 @@
 #include "Timeslide.hh"
 #include "../Log/Writer.hh"
+#include "../Utils/Utils.hh"
 
 namespace GManager
 {
     Timeslide::Timeslide(const Glib::RefPtr<Gtk::Builder>& builder)
     {
-        try
-        {
-            builder->get_widget("time_slide",m_Timeslide);
-            Gtk::manage(m_Timeslide);
-            m_Timeslide->set_range(0.0,100.0);
-            Glib::signal_timeout().connect(sigc::mem_fun(*this,&Timeslide::tick), 1000);
-
-        }
-        catch(const Gtk::BuilderError& e)
-        {
-            Error("BuilderFailure: %s",e.what().c_str());
-        }
+        BUILDER_GET(builder,"time_slide",m_Timeslide);
+        m_Timeslide->set_range(0.0,100.0);
+        Glib::signal_timeout().connect(sigc::mem_fun(*this,&Timeslide::tick), 1000);
     }
 
     /* ------------------ */

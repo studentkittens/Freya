@@ -1,4 +1,5 @@
 #include "StatusIcons.hh"
+#include "../Utils/Utils.hh"
 
 namespace GManager
 {
@@ -10,23 +11,17 @@ namespace GManager
             mp_Client = &client;
             mp_Client->get_notify().connect(sigc::mem_fun(*this,&Statusicons::on_client_update));
 
-            Debug("Huh?!");
-
-            builder->get_widget("icon_random",mp_Random);
+            BUILDER_GET(builder,"icon_random",mp_Random);
             mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_random));
-            Gtk::manage(mp_Random);
 
-            builder->get_widget("icon_single",mp_Single);
+            BUILDER_GET(builder,"icon_single",mp_Single);
             mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_single));
-            Gtk::manage(mp_Random);
 
-            builder->get_widget("icon_repeat",mp_Repeat);
+            BUILDER_GET(builder,"icon_repeat",mp_Repeat);
             mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_repeat));
-            Gtk::manage(mp_Random);
 
-            builder->get_widget("icon_consume",mp_Consume);
+            BUILDER_GET(builder,"icon_consume",mp_Consume);
             mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_consume));
-            Gtk::manage(mp_Random);
         }
         catch(const Gtk::BuilderError& e)
         {
@@ -34,14 +29,15 @@ namespace GManager
         }
     }
 
-    Statusicons::~Statusicons()
-    {
-        
-    }
+    Statusicons::~Statusicons() { }
 
     void Statusicons::on_client_update(enum mpd_idle, MPD::NotifyData& data)
     {
-        // TODO
+        MPD::Status& status = data.get_status();
+        mp_Consume->set_active(status.get_consume()); 
+        mp_Random->set_active(status.get_random()); 
+        mp_Repeat->set_active(status.get_repeat()); 
+        mp_Single->set_active(status.get_single()); 
     }
 
     void Statusicons::on_clicked_random(void)
@@ -49,14 +45,17 @@ namespace GManager
        Debug("Toggle random");
        mp_Client->toggle_random(); 
     }
+
     void Statusicons::on_clicked_single(void)
     {
        mp_Client->toggle_single(); 
     }
+
     void Statusicons::on_clicked_consume(void)
     {
        mp_Client->toggle_consume(); 
     }
+
     void Statusicons::on_clicked_repeat(void)
     {
        mp_Client->toggle_repeat(); 

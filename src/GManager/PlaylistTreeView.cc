@@ -1,5 +1,6 @@
 #include "PlaylistTreeView.hh"
 #include "../Log/Writer.hh"
+#include "../Utils/Utils.hh"
 
 namespace GManager
 {
@@ -40,18 +41,9 @@ namespace GManager
             pColumn->set_reorderable();
         }
 
-        try
-        {
-            Gtk::Box * main_box = NULL;
-            builder->get_widget("main_box",main_box);
-            Gtk::manage(main_box);
-            main_box->pack_start(*this,true,true);
-        }
-        catch(const Gtk::BuilderError& e)
-        {
-            Error("BuilderFailure: %s",e.what().c_str());
-        }
-
+        Gtk::Box * main_box;
+        BUILDER_GET(builder,"main_box",main_box);
+        main_box->pack_start(*this,true,true);
         show_all();
     }
 

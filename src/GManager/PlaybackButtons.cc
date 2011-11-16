@@ -21,9 +21,7 @@ namespace GManager
 
     //----------------------------
 
-    PlaybackButtons::~PlaybackButtons(void)
-    {
-    }
+    PlaybackButtons::~PlaybackButtons(void) {}
 
     //----------------------------
 

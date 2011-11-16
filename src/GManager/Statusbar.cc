@@ -32,32 +32,35 @@ namespace GManager
 
     /* ------------------ */
 
-    void Statusbar::on_client_update(enum mpd_idle, MPD::NotifyData& data)
+    void Statusbar::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        mp_Lastdata = &data;
-        MPD::Status& status = data.get_status(); 
-        MPD::Statistics& stats = data.get_statistics(); 
+        if(event & (MPD_IDLE_DATABASE | MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
+        {
+            mp_Lastdata = &data;
+            MPD::Status& status = data.get_status(); 
+            MPD::Statistics& stats = data.get_statistics(); 
 
-        char elapsed[MAX_TIME_BUF] = {0};
-        char totaltm[MAX_TIME_BUF] = {0};
+            char elapsed[MAX_TIME_BUF] = {0};
+            char totaltm[MAX_TIME_BUF] = {0};
 
-        format_time(status.get_elapsed_time(),elapsed);
-        format_time(status.get_total_time(), totaltm);
+            format_time(status.get_elapsed_time(),elapsed);
+            format_time(status.get_total_time(), totaltm);
 
-        /* Free previous message, does nothing on NULL */
-        g_free(mp_Message);
+            /* Free previous message, does nothing on NULL */
+            g_free(mp_Message);
 
-        mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u | %lu",
-                status.get_audio_sample_rate(),
-                status.get_audio_bits(),
-                status.get_kbit_rate(),
-                status.get_audio_channels() == 1 ? "Mono" : "Stereo",
-                elapsed,
-                totaltm,
-                stats.get_number_of_songs(),
-                stats.get_db_play_time()
-                );
+            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u | %lu",
+                    status.get_audio_sample_rate(),
+                    status.get_audio_bits(),
+                    status.get_kbit_rate(),
+                    status.get_audio_channels() == 1 ? "Mono" : "Stereo",
+                    elapsed,
+                    totaltm,
+                    stats.get_number_of_songs(),
+                    stats.get_db_play_time()
+                    );
 
-        m_Statusbar->push(mp_Message);
+            m_Statusbar->push(mp_Message);
+        }
     }
 }

@@ -18,18 +18,21 @@ namespace GManager
 
     //----------------
 
-    void TitleLabel::on_client_update(enum mpd_idle, MPD::NotifyData& data)
+    void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        MPD::Song& current_song = data.get_song();
-        char * title_string = g_markup_printf_escaped("<b>%s</b>",
-                current_song.get_tag(MPD_TAG_TITLE,0));
-        char * artist_album = g_markup_printf_escaped("by %s on %s",
-                current_song.get_tag(MPD_TAG_ARTIST,0),
-                current_song.get_tag(MPD_TAG_ALBUM,0));
+        if(event & (MPD_IDLE_PLAYER))
+        {
+            MPD::Song& current_song = data.get_song();
+            char * title_string = g_markup_printf_escaped("<b>%s</b>",
+                    current_song.get_tag(MPD_TAG_TITLE,0));
+            char * artist_album = g_markup_printf_escaped("by %s on %s",
+                    current_song.get_tag(MPD_TAG_ARTIST,0),
+                    current_song.get_tag(MPD_TAG_ALBUM,0));
 
-        mp_TitleLabel->set_markup_with_mnemonic(title_string); 
-        mp_ArtistAlbumLabel->set_markup_with_mnemonic(artist_album); 
-        g_free(artist_album);
-        g_free(title_string);
+            mp_TitleLabel->set_markup_with_mnemonic(title_string); 
+            mp_ArtistAlbumLabel->set_markup_with_mnemonic(artist_album); 
+            g_free(artist_album);
+            g_free(title_string);
+        }
     }
 }

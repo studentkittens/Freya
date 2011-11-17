@@ -14,19 +14,25 @@ namespace GManager
         mp_Client = &client;
     }
 
+    // -------------------
+
     Volumebutton::~Volumebutton(void) {}
 
+    // -------------------
 
     void Volumebutton::on_client_updates(enum mpd_idle event, MPD::NotifyData& data)
     {
-        if(event & MPD_IDLE_MIXER)
+        if(event & (MPD_IDLE_MIXER))
         {
+            /* Make sure the signal emitted by set_value() is ignored */
             ignore_signal = true;
             mp_VButton->set_value(data.get_status().get_volume() / 100.0);
             ignore_signal = false;
         }
     }
 
+    // -------------------
+    
     void Volumebutton::on_user_change(double val)
     {
         if(!ignore_signal) mp_Client->set_volume(mp_VButton->get_value() * 100);

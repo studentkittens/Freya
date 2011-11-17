@@ -15,7 +15,7 @@ namespace GManager
 
         private:
 
-            void tick(enum mpd_idle event, MPD::NotifyData& data);
+            void tick(double time);
 
             Gtk::Scale * m_Timeslide;
 

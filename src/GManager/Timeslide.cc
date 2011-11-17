@@ -17,8 +17,8 @@ namespace GManager
 
     /* ------------------ */
 
-    void Timeslide::tick(enum mpd_idle event, MPD::NotifyData& data)
+    void Timeslide::tick(double time)
     {
-        m_Timeslide->set_value(m_Timeslide->get_value() + 1.0);
+        m_Timeslide->set_value(time);
     }
 }

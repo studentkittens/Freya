@@ -9,26 +9,28 @@
  * like the statusbar. In short: it is some sort of signalproxy
  */
 
-namespace GManager 
+typedef sigc::signal<void,int> TimerNotifier;
+
+namespace GManager
 {
     class ClientTimerProxy 
     {
         public:
 
-            ClientTimerProxy(MPD::Client& client);
+            ClientTimerProxy(void);
             ~ClientTimerProxy(void);
-            EventNotifier& get_notify(void); 
+            TimerNotifier& get_notify(void); 
+            
+            void pause(void);
+            void reset(void);
 
         private:
 
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            double timer;
+            bool count_up;
+
             gboolean on_interval(void);
-
-            EventNotifier signal_proxy;
-            MPD::Client * mp_Client;
-
-            enum mpd_idle mp_Event;
-            MPD::NotifyData * mp_Data;
+            TimerNotifier signal_proxy;
     };
 }
 

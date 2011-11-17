@@ -11,18 +11,13 @@
 
 using namespace std;
 
-void notify(enum mpd_idle, MPD::NotifyData& data)
-{
-    //cerr << "View observer was told to update." << endl;
-}
-
 int main(int argc, char *argv[])
 {
     Gtk::Main kit(argc,argv);
     try
     {
         MPD::Client client;
-        GManager::ClientTimerProxy proxy(client); 
+        GManager::ClientTimerProxy proxy; 
 
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
         GManager::PlaylistTreeView playlist_queue(builder);
@@ -34,9 +29,7 @@ int main(int argc, char *argv[])
         GManager::Statusicons status_icons(client,builder);
         GManager::Volumebutton vol_button(client,builder);
 
-        // Silly test
-        client.get_notify().connect(sigc::ptr_fun(notify));
-
+        /* Send a good morning to all widgets */
         client.force_update();
 
         Gtk::Window * main_window = NULL;

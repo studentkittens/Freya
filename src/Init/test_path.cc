@@ -6,7 +6,7 @@
 
 int main()
 {
-    Initpath bla;
+    Init::Initpath bla;
     return EXIT_SUCCESS;
 }
 

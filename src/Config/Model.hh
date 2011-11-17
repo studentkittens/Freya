@@ -23,7 +23,7 @@ public:
     void write_default();
     void write_default(char*);
 
-    /*xml document getter*/
+    /*xml document getter ieeeeee*/
     xmlDocPtr getDocPtr();
     xmlDocPtr getDefaultDocPtr();
 

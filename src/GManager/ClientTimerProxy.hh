@@ -9,7 +9,7 @@
  * like the statusbar. In short: it is some sort of signalproxy
  */
 
-typedef sigc::signal<void,int> TimerNotifier;
+typedef sigc::signal<void,double> TimerNotifier;
 
 namespace GManager
 {
@@ -20,9 +20,11 @@ namespace GManager
             ClientTimerProxy(void);
             ~ClientTimerProxy(void);
             TimerNotifier& get_notify(void); 
-            
+           
+            void play(void); 
             void pause(void);
             void reset(void);
+            void set(double val);
 
         private:
 

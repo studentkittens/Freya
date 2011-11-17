@@ -36,6 +36,9 @@ namespace MPD
             void toggle_repeat(void);
             void toggle_single(void);
 
+            
+            void playback_seek(unsigned song_id, unsigned abs_time);
+
             /**
              * @brief set the volume
              * 

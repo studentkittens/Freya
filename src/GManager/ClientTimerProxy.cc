@@ -1,5 +1,8 @@
 #include "ClientTimerProxy.hh"
 
+#define INTERVAL 500//ms
+#define STEPSIZE (INTERVAL/1000.0)
+
 namespace GManager
 {
     ClientTimerProxy::ClientTimerProxy(void) : signal_proxy()
@@ -7,7 +10,7 @@ namespace GManager
         timer = 0.0;
         count_up = true;
         
-        Glib::signal_timeout().connect(sigc::mem_fun(*this,&ClientTimerProxy::on_interval),500);
+        Glib::signal_timeout().connect(sigc::mem_fun(*this,&ClientTimerProxy::on_interval),INTERVAL);
     }
 
     // -------------
@@ -21,7 +24,7 @@ namespace GManager
     {
         if(count_up)
         {
-            timer += 0.5f;
+            timer += STEPSIZE; 
             signal_proxy.emit(timer);
         }
         return TRUE;
@@ -38,9 +41,23 @@ namespace GManager
 
     void ClientTimerProxy::pause(void)
     {
-        count_up = !count_up;
+        count_up = false;
     }
 
+    // -------------
+    
+    void ClientTimerProxy::play(void)
+    {
+        count_up = true;
+    }
+
+    // -------------
+    
+    void ClientTimerProxy::set(double val)
+    {
+        timer = val;
+    }
+     
     // -------------
 
     TimerNotifier& ClientTimerProxy::get_notify(void)

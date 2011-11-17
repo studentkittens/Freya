@@ -329,6 +329,18 @@ namespace MPD
 
     //--------------------
     
+    void Client::playback_seek(unsigned song_id, unsigned abs_time)
+    {
+        if(conn.is_connected())
+        {
+            go_busy();
+            mpd_run_seek_id(conn.get_connection(),song_id,abs_time);
+            go_idle();
+        }
+    }
+    
+    //--------------------
+    
     void Client::set_volume(unsigned vol)
     {
         if(conn.is_connected())

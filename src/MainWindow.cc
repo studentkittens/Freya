@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
         GManager::PlaylistTreeView playlist_queue(builder);
-        GManager::Timeslide timeslide(proxy,builder);
+        GManager::Timeslide timeslide(proxy,client,builder);
         GManager::Statusbar statusbar(proxy,client,builder);
         GManager::BrowserList browser_list(builder);
         GManager::PlaybackButtons buttons(client,builder);

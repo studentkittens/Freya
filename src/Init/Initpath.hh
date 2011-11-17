@@ -15,6 +15,8 @@ private:
     void create_config();
     void create_dir();
     void dir_is_avaiable();
+    char* configfile;
+    char* configdir;
 };
 
 #endif /* end of include guard: INIT_SP0811FS */

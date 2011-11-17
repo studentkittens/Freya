@@ -49,13 +49,16 @@ namespace MPD
              */
             Status * get_status(void);
 
+            // TODO: might get removed, and fetched from the MPD::Queue instead
+            Song get_song_at_id(unsigned id);
+
             /**
              * @brief Get the notify sigc::signal
              *
              * Use connect() on it. This is called always once a ne, ...w event
              * happens. See the typedef in Listener.hh for the exact signature
              *, ...
-             * @return the sigc::signal 
+             * @return the sigc::signal
              */
             EventNotifier& get_notify(void);
 

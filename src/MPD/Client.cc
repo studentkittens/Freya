@@ -342,4 +342,13 @@ namespace MPD
 
     //--------------------
 
+    Song get_song_at_id(unsigned id)
+    {
+        if(conn.is_connected())
+        {
+            go_busy();
+            go_idle();
+        }
+    }
+
 } // END NAMESPACE 

@@ -22,7 +22,6 @@ namespace GManager
         if(event & MPD_IDLE_MIXER)
         {
             ignore_signal = true;
-        g_printerr("<- %d\n",data.get_status().get_volume());
             mp_VButton->set_value(data.get_status().get_volume() / 100.0);
             ignore_signal = false;
         }
@@ -30,7 +29,6 @@ namespace GManager
 
     void Volumebutton::on_user_change(double val)
     {
-        g_printerr("-> %f\n",mp_VButton->get_value());
         if(!ignore_signal) mp_Client->set_volume(mp_VButton->get_value() * 100);
     }
 }

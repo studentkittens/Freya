@@ -2,7 +2,7 @@
 #include "../Config/Handler.hh"
 #include "../Config/defaultcfg.inl"
 #include <string.h>
-
+#include "../Log/Writer.hh"
 
 Initpath::Initpath()
 {
@@ -22,6 +22,7 @@ Initpath::~Initpath()
     g_free(configfile);
 }
 
+
 /* return config dir path as ustring */
 Glib::ustring Initpath::get_config_dir()
 {
@@ -29,12 +30,14 @@ Glib::ustring Initpath::get_config_dir()
     return retv;
 }
 
+
 /* return path to config */
 Glib::ustring Initpath::path_to_config()
 {
     Glib::ustring retv = Glib::ustring(get_config_dir())+ (char*)"/config.xml";
     return retv;
 }
+
 
 /*check if config dir an file is avaiable, if not, try to create */
 void Initpath::dir_is_avaiable()
@@ -45,11 +48,11 @@ void Initpath::dir_is_avaiable()
         {
             if (!g_access( configfile,W_OK|R_OK))
             {
-                printf("%s config avaiable and read/writeable.\n", configfile);
+                Info("%s config succesfully read.\n", configfile);
             }
             else
             {
-                printf("%s config read/write permission problem.\n",configfile);
+                Warning("%s probably a permission problem.\n",configfile);
             }
         }
         else
@@ -75,11 +78,11 @@ void Initpath::create_config()
     {
         fwrite (buffer , 1 , strlen(buffer) , file );
         fclose (file);
-        printf("config created. %s\n", configfile);
+        Success("config %s created.\n", configfile);
     }
     else
     {
-        printf("AAAAAAAAAAAAAHHHHHHHHHH unable to write file!!!%s\n",configfile);
+        Error("unable to write %s.\n",configfile);
     }
 }
 
@@ -89,12 +92,11 @@ void Initpath::create_dir()
 {
     if (!g_mkdir_with_parents(configdir,0755))
     {
-        printf("dir %s succesfully created.\n",configdir);
+        Success("dir %s, succesfully created.\n",configdir);
     }
     else
     {
-//        Warning("%s",strerror(errno));
-        perror("Cannot create ~/.config/freya");
+       Error("cannot create ~/.config/freya %s",strerror(errno));
     }
 }
 

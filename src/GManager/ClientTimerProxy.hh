@@ -11,16 +11,24 @@
 
 namespace GManager 
 {
-    class Heartbeat
+    class ClientTimerProxy 
     {
         public:
 
-            Heartbeat(MPD::Client& client);
-            ~Heartbeat(void);
+            ClientTimerProxy(MPD::Client& client);
+            ~ClientTimerProxy(void);
+            EventNotifier& get_notify(void); 
 
         private:
 
+            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            gboolean on_interval(void);
+
             EventNotifier signal_proxy;
+            MPD::Client * mp_Client;
+
+            enum mpd_idle mp_Event;
+            MPD::NotifyData * mp_Data;
     };
 }
 

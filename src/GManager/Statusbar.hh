@@ -4,6 +4,7 @@
 #include <gtkmm.h>
 
 #include "../MPD/Client.hh"
+#include "ClientTimerProxy.hh"
 
 namespace GManager
 {
@@ -11,7 +12,7 @@ namespace GManager
     {
         public:
 
-            Statusbar(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+            Statusbar(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
             ~Statusbar();
 
         private:

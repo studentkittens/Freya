@@ -17,6 +17,14 @@ namespace GManager
     TitleLabel::~TitleLabel() {}
 
     //----------------
+    
+    void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
+    {
+        // TODO
+        // mp_Client->get_song_at_id(data.get_status().get_
+    }
+
+    //----------------
 
     void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {

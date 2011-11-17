@@ -7,6 +7,7 @@
 #include "GManager/StatusIcons.hh"
 #include "GManager/Volumebutton.hh"
 #include "MPD/Client.hh"
+#include "GManager/ClientTimerProxy.hh"
 
 using namespace std;
 
@@ -21,11 +22,12 @@ int main(int argc, char *argv[])
     try
     {
         MPD::Client client;
+        GManager::ClientTimerProxy proxy(client); 
 
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
         GManager::PlaylistTreeView playlist_queue(builder);
-        GManager::Timeslide timeslide(builder);
-        GManager::Statusbar statusbar(client,builder);
+        GManager::Timeslide timeslide(proxy,builder);
+        GManager::Statusbar statusbar(proxy,client,builder);
         GManager::BrowserList browser_list(builder);
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);

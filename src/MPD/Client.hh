@@ -16,6 +16,7 @@ namespace MPD
 
             void connect(void);
             void disconnect(void);
+            bool is_connected(void);
 
             /* Go to next song */
             bool send_command(const char * command);
@@ -50,7 +51,7 @@ namespace MPD
             Status * get_status(void);
 
             // TODO: might get removed, and fetched from the MPD::Queue instead
-            Song get_song_at_id(unsigned id);
+            Song * get_song_at_id(unsigned id);
 
             /**
              * @brief Get the notify sigc::signal

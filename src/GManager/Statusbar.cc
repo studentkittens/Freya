@@ -8,9 +8,9 @@
 
 namespace GManager
 {
-    Statusbar::Statusbar(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Statusbar::Statusbar(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
     {
-        client.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
+        tproxy.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
         BUILDER_GET(builder,"statusbar",m_Statusbar);
         m_Statusbar->push("N/C");
         mp_Message = NULL;
@@ -34,7 +34,7 @@ namespace GManager
 
     void Statusbar::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        if(event & (MPD_IDLE_DATABASE | MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
+        if(1 || event & (MPD_IDLE_DATABASE | MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
         {
             mp_Lastdata = &data;
             MPD::Status& status = data.get_status(); 

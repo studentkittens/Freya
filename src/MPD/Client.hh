@@ -36,6 +36,13 @@ namespace MPD
             void toggle_single(void);
 
             /**
+             * @brief set the volume
+             * 
+             * @param vol Must be in [0-100]
+             */
+            void set_volume(unsigned vol);
+            unsigned get_volume(void);
+            /**
              * @brief Get the current MPD::Status
              *
              * @return A reference to it. Do not modify.

@@ -5,6 +5,7 @@
 #include "GManager/Timeslide.hh"
 #include "GManager/TitleLabel.hh"
 #include "GManager/StatusIcons.hh"
+#include "GManager/Volumebutton.hh"
 #include "MPD/Client.hh"
 
 using namespace std;
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
+        GManager::Volumebutton vol_button(client,builder);
 
         // Silly test
         client.get_notify().connect(sigc::ptr_fun(notify));

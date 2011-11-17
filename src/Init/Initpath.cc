@@ -2,85 +2,105 @@
 #include "../Config/Handler.hh"
 #include "../Config/defaultcfg.inl"
 #include <string.h>
+#include "../Log/Writer.hh"
 
-
-Initpath::Initpath()
+namespace Init
 {
-    dir_is_avaiable();
-}
 
-Initpath::~Initpath()
-{}
-
-Glib::ustring Initpath::get_config_dir()
-{
-    Glib::ustring retv = Glib::ustring(g_get_user_config_dir()) + (char*)"/freya";
-    return retv;
-}
-
-
-Glib::ustring Initpath::path_to_config()
-{
-    Glib::ustring retv = Glib::ustring(get_config_dir().c_str() )+ (char*)"/config.xml";
-    return retv;
-}
-
-void Initpath::dir_is_avaiable()
-{
-    if (g_file_test(get_config_dir().c_str(), G_FILE_TEST_EXISTS) && g_file_test(get_config_dir().c_str(), G_FILE_TEST_IS_DIR))
+    Initpath::Initpath()
     {
-        if (g_file_test(path_to_config().c_str(), G_FILE_TEST_IS_REGULAR))
+        /* setting configdir member */
+        configdir = g_strdup_printf("%s",(char*)get_config_dir().c_str());
+
+        /* setting configfile member */
+        configfile = g_strdup_printf("%s",(char*)path_to_config().c_str());
+
+        dir_is_avaiable();
+    }
+
+
+    Initpath::~Initpath()
+    {
+        g_free(configdir);
+        g_free(configfile);
+    }
+
+
+    /* return config dir path as ustring */
+    Glib::ustring Initpath::get_config_dir()
+    {
+        Glib::ustring retv = Glib::ustring(g_get_user_config_dir()) + (char*)"/freya";
+        return retv;
+    }
+
+
+    /* return path to config */
+    Glib::ustring Initpath::path_to_config()
+    {
+        Glib::ustring retv = Glib::ustring(get_config_dir())+ (char*)"/config.xml";
+        return retv;
+    }
+
+
+    /*check if config dir an file is avaiable, if not, try to create */
+    void Initpath::dir_is_avaiable()
+    {
+        if (g_file_test(configdir, G_FILE_TEST_EXISTS) && g_file_test(configdir, G_FILE_TEST_IS_DIR))
         {
-            if (!g_access( path_to_config().c_str(),W_OK|R_OK))
+            if (g_file_test(configfile, G_FILE_TEST_IS_REGULAR))
             {
-                printf("%s config avaiable and read/writeable.\n", path_to_config().c_str());
+                if (!g_access( configfile,W_OK|R_OK))
+                {
+                    Info("%s config succesfully read.\n", configfile);
+                }
+                else
+                {
+                    Warning("%s probably a permission problem.\n",configfile);
+                }
             }
             else
             {
-                printf("%s config read/write permission problem.\n",path_to_config().c_str());
+                create_config();
             }
         }
         else
         {
+            create_dir();
             create_config();
         }
     }
-    else
-    {
-        create_dir();
-        create_config();
-    }
-}
 
-void Initpath::create_config()
-{
 
-    Glib::ustring path = get_config_dir()+"/config.xml";
+    /*creates config.xml inside config dir */
+    void Initpath::create_config()
+    {
+        FILE * file;
+        char* buffer = (char*)Config::defaultconfig.c_str();
+        file = fopen ( configfile , "w" );
+        if (NULL!=file)
+        {
+            fwrite (buffer , 1 , strlen(buffer) , file );
+            fclose (file);
+            Success("config %s created.\n", configfile);
+        }
+        else
+        {
+            Error("unable to write %s.\n",configfile);
+        }
+    }
 
-    FILE * file;
-    char* buffer = (char*)Config::defaultconfig.c_str();
-    file = fopen ( (char*)path.c_str() , "w" );
-    if (NULL!=file)
-    {
-        fwrite (buffer , 1 , strlen(buffer) , file );
-        fclose (file);
-        printf("config created. %s\n", path_to_config().c_str());
-    }
-    else
-    {
-        printf("AAAAAAAAAAAAAHHHHHHHHHH unable to write file!!!%s\n",path.c_str());
-    }
-}
 
-void Initpath::create_dir()
-{
-    if (!g_mkdir_with_parents(get_config_dir().c_str(),0755))
+    /* creates dir for config.xml */
+    void Initpath::create_dir()
     {
-        printf("dir %s succesfully created.\n",get_config_dir().c_str());
-    }
-    else
-    {
-        perror("Cannot create ~/.config/freya");
+        if (!g_mkdir_with_parents(configdir,0755))
+        {
+            Success("dir %s, succesfully created.\n",configdir);
+        }
+        else
+        {
+            Error("cannot create ~/.config/freya %s",strerror(errno));
+        }
     }
 }
 

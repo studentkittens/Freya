@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include "Initpath.hh"
-#include <glibmm.h>
-
 
 
 int main()

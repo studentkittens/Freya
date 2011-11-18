@@ -49,7 +49,7 @@ namespace GManager
             /* Free previous message, does nothing on NULL */
             g_free(mp_Message);
 
-            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u | %lu",
+            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %lu",
                     status.get_audio_sample_rate(),
                     status.get_audio_bits(),
                     status.get_kbit_rate(),

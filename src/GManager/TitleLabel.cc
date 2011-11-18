@@ -31,11 +31,15 @@ namespace GManager
         if(event & (MPD_IDLE_PLAYER))
         {
             MPD::Song& current_song = data.get_song();
-            char * title_string = g_markup_printf_escaped("<b>%s</b>",
-                    current_song.get_tag(MPD_TAG_TITLE,0));
-            char * artist_album = g_markup_printf_escaped("by %s on %s",
+            char * title_string = g_markup_printf_escaped("<b>%s</b> (Track %s)",
+                    current_song.get_tag(MPD_TAG_TITLE,0),
+                    current_song.get_tag(MPD_TAG_TRACK,0)
+                    );
+            char * artist_album = g_markup_printf_escaped("By %s on %s (%s)",
                     current_song.get_tag(MPD_TAG_ARTIST,0),
-                    current_song.get_tag(MPD_TAG_ALBUM,0));
+                    current_song.get_tag(MPD_TAG_ALBUM,0),
+                    current_song.get_tag(MPD_TAG_DATE,0)
+                    );
 
             mp_TitleLabel->set_markup_with_mnemonic(title_string); 
             mp_ArtistAlbumLabel->set_markup_with_mnemonic(artist_album); 

@@ -84,10 +84,18 @@ namespace GManager
             /* Free previous message, does nothing on NULL */
             g_free(mp_Message);
 
+            // TODO: this is wrong. needs to be fixed later..
             unsigned long db_play_time = stats.get_db_play_time();
             unsigned long pt_days    = db_play_time / (60 * 60 * 24);
-            unsigned long pt_hours   = (db_play_time / (60 * 60)) % pt_days;
-            unsigned long pt_minutes = (db_play_time / 60) % pt_hours;
+            
+            unsigned long pt_hours   = 0;
+            if(pt_days != 0)
+                pt_hours = (db_play_time / (60 * 60)) % pt_days;
+
+            unsigned long pt_minutes = 0;
+            if(pt_hours != 0)
+                pt_minutes = (db_play_time / 60) % pt_hours;
+
             unsigned long pt_seconds = db_play_time % 60;
 
             mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %lu days %lu hours %lu:%lu total playtime",

@@ -21,6 +21,8 @@ namespace GManager
             bool ignore_signal;
             MPD::Client * mp_Client;
             Gtk::VolumeButton * mp_VButton;
+
+            Glib::Timer m_Timerguard;
     };
 }
 

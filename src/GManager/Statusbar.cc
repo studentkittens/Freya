@@ -8,12 +8,17 @@
 
 namespace GManager
 {
-    Statusbar::Statusbar(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Statusbar::Statusbar(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
     {
-        client.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
+
         BUILDER_GET(builder,"statusbar",m_Statusbar);
-        m_Statusbar->push("N/C");
+        m_Statusbar->set_text("N/C");
+
         mp_Message = NULL;
+        mp_Proxy = &tproxy;
+
+        client.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
+        mp_Proxy->get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
     }
 
     /* ------------------ */
@@ -27,7 +32,7 @@ namespace GManager
 
     void Statusbar::format_time(unsigned time, char buffer[])
     {
-        sprintf(buffer,"%d:%02d",time/60,time%60);
+        g_sprintf(buffer,"%d:%02d",time/60,time%60);
     }
 
     /* ------------------ */
@@ -37,19 +42,55 @@ namespace GManager
         if(event & (MPD_IDLE_DATABASE | MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
         {
             mp_Lastdata = &data;
+            MPD::Status& status = data.get_status();
+            mp_Proxy->set(status.get_elapsed_time());
+            switch(status.get_state())
+            {
+                case MPD_STATE_PLAY:
+                    mp_Proxy->play();
+                    break;
+                case MPD_STATE_STOP:
+                case MPD_STATE_PAUSE:
+                    mp_Proxy->pause();
+                    break;
+                case MPD_STATE_UNKNOWN:
+                default:
+                    break;
+            }
+            do_update_message(data);
+        }
+    }
+    
+    /* ------------------ */
+
+    void Statusbar::on_heartbeat(double time)
+    {
+        do_update_message(*mp_Lastdata);
+    }
+
+    /* ------------------ */
+
+    void Statusbar::do_update_message(MPD::NotifyData& data)
+    {
             MPD::Status& status = data.get_status(); 
             MPD::Statistics& stats = data.get_statistics(); 
 
             char elapsed[MAX_TIME_BUF] = {0};
             char totaltm[MAX_TIME_BUF] = {0};
 
-            format_time(status.get_elapsed_time(),elapsed);
+            format_time((unsigned)mp_Proxy->get(),elapsed);
             format_time(status.get_total_time(), totaltm);
 
             /* Free previous message, does nothing on NULL */
             g_free(mp_Message);
 
-            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u | %lu",
+            unsigned long db_play_time = stats.get_db_play_time();
+            unsigned long pt_days    = db_play_time / (60 * 60 * 24);
+            unsigned long pt_hours   = (db_play_time / (60 * 60)) % pt_days;
+            unsigned long pt_minutes = (db_play_time / 60) % pt_hours;
+            unsigned long pt_seconds = db_play_time % 60;
+
+            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %lu days %lu hours %lu:%lu total playtime",
                     status.get_audio_sample_rate(),
                     status.get_audio_bits(),
                     status.get_kbit_rate(),
@@ -57,10 +98,9 @@ namespace GManager
                     elapsed,
                     totaltm,
                     stats.get_number_of_songs(),
-                    stats.get_db_play_time()
+                    pt_days,pt_hours,pt_minutes,pt_seconds
                     );
 
-            m_Statusbar->push(mp_Message);
-        }
+            m_Statusbar->set_text(mp_Message);
     }
 }

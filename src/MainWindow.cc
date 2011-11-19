@@ -7,13 +7,9 @@
 #include "GManager/StatusIcons.hh"
 #include "GManager/Volumebutton.hh"
 #include "MPD/Client.hh"
+#include "GManager/ClientTimerProxy.hh"
 
 using namespace std;
-
-void notify(enum mpd_idle, MPD::NotifyData& data)
-{
-    //cerr << "View observer was told to update." << endl;
-}
 
 int main(int argc, char *argv[])
 {
@@ -21,20 +17,20 @@ int main(int argc, char *argv[])
     try
     {
         MPD::Client client;
+        GManager::ClientTimerProxy proxy; 
 
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
+
         GManager::PlaylistTreeView playlist_queue(builder);
-        GManager::Timeslide timeslide(builder);
-        GManager::Statusbar statusbar(client,builder);
+        GManager::Timeslide timeslide(proxy,client,builder);
+        GManager::Statusbar statusbar(proxy,client,builder);
         GManager::BrowserList browser_list(builder);
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
         GManager::Volumebutton vol_button(client,builder);
 
-        // Silly test
-        client.get_notify().connect(sigc::ptr_fun(notify));
-
+        /* Send a good morning to all widgets */
         client.force_update();
 
         Gtk::Window * main_window = NULL;

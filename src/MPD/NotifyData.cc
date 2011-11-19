@@ -110,7 +110,6 @@ namespace MPD
 
     void NotifyData::update_all(void)
     {
-        Debug("Updating all current data");
         update_status();
         update_statistics();
         update_song();

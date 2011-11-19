@@ -43,6 +43,13 @@ namespace MPD
 
     //-------------------------------
 
+    bool Client::is_connected(void)
+    {
+        return conn.is_connected();
+    }
+
+    //-------------------------------
+
     void Client::go_idle(void)
     {
         check_error();
@@ -322,6 +329,18 @@ namespace MPD
 
     //--------------------
     
+    void Client::playback_seek(unsigned song_id, unsigned abs_time)
+    {
+        if(conn.is_connected())
+        {
+            go_busy();
+            mpd_run_seek_id(conn.get_connection(),song_id,abs_time);
+            go_idle();
+        }
+    }
+    
+    //--------------------
+    
     void Client::set_volume(unsigned vol)
     {
         if(conn.is_connected())
@@ -341,5 +360,21 @@ namespace MPD
     }
 
     //--------------------
+
+    Song * Client::get_song_at_id(unsigned id)
+    {
+        Song * retv = NULL;
+        if(conn.is_connected())
+        {
+            go_busy();
+            mpd_song * new_song = mpd_run_get_queue_song_id(conn.get_connection(),id);  
+            if(new_song != NULL)
+            {
+                retv = new Song(*new_song);
+            }
+            go_idle();
+        }
+        return retv;
+    }
 
 } // END NAMESPACE 

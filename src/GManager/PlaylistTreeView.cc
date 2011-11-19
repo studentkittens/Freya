@@ -18,7 +18,7 @@ namespace GManager
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_TreeView.set_model(m_refTreeModel);
 
-        for(int i = 0; i < 42; i++)
+        for(int i = 0; i < 420; i++)
         {
             //Fill the TreeView's model
             Gtk::TreeModel::Row row = *(m_refTreeModel->append());
@@ -44,6 +44,10 @@ namespace GManager
         Gtk::Box * main_box;
         BUILDER_GET(builder,"main_box",main_box);
         main_box->pack_start(*this,true,true);
+
+        /* Misc settings to tree view */
+        m_TreeView.set_headers_clickable(true);
+
         show_all();
     }
 

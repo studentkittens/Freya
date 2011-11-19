@@ -16,9 +16,14 @@ namespace GManager
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = "Now Playing";
         row = *(m_refTreeModel->append());
-        row[m_Columns.m_col_name] = "Queue";
+        row[m_Columns.m_col_name] = "Play Queue";
+        row = *(m_refTreeModel->append());
+        row[m_Columns.m_col_name] = "Playlist";
+        row = *(m_refTreeModel->append());
+        row[m_Columns.m_col_name] = "Database";
         row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = "Settings";
+
         plugin_listview->append_column("Browser", m_Columns.m_col_name);
     }
 

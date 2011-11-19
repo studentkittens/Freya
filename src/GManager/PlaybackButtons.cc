@@ -4,9 +4,11 @@
 
 namespace GManager
 {
-    PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) 
+    PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) :
+        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_BUTTON), 
+        pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_BUTTON)
     {
-        this->mp_Client = &instance;
+        mp_Client = &instance;
 
         BUILDER_GET(builder,"stop_button",stop_button);
         BUILDER_GET(builder,"pause_button",pause_button);
@@ -17,6 +19,8 @@ namespace GManager
         pause_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_pause));
         prev_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_prev));
         next_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_next));
+
+        mp_Client->get_notify().connect(sigc::mem_fun(*this,&PlaybackButtons::on_client_update));
     }
 
     //----------------------------
@@ -49,5 +53,15 @@ namespace GManager
     void PlaybackButtons::on_button_next(void)
     {
         mp_Client->playback_next();
+    }
+
+    //----------------------------
+
+    void PlaybackButtons::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    {
+        if(event & MPD_IDLE_PLAYER)
+        {
+            pause_button->set_image((data.get_status().get_state() == MPD_STATE_PLAY) ? pause_icon : play_icon);
+        }
     }
 }

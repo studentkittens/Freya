@@ -253,7 +253,6 @@ namespace MPD
         {
             if(io_functor.connected()) 
             {
-                Debug("Leaving...");
                 bool is_fatal = false;
 
                 /* New game - new dices */

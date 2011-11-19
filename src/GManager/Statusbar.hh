@@ -22,7 +22,7 @@ namespace GManager
             void do_update_message(MPD::NotifyData& data);
 
             MPD::NotifyData * mp_Lastdata;
-            Gtk::Statusbar * m_Statusbar;
+            Gtk::Label * m_Statusbar;
             ClientTimerProxy * mp_Proxy;
             gchar * mp_Message; 
     };

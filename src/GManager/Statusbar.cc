@@ -12,7 +12,7 @@ namespace GManager
     {
 
         BUILDER_GET(builder,"statusbar",m_Statusbar);
-        m_Statusbar->push("N/C");
+        m_Statusbar->set_text("N/C");
 
         mp_Message = NULL;
         mp_Proxy = &tproxy;
@@ -32,7 +32,7 @@ namespace GManager
 
     void Statusbar::format_time(unsigned time, char buffer[])
     {
-        sprintf(buffer,"%d:%02d",time/60,time%60);
+        g_sprintf(buffer,"%d:%02d",time/60,time%60);
     }
 
     /* ------------------ */
@@ -101,6 +101,6 @@ namespace GManager
                     pt_days,pt_hours,pt_minutes,pt_seconds
                     );
 
-            m_Statusbar->push(mp_Message);
+            m_Statusbar->set_text(mp_Message);
     }
 }

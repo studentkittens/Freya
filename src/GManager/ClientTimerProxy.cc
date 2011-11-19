@@ -59,6 +59,13 @@ namespace GManager
     }
      
     // -------------
+    
+    double ClientTimerProxy::get(void)
+    {
+        return timer;
+    }
+
+    // -------------
 
     TimerNotifier& ClientTimerProxy::get_notify(void)
     {

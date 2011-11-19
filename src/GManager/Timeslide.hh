@@ -23,6 +23,8 @@ namespace GManager
             Gtk::Scale * m_Timeslide;
             MPD::Client * mp_Client;
             GManager::ClientTimerProxy * mp_Proxy;
+
+            Glib::Timer m_Timeguard;
     };
 }
 #endif

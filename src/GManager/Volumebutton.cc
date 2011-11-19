@@ -1,9 +1,12 @@
 #include "Volumebutton.hh"
 #include "../Utils/Utils.hh"
 
+#define UPDATE_TIMEOUT 0.05
+
 namespace GManager
 {
-    Volumebutton::Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Volumebutton::Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        m_Timerguard()
     {
         ignore_signal = false;
 
@@ -35,6 +38,10 @@ namespace GManager
     
     void Volumebutton::on_user_change(double val)
     {
-        if(!ignore_signal) mp_Client->set_volume(mp_VButton->get_value() * 100);
+        if(!ignore_signal && m_Timerguard.elapsed() > UPDATE_TIMEOUT) 
+        {
+            mp_Client->set_volume(mp_VButton->get_value() * 100);
+            m_Timerguard.reset();
+        }
     }
 }

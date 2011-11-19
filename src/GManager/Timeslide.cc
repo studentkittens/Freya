@@ -2,9 +2,12 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
+#define UPDATE_TIMEOUT 0.1
+
 namespace GManager
 {
-    Timeslide::Timeslide(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Timeslide::Timeslide(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        m_Timeguard()
     {
         mp_Client = &client;
         mp_Proxy  = &tproxy;
@@ -31,10 +34,13 @@ namespace GManager
         m_Timeslide->set_value(time);
         ignore_signal = false;
     }
+    
+    /* ------------------ */
 
     void Timeslide::on_user_action(void)
     {
-        if(!ignore_signal)
+        /* only allow updates every 0.1 seconds */
+        if(!ignore_signal && m_Timeguard.elapsed() > UPDATE_TIMEOUT)
         {
             double new_value = m_Timeslide->get_value();
             if(mp_Client->is_connected())
@@ -43,6 +49,7 @@ namespace GManager
                 mp_Client->playback_seek(id,new_value);
             }
             mp_Proxy->set(new_value);
+            m_Timeguard.reset();
         }
     }
 

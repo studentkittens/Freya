@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
         GManager::ClientTimerProxy proxy; 
 
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
+
         GManager::PlaylistTreeView playlist_queue(builder);
         GManager::Timeslide timeslide(proxy,client,builder);
         GManager::Statusbar statusbar(proxy,client,builder);

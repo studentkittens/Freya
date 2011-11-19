@@ -17,10 +17,13 @@ namespace GManager
 
         private:
             void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+            void on_heartbeat(double time);
             void format_time(unsigned time, char buffer[]);
+            void do_update_message(MPD::NotifyData& data);
 
             MPD::NotifyData * mp_Lastdata;
             Gtk::Statusbar * m_Statusbar;
+            ClientTimerProxy * mp_Proxy;
             gchar * mp_Message; 
     };
 }

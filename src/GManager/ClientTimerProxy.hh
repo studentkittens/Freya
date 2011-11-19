@@ -25,6 +25,7 @@ namespace GManager
             void pause(void);
             void reset(void);
             void set(double val);
+            double get(void);
 
         private:
 

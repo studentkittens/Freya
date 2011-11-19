@@ -45,8 +45,8 @@ namespace GManager
             double new_value = m_Timeslide->get_value();
             if(mp_Client->is_connected())
             {
-                unsigned id = mp_Client->get_status()->get_song_id();
-                mp_Client->playback_seek(id,new_value);
+                unsigned song_id = mp_Client->get_status()->get_song_id();
+                mp_Client->playback_seek(song_id,new_value);
             }
             mp_Proxy->set(new_value);
             m_Timeguard.reset();
@@ -57,11 +57,12 @@ namespace GManager
 
     void Timeslide::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        if(!ignore_signal && event & MPD_IDLE_PLAYER)
+        if(!ignore_signal && event & (MPD_IDLE_PLAYER))
         {
             MPD::Status& status = data.get_status();
-            m_Timeslide->set_range(0.0,status.get_total_time());
+
             ignore_signal = true;
+            m_Timeslide->set_range(0.0,status.get_total_time());
             m_Timeslide->set_value(status.get_elapsed_time());
             mp_Proxy->set(status.get_elapsed_time());
             ignore_signal = false;

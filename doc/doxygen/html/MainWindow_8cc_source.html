@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -77,88 +78,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/MainWindow.cc</div>  </div>
 </div>
 <div class="contents">
-<a href="MainWindow_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &lt;gtkmm.h&gt;</span>
-<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="PlaylistTreeView_8hh.html">PlaylistTreeView.hh</a>&quot;</span>
-<a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="keyword">using namespace </span>std;
-<a name="l00008"></a>00008 
-<a name="l00009"></a><a class="code" href="MainWindow_8cc.html#aa2292bdacf9b2fcbe5ceff51db443b38">00009</a> Gtk::Scale * <a class="code" href="MainWindow_8cc.html#aa2292bdacf9b2fcbe5ceff51db443b38">time_scale</a> = NULL;
-<a name="l00010"></a>00010 
-<a name="l00011"></a><a class="code" href="MainWindow_8cc.html#ab29248e569f784819f96554694744bd4">00011</a> gboolean <a class="code" href="MainWindow_8cc.html#ab29248e569f784819f96554694744bd4">do_time_scale_step</a>(<span class="keywordtype">void</span>)
-<a name="l00012"></a>00012 {
-<a name="l00013"></a>00013     <a class="code" href="MainWindow_8cc.html#aa2292bdacf9b2fcbe5ceff51db443b38">time_scale</a>-&gt;set_value(<a class="code" href="MainWindow_8cc.html#aa2292bdacf9b2fcbe5ceff51db443b38">time_scale</a>-&gt;get_value() + 1.0);
-<a name="l00014"></a>00014     <span class="keywordflow">return</span> TRUE;
-<a name="l00015"></a>00015 }
-<a name="l00016"></a>00016   
-<a name="l00017"></a>00017 <span class="comment">//Tree model columns:</span>
-<a name="l00018"></a><a class="code" href="classModelColumns.html">00018</a> <span class="keyword">class </span><a class="code" href="classModelColumns.html">ModelColumns</a> : <span class="keyword">public</span> Gtk::TreeModel::ColumnRecord
-<a name="l00019"></a>00019 {
-<a name="l00020"></a>00020     <span class="keyword">public</span>:
-<a name="l00021"></a><a class="code" href="classModelColumns.html#a7439e36ad45c30dc3c46859acb62609d">00021</a>         <a class="code" href="classModelColumns.html#a7439e36ad45c30dc3c46859acb62609d">ModelColumns</a>() { add(m_col_name);}
-<a name="l00022"></a><a class="code" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">00022</a>         Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">m_col_name</a>;
-<a name="l00023"></a>00023 };
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="MainWindow_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">00026</a> <span class="keywordtype">int</span> <a class="code" href="test__avahi_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])
-<a name="l00027"></a>00027 {
-<a name="l00028"></a>00028     Gtk::Main kit(argc,argv);
-<a name="l00029"></a>00029     <span class="keywordflow">try</span>
-<a name="l00030"></a>00030     {
-<a name="l00031"></a>00031         Glib::RefPtr&lt;Gtk::Builder&gt; builder = Gtk::Builder::create_from_file(<span class="stringliteral">&quot;ui/Freya.glade&quot;</span>);
-<a name="l00032"></a>00032         Gtk::Window * main_window = NULL;
-<a name="l00033"></a>00033         builder-&gt;get_widget(<span class="stringliteral">&quot;FreyaMainWindow&quot;</span>, main_window);
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035         builder-&gt;get_widget(<span class="stringliteral">&quot;time_slide&quot;</span>,<a class="code" href="MainWindow_8cc.html#aa2292bdacf9b2fcbe5ceff51db443b38">time_scale</a>);
-<a name="l00036"></a>00036         <a class="code" href="MainWindow_8cc.html#aa2292bdacf9b2fcbe5ceff51db443b38">time_scale</a>-&gt;set_range(0.0,100.0);
-<a name="l00037"></a>00037         Glib::signal_timeout().connect(sigc::ptr_fun(<a class="code" href="MainWindow_8cc.html#ab29248e569f784819f96554694744bd4">do_time_scale_step</a>), 1000);
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039         Gtk::TreeView * plugin_listview = NULL;
-<a name="l00040"></a>00040         builder-&gt;get_widget(<span class="stringliteral">&quot;plugin_view&quot;</span>,plugin_listview);
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042         <a class="code" href="classModelColumns.html">ModelColumns</a> m_Columns; 
-<a name="l00043"></a>00043         Glib::RefPtr&lt;Gtk::ListStore&gt; m_refTreeModel;
-<a name="l00044"></a>00044             
-<a name="l00045"></a>00045         <span class="comment">//Create the Tree model:</span>
-<a name="l00046"></a>00046         m_refTreeModel = Gtk::ListStore::create(m_Columns);
-<a name="l00047"></a>00047         plugin_listview-&gt;set_model(m_refTreeModel);
+<a href="MainWindow_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="PlaylistTreeView_8hh.html">GManager/PlaylistTreeView.hh</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="PlaybackButtons_8hh.html">GManager/PlaybackButtons.hh</a>&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;<a class="code" href="BrowserList_8hh.html">GManager/BrowserList.hh</a>&quot;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="Statusbar_8hh.html">GManager/Statusbar.hh</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="Timeslide_8hh.html">GManager/Timeslide.hh</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="TitleLabel_8hh.html">GManager/TitleLabel.hh</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="StatusIcons_8hh.html">GManager/StatusIcons.hh</a>&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="Volumebutton_8hh.html">GManager/Volumebutton.hh</a>&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="Client_8hh.html">MPD/Client.hh</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="ClientTimerProxy_8hh.html">GManager/ClientTimerProxy.hh</a>&quot;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="keyword">using namespace </span>std;
+<a name="l00013"></a>00013 
+<a name="l00014"></a><a class="code" href="MainWindow_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">00014</a> <span class="keywordtype">int</span> <a class="code" href="test__avahi_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])
+<a name="l00015"></a>00015 {
+<a name="l00016"></a>00016     Gtk::Main kit(argc,argv);
+<a name="l00017"></a>00017     <span class="keywordflow">try</span>
+<a name="l00018"></a>00018     {
+<a name="l00019"></a>00019         <a class="code" href="classMPD_1_1Client.html">MPD::Client</a> client;
+<a name="l00020"></a>00020         <a class="code" href="classGManager_1_1ClientTimerProxy.html">GManager::ClientTimerProxy</a> proxy; 
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022         Glib::RefPtr&lt;Gtk::Builder&gt; builder = Gtk::Builder::create_from_file(<span class="stringliteral">&quot;ui/Freya.glade&quot;</span>);
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024         <a class="code" href="classGManager_1_1PlaylistTreeView.html">GManager::PlaylistTreeView</a> playlist_queue(builder);
+<a name="l00025"></a>00025         <a class="code" href="classGManager_1_1Timeslide.html">GManager::Timeslide</a> timeslide(proxy,client,builder);
+<a name="l00026"></a>00026         <a class="code" href="classGManager_1_1Statusbar.html">GManager::Statusbar</a> statusbar(proxy,client,builder);
+<a name="l00027"></a>00027         <a class="code" href="classGManager_1_1BrowserList.html">GManager::BrowserList</a> browser_list(builder);
+<a name="l00028"></a>00028         <a class="code" href="classGManager_1_1PlaybackButtons.html">GManager::PlaybackButtons</a> buttons(client,builder);
+<a name="l00029"></a>00029         <a class="code" href="classGManager_1_1TitleLabel.html">GManager::TitleLabel</a> title_label(client,builder);
+<a name="l00030"></a>00030         <a class="code" href="classGManager_1_1Statusicons.html">GManager::Statusicons</a> status_icons(client,builder);
+<a name="l00031"></a>00031         <a class="code" href="classGManager_1_1Volumebutton.html">GManager::Volumebutton</a> vol_button(client,builder);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="comment">/* Send a good morning to all widgets */</span>
+<a name="l00034"></a>00034         client.<a class="code" href="classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91">force_update</a>();
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         Gtk::Window * main_window = NULL;
+<a name="l00037"></a>00037         builder-&gt;get_widget(<span class="stringliteral">&quot;FreyaMainWindow&quot;</span>, main_window);
+<a name="l00038"></a>00038         kit.run(*main_window);
+<a name="l00039"></a>00039     }
+<a name="l00040"></a>00040     <span class="keywordflow">catch</span>(<span class="keyword">const</span> Gtk::BuilderError&amp; e)
+<a name="l00041"></a>00041     {
+<a name="l00042"></a>00042         std::cerr &lt;&lt; <span class="stringliteral">&quot;BuilderError: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044     <span class="keywordflow">catch</span>(<span class="keyword">const</span> Glib::FileError&amp; e)
+<a name="l00045"></a>00045     {
+<a name="l00046"></a>00046         std::cerr &lt;&lt; <span class="stringliteral">&quot;General exception: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;
+<a name="l00047"></a>00047     }
 <a name="l00048"></a>00048 
-<a name="l00049"></a>00049         <span class="comment">//Fill the TreeView&#39;s model</span>
-<a name="l00050"></a>00050         Gtk::TreeModel::Row row = *(m_refTreeModel-&gt;append());
-<a name="l00051"></a>00051         row[m_Columns.<a class="code" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">m_col_name</a>] = <span class="stringliteral">&quot;Now Playing&quot;</span>;
-<a name="l00052"></a>00052         row = *(m_refTreeModel-&gt;append());
-<a name="l00053"></a>00053         row[m_Columns.<a class="code" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">m_col_name</a>] = <span class="stringliteral">&quot;Playlist&quot;</span>;
-<a name="l00054"></a>00054         row = *(m_refTreeModel-&gt;append());
-<a name="l00055"></a>00055         row[m_Columns.<a class="code" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">m_col_name</a>] = <span class="stringliteral">&quot;Settings&quot;</span>;
-<a name="l00056"></a>00056         plugin_listview-&gt;append_column(<span class="stringliteral">&quot;Browser&quot;</span>, m_Columns.<a class="code" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">m_col_name</a>);
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059         Gtk::Box * main_box = NULL;
-<a name="l00060"></a>00060         builder-&gt;get_widget(<span class="stringliteral">&quot;main_box&quot;</span>,main_box);
-<a name="l00061"></a>00061         <a class="code" href="classPlaylistTreeView.html">PlaylistTreeView</a> ex;
-<a name="l00062"></a>00062         main_box-&gt;pack_start(ex,<span class="keyword">true</span>,<span class="keyword">true</span>);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064         Gtk::Statusbar * statusbar = NULL;
-<a name="l00065"></a>00065         builder-&gt;get_widget(<span class="stringliteral">&quot;statusbar&quot;</span>,statusbar);
-<a name="l00066"></a>00066         statusbar-&gt;push(<span class="stringliteral">&quot;This is the Statusbar&quot;</span>);
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068         kit.run(*main_window);
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070     }
-<a name="l00071"></a>00071     <span class="keywordflow">catch</span>(<span class="keyword">const</span> Gtk::BuilderError&amp; e)
-<a name="l00072"></a>00072     {
-<a name="l00073"></a>00073         std::cerr &lt;&lt; <span class="stringliteral">&quot;BuilderError: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;
-<a name="l00074"></a>00074     }
-<a name="l00075"></a>00075     <span class="keywordflow">catch</span>(<span class="keyword">const</span> Glib::FileError&amp; e)
-<a name="l00076"></a>00076     {
-<a name="l00077"></a>00077         std::cerr &lt;&lt; <span class="stringliteral">&quot;General exception: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;
-<a name="l00078"></a>00078     }
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080     <span class="keywordflow">return</span> EXIT_SUCCESS;
-<a name="l00081"></a>00081 }
-<a name="l00082"></a>00082 
+<a name="l00049"></a>00049     <span class="keywordflow">return</span> EXIT_SUCCESS;
+<a name="l00050"></a>00050 }
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -166,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -178,7 +147,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 7 2011 18:33:47 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

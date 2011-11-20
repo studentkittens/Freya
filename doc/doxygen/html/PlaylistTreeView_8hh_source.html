@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Freya: src/PlaylistTreeView.hh Source File</title>
+<title>Freya: src/GManager/PlaylistTreeView.hh Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,44 +75,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/PlaylistTreeView.hh</div>  </div>
+<div class="title">src/GManager/PlaylistTreeView.hh</div>  </div>
 </div>
 <div class="contents">
-<a href="PlaylistTreeView_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef GTKMM_PlaylistTreeView_H</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define GTKMM_PlaylistTreeView_H</span>
+<a href="PlaylistTreeView_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef GTKMM_PLAYLISTTREEVIEW_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define GTKMM_PLAYLISTTREEVIEW_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;gtkmm.h&gt;</span>
 <a name="l00005"></a>00005 
-<a name="l00006"></a><a class="code" href="classPlaylistTreeView.html">00006</a> <span class="keyword">class </span><a class="code" href="classPlaylistTreeView.html">PlaylistTreeView</a> : <span class="keyword">public</span> Gtk::Frame
+<a name="l00006"></a>00006 <span class="keyword">namespace </span>GManager
 <a name="l00007"></a>00007 {
-<a name="l00008"></a>00008 <span class="keyword">public</span>:
-<a name="l00009"></a>00009   <a class="code" href="classPlaylistTreeView.html#ad8c1c34bbfdec59b449b8e015ca0914a">PlaylistTreeView</a>();
-<a name="l00010"></a>00010   <span class="keyword">virtual</span> <a class="code" href="classPlaylistTreeView.html#a691621269697bd8e7b8e3dc1cf4e4d12">~PlaylistTreeView</a>();
-<a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="keyword">protected</span>:
+<a name="l00008"></a><a class="code" href="classGManager_1_1PlaylistTreeView.html">00008</a>     <span class="keyword">class </span><a class="code" href="classGManager_1_1PlaylistTreeView.html">PlaylistTreeView</a> : <span class="keyword">public</span> Gtk::Frame
+<a name="l00009"></a>00009     {
+<a name="l00010"></a>00010         <span class="keyword">public</span>:
+<a name="l00011"></a>00011             <a class="code" href="classGManager_1_1PlaylistTreeView.html#a3fcc94077b91be8de8d16c7cb62b4da5">PlaylistTreeView</a>(<span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder);
+<a name="l00012"></a>00012             <span class="keyword">virtual</span> <a class="code" href="classGManager_1_1PlaylistTreeView.html#abb9ce241f7992f7596b6d02ecc82c264">~PlaylistTreeView</a>();
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014   <span class="comment">//Tree model columns:</span>
-<a name="l00015"></a><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html">00015</a>   <span class="keyword">class </span><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html">ModelColumns</a> : <span class="keyword">public</span> Gtk::TreeModel::ColumnRecord
-<a name="l00016"></a>00016   {
-<a name="l00017"></a>00017   <span class="keyword">public</span>:
-<a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#ae682bbad1999435b2fbb10d6932d98c1">00019</a>     <a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#ae682bbad1999435b2fbb10d6932d98c1">ModelColumns</a>()
-<a name="l00020"></a>00020     { add(<a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a2a028154e2fcebde436851e4ede174ce">m_col_id</a>); add(<a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#ad4172e033be4ef6b2e47a8323601cee9">m_col_title</a>); add(<a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a3b424ec7dd9635d68bc4008aff7e22e1">m_col_album</a>); add(<a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a3c51d1d3b9aa4da11ebba3ce77207edb">m_col_artist</a>); }
-<a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a2a028154e2fcebde436851e4ede174ce">00022</a>     Gtk::TreeModelColumn&lt;unsigned int&gt;  <a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a2a028154e2fcebde436851e4ede174ce">m_col_id</a>;
-<a name="l00023"></a><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#ad4172e033be4ef6b2e47a8323601cee9">00023</a>     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#ad4172e033be4ef6b2e47a8323601cee9">m_col_title</a>;
-<a name="l00024"></a><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a3b424ec7dd9635d68bc4008aff7e22e1">00024</a>     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a3b424ec7dd9635d68bc4008aff7e22e1">m_col_album</a>;
-<a name="l00025"></a><a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a3c51d1d3b9aa4da11ebba3ce77207edb">00025</a>     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classPlaylistTreeView_1_1ModelColumns.html#a3c51d1d3b9aa4da11ebba3ce77207edb">m_col_artist</a>;
-<a name="l00026"></a>00026   };
-<a name="l00027"></a>00027 
-<a name="l00028"></a><a class="code" href="classPlaylistTreeView.html#a8e28de0bad495207b343ae862dca7215">00028</a>   <a class="code" href="classPlaylistTreeView_1_1ModelColumns.html">ModelColumns</a> <a class="code" href="classPlaylistTreeView.html#a8e28de0bad495207b343ae862dca7215">m_Columns</a>;
+<a name="l00014"></a>00014         <span class="keyword">protected</span>:
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016             <span class="comment">//Tree model columns:</span>
+<a name="l00017"></a><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html">00017</a>             <span class="keyword">class </span><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html">ModelColumns</a> : <span class="keyword">public</span> Gtk::TreeModel::ColumnRecord
+<a name="l00018"></a>00018             {
+<a name="l00019"></a>00019                 <span class="keyword">public</span>:
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#acdd2b9bf8d72684604cf8166299e6aba">00021</a>                     <a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#acdd2b9bf8d72684604cf8166299e6aba">ModelColumns</a>()
+<a name="l00022"></a>00022                     { add(<a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a121707048826582c155cba6f10403124">m_col_id</a>); add(<a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#ac0f85887f279b6fd14319f6cdf9f0e12">m_col_title</a>); add(<a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a8eda98fb3e164091c5c19b9ab5f4c4a3">m_col_album</a>); add(<a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a885822163f3c3673ff95134884767a66">m_col_artist</a>); }
+<a name="l00023"></a>00023 
+<a name="l00024"></a><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a121707048826582c155cba6f10403124">00024</a>                     Gtk::TreeModelColumn&lt;unsigned int&gt;  <a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a121707048826582c155cba6f10403124">m_col_id</a>;
+<a name="l00025"></a><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#ac0f85887f279b6fd14319f6cdf9f0e12">00025</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#ac0f85887f279b6fd14319f6cdf9f0e12">m_col_title</a>;
+<a name="l00026"></a><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a8eda98fb3e164091c5c19b9ab5f4c4a3">00026</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a8eda98fb3e164091c5c19b9ab5f4c4a3">m_col_album</a>;
+<a name="l00027"></a><a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a885822163f3c3673ff95134884767a66">00027</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a885822163f3c3673ff95134884767a66">m_col_artist</a>;
+<a name="l00028"></a>00028             };
 <a name="l00029"></a>00029 
-<a name="l00030"></a><a class="code" href="classPlaylistTreeView.html#ad3b445e2a03227bd5dc93ce4badd5647">00030</a>   Gtk::ScrolledWindow <a class="code" href="classPlaylistTreeView.html#ad3b445e2a03227bd5dc93ce4badd5647">m_ScrolledWindow</a>;
-<a name="l00031"></a><a class="code" href="classPlaylistTreeView.html#af386b889e73bc16364f33eb760b08606">00031</a>   Gtk::TreeView <a class="code" href="classPlaylistTreeView.html#af386b889e73bc16364f33eb760b08606">m_TreeView</a>;
-<a name="l00032"></a><a class="code" href="classPlaylistTreeView.html#a8c489fb9e0542fed6a5465a4afc91714">00032</a>   Glib::RefPtr&lt;Gtk::ListStore&gt; <a class="code" href="classPlaylistTreeView.html#a8c489fb9e0542fed6a5465a4afc91714">m_refTreeModel</a>;
-<a name="l00033"></a>00033 };
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="preprocessor">#endif //GTKMM_PlaylistTreeView_H</span>
+<a name="l00030"></a><a class="code" href="classGManager_1_1PlaylistTreeView.html#a087725e9a620bb81e126439ec2f157ce">00030</a>             <a class="code" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html">ModelColumns</a> <a class="code" href="classGManager_1_1PlaylistTreeView.html#a087725e9a620bb81e126439ec2f157ce">m_Columns</a>;
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="classGManager_1_1PlaylistTreeView.html#a7e206013a2cb2d14a48b76ec99581407">00032</a>             Gtk::ScrolledWindow <a class="code" href="classGManager_1_1PlaylistTreeView.html#a7e206013a2cb2d14a48b76ec99581407">m_ScrolledWindow</a>;
+<a name="l00033"></a><a class="code" href="classGManager_1_1PlaylistTreeView.html#abddb1a6b517ea08809ae962c6bda655b">00033</a>             Gtk::TreeView <a class="code" href="classGManager_1_1PlaylistTreeView.html#abddb1a6b517ea08809ae962c6bda655b">m_TreeView</a>;
+<a name="l00034"></a><a class="code" href="classGManager_1_1PlaylistTreeView.html#a8903a56bcb080cc82be5ba2e591c492c">00034</a>             Glib::RefPtr&lt;Gtk::ListStore&gt; <a class="code" href="classGManager_1_1PlaylistTreeView.html#a8903a56bcb080cc82be5ba2e591c492c">m_refTreeModel</a>;
+<a name="l00035"></a>00035     };
+<a name="l00036"></a>00036 }
+<a name="l00037"></a>00037 <span class="preprocessor">#endif //GTKMM_PlaylistTreeView_H</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -119,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -131,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 7 2011 18:33:47 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

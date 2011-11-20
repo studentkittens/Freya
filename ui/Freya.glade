@@ -7,10 +7,25 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkImage" id="image_conn">
+  <object class="GtkImage" id="image_consume">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-info</property>
+    <property name="stock">gtk-indent</property>
+  </object>
+  <object class="GtkImage" id="image_log">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-dialog-question</property>
+  </object>
+  <object class="GtkImage" id="image_random">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-justify-right</property>
+  </object>
+  <object class="GtkImage" id="image_single">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-jump-to</property>
   </object>
   <object class="GtkWindow" id="FreyaMainWindow">
     <property name="width_request">650</property>
@@ -19,7 +34,7 @@
     <property name="default_width">600</property>
     <property name="default_height">500</property>
     <child>
-      <object class="GtkBox" id="box1">
+      <object class="GtkBox" id="all_box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -196,7 +211,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="LOLm">
+          <object class="GtkBox" id="top_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
@@ -384,7 +399,7 @@ audio-volume-medium</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">3</property>
                   </packing>
@@ -717,19 +732,7 @@ audio-volume-medium</property>
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="main_box">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">1</property>
-                <child>
-                  <placeholder/>
-                </child>
-              </object>
-              <packing>
-                <property name="resize">True</property>
-                <property name="shrink">True</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -745,8 +748,8 @@ audio-volume-medium</property>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="pack_type">end</property>
+            <property name="fill">True</property>
+            <property name="padding">1</property>
             <property name="position">3</property>
           </packing>
         </child>
@@ -761,36 +764,21 @@ audio-volume-medium</property>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">4</property>
+            <property name="position">5</property>
           </packing>
         </child>
       </object>
     </child>
   </object>
-  <object class="GtkImage" id="image_consume">
+  <object class="GtkImage" id="image_conn">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-indent</property>
-  </object>
-  <object class="GtkImage" id="image_log">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-dialog-question</property>
-  </object>
-  <object class="GtkImage" id="image_random">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-justify-right</property>
+    <property name="stock">gtk-info</property>
   </object>
   <object class="GtkImage" id="image_repeat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-refresh</property>
-  </object>
-  <object class="GtkImage" id="image_single">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

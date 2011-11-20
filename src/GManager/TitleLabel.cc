@@ -20,7 +20,7 @@ namespace GManager
     
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
-        // TODO
+        // TODO: libmpdclient does not offer this info *aaargh!*
         // mp_Client->get_song_at_id(data.get_status().get_
     }
 
@@ -35,7 +35,7 @@ namespace GManager
                     current_song.get_tag(MPD_TAG_TITLE,0),
                     current_song.get_tag(MPD_TAG_TRACK,0)
                     );
-            char * artist_album = g_markup_printf_escaped("By %s on %s (%s)",
+            char * artist_album = g_markup_printf_escaped("<small>By <b>%s</b> on <b>%s</b> (%s)</small>",
                     current_song.get_tag(MPD_TAG_ARTIST,0),
                     current_song.get_tag(MPD_TAG_ALBUM,0),
                     current_song.get_tag(MPD_TAG_DATE,0)

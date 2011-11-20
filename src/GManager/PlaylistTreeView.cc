@@ -41,9 +41,9 @@ namespace GManager
             pColumn->set_reorderable();
         }
 
-        Gtk::Box * main_box;
-        BUILDER_GET(builder,"main_box",main_box);
-        main_box->pack_start(*this,true,true);
+        Gtk::Paned * main_box;
+        BUILDER_GET(builder,"main_paned",main_box);
+        main_box->pack2(*this,true,true);
 
         /* Misc settings to tree view */
         m_TreeView.set_headers_clickable(true);

@@ -1,4 +1,5 @@
 #include "Connection.hh"
+#include "../Log/Writer.hh"
 
 namespace MPD
 {

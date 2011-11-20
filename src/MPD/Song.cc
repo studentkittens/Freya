@@ -2,9 +2,9 @@
 
 namespace MPD
 {
-    Song::Song(mpd_song& song)
+    Song::Song(const mpd_song& song)
     {
-        mp_Song = &song;
+        mp_Song = (mpd_song*)&song;
     }
     
     /*------------------------------*/

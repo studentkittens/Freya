@@ -25,7 +25,6 @@ typedef struct mpd_status mpd_status;
 typedef struct mpd_entity mpd_entity;
 
 /* Include Singletonutils */
-#include "Log/Writer.hh"
 #include "Config/Handler.hh"
 
 #endif

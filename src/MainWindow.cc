@@ -1,4 +1,5 @@
-#include "GManager/PlaylistTreeView.hh"
+#include "MPD/Client.hh"
+
 #include "GManager/PlaybackButtons.hh"
 #include "GManager/BrowserList.hh"
 #include "GManager/Statusbar.hh"
@@ -6,8 +7,9 @@
 #include "GManager/TitleLabel.hh"
 #include "GManager/StatusIcons.hh"
 #include "GManager/Volumebutton.hh"
-#include "MPD/Client.hh"
 #include "GManager/ClientTimerProxy.hh"
+
+#include "Browser/PlaylistTreeView.hh"
 
 using namespace std;
 
@@ -16,19 +18,25 @@ int main(int argc, char *argv[])
     Gtk::Main kit(argc,argv);
     try
     {
+        /* Instance the client */
         MPD::Client client;
-        GManager::ClientTimerProxy proxy; 
 
+        /* Get the glade file */
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
 
-        GManager::PlaylistTreeView playlist_queue(builder);
+        /* Instanmce gui elements */
+        GManager::ClientTimerProxy proxy; 
         GManager::Timeslide timeslide(proxy,client,builder);
         GManager::Statusbar statusbar(proxy,client,builder);
-        GManager::BrowserList browser_list(builder);
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
         GManager::Volumebutton vol_button(client,builder);
+        GManager::BrowserList browser_list(builder);
+
+        /* Instance browser  */
+        Browser::PlaylistTreeView playlist_queue(client);
+        browser_list.add(playlist_queue);
 
         /* Send a good morning to all widgets */
         client.force_update();

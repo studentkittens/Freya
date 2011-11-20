@@ -1,5 +1,4 @@
 ADD_LIBRARY(FreyaGManagerLib STATIC 
-    PlaylistTreeView.cc
     PlaybackButtons.cc
     BrowserList.cc
     Statusbar.cc

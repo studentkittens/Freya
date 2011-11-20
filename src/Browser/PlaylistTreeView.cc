@@ -11,6 +11,8 @@ namespace Browser
         pack_start(m_ScrolledWindow,true,true);
         pack_start(m_Entry,false,false);
 
+        m_Entry.set_icon_from_stock(Gtk::Stock::CLEAR,Gtk::ENTRY_ICON_SECONDARY);
+
         //Add the TreeView, inside a ScrolledWindow, with the button underneath:
         m_ScrolledWindow.add(m_TreeView);
 

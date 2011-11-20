@@ -5,9 +5,11 @@
 namespace Browser
 {
     PlaylistTreeView::PlaylistTreeView(MPD::Client& client) :
-        AbstractBrowser("Playlist Queue")
+        Box(Gtk::ORIENTATION_VERTICAL), AbstractBrowser("Playlist Queue"), m_Entry()
     {
-        add(m_ScrolledWindow);
+        set_homogeneous(false);
+        pack_start(m_ScrolledWindow,true,true);
+        pack_start(m_Entry,false,false);
 
         //Add the TreeView, inside a ScrolledWindow, with the button underneath:
         m_ScrolledWindow.add(m_TreeView);
@@ -19,24 +21,16 @@ namespace Browser
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_TreeView.set_model(m_refTreeModel);
 
-        /*
-        for(int i = 0; i < 420; i++)
-        {
-            //Fill the TreeView's model
-            Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-            row[m_Columns.m_col_id] = i;
-            row[m_Columns.m_col_title] = "Trugbild                ";
-            row[m_Columns.m_col_album] = "Ein Leben Lang          ";
-            row[m_Columns.m_col_artist] = "Akrea                  ";
-        }
-    */
-
         //Add the TreeView's view columns:
         //This number will be shown with the default numeric formatting.
         m_TreeView.append_column("ID", m_Columns.m_col_id);
-        m_TreeView.append_column("Title", m_Columns.m_col_title);
-        m_TreeView.append_column("Album", m_Columns.m_col_album);
         m_TreeView.append_column("Artist", m_Columns.m_col_artist);
+        m_TreeView.append_column("Album", m_Columns.m_col_album);
+        m_TreeView.append_column("Title", m_Columns.m_col_title);
+        m_TreeView.set_rules_hint(true);
+        m_TreeView.set_rubber_banding(true);
+        m_TreeView.set_search_column(3);
+        m_TreeView.set_search_entry(m_Entry);
 
         for(guint i = 0; i < 3; i++)
         {
@@ -58,9 +52,10 @@ namespace Browser
     {
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_id] = new_song->get_pos();
-        row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_ARTIST,0);
+        row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
         row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
-        row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_TITLE,0);
+        row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
+        // TODO: false should stop recv.
         return false;
     }
 

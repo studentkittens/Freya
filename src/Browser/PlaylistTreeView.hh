@@ -8,7 +8,7 @@
 
 namespace Browser 
 {
-    class PlaylistTreeView : public Gtk::Frame, public AbstractBrowser, public AbstractSonglist 
+    class PlaylistTreeView : public Gtk::Box, public AbstractBrowser, public AbstractSonglist 
     {
         public:
             PlaylistTreeView(MPD::Client& client);
@@ -43,6 +43,7 @@ namespace Browser
             ModelColumns m_Columns;
             Gtk::ScrolledWindow m_ScrolledWindow;
             Gtk::TreeView m_TreeView;
+            Gtk::Entry m_Entry;
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
 
             /* Client related */

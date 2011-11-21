@@ -30,6 +30,7 @@ namespace MPD
             Info("Creating Listener");
             listener = new Listener(&m_Notifier,m_Conn);
             go_idle();
+            m_ConnNotifer.emit(true);
         }
     }
 
@@ -43,6 +44,7 @@ namespace MPD
                 delete listener;
 
             m_Conn.disconnect();
+            m_ConnNotifer.emit(false);
         }
     }
 
@@ -352,6 +354,13 @@ namespace MPD
         }
     }
 
+    //--------------------
+    
+    ConnectionNotifier& Client::signal_connection_change(void)
+    {
+        return m_ConnNotifer;
+    }
+        
     //--------------------
 
 } // END NAMESPACE 

@@ -7,11 +7,47 @@
 #include "GManager/TitleLabel.hh"
 #include "GManager/StatusIcons.hh"
 #include "GManager/Volumebutton.hh"
-#include "GManager/ClientTimerProxy.hh"
+#include "GManager/Heartbeat.hh"
 
 #include "Browser/PlaylistTreeView.hh"
+#include "Browser/PlaylistManager.hh"
+
+#include "Log/Writer.hh"
 
 using namespace std;
+
+class DisconnectManager
+{
+    public:
+        DisconnectManager(MPD::Client& client, Gtk::Window * main_window)
+        {
+            mp_Window = main_window;
+            mp_Client = &client;
+            mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&DisconnectManager::on_connection_change));
+        }
+
+        virtual ~DisconnectManager(void) {}
+
+    private:
+
+        void on_connection_change(bool is_connected)
+        {
+            if(is_connected)
+            {
+                Info("Got reconnected - unlocking gui");
+                mp_Window->set_sensitive(true);
+            }
+            else
+            {
+                Info("Got disconnected - locking gui");
+                mp_Window->set_sensitive(false);
+            }
+        }
+
+        MPD::Client * mp_Client;
+        Gtk::Window * mp_Window;
+};
+
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +61,7 @@ int main(int argc, char *argv[])
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
 
         /* Instanmce gui elements */
-        GManager::ClientTimerProxy proxy; 
+        GManager::Heartbeat proxy(client); 
         GManager::Timeslide timeslide(proxy,client,builder);
         GManager::Statusbar statusbar(proxy,client,builder);
         GManager::PlaybackButtons buttons(client,builder);
@@ -35,14 +71,18 @@ int main(int argc, char *argv[])
         GManager::BrowserList browser_list(builder);
 
         /* Instance browser  */
-        Browser::PlaylistTreeView playlist_queue(client);
-        browser_list.add(playlist_queue);
+        Browser::PlaylistTreeView queue_browser(client);
+        browser_list.add(queue_browser);
+
+        Browser::PlaylistManager playlists_browser(client,builder);
+        browser_list.add(playlists_browser);
 
         /* Send a good morning to all widgets */
         client.force_update();
 
         Gtk::Window * main_window = NULL;
         builder->get_widget("FreyaMainWindow", main_window);
+        DisconnectManager(client,main_window);
         kit.run(*main_window);
     }
     catch(const Gtk::BuilderError& e)

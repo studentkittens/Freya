@@ -8,8 +8,11 @@
 /* Songlist interface */
 #include "../AbstractSonglist.hh"
 
+
 namespace MPD
 {
+    typedef sigc::signal<void,bool> ConnectionNotifier;
+
     class Client
     {
         public:
@@ -67,6 +70,8 @@ namespace MPD
             EventNotifier& get_notify(void);
 
 
+            ConnectionNotifier& signal_connection_change(void);
+
             /**
              * @brief Forces client update
              *
@@ -104,6 +109,9 @@ namespace MPD
 
             /* The slot which observers can connect to */
             EventNotifier m_Notifier;
+
+            /* Inform observers if connection changes happened */
+            ConnectionNotifier m_ConnNotifer;
     };
 
 }

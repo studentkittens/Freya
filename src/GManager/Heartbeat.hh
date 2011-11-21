@@ -13,12 +13,12 @@ typedef sigc::signal<void,double> TimerNotifier;
 
 namespace GManager
 {
-    class ClientTimerProxy 
+    class Heartbeat 
     {
         public:
 
-            ClientTimerProxy(void);
-            ~ClientTimerProxy(void);
+            Heartbeat(MPD::Client& client);
+            ~Heartbeat(void);
             TimerNotifier& get_notify(void); 
            
             void play(void); 
@@ -34,6 +34,8 @@ namespace GManager
 
             gboolean on_interval(void);
             TimerNotifier signal_proxy;
+
+            void on_connection_change(bool is_connected);
     };
 }
 

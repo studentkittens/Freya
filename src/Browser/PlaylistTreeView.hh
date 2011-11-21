@@ -42,9 +42,16 @@ namespace Browser
             /* Treeview related */
             ModelColumns m_Columns;
             Gtk::ScrolledWindow m_ScrolledWindow;
-            Gtk::TreeView m_TreeView;
             Gtk::Entry m_Entry;
+
+            /* View of the list */
+            Gtk::TreeView m_TreeView;
+
+            /* Actual data */
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+
+            /* Selected data */
+            Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
             /* Client related */
             MPD::Client * mp_Client;

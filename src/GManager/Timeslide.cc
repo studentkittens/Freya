@@ -6,7 +6,7 @@
 
 namespace GManager
 {
-    Timeslide::Timeslide(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+    Timeslide::Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
         m_Timeguard()
     {
         mp_Client = &client;

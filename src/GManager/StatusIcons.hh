@@ -20,9 +20,12 @@ namespace GManager
             void on_clicked_single(void);
             void on_clicked_consume(void);
             void on_clicked_repeat(void);
+            void on_clicked_conn(void);
+            void on_conn_change(bool is_connected);
+            gboolean set_sensitives(void);
 
             /* Widgets */
-            Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
+            Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat, * mp_Conn;
             MPD::Client * mp_Client;
 
             /* set_active() emits a signal, this would cause infinite loops of updating,

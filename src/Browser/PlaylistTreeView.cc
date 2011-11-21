@@ -34,17 +34,22 @@ namespace Browser
         m_TreeView.set_search_column(3);
         m_TreeView.set_search_entry(m_Entry);
 
-        for(guint i = 0; i < 3; i++)
+        for(guint i = 0; i < 4; i++)
         {
             Gtk::TreeView::Column* pColumn = m_TreeView.get_column(i);
             pColumn->set_reorderable();
+            pColumn->set_expand(false);
+            pColumn->set_resizable(true);
         }
 
         /* Misc settings to tree view */
         m_TreeView.set_headers_clickable(true);
 
-        client.fill_queue(*this);
+        /* Selections */
+        m_TreeSelection = m_TreeView.get_selection();
+        m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
 
+        client.fill_queue(*this);
         show_all();
     }
 

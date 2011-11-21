@@ -8,7 +8,7 @@
 
 namespace GManager
 {
-    Statusbar::Statusbar(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Statusbar::Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
     {
 
         BUILDER_GET(builder,"statusbar",m_Statusbar);

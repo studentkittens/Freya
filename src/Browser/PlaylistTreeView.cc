@@ -50,7 +50,8 @@ namespace Browser
         m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
         m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this, &PlaylistTreeView::on_selection_changed));
 
-        client.fill_queue(*this);
+        mp_Client = &client;
+        mp_Client->fill_queue(*this);
         show_all();
     }
 

@@ -40,6 +40,7 @@ namespace GManager
                 }
             }
             delete[] sub_section;
+            sub_section = NULL;
         }
 
     }

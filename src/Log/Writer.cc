@@ -1,5 +1,6 @@
 #include "Writer.hh"
-#include "../Init/Initpath.hh"
+#include "../Init/Path.hh"
+
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -28,9 +29,8 @@ namespace Log
     // constructor
     Writer::Writer()
     {
-        Init::Initpath path_getter;        
+        Init::Path path_getter;        
         m_Logpath = path_getter.path_to_log();
-//        m_Logpath = "/home/chris/log.txt";
 
         m_Logfile = fopen(m_Logpath.c_str(),"a");
         if(m_Logfile != NULL)

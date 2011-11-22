@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="456,80,604,107"/>
+<area shape="rect" id="node36" href="$Model_8cc.html" title="src/Config/Model.cc" alt="" coords="629,80,768,107"/>
+<area shape="rect" id="node5" href="$test__avahi_8cc.html" title="src/AvahiBrowser/test_avahi.cc" alt="" coords="134,155,340,181"/>
+<area shape="rect" id="node7" href="$Handler_8cc.html" title="src/Config/Handler.cc" alt="" coords="365,155,513,181"/>
+<area shape="rect" id="node9" href="$test__config_8cc.html" title="src/Config/test_config.cc" alt="" coords="539,155,707,181"/>
+<area shape="rect" id="node11" href="$includes_8hh.html" title="src/includes.hh" alt="" coords="731,155,841,181"/>
+<area shape="rect" id="node13" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="721,229,851,256"/>
+<area shape="rect" id="node15" href="$ClientTimerProxy_8hh.html" title="src/GManager/ClientTimerProxy.hh" alt="" coords="364,304,591,331"/>
+<area shape="rect" id="node23" href="$MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="435,453,572,480"/>
+<area shape="rect" id="node32" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="773,304,903,331"/>
+<area shape="rect" id="node34" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="929,304,1084,331"/>
+<area shape="rect" id="node17" href="$ClientTimerProxy_8cc.html" title="src/GManager/ClientTimerProxy.cc" alt="" coords="5,379,232,405"/>
+<area shape="rect" id="node19" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="257,379,439,405"/>
+<area shape="rect" id="node25" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="515,379,697,405"/>
+<area shape="rect" id="node21" href="$Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="229,453,411,480"/>
+<area shape="rect" id="node27" href="$Timeslide_8cc.html" title="src/GManager/Timeslide.cc" alt="" coords="597,453,779,480"/>
+</map>

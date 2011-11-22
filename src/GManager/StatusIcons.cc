@@ -21,6 +21,11 @@ namespace GManager
 
         BUILDER_GET(builder,"icon_consume",mp_Consume);
         mp_Consume->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_consume));
+
+        BUILDER_GET(builder,"icon_conn",mp_Conn);
+        mp_Conn->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_conn));
+
+        mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&Statusicons::on_conn_change));
     }
 
     Statusicons::~Statusicons() { }
@@ -57,5 +62,33 @@ namespace GManager
     void Statusicons::on_clicked_repeat(void)
     {
         if(!ignore_updates) mp_Client->toggle_repeat(); 
+    }
+
+    void Statusicons::on_clicked_conn(void)
+    {
+        if(mp_Client->is_connected())
+        {
+            mp_Client->disconnect();
+            g_printerr("Disconnecting.");
+        }
+        else
+        {
+            mp_Client->connect();
+            g_printerr("Conn.");
+        }
+    }
+
+    gboolean Statusicons::set_sensitives(void)
+    {
+        g_printerr("Resens\n");
+        mp_Conn->set_sensitive(true);
+        return FALSE;
+    }
+
+    void Statusicons::on_conn_change(bool is_connected)
+    {
+        g_printerr("Sens\n");
+        if(is_connected == false)
+            Glib::signal_timeout().connect(sigc::mem_fun(*this,&Statusicons::set_sensitives),1000);
     }
 }

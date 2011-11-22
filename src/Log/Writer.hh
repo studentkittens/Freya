@@ -1,8 +1,9 @@
-#ifndef FREYA_WRITER_GUARD
-#define FREYA_WRITER_GUARD
+#ifndef FREYA_LOG_WRITER_GUARD
+#define FREYA_LOG_WRITER_GUARD
 
 #include <stdio.h>
 #include "../Singleton.hh"
+
 #define LOGFILE_PATH "logfile.txt"
 
 /* Not supposed to used directly, use the macros below */

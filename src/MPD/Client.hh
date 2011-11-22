@@ -1,12 +1,18 @@
-#ifndef FREYA_CLIENT
-#define FREYA_CLIENT 
+#ifndef FREYA_CLIENT_GUARD
+#define FREYA_CLIENT_GUARD
 
 #include "../includes.hh"
 #include  "Connection.hh"
 #include  "Listener.hh"
 
+/* Songlist interface */
+#include "../AbstractSonglist.hh"
+
+
 namespace MPD
 {
+    typedef sigc::signal<void,bool> ConnectionNotifier;
+
     class Client
     {
         public:
@@ -45,16 +51,13 @@ namespace MPD
              * @param vol Must be in [0-100]
              */
             void set_volume(unsigned vol);
-            unsigned get_volume(void);
+
             /**
              * @brief Get the current MPD::Status
              *
              * @return A reference to it. Do not modify.
              */
             Status * get_status(void);
-
-            // TODO: might get removed, and fetched from the MPD::Queue instead
-            Song * get_song_at_id(unsigned id);
 
             /**
              * @brief Get the notify sigc::signal
@@ -66,7 +69,26 @@ namespace MPD
              */
             EventNotifier& get_notify(void);
 
+
+            ConnectionNotifier& signal_connection_change(void);
+
+            /**
+             * @brief Forces client update
+             *
+             * Updates status, stats, current song 
+             * and sends all possible events to all connected listeners
+             *
+             */
             void force_update(void);
+
+            /**
+             * @brief Fetches the playlist from the mpd server
+             *
+             * @param data_model A user defined class, that inherits from AbstractSonglist 
+             *
+             * @return the number of filled items.
+             */
+            int fill_queue(AbstractSonglist& data_model);
 
         private:
 
@@ -77,16 +99,19 @@ namespace MPD
             bool check_error(void);
             void handle_errors(enum mpd_error err);
 
-            // Instancevars //
+            /* Instancevars */
 
             /* The wrapped up mpd_connection */
-            Connection conn;
+            Connection m_Conn;
 
             /* The event notifier */
             Listener * listener;
 
             /* The slot which observers can connect to */
             EventNotifier m_Notifier;
+
+            /* Inform observers if connection changes happened */
+            ConnectionNotifier m_ConnNotifer;
     };
 
 }

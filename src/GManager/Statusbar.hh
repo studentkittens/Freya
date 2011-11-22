@@ -4,7 +4,7 @@
 #include <gtkmm.h>
 
 #include "../MPD/Client.hh"
-#include "ClientTimerProxy.hh"
+#include "Heartbeat.hh"
 
 namespace GManager
 {
@@ -12,7 +12,7 @@ namespace GManager
     {
         public:
 
-            Statusbar(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+            Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
             ~Statusbar();
 
         private:
@@ -23,7 +23,7 @@ namespace GManager
 
             MPD::NotifyData * mp_Lastdata;
             Gtk::Label * m_Statusbar;
-            ClientTimerProxy * mp_Proxy;
+            Heartbeat * mp_Proxy;
             gchar * mp_Message; 
     };
 }

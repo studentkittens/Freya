@@ -1,0 +1,38 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#ab441663ad6882786f3b8df5a05a4dc9f" title="MPD::Client::is_connected" alt="" coords="287,5,465,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="555,309,749,336"/>
+<area shape="rect" id="node21" href="$classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="MPD::Client::toggle_random" alt="" coords="559,107,745,133"/>
+<area shape="rect" id="node23" href="$classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="MPD::Client::toggle_single" alt="" coords="563,157,741,184"/>
+<area shape="rect" id="node25" href="$classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="MPD::Client::toggle_consume" alt="" coords="553,208,751,235"/>
+<area shape="rect" id="node27" href="$classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="MPD::Client::toggle_repeat" alt="" coords="562,259,742,285"/>
+<area shape="rect" id="node29" href="$classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="295,157,457,184"/>
+<area shape="rect" id="node37" href="$classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91" title="MPD::Client::force_update" alt="" coords="826,487,1003,513"/>
+<area shape="rect" id="node41" href="$classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523" title="MPD::Client::playback_seek" alt="" coords="557,411,747,437"/>
+<area shape="rect" id="node43" href="$classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886" title="set the volume" alt="" coords="567,461,737,488"/>
+<area shape="rect" id="node45" href="$classMPD_1_1Client.html#ad2343666ec7af5478419f59871f9e90d" title="MPD::Client::get_song_at_id" alt="" coords="557,816,747,843"/>
+<area shape="rect" id="node47" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="265,512,487,539"/>
+<area shape="rect" id="node62" href="$classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef" title="MPD::Listener::leave" alt="" coords="579,867,725,893"/>
+<area shape="rect" id="node78" href="$classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="286,885,466,912"/>
+<area shape="rect" id="node85" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="MPD::Connection::disconnect" alt="" coords="277,968,475,995"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3" title="MPD::Client::playback_play" alt="" coords="822,360,1007,387"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31" title="MPD::Client::playback_stop" alt="" coords="821,411,1008,437"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4" title="MPD::Client::playback_next" alt="" coords="821,208,1008,235"/>
+<area shape="rect" id="node13" href="$classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca" title="MPD::Client::playback_prev" alt="" coords="821,259,1008,285"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="MPD::Client::playback_pause" alt="" coords="817,309,1013,336"/>
+<area shape="rect" id="node17" href="$test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="853,816,976,843"/>
+<area shape="rect" id="node19" href="$test__client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1116,816,1167,843"/>
+<area shape="rect" id="node35" href="$classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5" title="MPD::Client::get_volume" alt="" coords="567,56,737,83"/>
+<area shape="rect" id="node39" href="$MainWindow_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1116,487,1167,513"/>
+<area shape="rect" id="node50" href="$classMPD_1_1Client.html#a9c0aec20f1e0381e057dcbddcc4cbca9" title="MPD::Client::list_queue" alt="" coords="571,765,733,792"/>
+<area shape="rect" id="node60" href="$classMPD_1_1Listener.html#acc104e6222b7f70312011284dbf6369a" title="MPD::Listener::Listener" alt="" coords="1061,676,1221,703"/>
+<area shape="rect" id="node64" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="557,512,747,539"/>
+<area shape="rect" id="node67" href="$classMPD_1_1NotifyData.html#acc5f2b1954ae442d0ee2a37b4431bc56" title="MPD::NotifyData::update_status" alt="" coords="545,664,759,691"/>
+<area shape="rect" id="node72" href="$classMPD_1_1NotifyData.html#a3daddbcea5f6fbc6d61737d92f3d3405" title="MPD::NotifyData::update_statistics" alt="" coords="537,563,767,589"/>
+<area shape="rect" id="node75" href="$classMPD_1_1NotifyData.html#a4a6bae1112fe62c88881a47508d76dc6" title="MPD::NotifyData::update_song" alt="" coords="549,613,755,640"/>
+<area shape="rect" id="node69" href="$classMPD_1_1NotifyData.html#af444b367d93b2d7a7f177855c8806e79" title="MPD::NotifyData::update_all" alt="" coords="819,639,1010,665"/>
+<area shape="rect" id="node80" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="MPD::Client::connect" alt="" coords="578,917,726,944"/>
+<area shape="rect" id="node82" href="$classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3" title="MPD::Client::Client" alt="" coords="847,917,983,944"/>
+<area shape="rect" id="node87" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="MPD::Client::disconnect" alt="" coords="569,968,735,995"/>
+<area shape="rect" id="node92" href="$classMPD_1_1Connection.html#af5af1bae23ac431151fb6f7c7171acf2" title="MPD::Connection::~Connection" alt="" coords="548,1019,756,1045"/>
+<area shape="rect" id="node89" href="$classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2" title="MPD::Client::~Client" alt="" coords="843,968,987,995"/>
+</map>

@@ -110,8 +110,10 @@ namespace MPD
 
     void NotifyData::update_all(void)
     {
+       // mpd_command_list_begin(mp_Conn->get_connection(),false);
         update_status();
         update_statistics();
         update_song();
+       // mpd_command_list_end(mp_Conn->get_connection());
     }
 }

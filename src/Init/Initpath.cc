@@ -1,8 +1,8 @@
 #include "Initpath.hh"
 #include "../Config/Handler.hh"
 #include "../Config/defaultcfg.inl"
-#include <string.h>
 #include "../Log/Writer.hh"
+#include <string.h>
 
 namespace Init
 {
@@ -51,7 +51,7 @@ namespace Init
             {
                 if (!g_access( configfile,W_OK|R_OK))
                 {
-                    Info("%s config succesfully read.\n", configfile);
+                    Success("%s config succesfully read.\n", configfile);
                 }
                 else
                 {
@@ -74,13 +74,11 @@ namespace Init
     /*creates config.xml inside config dir */
     void Initpath::create_config()
     {
-        FILE * file;
-        char* buffer = (char*)Config::defaultconfig.c_str();
-        file = fopen ( configfile , "w" );
+        FILE * file = fopen ( configfile , "w" );
         if (NULL!=file)
         {
-            fwrite (buffer , 1 , strlen(buffer) , file );
-            fclose (file);
+            fwrite(Config::defaultconfig.c_str(), 1, Config::defaultconfig.size(), file );
+            fclose(file);
             Success("config %s created.\n", configfile);
         }
         else

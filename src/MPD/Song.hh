@@ -10,7 +10,7 @@ namespace MPD
     class Song
     {
         public:
-            Song(mpd_song& song);
+            Song(const mpd_song& song);
             ~Song(void);
 
             const char * get_uri(void);

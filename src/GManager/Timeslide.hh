@@ -2,7 +2,7 @@
 #define FREYA_TIMESLIDE_GUARD
 
 #include <gtkmm.h>
-#include "ClientTimerProxy.hh"
+#include "Heartbeat.hh"
 
 namespace GManager
 {
@@ -10,7 +10,7 @@ namespace GManager
     {
         public:
 
-            Timeslide(ClientTimerProxy& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+            Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
             ~Timeslide();
 
         private:
@@ -22,7 +22,7 @@ namespace GManager
             bool ignore_signal;
             Gtk::Scale * m_Timeslide;
             MPD::Client * mp_Client;
-            GManager::ClientTimerProxy * mp_Proxy;
+            GManager::Heartbeat * mp_Proxy;
 
             Glib::Timer m_Timeguard;
     };

@@ -57,11 +57,6 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 client->send_command("pause");
                 break;
             }
-        case 'L':
-            {
-                client->list_queue();
-                break;
-            }
         case 'c':
             {
                 client->connect();

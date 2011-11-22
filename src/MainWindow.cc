@@ -1,4 +1,5 @@
-#include "GManager/PlaylistTreeView.hh"
+#include "MPD/Client.hh"
+
 #include "GManager/PlaybackButtons.hh"
 #include "GManager/BrowserList.hh"
 #include "GManager/Statusbar.hh"
@@ -6,35 +7,82 @@
 #include "GManager/TitleLabel.hh"
 #include "GManager/StatusIcons.hh"
 #include "GManager/Volumebutton.hh"
-#include "MPD/Client.hh"
-#include "GManager/ClientTimerProxy.hh"
+#include "GManager/Heartbeat.hh"
+
+#include "Browser/PlaylistTreeView.hh"
+#include "Browser/PlaylistManager.hh"
+
+#include "Log/Writer.hh"
 
 using namespace std;
+
+class DisconnectManager
+{
+    public:
+        DisconnectManager(MPD::Client& client, Gtk::Window * main_window)
+        {
+            mp_Window = main_window;
+            mp_Client = &client;
+            mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&DisconnectManager::on_connection_change));
+        }
+
+        virtual ~DisconnectManager(void) {}
+
+    private:
+
+        void on_connection_change(bool is_connected)
+        {
+            if(is_connected)
+            {
+                Info("Got reconnected - unlocking gui");
+                mp_Window->set_sensitive(true);
+            }
+            else
+            {
+                Info("Got disconnected - locking gui");
+                mp_Window->set_sensitive(false);
+            }
+        }
+
+        MPD::Client * mp_Client;
+        Gtk::Window * mp_Window;
+};
+
 
 int main(int argc, char *argv[])
 {
     Gtk::Main kit(argc,argv);
     try
     {
+        /* Instance the client */
         MPD::Client client;
-        GManager::ClientTimerProxy proxy; 
 
+        /* Get the glade file */
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
 
-        GManager::PlaylistTreeView playlist_queue(builder);
+        /* Instanmce gui elements */
+        GManager::Heartbeat proxy(client); 
         GManager::Timeslide timeslide(proxy,client,builder);
         GManager::Statusbar statusbar(proxy,client,builder);
-        GManager::BrowserList browser_list(builder);
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
         GManager::Volumebutton vol_button(client,builder);
+        GManager::BrowserList browser_list(builder);
+
+        /* Instance browser  */
+        Browser::PlaylistTreeView queue_browser(client);
+        browser_list.add(queue_browser);
+
+        Browser::PlaylistManager playlists_browser(client,builder);
+        browser_list.add(playlists_browser);
 
         /* Send a good morning to all widgets */
         client.force_update();
 
         Gtk::Window * main_window = NULL;
         builder->get_widget("FreyaMainWindow", main_window);
+        DisconnectManager(client,main_window);
         kit.run(*main_window);
     }
     catch(const Gtk::BuilderError& e)

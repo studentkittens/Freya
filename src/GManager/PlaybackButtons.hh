@@ -4,7 +4,6 @@
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
 
-
 namespace GManager
 {
     class PlaybackButtons

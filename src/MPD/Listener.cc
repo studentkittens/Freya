@@ -1,4 +1,5 @@
 #include "Listener.hh"
+#include "../Log/Writer.hh"
 
 namespace MPD
 {

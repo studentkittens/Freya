@@ -9,7 +9,7 @@ namespace Config
     Model::Model()
     {
         Init::Initpath path;
-        Glib::ustring pfad = (char*)path.path_to_config().c_str();
+        Glib::ustring pfad(path.path_to_config());
         setpath((char*)pfad.c_str());
         this->load(pathtofile);
         /* loads default document to memory */

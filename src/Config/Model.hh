@@ -3,7 +3,7 @@
 
 #include <libxml/parser.h>
 #include "./defaultcfg.inl"
-#include "../Init/Initpath.hh"
+#include "../Init/Path.hh"
 #define outputfile "./config.xml"
 
 namespace Config

@@ -13,6 +13,7 @@ namespace Init
         ~Initpath ();
         Glib::ustring get_config_dir();
         Glib::ustring path_to_config();
+        Glib::ustring path_to_log();
 
     private:
         void create_config();

@@ -1,5 +1,5 @@
 #include "Writer.hh"
-
+#include "../Init/Initpath.hh"
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -28,7 +28,11 @@ namespace Log
     // constructor
     Writer::Writer()
     {
-        m_Logfile = fopen(LOGFILE_PATH, "a");
+        Init::Initpath path_getter;        
+        m_Logpath = path_getter.path_to_log();
+//        m_Logpath = "/home/chris/log.txt";
+
+        m_Logfile = fopen(m_Logpath.c_str(),"a");
         if(m_Logfile != NULL)
         {
             fprintf(m_Logfile,"#####################################\n");
@@ -36,7 +40,7 @@ namespace Log
         else
         {
             perror("Cannot write to logfile");
-            g_error("Tried to write it at: %s",LOGFILE_PATH);
+            g_error("Tried to write it at: %s",m_Logpath.c_str());
         }
     }
 
@@ -111,7 +115,7 @@ namespace Log
         if(this->m_Logfile != NULL)
         {
             fclose(m_Logfile);
-            this->m_Logfile = fopen(LOGFILE_PATH,"w");
+            this->m_Logfile = fopen(m_Logpath.c_str(),"w");
         }
     }
 

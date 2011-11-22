@@ -1,12 +1,9 @@
 #include "Initpath.hh"
-#include "../Config/Handler.hh"
 #include "../Config/defaultcfg.inl"
-#include "../Log/Writer.hh"
 #include <string.h>
 
 namespace Init
 {
-
     Initpath::Initpath()
     {
         /* setting configdir member */
@@ -41,6 +38,12 @@ namespace Init
         return retv;
     }
 
+    /* return path to config */
+    Glib::ustring Initpath::path_to_log()
+    {
+        Glib::ustring retv = Glib::ustring(get_config_dir())+ (char*)"/log.txt";
+        return retv;
+    }
 
     /*check if config dir an file is avaiable, if not, try to create */
     void Initpath::dir_is_avaiable()
@@ -51,11 +54,11 @@ namespace Init
             {
                 if (!g_access( configfile,W_OK|R_OK))
                 {
-                    Success("%s config succesfully read.\n", configfile);
+                    g_message("%s config succesfully read.", configfile);
                 }
                 else
                 {
-                    Warning("%s probably a permission problem.\n",configfile);
+                    g_warning("%s probably a permission problem.",configfile);
                 }
             }
             else
@@ -79,11 +82,11 @@ namespace Init
         {
             fwrite(Config::defaultconfig.c_str(), 1, Config::defaultconfig.size(), file );
             fclose(file);
-            Success("config %s created.\n", configfile);
+            g_message("config %s created.", configfile);
         }
         else
         {
-            Error("unable to write %s.\n",configfile);
+            g_warning("unable to write %s.",configfile);
         }
     }
 
@@ -93,11 +96,11 @@ namespace Init
     {
         if (!g_mkdir_with_parents(configdir,0755))
         {
-            Success("dir %s, succesfully created.\n",configdir);
+            g_message("dir %s, succesfully created.",configdir);
         }
         else
         {
-            Error("cannot create ~/.config/freya %s",strerror(errno));
+            g_warning("cannot create ~/.config/freya %s",strerror(errno));
         }
     }
 }

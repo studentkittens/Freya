@@ -37,9 +37,9 @@ namespace GManager
 
     void SettingsNetwork::decline_new_settings(void)
     {
-        ip->set_text(CONFIG_SET(ip_name));
-        port->set_value((double)CONFIG_SET_AS_INT(port_name));
-        recon_timeout->set_value((double)CONFIG_SET_AS_INT(rimeout_name));
+        ip->set_text(CONFIG_GET(ip_name));
+        port->set_value((double)CONFIG_GET_AS_INT(port_name));
+        recon_timeout->set_value((double)CONFIG_GET_AS_INT(rimeout_name));
 
     }
 

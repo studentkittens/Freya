@@ -39,7 +39,7 @@ namespace GManager
     {
         ip->set_text(CONFIG_GET(ip_name));
         port->set_value((double)CONFIG_GET_AS_INT(port_name));
-        recon_timeout->set_value((double)CONFIG_GET_AS_INT(rimeout_name));
+        recon_timeout->set_value((double)CONFIG_GET_AS_INT(timeout_name));
 
     }
 

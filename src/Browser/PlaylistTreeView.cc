@@ -48,6 +48,7 @@ namespace Browser
         /* Selections */
         m_TreeSelection = m_TreeView.get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
+        m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this, &PlaylistTreeView::on_selection_changed));
 
         client.fill_queue(*this);
         show_all();
@@ -55,10 +56,27 @@ namespace Browser
 
     /*-------------------------------*/
 
+    void PlaylistTreeView::on_selected_row(const Gtk::TreeModel::iterator& iter)
+    {
+        Gtk::TreeModel::Row row = *iter;
+        unsigned song_id = row[m_Columns.m_col_id]; 
+        g_message("ID = %d",song_id);
+        mp_Client->play_song_at_id(song_id);
+    }
+
+    /*-------------------------------*/
+    
+    void PlaylistTreeView::on_selection_changed(void)
+    {
+        m_TreeSelection->selected_foreach_iter(sigc::mem_fun(*this, &PlaylistTreeView::on_selected_row));
+    }
+
+    /*-------------------------------*/
+
     bool PlaylistTreeView::add_song(MPD::Song * new_song)
     {
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-        row[m_Columns.m_col_id] = new_song->get_pos();
+        row[m_Columns.m_col_id] = new_song->get_id();
         row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
         row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
         row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91" title="MPD::Client::force_update" alt="" coords="105,5,282,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="840,5,1051,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="331,31,520,57"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="569,31,791,57"/>
-</map>

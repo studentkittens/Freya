@@ -11,6 +11,7 @@
 
 #include "Browser/PlaylistTreeView.hh"
 #include "Browser/PlaylistManager.hh"
+#include "Browser/StatBrowser.hh"
 
 #include "Log/Writer.hh"
 
@@ -76,6 +77,9 @@ int main(int argc, char *argv[])
 
         Browser::PlaylistManager playlists_browser(client,builder);
         browser_list.add(playlists_browser);
+
+        Browser::StatBrowser stat_browser(client,builder);
+        browser_list.add(stat_browser);
 
         /* Send a good morning to all widgets */
         client.force_update();

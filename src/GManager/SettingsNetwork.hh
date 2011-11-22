@@ -17,6 +17,7 @@ namespace GManager
             void decline_new_settings(void);
 
         private:
+            Glib::ustring ip_name, port_name, timeout_name;
         /* Widgets */
             Gtk::Entry *ip;
             Gtk::SpinButton *port, *recon_timeout;

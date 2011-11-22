@@ -6,8 +6,8 @@ namespace GManager
     class SettingsSub
     {
         public:
-            SettingsSub();
-            ~SettingsSub();
+            SettingsSub(){};
+            ~SettingsSub(){};
 
             virtual void accept_new_settings(void) {};
             virtual void decline_new_settings(void) {};

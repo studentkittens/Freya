@@ -7,6 +7,7 @@ namespace GManager
 {
     Settings:Settings(const Glib::RefPtr<Gtk::Builder> &builder)
     {
+        Glib::ustring settings_file("ui/Settings.glade");
 
         sub_sections = new SettingsSub[SUBSECTION_COUNT];
         sub_sections[0] = new SettingsNetwork(builder);
@@ -14,7 +15,7 @@ namespace GManager
         sub_sections[2] = new SettingsReplay(builder);
         sub_sections[3] = new SettingsGeneral(builder);
 
-
+        BUILDER_ADD(builder,settings_file);
         BUILDER_GET(builder,"ok_button",ok_button);
         BUILDER_GET(builder,"stop_button",stop_button);
 

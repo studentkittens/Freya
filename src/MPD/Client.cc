@@ -308,8 +308,15 @@ namespace MPD
         }
     }
 
+    void Client::play_song_at_id(unsigned song_id)
+    {
+        go_busy();
+        mpd_run_play_id(m_Conn.get_connection(),song_id);
+        go_idle();
+    }
+
     //--------------------
-    
+
     Status * Client::get_status(void)
     {
         if(m_Conn.is_connected())
@@ -321,7 +328,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::force_update(void)
     {
         if(m_Conn.is_connected())
@@ -331,7 +338,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::playback_seek(unsigned song_id, unsigned abs_time)
     {
         if(m_Conn.is_connected())
@@ -341,9 +348,9 @@ namespace MPD
             go_idle();
         }
     }
-    
+
     //--------------------
-    
+
     void Client::set_volume(unsigned vol)
     {
         if(m_Conn.is_connected())
@@ -355,12 +362,12 @@ namespace MPD
     }
 
     //--------------------
-    
+
     ConnectionNotifier& Client::signal_connection_change(void)
     {
         return m_ConnNotifer;
     }
-        
+
     //--------------------
 
 } // END NAMESPACE 

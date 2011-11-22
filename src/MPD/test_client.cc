@@ -52,9 +52,9 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 client->send_command("play");
                 break;
             }
-        case 'P':
+        case '#':
             {
-                client->send_command("pause");
+                client->play_song_at_id(2);
                 break;
             }
         case 'c':

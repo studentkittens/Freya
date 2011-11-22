@@ -1,5 +1,5 @@
-#ifndef FREYA_SETTINGS_PLUGINS_GUARD
-#define FREYA_SETTINGS_PLUGINS_GUARD
+#ifndef FREYA_SETTINGS_NETWORK_GUARD
+#define FREYA_SETTINGS_NETWORK_GUARD
 
 #include <gtkmm.h>
 
@@ -7,16 +7,17 @@
 
 namespace GManager
 {
-    class SettingsPlugins : SettingsSub
+    class SettingsNetwork : SettingsSub
     {
         public:
-            SettingsPlugins(const Glib::RefPtr<Gtk::Builder> &builder);
-            ~SettingsPlugins();
+            SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder);
+            ~SettingsNetwork();
 
             void accept_new_settings(void);
             void decline_new_settings(void);
 
         private:
+            Glib::ustring ip_name, port_name, timeout_name;
         /* Widgets */
             Gtk::Entry *ip;
             Gtk::SpinButton *port, *recon_timeout;

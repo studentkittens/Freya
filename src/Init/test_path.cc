@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "Initpath.hh"
+#include "Path.hh"
 #include <glibmm.h>
 
 
 
 int main()
 {
-    Init::Initpath bla;
+    Init::Path bla;
     return EXIT_SUCCESS;
 }
 

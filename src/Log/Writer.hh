@@ -1,10 +1,9 @@
 #ifndef FREYA_LOG_WRITER_GUARD
 #define FREYA_LOG_WRITER_GUARD
 
+#include <glibmm.h>
 #include <stdio.h>
 #include "../Singleton.hh"
-
-#define LOGFILE_PATH "logfile.txt"
 
 /* Not supposed to used directly, use the macros below */
 #define _MSG(level, msg, ...) Log::Writer::instance().message(__FILE__, __LINE__, level, msg,  ##__VA_ARGS__)
@@ -58,7 +57,10 @@ namespace Log
         void clear(void);
 
         private:
+
+        Glib::ustring m_Logpath;
         FILE * m_Logfile;                                                              	
+
         const char * convert_enum_to_str(LOGLEVEL level);                                       
         const char * convert_enum_to_col(LOGLEVEL level);                                       
         void get_current_time(char buffer[]);									

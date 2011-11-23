@@ -8,8 +8,8 @@ namespace Config
     /*reads file from hdd*/
     Model::Model()
     {
-        Init::Initpath path;
-        Glib::ustring pfad = (char*)path.path_to_config().c_str();
+        Init::Path path;
+        Glib::ustring pfad(path.path_to_config());
         setpath((char*)pfad.c_str());
         this->load(pathtofile);
         /* loads default document to memory */

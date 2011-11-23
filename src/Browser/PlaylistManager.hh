@@ -24,7 +24,7 @@ namespace Browser
 
         private:
 
-            bool add_item(void * pPlaylist);
+            void add_item(void * pPlaylist);
             void clear(void) {}
 
             /* Tree model columns: */
@@ -33,10 +33,11 @@ namespace Browser
                 public:
 
                     ModelColumns()
-                    { add(m_col_name); add(m_col_num_songs); }
+                    { add(m_col_plist); add(m_col_name); add(m_col_num_songs); add(m_col_last_modfied); }
                     Gtk::TreeModelColumn<MPD::Playlist*> m_col_plist;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
                     Gtk::TreeModelColumn<unsigned> m_col_num_songs;
+                    Gtk::TreeModelColumn<Glib::ustring> m_col_last_modfied;
             };
 
             /* Treeview related */

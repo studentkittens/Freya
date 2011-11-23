@@ -160,7 +160,7 @@ namespace MPD
         go_busy();
 
         mpd_connection * mpd_conn = m_Conn.get_connection();
-        if(mpd_conn && mpd_send_list_playlist_meta(mpd_conn,NULL) != FALSE)
+        if(mpd_conn && mpd_send_list_playlists(mpd_conn) != FALSE)
         {
             mpd_playlist * ent = NULL;
             while((ent = mpd_recv_playlist(mpd_conn)))

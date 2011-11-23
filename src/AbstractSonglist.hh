@@ -12,7 +12,8 @@ class AbstractSonglist
          *
          * @return 
          */
-        virtual bool add_item(void * item) = 0; 
+        virtual void add_item(void * item) = 0; 
+
         /**
          * @brief Clear all
          */

@@ -75,7 +75,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    bool PlaylistTreeView::add_item(void * pSong)
+    void PlaylistTreeView::add_item(void * pSong)
     {
         g_assert(pSong);
         MPD::Song * new_song = (MPD::Song*)pSong;
@@ -89,8 +89,6 @@ namespace Browser
         } catch(const std::logic_error& e) {
             Warning("Empty column: %s",e.what());
         }
-        // TODO: false should stop recv.
-        return false;
     }
 
 

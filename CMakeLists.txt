@@ -3,7 +3,7 @@ PROJECT(Freya CXX)
 
 # Include pkg-config
 INCLUDE(FindPkgConfig)
-
+INCLUDE(CheckCXXCompilerFlag)
 # some comment
 
 # ------------------------------------------------

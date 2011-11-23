@@ -7,6 +7,7 @@ namespace MPD
 {
     typedef enum mpd_state mpd_state;
 
+    /* C++ Wrapper for mpd_status */
     class Status
     {
         public: 

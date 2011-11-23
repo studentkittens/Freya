@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ClientTimerProxy_8hh.html" title="src/GManager/ClientTimerProxy.hh" alt="" coords="364,80,591,107"/>
+<area shape="rect" id="node11" href="$MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="435,229,572,256"/>
+<area shape="rect" id="node20" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="773,80,903,107"/>
+<area shape="rect" id="node22" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="929,80,1084,107"/>
+<area shape="rect" id="node5" href="$ClientTimerProxy_8cc.html" title="src/GManager/ClientTimerProxy.cc" alt="" coords="5,155,232,181"/>
+<area shape="rect" id="node7" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="257,155,439,181"/>
+<area shape="rect" id="node13" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="515,155,697,181"/>
+<area shape="rect" id="node9" href="$Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="229,229,411,256"/>
+<area shape="rect" id="node15" href="$Timeslide_8cc.html" title="src/GManager/Timeslide.cc" alt="" coords="597,229,779,256"/>
+</map>

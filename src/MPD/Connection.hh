@@ -26,7 +26,6 @@ namespace MPD
             /* The connection from libmpdclient to MPD
             */
             mpd_connection * conn;
-            mpd_status * current_status;
     };
 
 }

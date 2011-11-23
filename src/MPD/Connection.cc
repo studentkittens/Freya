@@ -1,4 +1,5 @@
 #include "Connection.hh"
+#include "../Log/Writer.hh"
 
 namespace MPD
 {
@@ -6,7 +7,6 @@ namespace MPD
 
     Connection::Connection(void)
     {
-        current_status = NULL;
         conn = NULL;
     }
 

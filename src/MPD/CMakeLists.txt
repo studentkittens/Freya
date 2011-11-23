@@ -1,4 +1,13 @@
-ADD_LIBRARY(FreyaMPDLib Connection.cc Client.cc Listener.cc Status.cc)
+ADD_LIBRARY(FreyaMPDLib 
+            Connection.cc
+            Client.cc
+            Listener.cc
+            Status.cc
+            Statistics.cc
+            Song.cc
+            NotifyData.cc
+            )
+
 TARGET_LINK_LIBRARIES(
     FreyaMPDLib 
     ${GLIBMM_PACKAGE_LIBRARIES}

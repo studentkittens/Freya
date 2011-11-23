@@ -1,77 +1,67 @@
 #include "PlaybackButtons.hh"
 #include "../Log/Writer.hh"
+#include "../Utils/Utils.hh"
 
 namespace GManager
 {
-    PlaybackButtons::PlaybackButtons(MPD::Client * instance, const Glib::RefPtr<Gtk::Builder>& builder) 
+    PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) :
+        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_BUTTON), 
+        pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_BUTTON)
     {
-        try
-        {
-            g_assert(instance);
-            this->client_instance = instance;
+        mp_Client = &instance;
 
-            builder->get_widget("stop_button",stop_button);
-            builder->get_widget("play_button",play_button);
-            builder->get_widget("pause_button",pause_button);
-            builder->get_widget("prev_button",prev_button);
-            builder->get_widget("next_button",next_button);
+        BUILDER_GET(builder,"stop_button",stop_button);
+        BUILDER_GET(builder,"pause_button",pause_button);
+        BUILDER_GET(builder,"prev_button",prev_button);
+        BUILDER_GET(builder,"next_button",next_button);
 
-            Gtk::manage(stop_button);
-            Gtk::manage(play_button);
-            Gtk::manage(pause_button);
-            Gtk::manage(prev_button);
-            Gtk::manage(next_button);
+        stop_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_stop));
+        pause_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_pause));
+        prev_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_prev));
+        next_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_next));
 
-            stop_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_stop));
-            play_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_play));
-            pause_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_pause));
-            prev_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_prev));
-            next_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_next));
-        }
-        catch(const Gtk::BuilderError& e)
-        {
-            Error("BuilderFailure: %s",e.what().c_str());
-        }
+        mp_Client->get_notify().connect(sigc::mem_fun(*this,&PlaybackButtons::on_client_update));
     }
 
     //----------------------------
 
-    PlaybackButtons::~PlaybackButtons(void)
-    {
-    }
+    PlaybackButtons::~PlaybackButtons(void) {}
 
     //----------------------------
 
     void PlaybackButtons::on_button_stop(void)
     {
-        client_instance->playback_stop();
-    }
-
-    //----------------------------
-
-    void PlaybackButtons::on_button_play(void)
-    {
-        client_instance->playback_play();
+        mp_Client->playback_stop();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_pause(void)
     {
-        client_instance->playback_pause();
+        mp_Client->playback_pause();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_prev(void)
     {
-        client_instance->playback_prev();
+        mp_Client->playback_prev();
     }
 
     //----------------------------
 
     void PlaybackButtons::on_button_next(void)
     {
-        client_instance->playback_next();
+        mp_Client->playback_next();
+    }
+
+    //----------------------------
+
+    void PlaybackButtons::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    {
+        if(event & MPD_IDLE_PLAYER)
+        {
+            pause_button->set_image((data.get_status().get_state() == MPD_STATE_PLAY) ? pause_icon : play_icon);
+        }
     }
 }

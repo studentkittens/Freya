@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="216,5,427,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="220,56,423,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="225,107,417,133"/>
+</map>

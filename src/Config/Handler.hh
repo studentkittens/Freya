@@ -9,29 +9,29 @@
 
 namespace Config
 {
-class Handler
-{
-    DEF_SINGLETON( Handler )
+    class Handler
+    {
+        DEF_SINGLETON( Handler )
 
-public:
-    ~Handler ();
+    public:
+        ~Handler ();
 
-    /*getter and setter for given node*/
-    Glib::ustring get_value(Glib::ustring);
-    int get_value_as_int(Glib::ustring);
-    void set_value(Glib::ustring, Glib::ustring);
-    void set_value_as_int(Glib::ustring,int);
+        /*getter and setter for given node*/
+        Glib::ustring get_value(Glib::ustring);
+        int get_value_as_int(Glib::ustring);
+        void set_value(Glib::ustring, Glib::ustring);
+        void set_value_as_int(Glib::ustring,int);
 
-private:
-    /*internal traversing funcs*/
-    xmlNodePtr traverse(const char*, xmlNodePtr);
-    xmlNodePtr _traverse(const char*, char*, char*, int, xmlNodePtr);
+    private:
+        /*internal traversing funcs*/
+        xmlNodePtr traverse(const char*, xmlNodePtr);
+        xmlNodePtr _traverse(const char*, char*, char*, int, xmlNodePtr);
 
-    /*model config member for data access*/
-    Model cfgmodel;
-    Glib::ustring _get_value(Glib::ustring, bool);
+        /*model config member for data access*/
+        Model cfgmodel;
+        Glib::ustring _get_value(Glib::ustring, bool);
 
-};
+    };
 }
 
 #define CONFIG_SET(x,y) Config::Handler::instance().set_value(x,y)

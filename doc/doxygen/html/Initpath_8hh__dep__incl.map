@@ -1,0 +1,21 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Model_8hh.html" title="src/Config/Model.hh" alt="" coords="545,80,684,107"/>
+<area shape="rect" id="node40" href="$Initpath_8cc.html" title="src/Init/Initpath.cc" alt="" coords="709,80,835,107"/>
+<area shape="rect" id="node42" href="$test__path_8cc.html" title="src/Init/test_path.cc" alt="" coords="860,80,999,107"/>
+<area shape="rect" id="node5" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="456,155,604,181"/>
+<area shape="rect" id="node38" href="$Model_8cc.html" title="src/Config/Model.cc" alt="" coords="629,155,768,181"/>
+<area shape="rect" id="node7" href="$test__avahi_8cc.html" title="src/AvahiBrowser/test_avahi.cc" alt="" coords="134,229,340,256"/>
+<area shape="rect" id="node9" href="$Handler_8cc.html" title="src/Config/Handler.cc" alt="" coords="365,229,513,256"/>
+<area shape="rect" id="node11" href="$test__config_8cc.html" title="src/Config/test_config.cc" alt="" coords="539,229,707,256"/>
+<area shape="rect" id="node13" href="$includes_8hh.html" title="src/includes.hh" alt="" coords="731,229,841,256"/>
+<area shape="rect" id="node15" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="721,304,851,331"/>
+<area shape="rect" id="node17" href="$ClientTimerProxy_8hh.html" title="src/GManager/ClientTimerProxy.hh" alt="" coords="364,379,591,405"/>
+<area shape="rect" id="node25" href="$MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="435,528,572,555"/>
+<area shape="rect" id="node34" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="773,379,903,405"/>
+<area shape="rect" id="node36" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="929,379,1084,405"/>
+<area shape="rect" id="node19" href="$ClientTimerProxy_8cc.html" title="src/GManager/ClientTimerProxy.cc" alt="" coords="5,453,232,480"/>
+<area shape="rect" id="node21" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="257,453,439,480"/>
+<area shape="rect" id="node27" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="515,453,697,480"/>
+<area shape="rect" id="node23" href="$Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="229,528,411,555"/>
+<area shape="rect" id="node29" href="$Timeslide_8cc.html" title="src/GManager/Timeslide.cc" alt="" coords="597,528,779,555"/>
+</map>

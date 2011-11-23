@@ -1,16 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="104,107,227,133"/>
-<area shape="rect" id="node5" href="$classMPDClientHandler.html#a33c32dc5022572c10b07f7685bad48fe" title="MPDClientHandler::send_command" alt="" coords="298,5,529,32"/>
-<area shape="rect" id="node11" href="$classMPDClientHandler.html#a47f1ac6da7596e7e29802e25f2a78ad8" title="MPDClientHandler::list_queue" alt="" coords="314,56,513,83"/>
-<area shape="rect" id="node13" href="$classMPDClientHandler.html#a1cf4a86afb7ba347fc078c14e1812b6f" title="MPDClientHandler::get_connection_handler" alt="" coords="275,107,551,133"/>
-<area shape="rect" id="node15" href="$classMPDConnectionHandler.html#a17a2e3a366999b3690901982a11b8117" title="MPDConnectionHandler::connect" alt="" coords="305,157,522,184"/>
-<area shape="rect" id="node29" href="$classMPDConnectionHandler.html#aebfcb4dfe430e99574ef2c0456d02ca4" title="MPDConnectionHandler::disconnect" alt="" coords="296,259,531,285"/>
-<area shape="rect" id="node7" href="$classMPDConnectionHandler.html#a651fc2b30f08e572980d540070213d09" title="MPDConnectionHandler::is_connected" alt="" coords="600,5,848,32"/>
-<area shape="rect" id="node9" href="$classMPDConnection.html#a772fb7a6a53de28ecaa0c4d214247d3c" title="MPDConnection::is_connected" alt="" coords="903,81,1105,108"/>
-<area shape="rect" id="node17" href="$classMPDConnection.html#a460a4556a48301153e0950b9826d56b2" title="MPDConnection::set_connection" alt="" coords="617,208,831,235"/>
-<area shape="rect" id="node19" href="$classMPDConnectionHandler.html#a10833493ed0c4a3e9078d5f5f63d1009" title="MPDConnectionHandler::check_error" alt="" coords="605,107,843,133"/>
-<area shape="rect" id="node25" href="$classIdleListener.html#a22b4332b195f9970f69078f1d00eddc3" title="IdleListener::enter" alt="" coords="661,157,787,184"/>
-<area shape="rect" id="node22" href="$classMPDConnection.html#a971726128345c7490a530aaa794649f3" title="MPDConnection::get_connection" alt="" coords="897,169,1111,196"/>
-<area shape="rect" id="node27" href="$classIdleListener.html#acf825054545a28277d674b99222cd80c" title="IdleListener::is_idling" alt="" coords="932,296,1076,323"/>
-<area shape="rect" id="node32" href="$classIdleListener.html#af07253352ccb6be4d625429cd89d1db2" title="IdleListener::leave" alt="" coords="660,360,788,387"/>
+<area shape="rect" id="node3" href="$test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="132,107,255,133"/>
+<area shape="rect" id="node25" href="$classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91" title="MPD::Client::force_update" alt="" coords="105,208,282,235"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="331,107,525,133"/>
+<area shape="rect" id="node12" href="$classMPD_1_1Client.html#a9c0aec20f1e0381e057dcbddcc4cbca9" title="MPD::Client::list_queue" alt="" coords="347,157,509,184"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="MPD::Client::connect" alt="" coords="354,5,502,32"/>
+<area shape="rect" id="node20" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="MPD::Client::disconnect" alt="" coords="345,56,511,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="845,107,1056,133"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="574,157,797,184"/>
+<area shape="rect" id="node17" href="$classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="595,5,775,32"/>
+<area shape="rect" id="node22" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="MPD::Connection::disconnect" alt="" coords="587,56,784,83"/>
+<area shape="rect" id="node28" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="333,208,523,235"/>
 </map>

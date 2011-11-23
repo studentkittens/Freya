@@ -1,12 +1,17 @@
 #include "Client.hh"
+#include "../Log/Writer.hh"
+#include "../Config/Handler.hh"
 
 namespace MPD
 {
     //-------------------------------
 
-    Client::Client() : conn() 
+    Client::Client() : m_Conn(), m_Notifier()
     {
-        connect();
+        if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
+        {
+            connect();
+        }
     }
 
     //-------------------------------
@@ -20,11 +25,12 @@ namespace MPD
 
     void Client::connect(void)
     {
-        if(conn.connect())
+        if(m_Conn.connect())
         {
             Info("Creating Listener");
-            listener = new Listener(conn.get_connection());
+            listener = new Listener(&m_Notifier,m_Conn);
             go_idle();
+            m_ConnNotifer.emit(true);
         }
     }
 
@@ -37,16 +43,24 @@ namespace MPD
             if(listener != NULL)
                 delete listener;
 
-            conn.disconnect();
+            m_Conn.disconnect();
+            m_ConnNotifer.emit(false);
         }
+    }
+
+    //-------------------------------
+
+    bool Client::is_connected(void)
+    {
+        return m_Conn.is_connected();
     }
 
     //-------------------------------
 
     void Client::go_idle(void)
     {
-        listener->enter();
         check_error();
+        listener->enter();
     }
 
     //-------------------------------
@@ -63,13 +77,13 @@ namespace MPD
     bool Client::send_command(const char * command)
     {
         bool result = false;
-        if(command != NULL && conn.is_connected())
+        if(command != NULL && m_Conn.is_connected())
         {
             /* Go into active mode */
             go_busy();
 
             /* Send the command - throw away response */
-            mpd_connection * mpd_conn = conn.get_connection();
+            mpd_connection * mpd_conn = m_Conn.get_connection();
             mpd_send_command(mpd_conn,command,NULL);
 
             mpd_pair * ent = NULL;
@@ -110,7 +124,7 @@ namespace MPD
 
     bool Client::playback_prev(void)
     {
-        return this->send_command("next");
+        return this->send_command("previous");
     }
 
     //-------------------------------
@@ -122,11 +136,11 @@ namespace MPD
 
     //-------------------------------
 
-    void Client::list_queue(void)
+    int Client::fill_queue(AbstractSonglist& data_model)
     {
         go_busy();
 
-        mpd_connection * mpd_conn = conn.get_connection();
+        mpd_connection * mpd_conn = m_Conn.get_connection();
         if(mpd_conn && mpd_send_list_queue_meta(mpd_conn) != FALSE)
         {
             mpd_entity * ent = NULL;
@@ -134,21 +148,16 @@ namespace MPD
             {
                 switch(mpd_entity_get_type(ent))
                 {
+                    case MPD_ENTITY_TYPE_SONG:
+                        {
+                            const mpd_song * c_song = mpd_entity_get_song(ent);
+                            data_model.add_song(new Song(*c_song));
+                            break;
+                        }
                     case MPD_ENTITY_TYPE_UNKNOWN:
-
                         break;
                     case MPD_ENTITY_TYPE_DIRECTORY:
                         break;
-                    case MPD_ENTITY_TYPE_SONG:
-                        {
-                            const mpd_song * song = mpd_entity_get_song(ent);
-                            g_message("%s - %s - %s",
-                                    mpd_song_get_tag(song,MPD_TAG_ARTIST,0),
-                                    mpd_song_get_tag(song,MPD_TAG_ALBUM,0),
-                                    mpd_song_get_tag(song,MPD_TAG_TITLE,0)
-                                    );
-                            break;
-                        }
                     case MPD_ENTITY_TYPE_PLAYLIST:
                         break;
                 }
@@ -156,6 +165,7 @@ namespace MPD
             }
         }
         go_idle();
+        return -1;
     }
 
     //-------------------------------
@@ -164,7 +174,7 @@ namespace MPD
     {
         connect();
 
-        gboolean retv = conn.is_connected();
+        gboolean retv = m_Conn.is_connected();
         if(retv)
         {
             Info("Succesfully reconnected.");
@@ -208,10 +218,10 @@ namespace MPD
     bool Client::check_error(void)
     {
         bool result = false;
-        if(conn.is_connected())
+        if(m_Conn.is_connected())
         {
             /* Check for errors at this connection and log them */
-            mpd_connection * mpd_conn = conn.get_connection();
+            mpd_connection * mpd_conn = m_Conn.get_connection();
             if(mpd_connection_get_error(mpd_conn) != MPD_ERROR_SUCCESS)
             {
                 enum mpd_error err_code = mpd_connection_get_error(mpd_conn);
@@ -244,9 +254,118 @@ namespace MPD
 
     //--------------------
 
-    EventNotifier * Client::get_notify(void)
+    EventNotifier& Client::get_notify(void)
     {
-        return (listener) ? listener->get_notify() : NULL;
+        return m_Notifier; 
+    }
+
+    //--------------------
+    
+    void Client::toggle_random(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            go_busy();
+            mpd_run_random(m_Conn.get_connection(),!(get_status()->get_random()));
+            go_idle();
+        }
+    }
+
+    //--------------------
+    
+    void Client::toggle_single(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            go_busy();
+            bool iss = get_status()->get_single();
+            mpd_run_single(m_Conn.get_connection(),!(iss));
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    void Client::toggle_consume(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            go_busy();
+            mpd_run_consume(m_Conn.get_connection(),!(get_status()->get_consume()));
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    void Client::toggle_repeat(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            go_busy();
+            mpd_run_repeat(m_Conn.get_connection(),!(get_status()->get_repeat()));
+            go_idle();
+        }
+    }
+
+    void Client::play_song_at_id(unsigned song_id)
+    {
+        go_busy();
+        mpd_run_play_id(m_Conn.get_connection(),song_id);
+        go_idle();
+    }
+
+    //--------------------
+
+    Status * Client::get_status(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            return &(listener->get_notify_data().get_status());
+        }
+        Warning("get_status() while being disconnected");
+        return NULL;
+    }
+
+    //--------------------
+
+    void Client::force_update(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            listener->force_update();
+        }
+    }
+
+    //--------------------
+
+    void Client::playback_seek(unsigned song_id, unsigned abs_time)
+    {
+        if(m_Conn.is_connected())
+        {
+            go_busy();
+            mpd_run_seek_id(m_Conn.get_connection(),song_id,abs_time);
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    void Client::set_volume(unsigned vol)
+    {
+        if(m_Conn.is_connected())
+        {
+            go_busy();
+            mpd_run_set_volume(m_Conn.get_connection(),vol);
+            go_idle();
+        }
+    }
+
+    //--------------------
+
+    ConnectionNotifier& Client::signal_connection_change(void)
+    {
+        return m_ConnNotifer;
     }
 
     //--------------------

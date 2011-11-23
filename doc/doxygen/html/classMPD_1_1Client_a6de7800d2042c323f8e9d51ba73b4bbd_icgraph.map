@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classGManager_1_1PlaybackButtons.html#a51fabdb3716685045c6ab87f0afac5c6" title="GManager::PlaybackButtons::PlaybackButtons" alt="" coords="213,5,509,32"/>
+<area shape="rect" id="node5" href="$classGManager_1_1Statusbar.html#a8152b3c09e7135eb0e72133c43f6c31c" title="GManager::Statusbar::Statusbar" alt="" coords="256,56,467,83"/>
+<area shape="rect" id="node7" href="$classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e" title="GManager::Statusicons::Statusicons" alt="" coords="243,107,479,133"/>
+<area shape="rect" id="node9" href="$classGManager_1_1Timeslide.html#a6b25a5162891ab8684ea1923cf3eba7f" title="GManager::Timeslide::Timeslide" alt="" coords="256,157,467,184"/>
+<area shape="rect" id="node11" href="$classGManager_1_1TitleLabel.html#a7392cdfa0ca4b4cf2c285ed1a806e561" title="GManager::TitleLabel::TitleLabel" alt="" coords="256,208,467,235"/>
+<area shape="rect" id="node13" href="$classGManager_1_1Volumebutton.html#a5c03c14306c6828813da7f7641bcc75c" title="GManager::Volumebutton::Volumebutton" alt="" coords="232,259,491,285"/>
+</map>

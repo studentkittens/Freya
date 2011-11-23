@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3" title="MPD::Client::playback_play" alt="" coords="254,5,439,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31" title="MPD::Client::playback_stop" alt="" coords="253,56,440,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4" title="MPD::Client::playback_next" alt="" coords="253,107,440,133"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca" title="MPD::Client::playback_prev" alt="" coords="253,157,440,184"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="MPD::Client::playback_pause" alt="" coords="249,208,445,235"/>
+<area shape="rect" id="node13" href="$test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="285,259,408,285"/>
+<area shape="rect" id="node15" href="$test__client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="493,259,544,285"/>
+</map>

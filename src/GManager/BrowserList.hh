@@ -2,6 +2,7 @@
 #define FREYA_BROWSERLIST_GUARD
 
 #include <gtkmm.h>
+#include "../AbstractBrowser.hh"
 
 namespace GManager
 {
@@ -12,24 +13,41 @@ namespace GManager
             BrowserList(const Glib::RefPtr<Gtk::Builder>& builder);
             ~BrowserList();
 
+            /**
+             * @brief Add the browser to the list and manage it
+             *
+             * @param browser A user class that inherits from AbstractBrowser
+             */
+            void add(AbstractBrowser& browser);
+
         private:
+
+            void change_browser(AbstractBrowser * browser);
+            void on_selection_changed(void);
 
             //Tree model columns:
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:
-                    ModelColumns() { add(m_col_name);}
+                    ModelColumns() { add(m_col_name); add(m_col_browser); }
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+                    Gtk::TreeModelColumn<AbstractBrowser*> m_col_browser;
             };
 
-            // View
-            Gtk::TreeView * plugin_listview;
+            /* View */
+            Gtk::TreeView * mp_PluginListview;
 
-            // Actual model
+            /* Actual model */
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
 
-            // Model layout
+            /* Model layout */
             ModelColumns m_Columns;
+
+            /* Selected data of model */
+            Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
+
+            /* Paned widgets, where all browser stuff is happening in */
+            Gtk::Paned * mp_Paned;
     };
 }
 

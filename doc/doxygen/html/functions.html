@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -78,12 +79,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
-      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
       <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_b"><span>b</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
@@ -96,8 +97,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
       <li><a href="#index_0x7e"><span>~</span></a></li>
     </ul>
   </div>
@@ -112,18 +116,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
+<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>Browser()
+: <a class="el" href="classAvahi_1_1Browser.html#a185d7f8182bab21283559664117b3884">Avahi::Browser</a>
+</li>
+<li>BrowserList()
+: <a class="el" href="classGManager_1_1BrowserList.html#aa4c728c2eab7b1f6d357000171477140">GManager::BrowserList</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
 <li>call_action()
 : <a class="el" href="classCmdOption.html#ab50d5c759c9e4b5a0b0576b6e42c595f">CmdOption</a>
 </li>
-<li>check_error()
-: <a class="el" href="classMPDConnectionHandler.html#a10833493ed0c4a3e9078d5f5f63d1009">MPDConnectionHandler</a>
-</li>
 <li>clear()
-: <a class="el" href="classLogHandler.html#aaaa1ec1e6e2de745c10f0069fa2fc3fc">LogHandler</a>
+: <a class="el" href="classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395">Log::Writer</a>
+</li>
+<li>Client()
+: <a class="el" href="classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3">MPD::Client</a>
 </li>
 <li>client
-: <a class="el" href="structshell__data.html#ade9283debf46ba0ad03356e5e9076aac">shell_data</a>
+: <a class="el" href="structshell__data.html#aab6a3813145e6ca50eff3234a7e25bec">shell_data</a>
+</li>
+<li>ClientTimerProxy()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#ad297b715a17959475ae6b179dad6c377">GManager::ClientTimerProxy</a>
 </li>
 <li>CmdArgParser()
 : <a class="el" href="classCmdArgParser.html#ab4b7b4a97e1701a5974f3edb8c874e1a">CmdArgParser</a>
@@ -131,14 +148,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>CmdOption()
 : <a class="el" href="classCmdOption.html#aae07c82208e2d60590f66d8f521c5351">CmdOption</a>
 </li>
-<li>ConfigHandler()
-: <a class="el" href="classConfigHandler.html#a947a7bba0f2700586754653739cc181e">ConfigHandler</a>
-</li>
-<li>ConfigModel()
-: <a class="el" href="classConfigModel.html#abe58ba09ff680dd1c5bf9c2c32a81171">ConfigModel</a>
-</li>
 <li>connect()
-: <a class="el" href="classMPDConnectionHandler.html#a17a2e3a366999b3690901982a11b8117">MPDConnectionHandler</a>
+: <a class="el" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de">MPD::Client</a>
+, <a class="el" href="classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1">MPD::Connection</a>
+</li>
+<li>Connection()
+: <a class="el" href="classMPD_1_1Connection.html#a383e1a08bfa66e7852577ed53752f5dd">MPD::Connection</a>
 </li>
 </ul>
 
@@ -148,72 +163,195 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classCmdOption.html#ac32fa75074204c87679faaf974bf5772">CmdOption</a>
 </li>
 <li>disconnect()
-: <a class="el" href="classMPDConnectionHandler.html#aebfcb4dfe430e99574ef2c0456d02ca4">MPDConnectionHandler</a>
+: <a class="el" href="classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a">MPD::Connection</a>
+, <a class="el" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a">MPD::Client</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
 <li>enter()
-: <a class="el" href="classIdleListener.html#a22b4332b195f9970f69078f1d00eddc3">IdleListener</a>
+: <a class="el" href="classMPD_1_1Listener.html#af8275ba3e9731b1dd0274864b97e39f4">MPD::Listener</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
-<li>FreyaAvahiHandler()
-: <a class="el" href="classFreyaAvahiHandler.html#a0b45605758a984c038e9af58e68a0c46">FreyaAvahiHandler</a>
-</li>
-<li>FreyaAvahiView()
-: <a class="el" href="classFreyaAvahiView.html#a7eb789d9d2dea481cf1dcccfe1f9d815">FreyaAvahiView</a>
+<li>force_update()
+: <a class="el" href="classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91">MPD::Client</a>
+, <a class="el" href="classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604">MPD::Listener</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>get()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#a41d409daceef0aa467c8e7eedb9f4c15">GManager::ClientTimerProxy</a>
+</li>
+<li>get_audio_bits()
+: <a class="el" href="classMPD_1_1Status.html#a9c0c1711a1370f4b49d60ba50b17c64d">MPD::Status</a>
+</li>
+<li>get_audio_channels()
+: <a class="el" href="classMPD_1_1Status.html#a7a4a2e526ef7d9b4441a29df96c35a01">MPD::Status</a>
+</li>
+<li>get_audio_sample_rate()
+: <a class="el" href="classMPD_1_1Status.html#a6bd18c12988cb4f1fc591d71782b1392">MPD::Status</a>
+</li>
+<li>get_config_dir()
+: <a class="el" href="classInit_1_1Initpath.html#a8118a6c0e2102e086a0c1510496ef7c4">Init::Initpath</a>
+</li>
 <li>get_connection()
-: <a class="el" href="classMPDConnection.html#a971726128345c7490a530aaa794649f3">MPDConnection</a>
-, <a class="el" href="classMPDConnectionHandler.html#a1a67b4cce3a13f515ec9f8e9229503b9">MPDConnectionHandler</a>
+: <a class="el" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9">MPD::Connection</a>
 </li>
-<li>get_connection_handler()
-: <a class="el" href="classMPDClientHandler.html#a1cf4a86afb7ba347fc078c14e1812b6f">MPDClientHandler</a>
+<li>get_consume()
+: <a class="el" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467">MPD::Status</a>
 </li>
-<li>get_listener()
-: <a class="el" href="classMPDConnectionHandler.html#ab4c4021acf4e043979606ed594ccfb53">MPDConnectionHandler</a>
+<li>get_crossfade()
+: <a class="el" href="classMPD_1_1Status.html#a8a28d0c152a7e57d4fdd413c61fd5228">MPD::Status</a>
+</li>
+<li>get_db_play_time()
+: <a class="el" href="classMPD_1_1Statistics.html#a1c03b44ca289b74f85ee9f68511243a7">MPD::Statistics</a>
+</li>
+<li>get_db_update_time()
+: <a class="el" href="classMPD_1_1Statistics.html#a282233c972b721924145a9dcbe0d510d">MPD::Statistics</a>
+</li>
+<li>get_duration()
+: <a class="el" href="classMPD_1_1Song.html#a2741b1880486ff1cf860badbcb99befd">MPD::Song</a>
+</li>
+<li>get_elapsed_ms()
+: <a class="el" href="classMPD_1_1Status.html#abc2b90f94ad94f98ded1e4602fd7c72b">MPD::Status</a>
+</li>
+<li>get_elapsed_time()
+: <a class="el" href="classMPD_1_1Status.html#a55147875771784b3ccb79267f0bf9c34">MPD::Status</a>
+</li>
+<li>get_error()
+: <a class="el" href="classMPD_1_1Status.html#a2ae161e791b953b2542d43b44dfcb03f">MPD::Status</a>
+</li>
+<li>get_id()
+: <a class="el" href="classMPD_1_1Song.html#a1caec3e5310483060dc5ebe6dc22cbd4">MPD::Song</a>
+</li>
+<li>get_kbit_rate()
+: <a class="el" href="classMPD_1_1Status.html#a6fa4e2c5bae62ce3abce10af5918f908">MPD::Status</a>
+</li>
+<li>get_last_modified()
+: <a class="el" href="classMPD_1_1Song.html#ac1645568a1b2f957644863e68f7d69fb">MPD::Song</a>
+</li>
+<li>get_mixrampdb()
+: <a class="el" href="classMPD_1_1Status.html#afd0e1e2d768145dedb58b7821abca78c">MPD::Status</a>
+</li>
+<li>get_mixrampdelay()
+: <a class="el" href="classMPD_1_1Status.html#ae9fd1de9207bb732e2a7dbb7c079fe52">MPD::Status</a>
+</li>
+<li>get_notify()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#a70d9769b728ad600d134277d5e7ab951">GManager::ClientTimerProxy</a>
+, <a class="el" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd">MPD::Client</a>
+</li>
+<li>get_notify_data()
+: <a class="el" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1">MPD::Listener</a>
+</li>
+<li>get_number_of_albums()
+: <a class="el" href="classMPD_1_1Statistics.html#afae7ef141243dd86b503889e2d05ae96">MPD::Statistics</a>
+</li>
+<li>get_number_of_artists()
+: <a class="el" href="classMPD_1_1Statistics.html#ac5601406dca1437eb44081ac83e0f6a8">MPD::Statistics</a>
+</li>
+<li>get_number_of_songs()
+: <a class="el" href="classMPD_1_1Statistics.html#ac4593467147e25b6782b3a16328ddc7a">MPD::Statistics</a>
+</li>
+<li>get_play_time()
+: <a class="el" href="classMPD_1_1Statistics.html#aa9a9961beef70fc5affd175a540568a6">MPD::Statistics</a>
+</li>
+<li>get_pos()
+: <a class="el" href="classMPD_1_1Song.html#a0f81936a2e3a4af57f32fb77a38e9931">MPD::Song</a>
+</li>
+<li>get_queue_length()
+: <a class="el" href="classMPD_1_1Status.html#aa954ec951a6b5a10ea56b58682f93290">MPD::Status</a>
+</li>
+<li>get_queue_version()
+: <a class="el" href="classMPD_1_1Status.html#a6fcda5ed4aed22150a2db302e5119cd2">MPD::Status</a>
+</li>
+<li>get_random()
+: <a class="el" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455">MPD::Status</a>
+</li>
+<li>get_repeat()
+: <a class="el" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c">MPD::Status</a>
 </li>
 <li>get_signal()
-: <a class="el" href="classFreyaAvahiHandler.html#a745f63407a58beec3ae7969eb826e106">FreyaAvahiHandler</a>
+: <a class="el" href="classAvahi_1_1Browser.html#ac313e3d6455a6ac1ded29c4f0f9b55a0">Avahi::Browser</a>
+</li>
+<li>get_single()
+: <a class="el" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e">MPD::Status</a>
+</li>
+<li>get_song()
+: <a class="el" href="classMPD_1_1NotifyData.html#ac161c587bd63c987a8624ebbb40140ba">MPD::NotifyData</a>
+</li>
+<li>get_song_at_id()
+: <a class="el" href="classMPD_1_1Client.html#ad2343666ec7af5478419f59871f9e90d">MPD::Client</a>
+</li>
+<li>get_song_id()
+: <a class="el" href="classMPD_1_1Status.html#a57241c283f740f5ea92e03290d287429">MPD::Status</a>
+</li>
+<li>get_song_pos()
+: <a class="el" href="classMPD_1_1Status.html#a0c7eda53457ea7c88450ce40ddd2579b">MPD::Status</a>
+</li>
+<li>get_state()
+: <a class="el" href="classMPD_1_1Status.html#a180b8e6525ae2e345242a20db324d815">MPD::Status</a>
+</li>
+<li>get_statistics()
+: <a class="el" href="classMPD_1_1NotifyData.html#a88dd9141a8869a59dc371704ef3efd26">MPD::NotifyData</a>
 </li>
 <li>get_status()
-: <a class="el" href="classMPDConnection.html#a4062222158647a343e78427923ae7f9d">MPDConnection</a>
+: <a class="el" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d">MPD::Client</a>
+, <a class="el" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">MPD::NotifyData</a>
+</li>
+<li>get_tag()
+: <a class="el" href="classMPD_1_1Song.html#a1d4f2f4015826c12947bf31c38de1b0d">MPD::Song</a>
+</li>
+<li>get_total_time()
+: <a class="el" href="classMPD_1_1Status.html#a3b6b8b7cb5ea41c55e8babd50cafd250">MPD::Status</a>
+</li>
+<li>get_update_id()
+: <a class="el" href="classMPD_1_1Status.html#a545c5b5c7576d0e76bff12baf41b4e13">MPD::Status</a>
+</li>
+<li>get_uptime()
+: <a class="el" href="classMPD_1_1Statistics.html#a2edd242a0f8c8336a7bca471ad154d38">MPD::Statistics</a>
+</li>
+<li>get_uri()
+: <a class="el" href="classMPD_1_1Song.html#a3954999da03b83814be43a1ff6b31d4a">MPD::Song</a>
 </li>
 <li>get_value()
-: <a class="el" href="classConfigHandler.html#a76e13055358dcbd96b2c4cfae38fefb9">ConfigHandler</a>
+: <a class="el" href="classConfig_1_1Handler.html#a234279c50d24218ec2ce7b5404fd3399">Config::Handler</a>
+</li>
+<li>get_value_as_int()
+: <a class="el" href="classConfig_1_1Handler.html#a7895612f90be60c3af3eee62ee30f1e8">Config::Handler</a>
+</li>
+<li>get_volume()
+: <a class="el" href="classMPD_1_1Status.html#ab9ced2bc53a9e0372c75b6dcbac30317">MPD::Status</a>
+, <a class="el" href="classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5">MPD::Client</a>
 </li>
 <li>get_window()
-: <a class="el" href="classFreyaAvahiHandler.html#a87d4ba7ea35b5c47e2e8b3cac8edc951">FreyaAvahiHandler</a>
+: <a class="el" href="classAvahi_1_1Browser.html#a1d41a134c9f0d3ed232e2c28b81189f3">Avahi::Browser</a>
+</li>
+<li>getDefaultDocPtr()
+: <a class="el" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">Config::Model</a>
 </li>
 <li>getDocPtr()
-: <a class="el" href="classConfigModel.html#ab23d44393cf574b27b9357d7051cd71d">ConfigModel</a>
-</li>
-<li>GIOCondition_to_MPDAsyncEvent()
-: <a class="el" href="classIdleListener.html#a8df233f7b67dcef60fd1a47f7b3035f6">IdleListener</a>
+: <a class="el" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">Config::Model</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
-<li>IdleListener
-: <a class="el" href="classMPDConnectionHandler.html#a227a2ce158de0cd04bf5cfbb1ff9be9c">MPDConnectionHandler</a>
-, <a class="el" href="classIdleListener.html#a25267143c7862e62d38c123614580b06">IdleListener</a>
+<li>Initpath()
+: <a class="el" href="classInit_1_1Initpath.html#a5bc75217fc959bc5fc917752d409e2a2">Init::Initpath</a>
 </li>
 <li>is_connected()
-: <a class="el" href="classMPDConnectionHandler.html#a651fc2b30f08e572980d540070213d09">MPDConnectionHandler</a>
-, <a class="el" href="classMPDConnection.html#a772fb7a6a53de28ecaa0c4d214247d3c">MPDConnection</a>
-, <a class="el" href="classFreyaAvahiHandler.html#af4af5eaf8284ea21ee696de722a94737">FreyaAvahiHandler</a>
+: <a class="el" href="classAvahi_1_1Browser.html#a1f5ef46e504f2aad4a010f056dcfd07a">Avahi::Browser</a>
+, <a class="el" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01">MPD::Connection</a>
+, <a class="el" href="classMPD_1_1Client.html#ab441663ad6882786f3b8df5a05a4dc9f">MPD::Client</a>
 </li>
 <li>is_idling()
-: <a class="el" href="classIdleListener.html#acf825054545a28277d674b99222cd80c">IdleListener</a>
+: <a class="el" href="classMPD_1_1Listener.html#ad433ccebdd1a35631022448a1c5372b4">MPD::Listener</a>
 </li>
 </ul>
 
@@ -227,13 +365,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>leave()
-: <a class="el" href="classIdleListener.html#af07253352ccb6be4d625429cd89d1db2">IdleListener</a>
+: <a class="el" href="classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef">MPD::Listener</a>
 </li>
 <li>list_queue()
-: <a class="el" href="classMPDClientHandler.html#a47f1ac6da7596e7e29802e25f2a78ad8">MPDClientHandler</a>
+: <a class="el" href="classMPD_1_1Client.html#a9c0aec20f1e0381e057dcbddcc4cbca9">MPD::Client</a>
+</li>
+<li>Listener()
+: <a class="el" href="classMPD_1_1Listener.html#acc104e6222b7f70312011284dbf6369a">MPD::Listener</a>
 </li>
 <li>load()
-: <a class="el" href="classConfigModel.html#ac92fb23824df659d3ccfb877ef31cbb8">ConfigModel</a>
+: <a class="el" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">Config::Model</a>
+</li>
+<li>loadDefaultDoc()
+: <a class="el" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">Config::Model</a>
 </li>
 <li>loop
 : <a class="el" href="structshell__data.html#ad11766f1557a40edf68f9390339caeb0">shell_data</a>
@@ -243,80 +387,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
 <li>m_Button_Cancel
-: <a class="el" href="classFreyaAvahiView.html#ae027532f98721bfc72a7995900661157">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#ab95df6bb78bd65422f202384a36de889">Avahi::View</a>
 </li>
 <li>m_Button_Select
-: <a class="el" href="classFreyaAvahiView.html#a1a889ec913f877d2f0060cc75a8c04f5">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#a3e32d87f60ae0aaa55886b201a05640e">Avahi::View</a>
 </li>
 <li>m_ButtonBox
-: <a class="el" href="classFreyaAvahiView.html#a4f564cb1916b44f76df7bbe45e7d8f5d">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#ab4fc391577fa25ebfef6b563ffaa2ee3">Avahi::View</a>
 </li>
 <li>m_col_album
-: <a class="el" href="classPlaylistTreeView_1_1ModelColumns.html#a3b424ec7dd9635d68bc4008aff7e22e1">PlaylistTreeView::ModelColumns</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a8eda98fb3e164091c5c19b9ab5f4c4a3">GManager::PlaylistTreeView::ModelColumns</a>
 </li>
 <li>m_col_artist
-: <a class="el" href="classPlaylistTreeView_1_1ModelColumns.html#a3c51d1d3b9aa4da11ebba3ce77207edb">PlaylistTreeView::ModelColumns</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a885822163f3c3673ff95134884767a66">GManager::PlaylistTreeView::ModelColumns</a>
 </li>
 <li>m_col_hostname
-: <a class="el" href="classFreyaAvahiView_1_1ModelColumns.html#a502136679ff61fba3cb689a7ad58b76b">FreyaAvahiView::ModelColumns</a>
+: <a class="el" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">Avahi::View::ModelColumns</a>
 </li>
 <li>m_col_id
-: <a class="el" href="classPlaylistTreeView_1_1ModelColumns.html#a2a028154e2fcebde436851e4ede174ce">PlaylistTreeView::ModelColumns</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#a121707048826582c155cba6f10403124">GManager::PlaylistTreeView::ModelColumns</a>
 </li>
 <li>m_col_ip
-: <a class="el" href="classFreyaAvahiView_1_1ModelColumns.html#a31c145fde36d80d79b144aafb2a7be74">FreyaAvahiView::ModelColumns</a>
+: <a class="el" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">Avahi::View::ModelColumns</a>
 </li>
 <li>m_col_name
-: <a class="el" href="classFreyaAvahiView_1_1ModelColumns.html#a27abc5ff6a5f24083aebf45292a1580b">FreyaAvahiView::ModelColumns</a>
-, <a class="el" href="classModelColumns.html#a26b320386fd0333aad5c351eb4e8d88c">ModelColumns</a>
+: <a class="el" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">Avahi::View::ModelColumns</a>
 </li>
 <li>m_col_port
-: <a class="el" href="classFreyaAvahiView_1_1ModelColumns.html#ae40aed00696ff2d7d644eb62ef5930e1">FreyaAvahiView::ModelColumns</a>
+: <a class="el" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">Avahi::View::ModelColumns</a>
 </li>
 <li>m_col_title
-: <a class="el" href="classPlaylistTreeView_1_1ModelColumns.html#ad4172e033be4ef6b2e47a8323601cee9">PlaylistTreeView::ModelColumns</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#ac0f85887f279b6fd14319f6cdf9f0e12">GManager::PlaylistTreeView::ModelColumns</a>
 </li>
 <li>m_Columns
-: <a class="el" href="classFreyaAvahiView.html#a9c24ec63950f241dcfdc2625502dc5cc">FreyaAvahiView</a>
-, <a class="el" href="classPlaylistTreeView.html#a8e28de0bad495207b343ae862dca7215">PlaylistTreeView</a>
+: <a class="el" href="classAvahi_1_1View.html#aa773461e7e6f17d1390a2d5fd78f6bdc">Avahi::View</a>
+, <a class="el" href="classGManager_1_1PlaylistTreeView.html#a087725e9a620bb81e126439ec2f157ce">GManager::PlaylistTreeView</a>
 </li>
 <li>m_refTreeModel
-: <a class="el" href="classPlaylistTreeView.html#a8c489fb9e0542fed6a5465a4afc91714">PlaylistTreeView</a>
-, <a class="el" href="classFreyaAvahiView.html#ad0265da7aa184158e137539bfa32c861">FreyaAvahiView</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView.html#a8903a56bcb080cc82be5ba2e591c492c">GManager::PlaylistTreeView</a>
+, <a class="el" href="classAvahi_1_1View.html#a6c46201c10d69b79e77c29bd95db26e3">Avahi::View</a>
 </li>
 <li>m_ScrolledWindow
-: <a class="el" href="classFreyaAvahiView.html#a6e41d967e114d4df82378b8e4b34046f">FreyaAvahiView</a>
-, <a class="el" href="classPlaylistTreeView.html#ad3b445e2a03227bd5dc93ce4badd5647">PlaylistTreeView</a>
+: <a class="el" href="classAvahi_1_1View.html#a805e4b24a823eac46b46de28429af698">Avahi::View</a>
+, <a class="el" href="classGManager_1_1PlaylistTreeView.html#a7e206013a2cb2d14a48b76ec99581407">GManager::PlaylistTreeView</a>
 </li>
 <li>m_Status_Label
-: <a class="el" href="classFreyaAvahiView.html#a4acd1137b7a41375d37a88d8576297bc">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#a113fbf491d4ad2a7a72692a83362ba83">Avahi::View</a>
 </li>
 <li>m_TreeView
-: <a class="el" href="classFreyaAvahiView.html#ac65ebb1ece218ba64db9e8dd2a48ef87">FreyaAvahiView</a>
-, <a class="el" href="classPlaylistTreeView.html#af386b889e73bc16364f33eb760b08606">PlaylistTreeView</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView.html#abddb1a6b517ea08809ae962c6bda655b">GManager::PlaylistTreeView</a>
+, <a class="el" href="classAvahi_1_1View.html#a883479252bfb1a1dbeaa2bee1952f7a1">Avahi::View</a>
 </li>
 <li>m_VBox
-: <a class="el" href="classFreyaAvahiView.html#a2795d496bd3c74fc895e86ed8eedaa95">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920">Avahi::View</a>
 </li>
 <li>message()
-: <a class="el" href="classLogHandler.html#a2be412bfa6a8296d4ceed8e7d0e4b586">LogHandler</a>
+: <a class="el" href="classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0">Log::Writer</a>
+</li>
+<li>Model()
+: <a class="el" href="classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520">Config::Model</a>
 </li>
 <li>ModelColumns()
-: <a class="el" href="classModelColumns.html#a7439e36ad45c30dc3c46859acb62609d">ModelColumns</a>
-, <a class="el" href="classPlaylistTreeView_1_1ModelColumns.html#ae682bbad1999435b2fbb10d6932d98c1">PlaylistTreeView::ModelColumns</a>
-, <a class="el" href="classFreyaAvahiView_1_1ModelColumns.html#a2f30e067a5e509199feaefe67f29d604">FreyaAvahiView::ModelColumns</a>
-</li>
-<li>MPDAsyncEvent_to_GIOCondition()
-: <a class="el" href="classIdleListener.html#abc39250e7ef9977d2071a469b9088649">IdleListener</a>
-</li>
-<li>MPDClientHandler()
-: <a class="el" href="classMPDClientHandler.html#abd756d3ebc5c05b089210b0a123fbb5c">MPDClientHandler</a>
-</li>
-<li>MPDConnection()
-: <a class="el" href="classMPDConnection.html#a433dbc23b18b4747d595befba4ea8965">MPDConnection</a>
-</li>
-<li>MPDConnectionHandler()
-: <a class="el" href="classMPDConnectionHandler.html#abda5866e5062baf72dc2644fc700beda">MPDConnectionHandler</a>
+: <a class="el" href="classAvahi_1_1View_1_1ModelColumns.html#a4bf315595c1d34ef779fd13cfe7211de">Avahi::View::ModelColumns</a>
+, <a class="el" href="classGManager_1_1PlaylistTreeView_1_1ModelColumns.html#acdd2b9bf8d72684604cf8166299e6aba">GManager::PlaylistTreeView::ModelColumns</a>
 </li>
 </ul>
 
@@ -325,15 +458,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>name
 : <a class="el" href="classCmdOption.html#ab497267003660f7ded144742ca959b17">CmdOption</a>
 </li>
+<li>NotifyData()
+: <a class="el" href="classMPD_1_1NotifyData.html#ac96d8d4c656d579035693132d317bf62">MPD::NotifyData</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>on_button_cancel()
-: <a class="el" href="classFreyaAvahiView.html#a238089db0631391462cc2cd37ab8d4f3">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#a71759737afe5d061c2c63ad25ae681c0">Avahi::View</a>
 </li>
 <li>on_button_select()
-: <a class="el" href="classFreyaAvahiView.html#a29376be4aefd6d88dfac2fb4c5a5efa9">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#aa6ca048c7a2ee1b496a421604d05dc78">Avahi::View</a>
 </li>
 </ul>
 
@@ -342,8 +478,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>parse()
 : <a class="el" href="classCmdArgParser.html#a355eb5f88712166d38953ac53b4be85c">CmdArgParser</a>
 </li>
+<li>path_to_config()
+: <a class="el" href="classInit_1_1Initpath.html#a6734b523ef234cf3b2bd1fa95445c8ed">Init::Initpath</a>
+</li>
+<li>pause()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#aef43e21a30f224adf39abae154bbd073">GManager::ClientTimerProxy</a>
+</li>
+<li>play()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#a8fc432e6d09e7f456bdcd367b5738fd4">GManager::ClientTimerProxy</a>
+</li>
+<li>playback_next()
+: <a class="el" href="classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4">MPD::Client</a>
+</li>
+<li>playback_pause()
+: <a class="el" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988">MPD::Client</a>
+</li>
+<li>playback_play()
+: <a class="el" href="classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3">MPD::Client</a>
+</li>
+<li>playback_prev()
+: <a class="el" href="classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca">MPD::Client</a>
+</li>
+<li>playback_seek()
+: <a class="el" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523">MPD::Client</a>
+</li>
+<li>playback_stop()
+: <a class="el" href="classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31">MPD::Client</a>
+</li>
+<li>PlaybackButtons()
+: <a class="el" href="classGManager_1_1PlaybackButtons.html#a51fabdb3716685045c6ab87f0afac5c6">GManager::PlaybackButtons</a>
+</li>
 <li>PlaylistTreeView()
-: <a class="el" href="classPlaylistTreeView.html#ad8c1c34bbfdec59b449b8e015ca0914a">PlaylistTreeView</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView.html#a3fcc94077b91be8de8d16c7cb62b4da5">GManager::PlaylistTreeView</a>
 </li>
 <li>print_help()
 : <a class="el" href="classCmdArgParser.html#abf6959b52768c1546ac499ff9691a27d">CmdArgParser</a>
@@ -351,69 +517,182 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>reset()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#a069cdc7faf186643524e9929817d28b6">GManager::ClientTimerProxy</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>save()
-: <a class="el" href="classConfigModel.html#af745bfa157a86044b2331158e189db4c">ConfigModel</a>
+: <a class="el" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">Config::Model</a>
 </li>
 <li>send_command()
-: <a class="el" href="classMPDClientHandler.html#a33c32dc5022572c10b07f7685bad48fe">MPDClientHandler</a>
+: <a class="el" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4">MPD::Client</a>
 </li>
 <li>server_append()
-: <a class="el" href="classFreyaAvahiView.html#a7296757df9bd41a86407b83c17f9f3bf">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#a4d24168f7246ea9d2fc0aed6dacfa2d6">Avahi::View</a>
 </li>
 <li>server_delete()
-: <a class="el" href="classFreyaAvahiView.html#acf9db4960f3f7ee7fe8c72214fe7b488">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#a117b25b72aff7a5bfa671e7d6f50b672">Avahi::View</a>
 </li>
-<li>set_connection()
-: <a class="el" href="classMPDConnection.html#a460a4556a48301153e0950b9826d56b2">MPDConnection</a>
+<li>set()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#aa5b5cb92a878528724ac1269d6ddcf12">GManager::ClientTimerProxy</a>
+</li>
+<li>set_pos()
+: <a class="el" href="classMPD_1_1Song.html#ad0a1286c0c703b0bde67108272b61739">MPD::Song</a>
 </li>
 <li>set_status()
-: <a class="el" href="classFreyaAvahiView.html#a1d4b0d23701e0c4500fd4eed311e83c7">FreyaAvahiView</a>
-, <a class="el" href="classMPDConnection.html#a35072261c6e63e49288b4a8c835a87d4">MPDConnection</a>
+: <a class="el" href="classAvahi_1_1View.html#aaf55a6de9769013df3ee8c454fbc7cc0">Avahi::View</a>
 </li>
 <li>set_value()
-: <a class="el" href="classConfigHandler.html#ad3019c059697e36dc2f0a4a22c56092a">ConfigHandler</a>
+: <a class="el" href="classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374">Config::Handler</a>
+</li>
+<li>set_value_as_int()
+: <a class="el" href="classConfig_1_1Handler.html#a5acc969e8ea631b643b43e8096c71b58">Config::Handler</a>
+</li>
+<li>set_volume()
+: <a class="el" href="classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886">MPD::Client</a>
 </li>
 <li>signal_select
-: <a class="el" href="classFreyaAvahiView.html#a5b23deb59958d5e0d0776ea794255036">FreyaAvahiView</a>
+: <a class="el" href="classAvahi_1_1View.html#a86c760057f8c44b4fbb38ee2f48e75f4">Avahi::View</a>
+</li>
+<li>Song()
+: <a class="el" href="classMPD_1_1Song.html#a5a6f0ada24e3c97ea2ad2d46fcce4725">MPD::Song</a>
+</li>
+<li>Statistics()
+: <a class="el" href="classMPD_1_1Statistics.html#af4240a7e1dea7b4a4147c716b1238452">MPD::Statistics</a>
+</li>
+<li>Status()
+: <a class="el" href="classMPD_1_1Status.html#a6fe244acc8391a3aa6c415d93c17e256">MPD::Status</a>
+</li>
+<li>Statusbar()
+: <a class="el" href="classGManager_1_1Statusbar.html#a8152b3c09e7135eb0e72133c43f6c31c">GManager::Statusbar</a>
+</li>
+<li>Statusicons()
+: <a class="el" href="classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e">GManager::Statusicons</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>Timeslide()
+: <a class="el" href="classGManager_1_1Timeslide.html#a6b25a5162891ab8684ea1923cf3eba7f">GManager::Timeslide</a>
+</li>
+<li>TitleLabel()
+: <a class="el" href="classGManager_1_1TitleLabel.html#a7392cdfa0ca4b4cf2c285ed1a806e561">GManager::TitleLabel</a>
+</li>
+<li>toggle_consume()
+: <a class="el" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0">MPD::Client</a>
+</li>
+<li>toggle_random()
+: <a class="el" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62">MPD::Client</a>
+</li>
+<li>toggle_repeat()
+: <a class="el" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3">MPD::Client</a>
+</li>
+<li>toggle_single()
+: <a class="el" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269">MPD::Client</a>
+</li>
 <li>type
 : <a class="el" href="classCmdOption.html#a4f7842ecea0fa864e6714109b30d94ff">CmdOption</a>
 </li>
 </ul>
 
 
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>update_all()
+: <a class="el" href="classMPD_1_1NotifyData.html#af444b367d93b2d7a7f177855c8806e79">MPD::NotifyData</a>
+</li>
+<li>update_song()
+: <a class="el" href="classMPD_1_1NotifyData.html#a4a6bae1112fe62c88881a47508d76dc6">MPD::NotifyData</a>
+</li>
+<li>update_statistics()
+: <a class="el" href="classMPD_1_1NotifyData.html#a3daddbcea5f6fbc6d61737d92f3d3405">MPD::NotifyData</a>
+</li>
+<li>update_status()
+: <a class="el" href="classMPD_1_1NotifyData.html#acc5f2b1954ae442d0ee2a37b4431bc56">MPD::NotifyData</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>View()
+: <a class="el" href="classAvahi_1_1View.html#a3c7b2ee81a7f863d9b3ef328aadf31f4">Avahi::View</a>
+</li>
+<li>Volumebutton()
+: <a class="el" href="classGManager_1_1Volumebutton.html#a5c03c14306c6828813da7f7641bcc75c">GManager::Volumebutton</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
-<li>~ConfigHandler()
-: <a class="el" href="classConfigHandler.html#a3f671da464078b83cb4460a303a49184">ConfigHandler</a>
+<li>~Browser()
+: <a class="el" href="classAvahi_1_1Browser.html#a097c931d753a1cc434fb98e86d656151">Avahi::Browser</a>
 </li>
-<li>~ConfigModel()
-: <a class="el" href="classConfigModel.html#a2da1b47df8dbe2ff8d86de966dd43834">ConfigModel</a>
+<li>~BrowserList()
+: <a class="el" href="classGManager_1_1BrowserList.html#ac6b50112ac63e591ebff7e7435e0a003">GManager::BrowserList</a>
 </li>
-<li>~FreyaAvahiHandler()
-: <a class="el" href="classFreyaAvahiHandler.html#a7710b31a1296b2d33d50e91a37824c6a">FreyaAvahiHandler</a>
+<li>~Client()
+: <a class="el" href="classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2">MPD::Client</a>
 </li>
-<li>~FreyaAvahiView()
-: <a class="el" href="classFreyaAvahiView.html#af29f8465096bb3927445c80fd4ea9ec1">FreyaAvahiView</a>
+<li>~ClientTimerProxy()
+: <a class="el" href="classGManager_1_1ClientTimerProxy.html#a89c53139b45a76f2178c5aca97aef2de">GManager::ClientTimerProxy</a>
 </li>
-<li>~IdleListener()
-: <a class="el" href="classIdleListener.html#adfb1307db570ffd340c48b1862028a7a">IdleListener</a>
+<li>~Connection()
+: <a class="el" href="classMPD_1_1Connection.html#af5af1bae23ac431151fb6f7c7171acf2">MPD::Connection</a>
 </li>
-<li>~LogHandler()
-: <a class="el" href="classLogHandler.html#ae8728f5dc62eacf6c9499014c9c2aaa5">LogHandler</a>
+<li>~Handler()
+: <a class="el" href="classConfig_1_1Handler.html#a014d926d8eefcbd3692c913ca150cc45">Config::Handler</a>
 </li>
-<li>~MPDClientHandler()
-: <a class="el" href="classMPDClientHandler.html#a5543318862c27db00bf0890fa7694662">MPDClientHandler</a>
+<li>~Initpath()
+: <a class="el" href="classInit_1_1Initpath.html#a465714e6f943abebaccdb66b1e57874a">Init::Initpath</a>
 </li>
-<li>~MPDConnectionHandler()
-: <a class="el" href="classMPDConnectionHandler.html#ae17f468b0865754332a5796b42e05ecc">MPDConnectionHandler</a>
+<li>~Listener()
+: <a class="el" href="classMPD_1_1Listener.html#af2eca42ec5d9ea1a53edd8e798780e97">MPD::Listener</a>
+</li>
+<li>~Model()
+: <a class="el" href="classConfig_1_1Model.html#a93214204452c79c0a33f1604e1eb5deb">Config::Model</a>
+</li>
+<li>~NotifyData()
+: <a class="el" href="classMPD_1_1NotifyData.html#a2beb2bc0ae0669f3a20d12598af87e7c">MPD::NotifyData</a>
+</li>
+<li>~PlaybackButtons()
+: <a class="el" href="classGManager_1_1PlaybackButtons.html#a7e773b1db001266034af689c0d1927de">GManager::PlaybackButtons</a>
 </li>
 <li>~PlaylistTreeView()
-: <a class="el" href="classPlaylistTreeView.html#a691621269697bd8e7b8e3dc1cf4e4d12">PlaylistTreeView</a>
+: <a class="el" href="classGManager_1_1PlaylistTreeView.html#abb9ce241f7992f7596b6d02ecc82c264">GManager::PlaylistTreeView</a>
+</li>
+<li>~Song()
+: <a class="el" href="classMPD_1_1Song.html#ab047abbeb824f9eef3523a4d88f1bb5f">MPD::Song</a>
+</li>
+<li>~Statistics()
+: <a class="el" href="classMPD_1_1Statistics.html#aaec0850cc1c7a5358118077754ee7d34">MPD::Statistics</a>
+</li>
+<li>~Status()
+: <a class="el" href="classMPD_1_1Status.html#ab5631f990ba9900ff9648045ea5952d9">MPD::Status</a>
+</li>
+<li>~Statusbar()
+: <a class="el" href="classGManager_1_1Statusbar.html#a9d42ce01426ccc33636a53f5a62532f3">GManager::Statusbar</a>
+</li>
+<li>~Statusicons()
+: <a class="el" href="classGManager_1_1Statusicons.html#a759d6dbb4fa6a00d9a5eaa357a7b8d94">GManager::Statusicons</a>
+</li>
+<li>~Timeslide()
+: <a class="el" href="classGManager_1_1Timeslide.html#a529251b527032c19fc80819e99d4cd68">GManager::Timeslide</a>
+</li>
+<li>~TitleLabel()
+: <a class="el" href="classGManager_1_1TitleLabel.html#a8cd0607e9e49e7e579508e7fb6ad186d">GManager::TitleLabel</a>
+</li>
+<li>~View()
+: <a class="el" href="classAvahi_1_1View.html#a7778732b3ea6120b2135b0e00ca3a31e">Avahi::View</a>
+</li>
+<li>~Volumebutton()
+: <a class="el" href="classGManager_1_1Volumebutton.html#a3ba0a1df37b9fe4da1411295a4a5cae3">GManager::Volumebutton</a>
+</li>
+<li>~Writer()
+: <a class="el" href="classLog_1_1Writer.html#a269d50952bc092a39202bb0bba99c345">Log::Writer</a>
 </li>
 </ul>
 </div>
@@ -422,7 +701,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -434,7 +713,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 7 2011 18:33:47 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

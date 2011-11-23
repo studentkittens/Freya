@@ -52,14 +52,9 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 client->send_command("play");
                 break;
             }
-        case 'P':
+        case '#':
             {
-                client->send_command("pause");
-                break;
-            }
-        case 'L':
-            {
-                client->list_queue();
+                client->play_song_at_id(2);
                 break;
             }
         case 'c':
@@ -113,6 +108,8 @@ int main(int argc, char *argv[])
 
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
     g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data); 
+
+    freya.force_update();
 
     /* Start listening to events */
     app_loop->run();

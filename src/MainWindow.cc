@@ -12,6 +12,7 @@
 #include "Browser/PlaylistTreeView.hh"
 #include "Browser/PlaylistManager.hh"
 #include "Browser/Database.hh"
+#include "Browser/StatBrowser.hh"
 
 #include "Log/Writer.hh"
 
@@ -82,6 +83,9 @@ int main(int argc, char *argv[])
 
             Browser::DatabaseBrowser db_browser(client,builder);
             browser_list.add(db_browser);
+
+            Browser::StatBrowser stat_browser(client,builder);
+            browser_list.add(stat_browser);
 
             /* Send a good morning to all widgets */
             client.force_update();

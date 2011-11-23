@@ -12,6 +12,7 @@ namespace Browser
         pack_start(m_Entry,false,false);
 
         m_Entry.set_icon_from_stock(Gtk::Stock::CLEAR,Gtk::ENTRY_ICON_SECONDARY);
+        m_Entry.set_icon_from_stock(Gtk::Stock::FIND, Gtk::ENTRY_ICON_PRIMARY);
 
         //Add the TreeView, inside a ScrolledWindow, with the button underneath:
         m_ScrolledWindow.add(m_TreeView);
@@ -74,13 +75,20 @@ namespace Browser
 
     /*-------------------------------*/
 
-    bool PlaylistTreeView::add_song(MPD::Song * new_song)
+    bool PlaylistTreeView::add_item(void * pSong)
     {
+        g_assert(pSong);
+        MPD::Song * new_song = (MPD::Song*)pSong;
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_id] = new_song->get_id();
-        row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
-        row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
-        row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
+
+        try { /* Check for NULLs just to be sure */
+            row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
+            row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
+            row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
+        } catch(const std::logic_error& e) {
+            Warning("Empty column: %s",e.what());
+        }
         // TODO: false should stop recv.
         return false;
     }

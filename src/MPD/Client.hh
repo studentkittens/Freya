@@ -89,7 +89,8 @@ namespace MPD
              *
              * @return the number of filled items.
              */
-            int fill_queue(AbstractSonglist& data_model);
+            void fill_queue(AbstractSonglist& data_model);
+            void fill_playlists(AbstractSonglist& data_model);
 
         private:
 

@@ -11,6 +11,7 @@
 
 #include "Browser/PlaylistTreeView.hh"
 #include "Browser/PlaylistManager.hh"
+#include "Browser/Database.hh"
 
 #include "Log/Writer.hh"
 
@@ -57,33 +58,40 @@ int main(int argc, char *argv[])
         /* Instance the client */
         MPD::Client client;
 
-        /* Get the glade file */
-        Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
+        if(client.is_connected())
+        {
+            /* Get the glade file */
+            Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
 
-        /* Instanmce gui elements */
-        GManager::Heartbeat proxy(client); 
-        GManager::Timeslide timeslide(proxy,client,builder);
-        GManager::Statusbar statusbar(proxy,client,builder);
-        GManager::PlaybackButtons buttons(client,builder);
-        GManager::TitleLabel title_label(client,builder);
-        GManager::Statusicons status_icons(client,builder);
-        GManager::Volumebutton vol_button(client,builder);
-        GManager::BrowserList browser_list(builder);
+            /* Instanmce gui elements */
+            GManager::Heartbeat proxy(client); 
+            GManager::Timeslide timeslide(proxy,client,builder);
+            GManager::Statusbar statusbar(proxy,client,builder);
+            GManager::PlaybackButtons buttons(client,builder);
+            GManager::TitleLabel title_label(client,builder);
+            GManager::Statusicons status_icons(client,builder);
+            GManager::Volumebutton vol_button(client,builder);
+            GManager::BrowserList browser_list(builder);
 
-        /* Instance browser  */
-        Browser::PlaylistTreeView queue_browser(client);
-        browser_list.add(queue_browser);
+            /* Instance browser  */
+            Browser::PlaylistTreeView queue_browser(client);
+            browser_list.add(queue_browser);
 
-        Browser::PlaylistManager playlists_browser(client,builder);
-        browser_list.add(playlists_browser);
+            Browser::PlaylistManager playlists_browser(client,builder);
+            browser_list.add(playlists_browser);
 
-        /* Send a good morning to all widgets */
-        client.force_update();
+            Browser::DatabaseBrowser db_browser(client,builder);
+            browser_list.add(db_browser);
 
-        Gtk::Window * main_window = NULL;
-        builder->get_widget("FreyaMainWindow", main_window);
-        DisconnectManager(client,main_window);
-        kit.run(*main_window);
+            /* Send a good morning to all widgets */
+            client.force_update();
+
+            Gtk::Window * main_window = NULL;
+            builder->get_widget("FreyaMainWindow", main_window);
+            DisconnectManager(client,main_window);
+            kit.run(*main_window);
+        }
+        else throw "Cannot connect to MPD Server.";
     }
     catch(const Gtk::BuilderError& e)
     {
@@ -93,6 +101,5 @@ int main(int argc, char *argv[])
     {
         std::cerr << "General exception: " << e.what() << std::endl;
     }
-
     return EXIT_SUCCESS;
 }

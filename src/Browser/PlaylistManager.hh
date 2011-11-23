@@ -5,10 +5,11 @@
 #include "../AbstractBrowser.hh"
 #include "../AbstractSonglist.hh"
 #include "../MPD/Client.hh"
+#include "../MPD/Playlist.hh"
 
 namespace Browser 
 {
-    class PlaylistManager : public Gtk::Frame, public AbstractBrowser
+    class PlaylistManager : public Gtk::Frame, public AbstractBrowser, public AbstractSonglist
     {
         public:
             PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
@@ -23,7 +24,8 @@ namespace Browser
 
         private:
 
-//            bool add_song(MPD::Song * new_song);
+            bool add_item(void * pPlaylist);
+            void clear(void) {}
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -32,6 +34,7 @@ namespace Browser
 
                     ModelColumns()
                     { add(m_col_name); add(m_col_num_songs); }
+                    Gtk::TreeModelColumn<MPD::Playlist*> m_col_plist;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
                     Gtk::TreeModelColumn<unsigned> m_col_num_songs;
             };

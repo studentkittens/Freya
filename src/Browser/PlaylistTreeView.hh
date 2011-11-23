@@ -23,7 +23,9 @@ namespace Browser
 
         private:
 
-            bool add_song(MPD::Song * new_song);
+            bool add_item(void * pSong);
+            void clear(void) {}
+
             void on_selected_row(const Gtk::TreeModel::iterator& iter);
             void on_selection_changed(void);
 

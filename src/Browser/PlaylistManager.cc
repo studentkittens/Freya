@@ -27,9 +27,10 @@ namespace Browser
             mp_TreeView->append_column("Playlists", m_Columns.m_col_name);
             mp_TreeView->append_column("Songs", m_Columns.m_col_num_songs);
             mp_TreeView->set_search_column(0);
-
+/*
             Gtk::TreeModel::Row row = *(m_refTreeModel->append());
             row[m_Columns.m_col_name] = "Akrea";
+            */
             show_all();
         }
         catch(const Gtk::BuilderError& e)
@@ -48,4 +49,15 @@ namespace Browser
     /* ----------------------- */
 
     PlaylistManager::~PlaylistManager(void) {}
+
+    /* ----------------------- */
+
+    bool PlaylistManager::add_item(void * pPlaylist)
+    {
+        g_assert(pPlaylist);
+        MPD::Playlist * playlist = (MPD::Playlist*)pPlaylist;
+        Gtk::TreeModel::Row row = *(m_refTreeModel->append());
+        row[m_Columns.m_col_name] = playlist->get_path();
+        return false; 
+    }
 }

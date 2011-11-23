@@ -15,7 +15,7 @@ namespace Browser {
 
         private:
             /* label members for statistics*/
-            Gtk::Label* songsindb, *uptime, *playtime;
+            Gtk::Label *noofartist, *noofalbums, *noofsongs, *dbplaytime, *playtime, *dbupdate, *uptime;
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
     };
 }

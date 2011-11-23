@@ -9,17 +9,18 @@ namespace Browser
     {
         Gtk::Grid * container = NULL;
         BUILDER_ADD(builder,"ui/statistics.glade");
-        BUILDER_GET(builder, "noofartist",playtime);
-        BUILDER_GET(builder, "noofalbums",playtime);
-        BUILDER_GET(builder, "noofsongs",playtime);
-        BUILDER_GET(builder, "dbplaytime",playtime);
+        BUILDER_GET(builder, "noofartist",noofartist);
+        BUILDER_GET(builder, "noofalbums",noofalbums);
+        BUILDER_GET(builder, "noofsongs",noofsongs);
+        BUILDER_GET(builder, "dbplaytime",dbplaytime);
         BUILDER_GET(builder, "playtime",playtime);
-        BUILDER_GET(builder, "uptime",playtime);
-        BUILDER_GET(builder, "dbupdate",playtime);
+        BUILDER_GET(builder, "uptime",uptime);
+        BUILDER_GET(builder, "dbupdate",dbupdate);
         BUILDER_GET(builder, "statistics_grid",container);
 
         client.get_notify().connect(sigc::mem_fun(*this,&StatBrowser::on_client_update));
         container->reparent(*this);
+
         show_all();
     }
 
@@ -33,12 +34,33 @@ namespace Browser
         if (event & MPD_IDLE_DATABASE)
         {
             MPD::Statistics& stat = data.get_statistics();
-            char* newplaytime = (char*)g_strdup_printf("%lu",stat.get_play_time());
-            playtime->set_text(Glib::ustring(newplaytime));
-            g_free(newplaytime);              
+            char newvalue[] = {0};
+
+            g_snprintf(newvalue,512,"%u",stat.get_number_of_artists());
+            noofartist->set_text(Glib::ustring(newvalue));
+            
+            g_snprintf(newvalue,512,"%u",stat.get_number_of_albums());
+            noofalbums->set_text(Glib::ustring(newvalue));
+            
+            g_snprintf(newvalue,512,"%u",stat.get_number_of_songs());
+            noofsongs->set_text(Glib::ustring(newvalue));
+            
+            g_snprintf(newvalue,512,"%lu",stat.get_db_play_time());
+            dbplaytime->set_text(Glib::ustring(newvalue));
+
+            g_snprintf(newvalue,512,"%lu",stat.get_play_time());
+            playtime->set_text(Glib::ustring(newvalue));
+
+
+            g_snprintf(newvalue,512,"%lu",stat.get_uptime());
+            uptime->set_text(Glib::ustring(newvalue));
+
+            g_snprintf(newvalue,512,"%lu",stat.get_db_update_time());
+            dbupdate->set_text(Glib::ustring(newvalue));
 
         }
     }
+
 
     Gtk::Widget * StatBrowser::get_container(void)
     {

@@ -1,43 +1,19 @@
-<<<<<<< HEAD
-\BOOKMARK [0][-]{chapter.1}{Zielbestimmungen}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Produkteinsatz}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Produktfunktionen}{}% 3
-\BOOKMARK [1][-]{section.3.1}{Benutzerfunktionen}{chapter.3}% 4
-\BOOKMARK [1][-]{section.3.2}{Pers\366nliche Konfiguration}{chapter.3}% 5
-\BOOKMARK [0][-]{chapter.4}{Produktdaten}{}% 6
-\BOOKMARK [0][-]{chapter.5}{Produktleistungen}{}% 7
-\BOOKMARK [0][-]{chapter.6}{Qualit\344tsanforderungen}{}% 8
-\BOOKMARK [0][-]{chapter.7}{Erg\344nzungen}{}% 9
-=======
-\BOOKMARK [0][-]{chapter.1}{Einf\374hrung}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Definition des MPD}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Definition des MPD-Client}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Ziel und Zielgruppe sowie grobe Planung}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{Beschreibung der Ist-Analyse}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Platzhalter}{chapter.2}% 6
-\BOOKMARK [2][-]{subsection.2.1.1}{Platzhalter}{section.2.1}% 7
-\BOOKMARK [0][-]{chapter.3}{Beschreibung des Soll-Konzepts}{}% 8
-\BOOKMARK [1][-]{section.3.1}{Platzhalter}{chapter.3}% 9
-\BOOKMARK [2][-]{subsection.3.1.1}{Platzhalter}{section.3.1}% 10
-\BOOKMARK [0][-]{chapter.4}{Beschreibung von Schnittstellen}{}% 11
-\BOOKMARK [1][-]{section.4.1}{Platzhalter}{chapter.4}% 12
-\BOOKMARK [2][-]{subsection.4.1.1}{Platzhalter}{section.4.1}% 13
-\BOOKMARK [0][-]{chapter.5}{Funktionale Anforderungen}{}% 14
-\BOOKMARK [1][-]{section.5.1}{Platzhalter}{chapter.5}% 15
-\BOOKMARK [2][-]{subsection.5.1.1}{Platzhalter}{section.5.1}% 16
-\BOOKMARK [0][-]{chapter.6}{Nichtfunktionale Anforderungen}{}% 17
-\BOOKMARK [1][-]{section.6.1}{Platzhalter}{chapter.6}% 18
-\BOOKMARK [2][-]{subsection.6.1.1}{Platzhalter}{section.6.1}% 19
-\BOOKMARK [0][-]{chapter.7}{Risikoakzeptanz}{}% 20
-\BOOKMARK [1][-]{section.7.1}{Platzhalter}{chapter.7}% 21
-\BOOKMARK [2][-]{subsection.7.1.1}{Platzhalter}{section.7.1}% 22
-\BOOKMARK [0][-]{chapter.8}{Skizze des Entwicklungszyklus}{}% 23
-\BOOKMARK [1][-]{section.8.1}{Platzhalter}{chapter.8}% 24
-\BOOKMARK [2][-]{subsection.8.1.1}{Platzhalter}{section.8.1}% 25
-\BOOKMARK [0][-]{chapter.9}{Lieferumfang}{}% 26
-\BOOKMARK [1][-]{section.9.1}{Platzhalter}{chapter.9}% 27
-\BOOKMARK [2][-]{subsection.9.1.1}{Platzhalter}{section.9.1}% 28
-\BOOKMARK [0][-]{chapter.10}{Abnahmekriterien}{}% 29
-\BOOKMARK [1][-]{section.10.1}{Platzhalter}{chapter.10}% 30
-\BOOKMARK [2][-]{subsection.10.1.1}{Platzhalter}{section.10.1}% 31
->>>>>>> 55dcd75023956d00bd62d25d2216cce0d324150f
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Zielbestimmungen}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Projektbeteiligte}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.2}{Produkteinsatz}{}% 4
+\BOOKMARK [0][-]{chapter.3}{Produktfunktionen}{}% 5
+\BOOKMARK [1][-]{section.3.1}{Benutzerfunktionen}{chapter.3}% 6
+\BOOKMARK [2][-]{subsection.3.1.1}{Starten und Beenden}{section.3.1}% 7
+\BOOKMARK [2][-]{subsection.3.1.2}{Pers\366nliche Daten}{section.3.1}% 8
+\BOOKMARK [2][-]{subsection.3.1.3}{Pers\366nliches Profil}{section.3.1}% 9
+\BOOKMARK [2][-]{subsection.3.1.4}{Pers\366nliche Datenbank}{section.3.1}% 10
+\BOOKMARK [2][-]{subsection.3.1.5}{Kommunikation \(Chat\)}{section.3.1}% 11
+\BOOKMARK [2][-]{subsection.3.1.6}{Suchen}{section.3.1}% 12
+\BOOKMARK [1][-]{section.3.2}{Administrator-Funktionen}{chapter.3}% 13
+\BOOKMARK [0][-]{chapter.4}{Produktdaten}{}% 14
+\BOOKMARK [0][-]{chapter.5}{Produktleistungen}{}% 15
+\BOOKMARK [0][-]{chapter.6}{Qualit\344tsanforderungen}{}% 16
+\BOOKMARK [0][-]{chapter.7}{Erg\344nzungen}{}% 17
+\BOOKMARK [1][-]{section.7.1}{Realisierung}{chapter.7}% 18
+\BOOKMARK [1][-]{section.7.2}{Die n\344chste Version}{chapter.7}% 19

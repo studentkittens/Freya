@@ -4,8 +4,8 @@
 #include <gtkmm.h>
 
 #include "../Config/Handler.hh"
-
-namespace GManager
+#include <vector>
+namespace Browser
 {
     class Settings
     {
@@ -16,7 +16,7 @@ namespace GManager
             void on_button_ok(void);
             void on_button_cancel(void);
 
-            SettingsSub **sub_sections;
+            vector<SettingsSub> sub_sections;
 
             /* Widgets */
             Gtk::Button *ok_button, *cancel_button;

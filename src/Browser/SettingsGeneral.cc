@@ -1,11 +1,11 @@
 #include "SettingsGeneral.hh"
 #include "../Utils/Utils.hh"
 
-namespace GManager
+namespace Browser
 {
     SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder) :
-        notify("signal"),
-        tray("totray"),
+        notify("settings.libnotify.signal"),
+        tray("settings.trayicon.totray"),
         SettingsSub::name("General")
     {
         BUILDER_GET(builder,"libnotify_checkbox",libnotify);
@@ -25,7 +25,6 @@ namespace GManager
 
         CONFIG_SET_AS_INT(notify,notify_value);
         CONFIG_SET_AS_INT(tray,tray_value);
-        Info(SettingsSub::get_name()+"Settings changed.");
     }
 
     //----------------------------
@@ -34,7 +33,6 @@ namespace GManager
     {
         libnotify->set_active((bool)CONFIG_GET_AS_INT(notify));
         trayicon->set_active((bool)CONFIG_GET_AS_INT(tray));
-        Info(SettingsSub::get_name()+"Settings reverted.");
     }
 
     //----------------------------

@@ -5,7 +5,7 @@
 
 #include "../Config/Handler.hh"
 
-namespace GManager
+namespace Browser
 {
     class SettingsGeneral : SettingsSub
     {

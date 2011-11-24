@@ -5,7 +5,8 @@
 
 #include "../Config/Handler.hh"
 
-namespace GManager
+#include <vector>
+namespace Browser
 {
 
     class SettingsPlugins : SettingsSub
@@ -20,7 +21,7 @@ namespace GManager
         private:
             char plugin_count;
         /* Widgets */
-            Gtk::CheckButton **plugin_check_box;
+            vector<Gtk::CheckButton*> plugin_check_box;
 
     };
 

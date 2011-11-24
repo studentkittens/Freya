@@ -1,19 +1,25 @@
 #include "Settings.hh"
 #include "../Utils/Utils.hh"
 
+#include "SettingsPlayback.hh"
+#include "SettingsNetwork.hh"
+#include "SettingsPlugins.hh"
+#include "SettingsGeneral.hh"
+
+
 #define SUBSECTION_COUNT 4;
 #define PLUGIN_COUNT 4;
-namespace GManager
+namespace Browser
 {
-    Settings:Settings(const Glib::RefPtr<Gtk::Builder> &builder)
+    Settings:Settings(const Glib::RefPtr<Gtk::Builder> &builder):
+        sub_sections(SUBSECTION_COUNT)
     {
         Glib::ustring settings_file("ui/Settings.glade");
 
-        sub_sections = new SettingsSub[SUBSECTION_COUNT];
-        sub_sections[0] = new SettingsNetwork(builder);
-        sub_sections[1] = new SettingsPlugins(builder,PLUGIN_COUNT);
-        sub_sections[2] = new SettingsReplay(builder);
-        sub_sections[3] = new SettingsGeneral(builder);
+        sub_sections.push_back(SettingsNetwork(builder));
+        sub_sections.push_back(SettingsPlugins(builder,PLUGIN_COUNT));
+        sub_sections.push_back(SettingsPlayback(builder));
+        sub_sections.push_back(SettingsGeneral(builder));
 
         BUILDER_ADD(builder,settings_file);
         BUILDER_GET(builder,"ok_button",ok_button);
@@ -29,20 +35,6 @@ namespace GManager
 
     Settings::~Settings(void)
     {
-        if(sub_section != NULL)
-        {
-            for(int i=0;i<SUBSECTION_COUNT;i++)
-            {
-                if(sub_section[i] != NULL)
-                {
-                    delete sub_section[i];
-                    sub_section[i] = NULL;
-                }
-            }
-            delete[] sub_section;
-            sub_section = NULL;
-        }
-
     }
 
     //---------------------------

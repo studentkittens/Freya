@@ -24,6 +24,7 @@ namespace Config
         this->save();
         xmlFreeDoc(defaultDoc);
         xmlFreeDoc(fileDoc);
+        g_free(pathtofile);
 
     }
 
@@ -106,6 +107,6 @@ namespace Config
 
     void Model::setpath(char* path)
     {
-        pathtofile = path;
+        pathtofile = g_strdup_printf("%s",path);
     }
 }

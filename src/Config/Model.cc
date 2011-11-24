@@ -94,7 +94,7 @@ namespace Config
     /*save default config aka Mr fileDoc*/
     void Model::save()
     {
-        save((char*)outputfile, fileDoc);
+        save(pathtofile, fileDoc);
     }
 
 

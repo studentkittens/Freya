@@ -631,7 +631,7 @@ Es kann gar nichts und ist nur ein Dummy</property>
               <object class="GtkLabel" id="replay_options_headline">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&lt;b&gt;Network-Options&lt;/b&gt;</property>
+                <property name="label" translatable="yes">&lt;b&gt;Playback-Options&lt;/b&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>

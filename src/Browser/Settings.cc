@@ -44,6 +44,8 @@ namespace Browser
         {
             sub_sections[i]->accept_new_settings();
         }
+        CONFIG_SAVE_NOW();
+
     }
     //---------------------------
     void Settings::on_button_cancel(void)
@@ -54,7 +56,6 @@ namespace Browser
             sub_sections[i]->decline_new_settings();
         }
 
-        CONFIG_SAVE_NOW();
     }
     //---------------------------
     Gtk::Widget* Settings::get_container(void)

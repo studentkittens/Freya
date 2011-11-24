@@ -3,7 +3,7 @@
 
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
-#include "../AbstractSonglist.hh"
+#include "../AbstractItemlist.hh"
 #include "../MPD/Client.hh"
 
 namespace Browser 

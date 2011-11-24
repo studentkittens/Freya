@@ -21,7 +21,8 @@ namespace Config
         int get_value_as_int(Glib::ustring);
         void set_value(Glib::ustring, Glib::ustring);
         void set_value_as_int(Glib::ustring,int);
-
+        void save_config_now();
+        
     private:
         /*internal traversing funcs*/
         xmlNodePtr traverse(const char*, xmlNodePtr);
@@ -39,5 +40,7 @@ namespace Config
 
 #define CONFIG_SET_AS_INT(x,y) Config::Handler::instance().set_value_as_int(x,y)
 #define CONFIG_GET_AS_INT(x)   Config::Handler::instance().get_value_as_int(x)
+
+#define CONFIG_SAVE_NOW() Config::Handler::instance().save_config_now()
 
 #endif /* end of include guard: Handler_89V106EN */

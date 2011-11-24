@@ -87,6 +87,9 @@ int main(int argc, char *argv[])
             Browser::StatBrowser stat_browser(client,builder);
             browser_list.add(stat_browser);
 
+            Browser::Settings settings_browser(builder);
+            browser_list_add(settings_browser);
+
             /* Send a good morning to all widgets */
             client.force_update();
 

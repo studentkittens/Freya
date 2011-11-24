@@ -3,6 +3,7 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     PlaylistManager.cc
     Database.cc
     StatBrowser.cc
+    Settings.cc
     )
 
 TARGET_LINK_LIBRARIES(FreyaBrowserLib ${GTKMM3_PACKAGE_LIBRARIES})

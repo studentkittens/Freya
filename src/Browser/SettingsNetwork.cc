@@ -16,12 +16,19 @@ namespace Browser
         BUILDER_GET(builder,"reconnect_spinbutton",recon_timeout);
         BUILDER_GET(builder,"avahi_button",avahi);
         BUILDER_GET(builder,"autoconnect_checkbox",autoconnect);
-
+        handle = NULL;
         avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
     }
 
 
-    SettingsNetwork::~SettingsNetwork(void) {}
+    SettingsNetwork::~SettingsNetwork(void) 
+    {
+        if(handle!=NULL)
+        {
+            delete handle;
+            handle=NULL;
+        }
+    }
 
     //----------------------------
 
@@ -56,11 +63,12 @@ namespace Browser
     //----------------------------
     void SettingsNetwork::show_avahi(void)
     {
-        Avahi::Browser handle;
-        if(handle.is_connected())
+        delete handle;
+        handle = new Avahi::Browser();
+        if(handle->is_connected())
         {
-            handle.get_signal().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
-            handle.get_window().show_all();
+            handle->get_signal().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
+            handle->get_window().show_all();
         }
 
     }

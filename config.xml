@@ -4,20 +4,20 @@
         <connection>
             <port>6600</port>
             <musicroot>~/chris/Musik</musicroot>
-            <host>localhost</host>
+            <host>blaa</host>
             <autoconnect>1</autoconnect>
             <stoponexit>1</stoponexit>
             <timeout>20</timeout>
             <reconnectinterval>0</reconnectinterval>
         </connection>
         <libnotify>
-            <signal>1</signal>
+            <signal>0</signal>
         </libnotify>
         <trayicon>
-            <totray>1</totray>
+            <totray>0</totray>
         </trayicon>
         <replay>
-            <crossfade>3</crossfade>
+            <crossfade>0</crossfade>
         </replay>
     </settings>
     <plugins>

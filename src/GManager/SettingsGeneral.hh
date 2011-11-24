@@ -17,6 +17,7 @@ namespace GManager
             void decline_new_settings(void);
 
         private:
+            Glib::ustring notify,tray;
         /* Widgets */
             Gtk::CheckButton *libnotify, *trayicon;
     };

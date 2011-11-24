@@ -6,7 +6,8 @@ namespace GManager
     SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder) :
         ip_name("host"),
         port_name("port"),
-        timeout_name("reconnectintervall")
+        timeout_name("reconnectintervall"),
+        SettingsSub::name("Network")
     {
         BUILDER_GET(builder,"ip_textfield",ip);
         BUILDER_GET(builder,"port_spinbutton",port);
@@ -31,19 +32,20 @@ namespace GManager
         CONFIG_SET(ip_name,ip_value);
         CONFIG_SET_AS_INT(port_name,port_value);
         CONFIG_SET_AS_INT(rimeout_name,timeout_value);
+        Info(SettingsSub::get_name()+"Settings changed.");
     }
 
     //----------------------------
 
     void SettingsNetwork::decline_new_settings(void)
     {
-        ip->set_text(CONFIG_SET(ip_name));
-        port->set_value((double)CONFIG_SET_AS_INT(port_name));
-        recon_timeout->set_value((double)CONFIG_SET_AS_INT(rimeout_name));
+        ip->set_text(CONFIG_GET(ip_name));
+        port->set_value((double)CONFIG_GET_AS_INT(port_name));
+        recon_timeout->set_value((double)CONFIG_GET_AS_INT(timeout_name));
+        Info(SettingsSub::get_name()+"Settings reverted.");
 
     }
 
     //----------------------------
-
 
 }

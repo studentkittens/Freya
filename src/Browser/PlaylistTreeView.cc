@@ -12,6 +12,7 @@ namespace Browser
         pack_start(m_Entry,false,false);
 
         m_Entry.set_icon_from_stock(Gtk::Stock::CLEAR,Gtk::ENTRY_ICON_SECONDARY);
+        m_Entry.set_icon_from_stock(Gtk::Stock::FIND, Gtk::ENTRY_ICON_PRIMARY);
 
         //Add the TreeView, inside a ScrolledWindow, with the button underneath:
         m_ScrolledWindow.add(m_TreeView);
@@ -48,22 +49,46 @@ namespace Browser
         /* Selections */
         m_TreeSelection = m_TreeView.get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
+        m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this, &PlaylistTreeView::on_selection_changed));
 
-        client.fill_queue(*this);
+        mp_Client = &client;
+        mp_Client->fill_queue(*this);
         show_all();
     }
 
     /*-------------------------------*/
 
-    bool PlaylistTreeView::add_song(MPD::Song * new_song)
+    void PlaylistTreeView::on_selected_row(const Gtk::TreeModel::iterator& iter)
     {
+        Gtk::TreeModel::Row row = *iter;
+        unsigned song_id = row[m_Columns.m_col_id]; 
+        g_message("ID = %d",song_id);
+        mp_Client->play_song_at_id(song_id);
+    }
+
+    /*-------------------------------*/
+    
+    void PlaylistTreeView::on_selection_changed(void)
+    {
+        m_TreeSelection->selected_foreach_iter(sigc::mem_fun(*this, &PlaylistTreeView::on_selected_row));
+    }
+
+    /*-------------------------------*/
+
+    void PlaylistTreeView::add_item(void * pSong)
+    {
+        g_assert(pSong);
+        MPD::Song * new_song = (MPD::Song*)pSong;
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-        row[m_Columns.m_col_id] = new_song->get_pos();
-        row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
-        row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
-        row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
-        // TODO: false should stop recv.
-        return false;
+        row[m_Columns.m_col_id] = new_song->get_id();
+
+        try { /* Check for NULLs just to be sure */
+            row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
+            row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
+            row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
+        } catch(const std::logic_error& e) {
+            Warning("Empty column: %s",e.what());
+        }
     }
 
 

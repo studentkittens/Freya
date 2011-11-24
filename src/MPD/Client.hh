@@ -42,7 +42,8 @@ namespace MPD
             void toggle_repeat(void);
             void toggle_single(void);
 
-            
+            void play_song_at_id(unsigned song_id);           
+ 
             void playback_seek(unsigned song_id, unsigned abs_time);
 
             /**
@@ -88,7 +89,8 @@ namespace MPD
              *
              * @return the number of filled items.
              */
-            int fill_queue(AbstractSonglist& data_model);
+            void fill_queue(AbstractSonglist& data_model);
+            void fill_playlists(AbstractSonglist& data_model);
 
         private:
 

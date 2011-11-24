@@ -1,20 +1,23 @@
 #ifndef FREYA_ABSTRACT_SONGLIST_GUARD
 #define FREYA_ABSTRACT_SONGLIST_GUARD
 
-#include "MPD/Song.hh"
-
 class AbstractSonglist
 {
     public:
 
         /**
-         * @brief Tell BrowserList which element to manage 
+         * @brief Override this
          *
-         * You are supposed to override this.
+         * @param song
          *
-         * @return A reference to the containing widget of the browser 
+         * @return 
          */
-        virtual bool add_song(MPD::Song * song) = 0; 
+        virtual void add_item(void * item) = 0; 
+
+        /**
+         * @brief Clear all
+         */
+        virtual void clear(void) = 0;
 };
 
 #endif

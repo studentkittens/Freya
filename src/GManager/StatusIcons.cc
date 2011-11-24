@@ -78,17 +78,8 @@ namespace GManager
         }
     }
 
-    gboolean Statusicons::set_sensitives(void)
-    {
-        g_printerr("Resens\n");
-        mp_Conn->set_sensitive(true);
-        return FALSE;
-    }
-
     void Statusicons::on_conn_change(bool is_connected)
     {
         g_printerr("Sens\n");
-        if(is_connected == false)
-            Glib::signal_timeout().connect(sigc::mem_fun(*this,&Statusicons::set_sensitives),1000);
     }
 }

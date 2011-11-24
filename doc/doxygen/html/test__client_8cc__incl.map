@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Client_8hh.html" title="Client.hh" alt="" coords="395,80,468,107"/>
-<area shape="rect" id="node10" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="294,155,380,181"/>
-<area shape="rect" id="node7" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="372,304,479,331"/>
-<area shape="rect" id="node13" href="$Status_8hh.html" title="Status.hh" alt="" coords="5,304,83,331"/>
-<area shape="rect" id="node17" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="194,229,296,256"/>
-<area shape="rect" id="node20" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="107,304,201,331"/>
-<area shape="rect" id="node24" href="$Song_8hh.html" title="Song.hh" alt="" coords="226,304,296,331"/>
-</map>

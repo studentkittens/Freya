@@ -1,6 +1,7 @@
 #include "Client.hh"
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
+#include "Playlist.hh"
 
 namespace MPD
 {
@@ -136,36 +137,38 @@ namespace MPD
 
     //-------------------------------
 
-    int Client::fill_queue(AbstractSonglist& data_model)
+    void Client::fill_queue(AbstractSonglist& data_model)
     {
         go_busy();
 
         mpd_connection * mpd_conn = m_Conn.get_connection();
         if(mpd_conn && mpd_send_list_queue_meta(mpd_conn) != FALSE)
         {
-            mpd_entity * ent = NULL;
-            while((ent = mpd_recv_entity(mpd_conn)))
+            mpd_song * ent = NULL;
+            while((ent = mpd_recv_song(mpd_conn)))
             {
-                switch(mpd_entity_get_type(ent))
-                {
-                    case MPD_ENTITY_TYPE_SONG:
-                        {
-                            const mpd_song * c_song = mpd_entity_get_song(ent);
-                            data_model.add_song(new Song(*c_song));
-                            break;
-                        }
-                    case MPD_ENTITY_TYPE_UNKNOWN:
-                        break;
-                    case MPD_ENTITY_TYPE_DIRECTORY:
-                        break;
-                    case MPD_ENTITY_TYPE_PLAYLIST:
-                        break;
-                }
-                mpd_entity_free(ent);
+                data_model.add_item(new Song(*ent));
             }
         }
         go_idle();
-        return -1;
+    }
+
+    //-------------------------------
+    
+    void Client::fill_playlists(AbstractSonglist& data_model)
+    {
+        go_busy();
+
+        mpd_connection * mpd_conn = m_Conn.get_connection();
+        if(mpd_conn && mpd_send_list_playlists(mpd_conn) != FALSE)
+        {
+            mpd_playlist * ent = NULL;
+            while((ent = mpd_recv_playlist(mpd_conn)))
+            {
+                data_model.add_item(new Playlist(*ent));
+            }
+        }
+        go_idle();
     }
 
     //-------------------------------
@@ -260,7 +263,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::toggle_random(void)
     {
         if(m_Conn.is_connected())
@@ -272,7 +275,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::toggle_single(void)
     {
         if(m_Conn.is_connected())
@@ -308,8 +311,15 @@ namespace MPD
         }
     }
 
+    void Client::play_song_at_id(unsigned song_id)
+    {
+        go_busy();
+        mpd_run_play_id(m_Conn.get_connection(),song_id);
+        go_idle();
+    }
+
     //--------------------
-    
+
     Status * Client::get_status(void)
     {
         if(m_Conn.is_connected())
@@ -321,17 +331,18 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::force_update(void)
     {
         if(m_Conn.is_connected())
         {
+            g_message("Calling Update.");
             listener->force_update();
         }
     }
 
     //--------------------
-    
+
     void Client::playback_seek(unsigned song_id, unsigned abs_time)
     {
         if(m_Conn.is_connected())
@@ -341,9 +352,9 @@ namespace MPD
             go_idle();
         }
     }
-    
+
     //--------------------
-    
+
     void Client::set_volume(unsigned vol)
     {
         if(m_Conn.is_connected())
@@ -355,12 +366,12 @@ namespace MPD
     }
 
     //--------------------
-    
+
     ConnectionNotifier& Client::signal_connection_change(void)
     {
         return m_ConnNotifer;
     }
-        
+
     //--------------------
 
 } // END NAMESPACE 

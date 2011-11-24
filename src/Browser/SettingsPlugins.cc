@@ -5,8 +5,7 @@ namespace Browser
 {
     SettingsPlugins::SettingsPlugins(const Glib::RefPtr<Gtk::Builder> &builder, int _plugin_count) :
         plugin_count(_plugin_count),
-        plugin_check_box(_plugin_count),
-        SettingsSub::name("Plugins")
+        plugin_check_box(_plugin_count)
     {
         for(int i=0;i<plugin_count;i++)
         {
@@ -17,11 +16,6 @@ namespace Browser
 
     SettingsPlugins::~SettingsPlugins(void)
     {
-        if(plugin_check_box!=NULL)
-        {
-            delete[] plugin_check_box;
-            plugin_check_box=NULL;
-        }
     }
 
     //----------------------------
@@ -36,7 +30,7 @@ namespace Browser
 
     void SettingsPlugins::decline_new_settings(void)
     {
-        plugin_check_box->set_active(CONFIG_GET());
+        plugin_check_box.set_active(CONFIG_GET());
 
     }
 

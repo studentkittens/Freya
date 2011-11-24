@@ -5,8 +5,7 @@ namespace Browser
 {
     SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder) :
         notify("settings.libnotify.signal"),
-        tray("settings.trayicon.totray"),
-        SettingsSub::name("General")
+        tray("settings.trayicon.totray")
     {
         BUILDER_GET(builder,"libnotify_checkbox",libnotify);
         BUILDER_GET(builder,"trayicon_checkbox",trayicon);

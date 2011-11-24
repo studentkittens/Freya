@@ -1,7 +1,7 @@
 #include "SettingsNetwork.hh"
 #include "../Utils/Utils.hh"
 
-#include "../Avahi/Browser.hh"
+#include "../AvahiBrowser/Browser.hh"
 
 namespace Browser
 {
@@ -9,8 +9,7 @@ namespace Browser
         ip_name("settings.connection.host"),
         port_name("settings.connection.port"),
         timeout_name("settings.connection.reconnectintervall"),
-        autoconnect_name("settings.connection.autoconnect"),
-        SettingsSub::name("Network")
+        autoconnect_name("settings.connection.autoconnect")
     {
         BUILDER_GET(builder,"ip_textfield",ip);
         BUILDER_GET(builder,"port_spinbutton",port);
@@ -18,7 +17,7 @@ namespace Browser
         BUILDER_GET(builder,"avahi_button",avahi);
         BUILDER_GET(builder,"autoconnect_checkbox",autoconnect);
 
-        avahi->signal_clicked().connect(sigc:mem_fun(*this,show_avahi));
+        avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
     }
 
 
@@ -49,18 +48,19 @@ namespace Browser
         ip->set_text(CONFIG_GET(ip_name));
         port->set_value((double)CONFIG_GET_AS_INT(port_name));
         recon_timeout->set_value((double)CONFIG_GET_AS_INT(timeout_name));
-        autoconnect->set_value((double)CONFIG_GET_AS_INT(autoconnect_name));
+        autoconnect->set_active((bool)CONFIG_GET_AS_INT(autoconnect_name));
     }
 
     //----------------------------
     void SettingsNetwork::show_avahi(void)
     {
-        Avahi::Browser handle;
+/*        Avahi::Browser handle;
         if(handle.is_connected())
         {
-            handle.get_signal().connect(sigc::ptr_fun(selected_callback));
+            handle.get_signal().connect(sigc::ptr_fun(&selected_callback));
             handle.get_window().show_all();
         }
+*/
     }
     //----------------------------
 

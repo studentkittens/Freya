@@ -4,8 +4,7 @@
 namespace Browser
 {
     SettingsPlayback::SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder) :
-        corssfade_name("settings.replay.crossfade"),
-        SettingsSub::name("Playback")
+        crossfade_name("settings.replay.crossfade")
     {
         BUILDER_GET(builder,"crossfade_spinbutton",crossfade);
     }
@@ -26,7 +25,7 @@ namespace Browser
 
     void SettingsPlayback::decline_new_settings(void)
     {
-        crossfade->set_active((bool)CONFIG_GET_AS_INT(crossfade_name));
+        crossfade->set_value(CONFIG_GET_AS_INT(crossfade_name));
     }
 
     //----------------------------

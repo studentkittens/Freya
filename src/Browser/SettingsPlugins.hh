@@ -6,20 +6,23 @@
 #include "../Config/Handler.hh"
 
 #include <vector>
+using namespace std;
 namespace Browser
 {
 
-    class SettingsPlugins : SettingsSub
+    class SettingsPlugins : public SettingsSub
     {
         public:
-            SettingsPlugins(const Glib::RefPtr<Gtk::Builder> &builder, char _plugin_count);
+            SettingsPlugins(const Glib::RefPtr<Gtk::Builder> &builder, 
+            int _plugin_count);
             ~SettingsPlugins();
 
             void accept_new_settings(void);
             void decline_new_settings(void);
 
         private:
-            char plugin_count;
+            int plugin_count;
+            Glib::ustring port_name;
         /* Widgets */
             vector<Gtk::CheckButton*> plugin_check_box;
 

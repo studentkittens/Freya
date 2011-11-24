@@ -5,13 +5,20 @@
 
 #include "../Config/Handler.hh"
 #include <vector>
+#include "SettingsPlayback.hh"
+#include "SettingsNetwork.hh"
+#include "SettingsPlugins.hh"
+#include "SettingsGeneral.hh"
+#include "SettingsSub.hh"
+#include "../AbstractBrowser.hh"
+using namespace std;
 
 namespace Browser
 {
     class Settings : public AbstractBrowser
     {
         public:
-            Settings(const Glib::RefPtr<Gtk::Builder> &builder>);
+            Settings(const Glib::RefPtr<Gtk::Builder> &builder);
             ~Settings();
             Gtk::Widget* get_container(void);
         private:

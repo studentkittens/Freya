@@ -13,7 +13,7 @@
 #include "Browser/PlaylistManager.hh"
 #include "Browser/Database.hh"
 #include "Browser/StatBrowser.hh"
-
+#include "Browser/Settings.hh"
 #include "Log/Writer.hh"
 
 using namespace std;
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
             browser_list.add(stat_browser);
 
             Browser::Settings settings_browser(builder);
-            browser_list_add(settings_browser);
+            browser_list.add(settings_browser);
 
             /* Send a good morning to all widgets */
             client.force_update();

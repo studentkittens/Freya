@@ -4,6 +4,9 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     Database.cc
     StatBrowser.cc
     Settings.cc
+    SettingsNetwork.cc
+    SettingsGeneral.cc
+    SettingsPlayback.cc
     )
 
-TARGET_LINK_LIBRARIES(FreyaBrowserLib ${GTKMM3_PACKAGE_LIBRARIES})
+TARGET_LINK_LIBRARIES(FreyaBrowserLib FreyaAvahiLib ${GTKMM3_PACKAGE_LIBRARIES})

@@ -4,10 +4,10 @@
 #include <gtkmm.h>
 
 #include "../Config/Handler.hh"
-
+#include "SettingsSub.hh"
 namespace Browser
 {
-    class SettingsPlayback : SettingsSub
+    class SettingsPlayback : public SettingsSub
     {
         public:
             SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder);

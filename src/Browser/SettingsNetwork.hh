@@ -4,10 +4,10 @@
 #include <gtkmm.h>
 
 #include "../Config/Handler.hh"
-
+#include "SettingsSub.hh"
 namespace Browser
 {
-    class SettingsNetwork : SettingsSub
+    class SettingsNetwork : public  SettingsSub
     {
         public:
             SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder);

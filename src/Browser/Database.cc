@@ -23,7 +23,8 @@ namespace Browser
         mp_IView->set_markup_column(m_Columns.m_col_name);
         mp_IView->set_pixbuf_column(m_Columns.m_col_icon);
 
-
+        mp_HomeButton->signal_clicked().connect(sigc::mem_fun(*this,&DatabaseBrowser::on_home_button_clicked));
+        mp_IView->signal_item_activated().connect(sigc::mem_fun(*this,&DatabaseBrowser::on_item_activated));
 
         client.fill_filelist(*this,NULL);
     }
@@ -48,6 +49,29 @@ namespace Browser
         Gtk::TreeModel::Row row = *(m_DirStore->append());
         row[m_Columns.m_col_name] = Glib::Markup::escape_text(dir->get_path()); 
         row[m_Columns.m_col_icon] = m_DirIcon;
+    }
+
+    /*------------------------------------------------*/
+
+    void DatabaseBrowser::on_home_button_clicked(void)
+    {
+        m_DirStore->clear();
+        mp_Client->fill_filelist(*this,NULL);
+    }
+
+    /*------------------------------------------------*/
+
+    void DatabaseBrowser::on_item_activated(const Gtk::TreeModel::Path& path)
+    {
+        Gtk::TreeModel::iterator iter = m_DirStore->get_iter(path);
+        if(iter)
+        {
+            Gtk::TreeRow row = *iter;
+            Glib::ustring str = row[m_Columns.m_col_name];
+            g_message("Selected: %s\n",str.c_str());
+            m_DirStore->clear();
+            mp_Client->fill_filelist(*this,str.c_str());
+        }
     }
 
     /*------------------------------------------------*/

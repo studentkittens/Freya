@@ -13,6 +13,12 @@
         <libnotify>
             <signal>0</signal>
         </libnotify>
+        <trayicon>
+            <totray>0</totray>
+        </trayicon>
+        <replay>
+            <crossfade>0</crossfade>
+        </replay>
     </settings>
     <plugins>
         <glyr>

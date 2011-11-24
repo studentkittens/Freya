@@ -22,6 +22,9 @@ namespace Browser
 
         private:
 
+            void on_item_activated(const Gtk::TreeModel::Path& path);
+            void on_home_button_clicked(void);
+
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:

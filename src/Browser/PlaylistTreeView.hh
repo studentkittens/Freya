@@ -26,8 +26,7 @@ namespace Browser
             void add_item(void * pSong);
             void clear(void) {}
 
-            void on_selected_row(const Gtk::TreeModel::iterator& iter);
-            void on_selection_changed(void);
+            void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord

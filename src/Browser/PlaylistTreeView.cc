@@ -49,7 +49,10 @@ namespace Browser
         /* Selections */
         m_TreeSelection = m_TreeView.get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
-        m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this, &PlaylistTreeView::on_selection_changed));
+      //  m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this, &PlaylistTreeView::on_selection_changed));
+
+        /* Double click on a row */
+        m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,&PlaylistTreeView::on_row_activated));
 
         mp_Client = &client;
         mp_Client->fill_queue(*this);
@@ -57,20 +60,16 @@ namespace Browser
     }
 
     /*-------------------------------*/
-
-    void PlaylistTreeView::on_selected_row(const Gtk::TreeModel::iterator& iter)
-    {
-        Gtk::TreeModel::Row row = *iter;
-        unsigned song_id = row[m_Columns.m_col_id]; 
-        g_message("ID = %d",song_id);
-        mp_Client->play_song_at_id(song_id);
-    }
-
-    /*-------------------------------*/
     
-    void PlaylistTreeView::on_selection_changed(void)
+    void PlaylistTreeView::on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column)
     {
-        m_TreeSelection->selected_foreach_iter(sigc::mem_fun(*this, &PlaylistTreeView::on_selected_row));
+        /* Get the row from the path - Documentation, Y U NO TELL ME?! */
+        Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter(path);
+        if(iter)
+        {
+            Gtk::TreeRow row = *iter;
+            mp_Client->play_song_at_id(row[m_Columns.m_col_id]);
+        }
     }
 
     /*-------------------------------*/

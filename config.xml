@@ -8,16 +8,16 @@
             <autoconnect>1</autoconnect>
             <stoponexit>1</stoponexit>
             <timeout>20</timeout>
-            <reconnectinterval>2</reconnectinterval>
+            <reconnectinterval>0</reconnectinterval>
         </connection>
         <libnotify>
-            <signal>0</signal>
+            <signal>1</signal>
         </libnotify>
         <trayicon>
-            <totray>0</totray>
+            <totray>1</totray>
         </trayicon>
         <replay>
-            <crossfade>0</crossfade>
+            <crossfade>3</crossfade>
         </replay>
     </settings>
     <plugins>

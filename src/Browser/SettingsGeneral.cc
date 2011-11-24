@@ -19,19 +19,22 @@ namespace Browser
 
     void SettingsGeneral::accept_new_settings(void)
     {
-        int notify_value = (int) libnotify->get_active();
-        int tray_value = (int) trayicon->get_active();
+        bool notify_value =  libnotify->get_active();
+        bool tray_value =  trayicon->get_active();
 
-        CONFIG_SET_AS_INT(notify,notify_value);
-        CONFIG_SET_AS_INT(tray,tray_value);
+        CONFIG_SET_AS_INT(notify,notify_value?1:0);
+        CONFIG_SET_AS_INT(tray,tray_value?1:0);
     }
 
     //----------------------------
 
     void SettingsGeneral::decline_new_settings(void)
     {
-        libnotify->set_active((bool)CONFIG_GET_AS_INT(notify));
-        trayicon->set_active((bool)CONFIG_GET_AS_INT(tray));
+        int libnot, trayic;
+        libnot = CONFIG_GET_AS_INT(notify);
+        trayic = CONFIG_GET_AS_INT(tray);
+        libnotify->set_active(libnot==1);
+        trayicon->set_active(trayic==1);
     }
 
     //----------------------------

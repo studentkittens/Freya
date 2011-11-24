@@ -282,274 +282,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkFrame" id="plugins_options_frame">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label_xalign">0</property>
-            <property name="shadow_type">none</property>
-            <child>
-              <object class="GtkAlignment" id="plugins_alignment">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="left_padding">12</property>
-                <child>
-                  <object class="GtkScrolledWindow" id="plugins_scrolledwindow">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="shadow_type">in</property>
-                    <child>
-                      <object class="GtkViewport" id="plugins_viewport">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="shadow_type">none</property>
-                        <child>
-                          <object class="GtkGrid" id="plugins_grid">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="row_spacing">8</property>
-                            <property name="column_spacing">20</property>
-                            <child>
-                              <object class="GtkCheckButton" id="plugin1">
-                                <property name="label" translatable="yes">Plugin1</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="valign">start</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">0</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="plugin2">
-                                <property name="label" translatable="yes">Plugin2</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="valign">start</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">1</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="plugin3">
-                                <property name="label" translatable="yes">Plugin3</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="valign">start</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">2</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="plugin4">
-                                <property name="label" translatable="yes">Plugin4</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="valign">start</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">3</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="plugin1_descr">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="hexpand">True</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Beschreibung vom Plugin1:&lt;/b&gt;
-Es kann gar nichts und ist nur ein Dummy</property>
-                                <property name="use_markup">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">0</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="plugin2_descr">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="hexpand">True</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Beschreibung vom Plugin2:&lt;/b&gt;
-Es kann gar nichts und ist nur ein Dummy</property>
-                                <property name="use_markup">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">1</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="plugin3_descr">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="hexpand">True</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Beschreibung vom Plugin3:&lt;/b&gt;
-Es kann gar nichts und ist nur ein Dummy</property>
-                                <property name="use_markup">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">2</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="plugin4_descr">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="hexpand">True</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Beschreibung vom Plugin4:&lt;/b&gt;
-Es kann gar nichts und ist nur ein Dummy</property>
-                                <property name="use_markup">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">3</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="plugin1_settings_button">
-                                <property name="label" translatable="yes">Settings</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="use_action_appearance">False</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">0</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="plugin2_settings_button">
-                                <property name="label" translatable="yes">Settings</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="use_action_appearance">False</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="plugin3_settings_button">
-                                <property name="label" translatable="yes">Settings</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="use_action_appearance">False</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">2</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="plugin4_settings_button">
-                                <property name="label" translatable="yes">Settings</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="use_action_appearance">False</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">3</property>
-                                <property name="width">1</property>
-                                <property name="height">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child type="label">
-              <object class="GtkLabel" id="plugins_options_headline">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&lt;b&gt;Plugins&lt;/b&gt;</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child type="tab">
-          <object class="GtkLabel" id="settings_notebook_plugins_label">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Plugins</property>
-          </object>
-          <packing>
-            <property name="position">1</property>
-            <property name="tab_fill">False</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkFrame" id="replay_options_frame">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -637,7 +369,7 @@ Es kann gar nichts und ist nur ein Dummy</property>
             </child>
           </object>
           <packing>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child type="tab">
@@ -647,7 +379,7 @@ Es kann gar nichts und ist nur ein Dummy</property>
             <property name="label" translatable="yes">Playback</property>
           </object>
           <packing>
-            <property name="position">2</property>
+            <property name="position">1</property>
             <property name="tab_fill">False</property>
           </packing>
         </child>
@@ -747,7 +479,7 @@ Es kann gar nichts und ist nur ein Dummy</property>
             </child>
           </object>
           <packing>
-            <property name="position">3</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child type="tab">
@@ -757,7 +489,7 @@ Es kann gar nichts und ist nur ein Dummy</property>
             <property name="label" translatable="yes">General</property>
           </object>
           <packing>
-            <property name="position">3</property>
+            <property name="position">2</property>
             <property name="tab_fill">False</property>
           </packing>
         </child>

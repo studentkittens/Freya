@@ -8,7 +8,7 @@ namespace Browser
     SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder) :
         ip_name("settings.connection.host"),
         port_name("settings.connection.port"),
-        timeout_name("settings.connection.reconnectintervall"),
+        timeout_name("settings.connection.reconnectinterval"),
         autoconnect_name("settings.connection.autoconnect")
     {
         BUILDER_GET(builder,"ip_textfield",ip);
@@ -29,16 +29,17 @@ namespace Browser
     {
 
         Glib::ustring ip_value;
-        int port_value, timeout_value,autoconnect_value;
+        int port_value, timeout_value;
+        bool autoconnect_value;
 
         ip_value = ip->get_text();
         port_value = port->get_value_as_int();
         timeout_value = recon_timeout->get_value_as_int();
-        autoconnect_value =(int) autoconnect->get_active();
+        autoconnect_value = autoconnect->get_active();
         CONFIG_SET(ip_name,ip_value);
         CONFIG_SET_AS_INT(port_name,port_value);
         CONFIG_SET_AS_INT(timeout_name,timeout_value);
-        CONFIG_SET_AS_INT(autoconnect_name,autoconnect_value);
+        CONFIG_SET_AS_INT(autoconnect_name,autoconnect_value?1:0);
     }
 
     //----------------------------
@@ -48,7 +49,8 @@ namespace Browser
         ip->set_text(CONFIG_GET(ip_name));
         port->set_value((double)CONFIG_GET_AS_INT(port_name));
         recon_timeout->set_value((double)CONFIG_GET_AS_INT(timeout_name));
-        autoconnect->set_active((bool)CONFIG_GET_AS_INT(autoconnect_name));
+        int autocon = CONFIG_GET_AS_INT(autoconnect_name);
+        autoconnect->set_active(autocon==1?true:false);
     }
 
     //----------------------------

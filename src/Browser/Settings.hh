@@ -25,7 +25,8 @@ namespace Browser
             void on_button_ok(void);
             void on_button_cancel(void);
 
-            vector<SettingsSub> sub_sections;
+            vector<SettingsSub*> sub_sections;
+//            SettingsSub* net;
             /* Widgets */
             Gtk::Button *ok_button, *cancel_button;
             Gtk::Box *settings_main;

@@ -21,9 +21,9 @@ namespace Browser
         sub_sections.push_back(SettingsPlayback(builder));
         sub_sections.push_back(SettingsGeneral(builder));
 
-        BUILDER_ADD(builder,settings_file);
         BUILDER_GET(builder,"ok_button",ok_button);
         BUILDER_GET(builder,"stop_button",stop_button);
+        BUILDER_GET(builder,"settings_main",settings_main);
 
         ok_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_ok));
         stop_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_stop));
@@ -65,6 +65,11 @@ namespace Browser
             sub_section[i]->decline_new_settings();
         }
 
+    }
+    //---------------------------
+    Gtk::Widget* Settings::get_container(void)
+    {
+        return settings_main;
     }
     //---------------------------
 

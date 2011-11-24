@@ -5,21 +5,23 @@
 
 #include "../Config/Handler.hh"
 #include <vector>
+
 namespace Browser
 {
-    class Settings
+    class Settings : public AbstractBrowser
     {
         public:
             Settings(const Glib::RefPtr<Gtk::Builder> &builder>);
             ~Settings();
+            Gtk::Widget* get_container(void);
         private:
             void on_button_ok(void);
             void on_button_cancel(void);
 
             vector<SettingsSub> sub_sections;
-
             /* Widgets */
             Gtk::Button *ok_button, *cancel_button;
+            Gtk::Box *settings_main;
     };
 }
 

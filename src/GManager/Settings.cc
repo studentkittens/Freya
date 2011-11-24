@@ -2,7 +2,7 @@
 #include "../Utils/Utils.hh"
 
 #define SUBSECTION_COUNT 4;
-
+#define PLUGIN_COUNT 4;
 namespace GManager
 {
     Settings:Settings(const Glib::RefPtr<Gtk::Builder> &builder)
@@ -11,7 +11,7 @@ namespace GManager
 
         sub_sections = new SettingsSub[SUBSECTION_COUNT];
         sub_sections[0] = new SettingsNetwork(builder);
-        sub_sections[1] = new SettingsPlugins(builder);
+        sub_sections[1] = new SettingsPlugins(builder,PLUGIN_COUNT);
         sub_sections[2] = new SettingsReplay(builder);
         sub_sections[3] = new SettingsGeneral(builder);
 
@@ -49,6 +49,16 @@ namespace GManager
 
     void Settings::on_button_ok(void)
     {
+
+        int rc=0;
+        for(int i=0;i<SUBSECTION_COUNT;i++)
+        {
+            rc = sub_section[i]->validate();
+            if(rc!=0)
+            {
+                Info("Couldn't validate "+sub_section[i]->get_name()+"-Settings. Please check input");
+            }
+        }
         for(int i=0;i<SUBSECTION_COUNT;i++)
         {
             sub_section[i]->accept_new_settings();

@@ -13,6 +13,7 @@
           <object class="GtkGrid" id="statistics_grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="valign">center</property>
             <child>
               <object class="GtkLabel" id="label2">
                 <property name="visible">True</property>

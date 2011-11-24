@@ -6,7 +6,7 @@
 #include  "Listener.hh"
 
 /* Songlist interface */
-#include "../AbstractSonglist.hh"
+#include "../AbstractItemlist.hh"
 
 
 namespace MPD

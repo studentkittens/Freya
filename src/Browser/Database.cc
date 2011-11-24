@@ -20,13 +20,17 @@ namespace Browser
 
         m_DirStore = Gtk::ListStore::create(m_Columns);
         mp_IView->set_model(m_DirStore);
-        mp_IView->set_markup_column(m_Columns.m_col_name);
+        mp_IView->set_text_column(m_Columns.m_col_name);
         mp_IView->set_pixbuf_column(m_Columns.m_col_icon);
 
-        mp_HomeButton->signal_clicked().connect(sigc::mem_fun(*this,&DatabaseBrowser::on_home_button_clicked));
-        mp_IView->signal_item_activated().connect(sigc::mem_fun(*this,&DatabaseBrowser::on_item_activated));
+        mp_HomeButton->signal_clicked().connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_home_button_clicked));
+        mp_DirUpButton->signal_clicked().connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::go_one_up));
+        mp_IView->signal_item_activated().connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_item_activated));
 
-        client.fill_filelist(*this,NULL);
+        set_current_path("");
     }
 
     /*------------------------------------------------*/
@@ -47,7 +51,7 @@ namespace Browser
         g_assert(pItem);
         MPD::Directory * dir = (MPD::Directory*)pItem;
         Gtk::TreeModel::Row row = *(m_DirStore->append());
-        row[m_Columns.m_col_name] = Glib::Markup::escape_text(dir->get_path()); 
+        row[m_Columns.m_col_name] = dir->get_path(); 
         row[m_Columns.m_col_icon] = m_DirIcon;
     }
 
@@ -57,6 +61,7 @@ namespace Browser
     {
         m_DirStore->clear();
         mp_Client->fill_filelist(*this,NULL);
+        set_current_path("");
     }
 
     /*------------------------------------------------*/
@@ -68,10 +73,33 @@ namespace Browser
         {
             Gtk::TreeRow row = *iter;
             Glib::ustring str = row[m_Columns.m_col_name];
-            g_message("Selected: %s\n",str.c_str());
-            m_DirStore->clear();
-            mp_Client->fill_filelist(*this,str.c_str());
+            g_message("Selected: %s",str.c_str());
+            set_current_path(str.c_str());
         }
+    }
+
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::set_current_path(const char * path)
+    {
+        mp_Path = path;
+        m_DirStore->clear();
+        mp_Client->fill_filelist(*this,mp_Path.c_str());
+        mp_StatusLabel->set_text(!mp_Path.empty() ? mp_Path : "Root");
+    }
+    
+    /*------------------------------------------------*/
+#include <iostream>
+    void DatabaseBrowser::go_one_up(void)
+    {
+        std::string dir_up = Glib::path_get_dirname(mp_Path);
+
+        std::cout << dir_up << std::endl;
+        
+        if(dir_up == ".")
+            dir_up = "";
+
+        set_current_path(dir_up.c_str());
     }
 
     /*------------------------------------------------*/

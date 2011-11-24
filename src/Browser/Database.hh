@@ -24,6 +24,8 @@ namespace Browser
 
             void on_item_activated(const Gtk::TreeModel::Path& path);
             void on_home_button_clicked(void);
+            void set_current_path(const char * path);
+            void go_one_up(void);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
@@ -46,6 +48,9 @@ namespace Browser
             Glib::RefPtr<Gtk::TreeSelection> m_Selection;
             Glib::RefPtr<Gtk::ListStore> m_DirStore;
             MPD::Client * mp_Client;
+
+            /* The current path shown (NULL for root) */
+            std::string mp_Path;
     };
 }
 

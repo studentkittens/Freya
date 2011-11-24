@@ -2,7 +2,7 @@
 
 namespace Avahi
 {
-    View::View(void) : m_Button_Cancel("Cancel"), m_Button_Select("Select"), m_Status_Label("Searching..")
+    View::View(void) : Gtk::Window(Gtk::WINDOW_POPUP), m_Button_Cancel("Cancel"), m_Button_Select("Select"), m_Status_Label("Searching..")
     {
         set_title("MPD Serverlist");
         set_border_width(5);

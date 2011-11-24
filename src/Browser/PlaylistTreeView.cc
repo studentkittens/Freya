@@ -49,7 +49,6 @@ namespace Browser
         /* Selections */
         m_TreeSelection = m_TreeView.get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
-      //  m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this, &PlaylistTreeView::on_selection_changed));
 
         /* Double click on a row */
         m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,&PlaylistTreeView::on_row_activated));

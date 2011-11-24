@@ -68,7 +68,7 @@ namespace Browser
         if(handle->is_connected())
         {
             handle->get_signal().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
-            handle->get_window().show_all();
+            handle->get_window().show();
         }
 
     }

@@ -1,6 +1,6 @@
 #include "SettingsNetwork.hh"
 #include "../Utils/Utils.hh"
-
+#include "../Log/Writer.hh"
 #include "../AvahiBrowser/Browser.hh"
 
 namespace Browser
@@ -54,14 +54,20 @@ namespace Browser
     //----------------------------
     void SettingsNetwork::show_avahi(void)
     {
-/*        Avahi::Browser handle;
+        Avahi::Browser handle;
         if(handle.is_connected())
         {
-            handle.get_signal().connect(sigc::ptr_fun(&selected_callback));
+            handle.get_signal().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
             handle.get_window().show_all();
         }
-*/
+
     }
     //----------------------------
 
+    void SettingsNetwork::selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port)
+    {
+        CONFIG_SET("settings.connection.host",ip);
+        CONFIG_SET_AS_INT("settings.connection.port",port);
+//        Error(" "+ip+" "+ hostname +" "+ name +" "+port);
+    }
 }

@@ -18,6 +18,7 @@ namespace Browser
 
         private:
             void show_avahi(void);
+            void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port);
             Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
         /* Widgets */
             Gtk::Entry *ip;

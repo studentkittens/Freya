@@ -4,11 +4,11 @@
         <connection>
             <port>6600</port>
             <musicroot>~/chris/Musik</musicroot>
-            <host>blaa</host>
+            <host>localhost</host>
             <autoconnect>1</autoconnect>
             <stoponexit>1</stoponexit>
             <timeout>20</timeout>
-            <reconnectinterval>0</reconnectinterval>
+            <reconnectinterval>2</reconnectinterval>
         </connection>
         <libnotify>
             <signal>0</signal>

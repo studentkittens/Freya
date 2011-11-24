@@ -23,12 +23,9 @@ namespace Browser
         mp_IView->set_markup_column(m_Columns.m_col_name);
         mp_IView->set_pixbuf_column(m_Columns.m_col_icon);
 
-        for(int i = 0; i < 100; i++)
-        {
-            Gtk::TreeModel::Row row = *(m_DirStore->append());
-            row[m_Columns.m_col_name] = "Huh";
-            row[m_Columns.m_col_icon] = m_DirIcon;
-        }
+
+
+        client.fill_filelist(*this,NULL);
     }
 
     /*------------------------------------------------*/
@@ -40,6 +37,17 @@ namespace Browser
     Gtk::Widget * DatabaseBrowser::get_container(void)
     {
         return mp_ParentBox;
+    }
+
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::add_item(void * pItem)
+    {
+        g_assert(pItem);
+        MPD::Directory * dir = (MPD::Directory*)pItem;
+        Gtk::TreeModel::Row row = *(m_DirStore->append());
+        row[m_Columns.m_col_name] = Glib::Markup::escape_text(dir->get_path()); 
+        row[m_Columns.m_col_icon] = m_DirIcon;
     }
 
     /*------------------------------------------------*/

@@ -2,6 +2,7 @@
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
 #include "Playlist.hh"
+#include "Directory.hh"
 
 namespace MPD
 {
@@ -137,7 +138,7 @@ namespace MPD
 
     //-------------------------------
 
-    void Client::fill_queue(AbstractSonglist& data_model)
+    void Client::fill_queue(AbstractItemlist& data_model)
     {
         go_busy();
 
@@ -155,7 +156,7 @@ namespace MPD
 
     //-------------------------------
     
-    void Client::fill_playlists(AbstractSonglist& data_model)
+    void Client::fill_playlists(AbstractItemlist& data_model)
     {
         go_busy();
 
@@ -166,6 +167,48 @@ namespace MPD
             while((ent = mpd_recv_playlist(mpd_conn)))
             {
                 data_model.add_item(new Playlist(*ent));
+            }
+        }
+        go_idle();
+    }
+
+    //-------------------------------
+    
+    void Client::fill_filelist(AbstractItemlist& data_model, const char * path)
+    {
+        go_busy();
+        
+        mpd_connection * mpd_conn = m_Conn.get_connection();
+        if(mpd_conn && mpd_send_list_meta(mpd_conn, path) != FALSE)
+        {
+            mpd_entity * ent = NULL;
+            while((ent = mpd_recv_entity(mpd_conn)))
+            {
+                switch(mpd_entity_get_type(ent))
+                {
+                    case MPD_ENTITY_TYPE_DIRECTORY:
+                    {
+                        mpd_directory * dir = (mpd_directory*)mpd_entity_get_directory(ent);
+                        if(dir != NULL)
+                        {
+                            data_model.add_item(new Directory(*dir));
+                        }
+                        break;
+                    }
+                    case MPD_ENTITY_TYPE_SONG:
+                    {
+/*
+                        g_message("Got song");
+                        const mpd_song * song = mpd_entity_get_song(ent);
+                        break;
+*/
+                    }
+                    case MPD_ENTITY_TYPE_PLAYLIST:
+                    case MPD_ENTITY_TYPE_UNKNOWN:
+                    default:
+                        break;
+                }
+                mpd_entity_free(ent);
             }
         }
         go_idle();

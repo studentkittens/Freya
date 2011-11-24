@@ -9,7 +9,7 @@
 
 namespace Browser 
 {
-    class PlaylistManager : public Gtk::Frame, public AbstractBrowser, public AbstractSonglist
+    class PlaylistManager : public Gtk::Frame, public AbstractBrowser, public AbstractItemlist
     {
         public:
             PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);

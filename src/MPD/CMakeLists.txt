@@ -6,6 +6,7 @@ ADD_LIBRARY(FreyaMPDLib
             Statistics.cc
             Playlist.cc
             Song.cc
+            Directory.cc
             NotifyData.cc
             )
 

@@ -8,7 +8,7 @@
 
 namespace Browser 
 {
-    class PlaylistTreeView : public Gtk::Box, public AbstractBrowser, public AbstractSonglist 
+    class PlaylistTreeView : public Gtk::Box, public AbstractBrowser, public AbstractItemlist 
     {
         public:
             PlaylistTreeView(MPD::Client& client);

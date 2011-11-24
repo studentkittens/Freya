@@ -71,6 +71,8 @@ namespace MPD
             EventNotifier& get_notify(void);
 
 
+            
+
             ConnectionNotifier& signal_connection_change(void);
 
             /**
@@ -89,8 +91,9 @@ namespace MPD
              *
              * @return the number of filled items.
              */
-            void fill_queue(AbstractSonglist& data_model);
-            void fill_playlists(AbstractSonglist& data_model);
+            void fill_queue(AbstractItemlist& data_model);
+            void fill_playlists(AbstractItemlist& data_model);
+            void fill_filelist(AbstractItemlist& data_model, const char * path);
 
         private:
 

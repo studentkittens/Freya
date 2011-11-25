@@ -43,7 +43,7 @@ namespace Browser
                 pColumn->set_reorderable();
                 pColumn->set_expand(false);
                 pColumn->set_resizable(true);
-                pColumn->set_sort_column(m_Columns.m_col_id);
+                pColumn->set_sort_column(i);
             }
         }
 

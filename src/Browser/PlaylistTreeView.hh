@@ -34,7 +34,7 @@ namespace Browser
                 public:
 
                     ModelColumns()
-                    { add(m_col_id); add(m_col_title); add(m_col_album); add(m_col_artist); }
+                    { add(m_col_id); add(m_col_artist); add(m_col_album); add(m_col_title); }
 
                     Gtk::TreeModelColumn<unsigned int>  m_col_id;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_title;

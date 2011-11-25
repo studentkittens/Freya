@@ -14,13 +14,8 @@ namespace MPD
             NotifyData(Connection& conn);
             ~NotifyData(void);
 
-            void update_status(void);
             Status& get_status(void);
-    
-            void update_statistics(void);
             Statistics& get_statistics(void);
-    
-            void update_song(void);
             Song& get_song(void);
 
             void update_all(void);

@@ -42,7 +42,7 @@ namespace GManager
         row[m_Columns.m_col_browser] = &browser;
         row[m_Columns.m_col_icon] = mp_PluginListview->render_icon_pixbuf(
                                                     browser.get_icon_stock_id(),
-                                                    Gtk::ICON_SIZE_DND); 
+                                                    Gtk::ICON_SIZE_DNDNDD); 
     }
 
     //----------------------------

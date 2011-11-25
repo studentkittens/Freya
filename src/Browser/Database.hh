@@ -32,10 +32,11 @@ namespace Browser
             {
                 public:
                     ModelColumns()
-                    { add(m_col_path); add(m_col_name); add(m_col_icon); }
+                    { add(m_col_path); add(m_col_name); add(m_col_icon); add(m_col_is_file); }
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_path;
-                    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>>  m_col_icon;
+                    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
+                    Gtk::TreeModelColumn<bool> m_col_is_file;
             };
 
             /* Actual widgets */

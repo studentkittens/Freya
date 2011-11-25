@@ -15,11 +15,12 @@ namespace Browser
 
             void accept_new_settings(void);
             void decline_new_settings(void);
-            Glib::ustring get_name(void);
+
         private:
-            Glib::ustring name, crossfade_name;
+            Glib::ustring name, crossfade_name, stoponexit_name;
         /* Widgets */
             Gtk::SpinButton *crossfade;
+            Gtk::CheckButton *stoponexit;
     };
 }
 #endif

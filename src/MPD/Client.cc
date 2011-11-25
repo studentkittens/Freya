@@ -174,7 +174,7 @@ namespace MPD
 
     //-------------------------------
     
-    void Client::fill_filelist(AbstractItemlist& data_model, const char * path)
+    void Client::fill_filelist(AbstractFilebrowser& data_model, const char * path)
     {
         go_busy();
         
@@ -191,17 +191,18 @@ namespace MPD
                         mpd_directory * dir = (mpd_directory*)mpd_entity_get_directory(ent);
                         if(dir != NULL)
                         {
-                            data_model.add_item(new Directory(*dir));
+                            data_model.add_directory(new Directory(*dir));
                         }
                         break;
                     }
                     case MPD_ENTITY_TYPE_SONG:
                     {
-/*
-                        g_message("Got song");
-                        const mpd_song * song = mpd_entity_get_song(ent);
+                        mpd_song * song = (mpd_song*)mpd_entity_get_song(ent);
+                        if(song != NULL)
+                        {
+                            data_model.add_song_file(new Song(*song));
+                        }
                         break;
-*/
                     }
                     case MPD_ENTITY_TYPE_PLAYLIST:
                     case MPD_ENTITY_TYPE_UNKNOWN:

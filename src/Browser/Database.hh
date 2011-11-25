@@ -10,15 +10,15 @@
 namespace Browser
 {
     /* Does not inherig from frame this time */
-    class DatabaseBrowser : public AbstractBrowser, public AbstractItemlist
+    class DatabaseBrowser : public AbstractBrowser, public AbstractFilebrowser 
     {
         public:
             DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
             virtual ~DatabaseBrowser();
 
             Gtk::Widget * get_container(void);
-            void add_item(void * pItem);
-            void clear(void) {}
+            void add_directory(MPD::Directory * pDir);
+            void add_song_file(MPD::Song * pSong);
 
         private:
 
@@ -26,13 +26,15 @@ namespace Browser
             void on_home_button_clicked(void);
             void set_current_path(const char * path);
             void go_one_up(void);
+            void add_item(const char * path, bool is_file);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:
                     ModelColumns()
-                    { add(m_col_name); add(m_col_icon); }
+                    { add(m_col_path); add(m_col_name); add(m_col_icon); }
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+                    Gtk::TreeModelColumn<Glib::ustring> m_col_path;
                     Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>>  m_col_icon;
             };
 

@@ -46,13 +46,29 @@ namespace Browser
 
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::add_item(void * pItem)
+    void DatabaseBrowser::add_directory(MPD::Directory * pDir)
     {
-        g_assert(pItem);
-        MPD::Directory * dir = (MPD::Directory*)pItem;
+        g_assert(pDir);
+        add_item(pDir->get_path(),false);
+    }
+    
+    /*------------------------------------------------*/
+
+    void DatabaseBrowser::add_song_file(MPD::Song * pSong)
+    {
+        g_assert(pSong);
+        add_item(pSong->get_uri(),true);
+    }
+    
+    /*------------------------------------------------*/
+
+    void DatabaseBrowser::add_item(const char * path, bool is_file)
+    {
+        g_assert(path);
         Gtk::TreeModel::Row row = *(m_DirStore->append());
-        row[m_Columns.m_col_name] = dir->get_path(); 
-        row[m_Columns.m_col_icon] = m_DirIcon;
+        row[m_Columns.m_col_path] = path;
+        row[m_Columns.m_col_name] = Glib::path_get_basename(path);
+        row[m_Columns.m_col_icon] = (is_file) ? m_FileIcon : m_DirIcon;
     }
 
     /*------------------------------------------------*/
@@ -72,9 +88,9 @@ namespace Browser
         if(iter)
         {
             Gtk::TreeRow row = *iter;
-            Glib::ustring str = row[m_Columns.m_col_name];
-            g_message("Selected: %s",str.c_str());
-            set_current_path(str.c_str());
+            Glib::ustring path = row[m_Columns.m_col_path];
+            g_message("Selected: %s",path.c_str());
+            set_current_path(path.c_str());
         }
     }
 
@@ -89,12 +105,10 @@ namespace Browser
     }
     
     /*------------------------------------------------*/
-#include <iostream>
+
     void DatabaseBrowser::go_one_up(void)
     {
         std::string dir_up = Glib::path_get_dirname(mp_Path);
-
-        std::cout << dir_up << std::endl;
         
         if(dir_up == ".")
             dir_up = "";

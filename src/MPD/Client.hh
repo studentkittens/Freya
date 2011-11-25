@@ -7,6 +7,7 @@
 
 /* Songlist interface */
 #include "../AbstractItemlist.hh"
+#include "../AbstractFilebrowser.hh"
 
 
 namespace MPD
@@ -93,7 +94,7 @@ namespace MPD
              */
             void fill_queue(AbstractItemlist& data_model);
             void fill_playlists(AbstractItemlist& data_model);
-            void fill_filelist(AbstractItemlist& data_model, const char * path);
+            void fill_filelist(AbstractFilebrowser& data_model, const char * path);
 
         private:
 

@@ -39,7 +39,6 @@ namespace Browser
 
     void Settings::on_button_ok(void)
     {
-
         for(unsigned int i=0;i< sub_sections.size();i++)
         {
             sub_sections[i]->accept_new_settings();
@@ -50,7 +49,6 @@ namespace Browser
     //---------------------------
     void Settings::on_button_cancel(void)
     {
-
         for(unsigned int i=0;i< sub_sections.size();i++)
         {
             sub_sections[i]->decline_new_settings();

@@ -116,14 +116,18 @@ namespace Browser
         if(iter && !m_FilterText.empty())
         {
             Gtk::TreeRow row = *iter;
+            Glib::ustring lower_term = m_FilterText.lowercase();
 
-            if(((Glib::ustring)row[m_Columns.m_col_artist]).find(m_FilterText) != Glib::ustring::npos)
+            Glib::ustring artist = row[m_Columns.m_col_artist];
+            if(artist.lowercase().find(lower_term) != Glib::ustring::npos)
                 return true;
 
-            if(((Glib::ustring)row[m_Columns.m_col_album]).find(m_FilterText) != Glib::ustring::npos)
+            Glib::ustring album = row[m_Columns.m_col_album];
+            if(album.lowercase().find(lower_term) != Glib::ustring::npos)
                 return true;
 
-            if(((Glib::ustring)row[m_Columns.m_col_title]).find(m_FilterText) != Glib::ustring::npos)
+            Glib::ustring title = row[m_Columns.m_col_title];
+            if(title.lowercase().find(lower_term) != Glib::ustring::npos)
                 return true;
 
             return false;

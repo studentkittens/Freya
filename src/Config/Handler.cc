@@ -189,4 +189,11 @@ namespace Config
             return result;
         }
     }
+
+void Handler::save_config_now()
+    {
+        cfgmodel.save();
+        Info("Trying to save config now.");
+    }
+
 }

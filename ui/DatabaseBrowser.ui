@@ -9,7 +9,6 @@
       <object class="GtkScrolledWindow" id="filebrowser_scrolledwindow">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="shadow_type">in</property>
         <child>
           <object class="GtkIconView" id="filebrowser_iconview">
             <property name="visible">True</property>

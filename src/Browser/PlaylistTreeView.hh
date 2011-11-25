@@ -27,6 +27,8 @@ namespace Browser
             void clear(void) {}
 
             void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
+            bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
+            void on_entry_activate(void);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -42,6 +44,8 @@ namespace Browser
                     Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
             };
 
+            Glib::ustring m_FilterText;
+
             /* Treeview related */
             ModelColumns m_Columns;
             Gtk::ScrolledWindow m_ScrolledWindow;
@@ -52,6 +56,7 @@ namespace Browser
 
             /* Actual data */
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+            Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
 
             /* Selected data */
             Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;

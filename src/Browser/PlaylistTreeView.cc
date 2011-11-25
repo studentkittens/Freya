@@ -5,7 +5,10 @@
 namespace Browser
 {
     PlaylistTreeView::PlaylistTreeView(MPD::Client& client) :
-        Box(Gtk::ORIENTATION_VERTICAL), AbstractBrowser("Playlist Queue"), m_Entry()
+        Box(Gtk::ORIENTATION_VERTICAL),
+        AbstractBrowser("Playlist Queue"),
+        m_FilterText(""),
+        m_Entry()
     {
         set_homogeneous(false);
         pack_start(m_ScrolledWindow,true,true);
@@ -13,8 +16,10 @@ namespace Browser
 
         m_Entry.set_icon_from_stock(Gtk::Stock::CLEAR,Gtk::ENTRY_ICON_SECONDARY);
         m_Entry.set_icon_from_stock(Gtk::Stock::FIND, Gtk::ENTRY_ICON_PRIMARY);
+        m_Entry.signal_activate().connect(
+                sigc::mem_fun(*this,&PlaylistTreeView::on_entry_activate));
 
-        //Add the TreeView, inside a ScrolledWindow, with the button underneath:
+        /* Add the TreeView, inside a ScrolledWindow, with the button underneath: */
         m_ScrolledWindow.add(m_TreeView);
 
         //Only show the scrollbars when they are necessary:
@@ -22,17 +27,20 @@ namespace Browser
 
         //Create the Tree model:
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
-        m_TreeView.set_model(m_refTreeModel);
+        m_refTreeModelFilter = Gtk::TreeModelFilter::create(m_refTreeModel);
+        m_refTreeModelFilter->set_visible_func(
+                sigc::mem_fun(*this,&PlaylistTreeView::on_filter_row_visible));
 
-        //Add the TreeView's view columns:
-        //This number will be shown with the default numeric formatting.
-        m_TreeView.append_column("ID", m_Columns.m_col_id);
+        m_TreeView.set_model(m_refTreeModelFilter);
+
+        /* Add the TreeView's view columns: */
+        //m_TreeView.append_column("ID", m_Columns.m_col_id);
         m_TreeView.append_column("Artist", m_Columns.m_col_artist);
         m_TreeView.append_column("Album", m_Columns.m_col_album);
         m_TreeView.append_column("Title", m_Columns.m_col_title);
         m_TreeView.set_rules_hint(true);
         m_TreeView.set_rubber_banding(true);
-        m_TreeView.set_search_column(3);
+        m_TreeView.set_search_column(1);
         m_TreeView.set_search_entry(m_Entry);
 
         for(guint i = 0; i < 4; i++)
@@ -43,7 +51,6 @@ namespace Browser
                 pColumn->set_reorderable();
                 pColumn->set_expand(false);
                 pColumn->set_resizable(true);
-                pColumn->set_sort_column(i);
             }
         }
 
@@ -67,7 +74,7 @@ namespace Browser
     void PlaylistTreeView::on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column)
     {
         /* Get the row from the path - Documentation, Y U NO TELL ME?! */
-        Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter(path);
+        Gtk::TreeModel::iterator iter = m_refTreeModelFilter->get_iter(path);
         if(iter)
         {
             Gtk::TreeRow row = *iter;
@@ -92,7 +99,37 @@ namespace Browser
             Warning("Empty column: %s",e.what());
         }
     }
+    
+    /*-------------------------------*/
 
+    void PlaylistTreeView::on_entry_activate(void)
+    {
+        g_message("Activated.");
+        m_FilterText = m_Entry.get_text();
+        m_refTreeModelFilter->refilter();
+    }
+
+    /*-------------------------------*/
+
+    bool PlaylistTreeView::on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter)
+    {
+        if(iter && !m_FilterText.empty())
+        {
+            Gtk::TreeRow row = *iter;
+
+            if(((Glib::ustring)row[m_Columns.m_col_artist]).find(m_FilterText) != Glib::ustring::npos)
+                return true;
+
+            if(((Glib::ustring)row[m_Columns.m_col_album]).find(m_FilterText) != Glib::ustring::npos)
+                return true;
+
+            if(((Glib::ustring)row[m_Columns.m_col_title]).find(m_FilterText) != Glib::ustring::npos)
+                return true;
+
+            return false;
+        }
+        return true;
+    }
 
     /*-------------------------------*/
 

@@ -29,8 +29,9 @@ namespace GManager
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:
-                    ModelColumns() { add(m_col_name); add(m_col_browser); }
+                    ModelColumns() { add(m_col_name); add(m_col_icon); add(m_col_browser); }
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+                    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
                     Gtk::TreeModelColumn<AbstractBrowser*> m_col_browser;
             };
 
@@ -48,6 +49,9 @@ namespace GManager
 
             /* Paned widgets, where all browser stuff is happening in */
             Gtk::Paned * mp_Paned;
+
+            /* Icons */
+            Gtk::Image m_Emblem;
     };
 }
 

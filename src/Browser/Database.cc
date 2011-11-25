@@ -5,7 +5,7 @@
 namespace Browser
 {
     DatabaseBrowser::DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Database")
+        AbstractBrowser("Database",Gtk::Stock::DIRECTORY)
     {
         mp_Client = &client;
         BUILDER_ADD(builder,"ui/DatabaseBrowser.ui");

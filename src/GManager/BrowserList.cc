@@ -4,11 +4,12 @@
 
 namespace GManager
 {
-    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder) 
+    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder) :
+        m_Emblem("ui/Freya_emblem.png")
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
-        //Create the Tree model:
+        /* Create the Tree model: */
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         mp_PluginListview->set_model(m_refTreeModel);
 
@@ -18,19 +19,14 @@ namespace GManager
         /* Get the selection model and connect it to the signal handler */
         m_TreeSelection = mp_PluginListview->get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_SINGLE);
-        m_TreeSelection->signal_changed().connect(sigc::mem_fun(*this,&BrowserList::on_selection_changed));
-
-        //Fill the TreeView's model
-        // TODO ofcourse.
-        /*
-        Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-        row[m_Columns.m_col_name] = "Now Playing";
-        row[m_Columns.m_col_name] = "Database";
-        row[m_Columns.m_col_name] = "Settings";
-        */
+        m_TreeSelection->signal_changed().connect(
+                sigc::mem_fun(*this,&BrowserList::on_selection_changed));
 
         /* Entitle it with "Browsers" */
+        mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
+        mp_Paned->add2(m_Emblem);
+        mp_Paned->show_all();
     }
 
     //----------------------------
@@ -44,7 +40,9 @@ namespace GManager
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = browser.get_name();
         row[m_Columns.m_col_browser] = &browser;
-        //mp_Paned->pack2(*(browser.get_container()),true,true);
+        row[m_Columns.m_col_icon] = mp_PluginListview->render_icon_pixbuf(
+                                                    browser.get_icon_stock_id(),
+                                                    Gtk::ICON_SIZE_DND); 
     }
 
     //----------------------------

@@ -6,7 +6,7 @@
 namespace Browser
 {
     Settings::Settings(const Glib::RefPtr<Gtk::Builder> &builder):
-        AbstractBrowser("Settings")
+        AbstractBrowser("Settings",Gtk::Stock::PREFERENCES)
     {
         BUILDER_ADD(builder,"ui/Settings.glade");
         BUILDER_GET(builder,"ok_button",ok_button);

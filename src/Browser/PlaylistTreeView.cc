@@ -6,7 +6,7 @@ namespace Browser
 {
     PlaylistTreeView::PlaylistTreeView(MPD::Client& client) :
         Box(Gtk::ORIENTATION_VERTICAL),
-        AbstractBrowser("Playlist Queue"),
+        AbstractBrowser("Playlist Queue",Gtk::Stock::ZOOM_FIT),
         m_FilterText(""),
         m_Entry()
     {

@@ -22,7 +22,8 @@
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="vexpand">True</property>
-        <property name="tab_pos">left</property>
+        <property name="tab_pos">right</property>
+        <property name="show_border">False</property>
         <child>
           <object class="GtkFrame" id="network_options_frame">
             <property name="visible">True</property>
@@ -33,7 +34,7 @@
               <object class="GtkAlignment" id="network_options_frame_alignment">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="left_padding">12</property>
+                <property name="xalign">0</property>
                 <child>
                   <object class="GtkScrolledWindow" id="network_scrolledwindow">
                     <property name="visible">True</property>
@@ -504,7 +505,10 @@
       <object class="GtkBox" id="confirm_box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
+        <property name="halign">end</property>
+        <property name="margin_right">4</property>
+        <property name="margin_bottom">3</property>
+        <property name="homogeneous">True</property>
         <child>
           <object class="GtkButton" id="cancel_button">
             <property name="label">gtk-cancel</property>
@@ -541,6 +545,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
+        <property name="padding">2</property>
         <property name="position">1</property>
       </packing>
     </child>

@@ -11,7 +11,10 @@ class AbstractBrowser
 {
     public:
 
-        AbstractBrowser(const char * name) : m_Name(name) {}
+        AbstractBrowser(const char * name, Gtk::StockID icon) : m_Name(name) 
+        {
+            icon_id = icon;
+        }
 
         /**
          * @brief Tell BrowserList which element to manage 
@@ -31,9 +34,17 @@ class AbstractBrowser
          */
         Glib::ustring& get_name(void) { return m_Name; }
 
+        /**
+         * @brief Returns the set icon for this browser
+         *
+         * @return See above.
+         */
+        Gtk::StockID get_icon_stock_id(void) { return icon_id; } 
+
     private:
 
         Glib::ustring m_Name;
+        Gtk::StockID icon_id;
 };
 
 #endif

@@ -5,7 +5,7 @@
 namespace Browser
 {
     PlaylistManager::PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Playlists")
+        AbstractBrowser("Playlists",Gtk::Stock::INDENT)
     {
         mp_Client = &client;
 

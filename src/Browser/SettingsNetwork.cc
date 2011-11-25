@@ -21,7 +21,7 @@ namespace Browser
     }
 
 
-    SettingsNetwork::~SettingsNetwork(void) 
+    SettingsNetwork::~SettingsNetwork(void)
     {
         if(handle!=NULL)
         {
@@ -40,6 +40,12 @@ namespace Browser
         bool autoconnect_value;
 
         ip_value = ip->get_text();
+        if(ip_value.size() == 0)
+        {
+            Info("Empty Server-IP entered. Falling back to previous IP");
+                ip->set_text(CONFIG_GET(ip_name));
+                ip_value = CONFIG_GET(ip_name);
+        }
         port_value = port->get_value_as_int();
         timeout_value = recon_timeout->get_value_as_int();
         autoconnect_value = autoconnect->get_active();
@@ -78,6 +84,7 @@ namespace Browser
     {
         CONFIG_SET("settings.connection.host",ip);
         CONFIG_SET_AS_INT("settings.connection.port",port);
-//        Error(" "+ip+" "+ hostname +" "+ name +" "+port);
+        this->ip->set_text(ip);
+        this->port->set_value((double)port);
     }
 }

@@ -93,10 +93,10 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
 // Anmerkung: Das ist momentan mehr oder minder zusammen gehackter Code
 // der meinen eigenen Verständniss dient - hier ist alles weit weg von
 // offiziell - irgendwie muss ich mich ja mit der lib beschäftigen.
+// -c3
 
 int main(int argc, char *argv[])
 {
-    /* TODO: This connects automagically at the moment */
     MPD::Client freya;
 
     /* Eventloop */

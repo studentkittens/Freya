@@ -15,8 +15,8 @@ namespace Browser
         BUILDER_GET(builder,"filebrowser_oneup",mp_DirUpButton);
         BUILDER_GET(builder,"filebrowser_statuslabel",mp_StatusLabel);
 
-        m_DirIcon  = Gdk::Pixbuf::create_from_file("gfx/folder.svg",75,75,true);
-        m_FileIcon = Gdk::Pixbuf::create_from_file("gfx/songfile.svg",75,75,true);
+        m_DirIcon  = mp_IView->render_icon_pixbuf(Gtk::Stock::DIRECTORY,Gtk::ICON_SIZE_DIALOG);
+        m_FileIcon = mp_IView->render_icon_pixbuf(Gtk::Stock::FILE,Gtk::ICON_SIZE_DIALOG);
 
         m_DirStore = Gtk::ListStore::create(m_Columns);
         mp_IView->set_model(m_DirStore);

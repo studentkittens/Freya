@@ -28,8 +28,6 @@ namespace Browser
             void go_one_up(void);
             void add_item(const char * path, bool is_file);
 
-
-
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:

@@ -596,6 +596,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Single mode (stops after one song)</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">image_single</property>
                             <property name="relief">none</property>
@@ -614,6 +615,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Random Mode</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">image_random</property>
                             <property name="relief">none</property>
@@ -632,6 +634,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Update Database</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">image_log</property>
                             <property name="relief">none</property>
@@ -651,6 +654,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Consume Mode (Removes song from playlist after playing)</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">image_consume</property>
                             <property name="relief">none</property>
@@ -669,6 +673,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Repeat Mode</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">image_repeat</property>
                             <property name="relief">none</property>
@@ -686,6 +691,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Disconnect</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">image_conn</property>
                             <property name="relief">none</property>

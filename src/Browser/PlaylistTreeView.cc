@@ -38,9 +38,13 @@ namespace Browser
         for(guint i = 0; i < 4; i++)
         {
             Gtk::TreeView::Column* pColumn = m_TreeView.get_column(i);
-            pColumn->set_reorderable();
-            pColumn->set_expand(false);
-            pColumn->set_resizable(true);
+            if(pColumn != NULL)
+            {
+                pColumn->set_reorderable();
+                pColumn->set_expand(false);
+                pColumn->set_resizable(true);
+                pColumn->set_sort_column(m_Columns.m_col_id);
+            }
         }
 
         /* Misc settings to tree view */
@@ -59,7 +63,7 @@ namespace Browser
     }
 
     /*-------------------------------*/
-    
+
     void PlaylistTreeView::on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column)
     {
         /* Get the row from the path - Documentation, Y U NO TELL ME?! */

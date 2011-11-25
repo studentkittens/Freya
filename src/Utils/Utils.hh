@@ -18,6 +18,10 @@
            "definitions to builder. => %s"   \
            "| Is '%s' there and okay?",      \
            e.what().c_str(),filename);       \
-    }                                        
-
+    }  
+#include <glibmm.h>
+namespace Utils
+{
+    Glib::ustring seconds_to_duration(unsigned long);
+}
 #endif       

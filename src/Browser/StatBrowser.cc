@@ -45,8 +45,10 @@ namespace Browser
             g_snprintf(newvalue,512,"%u",stat.get_number_of_songs());
             noofsongs->set_text(Glib::ustring(newvalue));
             
-            g_snprintf(newvalue,512,"%lu",stat.get_db_play_time());
-            dbplaytime->set_text(Glib::ustring(newvalue));
+         //   g_snprintf(newvalue,512,"%lu",stat.get_db_play_time());
+          //  dbplaytime->set_text(Glib::ustring(newvalue));
+
+            dbplaytime->set_text(Utils::seconds_to_duration(stat.get_db_play_time()).c_str());
 
             g_snprintf(newvalue,512,"%lu",stat.get_play_time());
             playtime->set_text(Glib::ustring(newvalue));

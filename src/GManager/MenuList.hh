@@ -31,6 +31,8 @@ namespace GManager
             void on_menu_single(void);
             void on_menu_consume(void);
 
+            void on_menu_about(void);
+
             bool running;
             MPD::Client * mp_Client;
             /* Widgets */
@@ -39,6 +41,7 @@ namespace GManager
                           *menu_about;
             Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume,
                                *menu_log;
+            Gtk::AboutDialog * window_about;
     };
 
 }

@@ -31,6 +31,9 @@ namespace GManager
         BUILDER_GET(builder,"playback_menuitem",menu_playback);
         BUILDER_GET(builder,"misc_menuitem",menu_misc);
 
+        BUILDER_ADD(builder,"ui/About.glade");
+        BUILDER_GET(builder,"about_main",window_about);
+
         menu_connect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_connect));
         menu_disconnect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_disconnect));
         menu_quit->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_quit));
@@ -45,6 +48,7 @@ namespace GManager
         menu_single->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_single));
         menu_consume->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_consume));
 
+        menu_about->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_about));
 
         mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&MenuList::on_connection_update));
         mp_Client->get_notify().connect(sigc::mem_fun(*this,&MenuList::on_client_update));
@@ -124,5 +128,10 @@ namespace GManager
     void MenuList::on_menu_consume(void)
     {
         if(!running) mp_Client->toggle_consume();
+    }
+    void MenuList::on_menu_about(void)
+    {
+        window_about->run();
+        window_about->hide();
     }
 }

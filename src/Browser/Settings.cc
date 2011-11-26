@@ -10,6 +10,7 @@ namespace Browser
         BUILDER_ADD(builder,"ui/Settings.glade");
         BUILDER_GET(builder,"ok_button",ok_button);
         BUILDER_GET(builder,"cancel_button",cancel_button);
+        BUILDER_GET(builder,"reset_button",reset_button);
         BUILDER_GET(builder,"settings_main",settings_main);
 
 
@@ -20,6 +21,7 @@ namespace Browser
 
         ok_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_ok));
         cancel_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_cancel));
+        reset_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_reset));
 
         on_button_cancel();
 
@@ -59,5 +61,11 @@ namespace Browser
         return settings_main;
     }
     //---------------------------
-
+    void Settings::on_button_reset(void)
+    {
+        for(unsigned int i=0;i< sub_sections.size();i++)
+        {
+            sub_sections[i]->reset_settings();
+        }
+    }
 }

@@ -109,4 +109,14 @@ namespace Config
     {
         pathtofile = g_strdup_printf("%s",path);
     }
+
+    void Model::reload_from_disk(void)
+    {
+        this->load(pathtofile);
+    }
+
+    void Model::set_to_default_cfg(void)
+    {
+        
+    }
 }

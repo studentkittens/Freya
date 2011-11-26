@@ -21,6 +21,9 @@ namespace Config
         /*save as different filename eg. config.xml.bak*/
         void save(char*, xmlDocPtr);
 
+        void reload_from_disk(void);
+        void set_to_default_cfg(void);
+
         /*xml document getter ieeeeee*/
         xmlDocPtr getDocPtr();
         xmlDocPtr getDefaultDocPtr();

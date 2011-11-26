@@ -35,4 +35,9 @@ namespace Browser
 
     //----------------------------
 
+    void SettingsPlayback::reset_settings(void)
+    {
+        crossfade->set_value(CONFIG_GET_DEFAULT_AS_INT(crossfade_name));
+        stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);
+    }
 }

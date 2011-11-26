@@ -39,4 +39,12 @@ namespace Browser
 
     //----------------------------
 
+    void SettingsGeneral::reset_settings(void)
+    {
+        int libnot, trayic;
+        libnot = CONFIG_GET_DEFAULT_AS_INT(notify);
+        trayic = CONFIG_GET_DEFAULT_AS_INT(tray);
+        libnotify->set_active(libnot==1);
+        trayicon->set_active(trayic==1);
+    }
 }

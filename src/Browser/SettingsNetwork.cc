@@ -94,4 +94,13 @@ namespace Browser
         this->ip->set_text(ip);
         this->port->set_value((double)port);
     }
+    //----------------------------
+    void SettingsNetwork::reset_settings(void)
+    {
+        ip->set_text(CONFIG_GET_DEFAULT(ip_name));
+        port->set_value((double)CONFIG_GET_DEFAULT_AS_INT(port_name));
+        recon_timeout->set_value((double)CONFIG_GET_DEFAULT_AS_INT(timeout_name));
+        int autocon = CONFIG_GET_DEFAULT_AS_INT(autoconnect_name);
+        autoconnect->set_active(autocon==1?true:false);
+    }
 }

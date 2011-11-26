@@ -190,10 +190,31 @@ namespace Config
         }
     }
 
-void Handler::save_config_now()
+    void Handler::save_config_now()
     {
         cfgmodel.save();
         Info("Trying to save config now.");
+    }
+
+
+    Glib::ustring Handler::get_default_value(Glib::ustring url)
+    {
+        return _get_value(url,true);
+    }
+
+    int Handler::get_default_value_as_int(Glib::ustring url)
+    {
+        char * tmp = NULL;
+        int result = g_ascii_strtoll(get_default_value(url).c_str(),&tmp,10);
+
+        if (NULL != tmp && 0 == result)
+        {
+            return -1;
+        }
+        else
+        {
+            return result;
+        }
     }
 
 }

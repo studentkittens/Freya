@@ -15,6 +15,7 @@ namespace Browser
 
             void accept_new_settings(void);
             void decline_new_settings(void);
+            void reset_settings(void);
 
         private:
             Glib::ustring notify,tray;

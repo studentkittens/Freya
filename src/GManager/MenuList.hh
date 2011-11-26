@@ -2,7 +2,7 @@
 #define FREYA_MENULIST_GUARD
 
 #include <gtkmm.h>
-#include "../MPD/Clients.hh"
+#include "../MPD/Client.hh"
 namespace GManager
 {
     class MenuList
@@ -14,13 +14,25 @@ namespace GManager
 
         private:
 
+            void on_connection_update(bool is_connected);
+
+            void on_menu_connect(void);
+            void on_menu_disconnect(void);
+            void on_menu_quit(void);
+
+            void on_menu_play(void);
+            void on_menu_stop(void);
+            void on_menu_prev(void);
+            void on_menu_next(void);
+
+            MPD::Client * mp_Client;
             /* Widgets */
             Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,
-                          *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_mode,
+                          *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_playback, *menu_misc,
                           *menu_about;
             Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume,
                                *menu_log;
-    }
+    };
 
 }
 

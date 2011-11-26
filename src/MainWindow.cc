@@ -8,6 +8,7 @@
 #include "GManager/StatusIcons.hh"
 #include "GManager/Volumebutton.hh"
 #include "GManager/Heartbeat.hh"
+#include "GManager/MenuList.hh"
 
 #include "Browser/PlaylistTreeView.hh"
 #include "Browser/PlaylistManager.hh"
@@ -16,16 +17,20 @@
 #include "Browser/Settings.hh"
 #include "Log/Writer.hh"
 
+#include "Utils/Utils.hh"
+
 using namespace std;
 
 class DisconnectManager
 {
     public:
-        DisconnectManager(MPD::Client& client, Gtk::Window * main_window)
+        DisconnectManager(MPD::Client& client, Gtk::Window * main_window, const Glib::RefPtr<Gtk::Builder> &builder)
         {
             mp_Window = main_window;
             mp_Client = &client;
             mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&DisconnectManager::on_connection_change));
+            BUILDER_GET(builder,"main_paned",mp_Main_Paned);
+            BUILDER_GET(builder,"top_box",mp_Top_Box);
         }
 
         virtual ~DisconnectManager(void) {}
@@ -37,17 +42,23 @@ class DisconnectManager
             if(is_connected)
             {
                 Info("Got reconnected - unlocking gui");
-                mp_Window->set_sensitive(true);
+                mp_Main_Paned->set_sensitive(true);
+                mp_Top_Box->set_sensitive(true);
+                //mp_Window->set_sensitive(true);
             }
             else
             {
                 Info("Got disconnected - locking gui");
-                mp_Window->set_sensitive(false);
+                mp_Main_Paned->set_sensitive(false);
+                mp_Top_Box->set_sensitive(false);
+                //mp_Window->set_sensitive(false);
             }
         }
 
         MPD::Client * mp_Client;
         Gtk::Window * mp_Window;
+        Gtk::Box * mp_Top_Box;
+        Gtk::Paned * mp_Main_Paned;
 };
 
 
@@ -73,6 +84,7 @@ int main(int argc, char *argv[])
             GManager::Statusicons status_icons(client,builder);
             GManager::Volumebutton vol_button(client,builder);
             GManager::BrowserList browser_list(builder);
+            GManager::MenuList menu_list(client,builder);
 
             /* Instance browser  */
             Browser::PlaylistTreeView queue_browser(client);
@@ -95,7 +107,7 @@ int main(int argc, char *argv[])
 
             Gtk::Window * main_window = NULL;
             builder->get_widget("FreyaMainWindow", main_window);
-            DisconnectManager(client,main_window);
+            DisconnectManager(client,main_window,builder);
             kit.run(*main_window);
         }
         else throw "Cannot connect to MPD Server.";

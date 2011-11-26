@@ -1,5 +1,5 @@
-#ifndef FREYA_AVAHI_Browser_HH 
-#define FREYA_AVAHI_Browser_HH 
+#ifndef FREYA_AVAHI_BROWSER_HH
+#define FREYA_AVAHI_BROWSER_HH
 
 #include "View.hh"
 
@@ -59,4 +59,4 @@ namespace Avahi
     };
 }
 
-#endif // FREYA_AVAHI_Browser_HH 
+#endif // FREYA_AVAHI_BROWSER_HH 

@@ -21,11 +21,10 @@ namespace Config
         int get_value_as_int(Glib::ustring);
         void set_value(Glib::ustring, Glib::ustring);
         void set_value_as_int(Glib::ustring,int);
-        void save_config_now();
-
         Glib::ustring get_default_value(Glib::ustring);
         int get_default_value_as_int(Glib::ustring);
-
+        void save_config_now();
+        
     private:
         /*internal traversing funcs*/
         xmlNodePtr traverse(const char*, xmlNodePtr);
@@ -34,7 +33,7 @@ namespace Config
         /*model config member for data access*/
         Model cfgmodel;
         Glib::ustring _get_value(Glib::ustring, bool);
-
+        int _get_value_as_int(Glib::ustring, bool);
     };
 }
 

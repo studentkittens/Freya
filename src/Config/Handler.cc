@@ -74,11 +74,24 @@ namespace Config
 
 
     /* ----------------------------------------- */
-
     int Handler::get_value_as_int(Glib::ustring url)
     {
+        return _get_value_as_int(url,false);
+    }
+    
+    int Handler::_get_value_as_int(Glib::ustring url, bool getdefault)
+    {
         char * tmp = NULL;
-        int result = g_ascii_strtoll(get_value(url).c_str(),&tmp,10);
+        int result;
+
+        if (getdefault)
+        {
+            result = g_ascii_strtoll(get_default_value(url).c_str(),&tmp,10);
+        }
+        else
+        {
+            result = g_ascii_strtoll(get_value(url).c_str(),&tmp,10);
+        }
 
         if (NULL != tmp && 0 == result)
         {
@@ -196,7 +209,6 @@ namespace Config
         Info("Trying to save config now.");
     }
 
-
     Glib::ustring Handler::get_default_value(Glib::ustring url)
     {
         return _get_value(url,true);
@@ -204,17 +216,7 @@ namespace Config
 
     int Handler::get_default_value_as_int(Glib::ustring url)
     {
-        char * tmp = NULL;
-        int result = g_ascii_strtoll(get_default_value(url).c_str(),&tmp,10);
-
-        if (NULL != tmp && 0 == result)
-        {
-            return -1;
-        }
-        else
-        {
-            return result;
-        }
+        return _get_value_as_int(url,true);
     }
 
 }

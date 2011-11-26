@@ -35,31 +35,32 @@ namespace Browser
         {
             MPD::Statistics& stat = data.get_statistics();
             char newvalue[] = {0};
-
             g_snprintf(newvalue,512,"%u",stat.get_number_of_artists());
             noofartist->set_text(Glib::ustring(newvalue));
-            
+
             g_snprintf(newvalue,512,"%u",stat.get_number_of_albums());
             noofalbums->set_text(Glib::ustring(newvalue));
-            
+
             g_snprintf(newvalue,512,"%u",stat.get_number_of_songs());
             noofsongs->set_text(Glib::ustring(newvalue));
-            
-         //   g_snprintf(newvalue,512,"%lu",stat.get_db_play_time());
-          //  dbplaytime->set_text(Glib::ustring(newvalue));
+
+            //g_snprintf(newvalue,512,"%lu",stat.get_db_play_time());
+            //dbplaytime->set_text(Glib::ustring(newvalue));
 
             dbplaytime->set_text(Utils::seconds_to_duration(stat.get_db_play_time()).c_str());
 
-            g_snprintf(newvalue,512,"%lu",stat.get_play_time());
-            playtime->set_text(Glib::ustring(newvalue));
+            //g_snprintf(newvalue,512,"%lu",stat.get_play_time());
+            //playtime->set_text(Glib::ustring(newvalue));
 
+            playtime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
 
-            g_snprintf(newvalue,512,"%lu",stat.get_uptime());
-            uptime->set_text(Glib::ustring(newvalue));
+            //g_snprintf(newvalue,512,"%lu",stat.get_uptime());
+            //uptime->set_text(Glib::ustring(newvalue));
+    
+            uptime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
 
             g_snprintf(newvalue,512,"%lu",stat.get_db_update_time());
             dbupdate->set_text(Glib::ustring(newvalue));
-
         }
     }
 

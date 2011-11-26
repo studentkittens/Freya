@@ -7,6 +7,7 @@ namespace GManager
 {
     MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder)
     {
+        running=false;
         mp_Client = &client;
 
         BUILDER_GET(builder,"menu_item_connect", menu_connect);
@@ -25,6 +26,8 @@ namespace GManager
 
         BUILDER_GET(builder,"menu_item_log_activate", menu_log);
 
+        BUILDER_GET(builder,"menu_about",menu_about);
+
         BUILDER_GET(builder,"playback_menuitem",menu_playback);
         BUILDER_GET(builder,"misc_menuitem",menu_misc);
 
@@ -37,8 +40,14 @@ namespace GManager
         menu_prev->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_prev));
         menu_next->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_next));
 
+        menu_random->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_random));
+        menu_repeat->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_repeat));
+        menu_single->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_single));
+        menu_consume->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_consume));
+
 
         mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&MenuList::on_connection_update));
+        mp_Client->get_notify().connect(sigc::mem_fun(*this,&MenuList::on_client_update));
         on_connection_update(mp_Client->is_connected());
     }
 
@@ -84,5 +93,36 @@ namespace GManager
 
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
+    }
+
+    void MenuList::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
+    {
+        if(event && MPD_IDLE_OPTIONS && !running)
+        {
+            running=true;
+            MPD::Status &stat = data.get_status();
+            menu_random->set_active(stat.get_random());
+            menu_repeat->set_active(stat.get_repeat());
+            menu_single->set_active(stat.get_single());
+            menu_consume->set_active(stat.get_consume());
+            running=false;
+        }
+    }
+
+    void MenuList::on_menu_random(void)
+    {
+        if(!running) mp_Client->toggle_random();
+    }
+    void MenuList::on_menu_repeat(void)
+    {
+        if(!running) mp_Client->toggle_repeat();
+    }
+    void MenuList::on_menu_single(void)
+    {
+        if(!running) mp_Client->toggle_single();
+    }
+    void MenuList::on_menu_consume(void)
+    {
+        if(!running) mp_Client->toggle_consume();
     }
 }

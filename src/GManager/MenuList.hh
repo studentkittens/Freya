@@ -15,6 +15,7 @@ namespace GManager
         private:
 
             void on_connection_update(bool is_connected);
+            void on_client_update(enum mpd_idle event, MPD::NotifyData &data);
 
             void on_menu_connect(void);
             void on_menu_disconnect(void);
@@ -25,6 +26,12 @@ namespace GManager
             void on_menu_prev(void);
             void on_menu_next(void);
 
+            void on_menu_random(void);
+            void on_menu_repeat(void);
+            void on_menu_single(void);
+            void on_menu_consume(void);
+
+            bool running;
             MPD::Client * mp_Client;
             /* Widgets */
             Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,

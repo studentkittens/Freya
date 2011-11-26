@@ -5,12 +5,14 @@
 
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
+#include "Settings.hh"
+
 namespace Browser
 {
     class SettingsGeneral : public SettingsSub
     {
         public:
-            SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder);
+            SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
             ~SettingsGeneral();
 
             void accept_new_settings(void);

@@ -3,7 +3,7 @@
 
 namespace Browser
 {
-    SettingsPlayback::SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder) :
+    SettingsPlayback::SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
         crossfade_name("settings.playback.crossfade"),
         stoponexit_name("settings.playback.stoponexit")
     {

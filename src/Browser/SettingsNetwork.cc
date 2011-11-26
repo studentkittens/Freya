@@ -5,7 +5,7 @@
 
 namespace Browser
 {
-    SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder) :
+    SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett) :
         ip_name("settings.connection.host"),
         port_name("settings.connection.port"),
         timeout_name("settings.connection.reconnectinterval"),
@@ -20,6 +20,9 @@ namespace Browser
         avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
         BUILDER_ADD(builder,"ui/AvahiWarning.glade");
         BUILDER_GET_NO_MANAGE(builder,"avahi_warning",avahi_warning);
+
+        ip->signal_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+
     }
 
 

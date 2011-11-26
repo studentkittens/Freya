@@ -20,11 +20,13 @@ namespace Browser
             Settings(const Glib::RefPtr<Gtk::Builder> &builder);
             ~Settings();
             Gtk::Widget* get_container(void);
+
+            void settings_changed(void);
+
         private:
             void on_button_ok(void);
             void on_button_cancel(void);
             void on_button_reset(void);
-
             vector<SettingsSub*> sub_sections;
             /* Widgets */
             Gtk::Button *ok_button, *cancel_button, *reset_button;

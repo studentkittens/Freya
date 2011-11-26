@@ -3,7 +3,7 @@
 
 namespace Browser
 {
-    SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder) :
+    SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
         notify("settings.libnotify.signal"),
         tray("settings.trayicon.totray")
     {

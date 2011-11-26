@@ -6,12 +6,14 @@
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
 #include "../AvahiBrowser/Browser.hh"
+#include "Settings.hh"
+
 namespace Browser
 {
     class SettingsNetwork : public  SettingsSub
     {
         public:
-            SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder);
+            SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
             ~SettingsNetwork();
 
             void accept_new_settings(void);

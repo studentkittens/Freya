@@ -5,12 +5,13 @@
 
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
+#include "Settings.hh"
 namespace Browser
 {
     class SettingsPlayback : public SettingsSub
     {
         public:
-            SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder);
+            SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
             ~SettingsPlayback();
 
             void accept_new_settings(void);

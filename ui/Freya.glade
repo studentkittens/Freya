@@ -246,7 +246,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="menu_entry_about">
+                      <object class="GtkImageMenuItem" id="menu_item_about">
                         <property name="label">gtk-about</property>
                         <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
@@ -787,6 +787,11 @@ audio-volume-medium</property>
       </object>
     </child>
   </object>
+  <object class="GtkImage" id="image_consume">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-indent</property>
+  </object>
   <object class="GtkImage" id="image_random">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -801,11 +806,6 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-jump-to</property>
-  </object>
-  <object class="GtkImage" id="image_consume">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-indent</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

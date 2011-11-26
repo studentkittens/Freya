@@ -98,7 +98,7 @@ namespace GManager
 
             unsigned long pt_seconds = db_play_time % 60;
 
-            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %lu days %lu hours %lu:%lu total playtime",
+            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %lu days %lu hours %lu:%lu total playtime | %u%% volume",
                     status.get_audio_sample_rate(),
                     status.get_audio_bits(),
                     status.get_kbit_rate(),
@@ -106,7 +106,8 @@ namespace GManager
                     elapsed,
                     totaltm,
                     stats.get_number_of_songs(),
-                    pt_days,pt_hours,pt_minutes,pt_seconds
+                    pt_days,pt_hours,pt_minutes,pt_seconds,
+                    status.get_volume()
                     );
 
             m_Statusbar->set_text(mp_Message);

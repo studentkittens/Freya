@@ -69,6 +69,7 @@ namespace Browser
         row[m_Columns.m_col_path] = path;
         row[m_Columns.m_col_name] = Glib::path_get_basename(path);
         row[m_Columns.m_col_icon] = (is_file) ? m_FileIcon : m_DirIcon;
+        row[m_Columns.m_col_is_file] = is_file;
     }
 
     /*------------------------------------------------*/
@@ -88,14 +89,16 @@ namespace Browser
         if(iter)
         {
             Gtk::TreeRow row = *iter;
-            Glib::ustring path = row[m_Columns.m_col_path];
-            g_message("Selected: %s",path.c_str());
-            set_current_path(path.c_str());
+            if(row[m_Columns.m_col_is_file] == false)
+            {
+                Glib::ustring path = row[m_Columns.m_col_path];
+                set_current_path(path.c_str());
+            }
         }
     }
 
     /*------------------------------------------------*/
-    
+
     void DatabaseBrowser::set_current_path(const char * path)
     {
         mp_Path = path;
@@ -103,13 +106,13 @@ namespace Browser
         mp_Client->fill_filelist(*this,mp_Path.c_str());
         mp_StatusLabel->set_text(!mp_Path.empty() ? mp_Path : "Root");
     }
-    
+
     /*------------------------------------------------*/
 
     void DatabaseBrowser::go_one_up(void)
     {
         std::string dir_up = Glib::path_get_dirname(mp_Path);
-        
+
         if(dir_up == ".")
             dir_up = "";
 

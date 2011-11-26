@@ -7,7 +7,6 @@
 #include <vector>
 #include "SettingsPlayback.hh"
 #include "SettingsNetwork.hh"
-#include "SettingsPlugins.hh"
 #include "SettingsGeneral.hh"
 #include "SettingsSub.hh"
 #include "../AbstractBrowser.hh"
@@ -26,7 +25,6 @@ namespace Browser
             void on_button_cancel(void);
 
             vector<SettingsSub*> sub_sections;
-//            SettingsSub* net;
             /* Widgets */
             Gtk::Button *ok_button, *cancel_button;
             Gtk::Box *settings_main;

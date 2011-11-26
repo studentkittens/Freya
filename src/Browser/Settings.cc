@@ -2,7 +2,6 @@
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
 
-#define PLUGIN_COUNT 4
 namespace Browser
 {
     Settings::Settings(const Glib::RefPtr<Gtk::Builder> &builder):
@@ -16,7 +15,6 @@ namespace Browser
 
 
         sub_sections.push_back(new SettingsNetwork(builder));
-//        sub_sections.push_back(new SettingsPlugins(builder,PLUGIN_COUNT));
         sub_sections.push_back(new SettingsPlayback(builder));
         sub_sections.push_back(new SettingsGeneral(builder));
 

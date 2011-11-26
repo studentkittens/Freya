@@ -35,6 +35,7 @@ namespace GManager
 
             bool running;
             MPD::Client * mp_Client;
+
             /* Widgets */
             Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,
                           *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_playback, *menu_misc,

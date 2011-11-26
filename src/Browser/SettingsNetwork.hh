@@ -27,6 +27,7 @@ namespace Browser
             Gtk::SpinButton *port, *recon_timeout;
             Gtk::Button *avahi;
             Gtk::CheckButton *autoconnect;
+            Gtk::MessageDialog *avahi_warning;
     };
 }
 #endif

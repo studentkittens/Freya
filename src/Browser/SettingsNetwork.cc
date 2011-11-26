@@ -18,6 +18,8 @@ namespace Browser
         BUILDER_GET(builder,"autoconnect_checkbox",autoconnect);
         handle = NULL;
         avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
+        BUILDER_ADD(builder,"ui/AvahiWarning.glade");
+        BUILDER_GET(builder,"avahi_warning",avahi_warning);
     }
 
 
@@ -76,14 +78,19 @@ namespace Browser
             handle->get_signal().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
             handle->get_window().show();
         }
+        else
+        {
+            avahi_warning->run();
+            avahi_warning->hide();
+        }
 
     }
     //----------------------------
 
     void SettingsNetwork::selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port)
     {
-        CONFIG_SET("settings.connection.host",ip);
-        CONFIG_SET_AS_INT("settings.connection.port",port);
+        CONFIG_SET(ip_name,ip);
+        CONFIG_SET_AS_INT(port_name,port);
         this->ip->set_text(ip);
         this->port->set_value((double)port);
     }

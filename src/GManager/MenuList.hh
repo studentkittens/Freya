@@ -31,6 +31,9 @@ namespace GManager
             void on_menu_single(void);
             void on_menu_consume(void);
 
+            void on_menu_vol_inc(void);
+            void on_menu_vol_dec(void);
+
             void on_menu_about(void);
 
             bool running;
@@ -38,8 +41,9 @@ namespace GManager
 
             /* Widgets */
             Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,
-                          *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_playback, *menu_misc,
+                          *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_playback, *menu_misc, *menu_vol_inc, *menu_vol_dec,
                           *menu_about;
+
             Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume,
                                *menu_log;
             Gtk::AboutDialog * window_about;

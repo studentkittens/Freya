@@ -8,6 +8,11 @@
     g_assert(widget_ptr);                                  \
     Gtk::manage(widget_ptr);                               
 
+#define BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \
+    widget_ptr = NULL;                                     \
+    builder_refp->get_widget(widget_name,widget_ptr);      \
+    g_assert(widget_ptr);                                  \
+
 
 #define BUILDER_ADD(builder_ref, filename)   \
     g_assert(filename);                      \

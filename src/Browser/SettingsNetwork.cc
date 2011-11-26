@@ -19,7 +19,7 @@ namespace Browser
         handle = NULL;
         avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
         BUILDER_ADD(builder,"ui/AvahiWarning.glade");
-        BUILDER_GET(builder,"avahi_warning",avahi_warning);
+        BUILDER_GET_NO_MANAGE(builder,"avahi_warning",avahi_warning);
     }
 
 

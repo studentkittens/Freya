@@ -27,32 +27,4 @@ namespace GManager
     {
         g_message("Popup.");
     }
-    
-    //-----------------------------
-    void MenuList::on_menu_quit(void)
-    {
-        /* TODO */
-        exit(0);
-    }
-    //-----------------------------
-    void MenuList::on_menu_play(void)
-    {
-        mp_Client->playback_pause();
-    }
-    //-----------------------------
-    void MenuList::on_menu_stop(void)
-    {
-        mp_Client->playback_stop();
-    }
-    //-----------------------------
-    void MenuList::on_menu_prev(void)
-    {
-        mp_Client->playback_prev();
-    }
-    //-----------------------------
-    void MenuList::on_menu_next(void)
-    {
-        mp_Client->playback_next();
-    }
-
 }

@@ -23,5 +23,6 @@
 namespace Utils
 {
     Glib::ustring seconds_to_duration(unsigned long);
+    Glib::ustring seconds_to_timestamp(const long);
 }
 #endif       

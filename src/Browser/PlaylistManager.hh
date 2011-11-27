@@ -24,8 +24,12 @@ namespace Browser
 
         private:
 
+            void on_add_clicked(void);
+            void on_del_clicked(void);
+            void handle_button_clicks(bool do_add);
+
             void add_item(void * pPlaylist);
-            void clear(void) {}
+            void on_client_change(enum mpd_idle event, MPD::NotifyData& data);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -45,9 +49,13 @@ namespace Browser
 
             Gtk::TreeView * mp_TreeView;
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+            Glib::RefPtr<Gtk::TreeSelection> m_Selection;
 
             /* Client related */
             MPD::Client * mp_Client;
+
+            /* Control buttons  */
+            Gtk::Button * mp_AddButton, * mp_DelButton; 
     };
 }
 

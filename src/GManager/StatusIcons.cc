@@ -21,8 +21,6 @@ namespace GManager
 
         BUILDER_GET(builder,"icon_consume",mp_Consume);
         mp_Consume->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_consume));
-
-        mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&Statusicons::on_conn_change));
     }
 
     Statusicons::~Statusicons() { }
@@ -59,10 +57,5 @@ namespace GManager
     void Statusicons::on_clicked_repeat(void)
     {
         if(!ignore_updates) mp_Client->toggle_repeat(); 
-    }
-
-    void Statusicons::on_conn_change(bool is_connected)
-    {
-        g_printerr("Sens\n");
     }
 }

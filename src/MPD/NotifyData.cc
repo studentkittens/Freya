@@ -5,10 +5,11 @@ namespace MPD
 {
     NotifyData::NotifyData(MPD::Connection& p_conn)
     {
-       mp_Conn = &p_conn; 
-       mp_Status = NULL;
-       mp_Statistics = NULL;
-       mp_Song = NULL;
+        mp_Conn = &p_conn; 
+        mp_Status = NULL;
+        mp_Statistics = NULL;
+        mp_Song = NULL;
+        mp_NextSong = NULL;
     }
 
     //------------------
@@ -18,29 +19,89 @@ namespace MPD
         delete mp_Statistics;
         delete mp_Status;
         delete mp_Song;
+        delete mp_NextSong;
     }
 
     //------------------
-   
+
     Status& NotifyData::get_status(void)
     {
         return *(mp_Status);
     } 
 
     //------------------
-   
+
+    /* Since libmpdclient does not support the next-song-id,
+     * we habe to improvise a little bit. 
+     */
+    Status * NotifyData::recv_status_own(void)
+    {
+        struct mpd_status * status = NULL;
+        struct mpd_connection * conn = NULL;
+        struct mpd_pair *pair = NULL;
+        Status * retv_status = NULL;
+        unsigned long NextSongID = 0;
+
+        if(mp_Conn->is_connected())
+        {
+            conn = mp_Conn->get_connection();
+            mpd_send_status(conn);
+            status = mpd_status_begin();
+            if(status != NULL) 
+            {
+                while ((pair = mpd_recv_pair(conn)) != NULL) 
+                {
+                    if(!g_ascii_strcasecmp(pair->name,"nextsongid"))
+                    {
+                        NextSongID = g_ascii_strtoll(pair->value,NULL,10);
+                    }
+                    else
+                    {
+                        mpd_status_feed(status, pair);
+                    }
+                    mpd_return_pair(conn, pair);
+                }
+            }
+
+            if(status != NULL)
+            {
+                retv_status = new Status(*status,NextSongID);
+            }
+
+            mpd_song * c_next_song = mpd_run_get_queue_song_id(conn,NextSongID);
+            if(c_next_song != NULL)
+            {
+                if(mp_NextSong != NULL) {
+                    delete mp_NextSong;
+                    mp_NextSong = NULL;
+                }
+                mp_NextSong = new Song(*c_next_song);
+            }
+        }
+        return retv_status;
+    }
+
+    //------------------
+
     Statistics& NotifyData::get_statistics(void)
     {
         return *(mp_Statistics);
     } 
 
     //------------------
-    
+
     Song& NotifyData::get_song(void)
     {
         return *(mp_Song);
     } 
     
+    //------------------
+
+    Song& NotifyData::get_next_song(void)
+    {
+        return *(mp_NextSong);
+    } 
+
     //------------------
 
     void NotifyData::update_all(void)
@@ -65,31 +126,16 @@ namespace MPD
             mpd_connection * mpd_conn = mp_Conn->get_connection();
             mpd_song * c_song = NULL;
             mpd_stats * c_stats = NULL;
-            mpd_status * c_status = NULL;
 
-            // actually this is supposed to work.. wtf.
-            // rc &= mpd_command_list_begin(mpd_conn,true);
-            /*
-            bool rc = true;
-            rc &= mpd_send_status(mpd_conn);
-            c_status = mpd_recv_status(mpd_conn);
-            rc &= mpd_send_current_song(mpd_conn);
-            c_song   = mpd_recv_song(mpd_conn);
-            rc &= mpd_send_stats(mpd_conn);
-            c_stats  = mpd_recv_stats(mpd_conn);
-            */
-            //rc &= mpd_command_list_end(mpd_conn);
-            
-            c_status = mpd_run_status(mpd_conn);
-            c_song = mpd_run_current_song(mpd_conn);
-            c_stats = mpd_run_stats(mpd_conn);
+            c_song   = mpd_run_current_song(mpd_conn);
+            c_stats  = mpd_run_stats(mpd_conn);
 
             if(c_song)   mp_Song = new Song(*c_song);
-            if(c_status) mp_Status = new Status(*c_status);
             if(c_stats)  mp_Statistics = new Statistics(*c_stats);
+            mp_Status = recv_status_own();
 
             /* Pray that this will never happen. */
-            if(!(c_song && c_status && c_stats))
+            if(!(c_song && mp_Status && c_stats))
                 Error("Status/Song/Statistic is empty although being connected. Prepare for a crash.");
         }
     }

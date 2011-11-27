@@ -13,11 +13,6 @@ class AbstractItemlist
          * @return 
          */
         virtual void add_item(void * item) = 0; 
-
-        /**
-         * @brief Clear all
-         */
-        virtual void clear(void) = 0;
 };
 
 #endif

@@ -5,11 +5,7 @@
 namespace GManager
 {
     BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder) :
-<<<<<<< HEAD
         m_Emblem("ui/freya3.svg")
-=======
-        m_Emblem("ui/Freya_emblem.svg")
->>>>>>> 96bc0c7cb393ebb4ad857de58d10f62963dc2d71
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 

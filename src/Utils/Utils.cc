@@ -6,36 +6,44 @@ namespace Utils {
 
     Glib::ustring seconds_to_duration(unsigned long duration)
     {
-        int week = duration/604800;
-        duration -= (week*604800);
+        const int BUFFER = 512;
+        const int WEEK_IN_SEC = 604800;
+        const int DAY_IN_SEC = 86400; 
+        const int HOUR_IN_SEC = 3600;
+        const int MIN_IN_SEC = 60;
 
-        int day = duration/86400;
-        duration -= (day*86400);
 
-        int hour = duration/3600;
-        duration -= (hour*3600);
+        int week = duration/WEEK_IN_SEC;
+        duration %= WEEK_IN_SEC;
 
-        int min = duration/60;
-        duration -= (min*60);
+        int day = duration/DAY_IN_SEC;
+        duration %= DAY_IN_SEC;
+
+        int hour = duration/HOUR_IN_SEC;
+        duration %= HOUR_IN_SEC;
+
+        int min = duration/MIN_IN_SEC;
+        duration %= MIN_IN_SEC;
 
         int sec = duration;
 
-        char * durstr =  NULL;
+        char durstr[BUFFER] = {0};
 
         if (week != 0)
         {        
-            durstr = g_strdup_printf("%d weeks, %d days %d hours %d minutes %d seconds\n",week,day,hour,min,sec);
+            g_snprintf(durstr,BUFFER,"%d weeks %d days %d hours %d minutes %d seconds\n",week,day,hour,min,sec);
         }
         else if(day != 0)
         {
-            durstr = g_strdup_printf("%d days %d hours %d minutes %d seconds\n",day,hour,min,sec);
+
+            g_snprintf(durstr,BUFFER,"%d days %d hours %d minutes %d seconds\n",day,hour,min,sec);
         }
         else
         {
-            durstr = g_strdup_printf("%d hours %d minutes %d seconds\n",hour,min,sec);
+            
+            g_snprintf(durstr,BUFFER,"%d hours %d minutes %d seconds\n",hour,min,sec);
         }
         Glib::ustring retv = durstr;
-        free(durstr);
 
         return retv;
     }
@@ -43,12 +51,14 @@ namespace Utils {
 
     Glib::ustring seconds_to_timestamp(const long duration)
     {
+        int const BUFFER = 512;
+
         struct tm *timestr = NULL;
         timestr = localtime(&duration);
         
-        char buffer[512]; 
-        strftime (buffer,512, "%F",timestr);
+        char retv[BUFFER]; 
+        strftime (retv,512, "%F",timestr);
     
-        return Glib::ustring(buffer);
+        return Glib::ustring(retv);
     }
 }

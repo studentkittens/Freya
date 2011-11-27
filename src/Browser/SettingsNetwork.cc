@@ -2,6 +2,7 @@
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
 #include "Settings.hh"
+#include "../Notify/Notify.hh"
 namespace Browser
 {
     SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett) :

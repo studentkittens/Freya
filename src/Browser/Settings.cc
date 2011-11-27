@@ -1,7 +1,7 @@
 #include "Settings.hh"
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
-
+#include "../Notify/Notify.hh"
 namespace Browser
 {
     Settings::Settings(const Glib::RefPtr<Gtk::Builder> &builder):
@@ -48,7 +48,7 @@ namespace Browser
         CONFIG_SAVE_NOW();
         ok_button->set_sensitive(false);
         cancel_button->set_sensitive(false);
-
+        Notify::Notify::instance().re_init();
     }
     //---------------------------
     void Settings::on_button_cancel(void)

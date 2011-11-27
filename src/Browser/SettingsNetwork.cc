@@ -2,6 +2,7 @@
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
 #include "Settings.hh"
+#include "../Notify/Notify.hh"
 namespace Browser
 {
     SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett) :
@@ -108,6 +109,7 @@ namespace Browser
     //----------------------------
     void SettingsNetwork::reset_settings(void)
     {
+        NOTIFY_SEND(ip_name);
         ip->set_text(CONFIG_GET_DEFAULT(ip_name));
         port->set_value((double)CONFIG_GET_DEFAULT_AS_INT(port_name));
         recon_timeout->set_value((double)CONFIG_GET_DEFAULT_AS_INT(timeout_name));

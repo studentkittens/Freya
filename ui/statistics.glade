@@ -113,7 +113,7 @@
               <object class="GtkLabel" id="noofartist">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">2.2351741291171123e-10</property>
                 <property name="label" translatable="yes">noofartists</property>
               </object>
               <packing>
@@ -127,7 +127,7 @@
               <object class="GtkLabel" id="noofalbums">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">2.2351741291171123e-10</property>
                 <property name="label" translatable="yes">noofalbums</property>
               </object>
               <packing>
@@ -141,7 +141,7 @@
               <object class="GtkLabel" id="noofsongs">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">2.2351741291171123e-10</property>
                 <property name="label" translatable="yes">noofsongs</property>
               </object>
               <packing>
@@ -155,7 +155,7 @@
               <object class="GtkLabel" id="dbplaytime">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">2.2351741291171123e-10</property>
                 <property name="label" translatable="yes">dbplaytime</property>
               </object>
               <packing>
@@ -169,7 +169,7 @@
               <object class="GtkLabel" id="playtime">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">2.2351741291171123e-10</property>
                 <property name="label" translatable="yes">playtime</property>
               </object>
               <packing>
@@ -183,7 +183,7 @@
               <object class="GtkLabel" id="uptime">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">2.2351741291171123e-10</property>
                 <property name="label" translatable="yes">uptime</property>
               </object>
               <packing>
@@ -197,7 +197,7 @@
               <object class="GtkLabel" id="dbupdate">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xalign">0.10000000149011612</property>
+                <property name="xalign">0</property>
                 <property name="label" translatable="yes">dbupdate</property>
               </object>
               <packing>

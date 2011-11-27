@@ -8,6 +8,7 @@ TARGET_LINK_LIBRARIES(FreyaAvahiLib
                       ${AVAHI_PACKAGE_LIBRARIES}
                       FreyaLogHandlerLib
                       FreyaConfigLib
+                      FreyaUtils
 )
 
 ADD_EXECUTABLE(test_avahi test_avahi.cc)

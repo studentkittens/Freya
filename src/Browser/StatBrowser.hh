@@ -5,6 +5,7 @@
 #include "../AbstractBrowser.hh"
 #include "../MPD/Client.hh"
 #include <gtkmm.h>
+#include "../Utils/Utils.hh"
 namespace Browser {
     class StatBrowser : public Gtk::Frame, public AbstractBrowser {
         public:

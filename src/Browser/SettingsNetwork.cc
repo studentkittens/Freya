@@ -35,6 +35,11 @@ namespace Browser
             delete handle;
             handle=NULL;
         }
+        if(avahi_warning!=NULL)
+        {
+            delete avahi_warning;
+            avahi_warning=NULL;
+        }
     }
 
     //----------------------------

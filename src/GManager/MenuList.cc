@@ -66,6 +66,11 @@ namespace GManager
     //-----------------------------
     MenuList::~MenuList(void)
     {
+        if(window_about!=NULL)
+        {
+            delete window_about;
+            window_about=NULL;
+        }
     }
     //-----------------------------
     void MenuList::on_menu_connect(void)

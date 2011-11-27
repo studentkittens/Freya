@@ -84,21 +84,9 @@ namespace GManager
             /* Free previous message, does nothing on NULL */
             g_free(mp_Message);
 
-            // TODO: this is wrong. needs to be fixed later..
-            unsigned long db_play_time = stats.get_db_play_time();
-            unsigned long pt_days    = db_play_time / (60 * 60 * 24);
-            
-            unsigned long pt_hours   = 0;
-            if(pt_days != 0)
-                pt_hours = (db_play_time / (60 * 60)) % pt_days;
+            Glib::ustring db_play_time = Utils::seconds_to_duration(stats.get_db_play_time());
 
-            unsigned long pt_minutes = 0;
-            if(pt_hours != 0)
-                pt_minutes = (db_play_time / 60) % pt_hours;
-
-            unsigned long pt_seconds = db_play_time % 60;
-
-            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %lu days %lu hours %lu:%lu total playtime",
+            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s playtime",
                     status.get_audio_sample_rate(),
                     status.get_audio_bits(),
                     status.get_kbit_rate(),
@@ -106,7 +94,7 @@ namespace GManager
                     elapsed,
                     totaltm,
                     stats.get_number_of_songs(),
-                    pt_days,pt_hours,pt_minutes,pt_seconds
+                    db_play_time.c_str()
                     );
 
             m_Statusbar->set_text(mp_Message);

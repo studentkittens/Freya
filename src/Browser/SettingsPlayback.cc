@@ -1,6 +1,6 @@
 #include "SettingsPlayback.hh"
 #include "../Utils/Utils.hh"
-
+#include "Settings.hh"
 namespace Browser
 {
     SettingsPlayback::SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
@@ -9,6 +9,8 @@ namespace Browser
     {
         BUILDER_GET(builder,"crossfade_spinbutton",crossfade);
         BUILDER_GET(builder,"stoponexit_checkbox",stoponexit);
+        crossfade->signal_value_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+        stoponexit->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 
 

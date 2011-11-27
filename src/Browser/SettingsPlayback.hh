@@ -5,9 +5,10 @@
 
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
-#include "Settings.hh"
+
 namespace Browser
 {
+    class Settings;
     class SettingsPlayback : public SettingsSub
     {
         public:

@@ -5,10 +5,10 @@
 
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
-#include "Settings.hh"
 
 namespace Browser
 {
+    class Settings;
     class SettingsGeneral : public SettingsSub
     {
         public:

@@ -1,6 +1,6 @@
 #include "SettingsGeneral.hh"
 #include "../Utils/Utils.hh"
-
+#include "Settings.hh"
 namespace Browser
 {
     SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
@@ -9,7 +9,8 @@ namespace Browser
     {
         BUILDER_GET(builder,"libnotify_checkbox",libnotify);
         BUILDER_GET(builder,"trayicon_checkbox",trayicon);
-
+        libnotify->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+        trayicon->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 
 

@@ -6,10 +6,10 @@
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
 #include "../AvahiBrowser/Browser.hh"
-#include "Settings.hh"
 
 namespace Browser
 {
+    class Settings;
     class SettingsNetwork : public  SettingsSub
     {
         public:

@@ -2,7 +2,7 @@
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
 #include "../AvahiBrowser/Browser.hh"
-
+#include "Settings.hh"
 namespace Browser
 {
     SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett) :
@@ -22,7 +22,9 @@ namespace Browser
         BUILDER_GET_NO_MANAGE(builder,"avahi_warning",avahi_warning);
 
         ip->signal_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-
+        port->signal_value_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+        recon_timeout->signal_value_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+        autoconnect->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 
 

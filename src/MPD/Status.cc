@@ -2,7 +2,7 @@
 
 namespace MPD
 {
-    Status::Status(mpd_status& status)
+    Status::Status(mpd_status& status, unsigned long nextSongID)
     {
         m_Status = &status;
     }

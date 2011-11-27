@@ -504,7 +504,7 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label2">
+                          <object class="GtkLabel" id="next_song_title">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">2</property>
@@ -520,7 +520,7 @@ audio-volume-medium</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="label3">
+                          <object class="GtkLabel" id="next_song_artist">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">2</property>
@@ -558,6 +558,7 @@ audio-volume-medium</property>
                       <object class="GtkBox" id="box2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="border_width">3</property>
                         <child>
                           <object class="GtkToggleButton" id="icon_repeat">
                             <property name="use_action_appearance">False</property>

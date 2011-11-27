@@ -19,7 +19,9 @@ namespace GManager
             void update_next_song_widget(MPD::NotifyData& data);
 
             /* Widgets */
-            Gtk::Label *mp_TitleLabel, * mp_ArtistAlbumLabel;
+            Gtk::Label * mp_TitleLabel, * mp_ArtistAlbumLabel, 
+                       * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
+
             MPD::Client * mp_Client;
     };
 }

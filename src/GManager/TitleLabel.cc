@@ -10,6 +10,8 @@ namespace GManager
 
         BUILDER_GET(builder,"title_label",mp_TitleLabel);
         BUILDER_GET(builder,"artist_album_label",mp_ArtistAlbumLabel);
+        BUILDER_GET(builder,"next_song_artist",mp_NextSongArtistLabel);
+        BUILDER_GET(builder,"next_song_title",mp_NextSongTitleLabel);
     }
 
     //----------------
@@ -20,8 +22,19 @@ namespace GManager
     
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
-        // TODO: libmpdclient does not offer this info *aaargh!*
-        // mp_Client->get_song_at_id(data.get_status().get_
+        MPD::Song& current_song = data.get_next_song(); 
+        char * title_string = g_markup_printf_escaped("<small>%s</small>",
+                current_song.get_tag(MPD_TAG_TITLE,0)
+                );
+        char * artist_string = g_markup_printf_escaped("<small>%s</small>",
+                current_song.get_tag(MPD_TAG_ARTIST,0)
+                );
+
+        mp_NextSongArtistLabel->set_markup(artist_string);
+        mp_NextSongTitleLabel->set_markup(title_string);
+
+        g_free(title_string);
+        g_free(artist_string);
     }
 
     //----------------
@@ -41,10 +54,12 @@ namespace GManager
                     current_song.get_tag(MPD_TAG_DATE,0)
                     );
 
-            mp_TitleLabel->set_markup_with_mnemonic(title_string); 
-            mp_ArtistAlbumLabel->set_markup_with_mnemonic(artist_album); 
+            mp_TitleLabel->set_markup(title_string); 
+            mp_ArtistAlbumLabel->set_markup(artist_album); 
             g_free(artist_album);
             g_free(title_string);
+
+            update_next_song_widget(data);
         }
     }
 }

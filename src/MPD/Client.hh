@@ -44,8 +44,8 @@ namespace MPD
             void toggle_single(void);
 
             void play_song_at_id(unsigned song_id);           
- 
             void playback_seek(unsigned song_id, unsigned abs_time);
+            void playlist_remove(const char * name);
 
             /**
              * @brief set the volume
@@ -71,8 +71,6 @@ namespace MPD
              */
             EventNotifier& get_notify(void);
 
-
-            
 
             ConnectionNotifier& signal_connection_change(void);
 

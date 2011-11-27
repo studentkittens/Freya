@@ -24,7 +24,6 @@ namespace Browser
         private:
 
             void add_item(void * pSong);
-            void clear(void) {}
 
             void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
             bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);

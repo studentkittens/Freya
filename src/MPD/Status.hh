@@ -12,7 +12,7 @@ namespace MPD
     {
         public: 
 
-            Status(mpd_status& status);
+            Status(mpd_status& status,unsigned long nextSongID);
             ~Status(void);
 
             /* -------- */

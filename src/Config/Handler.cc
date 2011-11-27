@@ -93,7 +93,7 @@ namespace Config
             result = g_ascii_strtoll(get_value(url).c_str(),&tmp,10);
         }
 
-        if (NULL != tmp && 0 == result)
+        if ((NULL == tmp) && (0 == result))
         {
             return -1;
         }

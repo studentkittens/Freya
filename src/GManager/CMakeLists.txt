@@ -7,6 +7,7 @@ ADD_LIBRARY(FreyaGManagerLib STATIC
     StatusIcons.cc
     Volumebutton.cc
     Heartbeat.cc
+    Trayicon.cc
     MenuList.cc
     )
 

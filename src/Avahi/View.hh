@@ -50,6 +50,7 @@ namespace Avahi
             Gtk::Button m_Button_Cancel;
             Gtk::Button m_Button_Select;
             Gtk::Label  m_Status_Label;
+            Gtk::Separator m_CtrlSep;
     };
 }
 #endif //GTKMM_View_H

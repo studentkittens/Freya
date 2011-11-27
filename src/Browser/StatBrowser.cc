@@ -8,7 +8,7 @@ namespace Browser
         AbstractBrowser("Statistics",Gtk::Stock::INFO)
     {
         Gtk::Grid * container = NULL;
-        BUILDER_ADD(builder,"ui/statistics.glade");
+        BUILDER_ADD(builder,"ui/Statistics.glade");
         BUILDER_GET(builder, "noofartist",noofartist);
         BUILDER_GET(builder, "noofalbums",noofalbums);
         BUILDER_GET(builder, "noofsongs",noofsongs);

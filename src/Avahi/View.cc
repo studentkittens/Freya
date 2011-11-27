@@ -4,6 +4,7 @@ namespace Avahi
 {
     View::View(void) : 
         Gtk::Window(Gtk::WINDOW_TOPLEVEL),
+        m_VBox(Gtk::ORIENTATION_HORIZONTAL,2),
         m_Button_Cancel("Cancel"),
         m_Button_Select("Select"),
         m_Status_Label("Searching..")
@@ -17,14 +18,15 @@ namespace Avahi
 
         add(m_VBox);
 
-        //Add the TreeView, inside a ScrolledWindow, with the button underneath:
+        /* Add the TreeView, inside a ScrolledWindow, with the button underneath: */
         m_ScrolledWindow.add(m_TreeView);
 
-        //Only show the scrollbars when they are necessary:
+        /* Only show the scrollbars when they are necessary: */
         m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
 
-        m_VBox.pack_start(m_ScrolledWindow);
-        m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
+        m_VBox.pack_start(m_ScrolledWindow,true,true);
+        m_VBox.pack_start(m_CtrlSep,true,false);
+        m_VBox.pack_start(m_ButtonBox,true,false);
 
         m_ButtonBox.pack_start(m_Status_Label,true,true,3);
         m_ButtonBox.set_child_secondary(m_Status_Label,true);

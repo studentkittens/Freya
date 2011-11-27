@@ -19,6 +19,7 @@ namespace Config
             "        </connection>\n"
             "        <libnotify>\n"
             "            <signal>0</signal>\n"
+            "            <timeout>-1</timeout>\n"
             "        </libnotify>\n"
             "        <trayicon>\n"
             "            <totray>0</totray>\n"

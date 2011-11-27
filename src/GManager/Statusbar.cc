@@ -86,7 +86,7 @@ namespace GManager
 
             Glib::ustring db_play_time = Utils::seconds_to_duration(stats.get_db_play_time());
 
-            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s playtime",
+            mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s total playtime | %u%% volume",
                     status.get_audio_sample_rate(),
                     status.get_audio_bits(),
                     status.get_kbit_rate(),
@@ -94,7 +94,8 @@ namespace GManager
                     elapsed,
                     totaltm,
                     stats.get_number_of_songs(),
-                    db_play_time.c_str()
+                    db_play_time.c_str(),
+                    status.get_volume()
                     );
 
             m_Statusbar->set_text(mp_Message);

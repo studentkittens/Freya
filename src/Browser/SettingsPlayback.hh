@@ -5,17 +5,19 @@
 
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
+
 namespace Browser
 {
+    class Settings;
     class SettingsPlayback : public SettingsSub
     {
         public:
-            SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder);
+            SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
             ~SettingsPlayback();
 
             void accept_new_settings(void);
             void decline_new_settings(void);
-
+            void reset_settings(void);
         private:
             Glib::ustring name, crossfade_name, stoponexit_name;
         /* Widgets */

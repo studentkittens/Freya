@@ -1,15 +1,16 @@
 #include "SettingsGeneral.hh"
 #include "../Utils/Utils.hh"
-
+#include "Settings.hh"
 namespace Browser
 {
-    SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder) :
+    SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
         notify("settings.libnotify.signal"),
         tray("settings.trayicon.totray")
     {
         BUILDER_GET(builder,"libnotify_checkbox",libnotify);
         BUILDER_GET(builder,"trayicon_checkbox",trayicon);
-
+        libnotify->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+        trayicon->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 
 
@@ -39,4 +40,12 @@ namespace Browser
 
     //----------------------------
 
+    void SettingsGeneral::reset_settings(void)
+    {
+        int libnot, trayic;
+        libnot = CONFIG_GET_DEFAULT_AS_INT(notify);
+        trayic = CONFIG_GET_DEFAULT_AS_INT(tray);
+        libnotify->set_active(libnot==1);
+        trayicon->set_active(trayic==1);
+    }
 }

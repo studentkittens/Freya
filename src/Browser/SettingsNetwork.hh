@@ -6,16 +6,19 @@
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
 #include "../AvahiBrowser/Browser.hh"
+
 namespace Browser
 {
+    class Settings;
     class SettingsNetwork : public  SettingsSub
     {
         public:
-            SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder);
+            SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
             ~SettingsNetwork();
 
             void accept_new_settings(void);
             void decline_new_settings(void);
+            void reset_settings(void);
 
         private:
             void show_avahi(void);
@@ -27,6 +30,7 @@ namespace Browser
             Gtk::SpinButton *port, *recon_timeout;
             Gtk::Button *avahi;
             Gtk::CheckButton *autoconnect;
+            Gtk::MessageDialog *avahi_warning;
     };
 }
 #endif

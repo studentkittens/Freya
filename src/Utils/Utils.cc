@@ -31,17 +31,17 @@ namespace Utils {
 
         if (week != 0)
         {        
-            g_snprintf(durstr,BUFFER,"%d weeks %d days %d hours %d minutes %d seconds\n",week,day,hour,min,sec);
+            g_snprintf(durstr,BUFFER,"%d weeks %d days %d hours %d minutes %d seconds",week,day,hour,min,sec);
         }
         else if(day != 0)
         {
 
-            g_snprintf(durstr,BUFFER,"%d days %d hours %d minutes %d seconds\n",day,hour,min,sec);
+            g_snprintf(durstr,BUFFER,"%d days %d hours %d minutes %d seconds",day,hour,min,sec);
         }
         else
         {
             
-            g_snprintf(durstr,BUFFER,"%d hours %d minutes %d seconds\n",hour,min,sec);
+            g_snprintf(durstr,BUFFER,"%d hours %d minutes %d seconds",hour,min,sec);
         }
         Glib::ustring retv = durstr;
 

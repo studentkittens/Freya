@@ -544,10 +544,11 @@
             <property name="can_focus">False</property>
             <property name="margin_right">4</property>
             <property name="margin_bottom">3</property>
+            <property name="spacing">5</property>
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkButton" id="cancel_button">
-                <property name="label">gtk-cancel</property>
+                <property name="label">gtk-undo</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -563,7 +564,7 @@
             </child>
             <child>
               <object class="GtkButton" id="ok_button">
-                <property name="label">gtk-ok</property>
+                <property name="label">gtk-save</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>

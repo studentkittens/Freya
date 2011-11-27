@@ -109,4 +109,5 @@ namespace Config
     {
         pathtofile = g_strdup_printf("%s",path);
     }
+
 }

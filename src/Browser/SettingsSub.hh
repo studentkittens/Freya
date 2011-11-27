@@ -11,6 +11,7 @@ namespace Browser
 
             virtual void accept_new_settings(void) {};
             virtual void decline_new_settings(void) {};
+            virtual void reset_settings(void) {};
     };
 
 }

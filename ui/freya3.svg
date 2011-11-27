@@ -43,7 +43,7 @@
      id="namedview3145"
      showgrid="false"
      inkscape:zoom="0.98163059"
-     inkscape:cx="458.89357"
+     inkscape:cx="329.01588"
      inkscape:cy="133.84616"
      inkscape:window-x="964"
      inkscape:window-y="25"
@@ -56,7 +56,7 @@
      inkscape:connector-curvature="0" />
   <text
      xml:space="preserve"
-     style="font-size:26.92030716000000012px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0cc800;fill-opacity:0.47827616000000001;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+     style="font-size:26.92030716000000012px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#740098;fill-opacity:0.47827616000000001;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
      x="67.83754"
      y="181.94853"
      id="text3153"
@@ -65,10 +65,10 @@
        id="tspan3155"
        x="67.83754"
        y="181.94853"
-       style="font-size:96.91310119999999984px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#0cc800;font-family:Sans;-inkscape-font-specification:Newspaper Italic;fill-opacity:0.47827616000000001">Freya</tspan></text>
+       style="font-size:96.91310120000001405px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#740098;font-family:Sans;-inkscape-font-specification:Newspaper Italic;fill-opacity:0.47827616000000001">Freya</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:27.71154213000000155px;font-style:oblique;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#364e59;fill-opacity:1;stroke:none;font-family:Nimbus Mono L;-inkscape-font-specification:Nimbus Mono L Bold Oblique"
+     style="font-size:27.71154213px;font-style:oblique;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#364e59;fill-opacity:1;stroke:none;font-family:Nimbus Mono L;-inkscape-font-specification:Nimbus Mono L Bold Oblique"
      x="53.022221"
      y="238.9351"
      id="text3398"
@@ -76,5 +76,5 @@
        sodipodi:role="line"
        id="tspan3400"
        x="53.022221"
-       y="238.9351">Erwin wasn't right!</tspan></text>
+       y="238.9351">digital ist besser!</tspan></text>
 </svg>

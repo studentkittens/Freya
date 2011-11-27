@@ -48,11 +48,8 @@ namespace Browser
 
             playtime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
 
-            uptime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
+            uptime->set_text(Utils::seconds_to_duration(stat.get_uptime()).c_str());
 
-            g_snprintf(newvalue,512,"%lu",stat.get_db_update_time());
-            dbupdate->set_text(Glib::ustring(newvalue));
-        
             dbupdate->set_text(Utils::seconds_to_timestamp(stat.get_db_update_time()).c_str());
         
         }

@@ -5,7 +5,7 @@
 
 #include "../Config/Handler.hh"
 #include "SettingsSub.hh"
-#include "../AvahiBrowser/Browser.hh"
+#include "../Avahi/Browser.hh"
 
 namespace Browser
 {

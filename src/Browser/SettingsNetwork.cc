@@ -1,7 +1,6 @@
 #include "SettingsNetwork.hh"
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
-#include "../AvahiBrowser/Browser.hh"
 #include "Settings.hh"
 namespace Browser
 {

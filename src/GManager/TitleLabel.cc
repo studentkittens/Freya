@@ -59,6 +59,10 @@ namespace GManager
             g_free(artist_album);
             g_free(title_string);
 
+        }
+
+        if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS))
+        {
             update_next_song_widget(data);
         }
     }

@@ -1,6 +1,6 @@
 #include "Trayicon.hh"
 #include "../Log/Writer.hh"
-
+#include "../Config/Handler.hh"
 namespace GManager 
 {
     Trayicon::Trayicon(MPD::Client& client,Gtk::Window& main_window) :
@@ -8,6 +8,7 @@ namespace GManager
     {
         mp_Client = &client;
         mp_Window = &main_window;
+        set_visible(CONFIG_GET_AS_INT("settings.trayicon.totray"));
 
         set_tooltip_text("Freya Trayicon");
         Info("Created TrayIcon");

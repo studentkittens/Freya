@@ -23,6 +23,7 @@ namespace Config
             "        </libnotify>\n"
             "        <trayicon>\n"
             "            <totray>0</totray>\n"
+            "            <totrayonclose>0</totrayonclose>\n"
             "        </trayicon>\n"
             "        <playback>\n"
             "            <crossfade>0</crossfade>\n"

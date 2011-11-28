@@ -95,7 +95,7 @@ namespace GManager
                     totaltm,
                     stats.get_number_of_songs(),
                     db_play_time.c_str(),
-                    status.get_volume()
+                    CLAMP(status.get_volume(),0,100)
                     );
 
             m_Statusbar->set_text(mp_Message);

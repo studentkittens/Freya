@@ -24,6 +24,7 @@ namespace GManager
 
             void change_browser(AbstractBrowser * browser);
             void on_selection_changed(void);
+            Glib::ustring get_fortune(void);
 
             //Tree model columns:
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -49,9 +50,6 @@ namespace GManager
 
             /* Paned widgets, where all browser stuff is happening in */
             Gtk::Paned * mp_Paned;
-
-            /* Icons */
-            Gtk::Image m_Emblem;
     };
 }
 

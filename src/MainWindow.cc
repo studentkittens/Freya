@@ -113,7 +113,8 @@ int main(int argc, char *argv[])
 
             DisconnectManager(client,main_window,builder);
             GManager::Trayicon tray(client,*main_window);
-            kit.run(*main_window);
+            main_window->show();
+            kit.run();
         }
         else throw "Cannot connect to MPD Server.";
     }

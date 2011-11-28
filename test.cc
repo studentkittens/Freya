@@ -25,12 +25,15 @@ class Trayicon : public Gtk::StatusIcon
         Glib::RefPtr<Gtk::Action> m_ActionPrev;
         Glib::RefPtr<Gtk::Action> m_ActionStop;
         Glib::RefPtr<Gtk::Action> m_ActionPause;
+        Glib::RefPtr<Gtk::Action> m_ActionQuit;
 
 };
 
 Glib::ustring ui_info =
 "<ui>"
 "  <popup name='PopupMenu'>"
+"    <menuitem action='quit'/>"
+"    <separator />"
 "    <menuitem action='next'/>"
 "    <menuitem action='prev'/>"
 "    <menuitem action='stop'/>"
@@ -64,6 +67,7 @@ Trayicon::Trayicon(void) :
     add_item(m_ActionPrev,"prev","Prev","Play prev song",Gtk::Stock::MEDIA_PREVIOUS);
     add_item(m_ActionStop,"stop","Stop","Stop playing",Gtk::Stock::MEDIA_STOP);
     add_item(m_ActionPause,"pause","Pause","Pause playing",Gtk::Stock::MEDIA_PLAY);
+    add_item(m_ActionQuit,"quit","Quit","Quit Freya fully",Gtk::Stock::QUIT);
 
     m_refUIManager->insert_action_group(m_refActionGroup);
     m_refUIManager->add_ui_from_string(ui_info);

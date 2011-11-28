@@ -50,7 +50,7 @@ namespace GManager
     Glib::ustring BrowserList::get_fortune(void)
     {
         FILE * pipe = NULL;
-        const char * const command = "fortune -s";
+        const char * const command = "fortune -s -n 350";
         Glib::ustring retv = "";
 
         if((pipe = popen(command,"r")))
@@ -64,8 +64,8 @@ namespace GManager
                     last_newline[0] = 0;
 
                 retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<big>");
-                retv.append("</big>");
+                retv.insert(0,"<span font='16.5' weight='light'>");
+                retv.append("</span>");
                                                  
             }
             pclose(pipe);

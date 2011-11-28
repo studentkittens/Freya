@@ -11,7 +11,7 @@
         <property name="can_focus">False</property>
         <child>
           <object class="GtkImage" id="fortune_image">
-            <property name="width_request">698</property>
+            <property name="width_request">903</property>
             <property name="height_request">882</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -25,24 +25,25 @@
         </child>
         <child>
           <object class="GtkLabel" id="fortune_label">
-            <property name="width_request">100</property>
-            <property name="height_request">80</property>
+            <property name="width_request">311</property>
+            <property name="height_request">331</property>
             <property name="visible">True</property>
+            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="xalign">0.019999999552965164</property>
             <property name="yalign">0.019999999552965164</property>
-            <property name="label" translatable="yes">&lt;big&gt;
-Some fortune may happen to you.
+            <property name="label" translatable="yes">&lt;span font='16.5'&gt;
+Some fortune may happen to you,
+if you have the 'fortune' program installed.
    -- Freya Dev Team
-&lt;/big&gt;</property>
+&lt;/span&gt;</property>
             <property name="use_markup">True</property>
-            <property name="justify">center</property>
             <property name="wrap">True</property>
             <property name="max_width_chars">20</property>
           </object>
           <packing>
-            <property name="x">38</property>
-            <property name="y">52</property>
+            <property name="x">18</property>
+            <property name="y">24</property>
           </packing>
         </child>
       </object>

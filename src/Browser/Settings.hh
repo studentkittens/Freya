@@ -10,6 +10,8 @@
 #include "SettingsGeneral.hh"
 #include "SettingsSub.hh"
 #include "../AbstractBrowser.hh"
+#include "../GManager/Trayicon.hh"
+
 using namespace std;
 
 namespace Browser
@@ -17,7 +19,7 @@ namespace Browser
     class Settings : public AbstractBrowser
     {
         public:
-            Settings(const Glib::RefPtr<Gtk::Builder> &builder);
+            Settings(const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
             ~Settings();
             Gtk::Widget* get_container(void);
 

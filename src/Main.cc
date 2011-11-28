@@ -1,5 +1,7 @@
 #include "MPD/Client.hh"
 
+#include "FreyaWindow.hh"
+
 #include "GManager/PlaybackButtons.hh"
 #include "GManager/BrowserList.hh"
 #include "GManager/Statusbar.hh"
@@ -22,6 +24,7 @@
 #include "Utils/Utils.hh"
 
 using namespace std;
+
 
 class DisconnectManager
 {
@@ -78,11 +81,10 @@ int main(int argc, char *argv[])
             /* Get the glade file */
             Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
 
-            Gtk::Window * main_window = NULL;
-            builder->get_widget("FreyaMainWindow", main_window);
+            FreyaWindow main_window(builder);
 
             /* Instanmce gui elements */
-            GManager::Heartbeat proxy(client); 
+            GManager::Heartbeat proxy(client);
             GManager::Timeslide timeslide(proxy,client,builder);
             GManager::Statusbar statusbar(proxy,client,builder);
             GManager::PlaybackButtons buttons(client,builder);
@@ -91,6 +93,7 @@ int main(int argc, char *argv[])
             GManager::Volumebutton vol_button(client,builder);
             GManager::BrowserList browser_list(builder);
             GManager::MenuList menu_list(client,builder);
+            GManager::Trayicon tray(client,*main_window.get_window());
 
             /* Instance browser  */
             Browser::PlaylistTreeView queue_browser(client);
@@ -105,15 +108,15 @@ int main(int argc, char *argv[])
             Browser::StatBrowser stat_browser(client,builder);
             browser_list.add(stat_browser);
 
-            Browser::Settings settings_browser(builder);
+            Browser::Settings settings_browser(builder,&tray);
             browser_list.add(settings_browser);
 
             /* Send a good morning to all widgets */
             client.force_update();
 
-            DisconnectManager(client,main_window,builder);
-            GManager::Trayicon tray(client,*main_window);
-            kit.run(*main_window);
+            DisconnectManager(client,main_window.get_window(),builder);
+            main_window.get_window()->show();
+            kit.run();
         }
         else throw "Cannot connect to MPD Server.";
     }

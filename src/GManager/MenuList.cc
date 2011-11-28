@@ -87,7 +87,7 @@ namespace GManager
     void MenuList::on_menu_quit(void)
     {
         /* TODO */
-        exit(0);
+        Gtk::Main::quit();
     }
     //-----------------------------
     void MenuList::on_menu_play(void)

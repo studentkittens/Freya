@@ -4,7 +4,7 @@
 #include "../Notify/Notify.hh"
 namespace Browser
 {
-    Settings::Settings(const Glib::RefPtr<Gtk::Builder> &builder):
+    Settings::Settings(const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray):
         AbstractBrowser("Settings",Gtk::Stock::PREFERENCES)
     {
         BUILDER_ADD(builder,"ui/Settings.glade");
@@ -17,7 +17,7 @@ namespace Browser
 
         sub_sections.push_back(new SettingsNetwork(builder, this));
         sub_sections.push_back(new SettingsPlayback(builder, this));
-        sub_sections.push_back(new SettingsGeneral(builder, this));
+        sub_sections.push_back(new SettingsGeneral(builder, this, tray));
 
         ok_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_ok));
         cancel_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_cancel));

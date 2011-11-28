@@ -25,11 +25,6 @@
 
 using namespace std;
 
-bool on_delete_event(GdkEventAny* event)
-{
-    Error("BLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    return true;
-}
 
 class DisconnectManager
 {

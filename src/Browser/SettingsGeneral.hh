@@ -20,9 +20,12 @@ namespace Browser
             void reset_settings(void);
 
         private:
-            Glib::ustring notify,tray;
+            void on_notify_toggled(void);
+            Glib::ustring notify,tray,timeout;
         /* Widgets */
             Gtk::CheckButton *libnotify, *trayicon;
+            Gtk::SpinButton *notify_timeout;
+            Gtk::Box *notify_box;
     };
 }
 #endif

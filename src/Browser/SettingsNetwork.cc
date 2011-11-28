@@ -99,10 +99,6 @@ namespace Browser
 
     void SettingsNetwork::selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port)
     {
-/*
-        CONFIG_SET(ip_name,ip);
-        CONFIG_SET_AS_INT(port_name,port);
-  */
         this->ip->set_text(ip);
         this->port->set_value((double)port);
     }

@@ -17,6 +17,8 @@ namespace Browser
         libnotify->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsGeneral::on_notify_toggled));
         notify_timeout->signal_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
 
+        on_notify_toggled();
+
         trayicon->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 

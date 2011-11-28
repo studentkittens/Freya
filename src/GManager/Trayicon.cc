@@ -48,6 +48,8 @@ namespace GManager
         set(m_Popup->render_icon_pixbuf(Gtk::Stock::INFO,Gtk::ICON_SIZE_SMALL_TOOLBAR));
     }
 
+    //-------------------------
+    
     void Trayicon::add_item(Glib::RefPtr<Gtk::Action>& action,
             Glib::ustring item_name,
             Glib::ustring item_label,
@@ -58,14 +60,17 @@ namespace GManager
         m_refActionGroup->add(action);
     }
 
+    //-------------------------
+    
     void Trayicon::on_popup_menu(guint button, guint32 activate_time)
     {
         m_Popup->popup(button,activate_time);
     }
+    
+    //---------------------------
 
     void Trayicon::on_activate(void)
     {
-        g_message("Clicked.");
         mp_Window->set_visible(!mp_Window->get_visible());
     }
 

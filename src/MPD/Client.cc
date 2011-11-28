@@ -17,8 +17,6 @@ namespace MPD
 
     Client::Client() : m_Conn(), m_Notifier()
     {
-        int t = CONFIG_GET_AS_INT("settings.connection.autoconnect");
-        g_printerr("=> %d\n",t);
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
             connect();

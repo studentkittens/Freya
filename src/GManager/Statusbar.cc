@@ -16,8 +16,10 @@ namespace GManager
 
         mp_Message = NULL;
         mp_Proxy = &tproxy;
+        mp_Lastdata = NULL;
 
         client.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
+        client.signal_connection_change().connect(sigc::mem_fun(*this,&Statusbar::on_connection_change));
         mp_Proxy->get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
     }
 
@@ -28,6 +30,14 @@ namespace GManager
         g_free(mp_Message);
     }
 
+    /* ------------------ */
+    
+    void Statusbar::on_connection_change(bool is_connected)
+    {
+       if(is_connected == false)
+          mp_Lastdata = NULL; 
+    }
+    
     /* ------------------ */
 
     void Statusbar::format_time(unsigned time, char buffer[])
@@ -65,7 +75,10 @@ namespace GManager
 
     void Statusbar::on_heartbeat(double time)
     {
-        do_update_message(*mp_Lastdata);
+        if(mp_Lastdata != NULL)
+        {
+            do_update_message(*mp_Lastdata);
+        }
     }
 
     /* ------------------ */

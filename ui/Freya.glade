@@ -7,11 +7,6 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkImage" id="image_repeat">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-refresh</property>
-  </object>
   <object class="GtkWindow" id="FreyaMainWindow">
     <property name="width_request">650</property>
     <property name="height_request">510</property>
@@ -570,6 +565,8 @@ audio-volume-medium</property>
                       <object class="GtkTreeView" id="plugin_view">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="headers_visible">False</property>
+                        <property name="headers_clickable">False</property>
                         <property name="reorderable">True</property>
                         <property name="rules_hint">True</property>
                         <property name="hover_expand">True</property>
@@ -854,15 +851,20 @@ audio-volume-medium</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-indent</property>
   </object>
-  <object class="GtkImage" id="image_single">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
-  </object>
   <object class="GtkImage" id="image_random">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-justify-right</property>
+  </object>
+  <object class="GtkImage" id="image_repeat">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-refresh</property>
+  </object>
+  <object class="GtkImage" id="image_single">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-jump-to</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

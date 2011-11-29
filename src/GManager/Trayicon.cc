@@ -27,6 +27,7 @@ namespace GManager
         set_visible(CONFIG_GET_AS_INT("settings.trayicon.totray"));
         m_refUIManager = Gtk::UIManager::create();
         m_refActionGroup = Gtk::ActionGroup::create();
+        m_refUIManager->insert_action_group(m_refActionGroup);
 
         add_item(m_ActionNext,"next","Next","Play next song",Gtk::Stock::MEDIA_NEXT);
         add_item(m_ActionPrev,"prev","Prev","Play prev song",Gtk::Stock::MEDIA_PREVIOUS);
@@ -40,7 +41,6 @@ namespace GManager
         m_ActionPause->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_pause_clicked));
         m_ActionQuit->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_quit_clicked));
 
-        m_refUIManager->insert_action_group(m_refActionGroup);
         m_refUIManager->add_ui_from_string(ui_info);
         m_Popup = (Gtk::Menu*)(m_refUIManager->get_widget("/PopupMenu"));
 

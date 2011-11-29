@@ -1,51 +1,43 @@
-#include "PlaylistTreeView.hh"
+#include "Queue.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
 namespace Browser
 {
-    PlaylistTreeView::PlaylistTreeView(MPD::Client& client) :
-        Box(Gtk::ORIENTATION_VERTICAL),
+    Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractBrowser("Queue",Gtk::Stock::ZOOM_FIT),
-        m_FilterText(""),
-        m_Entry()
+        m_FilterText("")
     {
-        set_homogeneous(false);
-        pack_start(m_ScrolledWindow,true,true);
-        pack_start(m_Entry,false,false);
+        
+        BUILDER_ADD(builder,"ui/Queue.glade");
+        BUILDER_GET(builder,"queue_treeview",mp_TreeView);
+        BUILDER_GET(builder,"queue_search_entry",mp_Entry);
+        BUILDER_GET(builder,"queue_box",mp_QueueBox);
 
-        m_Entry.set_icon_from_stock(Gtk::Stock::CLEAR,Gtk::ENTRY_ICON_SECONDARY);
-        m_Entry.set_icon_from_stock(Gtk::Stock::FIND, Gtk::ENTRY_ICON_PRIMARY);
-        m_Entry.signal_activate().connect(
-                sigc::mem_fun(*this,&PlaylistTreeView::on_entry_activate));
-
-        /* Add the TreeView, inside a ScrolledWindow, with the button underneath: */
-        m_ScrolledWindow.add(m_TreeView);
-
-        //Only show the scrollbars when they are necessary:
-        m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+        mp_Entry->signal_activate().connect(
+                sigc::mem_fun(*this,&Queue::on_entry_activate));
 
         //Create the Tree model:
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_refTreeModelFilter = Gtk::TreeModelFilter::create(m_refTreeModel);
         m_refTreeModelFilter->set_visible_func(
-                sigc::mem_fun(*this,&PlaylistTreeView::on_filter_row_visible));
+                sigc::mem_fun(*this,&Queue::on_filter_row_visible));
 
-        m_TreeView.set_model(m_refTreeModelFilter);
+        mp_TreeView->set_model(m_refTreeModelFilter);
 
         /* Add the TreeView's view columns: */
-        //m_TreeView.append_column("ID", m_Columns.m_col_id);
-        m_TreeView.append_column("Artist", m_Columns.m_col_artist);
-        m_TreeView.append_column("Album", m_Columns.m_col_album);
-        m_TreeView.append_column("Title", m_Columns.m_col_title);
-        m_TreeView.set_rules_hint(true);
-        m_TreeView.set_rubber_banding(true);
-        m_TreeView.set_search_column(1);
-        m_TreeView.set_search_entry(m_Entry);
+        //mp_TreeView.append_column("ID", m_Columns.m_col_id);
+        mp_TreeView->append_column("Artist", m_Columns.m_col_artist);
+        mp_TreeView->append_column("Album", m_Columns.m_col_album);
+        mp_TreeView->append_column("Title", m_Columns.m_col_title);
+        mp_TreeView->set_rules_hint(true);
+        mp_TreeView->set_rubber_banding(true);
+        mp_TreeView->set_search_column(1);
+        mp_TreeView->set_search_entry(*mp_Entry);
 
         for(guint i = 0; i < 4; i++)
         {
-            Gtk::TreeView::Column* pColumn = m_TreeView.get_column(i);
+            Gtk::TreeView::Column * pColumn = mp_TreeView->get_column(i);
             if(pColumn != NULL)
             {
                 pColumn->set_reorderable();
@@ -55,23 +47,33 @@ namespace Browser
         }
 
         /* Misc settings to tree view */
-        m_TreeView.set_headers_clickable(true);
+        mp_TreeView->set_headers_clickable(true);
 
         /* Selections */
-        m_TreeSelection = m_TreeView.get_selection();
+        m_TreeSelection = mp_TreeView->get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
 
         /* Double click on a row */
-        m_TreeView.signal_row_activated().connect(sigc::mem_fun(*this,&PlaylistTreeView::on_row_activated));
+        mp_TreeView->signal_row_activated().connect(sigc::mem_fun(*this,&Queue::on_row_activated));
 
+        /* Set up Popupmenu */
+        mp_Popup = new QueuePopup(*mp_TreeView);
+
+        /* Now go and fill the queue */
         mp_Client = &client;
         mp_Client->fill_queue(*this);
-        show_all();
     }
 
     /*-------------------------------*/
+    
+    Queue::~Queue(void)
+    {
+        delete mp_Popup;
+    }
+    
+    /*-------------------------------*/
 
-    void PlaylistTreeView::on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column)
+    void Queue::on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column)
     {
         /* Get the row from the path - Documentation, Y U NO TELL ME?! */
         Gtk::TreeModel::iterator iter = m_refTreeModelFilter->get_iter(path);
@@ -84,7 +86,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void PlaylistTreeView::add_item(void * pSong)
+    void Queue::add_item(void * pSong)
     {
         g_assert(pSong);
         MPD::Song * new_song = (MPD::Song*)pSong;
@@ -102,16 +104,15 @@ namespace Browser
     
     /*-------------------------------*/
 
-    void PlaylistTreeView::on_entry_activate(void)
+    void Queue::on_entry_activate(void)
     {
-        g_message("Activated.");
-        m_FilterText = m_Entry.get_text();
+        m_FilterText = mp_Entry->get_text();
         m_refTreeModelFilter->refilter();
     }
 
     /*-------------------------------*/
 
-    bool PlaylistTreeView::on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter)
+    bool Queue::on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter)
     {
         if(iter && !m_FilterText.empty())
         {
@@ -137,13 +138,9 @@ namespace Browser
 
     /*-------------------------------*/
 
-    PlaylistTreeView::~PlaylistTreeView() {}
-
-    /*-------------------------------*/
-
-    Gtk::Widget * PlaylistTreeView::get_container(void)
+    Gtk::Widget * Queue::get_container(void)
     {
-        return this;
+        return mp_QueueBox;
     }
 
     /*-------------------------------*/

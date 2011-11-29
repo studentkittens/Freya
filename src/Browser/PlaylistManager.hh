@@ -6,6 +6,7 @@
 #include "../AbstractItemlist.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Playlist.hh"
+#include "PlaylistManagerPopup.hh"
 
 namespace Browser 
 {
@@ -56,6 +57,9 @@ namespace Browser
 
             /* Control buttons  */
             Gtk::Button * mp_AddButton, * mp_DelButton; 
+
+            /* Popup menu */
+            PlaylistManagerPopup * mp_Popup;
     };
 }
 

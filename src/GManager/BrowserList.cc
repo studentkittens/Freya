@@ -2,10 +2,11 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
+#define FORTUNE_BUF_SIZE 1024
+
 namespace GManager
 {
-    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder) :
-        m_Emblem("ui/Freya_emblem.svg")
+    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -25,7 +26,18 @@ namespace GManager
         /* Entitle it with "Browsers" */
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
-        mp_Paned->add2(m_Emblem);
+
+        /* Setup startscreen */
+        Gtk::ScrolledWindow * fortune_scrl_window = NULL;
+        Gtk::Label * fortune_label = NULL;
+        BUILDER_ADD(builder,"ui/Startscreen.glade");
+        BUILDER_GET(builder,"fortune_scrolledwindow",fortune_scrl_window);
+        BUILDER_GET(builder,"fortune_label",fortune_label);
+
+        Glib::ustring fortune = get_fortune();
+        fortune_label->set_markup(fortune);
+ 
+        mp_Paned->add2(*fortune_scrl_window);
         mp_Paned->show_all();
     }
 
@@ -34,15 +46,43 @@ namespace GManager
     BrowserList::~BrowserList(void) {}
 
     //----------------------------
-   
+
+    Glib::ustring BrowserList::get_fortune(void)
+    {
+        FILE * pipe = NULL;
+        const char * const command = "fortune -s -n 350";
+        Glib::ustring retv = "";
+
+        if((pipe = popen(command,"r")))
+        {
+            char fortune_buf[FORTUNE_BUF_SIZE];
+            int bytes = fread(fortune_buf,1,FORTUNE_BUF_SIZE,pipe);
+            if(bytes != 0 && !strstr(fortune_buf,"fortune:"))
+            {
+                char * last_newline = strrchr(fortune_buf,'\n');
+                if(last_newline != NULL)
+                    last_newline[0] = 0;
+
+                retv = Glib::Markup::escape_text(fortune_buf);
+                retv.insert(0,"<span font='16.5' weight='light'>");
+                retv.append("</span>");
+                                                 
+            }
+            pclose(pipe);
+        }
+        return retv;
+    }
+
+    //----------------------------
+
     void BrowserList::add(AbstractBrowser& browser)
     {
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = browser.get_name();
         row[m_Columns.m_col_browser] = &browser;
         row[m_Columns.m_col_icon] = mp_PluginListview->render_icon_pixbuf(
-                                                    browser.get_icon_stock_id(),
-                                                    Gtk::ICON_SIZE_DND); 
+                browser.get_icon_stock_id(),
+                Gtk::ICON_SIZE_DND); 
     }
 
     //----------------------------

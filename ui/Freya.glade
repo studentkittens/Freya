@@ -11,8 +11,10 @@
     <property name="width_request">650</property>
     <property name="height_request">510</property>
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Freya</property>
     <property name="default_width">600</property>
     <property name="default_height">500</property>
+    <property name="icon_name">audio-x-generic</property>
     <child>
       <object class="GtkBox" id="all_box">
         <property name="visible">True</property>
@@ -619,7 +621,9 @@ audio-volume-medium</property>
                             <property name="yalign">0</property>
                             <property name="label" translatable="yes">&lt;small&gt;Nur mal angenommen&lt;/small&gt;</property>
                             <property name="use_markup">True</property>
-                            <property name="width_chars">19</property>
+                            <property name="ellipsize">end</property>
+                            <property name="single_line_mode">True</property>
+                            <property name="max_width_chars">20</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -635,6 +639,9 @@ audio-volume-medium</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes">&lt;small&gt;&lt;i&gt;by&lt;/i&gt; Knorkator&lt;/small&gt;</property>
                             <property name="use_markup">True</property>
+                            <property name="ellipsize">end</property>
+                            <property name="single_line_mode">True</property>
+                            <property name="max_width_chars">20</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -820,16 +827,6 @@ audio-volume-medium</property>
       </object>
     </child>
   </object>
-  <object class="GtkImage" id="image_consume">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-indent</property>
-  </object>
-  <object class="GtkImage" id="image_random">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-justify-right</property>
-  </object>
   <object class="GtkImage" id="image_repeat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -839,6 +836,16 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-jump-to</property>
+  </object>
+  <object class="GtkImage" id="image_consume">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-indent</property>
+  </object>
+  <object class="GtkImage" id="image_random">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-justify-right</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

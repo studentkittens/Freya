@@ -45,7 +45,8 @@ namespace Notify
 /* Sets the icon for the next and ONLY the next notification.
  * 'x' must be a char* to one of the stock-icon names
  * you can find on 'http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html'
- *  DO NOT FORGET TO ACTUALLY 
+ *  DO NOT FORGET TO ACTUALLY SHOW THE NOTIFICATION!!!!!!!!!! Otherwise the next notification will have your icon if it's not re-setted. 
+ * Nothing serious though :)
  */
 #define NOTIFY_STOCK_ICON(x) Notify::Notify::instance().set_stock_icon(x)
 

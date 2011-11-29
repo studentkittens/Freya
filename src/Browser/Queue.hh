@@ -1,18 +1,19 @@
-#ifndef GTKMM_PLAYLISTTREEVIEW_H
-#define GTKMM_PLAYLISTTREEVIEW_H
+#ifndef FREYA_QUEUE_H
+#define FREYA_QUEUE_H
 
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
 #include "../AbstractItemlist.hh"
 #include "../MPD/Client.hh"
+#include "QueuePopup.hh"
 
 namespace Browser 
 {
-    class PlaylistTreeView : public Gtk::Box, public AbstractBrowser, public AbstractItemlist 
+    class Queue : public AbstractBrowser, public AbstractItemlist 
     {
         public:
-            PlaylistTreeView(MPD::Client& client);
-            virtual ~PlaylistTreeView();
+            Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
+            virtual ~Queue();
 
             /**
              * @brief Inherited from AbstractBrowser
@@ -47,11 +48,9 @@ namespace Browser
 
             /* Treeview related */
             ModelColumns m_Columns;
-            Gtk::ScrolledWindow m_ScrolledWindow;
-            Gtk::Entry m_Entry;
 
             /* View of the list */
-            Gtk::TreeView m_TreeView;
+            Gtk::TreeView * mp_TreeView;
 
             /* Actual data */
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
@@ -62,6 +61,13 @@ namespace Browser
 
             /* Client related */
             MPD::Client * mp_Client;
+
+            /* Popup */
+            QueuePopup * mp_Popup;
+            
+            /* other widgets */
+            Gtk::Entry * mp_Entry;
+            Gtk::Box * mp_QueueBox;
     };
 }
-#endif //GTKMM_PlaylistTreeView_H
+#endif //FREYA_QUEUE_H

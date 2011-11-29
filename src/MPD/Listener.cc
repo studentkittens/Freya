@@ -297,7 +297,6 @@ namespace MPD
 
     void Listener::force_update(void)
     {
-        // TODO: this is more like a hack
         idle_events = (enum mpd_idle)1;
         mpd_run_noidle(mp_Conn->get_connection());
         invoke_user_callback(UINT_MAX);

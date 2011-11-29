@@ -76,6 +76,7 @@ namespace GManager
     void MenuList::on_menu_connect(void)
     {
         Debug("Connect Menu activated");
+        mp_Client->connect();
     }
     //-----------------------------
     void MenuList::on_menu_disconnect(void)

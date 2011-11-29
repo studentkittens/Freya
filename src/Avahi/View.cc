@@ -25,8 +25,8 @@ namespace Avahi
         m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
 
         m_VBox.pack_start(m_ScrolledWindow,true,true);
-        m_VBox.pack_start(m_CtrlSep,true,false);
-        m_VBox.pack_start(m_ButtonBox,true,false);
+        m_VBox.pack_start(m_CtrlSep,false,false);
+        m_VBox.pack_start(m_ButtonBox,false,false);
 
         m_ButtonBox.pack_start(m_Status_Label,true,true,3);
         m_ButtonBox.set_child_secondary(m_Status_Label,true);
@@ -51,9 +51,6 @@ namespace Avahi
 
         show_all_children();
     }
-
-    /// DTor ///
-    View::~View(void) {}
 
     /// Event Callbacks ////
 

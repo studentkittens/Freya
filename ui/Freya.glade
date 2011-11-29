@@ -564,6 +564,8 @@ audio-volume-medium</property>
                       <object class="GtkTreeView" id="plugin_view">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="headers_visible">False</property>
+                        <property name="headers_clickable">False</property>
                         <property name="reorderable">True</property>
                         <property name="rules_hint">True</property>
                         <property name="hover_expand">True</property>
@@ -827,16 +829,6 @@ audio-volume-medium</property>
       </object>
     </child>
   </object>
-  <object class="GtkImage" id="image_repeat">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-refresh</property>
-  </object>
-  <object class="GtkImage" id="image_single">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
-  </object>
   <object class="GtkImage" id="image_consume">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -846,6 +838,16 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-justify-right</property>
+  </object>
+  <object class="GtkImage" id="image_repeat">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-refresh</property>
+  </object>
+  <object class="GtkImage" id="image_single">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-jump-to</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

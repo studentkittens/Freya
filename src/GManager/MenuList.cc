@@ -120,6 +120,7 @@ namespace GManager
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
 
+        NOTIFY_EXTRA();
         if(is_connected)
         {
             NOTIFY_STOCK_ICON("network-idle");

@@ -1,13 +1,13 @@
 #include "Notify.hh"
-#include <libnotify/notify.h>
 #include "../Config/Handler.hh"
 #include "../Log/Writer.hh"
+#include <libnotify/notify.h>
+
 namespace Notify
 {
     Notify::Notify()
     {
         re_init();
-        icon=NULL;
     }
     //---------------------------
     Notify::~Notify()
@@ -86,64 +86,89 @@ namespace Notify
     void Notify::_send(const char * hl, const char  * msg, GdkPixbuf * pixbuf )
     {
 
-        if(use_notify && notify_is_initted())
+        if(use_notify && !working && notify_is_initted())
         {
+            working=true;
 
-            NotifyNotification *notification=notify_notification_new(
-            hl!=NULL?hl:NULL,
-            msg!=NULL?msg:NULL,
-            icon!=NULL?icon->c_str():NULL
-            );
-
-            if(pixbuf!=NULL)
+            if(extra)
             {
-                notify_notification_set_image_from_pixbuf(notification,pixbuf);
+                NotifyNotification *notification2=notify_notification_new(
+                    hl!=NULL?hl:NULL,
+                    msg!=NULL?msg:NULL,
+                    icon!=NULL?icon->c_str():NULL
+                );
+
+                if(pixbuf!=NULL)
+                {
+                    notify_notification_set_image_from_pixbuf(notification2,pixbuf);
+                }
+
+                notify_notification_set_timeout(notification2,timeout);
+
+                GError *er=NULL;
+
+                /* shows the notification */
+                notify_notification_show(notification2,&er);
+
+                if(er != NULL)
+                    Error("An Error occured showing the Notification");
+                extra=false;
+            }
+            else
+            {
+                notify_notification_update(
+                    notification,
+                    hl!=NULL?hl:NULL,
+                    msg!=NULL?msg:NULL,
+                    icon!=NULL?icon->c_str():NULL
+                );
+
+                if(pixbuf!=NULL)
+                {
+                    notify_notification_set_image_from_pixbuf(notification,pixbuf);
+                }
+
+                notify_notification_set_timeout(notification,timeout);
+
+                GError *er=NULL;
+
+                /* shows the notification */
+                notify_notification_show(notification,&er);
+
             }
 
-            notify_notification_set_timeout(notification,timeout);
-
-            /* relevant only for notification daemon */
-//            notify_notification_set_category(notification,"Freya");
-
-            /* not used now
-            notify_notification_set_urgency (notification,NOTIFY_URGENCY_NORMAL);
-            */
-
-
-            GError *er=NULL;
-
-            /* shows the notification */
-            notify_notification_show(notification,&er);
-
-            if(er != NULL)
-                Error("An Error occured showing the Notification");
-
             clear_icon();
-
+            working=false;
         }
-
     }
     //------------------------
     void Notify::re_init(void)
     {
-
-
-        if(notify_is_initted())
-            notify_uninit();
-
-        this->timeout = CONFIG_GET_AS_INT("settings.libnotify.timeout");
-        this->use_notify = CONFIG_GET_AS_INT("settings.libnotify.signal");
-
-        clear_icon();
-
-        if(use_notify)
+        if(!working)
         {
+            working=true;
 
-            if(!notify_init("Freya"))
+
+            if(notify_is_initted())
+                notify_uninit();
+
+            this->timeout = CONFIG_GET_AS_INT("settings.libnotify.timeout");
+            this->use_notify = CONFIG_GET_AS_INT("settings.libnotify.signal");
+
+            clear_icon();
+            extra=false;
+            icon=NULL;
+            notification = notify_notification_new("Freya",NULL,NULL);
+
+            if(use_notify)
             {
-                Error("Libnotify reports it's not working.");
+                if(!notify_init("Freya"))
+                {
+                    Error("Libnotify reports it's not working.");
+                }
             }
 
+            working=false;
         }
     }
 
@@ -154,6 +179,7 @@ namespace Notify
         clear_icon();
         icon = new Glib::ustring(name);
     }
+    //------------------------
 
     void Notify::clear_icon(void)
     {
@@ -163,4 +189,11 @@ namespace Notify
             icon=NULL;
         }
     }
+    //------------------------
+
+    void Notify::set_next_extra(void)
+    {
+        extra=true;
+    }
+    //------------------------
 }

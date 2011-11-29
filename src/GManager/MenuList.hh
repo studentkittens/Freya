@@ -37,6 +37,7 @@ namespace GManager
 
             void on_menu_about(void);
 
+            void volume_notify(int curVol);
             bool running;
             MPD::Client * mp_Client;
 

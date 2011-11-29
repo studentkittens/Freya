@@ -20,18 +20,18 @@ namespace Notify
         public:
             ~Notify();
 
-            void send(Glib::ustring &msg);
-            void send_big(Glib::ustring &hl, Glib::ustring &msg);
-            void send_pic(Glib::ustring &msg, GdkPixbuf * pixbuf);
-            void send_full(Glib::ustring &hl, Glib::ustring &msg, GdkPixbuf * pixbuf);
+            void send(Glib::ustring msg);
+            void send_big(Glib::ustring hl, Glib::ustring msg);
+            void send_pic(Glib::ustring msg, GdkPixbuf * pixbuf);
+            void send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf);
             void send(const char *msg);
             void send_big(const char *hl, const char *msg);
-            void send_big(Glib::ustring &hl, const char *msg);
-            void send_big(const char *hl, Glib::ustring &msg);
+            void send_big(Glib::ustring hl, const char *msg);
+            void send_big(const char *hl, Glib::ustring msg);
             void send_pic(const char *msg, GdkPixbuf * pixbuf);
             void send_full(const char *hl,const char *msg, GdkPixbuf * pixbuf);
-            void send_full(Glib::ustring &hl, const char *msg, GdkPixbuf * pixbuf);
-            void send_full(const char *hl, Glib::ustring &msg, GdkPixbuf * pixbuf);
+            void send_full(Glib::ustring hl, const char *msg, GdkPixbuf * pixbuf);
+            void send_full(const char *hl, Glib::ustring msg, GdkPixbuf * pixbuf);
             void set_stock_icon(const char*);
 
             void set_next_extra();

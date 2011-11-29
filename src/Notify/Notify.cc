@@ -20,30 +20,15 @@ namespace Notify
     //---------------------------
     /* Wrapper functions ... phiu I'm cool for providing all possible combinations of char* and ustring. Right? */
     //---------------------------
-    void Notify::send(Glib::ustring msg)
-    {
-        _send(NULL,msg.c_str(),NULL);
-    }
     //---------------------------
     void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
     {
         _send(hl.c_str(),msg.c_str(),NULL);
     }
     //---------------------------
-    void Notify::send_pic(Glib::ustring msg, GdkPixbuf * pixbuf)
-    {
-        _send(NULL,msg.c_str(),pixbuf);
-    }
-    //---------------------------
     void Notify::send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf )
     {
         _send(hl.c_str(),msg.c_str(),pixbuf);
-    }
-    //---------------------------
-    //---------------------------
-    void Notify::send(const char *msg)
-    {
-        _send(NULL,msg,NULL);
     }
     //---------------------------
     void Notify::send_big(const char *hl, const char *msg)
@@ -59,11 +44,6 @@ namespace Notify
     void Notify::send_big(const char *hl, Glib::ustring msg)
     {
         _send(hl,msg.c_str(),NULL);
-    }
-    //---------------------------
-    void Notify::send_pic(const char *msg, GdkPixbuf * pixbuf)
-    {
-        _send(NULL,msg,pixbuf);
     }
     //---------------------------
     void Notify::send_full(const char *hl, const char *msg, GdkPixbuf * pixbuf )

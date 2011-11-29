@@ -74,7 +74,7 @@ namespace GManager
             else if((data.get_status().get_state() == MPD_STATE_PAUSE))
                 NOTIFY_STOCK_ICON("media-playback-pause");
 
-            NOTIFY_SEND_W_HEADLINE(title_notify,artist_notify);
+            NOTIFY_SEND(title_notify,artist_notify);
 
             /* -> */
 

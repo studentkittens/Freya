@@ -63,6 +63,6 @@ namespace GManager
 
         char vol[5];
         sprintf(vol,"%u%%",curVol);
-        NOTIFY_SEND_W_HEADLINE("Volume",vol);
+        NOTIFY_SEND("Freya Music-Volume",vol);
     }
 }

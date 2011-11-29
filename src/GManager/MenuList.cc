@@ -128,12 +128,12 @@ namespace GManager
         if(is_connected)
         {
             NOTIFY_STOCK_ICON("network-idle");
-            NOTIFY_SEND("Freya conntected!");
+            NOTIFY_SEND("","Freya conntected!");
         }
         else
         {
             NOTIFY_STOCK_ICON("network-error");
-            NOTIFY_SEND("Freya disconnected!");
+            NOTIFY_SEND("","Freya disconnected!");
         }
 
 
@@ -226,6 +226,6 @@ namespace GManager
 
         char vol[5];
         sprintf(vol,"%u%%",curVol);
-        NOTIFY_SEND_W_HEADLINE("Volume",vol);
+        NOTIFY_SEND("Freya Music-Volume",vol);
     }
 }

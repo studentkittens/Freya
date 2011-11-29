@@ -3,6 +3,7 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "../Notify/Notify.hh"
 namespace GManager
 {
     class MenuList
@@ -36,6 +37,7 @@ namespace GManager
 
             void on_menu_about(void);
 
+            void volume_notify(int curVol);
             bool running;
             MPD::Client * mp_Client;
 

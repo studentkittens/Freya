@@ -5,6 +5,10 @@
 
 #define VOLUME_STEP 5
 
+#define VOLUME_LOW 33
+#define VOLUME_MID 66
+
+
 namespace GManager
 {
     MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder)
@@ -119,6 +123,20 @@ namespace GManager
 
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
+
+        NOTIFY_EXTRA();
+        if(is_connected)
+        {
+            NOTIFY_STOCK_ICON("network-idle");
+            NOTIFY_SEND("","Freya conntected!");
+        }
+        else
+        {
+            NOTIFY_STOCK_ICON("network-error");
+            NOTIFY_SEND("","Freya disconnected!");
+        }
+
+
     }
 
     //-----------------------------
@@ -177,6 +195,7 @@ namespace GManager
             curVol += VOLUME_STEP;
         }
         mp_Client->set_volume(curVol);
+        volume_notify(curVol);
     }
     //-----------------------------
     void MenuList::on_menu_vol_dec(void)
@@ -191,6 +210,22 @@ namespace GManager
             curVol -= VOLUME_STEP;
         }
         mp_Client->set_volume(curVol);
+        volume_notify(curVol);
     }
     //-----------------------------
+    void MenuList::volume_notify(int curVol)
+    {
+        if(curVol==0)
+            NOTIFY_STOCK_ICON("audio-volume-muted");
+        else if(curVol<=VOLUME_LOW)
+            NOTIFY_STOCK_ICON("audio-volume-low");
+        else if(curVol>VOLUME_LOW && curVol <= VOLUME_MID)
+            NOTIFY_STOCK_ICON("audio-volume-medium");
+        else
+            NOTIFY_STOCK_ICON("audio-volume-high");
+
+        char vol[5];
+        sprintf(vol,"%u%%",curVol);
+        NOTIFY_SEND("Freya Music-Volume",vol);
+    }
 }

@@ -115,6 +115,7 @@ namespace MPD
 
     bool Client::playback_play(void)
     {
+        
         return this->send_command("play");
     }
 

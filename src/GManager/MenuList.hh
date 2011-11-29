@@ -3,6 +3,7 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "../Notify/Notify.hh"
 namespace GManager
 {
     class MenuList

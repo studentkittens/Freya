@@ -119,6 +119,19 @@ namespace GManager
 
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
+
+        if(is_connected)
+        {
+            NOTIFY_STOCK_ICON("network-idle");
+            NOTIFY_SEND("Freya conntected!");
+        }
+        else
+        {
+            NOTIFY_STOCK_ICON("network-error");
+            NOTIFY_SEND("Freya disconnected!");
+        }
+
+
     }
 
     //-----------------------------

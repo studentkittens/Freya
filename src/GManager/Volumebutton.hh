@@ -18,6 +18,8 @@ namespace GManager
             void on_client_updates(enum mpd_idle type, MPD::NotifyData& data);
             void on_user_change(double val);
 
+            void volume_notify(int curVol);
+
             bool ignore_signal;
             MPD::Client * mp_Client;
             Gtk::VolumeButton * mp_VButton;

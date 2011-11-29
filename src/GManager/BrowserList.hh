@@ -49,7 +49,7 @@ namespace GManager
             Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
             /* Paned widgets, where all browser stuff is happening in */
-            Gtk::Paned * mp_Paned;
+            Gtk::Box * mp_Paned;
     };
 }
 

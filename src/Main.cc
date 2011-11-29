@@ -63,7 +63,7 @@ class DisconnectManager
         MPD::Client * mp_Client;
         Gtk::Window * mp_Window;
         Gtk::Box * mp_Top_Box;
-        Gtk::Paned * mp_Main_Paned;
+        Gtk::Box * mp_Main_Paned;
 };
 
 

@@ -37,7 +37,7 @@ namespace GManager
         Glib::ustring fortune = get_fortune();
         fortune_label->set_markup(fortune);
  
-        mp_Paned->add2(*fortune_scrl_window);
+        mp_Paned->add(*fortune_scrl_window);
         mp_Paned->show_all();
     }
 
@@ -93,12 +93,19 @@ namespace GManager
         {
             Glib::ustring name = browser->get_name();
             Debug("Adding browser: %s",name.c_str());
-            Gtk::Widget * element = mp_Paned->get_child2();
+            Gtk::Widget * element;
+
+            Glib::ListHandle<Gtk::Widget*>  children = mp_Paned->get_children();
+            for(Glib::ListHandle<Gtk::Widget*>::iterator it=children.begin(); it != children.end(); it++)
+            {
+                element = *it;
+            }
+
             if(element != NULL)
             {
                 mp_Paned->remove(*element);
             }
-            mp_Paned->add2(*(browser->get_container()));
+            mp_Paned->add(*(browser->get_container()));
         }
         else
         {

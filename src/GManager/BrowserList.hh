@@ -32,7 +32,7 @@ namespace GManager
             void on_connection_change(bool is_connected);
             void on_refresh_fortune(void);
 
-            //Tree model columns:
+            /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:
@@ -54,8 +54,8 @@ namespace GManager
             /* Selected data of model */
             Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
-            /* Paned widgets, where all browser stuff is happening in */
-            Gtk::Box * mp_Paned;
+            /* Browserlist widget, where all browser stuff is happening in */
+            Gtk::Box * mp_List;
             
             /* fortune label on startup */
             Gtk::Label * mp_FortuneLabel;

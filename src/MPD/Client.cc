@@ -143,7 +143,13 @@ namespace MPD
 
     bool Client::playback_pause(void)
     {
-        return this->send_command("pause");
+        if(m_Conn.is_connected())
+        {
+            if(get_status()->get_state() != MPD_STATE_STOP)
+                return this->send_command("pause");
+            else
+                return this->send_command("play");
+        }
     }
 
     //-------------------------------

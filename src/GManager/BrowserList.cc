@@ -16,7 +16,7 @@ namespace GManager
         mp_PluginListview->set_model(m_refTreeModel);
 
         /* Get the paned widget */
-        BUILDER_GET(builder,"main_paned",mp_Paned);
+        BUILDER_GET(builder,"main_paned",mp_List);
 
         /* Get the selection model and connect it to the signal handler */
         m_TreeSelection = mp_PluginListview->get_selection();
@@ -39,8 +39,8 @@ namespace GManager
         fortune_refresh->signal_clicked().connect(sigc::mem_fun(*this,&BrowserList::on_refresh_fortune));
         on_refresh_fortune();        
 
-        mp_Paned->add(*fortune_scrl_window);
-        mp_Paned->show_all();
+        mp_List->add(*fortune_scrl_window);
+        mp_List->show_all();
     }
 
     //----------------------------
@@ -118,7 +118,7 @@ namespace GManager
             Debug("Adding browser: %s",name.c_str());
             Gtk::Widget * element;
 
-            Glib::ListHandle<Gtk::Widget*>  children = mp_Paned->get_children();
+            Glib::ListHandle<Gtk::Widget*>  children = mp_List->get_children();
             for(Glib::ListHandle<Gtk::Widget*>::iterator it=children.begin(); it != children.end(); it++)
             {
                 element = *it;
@@ -126,9 +126,10 @@ namespace GManager
 
             if(element != NULL)
             {
-                mp_Paned->remove(*element);
+                mp_List->remove(*element);
             }
-            mp_Paned->add(*(browser->get_container()));
+
+            mp_List->add(*(browser->get_container()));
         }
         else
         {

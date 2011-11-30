@@ -24,10 +24,13 @@ namespace GManager
 
             void change_browser(AbstractBrowser * browser);
             void on_selection_changed(void);
+
+            /* Fortunes :-) */
             Glib::ustring get_fortune(void);
-    
+
             void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
+            void on_refresh_fortune(void);
 
             //Tree model columns:
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -53,6 +56,9 @@ namespace GManager
 
             /* Paned widgets, where all browser stuff is happening in */
             Gtk::Box * mp_Paned;
+            
+            /* fortune label on startup */
+            Gtk::Label * mp_FortuneLabel;
     };
 }
 

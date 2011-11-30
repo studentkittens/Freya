@@ -2,25 +2,20 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
-#include <cstring>
-
 #define MAX_TIME_BUF 42
 
 namespace GManager
 {
-    Statusbar::Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Statusbar::Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(client)
     {
-
         BUILDER_GET(builder,"statusbar",m_Statusbar);
-        m_Statusbar->set_text("N/C");
 
         mp_Message = NULL;
-        mp_Proxy = &tproxy;
         mp_Lastdata = NULL;
+        mp_Heartbeat = &tproxy;
 
-        client.get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_client_update));
-        client.signal_connection_change().connect(sigc::mem_fun(*this,&Statusbar::on_connection_change));
-        mp_Proxy->get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
+        mp_Heartbeat->get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
     }
 
     /* ------------------ */
@@ -53,15 +48,15 @@ namespace GManager
         {
             mp_Lastdata = &data;
             MPD::Status& status = data.get_status();
-            mp_Proxy->set(status.get_elapsed_time());
+            mp_Heartbeat->set(status.get_elapsed_time());
             switch(status.get_state())
             {
                 case MPD_STATE_PLAY:
-                    mp_Proxy->play();
+                    mp_Heartbeat->play();
                     break;
                 case MPD_STATE_STOP:
                 case MPD_STATE_PAUSE:
-                    mp_Proxy->pause();
+                    mp_Heartbeat->pause();
                     break;
                 case MPD_STATE_UNKNOWN:
                 default:
@@ -91,7 +86,7 @@ namespace GManager
             char elapsed[MAX_TIME_BUF] = {0};
             char totaltm[MAX_TIME_BUF] = {0};
 
-            format_time((unsigned)mp_Proxy->get(),elapsed);
+            format_time((unsigned)mp_Heartbeat->get(),elapsed);
             format_time(status.get_total_time(), totaltm);
 
             /* Free previous message, does nothing on NULL */

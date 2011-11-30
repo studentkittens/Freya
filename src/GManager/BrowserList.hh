@@ -3,15 +3,15 @@
 
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
+#include "AbstractGElement.hh"
 
 namespace GManager
 {
-    class BrowserList 
+    class BrowserList : public AbstractGElement
     {
         public:
 
-            BrowserList(const Glib::RefPtr<Gtk::Builder>& builder);
-            ~BrowserList();
+            BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
             /**
              * @brief Add the browser to the list and manage it
@@ -25,6 +25,9 @@ namespace GManager
             void change_browser(AbstractBrowser * browser);
             void on_selection_changed(void);
             Glib::ustring get_fortune(void);
+    
+            void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
 
             //Tree model columns:
             class ModelColumns : public Gtk::TreeModel::ColumnRecord

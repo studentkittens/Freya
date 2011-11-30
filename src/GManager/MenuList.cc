@@ -4,18 +4,15 @@
 #include "../Utils/Utils.hh"
 
 #define VOLUME_STEP 5
-
 #define VOLUME_LOW 33
 #define VOLUME_MID 66
 
-
 namespace GManager
 {
-    MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder)
+    MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder) :
+        AbstractGElement(client)
     {
         running=false;
-        mp_Client = &client;
-
         BUILDER_GET(builder,"menu_item_connect", menu_connect);
         BUILDER_GET(builder,"menu_item_disconnect", menu_disconnect);
         BUILDER_GET(builder,"menu_item_quit", menu_quit);
@@ -24,24 +21,19 @@ namespace GManager
         BUILDER_GET(builder,"menu_item_stop", menu_stop);
         BUILDER_GET(builder,"menu_item_prev", menu_prev);
         BUILDER_GET(builder,"menu_item_next", menu_next);
-
         BUILDER_GET(builder,"menu_mode_repeat", menu_repeat);
         BUILDER_GET(builder,"menu_mode_single", menu_single);
         BUILDER_GET(builder,"menu_mode_random", menu_random);
         BUILDER_GET(builder,"menu_mode_consume", menu_consume);
-
         BUILDER_GET(builder,"menu_item_vol_up", menu_vol_inc);
         BUILDER_GET(builder,"menu_item_vol_down", menu_vol_dec);
-
-
         BUILDER_GET(builder,"menu_item_log_activate", menu_log);
-
         BUILDER_GET(builder,"menu_about",menu_about);
-
+        
         BUILDER_GET(builder,"playback_menuitem",menu_playback);
         BUILDER_GET(builder,"misc_menuitem",menu_misc);
-
-        BUILDER_ADD(builder,"ui/About.glade");
+       
+         BUILDER_ADD(builder,"ui/About.glade");
         BUILDER_GET_NO_MANAGE(builder,"about_main",window_about);
 
         menu_connect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_connect));
@@ -57,16 +49,14 @@ namespace GManager
         menu_repeat->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_repeat));
         menu_single->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_single));
         menu_consume->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_consume));
-
+        
         menu_vol_inc->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_vol_inc));
         menu_vol_dec->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_vol_dec));
-
         menu_about->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_about));
 
-        mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&MenuList::on_connection_update));
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&MenuList::on_client_update));
-        on_connection_update(mp_Client->is_connected());
+        on_connection_change(mp_Client->is_connected());
     }
+
     //-----------------------------
     MenuList::~MenuList(void)
     {
@@ -117,27 +107,13 @@ namespace GManager
 
     //-----------------------------
 
-    void MenuList::on_connection_update(bool is_connected)
+    void MenuList::on_connection_change(bool is_connected)
     {
         menu_connect->set_sensitive(!is_connected);
         menu_disconnect->set_sensitive(is_connected);
 
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
-
-        NOTIFY_EXTRA();
-        if(is_connected)
-        {
-            NOTIFY_STOCK_ICON("network-idle");
-            NOTIFY_SEND("","Freya conntected!");
-        }
-        else
-        {
-            NOTIFY_STOCK_ICON("network-error");
-            NOTIFY_SEND("","Freya disconnected!");
-        }
-
-
     }
 
     //-----------------------------
@@ -184,49 +160,15 @@ namespace GManager
         window_about->hide();
     }
     //-----------------------------
-    void MenuList::on_menu_vol_inc(void)
-    {
-        unsigned int curVol = mp_Client->get_status()->get_volume();
-        if(curVol>100-VOLUME_STEP)
-        {
-            curVol=100;
-        }
-        else
-        {
-            curVol += VOLUME_STEP;
-        }
-        mp_Client->set_volume(curVol);
-        volume_notify(curVol);
-    }
-    //-----------------------------
     void MenuList::on_menu_vol_dec(void)
     {
-        unsigned int curVol = mp_Client->get_status()->get_volume();
-        if(curVol<VOLUME_STEP)
-        {
-            curVol=0;
-        }
-        else
-        {
-            curVol -= VOLUME_STEP;
-        }
-        mp_Client->set_volume(curVol);
-        volume_notify(curVol);
+        unsigned curVol = mp_Client->get_status()->get_volume();
+        curVol = (curVol < VOLUME_STEP) ? 0 : (curVol - VOLUME_STEP);
     }
     //-----------------------------
-    void MenuList::volume_notify(int curVol)
+    void MenuList::on_menu_vol_inc(void)
     {
-        if(curVol==0)
-            NOTIFY_STOCK_ICON("audio-volume-muted");
-        else if(curVol<=VOLUME_LOW)
-            NOTIFY_STOCK_ICON("audio-volume-low");
-        else if(curVol>VOLUME_LOW && curVol <= VOLUME_MID)
-            NOTIFY_STOCK_ICON("audio-volume-medium");
-        else
-            NOTIFY_STOCK_ICON("audio-volume-high");
-
-        char vol[5];
-        sprintf(vol,"%u%%",curVol);
-        NOTIFY_SEND("Freya Music-Volume",vol);
+        unsigned curVol = mp_Client->get_status()->get_volume();
+        curVol = (curVol > (100-VOLUME_STEP)) ? 100 : (curVol + VOLUME_STEP);
     }
 }

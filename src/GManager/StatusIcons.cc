@@ -4,11 +4,10 @@
 namespace GManager
 {
 
-    Statusicons::Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    Statusicons::Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(client)
     {
         ignore_updates = false;
-        mp_Client = &client;
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&Statusicons::on_client_update));
 
         BUILDER_GET(builder,"icon_random",mp_Random);
         mp_Random->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_random));
@@ -23,7 +22,10 @@ namespace GManager
         mp_Consume->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_consume));
     }
 
-    Statusicons::~Statusicons() { }
+    void Statusicons::on_connection_change(bool is_connected)
+    {
+        // TODO
+    }
 
     void Statusicons::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
     {

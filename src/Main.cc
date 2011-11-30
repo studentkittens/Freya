@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
         GManager::Volumebutton vol_button(client,builder);
-        GManager::BrowserList browser_list(builder);
+        GManager::BrowserList browser_list(client,builder);
         GManager::MenuList menu_list(client,builder);
         GManager::Trayicon tray(client,*main_window.get_window());
 

@@ -6,7 +6,8 @@
 
 namespace GManager
 {
-    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder)
+    BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(client)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -46,7 +47,17 @@ namespace GManager
 
     //----------------------------
 
-    BrowserList::~BrowserList(void) {}
+    void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
+    {
+        //TODO
+    }
+
+    //----------------------------
+
+    void BrowserList::on_connection_change(bool is_connected)
+    {
+        //TODO
+    }
 
     //----------------------------
 
@@ -69,7 +80,7 @@ namespace GManager
                 retv = Glib::Markup::escape_text(fortune_buf);
                 retv.insert(0,"<span font='15.0' weight='light'>");
                 retv.append("</span>");
-                                                 
+
             }
             pclose(pipe);
         }

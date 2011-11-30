@@ -4,9 +4,11 @@
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
 #include "../Notify/Notify.hh"
+#include "AbstractGElement.hh"
+
 namespace GManager
 {
-    class MenuList
+    class MenuList : public AbstractGElement
     {
         public:
 
@@ -15,7 +17,7 @@ namespace GManager
 
         private:
 
-            void on_connection_update(bool is_connected);
+            void on_connection_change(bool is_connected);
             void on_client_update(enum mpd_idle event, MPD::NotifyData &data);
 
             void on_menu_connect(void);
@@ -37,9 +39,7 @@ namespace GManager
 
             void on_menu_about(void);
 
-            void volume_notify(int curVol);
             bool running;
-            MPD::Client * mp_Client;
 
             /* Widgets */
             Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,

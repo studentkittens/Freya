@@ -34,6 +34,8 @@ namespace Browser
         mp_DelButton->signal_clicked().connect(sigc::mem_fun(*this,&PlaylistManager::on_del_clicked));
         mp_Client->get_notify().connect(sigc::mem_fun(*this,&PlaylistManager::on_client_change));
 
+        mp_Popup = new PlaylistManagerPopup(*mp_TreeView);
+
         mp_Client->fill_playlists(*this);
         show_all();
     }
@@ -47,7 +49,10 @@ namespace Browser
 
     /* ----------------------- */
 
-    PlaylistManager::~PlaylistManager(void) {}
+    PlaylistManager::~PlaylistManager(void)
+    {
+        delete mp_Popup;
+    }
 
     /* ----------------------- */
 
@@ -60,13 +65,8 @@ namespace Browser
         row[m_Columns.m_col_name]  = playlist->get_path();
         row[m_Columns.m_col_num_songs] = 42;
 
-        // TODO: Do a util func for this. -> c1
-        char timebuf[512] = "Last modified ";
-        time_t raw_time = playlist->get_last_modified();
-        struct tm * timestamp = localtime(&raw_time);
-        strftime(timebuf,512,"%H:%M:%S",timestamp);
-
-        row[m_Columns.m_col_last_modfied] = Glib::ustring("Last modified: ") + timebuf; 
+        Glib::ustring timestamp = Utils::seconds_to_timestamp(playlist->get_last_modified());
+        row[m_Columns.m_col_last_modfied] = Glib::ustring("Last modified: ") + timestamp; 
     }
     
     /* ----------------------- */

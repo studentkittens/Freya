@@ -35,9 +35,12 @@ namespace GManager
         BUILDER_GET(builder,"fortune_label",fortune_label);
 
         Glib::ustring fortune = get_fortune();
-        fortune_label->set_markup(fortune);
+        if(!fortune.empty())
+        {
+            fortune_label->set_markup(fortune);
+        }
  
-        mp_Paned->add2(*fortune_scrl_window);
+        mp_Paned->add(*fortune_scrl_window);
         mp_Paned->show_all();
     }
 
@@ -50,7 +53,7 @@ namespace GManager
     Glib::ustring BrowserList::get_fortune(void)
     {
         FILE * pipe = NULL;
-        const char * const command = "fortune -s -n 350";
+        const char * const command = "fortune -s -n 340";
         Glib::ustring retv = "";
 
         if((pipe = popen(command,"r")))
@@ -64,7 +67,7 @@ namespace GManager
                     last_newline[0] = 0;
 
                 retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<span font='16.5' weight='light'>");
+                retv.insert(0,"<span font='15.0' weight='light'>");
                 retv.append("</span>");
                                                  
             }
@@ -93,12 +96,19 @@ namespace GManager
         {
             Glib::ustring name = browser->get_name();
             Debug("Adding browser: %s",name.c_str());
-            Gtk::Widget * element = mp_Paned->get_child2();
+            Gtk::Widget * element;
+
+            Glib::ListHandle<Gtk::Widget*>  children = mp_Paned->get_children();
+            for(Glib::ListHandle<Gtk::Widget*>::iterator it=children.begin(); it != children.end(); it++)
+            {
+                element = *it;
+            }
+
             if(element != NULL)
             {
                 mp_Paned->remove(*element);
             }
-            mp_Paned->add2(*(browser->get_container()));
+            mp_Paned->add(*(browser->get_container()));
         }
         else
         {

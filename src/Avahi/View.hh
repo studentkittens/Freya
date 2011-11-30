@@ -9,7 +9,6 @@ namespace Avahi
     {
         public:
             View(void);
-            virtual ~View(void);
 
             void server_append(const char * ip, const char * hostname, const char * name, unsigned int port);
             void server_delete(const char * name);

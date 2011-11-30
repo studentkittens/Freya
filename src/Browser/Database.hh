@@ -6,6 +6,7 @@
 #include "../AbstractItemlist.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Directory.hh"
+#include "DatabasePopup.hh"
 
 namespace Browser
 {
@@ -27,6 +28,7 @@ namespace Browser
             void set_current_path(const char * path);
             void go_one_up(void);
             void add_item(const char * path, bool is_file);
+            bool on_button_press_event(GdkEventButton* event);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
@@ -54,6 +56,9 @@ namespace Browser
 
             /* The current path shown (NULL for root) */
             std::string mp_Path;
+
+            /* Popup menu */
+            DatabasePopup * mp_Popup;
     };
 }
 

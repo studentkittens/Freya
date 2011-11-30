@@ -8,7 +8,7 @@ namespace Browser
         AbstractBrowser("Database",Gtk::Stock::DIRECTORY)
     {
         mp_Client = &client;
-        BUILDER_ADD(builder,"ui/DatabaseBrowser.ui");
+        BUILDER_ADD(builder,"ui/Database.glade");
         BUILDER_GET(builder,"filebrowser_mainbox",mp_ParentBox);
         BUILDER_GET(builder,"filebrowser_iconview",mp_IView);
         BUILDER_GET(builder,"filebrowser_home",mp_HomeButton);
@@ -30,12 +30,18 @@ namespace Browser
         mp_IView->signal_item_activated().connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_item_activated));
 
+        /* Connect popup menu */
+        mp_Popup = new DatabasePopup(*mp_IView); 
+        
         set_current_path("");
     }
 
     /*------------------------------------------------*/
 
-    DatabaseBrowser::~DatabaseBrowser(void) {}
+    DatabaseBrowser::~DatabaseBrowser(void) 
+    {
+        delete mp_Popup;
+    }
 
     /*------------------------------------------------*/
 

@@ -12,7 +12,7 @@
 #include "GManager/Heartbeat.hh"
 #include "GManager/MenuList.hh"
 
-#include "Browser/PlaylistTreeView.hh"
+#include "Browser/Queue.hh"
 #include "Browser/PlaylistManager.hh"
 #include "Browser/Database.hh"
 #include "Browser/StatBrowser.hh"
@@ -49,21 +49,19 @@ class DisconnectManager
                 Info("Got reconnected - unlocking gui");
                 mp_Main_Paned->set_sensitive(true);
                 mp_Top_Box->set_sensitive(true);
-                //mp_Window->set_sensitive(true);
             }
             else
             {
                 Info("Got disconnected - locking gui");
                 mp_Main_Paned->set_sensitive(false);
                 mp_Top_Box->set_sensitive(false);
-                //mp_Window->set_sensitive(false);
             }
         }
 
         MPD::Client * mp_Client;
         Gtk::Window * mp_Window;
         Gtk::Box * mp_Top_Box;
-        Gtk::Paned * mp_Main_Paned;
+        Gtk::Box * mp_Main_Paned;
 };
 
 
@@ -76,49 +74,45 @@ int main(int argc, char *argv[])
         /* Instance the client */
         MPD::Client client;
 
-        if(client.is_connected())
-        {
-            /* Get the glade file */
-            Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
+        /* Get the glade file */
+        Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
 
-            FreyaWindow main_window(builder);
+        FreyaWindow main_window(builder);
 
-            /* Instanmce gui elements */
-            GManager::Heartbeat proxy(client);
-            GManager::Timeslide timeslide(proxy,client,builder);
-            GManager::Statusbar statusbar(proxy,client,builder);
-            GManager::PlaybackButtons buttons(client,builder);
-            GManager::TitleLabel title_label(client,builder);
-            GManager::Statusicons status_icons(client,builder);
-            GManager::Volumebutton vol_button(client,builder);
-            GManager::BrowserList browser_list(builder);
-            GManager::MenuList menu_list(client,builder);
-            GManager::Trayicon tray(client,*main_window.get_window());
+        /* Instanmce gui elements */
+        GManager::Heartbeat proxy(client);
+        GManager::Timeslide timeslide(proxy,client,builder);
+        GManager::Statusbar statusbar(proxy,client,builder);
+        GManager::PlaybackButtons buttons(client,builder);
+        GManager::TitleLabel title_label(client,builder);
+        GManager::Statusicons status_icons(client,builder);
+        GManager::Volumebutton vol_button(client,builder);
+        GManager::BrowserList browser_list(builder);
+        GManager::MenuList menu_list(client,builder);
+        GManager::Trayicon tray(client,*main_window.get_window());
 
-            /* Instance browser  */
-            Browser::PlaylistTreeView queue_browser(client);
-            browser_list.add(queue_browser);
+        /* Instance browser  */
+        Browser::Queue queue_browser(client,builder);
+        browser_list.add(queue_browser);
 
-            Browser::PlaylistManager playlists_browser(client,builder);
-            browser_list.add(playlists_browser);
+        Browser::PlaylistManager playlists_browser(client,builder);
+        browser_list.add(playlists_browser);
 
-            Browser::DatabaseBrowser db_browser(client,builder);
-            browser_list.add(db_browser);
+        Browser::DatabaseBrowser db_browser(client,builder);
+        browser_list.add(db_browser);
 
-            Browser::StatBrowser stat_browser(client,builder);
-            browser_list.add(stat_browser);
+        Browser::StatBrowser stat_browser(client,builder);
+        browser_list.add(stat_browser);
 
-            Browser::Settings settings_browser(builder,&tray);
-            browser_list.add(settings_browser);
+        Browser::Settings settings_browser(builder,&tray);
+        browser_list.add(settings_browser);
 
-            /* Send a good morning to all widgets */
-            client.force_update();
+        /* Send a good morning to all widgets */
+        client.force_update();
 
-            DisconnectManager(client,main_window.get_window(),builder);
-            main_window.get_window()->show();
-            kit.run();
-        }
-        else throw "Cannot connect to MPD Server.";
+        DisconnectManager(client,main_window.get_window(),builder);
+        main_window.get_window()->show();
+        kit.run();
     }
     catch(const Gtk::BuilderError& e)
     {

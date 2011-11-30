@@ -14,7 +14,7 @@ namespace Browser
         "  </popup>"
         "</ui>";
 
-    DatabasePopup::DatabasePopup(Gtk::Widget& to_register) : BasePopup(to_register,ui_info)
+    DatabasePopup::DatabasePopup(Gtk::Widget& to_register) : BasePopup(&to_register,ui_info)
     {
         menu_add_item(m_ActionAdd,"db_add","Add","Add to Queue",Gtk::Stock::ADD);
         menu_add_item(m_ActionAddToPL,"db_add_to_playlist","Add to","Add to a certain playlist",Gtk::Stock::GOTO_LAST);

@@ -5,11 +5,10 @@
 namespace GManager
 {
     PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(instance), 
         play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_BUTTON), 
         pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_BUTTON)
     {
-        mp_Client = &instance;
-
         BUILDER_GET(builder,"stop_button",stop_button);
         BUILDER_GET(builder,"pause_button",pause_button);
         BUILDER_GET(builder,"prev_button",prev_button);
@@ -19,13 +18,7 @@ namespace GManager
         pause_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_pause));
         prev_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_prev));
         next_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_next));
-
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&PlaybackButtons::on_client_update));
     }
-
-    //----------------------------
-
-    PlaybackButtons::~PlaybackButtons(void) {}
 
     //----------------------------
 
@@ -64,4 +57,8 @@ namespace GManager
             pause_button->set_image((data.get_status().get_state() == MPD_STATE_PLAY) ? pause_icon : play_icon);
         }
     }
+    
+    //----------------------------
+
+    void PlaybackButtons::on_connection_change(bool is_connected) { /* Empty. */ }
 }

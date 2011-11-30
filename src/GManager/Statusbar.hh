@@ -5,10 +5,11 @@
 
 #include "../MPD/Client.hh"
 #include "Heartbeat.hh"
+#include "AbstractGElement.hh"
 
 namespace GManager
 {
-    class Statusbar
+    class Statusbar : public AbstractGElement
     {
         public:
 
@@ -24,7 +25,7 @@ namespace GManager
 
             MPD::NotifyData * mp_Lastdata;
             Gtk::Label * m_Statusbar;
-            Heartbeat * mp_Proxy;
+            Heartbeat * mp_Heartbeat;
             gchar * mp_Message; 
     };
 }

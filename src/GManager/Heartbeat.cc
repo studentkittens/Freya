@@ -1,17 +1,19 @@
 #include "Heartbeat.hh"
 
-#define INTERVAL 500//ms
+#define INTERVAL 500/*ms*/
 #define STEPSIZE (INTERVAL/1000.0)
 
 namespace GManager
 {
-    Heartbeat::Heartbeat(MPD::Client& client) : signal_proxy()
+    Heartbeat::Heartbeat(MPD::Client& client) :
+        AbstractGElement(client),
+        signal_proxy()
     {
         timer = 0.0;
         count_up = true;
-        
+    
+        /* Timeout signal */    
         Glib::signal_timeout().connect(sigc::mem_fun(*this,&Heartbeat::on_interval),INTERVAL);
-        client.signal_connection_change().connect(sigc::mem_fun(*this,&Heartbeat::on_connection_change));
     }
 
     // -------------
@@ -79,5 +81,10 @@ namespace GManager
             play();
         else
             pause();
+    }
+            
+    void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    {
+        // TODO
     }
 }

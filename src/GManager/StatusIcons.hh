@@ -3,19 +3,19 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "AbstractGElement.hh"
 
 namespace GManager
 {
-    class Statusicons
+    class Statusicons : public AbstractGElement
     {
         public:
-
             Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-            ~Statusicons();
 
         private:
-
             void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
+
             void on_clicked_random(void);
             void on_clicked_single(void);
             void on_clicked_consume(void);
@@ -24,7 +24,6 @@ namespace GManager
 
             /* Widgets */
             Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
-            MPD::Client * mp_Client;
 
             /* set_active() emits a signal, this would cause infinite loops of updating,
              * ignore signals while recv. updates from client therefore. */

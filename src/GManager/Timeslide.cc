@@ -7,9 +7,9 @@
 namespace GManager
 {
     Timeslide::Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(client),
         m_Timeguard()
     {
-        mp_Client = &client;
         mp_Proxy  = &tproxy;
         ignore_signal = false;
 
@@ -18,13 +18,7 @@ namespace GManager
 
         m_Timeslide->signal_value_changed().connect(sigc::mem_fun(*this,&Timeslide::on_user_action));
         tproxy.get_notify().connect(sigc::mem_fun(*this,&Timeslide::tick));
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&Timeslide::on_client_update));
-        
     }
-
-    /* ------------------ */
-
-    Timeslide::~Timeslide(void) {}
 
     /* ------------------ */
 
@@ -51,6 +45,13 @@ namespace GManager
             mp_Proxy->set(new_value);
             m_Timeguard.reset();
         }
+    }
+
+    /* ------------------ */
+    
+    void Timeslide::on_connection_change(bool is_connected)
+    {
+        // TODO
     }
 
     /* ------------------ */

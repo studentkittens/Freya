@@ -6,7 +6,8 @@
 
 namespace GManager
 {
-    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder)
+    BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(client)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -27,27 +28,46 @@ namespace GManager
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
 
-        /* Setup startscreen */
+        /* Setup startscreen (fortunes) */
         Gtk::ScrolledWindow * fortune_scrl_window = NULL;
-        Gtk::Label * fortune_label = NULL;
+        Gtk::Button * fortune_refresh = NULL;
         BUILDER_ADD(builder,"ui/Startscreen.glade");
         BUILDER_GET(builder,"fortune_scrolledwindow",fortune_scrl_window);
-        BUILDER_GET(builder,"fortune_label",fortune_label);
+        BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
+        BUILDER_GET(builder,"fortune_refresh",fortune_refresh);
 
-        Glib::ustring fortune = get_fortune();
-        if(!fortune.empty())
-        {
-            fortune_label->set_markup(fortune);
-        }
- 
+        fortune_refresh->signal_clicked().connect(sigc::mem_fun(*this,&BrowserList::on_refresh_fortune));
+        on_refresh_fortune();        
+
         mp_Paned->add(*fortune_scrl_window);
         mp_Paned->show_all();
     }
 
     //----------------------------
 
-    BrowserList::~BrowserList(void) {}
+    void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
+    {
+        //TODO
+    }
 
+    //----------------------------
+
+    void BrowserList::on_connection_change(bool is_connected)
+    {
+        //TODO
+    }
+
+    //----------------------------
+    
+    void BrowserList::on_refresh_fortune(void)
+    {
+        Glib::ustring fortune = get_fortune();
+        if(!fortune.empty())
+        {
+            mp_FortuneLabel->set_markup(fortune);
+        }
+    }
+    
     //----------------------------
 
     Glib::ustring BrowserList::get_fortune(void)
@@ -69,7 +89,7 @@ namespace GManager
                 retv = Glib::Markup::escape_text(fortune_buf);
                 retv.insert(0,"<span font='15.0' weight='light'>");
                 retv.append("</span>");
-                                                 
+
             }
             pclose(pipe);
         }

@@ -14,7 +14,7 @@ namespace Browser
         "  </popup>"
         "</ui>";
 
-    PlaylistManagerPopup::PlaylistManagerPopup(Gtk::Widget& to_register) : BasePopup(to_register,pl_ui_info)
+    PlaylistManagerPopup::PlaylistManagerPopup(Gtk::Widget& to_register) : BasePopup(&to_register,pl_ui_info)
     {
         menu_add_item(m_ActionAdd,"pl_add","Append","Append to Queue",Gtk::Stock::ADD);
         menu_add_item(m_ActionRepl,"pl_replace","Replace","Replace Queue contents",Gtk::Stock::JUMP_TO);

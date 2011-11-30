@@ -49,7 +49,6 @@
         <property name="has_frame">False</property>
         <property name="invisible_char">●</property>
         <property name="shadow_type">none</property>
-        <property name="overwrite_mode">True</property>
         <property name="progress_fraction">2.2351741811588166e-10</property>
         <property name="primary_icon_stock">gtk-find</property>
         <property name="secondary_icon_stock">gtk-clear</property>

@@ -3,20 +3,21 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "AbstractGElement.hh"
 
 namespace GManager
 {
-    class PlaybackButtons
+    class PlaybackButtons : public AbstractGElement
     {
         public:
-
             PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-            ~PlaybackButtons();
 
         private:
-
+            /* Client Signals */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
 
+            /* GTK Signals */
             void on_button_stop(void);
             void on_button_pause(void);
             void on_button_next(void);
@@ -24,10 +25,7 @@ namespace GManager
 
             /* Widgets */
             Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
-
             Gtk::Image play_icon, pause_icon;
-
-            MPD::Client * mp_Client;
     };
 }
 

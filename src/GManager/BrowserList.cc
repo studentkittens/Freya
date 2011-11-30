@@ -27,19 +27,17 @@ namespace GManager
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
 
-        /* Setup startscreen */
+        /* Setup startscreen (fortunes) */
         Gtk::ScrolledWindow * fortune_scrl_window = NULL;
-        Gtk::Label * fortune_label = NULL;
+        Gtk::Button * fortune_refresh = NULL;
         BUILDER_ADD(builder,"ui/Startscreen.glade");
         BUILDER_GET(builder,"fortune_scrolledwindow",fortune_scrl_window);
-        BUILDER_GET(builder,"fortune_label",fortune_label);
+        BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
+        BUILDER_GET(builder,"fortune_refresh",fortune_refresh);
 
-        Glib::ustring fortune = get_fortune();
-        if(!fortune.empty())
-        {
-            fortune_label->set_markup(fortune);
-        }
- 
+        fortune_refresh->signal_clicked().connect(sigc::mem_fun(*this,&BrowserList::on_refresh_fortune));
+        on_refresh_fortune();        
+
         mp_Paned->add(*fortune_scrl_window);
         mp_Paned->show_all();
     }
@@ -48,6 +46,17 @@ namespace GManager
 
     BrowserList::~BrowserList(void) {}
 
+    //----------------------------
+    
+    void BrowserList::on_refresh_fortune(void)
+    {
+        Glib::ustring fortune = get_fortune();
+        if(!fortune.empty())
+        {
+            mp_FortuneLabel->set_markup(fortune);
+        }
+    }
+    
     //----------------------------
 
     Glib::ustring BrowserList::get_fortune(void)

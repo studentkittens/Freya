@@ -1,5 +1,4 @@
 #include "MPD/Client.hh"
-
 #include "FreyaWindow.hh"
 
 #include "GManager/PlaybackButtons.hh"
@@ -11,6 +10,9 @@
 #include "GManager/Volumebutton.hh"
 #include "GManager/Heartbeat.hh"
 #include "GManager/MenuList.hh"
+#include "GManager/NotifyManager.hh"
+#include "GManager/Trayicon.hh"
+#include "GManager/DisconnectManager.hh"
 
 #include "Browser/Queue.hh"
 #include "Browser/PlaylistManager.hh"
@@ -19,51 +21,9 @@
 #include "Browser/Settings.hh"
 #include "Log/Writer.hh"
 
-#include "GManager/Trayicon.hh"
-
 #include "Utils/Utils.hh"
 
 using namespace std;
-
-
-class DisconnectManager
-{
-    public:
-        DisconnectManager(MPD::Client& client, Gtk::Window * main_window, const Glib::RefPtr<Gtk::Builder> &builder)
-        {
-            mp_Window = main_window;
-            mp_Client = &client;
-            mp_Client->signal_connection_change().connect(sigc::mem_fun(*this,&DisconnectManager::on_connection_change));
-            BUILDER_GET(builder,"main_paned",mp_Main_Paned);
-            BUILDER_GET(builder,"top_box",mp_Top_Box);
-        }
-
-        virtual ~DisconnectManager(void) {}
-
-    private:
-
-        void on_connection_change(bool is_connected)
-        {
-            if(is_connected)
-            {
-                Info("Got reconnected - unlocking gui");
-                mp_Main_Paned->set_sensitive(true);
-                mp_Top_Box->set_sensitive(true);
-            }
-            else
-            {
-                Info("Got disconnected - locking gui");
-                mp_Main_Paned->set_sensitive(false);
-                mp_Top_Box->set_sensitive(false);
-            }
-        }
-
-        MPD::Client * mp_Client;
-        Gtk::Window * mp_Window;
-        Gtk::Box * mp_Top_Box;
-        Gtk::Box * mp_Main_Paned;
-};
-
 
 int main(int argc, char *argv[])
 {
@@ -90,6 +50,7 @@ int main(int argc, char *argv[])
         GManager::BrowserList browser_list(client,builder);
         GManager::MenuList menu_list(client,builder);
         GManager::Trayicon tray(client,*main_window.get_window());
+        GManager::NotifyManager notify_mgr(client);
 
         /* Instance browser  */
         Browser::Queue queue_browser(client,builder);
@@ -110,7 +71,9 @@ int main(int argc, char *argv[])
         /* Send a good morning to all widgets */
         client.force_update();
 
-        DisconnectManager(client,main_window.get_window(),builder);
+        /* Instance after being connected (usually) */
+        GManager::DisconnectManager(client,main_window.get_window(),builder);
+
         main_window.get_window()->show();
         kit.run();
     }

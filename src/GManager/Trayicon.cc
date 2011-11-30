@@ -97,14 +97,29 @@ namespace GManager
     
     void Trayicon::on_connection_change(bool is_connected)
     {
-        // TODO
+        /*
+        m_ActionNext->set_sensitive(is_connected);
+        m_ActionPrev->set_sensitive(is_connected);
+        m_ActionStop->set_sensitive(is_connected);
+        m_ActionPause->set_sensitive(is_connected);
+        */
     }
     
     //---------------------------
             
     void Trayicon::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        // TODO
+        MPD::Status& status = data.get_status();
+        if(status.get_state() == MPD_STATE_PLAY)
+        {
+            m_ActionPause->set_stock_id(Gtk::Stock::MEDIA_PAUSE);
+            m_ActionPause->set_label("Pause");
+        }
+        else
+        {
+            m_ActionPause->set_stock_id(Gtk::Stock::MEDIA_PLAY);
+            m_ActionPause->set_label("Play");
+        }
     }
 
     //---------------------------

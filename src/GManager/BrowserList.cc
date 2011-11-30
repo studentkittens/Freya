@@ -47,14 +47,14 @@ namespace GManager
 
     void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
     {
-        //TODO
+        //TODO: 
     }
 
     //----------------------------
 
     void BrowserList::on_connection_change(bool is_connected)
     {
-        //TODO
+        //TODO: Jump to settings tab.
     }
 
     //----------------------------
@@ -76,6 +76,10 @@ namespace GManager
         const char * const command = "fortune -s -n 340";
         Glib::ustring retv = "";
 
+        /* Open a pipe to the fortune command and read from it,
+         * if it isn't installed we will get a string containing
+         * "fortune:" - in this case the old text stays.
+         */
         if((pipe = popen(command,"r")))
         {
             char fortune_buf[FORTUNE_BUF_SIZE];
@@ -103,6 +107,8 @@ namespace GManager
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = browser.get_name();
         row[m_Columns.m_col_browser] = &browser;
+
+        /* Render the correct icon */
         row[m_Columns.m_col_icon] = mp_PluginListview->render_icon_pixbuf(
                 browser.get_icon_stock_id(),
                 Gtk::ICON_SIZE_DND); 
@@ -116,14 +122,10 @@ namespace GManager
         {
             Glib::ustring name = browser->get_name();
             Debug("Adding browser: %s",name.c_str());
-            Gtk::Widget * element;
-
-            Glib::ListHandle<Gtk::Widget*>  children = mp_List->get_children();
-            for(Glib::ListHandle<Gtk::Widget*>::iterator it=children.begin(); it != children.end(); it++)
-            {
-                element = *it;
-            }
-
+            
+            /* Get last element of box. Eddy...Duuuude!
+             * What did you do earlier here?! */        
+            Gtk::Widget* element = mp_List->get_children().back();
             if(element != NULL)
             {
                 mp_List->remove(*element);

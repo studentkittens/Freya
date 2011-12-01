@@ -31,6 +31,14 @@ namespace Browser
     
     /*-------------------------------*/
 
+    Glib::SignalProxy0<void> BasePopup::get_action(Glib::ustring name)
+    {
+        Glib::RefPtr<Gtk::Action> action = m_refActionGroup->get_action(name);
+        return action->signal_activate();
+    }
+
+    /*-------------------------------*/
+
     /**
      * @brief Call this to add the actual action
      *
@@ -49,7 +57,7 @@ namespace Browser
         action = Gtk::Action::create(item_name,icon,item_label,item_tooltip);
         m_refActionGroup->add(action);
     }
-    
+
     /*-------------------------------*/
 
     /**
@@ -63,6 +71,6 @@ namespace Browser
         m_refUIManager->add_ui_from_string(*m_UiDefinition);
         mp_Popup = (Gtk::Menu*)(m_refUIManager->get_widget("/" + menu_name));
     }
-    
+
     /*-------------------------------*/
 }

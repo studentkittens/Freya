@@ -12,6 +12,15 @@ namespace Browser
             BasePopup(Gtk::Widget * to_register, Glib::ustring& ui_definition);
             bool menu_popup(GdkEventButton * event);
 
+            /**
+             * @brief Get a signal proxy of a certain Gtk::Action in the menu
+             *
+             * @param name The name of the menu.
+             *
+             * @return a signal proxy, on which you can call connect()
+             */
+            Glib::SignalProxy0<void> get_action(Glib::ustring name);
+
         protected:
 
             Glib::RefPtr<Gtk::UIManager> m_refUIManager;

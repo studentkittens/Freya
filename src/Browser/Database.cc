@@ -32,8 +32,15 @@ namespace Browser
 
         /* Connect popup menu */
         mp_Popup = new DatabasePopup(*mp_IView); 
-        
+        mp_Popup->get_action("db_add").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_clicked));
+
         set_current_path("");
+    }
+    
+    /*------------------------------------------------*/
+
+    void DatabaseBrowser::on_menu_db_clicked(void)
+    {
     }
 
     /*------------------------------------------------*/
@@ -51,13 +58,13 @@ namespace Browser
     }
 
     /*------------------------------------------------*/
-    
+
     void DatabaseBrowser::add_directory(MPD::Directory * pDir)
     {
         g_assert(pDir);
         add_item(pDir->get_path(),false);
     }
-    
+
     /*------------------------------------------------*/
 
     void DatabaseBrowser::add_song_file(MPD::Song * pSong)
@@ -65,7 +72,7 @@ namespace Browser
         g_assert(pSong);
         add_item(pSong->get_uri(),true);
     }
-    
+
     /*------------------------------------------------*/
 
     void DatabaseBrowser::add_item(const char * path, bool is_file)

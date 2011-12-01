@@ -11,7 +11,13 @@ namespace Browser {
         public:
             StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&);
             ~StatBrowser ();
+            
 
+            /**
+             * @brief simple getter function for gtk widget
+             *
+             * @return gtk widget ptr to _this_ container widget
+             */
             Gtk::Widget * get_container(void);
 
         private:

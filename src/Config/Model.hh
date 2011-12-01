@@ -14,15 +14,46 @@ namespace Config
         Model ();
         ~Model ();
 
-        /*loader and saver funcs for xml file*/
+
+        /**
+         * @brief loads current configuration file from hard disk as fileDoc xmlDocPtr
+         *
+         * @param char*,  path to config.xml file as char ptr
+         */
         void load(char*);
+
+
+        /**
+         * @brief loads default config as defaultDoc xmlDocPtr
+         */
         void loadDefaultDoc();
+        
+        /**
+         * @brief saves _current_ config to hard disk (config.xml)
+         */
         void save();
-        /*save as different filename eg. config.xml.bak*/
+        
+        /**
+         * @brief alternative save function to write given xmlDoc to a given path
+         *
+         * @param char*, alternative path for saving config file
+         * @param xmlDocPtr, alternative ptr to xmlDoc you want to save
+         */
         void save(char*, xmlDocPtr);
 
-        /*xml document getter ieeeeee*/
+
+        /**
+         * @brief simple getter for xmlDocPtr
+         *
+         * @return xmlDocPtr to config file
+         */
         xmlDocPtr getDocPtr();
+
+        /**
+         * @brief simple getter for _default_ xmlDocPtr
+         *
+         * @return xmlDocPtr to _default_ config
+         */
         xmlDocPtr getDefaultDocPtr();
 
     private:

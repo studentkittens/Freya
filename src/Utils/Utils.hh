@@ -26,7 +26,24 @@
     }  
 namespace Utils
 {
+
+    /**
+     * @brief converts a given time in seconds to a duration ustring
+     *
+     * @param long, duration in seconds to convert
+     *
+     * @return duration as ustring, e.g. "4 hours 2 minutes 0 seconds"
+     */
     Glib::ustring seconds_to_duration(unsigned long);
+
+    
+    /**
+     * @brief converts a given time in seconds to a "timestamp"
+     *
+     * @param long, duration in seconds to convert
+     *
+     * @return date as ustring, e.g. 2011-04-02
+     */
     Glib::ustring seconds_to_timestamp(const long);
 }
 #endif       

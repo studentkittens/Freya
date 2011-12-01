@@ -21,6 +21,8 @@ namespace Browser
             void add_directory(MPD::Directory * pDir);
             void add_song_file(MPD::Song * pSong);
 
+            void on_menu_db_clicked(void);
+
         private:
 
             void on_item_activated(const Gtk::TreeModel::Path& path);

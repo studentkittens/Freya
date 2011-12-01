@@ -3,6 +3,9 @@
 *.a
 bin/
 
+# Ignore Testing/
+Testing/
+
 # Ignore CMake output
 MakeCache.txt
 CMakeCache.txt

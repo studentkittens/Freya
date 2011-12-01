@@ -110,11 +110,11 @@ namespace MPD
     uint32_t Status::get_audio_sample_rate(void)
     {
         const mpd_audio_format * fmt = mpd_status_get_audio_format(m_Status);
-        unsigned sample_rate = (fmt == NULL) ? -1 : fmt->sample_rate;
+        uint32_t sample_rate = (fmt == NULL) ? -1 : fmt->sample_rate;
 
         /* This is a poor fix for the obviously wrong return values from mpd 
          * Returns INT_MAX (1 << 32) sometimes for some reason. */
-        return (sample_rate > (unsigned)(1 << 31)) ? 44100 : sample_rate;
+        return (sample_rate > (uint32_t)(1 << 31)) ? 44100 : sample_rate;
     }
 
     uint8_t Status::get_audio_bits(void)

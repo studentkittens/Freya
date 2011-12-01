@@ -2,10 +2,13 @@
 
 namespace Browser
 {
-    BasePopup::BasePopup(Gtk::Widget& to_register, Glib::ustring& ui_definition)
+    BasePopup::BasePopup(Gtk::Widget * to_register, Glib::ustring& ui_definition)
     {
-        /* Connect to rightclick event */
-        to_register.signal_button_press_event().connect(sigc::mem_fun(*this,&BasePopup::menu_popup),false);
+        if(to_register != NULL)
+        {
+            /* Connect to rightclick event */
+            to_register->signal_button_press_event().connect(sigc::mem_fun(*this,&BasePopup::menu_popup),false);
+        }
 
         m_UiDefinition = &ui_definition;
         m_refUIManager = Gtk::UIManager::create();

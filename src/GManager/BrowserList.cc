@@ -6,7 +6,8 @@
 
 namespace GManager
 {
-    BrowserList::BrowserList(const Glib::RefPtr<Gtk::Builder>& builder)
+    BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+        AbstractGElement(client)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -15,7 +16,7 @@ namespace GManager
         mp_PluginListview->set_model(m_refTreeModel);
 
         /* Get the paned widget */
-        BUILDER_GET(builder,"main_paned",mp_Paned);
+        BUILDER_GET(builder,"main_paned",mp_List);
 
         /* Get the selection model and connect it to the signal handler */
         m_TreeSelection = mp_PluginListview->get_selection();
@@ -27,27 +28,46 @@ namespace GManager
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
 
-        /* Setup startscreen */
+        /* Setup startscreen (fortunes) */
         Gtk::ScrolledWindow * fortune_scrl_window = NULL;
-        Gtk::Label * fortune_label = NULL;
+        Gtk::Button * fortune_refresh = NULL;
         BUILDER_ADD(builder,"ui/Startscreen.glade");
         BUILDER_GET(builder,"fortune_scrolledwindow",fortune_scrl_window);
-        BUILDER_GET(builder,"fortune_label",fortune_label);
+        BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
+        BUILDER_GET(builder,"fortune_refresh",fortune_refresh);
 
-        Glib::ustring fortune = get_fortune();
-        if(!fortune.empty())
-        {
-            fortune_label->set_markup(fortune);
-        }
- 
-        mp_Paned->add(*fortune_scrl_window);
-        mp_Paned->show_all();
+        fortune_refresh->signal_clicked().connect(sigc::mem_fun(*this,&BrowserList::on_refresh_fortune));
+        on_refresh_fortune();        
+
+        mp_List->add(*fortune_scrl_window);
+        mp_List->show_all();
     }
 
     //----------------------------
 
-    BrowserList::~BrowserList(void) {}
+    void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
+    {
+        //TODO: 
+    }
 
+    //----------------------------
+
+    void BrowserList::on_connection_change(bool is_connected)
+    {
+        //TODO: Jump to settings tab.
+    }
+
+    //----------------------------
+    
+    void BrowserList::on_refresh_fortune(void)
+    {
+        Glib::ustring fortune = get_fortune();
+        if(!fortune.empty())
+        {
+            mp_FortuneLabel->set_markup(fortune);
+        }
+    }
+    
     //----------------------------
 
     Glib::ustring BrowserList::get_fortune(void)
@@ -56,6 +76,10 @@ namespace GManager
         const char * const command = "fortune -s -n 340";
         Glib::ustring retv = "";
 
+        /* Open a pipe to the fortune command and read from it,
+         * if it isn't installed we will get a string containing
+         * "fortune:" - in this case the old text stays.
+         */
         if((pipe = popen(command,"r")))
         {
             char fortune_buf[FORTUNE_BUF_SIZE];
@@ -69,7 +93,7 @@ namespace GManager
                 retv = Glib::Markup::escape_text(fortune_buf);
                 retv.insert(0,"<span font='15.0' weight='light'>");
                 retv.append("</span>");
-                                                 
+
             }
             pclose(pipe);
         }
@@ -83,6 +107,8 @@ namespace GManager
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_name] = browser.get_name();
         row[m_Columns.m_col_browser] = &browser;
+
+        /* Render the correct icon */
         row[m_Columns.m_col_icon] = mp_PluginListview->render_icon_pixbuf(
                 browser.get_icon_stock_id(),
                 Gtk::ICON_SIZE_DND); 
@@ -96,19 +122,16 @@ namespace GManager
         {
             Glib::ustring name = browser->get_name();
             Debug("Adding browser: %s",name.c_str());
-            Gtk::Widget * element;
-
-            Glib::ListHandle<Gtk::Widget*>  children = mp_Paned->get_children();
-            for(Glib::ListHandle<Gtk::Widget*>::iterator it=children.begin(); it != children.end(); it++)
-            {
-                element = *it;
-            }
-
+            
+            /* Get last element of box. Eddy...Duuuude!
+             * What did you do earlier here?! */        
+            Gtk::Widget* element = mp_List->get_children().back();
             if(element != NULL)
             {
-                mp_Paned->remove(*element);
+                mp_List->remove(*element);
             }
-            mp_Paned->add(*(browser->get_container()));
+
+            mp_List->add(*(browser->get_container()));
         }
         else
         {

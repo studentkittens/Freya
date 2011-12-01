@@ -2,6 +2,7 @@
 #define FREYA_HEARTBEAT_GUARD
 
 #include "../MPD/Client.hh"
+#include "AbstractGElement.hh"
 
 /* Explanation:
  * This class listens on the Client to get player signals, 
@@ -13,7 +14,7 @@ typedef sigc::signal<void,double> TimerNotifier;
 
 namespace GManager
 {
-    class Heartbeat 
+    class Heartbeat : public AbstractGElement
     {
         public:
 
@@ -35,6 +36,7 @@ namespace GManager
             gboolean on_interval(void);
             TimerNotifier signal_proxy;
 
+            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
     };
 }

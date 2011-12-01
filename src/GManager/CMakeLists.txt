@@ -9,6 +9,8 @@ ADD_LIBRARY(FreyaGManagerLib STATIC
     Heartbeat.cc
     Trayicon.cc
     MenuList.cc
+    NotifyManager.cc
+    DisconnectManager.cc
     )
 
 TARGET_LINK_LIBRARIES(FreyaGManagerLib ${GTKMM3_PACKAGE_LIBRARIES} FreyaMPDLib FreyaConfigLib)

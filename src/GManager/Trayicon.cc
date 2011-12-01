@@ -18,22 +18,21 @@ namespace GManager
         "</ui>";
 
     Trayicon::Trayicon(MPD::Client& client,Gtk::Window& main_window) :
-        Gtk::StatusIcon(Gtk::Stock::INFO)
+        Gtk::StatusIcon(Gtk::Stock::INFO),
+        Browser::BasePopup(NULL,ui_info),
+        AbstractGElement(client)
     {
-        mp_Client = &client;
         mp_Window = &main_window;
 
         set_tooltip_text("Freya Trayicon");
         set_visible(CONFIG_GET_AS_INT("settings.trayicon.totray"));
-        m_refUIManager = Gtk::UIManager::create();
-        m_refActionGroup = Gtk::ActionGroup::create();
-        m_refUIManager->insert_action_group(m_refActionGroup);
 
-        add_item(m_ActionNext,"next","Next","Play next song",Gtk::Stock::MEDIA_NEXT);
-        add_item(m_ActionPrev,"prev","Prev","Play prev song",Gtk::Stock::MEDIA_PREVIOUS);
-        add_item(m_ActionStop,"stop","Stop","Stop playing",Gtk::Stock::MEDIA_STOP);
-        add_item(m_ActionPause,"pause","Pause","Pause playing",Gtk::Stock::MEDIA_PLAY);
-        add_item(m_ActionQuit,"quit","Quit","Quit Freya fully",Gtk::Stock::QUIT);
+        menu_add_item(m_ActionNext,"next","Next","Play next song",Gtk::Stock::MEDIA_NEXT);
+        menu_add_item(m_ActionPrev,"prev","Prev","Play prev song",Gtk::Stock::MEDIA_PREVIOUS);
+        menu_add_item(m_ActionStop,"stop","Stop","Stop playing",Gtk::Stock::MEDIA_STOP);
+        menu_add_item(m_ActionPause,"pause","Pause","Pause playing",Gtk::Stock::MEDIA_PLAY);
+        menu_add_item(m_ActionQuit,"quit","Quit","Quit Freya fully",Gtk::Stock::QUIT);
+        menu_construct("PopupMenu");
 
         m_ActionNext->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_next_clicked));
         m_ActionPrev->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_prev_clicked));
@@ -41,30 +40,15 @@ namespace GManager
         m_ActionPause->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_pause_clicked));
         m_ActionQuit->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_quit_clicked));
 
-        m_refUIManager->add_ui_from_string(ui_info);
-        m_Popup = (Gtk::Menu*)(m_refUIManager->get_widget("/PopupMenu"));
-
         /* Dirty hack to fix the strange huge icon */
-        set(m_Popup->render_icon_pixbuf(Gtk::Stock::INFO,Gtk::ICON_SIZE_SMALL_TOOLBAR));
-    }
-
-    //-------------------------
-    
-    void Trayicon::add_item(Glib::RefPtr<Gtk::Action>& action,
-            Glib::ustring item_name,
-            Glib::ustring item_label,
-            Glib::ustring item_tooltip,
-            Gtk::StockID icon)
-    {
-        action = Gtk::Action::create(item_name,icon,item_label,item_tooltip);
-        m_refActionGroup->add(action);
+        set(mp_Popup->render_icon_pixbuf(Gtk::Stock::INFO,Gtk::ICON_SIZE_LARGE_TOOLBAR));
     }
 
     //-------------------------
     
     void Trayicon::on_popup_menu(guint button, guint32 activate_time)
     {
-        m_Popup->popup(button,activate_time);
+        mp_Popup->popup(button,activate_time);
     }
     
     //---------------------------
@@ -107,6 +91,35 @@ namespace GManager
     void Trayicon::on_quit_clicked(void)
     {
         Gtk::Main::quit();
+    }
+
+    //---------------------------
+    
+    void Trayicon::on_connection_change(bool is_connected)
+    {
+        /*
+        m_ActionNext->set_sensitive(is_connected);
+        m_ActionPrev->set_sensitive(is_connected);
+        m_ActionStop->set_sensitive(is_connected);
+        m_ActionPause->set_sensitive(is_connected);
+        */
+    }
+    
+    //---------------------------
+            
+    void Trayicon::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    {
+        MPD::Status& status = data.get_status();
+        if(status.get_state() == MPD_STATE_PLAY)
+        {
+            m_ActionPause->set_stock_id(Gtk::Stock::MEDIA_PAUSE);
+            m_ActionPause->set_label("Pause");
+        }
+        else
+        {
+            m_ActionPause->set_stock_id(Gtk::Stock::MEDIA_PLAY);
+            m_ActionPause->set_label("Play");
+        }
     }
 
     //---------------------------

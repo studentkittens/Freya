@@ -9,7 +9,7 @@ namespace Browser
     {
         public:
 
-            BasePopup(Gtk::Widget& to_register, Glib::ustring& ui_definition);
+            BasePopup(Gtk::Widget * to_register, Glib::ustring& ui_definition);
             bool menu_popup(GdkEventButton * event);
 
         protected:

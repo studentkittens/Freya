@@ -57,30 +57,8 @@ namespace GManager
             mp_TitleLabel->set_markup(title_string); 
             mp_ArtistAlbumLabel->set_markup(artist_album); 
 
-            /* <- notify */
-            char * title_notify = g_markup_printf_escaped("%s (Track %s)",
-                    current_song.get_tag(MPD_TAG_TITLE,0),
-                    current_song.get_tag(MPD_TAG_TRACK,0)
-                    );
-            char * artist_notify = g_markup_printf_escaped("by %s on %s (%s)",
-                    current_song.get_tag(MPD_TAG_ARTIST,0),
-                    current_song.get_tag(MPD_TAG_ALBUM,0),
-                    current_song.get_tag(MPD_TAG_DATE,0)
-                    );
-            if((data.get_status().get_state() == MPD_STATE_PLAY))
-                NOTIFY_STOCK_ICON("media-playback-start");
-            else if((data.get_status().get_state() == MPD_STATE_STOP))
-                NOTIFY_STOCK_ICON("media-playback-stop");
-            else if((data.get_status().get_state() == MPD_STATE_PAUSE))
-                NOTIFY_STOCK_ICON("media-playback-pause");
-
-            NOTIFY_SEND(title_notify,artist_notify);
-
-            /* -> */
-
             g_free(artist_album);
             g_free(title_string);
-
         }
 
         if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS))

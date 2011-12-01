@@ -1,0 +1,30 @@
+testframework -> cxxtest: http://cxxtest.tigris.org/
+
+
+eddy
+----
+utils
+confighandler
+configmodel
+init
+
+c1
+--
+notify
+log
+
+marc
+----
+testprotokolle fuer gui klassen erstellen:
+gmanager
+browser
+avahi
+statsbrowser
+...
+in der art: http://www.google.de/url?sa=t&rct=j&q=testprotokolle%20f%C3%BCr%20gui&source=web&cd=2&ved=0CEEQFjAB&url=http%3A%2F%2Fwwwswt.informatik.uni-rostock.de%2Fdeutsch%2FMitarbeiter%2Fjens%2FSWT%2F0823%2FAbgabe%2FTestprotokoll.pdf&ei=bYPXTv-YN4f3sga_pPHVCw&usg=AFQjCNHJTVMbVX2at4fthQPDOOqCizwlEQ
+
+
+c3
+--
+rest?
+

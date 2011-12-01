@@ -115,6 +115,9 @@ namespace Notify
                 /* shows the notification */
                 notify_notification_show(notification,&er);
 
+                if(er != NULL)
+                    Error("An Error occured showing the Notification");
+
             }
 
             clear_icon();

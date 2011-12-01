@@ -93,7 +93,6 @@ namespace GManager
             g_free(mp_Message);
 
             Glib::ustring db_play_time = Utils::seconds_to_duration(stats.get_db_play_time());
-
             mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s total playtime | %u%% volume",
                     status.get_audio_sample_rate(),
                     status.get_audio_bits(),

@@ -16,6 +16,8 @@ Makefile
 *.swp
 *.swo
 *.swn
+*.cmake
+check_*.cc
 
 # logs
 valg.log

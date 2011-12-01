@@ -57,6 +57,11 @@ IF(CXXTEST_FOUND)
     ENABLE_TESTING()
 ENDIF()
 
+ADD_CUSTOM_TARGET(doc 
+    COMMAND doxygen ${PROJECT_SOURCE_DIR}/FreyaDoxygen.conf
+    COMMENT "Generate Doxygen doc" VERBATIM
+    )
+
 # --------------------------
 # Add src/CMakeLists.txt
 # --------------------------

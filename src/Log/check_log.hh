@@ -3,7 +3,7 @@
 #include "Writer.hh"
 
 /* The whole suite. One suit for each module. */
-class LogTestSuite : public CxxTest::TestSuite 
+class LogTestSuite : public CxxTest::TestSuite
 {
     public:
         /* A testcase == a method */

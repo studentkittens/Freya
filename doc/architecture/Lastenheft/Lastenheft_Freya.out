@@ -1,31 +1,16 @@
-<<<<<<< HEAD
-\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Zielbestimmungen}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Projektbeteiligte}{chapter.1}% 3
-\BOOKMARK [0][-]{chapter.2}{Produkteinsatz}{}% 4
-\BOOKMARK [0][-]{chapter.3}{Produktfunktionen}{}% 5
-\BOOKMARK [1][-]{section.3.1}{Benutzerfunktionen}{chapter.3}% 6
-\BOOKMARK [2][-]{subsection.3.1.1}{Starten und Beenden}{section.3.1}% 7
-\BOOKMARK [2][-]{subsection.3.1.2}{Pers\366nliche Daten}{section.3.1}% 8
-\BOOKMARK [2][-]{subsection.3.1.3}{Pers\366nliches Profil}{section.3.1}% 9
-\BOOKMARK [2][-]{subsection.3.1.4}{Pers\366nliche Datenbank}{section.3.1}% 10
-\BOOKMARK [2][-]{subsection.3.1.5}{Kommunikation \(Chat\)}{section.3.1}% 11
-\BOOKMARK [2][-]{subsection.3.1.6}{Suchen}{section.3.1}% 12
-\BOOKMARK [1][-]{section.3.2}{Administrator-Funktionen}{chapter.3}% 13
-\BOOKMARK [0][-]{chapter.4}{Produktdaten}{}% 14
-\BOOKMARK [0][-]{chapter.5}{Produktleistungen}{}% 15
-\BOOKMARK [0][-]{chapter.6}{Qualit\344tsanforderungen}{}% 16
-\BOOKMARK [0][-]{chapter.7}{Erg\344nzungen}{}% 17
-\BOOKMARK [1][-]{section.7.1}{Realisierung}{chapter.7}% 18
-\BOOKMARK [1][-]{section.7.2}{Die n\344chste Version}{chapter.7}% 19
-=======
-\BOOKMARK [0][-]{chapter.1}{Zielbestimmungen}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Produkteinsatz}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Produktfunktionen}{}% 3
-\BOOKMARK [1][-]{section.3.1}{Benutzerfunktionen}{chapter.3}% 4
-\BOOKMARK [1][-]{section.3.2}{Pers\366nliche Konfiguration}{chapter.3}% 5
-\BOOKMARK [0][-]{chapter.4}{Produktdaten}{}% 6
-\BOOKMARK [0][-]{chapter.5}{Produktleistungen}{}% 7
-\BOOKMARK [0][-]{chapter.6}{Qualit\344tsanforderungen}{}% 8
-\BOOKMARK [0][-]{chapter.7}{Erg\344nzungen}{}% 9
->>>>>>> 55865d1a576ba84d61b8b3f93da6ca6cb43eb7a3
+\BOOKMARK [0][-]{chapter.1}{Produkteinsatz}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Produktfunktionen}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Benutzerfunktionen}{chapter.2}% 3
+\BOOKMARK [2][-]{subsection.2.1.1}{Starten und Beenden}{section.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.1.2}{Pers\366nliche Daten}{section.2.1}% 5
+\BOOKMARK [2][-]{subsection.2.1.3}{Pers\366nliches Profil}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.4}{Pers\366nliche Datenbank}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.5}{Kommunikation \(Chat\)}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.6}{Suchen}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{Administrator-Funktionen}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Produktdaten}{}% 11
+\BOOKMARK [0][-]{chapter.4}{Produktleistungen}{}% 12
+\BOOKMARK [0][-]{chapter.5}{Qualit\344tsanforderungen}{}% 13
+\BOOKMARK [0][-]{chapter.6}{Erg\344nzungen}{}% 14
+\BOOKMARK [1][-]{section.6.1}{Realisierung}{chapter.6}% 15
+\BOOKMARK [1][-]{section.6.2}{Die n\344chste Version}{chapter.6}% 16

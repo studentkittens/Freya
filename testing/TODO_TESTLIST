@@ -1,30 +1,47 @@
 testframework -> cxxtest: http://cxxtest.tigris.org/
 
+Integration in cmake
+====================
+Jedes Modul hat eine eigene TestSuite. Die Suite besteht aus einem Header file names check_<module>.hh.
+Wie dieser header so aussieht steht im cxxtest Guide, die Methoden sind quasi die eigentlichen Tests.
+Um cmake den header bekannt zu machen muss folgendes in die CMakeLists.txt des Moduls eingetragen werden:
 
-eddy
+    # Test cases
+    IF(CXXTEST_FOUND)
+        CXXTEST_ADD_TEST(check_<module_name> check_log.cc ${CMAKE_CURRENT_SOURCE_DIR}/check_<module_name>.hh)
+        TARGET_LINK_LIBRARIES(check_log <benoetigte Bibliotheken>)
+    ENDIF()
+
+Ein Beispiel gibts in src/Log/check_log.hh. Will man seine Tests laufen lassen fuehrt man einfach 'make test' aus.
+
+
+Aufteilung bis jetzt
+====================
+
+Eddy
 ----
-utils
-confighandler
-configmodel
-init
+* Utils
+* Config
+* Init
 
-c1
+Chris P. 
 --
-notify
-log
+* Notify
+* Log
 
-marc
+Marc
 ----
 testprotokolle fuer gui klassen erstellen:
-gmanager
-browser
-avahi
-statsbrowser
-...
-in der art: http://www.google.de/url?sa=t&rct=j&q=testprotokolle%20f%C3%BCr%20gui&source=web&cd=2&ved=0CEEQFjAB&url=http%3A%2F%2Fwwwswt.informatik.uni-rostock.de%2Fdeutsch%2FMitarbeiter%2Fjens%2FSWT%2F0823%2FAbgabe%2FTestprotokoll.pdf&ei=bYPXTv-YN4f3sga_pPHVCw&usg=AFQjCNHJTVMbVX2at4fthQPDOOqCizwlEQ
 
+* Gmanager
+* Browser
+* Avahi
+
+
+in der art:
+http://www.google.de/url?sa=t&rct=j&q=testprotokolle%20f%C3%BCr%20gui&source=web&cd=2&ved=0CEEQFjAB&url=http%3A%2F%2Fwwwswt.informatik.uni-rostock.de%2Fdeutsch%2FMitarbeiter%2Fjens%2FSWT%2F0823%2FAbgabe%2FTestprotokoll.pdf&ei=bYPXTv-YN4f3sga_pPHVCw&usg=AFQjCNHJTVMbVX2at4fthQPDOOqCizwlEQ
 
 c3
 --
-rest?
+MPD.. (*argh*)
 

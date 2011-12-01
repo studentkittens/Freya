@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="256,107,419,133"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="MPD::Client::toggle_random" alt="" coords="472,5,659,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="MPD::Client::toggle_single" alt="" coords="476,56,655,83"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="MPD::Client::toggle_consume" alt="" coords="467,107,664,133"/>
-<area shape="rect" id="node11" href="$classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="MPD::Client::toggle_repeat" alt="" coords="475,157,655,184"/>
-<area shape="rect" id="node13" href="$classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5" title="MPD::Client::get_volume" alt="" coords="481,208,650,235"/>
-</map>

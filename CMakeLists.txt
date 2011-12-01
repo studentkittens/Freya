@@ -47,5 +47,17 @@ INCLUDE_DIRECTORIES(${LIBNOTIFY_PACKAGE_INCLUDE_DIRS})
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin CACHE PATH "Single Directory for all Libraries")
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin CACHE PATH "Single Directory for all Executables.")
 
+# --------------------------
+# cxxtest - Tip from: http://battlemidget.blogspot.com/2010/03/c-cxxtest-cmake.html
+# --------------------------
+FIND_PACKAGE(CxxTest)
+IF(CXXTEST_FOUND)
+    FIND_PACKAGE(Perl QUIET)
+    INCLUDE_DIRECTORIES(${CXXTEST_INCLUDE_DIR})
+    ENABLE_TESTING()
+ENDIF()
+
+# --------------------------
 # Add src/CMakeLists.txt
+# --------------------------
 ADD_SUBDIRECTORY(src)

@@ -78,82 +78,97 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/MPD/Client.hh</div>  </div>
 </div>
 <div class="contents">
-<a href="Client_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef FREYA_CLIENT</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define FREYA_CLIENT </span>
+<a href="Client_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef FREYA_CLIENT_GUARD</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define FREYA_CLIENT_GUARD</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &quot;../includes.hh&quot;</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include  &quot;<a class="code" href="Connection_8hh.html">Connection.hh</a>&quot;</span>
 <a name="l00006"></a>00006 <span class="preprocessor">#include  &quot;<a class="code" href="Listener_8hh.html">Listener.hh</a>&quot;</span>
 <a name="l00007"></a>00007 
-<a name="l00008"></a>00008 <span class="keyword">namespace </span>MPD
-<a name="l00009"></a>00009 {
-<a name="l00010"></a><a class="code" href="classMPD_1_1Client.html">00010</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1Client.html">Client</a>
-<a name="l00011"></a>00011     {
-<a name="l00012"></a>00012         <span class="keyword">public</span>:
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014             <a class="code" href="classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3">Client</a>();
-<a name="l00015"></a>00015             <a class="code" href="classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2">~Client</a>();
+<a name="l00008"></a>00008 <span class="comment">/* Songlist interface */</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;../AbstractItemlist.hh&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;../AbstractFilebrowser.hh&quot;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keyword">namespace </span>MPD
+<a name="l00014"></a>00014 {
+<a name="l00015"></a><a class="code" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">00015</a>     <span class="keyword">typedef</span> sigc::signal&lt;void,bool&gt; <a class="code" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">ConnectionNotifier</a>;
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de">connect</a>(<span class="keywordtype">void</span>);
-<a name="l00018"></a>00018             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a">disconnect</a>(<span class="keywordtype">void</span>);
-<a name="l00019"></a>00019             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#ab441663ad6882786f3b8df5a05a4dc9f">is_connected</a>(<span class="keywordtype">void</span>);
+<a name="l00017"></a><a class="code" href="classMPD_1_1Client.html">00017</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1Client.html">Client</a>
+<a name="l00018"></a>00018     {
+<a name="l00019"></a>00019         <span class="keyword">public</span>:
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021             <span class="comment">/* Go to next song */</span>
-<a name="l00022"></a>00022             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4">send_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * command);
+<a name="l00021"></a>00021             <a class="code" href="classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3">Client</a>();
+<a name="l00022"></a>00022             <a class="code" href="classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2">~Client</a>();
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024             <span class="comment">/* List contents of current playlist */</span>
-<a name="l00025"></a>00025             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a9c0aec20f1e0381e057dcbddcc4cbca9">list_queue</a>(<span class="keywordtype">void</span>);
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027             <span class="comment">/* Playback */</span>
-<a name="l00028"></a>00028             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4">playback_next</a>(<span class="keywordtype">void</span>);
-<a name="l00029"></a>00029             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca">playback_prev</a>(<span class="keywordtype">void</span>);
-<a name="l00030"></a>00030             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31">playback_stop</a>(<span class="keywordtype">void</span>);
-<a name="l00031"></a>00031             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3">playback_play</a>(<span class="keywordtype">void</span>);
-<a name="l00032"></a>00032             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988">playback_pause</a>(<span class="keywordtype">void</span>);
+<a name="l00024"></a>00024             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de">connect</a>(<span class="keywordtype">void</span>);
+<a name="l00025"></a>00025             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a">disconnect</a>(<span class="keywordtype">void</span>);
+<a name="l00026"></a>00026             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#ab441663ad6882786f3b8df5a05a4dc9f">is_connected</a>(<span class="keywordtype">void</span>);
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028             <span class="comment">/* Go to next song */</span>
+<a name="l00029"></a>00029             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4">send_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * command);
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031             <span class="comment">/* List contents of current playlist */</span>
+<a name="l00032"></a>00032             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a9c0aec20f1e0381e057dcbddcc4cbca9">list_queue</a>(<span class="keywordtype">void</span>);
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62">toggle_random</a>(<span class="keywordtype">void</span>);
-<a name="l00035"></a>00035             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0">toggle_consume</a>(<span class="keywordtype">void</span>);
-<a name="l00036"></a>00036             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3">toggle_repeat</a>(<span class="keywordtype">void</span>);
-<a name="l00037"></a>00037             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269">toggle_single</a>(<span class="keywordtype">void</span>);
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039             
-<a name="l00040"></a>00040             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523">playback_seek</a>(<span class="keywordtype">unsigned</span> song_id, <span class="keywordtype">unsigned</span> abs_time);
-<a name="l00041"></a>00041 
-<a name="l00047"></a>00047             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886" title="set the volume">set_volume</a>(<span class="keywordtype">unsigned</span> vol);
-<a name="l00048"></a>00048             <span class="keywordtype">unsigned</span> <a class="code" href="classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5">get_volume</a>(<span class="keywordtype">void</span>);
-<a name="l00054"></a>00054             <a class="code" href="classMPD_1_1Status.html">Status</a> * <a class="code" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status.">get_status</a>(<span class="keywordtype">void</span>);
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056             <span class="comment">// TODO: might get removed, and fetched from the MPD::Queue instead</span>
-<a name="l00057"></a>00057             <a class="code" href="classMPD_1_1Song.html">Song</a> * <a class="code" href="classMPD_1_1Client.html#ad2343666ec7af5478419f59871f9e90d">get_song_at_id</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">id</span>);
-<a name="l00058"></a>00058 
-<a name="l00067"></a>00067             <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a>&amp; <a class="code" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal.">get_notify</a>(<span class="keywordtype">void</span>);
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91">force_update</a>(<span class="keywordtype">void</span>);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071         <span class="keyword">private</span>:
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073             <span class="keywordtype">void</span> go_idle(<span class="keywordtype">void</span>);
-<a name="l00074"></a>00074             <span class="keywordtype">void</span> go_busy(<span class="keywordtype">void</span>);
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076             gboolean timeout_reconnect(<span class="keywordtype">void</span>);
-<a name="l00077"></a>00077             <span class="keywordtype">bool</span> check_error(<span class="keywordtype">void</span>);
-<a name="l00078"></a>00078             <span class="keywordtype">void</span> handle_errors(<span class="keyword">enum</span> mpd_error err);
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080             <span class="comment">// Instancevars //</span>
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082             <span class="comment">/* The wrapped up mpd_connection */</span>
-<a name="l00083"></a>00083             <a class="code" href="classMPD_1_1Connection.html">Connection</a> conn;
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085             <span class="comment">/* The event notifier */</span>
-<a name="l00086"></a>00086             <a class="code" href="classMPD_1_1Listener.html">Listener</a> * listener;
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088             <span class="comment">/* The slot which observers can connect to */</span>
-<a name="l00089"></a>00089             <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a> m_Notifier;
-<a name="l00090"></a>00090     };
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 }
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094 <span class="preprocessor">#endif</span>
+<a name="l00034"></a>00034             <span class="comment">/* Playback */</span>
+<a name="l00035"></a>00035             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4">playback_next</a>(<span class="keywordtype">void</span>);
+<a name="l00036"></a>00036             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca">playback_prev</a>(<span class="keywordtype">void</span>);
+<a name="l00037"></a>00037             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31">playback_stop</a>(<span class="keywordtype">void</span>);
+<a name="l00038"></a>00038             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3">playback_play</a>(<span class="keywordtype">void</span>);
+<a name="l00039"></a>00039             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988">playback_pause</a>(<span class="keywordtype">void</span>);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62">toggle_random</a>(<span class="keywordtype">void</span>);
+<a name="l00042"></a>00042             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0">toggle_consume</a>(<span class="keywordtype">void</span>);
+<a name="l00043"></a>00043             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3">toggle_repeat</a>(<span class="keywordtype">void</span>);
+<a name="l00044"></a>00044             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269">toggle_single</a>(<span class="keywordtype">void</span>);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2cf834d27006584829883044ec67bde4">play_song_at_id</a>(<span class="keywordtype">unsigned</span> song_id);           
+<a name="l00047"></a>00047             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523">playback_seek</a>(<span class="keywordtype">unsigned</span> song_id, <span class="keywordtype">unsigned</span> abs_time);
+<a name="l00048"></a>00048             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aa8ff1491b083c8b6f23131ce7145da7c">playlist_remove</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00049"></a>00049 
+<a name="l00055"></a>00055             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886" title="set the volume">set_volume</a>(<span class="keywordtype">unsigned</span> vol);
+<a name="l00056"></a>00056 
+<a name="l00062"></a>00062             <a class="code" href="classMPD_1_1Status.html">Status</a> * <a class="code" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status.">get_status</a>(<span class="keywordtype">void</span>);
+<a name="l00063"></a>00063 
+<a name="l00072"></a>00072             <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a>&amp; <a class="code" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal.">get_notify</a>(<span class="keywordtype">void</span>);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075             <a class="code" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">ConnectionNotifier</a>&amp; <a class="code" href="classMPD_1_1Client.html#ae08e59527a8db7c0e4483c1853f31554">signal_connection_change</a>(<span class="keywordtype">void</span>);
+<a name="l00076"></a>00076 
+<a name="l00084"></a>00084             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91" title="Forces client update.">force_update</a>(<span class="keywordtype">void</span>);
+<a name="l00085"></a>00085 
+<a name="l00093"></a>00093             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53" title="Fetches the playlist from the mpd server.">fill_queue</a>(<a class="code" href="classAbstractItemlist.html">AbstractItemlist</a>&amp; data_model);
+<a name="l00094"></a>00094             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209">fill_playlists</a>(<a class="code" href="classAbstractItemlist.html">AbstractItemlist</a>&amp; data_model);
+<a name="l00095"></a>00095             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2ff4623046dd31961f093a8a6f1677c4">fill_filelist</a>(<a class="code" href="classAbstractFilebrowser.html">AbstractFilebrowser</a>&amp; data_model, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         <span class="keyword">private</span>:
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099             <span class="keywordtype">void</span> go_idle(<span class="keywordtype">void</span>);
+<a name="l00100"></a>00100             <span class="keywordtype">void</span> go_busy(<span class="keywordtype">void</span>);
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102             gboolean timeout_reconnect(<span class="keywordtype">void</span>);
+<a name="l00103"></a>00103             <span class="keywordtype">bool</span> check_error(<span class="keywordtype">void</span>);
+<a name="l00104"></a>00104             <span class="keywordtype">void</span> handle_errors(<span class="keyword">enum</span> mpd_error err);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106             <span class="comment">/* Instancevars */</span>
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108             <span class="comment">/* The wrapped up mpd_connection */</span>
+<a name="l00109"></a>00109             <a class="code" href="classMPD_1_1Connection.html">Connection</a> m_Conn;
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111             <span class="comment">/* The event notifier */</span>
+<a name="l00112"></a>00112             <a class="code" href="classMPD_1_1Listener.html">Listener</a> * listener;
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114             <span class="comment">/* The slot which observers can connect to */</span>
+<a name="l00115"></a>00115             <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a> m_Notifier;
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117             <span class="comment">/* Inform observers if connection changes happened */</span>
+<a name="l00118"></a>00118             <a class="code" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">ConnectionNotifier</a> m_ConnNotifer;
+<a name="l00119"></a>00119     };
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 }
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -161,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -173,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

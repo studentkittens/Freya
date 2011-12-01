@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
@@ -99,7 +100,7 @@ Collaboration diagram for Avahi::View:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAvahi_1_1View__coll__graph.png" border="0" usemap="#Avahi_1_1View_coll__map" alt="Collaboration graph"/></div>
 <map name="Avahi_1_1View_coll__map" id="Avahi_1_1View_coll__map">
-<area shape="rect" id="node2" href="classAvahi_1_1View_1_1ModelColumns.html" title="Avahi::View::ModelColumns" alt="" coords="5,5,192,32"/></map>
+<area shape="rect" id="node2" href="classAvahi_1_1View_1_1ModelColumns.html" title="{Avahi::View::ModelColumns\n|+ m_col_ip\l+ m_col_hostname\l+ m_col_name\l+ m_col_port\l|+ ModelColumns()\l}" alt="" coords="5,6,192,127"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
@@ -108,8 +109,6 @@ Data Structures</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a3c7b2ee81a7f863d9b3ef328aadf31f4">View</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a7778732b3ea6120b2135b0e00ca3a31e">~View</a> (void)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">DTor ///.  <a href="#a7778732b3ea6120b2135b0e00ca3a31e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a4d24168f7246ea9d2fc0aed6dacfa2d6">server_append</a> (const char *ip, const char *hostname, const char *name, unsigned int port)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">User functions ///.  <a href="#a4d24168f7246ea9d2fc0aed6dacfa2d6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a117b25b72aff7a5bfa671e7d6f50b672">server_delete</a> (const char *name)</td></tr>
@@ -135,6 +134,7 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#ab95df6bb78bd65422f202384a36de889">m_Button_Cancel</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a3e32d87f60ae0aaa55886b201a05640e">m_Button_Select</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a113fbf491d4ad2a7a72692a83362ba83">m_Status_Label</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Gtk::Separator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAvahi_1_1View.html#a950ae29957fdf683b6c5d750105cc4a7">m_CtrlSep</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
@@ -168,27 +168,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a class="anchor" id="a7778732b3ea6120b2135b0e00ca3a31e"></a><!-- doxytag: member="Avahi::View::~View" ref="a7778732b3ea6120b2135b0e00ca3a31e" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Avahi::View::~View </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>DTor ///. </p>
-
-<p>Definition at line <a class="el" href="View_8cc_source.html#l00050">50</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
-
-</div>
-</div>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a71759737afe5d061c2c63ad25ae681c0"></a><!-- doxytag: member="Avahi::View::on_button_cancel" ref="a71759737afe5d061c2c63ad25ae681c0" args="()" -->
 <div class="memitem">
@@ -207,7 +186,7 @@ Here is the call graph for this function:</div>
 
 <p>Event Callbacks ////. </p>
 
-<p>Definition at line <a class="el" href="View_8cc_source.html#l00054">54</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
+<p>Definition at line <a class="el" href="View_8cc_source.html#l00057">57</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -235,7 +214,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8cc_source.html#l00059">59</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
+<p>Definition at line <a class="el" href="View_8cc_source.html#l00062">62</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -287,7 +266,7 @@ Here is the caller graph for this function:</div>
 
 <p>User functions ///. </p>
 
-<p>Definition at line <a class="el" href="View_8cc_source.html#l00078">78</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
+<p>Definition at line <a class="el" href="View_8cc_source.html#l00081">81</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
 
 </div>
 </div>
@@ -306,7 +285,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8cc_source.html#l00094">94</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
+<p>Definition at line <a class="el" href="View_8cc_source.html#l00097">97</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
 
 </div>
 </div>
@@ -325,7 +304,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8cc_source.html#l00110">110</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
+<p>Definition at line <a class="el" href="View_8cc_source.html#l00113">113</a> of file <a class="el" href="View_8cc_source.html">View.cc</a>.</p>
 
 </div>
 </div>
@@ -341,7 +320,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00050">50</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00049">49</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -356,7 +335,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00051">51</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00050">50</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -371,7 +350,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00049">49</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00048">48</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -386,7 +365,22 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00040">40</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00039">39</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a950ae29957fdf683b6c5d750105cc4a7"></a><!-- doxytag: member="Avahi::View::m_CtrlSep" ref="a950ae29957fdf683b6c5d750105cc4a7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Gtk::Separator <a class="el" href="classAvahi_1_1View.html#a950ae29957fdf683b6c5d750105cc4a7">Avahi::View::m_CtrlSep</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00052">52</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -401,7 +395,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00047">47</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00046">46</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -416,7 +410,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00045">45</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00044">44</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -431,7 +425,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00052">52</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00051">51</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -446,7 +440,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00046">46</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00045">45</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -461,7 +455,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00043">43</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00042">42</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
@@ -476,13 +470,13 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="View_8hh_source.html#l00019">19</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
+<p>Definition at line <a class="el" href="View_8hh_source.html#l00018">18</a> of file <a class="el" href="View_8hh_source.html">View.hh</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/AvahiBrowser/<a class="el" href="View_8hh_source.html">View.hh</a></li>
-<li>src/AvahiBrowser/<a class="el" href="View_8cc_source.html">View.cc</a></li>
+<li>src/Avahi/<a class="el" href="View_8hh_source.html">View.hh</a></li>
+<li>src/Avahi/<a class="el" href="View_8cc_source.html">View.cc</a></li>
 </ul>
 </div>
 <!-- window showing the filter options -->
@@ -490,7 +484,7 @@ Here is the caller graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -502,7 +496,7 @@ Here is the caller graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

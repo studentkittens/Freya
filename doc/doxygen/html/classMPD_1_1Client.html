@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
@@ -109,20 +110,26 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0">toggle_consume</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3">toggle_repeat</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269">toggle_single</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a2cf834d27006584829883044ec67bde4">play_song_at_id</a> (unsigned song_id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523">playback_seek</a> (unsigned song_id, unsigned abs_time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#aa8ff1491b083c8b6f23131ce7145da7c">playlist_remove</a> (const char *name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886">set_volume</a> (unsigned vol)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set the volume  <a href="#ad08ed2b177b40d09fe75b2d9b478e886"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5">get_volume</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMPD_1_1Status.html">Status</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d">get_status</a> (void)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current <a class="el" href="classMPD_1_1Status.html">MPD::Status</a>.  <a href="#a718581d2bb49efc307f8806130ef719d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMPD_1_1Song.html">Song</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#ad2343666ec7af5478419f59871f9e90d">get_song_at_id</a> (unsigned id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd">get_notify</a> (void)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the notify sigc::signal.  <a href="#a6de7800d2042c323f8e9d51ba73b4bbd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">ConnectionNotifier</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#ae08e59527a8db7c0e4483c1853f31554">signal_connection_change</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91">force_update</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces client update.  <a href="#adab5a304f4aba2bdf5a9f8d5dab27f91"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53">fill_queue</a> (<a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;data_model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the playlist from the mpd server.  <a href="#a1fe0a4841ad62bbcc6f72c8899621e53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209">fill_playlists</a> (<a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;data_model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a2ff4623046dd31961f093a8a6f1677c4">fill_filelist</a> (<a class="el" href="classAbstractFilebrowser.html">AbstractFilebrowser</a> &amp;data_model, const char *path)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="Client_8hh_source.html#l00010">10</a> of file <a class="el" href="Client_8hh_source.html">Client.hh</a>.</p>
+<p>Definition at line <a class="el" href="Client_8hh_source.html#l00017">17</a> of file <a class="el" href="Client_8hh_source.html">Client.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac804cf198d57cec1c8574e7b20663fa3"></a><!-- doxytag: member="MPD::Client::Client" ref="ac804cf198d57cec1c8574e7b20663fa3" args="()" -->
 <div class="memitem">
@@ -138,14 +145,14 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00007">7</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00018">18</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_ac804cf198d57cec1c8574e7b20663fa3_cgraph.png" border="0" usemap="#classMPD_1_1Client_ac804cf198d57cec1c8574e7b20663fa3_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_ac804cf198d57cec1c8574e7b20663fa3_cgraph" id="classMPD_1_1Client_ac804cf198d57cec1c8574e7b20663fa3_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="MPD::Client::connect" alt="" coords="190,5,338,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="387,5,567,32"/><area shape="rect" id="node7" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="616,5,827,32"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="MPD::Client::connect" alt="" coords="190,31,338,57"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="646,5,826,32"/><area shape="rect" id="node9" href="classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="387,56,576,83"/><area shape="rect" id="node7" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="896,31,1107,57"/><area shape="rect" id="node11" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="625,56,847,83"/></map>
 </div>
 </p>
 
@@ -165,7 +172,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00014">14</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00028">28</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -194,14 +201,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00021">21</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00035">35</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a2144f99e66aeacfc25e6cea72b12e1de_cgraph.png" border="0" usemap="#classMPD_1_1Client_a2144f99e66aeacfc25e6cea72b12e1de_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a2144f99e66aeacfc25e6cea72b12e1de_cgraph" id="classMPD_1_1Client_a2144f99e66aeacfc25e6cea72b12e1de_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="203,5,383,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="432,5,643,32"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="462,5,642,32"/><area shape="rect" id="node7" href="classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="203,56,392,83"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="712,31,923,57"/><area shape="rect" id="node9" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="441,56,663,83"/></map>
 </div>
 </p>
 
@@ -231,7 +238,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00033">33</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00049">49</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -253,6 +260,127 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a2ff4623046dd31961f093a8a6f1677c4"></a><!-- doxytag: member="MPD::Client::fill_filelist" ref="a2ff4623046dd31961f093a8a6f1677c4" args="(AbstractFilebrowser &amp;data_model, const char *path)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPD::Client::fill_filelist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAbstractFilebrowser.html">AbstractFilebrowser</a> &amp;&#160;</td>
+          <td class="paramname"><em>data_model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00199">199</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_a2ff4623046dd31961f093a8a6f1677c4_cgraph.png" border="0" usemap="#classMPD_1_1Client_a2ff4623046dd31961f093a8a6f1677c4_cgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a2ff4623046dd31961f093a8a6f1677c4_cgraph" id="classMPD_1_1Client_a2ff4623046dd31961f093a8a6f1677c4_cgraph">
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="485,7,696,34"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="213,32,435,59"/><area shape="rect" id="node8" href="classAbstractFilebrowser.html#afdc29d24e52529b095e519b0f4aa6cb2" title="AbstractFilebrowser::add_directory" alt="" coords="212,83,436,110"/><area shape="rect" id="node10" href="classAbstractFilebrowser.html#ada8e6286a7aa715b969264bb65d1693a" title="Override this." alt="" coords="211,134,437,160"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a42af8b435cf503e84da3008a15ec9209"></a><!-- doxytag: member="MPD::Client::fill_playlists" ref="a42af8b435cf503e84da3008a15ec9209" args="(AbstractItemlist &amp;data_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPD::Client::fill_playlists </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;&#160;</td>
+          <td class="paramname"><em>data_model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00178">178</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_cgraph.png" border="0" usemap="#classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_cgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_cgraph" id="classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_cgraph">
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="496,5,707,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="225,31,447,57"/><area shape="rect" id="node8" href="classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d" title="Override this." alt="" coords="249,81,423,108"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_icgraph.png" border="0" usemap="#classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_icgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_icgraph" id="classMPD_1_1Client_a42af8b435cf503e84da3008a15ec9209_icgraph">
+<area shape="rect" id="node3" href="classBrowser_1_1PlaylistManager.html#a8fb376706ded26806dae08b247c8d0fc" title="Browser::PlaylistManager::PlaylistManager" alt="" coords="224,5,496,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1fe0a4841ad62bbcc6f72c8899621e53"></a><!-- doxytag: member="MPD::Client::fill_queue" ref="a1fe0a4841ad62bbcc6f72c8899621e53" args="(AbstractItemlist &amp;data_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPD::Client::fill_queue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;&#160;</td>
+          <td class="paramname"><em>data_model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fetches the playlist from the mpd server. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data_model</td><td>A user defined class, that inherits from AbstractSonglist</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the number of filled items. </dd></dl>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00157">157</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_cgraph.png" border="0" usemap="#classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_cgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_cgraph" id="classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_cgraph">
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="483,5,693,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="211,31,434,57"/><area shape="rect" id="node8" href="classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d" title="Override this." alt="" coords="235,81,410,108"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_icgraph.png" border="0" usemap="#classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_icgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_icgraph" id="classMPD_1_1Client_a1fe0a4841ad62bbcc6f72c8899621e53_icgraph">
+<area shape="rect" id="node3" href="classBrowser_1_1Queue.html#ad9c6134968389a77b55f315a91593781" title="Browser::Queue::Queue" alt="" coords="211,5,373,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="adab5a304f4aba2bdf5a9f8d5dab27f91"></a><!-- doxytag: member="MPD::Client::force_update" ref="adab5a304f4aba2bdf5a9f8d5dab27f91" args="(void)" -->
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +396,10 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00322">322</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Forces client update. </p>
+<p>Updates status, stats, current song and sends all possible events to all connected listeners </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00396">396</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -284,7 +415,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_adab5a304f4aba2bdf5a9f8d5dab27f91_icgraph.png" border="0" usemap="#classMPD_1_1Client_adab5a304f4aba2bdf5a9f8d5dab27f91_icgraph" alt=""/></div>
 <map name="classMPD_1_1Client_adab5a304f4aba2bdf5a9f8d5dab27f91_icgraph" id="classMPD_1_1Client_adab5a304f4aba2bdf5a9f8d5dab27f91_icgraph">
-<area shape="rect" id="node3" href="MainWindow_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="232,5,283,32"/></map>
+<area shape="rect" id="node3" href="Main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="232,5,283,32"/></map>
 </div>
 </p>
 
@@ -309,42 +440,14 @@ Here is the caller graph for this function:</div>
 <p>Use <a class="el" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de">connect()</a> on it. This is called always once a ne, ...w event happens. See the typedef in <a class="el" href="Listener_8hh.html">Listener.hh</a> for the exact signature , ... </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the sigc::signal </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00254">254</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00329">329</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a6de7800d2042c323f8e9d51ba73b4bbd_icgraph.png" border="0" usemap="#classMPD_1_1Client_a6de7800d2042c323f8e9d51ba73b4bbd_icgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a6de7800d2042c323f8e9d51ba73b4bbd_icgraph" id="classMPD_1_1Client_a6de7800d2042c323f8e9d51ba73b4bbd_icgraph">
-<area shape="rect" id="node3" href="classGManager_1_1PlaybackButtons.html#a51fabdb3716685045c6ab87f0afac5c6" title="GManager::PlaybackButtons::PlaybackButtons" alt="" coords="213,5,509,32"/><area shape="rect" id="node5" href="classGManager_1_1Statusbar.html#a8152b3c09e7135eb0e72133c43f6c31c" title="GManager::Statusbar::Statusbar" alt="" coords="256,56,467,83"/><area shape="rect" id="node7" href="classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e" title="GManager::Statusicons::Statusicons" alt="" coords="243,107,479,133"/><area shape="rect" id="node9" href="classGManager_1_1Timeslide.html#a6b25a5162891ab8684ea1923cf3eba7f" title="GManager::Timeslide::Timeslide" alt="" coords="256,157,467,184"/><area shape="rect" id="node11" href="classGManager_1_1TitleLabel.html#a7392cdfa0ca4b4cf2c285ed1a806e561" title="GManager::TitleLabel::TitleLabel" alt="" coords="256,208,467,235"/><area shape="rect" id="node13" href="classGManager_1_1Volumebutton.html#a5c03c14306c6828813da7f7641bcc75c" title="GManager::Volumebutton::Volumebutton" alt="" coords="232,259,491,285"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="ad2343666ec7af5478419f59871f9e90d"></a><!-- doxytag: member="MPD::Client::get_song_at_id" ref="ad2343666ec7af5478419f59871f9e90d" args="(unsigned id)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classMPD_1_1Song.html">Song</a> * MPD::Client::get_song_at_id </td>
-          <td>(</td>
-          <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00364">364</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMPD_1_1Client_ad2343666ec7af5478419f59871f9e90d_cgraph.png" border="0" usemap="#classMPD_1_1Client_ad2343666ec7af5478419f59871f9e90d_cgraph" alt=""/></div>
-<map name="classMPD_1_1Client_ad2343666ec7af5478419f59871f9e90d_cgraph" id="classMPD_1_1Client_ad2343666ec7af5478419f59871f9e90d_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="517,5,728,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="246,31,469,57"/></map>
+<area shape="rect" id="node3" href="classBrowser_1_1PlaylistManager.html#a8fb376706ded26806dae08b247c8d0fc" title="Browser::PlaylistManager::PlaylistManager" alt="" coords="233,5,505,32"/><area shape="rect" id="node5" href="classBrowser_1_1StatBrowser.html#a12fd38d9b036aa50f0927574baa73e8d" title="Browser::StatBrowser::StatBrowser" alt="" coords="254,56,485,83"/><area shape="rect" id="node7" href="classGManager_1_1AbstractGElement.html#a1ad757c3877b1d790770e87f7a0392cb" title="GManager::AbstractGElement::AbstractGElement" alt="" coords="213,107,525,133"/><area shape="rect" id="node9" href="classGManager_1_1TitleLabel.html#a7392cdfa0ca4b4cf2c285ed1a806e561" title="GManager::TitleLabel::TitleLabel" alt="" coords="264,157,475,184"/></map>
 </div>
 </p>
 
@@ -368,7 +471,7 @@ Here is the call graph for this function:</div>
 <p>Get the current <a class="el" href="classMPD_1_1Status.html">MPD::Status</a>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A reference to it. Do not modify. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00310">310</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00384">384</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -384,35 +487,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a718581d2bb49efc307f8806130ef719d_icgraph.png" border="0" usemap="#classMPD_1_1Client_a718581d2bb49efc307f8806130ef719d_icgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a718581d2bb49efc307f8806130ef719d_icgraph" id="classMPD_1_1Client_a718581d2bb49efc307f8806130ef719d_icgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="MPD::Client::toggle_random" alt="" coords="221,5,408,32"/><area shape="rect" id="node5" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="MPD::Client::toggle_single" alt="" coords="225,56,404,83"/><area shape="rect" id="node7" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="MPD::Client::toggle_consume" alt="" coords="216,107,413,133"/><area shape="rect" id="node9" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="MPD::Client::toggle_repeat" alt="" coords="225,157,405,184"/><area shape="rect" id="node11" href="classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5" title="MPD::Client::get_volume" alt="" coords="230,208,399,235"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="aeab8c326b9a3548fb2ecc03b9b9fe3e5"></a><!-- doxytag: member="MPD::Client::get_volume" ref="aeab8c326b9a3548fb2ecc03b9b9fe3e5" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned MPD::Client::get_volume </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00356">356</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMPD_1_1Client_aeab8c326b9a3548fb2ecc03b9b9fe3e5_cgraph.png" border="0" usemap="#classMPD_1_1Client_aeab8c326b9a3548fb2ecc03b9b9fe3e5_cgraph" alt=""/></div>
-<map name="classMPD_1_1Client_aeab8c326b9a3548fb2ecc03b9b9fe3e5_cgraph" id="classMPD_1_1Client_aeab8c326b9a3548fb2ecc03b9b9fe3e5_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="229,56,392,83"/><area shape="rect" id="node11" href="classMPD_1_1Status.html#ab9ced2bc53a9e0372c75b6dcbac30317" title="MPD::Status::get_volume" alt="" coords="224,107,397,133"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="445,5,656,32"/><area shape="rect" id="node7" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="449,56,652,83"/><area shape="rect" id="node9" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="455,107,647,133"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="MPD::Client::playback_pause" alt="" coords="217,5,413,32"/><area shape="rect" id="node5" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="MPD::Client::toggle_random" alt="" coords="221,56,408,83"/><area shape="rect" id="node7" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="MPD::Client::toggle_consume" alt="" coords="216,107,413,133"/><area shape="rect" id="node9" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="MPD::Client::toggle_repeat" alt="" coords="225,157,405,184"/><area shape="rect" id="node11" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="MPD::Client::toggle_single" alt="" coords="225,208,404,235"/></map>
 </div>
 </p>
 
@@ -433,7 +508,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00046">46</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00063">63</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -441,6 +516,15 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_cgraph.png" border="0" usemap="#classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_cgraph" id="classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_cgraph">
 <area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="232,5,443,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_icgraph.png" border="0" usemap="#classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_icgraph" alt=""/></div>
+<map name="classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_icgraph" id="classMPD_1_1Client_ab441663ad6882786f3b8df5a05a4dc9f_icgraph">
+<area shape="rect" id="node3" href="classGManager_1_1MenuList.html#ad580d2a008e1bc90b577b698fa47fbea" title="GManager::MenuList::MenuList" alt="" coords="233,5,437,32"/></map>
 </div>
 </p>
 
@@ -461,23 +545,40 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00132">132</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a2cf834d27006584829883044ec67bde4"></a><!-- doxytag: member="MPD::Client::play_song_at_id" ref="a2cf834d27006584829883044ec67bde4" args="(unsigned song_id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPD::Client::play_song_at_id </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>song_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00374">374</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_cgraph.png" border="0" usemap="#classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_cgraph" alt=""/></div>
-<map name="classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_cgraph" id="classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="217,5,439,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="488,5,699,32"/></map>
+<div class="center"><img src="classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_cgraph.png" border="0" usemap="#classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_cgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_cgraph" id="classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_cgraph">
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="251,5,474,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="523,5,733,32"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_icgraph.png" border="0" usemap="#classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_icgraph" alt=""/></div>
-<map name="classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_icgraph" id="classMPD_1_1Client_a9c0aec20f1e0381e057dcbddcc4cbca9_icgraph">
-<area shape="rect" id="node3" href="test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="216,5,339,32"/><area shape="rect" id="node5" href="test__client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="387,5,437,32"/></map>
+<div class="center"><img src="classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_icgraph.png" border="0" usemap="#classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_icgraph" alt=""/></div>
+<map name="classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_icgraph" id="classMPD_1_1Client_a2cf834d27006584829883044ec67bde4_icgraph">
+<area shape="rect" id="node3" href="test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="251,5,373,32"/><area shape="rect" id="node5" href="test__client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="421,5,472,32"/></map>
 </div>
 </p>
 
@@ -498,7 +599,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00111">111</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00130">130</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -526,14 +627,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00125">125</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00144">144</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a8171e726f499a70604d33e75b5416988_cgraph.png" border="0" usemap="#classMPD_1_1Client_a8171e726f499a70604d33e75b5416988_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a8171e726f499a70604d33e75b5416988_cgraph" id="classMPD_1_1Client_a8171e726f499a70604d33e75b5416988_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="251,5,445,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="765,5,976,32"/><area shape="rect" id="node7" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="494,31,717,57"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="765,90,976,117"/><area shape="rect" id="node5" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="267,65,429,92"/><area shape="rect" id="node12" href="classMPD_1_1Status.html#a180b8e6525ae2e345242a20db324d815" title="MPD::Status::get_state" alt="" coords="268,116,428,142"/><area shape="rect" id="node14" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="251,166,445,193"/><area shape="rect" id="node8" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="504,65,707,92"/><area shape="rect" id="node10" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="509,116,701,142"/><area shape="rect" id="node17" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="494,217,717,244"/></map>
 </div>
 </p>
 
@@ -554,7 +655,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00097">97</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00115">115</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -582,7 +683,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00118">118</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00137">137</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -620,14 +721,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00332">332</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00406">406</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a2feb68edd437b5716514d6ee273a7523_cgraph.png" border="0" usemap="#classMPD_1_1Client_a2feb68edd437b5716514d6ee273a7523_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a2feb68edd437b5716514d6ee273a7523_cgraph" id="classMPD_1_1Client_a2feb68edd437b5716514d6ee273a7523_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="515,5,725,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="243,31,466,57"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="243,5,466,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="515,5,725,32"/></map>
 </div>
 </p>
 
@@ -648,7 +749,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00104">104</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00123">123</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -656,6 +757,34 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMPD_1_1Client_aba520bcb25ca90d28a5a8554ef61cd31_cgraph.png" border="0" usemap="#classMPD_1_1Client_aba520bcb25ca90d28a5a8554ef61cd31_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_aba520bcb25ca90d28a5a8554ef61cd31_cgraph" id="classMPD_1_1Client_aba520bcb25ca90d28a5a8554ef61cd31_cgraph">
 <area shape="rect" id="node3" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="240,5,435,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="755,5,965,32"/><area shape="rect" id="node7" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="483,31,706,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8ff1491b083c8b6f23131ce7145da7c"></a><!-- doxytag: member="MPD::Client::playlist_remove" ref="aa8ff1491b083c8b6f23131ce7145da7c" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPD::Client::playlist_remove </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00433">433</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_aa8ff1491b083c8b6f23131ce7145da7c_cgraph.png" border="0" usemap="#classMPD_1_1Client_aa8ff1491b083c8b6f23131ce7145da7c_cgraph" alt=""/></div>
+<map name="classMPD_1_1Client_aa8ff1491b083c8b6f23131ce7145da7c_cgraph" id="classMPD_1_1Client_aa8ff1491b083c8b6f23131ce7145da7c_cgraph">
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="249,5,471,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="520,5,731,32"/></map>
 </div>
 </p>
 
@@ -676,7 +805,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00070">70</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00087">87</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -721,14 +850,42 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00344">344</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00416">416</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_ad08ed2b177b40d09fe75b2d9b478e886_cgraph.png" border="0" usemap="#classMPD_1_1Client_ad08ed2b177b40d09fe75b2d9b478e886_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_ad08ed2b177b40d09fe75b2d9b478e886_cgraph" id="classMPD_1_1Client_ad08ed2b177b40d09fe75b2d9b478e886_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="496,5,707,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="225,31,447,57"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="225,5,447,32"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="496,5,707,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae08e59527a8db7c0e4483c1853f31554"></a><!-- doxytag: member="MPD::Client::signal_connection_change" ref="ae08e59527a8db7c0e4483c1853f31554" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">ConnectionNotifier</a> &amp; MPD::Client::signal_connection_change </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00426">426</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Client_ae08e59527a8db7c0e4483c1853f31554_icgraph.png" border="0" usemap="#classMPD_1_1Client_ae08e59527a8db7c0e4483c1853f31554_icgraph" alt=""/></div>
+<map name="classMPD_1_1Client_ae08e59527a8db7c0e4483c1853f31554_icgraph" id="classMPD_1_1Client_ae08e59527a8db7c0e4483c1853f31554_icgraph">
+<area shape="rect" id="node3" href="classGManager_1_1AbstractGElement.html#a1ad757c3877b1d790770e87f7a0392cb" title="GManager::AbstractGElement::AbstractGElement" alt="" coords="319,5,631,32"/><area shape="rect" id="node5" href="classGManager_1_1DisconnectManager.html#ac1730b43ac96d486b1764c429533afb3" title="GManager::DisconnectManager::DisconnectManager" alt="" coords="309,56,640,83"/></map>
 </div>
 </p>
 
@@ -749,14 +906,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00286">286</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00346">346</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a3e2cd3bc2f7aff8cfc27b85597fa23a0_cgraph.png" border="0" usemap="#classMPD_1_1Client_a3e2cd3bc2f7aff8cfc27b85597fa23a0_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a3e2cd3bc2f7aff8cfc27b85597fa23a0_cgraph" id="classMPD_1_1Client_a3e2cd3bc2f7aff8cfc27b85597fa23a0_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="523,26,733,53"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="251,26,474,53"/><area shape="rect" id="node8" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="281,77,444,103"/><area shape="rect" id="node15" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467" title="MPD::Status::get_consume" alt="" coords="271,127,455,154"/><area shape="rect" id="node11" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="527,77,729,103"/><area shape="rect" id="node13" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="532,127,724,154"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="251,5,474,32"/><area shape="rect" id="node7" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="281,56,444,83"/><area shape="rect" id="node14" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467" title="MPD::Status::get_consume" alt="" coords="271,107,455,133"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="523,5,733,32"/><area shape="rect" id="node10" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="527,56,729,83"/><area shape="rect" id="node12" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="532,107,724,133"/></map>
 </div>
 </p>
 
@@ -777,14 +934,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00261">261</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00336">336</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a77f6e322d6f30a37b3100976bf218b62_cgraph.png" border="0" usemap="#classMPD_1_1Client_a77f6e322d6f30a37b3100976bf218b62_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a77f6e322d6f30a37b3100976bf218b62_cgraph" id="classMPD_1_1Client_a77f6e322d6f30a37b3100976bf218b62_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="512,26,723,53"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="241,26,463,53"/><area shape="rect" id="node8" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="271,77,433,104"/><area shape="rect" id="node15" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455" title="MPD::Status::get_random" alt="" coords="265,128,439,154"/><area shape="rect" id="node11" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="516,77,719,104"/><area shape="rect" id="node13" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="521,128,713,154"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="241,5,463,32"/><area shape="rect" id="node7" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="271,56,433,83"/><area shape="rect" id="node14" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455" title="MPD::Status::get_random" alt="" coords="265,107,439,133"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="512,5,723,32"/><area shape="rect" id="node10" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="516,56,719,83"/><area shape="rect" id="node12" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="521,107,713,133"/></map>
 </div>
 </p>
 
@@ -805,14 +962,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00298">298</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00356">356</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_a1cab014c39b0e730635186b8a7a70ae3_cgraph.png" border="0" usemap="#classMPD_1_1Client_a1cab014c39b0e730635186b8a7a70ae3_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_a1cab014c39b0e730635186b8a7a70ae3_cgraph" id="classMPD_1_1Client_a1cab014c39b0e730635186b8a7a70ae3_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="507,27,717,53"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="235,27,458,53"/><area shape="rect" id="node8" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="265,77,428,104"/><area shape="rect" id="node15" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c" title="MPD::Status::get_repeat" alt="" coords="263,128,430,155"/><area shape="rect" id="node11" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="511,77,713,104"/><area shape="rect" id="node13" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="516,128,708,155"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="235,5,458,32"/><area shape="rect" id="node7" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="265,56,428,83"/><area shape="rect" id="node14" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c" title="MPD::Status::get_repeat" alt="" coords="263,107,430,133"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="507,5,717,32"/><area shape="rect" id="node10" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="511,56,713,83"/><area shape="rect" id="node12" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="516,107,708,133"/></map>
 </div>
 </p>
 
@@ -833,14 +990,14 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00273">273</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00366">366</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client_afccca0d48bba40c4a937ee119f1b1269_cgraph.png" border="0" usemap="#classMPD_1_1Client_afccca0d48bba40c4a937ee119f1b1269_cgraph" alt=""/></div>
 <map name="classMPD_1_1Client_afccca0d48bba40c4a937ee119f1b1269_cgraph" id="classMPD_1_1Client_afccca0d48bba40c4a937ee119f1b1269_cgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="504,27,715,53"/><area shape="rect" id="node5" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="263,128,425,155"/><area shape="rect" id="node12" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e" title="MPD::Status::get_single" alt="" coords="261,77,427,104"/><area shape="rect" id="node14" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="233,27,455,53"/><area shape="rect" id="node8" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="508,103,711,129"/><area shape="rect" id="node10" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="513,153,705,180"/></map>
+<area shape="rect" id="node3" href="classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="233,5,455,32"/><area shape="rect" id="node7" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="263,56,425,83"/><area shape="rect" id="node14" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e" title="MPD::Status::get_single" alt="" coords="261,107,427,133"/><area shape="rect" id="node5" href="classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="504,5,715,32"/><area shape="rect" id="node10" href="classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="508,56,711,83"/><area shape="rect" id="node12" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="513,107,705,133"/></map>
 </div>
 </p>
 
@@ -856,7 +1013,7 @@ Here is the call graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -868,7 +1025,7 @@ Here is the call graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

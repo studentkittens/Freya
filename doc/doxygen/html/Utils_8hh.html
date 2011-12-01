@@ -76,26 +76,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#define-members">Defines</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Defines</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">src/Utils/Utils.hh File Reference</div>  </div>
 </div>
 <div class="contents">
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;glibmm.h&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for Utils.hh:</div>
+<div class="dyncontent">
+<div class="center"><img src="Utils_8hh__incl.png" border="0" usemap="#src_2Utils_2Utils_8hh" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Utils_8hh__dep__incl.png" border="0" usemap="#src_2Utils_2Utils_8hhdep" alt=""/></div>
 <map name="src_2Utils_2Utils_8hhdep" id="src_2Utils_2Utils_8hhdep">
-<area shape="rect" id="node3" href="BrowserList_8cc.html" title="src/GManager/BrowserList.cc" alt="" coords="5,80,200,107"/></map>
+<area shape="rect" id="node3" href="Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="5,80,176,107"/><area shape="rect" id="node5" href="FreyaWindow_8hh.html" title="src/FreyaWindow.hh" alt="" coords="201,80,343,107"/><area shape="rect" id="node9" href="Main_8cc.html" title="src/Main.cc" alt="" coords="336,155,427,181"/><area shape="rect" id="node12" href="test__utils_8cc.html" title="src/Utils/test_utils.cc" alt="" coords="419,80,565,107"/><area shape="rect" id="node14" href="Utils_8cc.html" title="src/Utils/Utils.cc" alt="" coords="589,80,709,107"/><area shape="rect" id="node7" href="FreyaWindow_8cc.html" title="src/FreyaWindow.cc" alt="" coords="169,155,311,181"/></map>
 </div>
 </div>
 <p><a href="Utils_8hh_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html">Utils</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder_refp, widget_name, widget_ptr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8hh.html#a3c4cf93577bf5d58f10c36dbe273964c">BUILDER_GET_NO_MANAGE</a>(builder_refp, widget_name, widget_ptr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8hh.html#a9db9a680ddeb7c583e60b278011ea8db">BUILDER_ADD</a>(builder_ref, filename)</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html#a0bdcd17527f45f36ac32f494257cd61b">Utils::seconds_to_duration</a> (unsigned long duration)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html#a5474bab7122470a5f8806a1669f0e367">Utils::seconds_to_timestamp</a> (const long duration)</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a9db9a680ddeb7c583e60b278011ea8db"></a><!-- doxytag: member="Utils.hh::BUILDER_ADD" ref="a9db9a680ddeb7c583e60b278011ea8db" args="(builder_ref, filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUILDER_ADD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">builder_ref, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">filename&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment">g_assert(filename);                      \
+    try {                                    \
+     builder_ref-&gt;add_from_file(filename);   \
+    } <span class="keywordflow">catch</span>(<span class="keyword">const</span> Gtk::BuilderError&amp; e) {    \
+     Error(<span class="stringliteral">&quot;Could not add playlist ui&quot;</span>       \
+           <span class="stringliteral">&quot;definitions to builder. =&gt; %s&quot;</span>   \
+           <span class="stringliteral">&quot;| Is &#39;%s&#39; there and okay?&quot;</span>,      \
+           e.what().c_str(),filename);       \
+    }
+</pre></div>
+<p>Definition at line <a class="el" href="Utils_8hh_source.html#l00017">17</a> of file <a class="el" href="Utils_8hh_source.html">Utils.hh</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ae113099ac6ab0c0b0ecb559b577ef044"></a><!-- doxytag: member="Utils.hh::BUILDER_GET" ref="ae113099ac6ab0c0b0ecb559b577ef044" args="(builder_refp, widget_name, widget_ptr)" -->
 <div class="memitem">
 <div class="memproto">
@@ -126,12 +181,48 @@ Defines</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><a class="code" href="Utils_8hh.html#a3c4cf93577bf5d58f10c36dbe273964c">BUILDER_GET_NO_MANAGE</a>(builder_refp, widget_name, widget_ptr) \
+    Gtk::manage(widget_ptr);
+</pre></div>
+<p>Definition at line <a class="el" href="Utils_8hh_source.html#l00007">7</a> of file <a class="el" href="Utils_8hh_source.html">Utils.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3c4cf93577bf5d58f10c36dbe273964c"></a><!-- doxytag: member="Utils.hh::BUILDER_GET_NO_MANAGE" ref="a3c4cf93577bf5d58f10c36dbe273964c" args="(builder_refp, widget_name, widget_ptr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUILDER_GET_NO_MANAGE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">builder_refp, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">widget_name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">widget_ptr&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 <b>Value:</b><div class="fragment"><pre class="fragment">widget_ptr = NULL;                                     \
     builder_refp-&gt;get_widget(widget_name,widget_ptr);      \
     g_assert(widget_ptr);                                  \
-    Gtk::manage(widget_ptr);
 </pre></div>
-<p>Definition at line <a class="el" href="Utils_8hh_source.html#l00004">4</a> of file <a class="el" href="Utils_8hh_source.html">Utils.hh</a>.</p>
+<p>Definition at line <a class="el" href="Utils_8hh_source.html#l00011">11</a> of file <a class="el" href="Utils_8hh_source.html">Utils.hh</a>.</p>
 
 </div>
 </div>
@@ -141,7 +232,7 @@ Defines</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -153,7 +244,7 @@ Defines</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

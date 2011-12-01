@@ -76,6 +76,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow3" class="tabs2">
     <ul class="tablist">
       <li class="current"><a href="namespacemembers.html"><span>All</span></a></li>
+      <li><a href="namespacemembers_func.html"><span>Functions</span></a></li>
+      <li><a href="namespacemembers_vars.html"><span>Variables</span></a></li>
       <li><a href="namespacemembers_type.html"><span>Typedefs</span></a></li>
       <li><a href="namespacemembers_enum.html"><span>Enumerations</span></a></li>
       <li><a href="namespacemembers_eval.html"><span>Enumerator</span></a></li>
@@ -84,6 +86,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <div class="textblock">Here is a list of all namespace members with links to the namespace documentation for each member:</div><ul>
+<li>ConnectionNotifier
+: <a class="el" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">MPD</a>
+</li>
 <li>LOG_DEBUG
 : <a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">Log</a>
 </li>
@@ -105,6 +110,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>LOGLEVEL
 : <a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">Log</a>
 </li>
+<li>mpd_playlist
+: <a class="el" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">MPD</a>
+</li>
 <li>mpd_song
 : <a class="el" href="namespaceMPD.html#a0395985bd21236df18454092e2cc1f42">MPD</a>
 </li>
@@ -114,6 +122,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>mpd_stats
 : <a class="el" href="namespaceMPD.html#acd9472f1ede8ba621cf7ec296735e25f">MPD</a>
 </li>
+<li>pl_ui_info
+: <a class="el" href="namespaceBrowser.html#afc920ab97759733e2dbfae04f1f3ae71">Browser</a>
+</li>
+<li>seconds_to_duration()
+: <a class="el" href="namespaceUtils.html#a0bdcd17527f45f36ac32f494257cd61b">Utils</a>
+</li>
+<li>seconds_to_timestamp()
+: <a class="el" href="namespaceUtils.html#a5474bab7122470a5f8806a1669f0e367">Utils</a>
+</li>
+<li>ui_info
+: <a class="el" href="namespaceBrowser.html#ae96dbdc2f6828588ca1169eb90f03025">Browser</a>
+, <a class="el" href="namespaceGManager.html#a65014d2a15fb0616b9ce22760b1ace7a">GManager</a>
+</li>
 </ul>
 </div>
 <!-- window showing the filter options -->
@@ -121,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -133,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

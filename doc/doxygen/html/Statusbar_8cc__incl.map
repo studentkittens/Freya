@@ -1,4 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Statusbar_8hh.html" title="Statusbar.hh" alt="" coords="68,80,164,107"/>
-<area shape="rect" id="node9" href="$ClientTimerProxy_8hh.html" title="ClientTimerProxy.hh" alt="" coords="153,155,293,181"/>
+<area shape="rect" id="node3" href="$Statusbar_8hh.html" title="Statusbar.hh" alt="" coords="111,80,207,107"/>
+<area shape="rect" id="node9" href="$Heartbeat_8hh.html" title="Heartbeat.hh" alt="" coords="154,155,251,181"/>
+<area shape="rect" id="node12" href="$AbstractGElement_8hh.html" title="AbstractGElement.hh" alt="" coords="209,229,356,256"/>
 </map>

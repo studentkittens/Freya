@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
@@ -88,26 +89,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">GManager::Timeslide Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="GManager::Timeslide" -->
+<!-- doxytag: class="GManager::Timeslide" --><!-- doxytag: inherits="GManager::AbstractGElement" -->
 <p><code>#include &lt;<a class="el" href="Timeslide_8hh_source.html">Timeslide.hh</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for GManager::Timeslide:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGManager_1_1Timeslide__inherit__graph.png" border="0" usemap="#GManager_1_1Timeslide_inherit__map" alt="Inheritance graph"/></div>
+<map name="GManager_1_1Timeslide_inherit__map" id="GManager_1_1Timeslide_inherit__map">
+<area shape="rect" id="node2" href="classGManager_1_1AbstractGElement.html" title="{GManager::AbstractGElement\n|# mp_Client\l|+ AbstractGElement()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="5,5,203,112"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for GManager::Timeslide:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGManager_1_1Timeslide__coll__graph.png" border="0" usemap="#GManager_1_1Timeslide_coll__map" alt="Collaboration graph"/></div>
+<map name="GManager_1_1Timeslide_coll__map" id="GManager_1_1Timeslide_coll__map">
+<area shape="rect" id="node2" href="classGManager_1_1AbstractGElement.html" title="{GManager::AbstractGElement\n|# mp_Client\l|+ AbstractGElement()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="5,528,203,635"/><area shape="rect" id="node4" href="classMPD_1_1Client.html" title="{MPD::Client\n||+ Client()\l+ ~Client()\l+ connect()\l+ disconnect()\l+ is_connected()\l+ send_command()\l+ list_queue()\l+ playback_next()\l+ playback_prev()\l+ playback_stop()\l+ playback_play()\l+ playback_pause()\l+ toggle_random()\l+ toggle_consume()\l+ toggle_repeat()\l+ toggle_single()\l+ play_song_at_id()\l+ playback_seek()\l+ playlist_remove()\l+ set_volume()\l+ get_status()\l+ get_notify()\l+ signal_connection_change()\l+ force_update()\l+ fill_queue()\l+ fill_playlists()\l+ fill_filelist()\l}" alt="" coords="7,5,201,464"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGManager_1_1Timeslide.html#a6b25a5162891ab8684ea1923cf3eba7f">Timeslide</a> (<a class="el" href="classGManager_1_1ClientTimerProxy.html">ClientTimerProxy</a> &amp;tproxy, <a class="el" href="classMPD_1_1Client.html">MPD::Client</a> &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGManager_1_1Timeslide.html#a529251b527032c19fc80819e99d4cd68">~Timeslide</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGManager_1_1Timeslide.html#a40a6b2caff63c01cd53d5e0bc4013d79">Timeslide</a> (<a class="el" href="classGManager_1_1Heartbeat.html">Heartbeat</a> &amp;tproxy, <a class="el" href="classMPD_1_1Client.html">MPD::Client</a> &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="Timeslide_8hh_source.html#l00009">9</a> of file <a class="el" href="Timeslide_8hh_source.html">Timeslide.hh</a>.</p>
+<p>Definition at line <a class="el" href="Timeslide_8hh_source.html#l00010">10</a> of file <a class="el" href="Timeslide_8hh_source.html">Timeslide.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a6b25a5162891ab8684ea1923cf3eba7f"></a><!-- doxytag: member="GManager::Timeslide::Timeslide" ref="a6b25a5162891ab8684ea1923cf3eba7f" args="(ClientTimerProxy &amp;tproxy, MPD::Client &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder)" -->
+<a class="anchor" id="a40a6b2caff63c01cd53d5e0bc4013d79"></a><!-- doxytag: member="GManager::Timeslide::Timeslide" ref="a40a6b2caff63c01cd53d5e0bc4013d79" args="(Heartbeat &amp;tproxy, MPD::Client &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">GManager::Timeslide::Timeslide </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classGManager_1_1ClientTimerProxy.html">ClientTimerProxy</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classGManager_1_1Heartbeat.html">Heartbeat</a> &amp;&#160;</td>
           <td class="paramname"><em>tproxy</em>, </td>
         </tr>
         <tr>
@@ -136,30 +150,11 @@ Public Member Functions</h2></td></tr>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classGManager_1_1Timeslide_a6b25a5162891ab8684ea1923cf3eba7f_cgraph.png" border="0" usemap="#classGManager_1_1Timeslide_a6b25a5162891ab8684ea1923cf3eba7f_cgraph" alt=""/></div>
-<map name="classGManager_1_1Timeslide_a6b25a5162891ab8684ea1923cf3eba7f_cgraph" id="classGManager_1_1Timeslide_a6b25a5162891ab8684ea1923cf3eba7f_cgraph">
-<area shape="rect" id="node3" href="classGManager_1_1ClientTimerProxy.html#a70d9769b728ad600d134277d5e7ab951" title="GManager::ClientTimerProxy::get_notify" alt="" coords="264,5,520,32"/><area shape="rect" id="node5" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal." alt="" coords="313,56,471,83"/></map>
+<div class="center"><img src="classGManager_1_1Timeslide_a40a6b2caff63c01cd53d5e0bc4013d79_cgraph.png" border="0" usemap="#classGManager_1_1Timeslide_a40a6b2caff63c01cd53d5e0bc4013d79_cgraph" alt=""/></div>
+<map name="classGManager_1_1Timeslide_a40a6b2caff63c01cd53d5e0bc4013d79_cgraph" id="classGManager_1_1Timeslide_a40a6b2caff63c01cd53d5e0bc4013d79_cgraph">
+<area shape="rect" id="node3" href="classGManager_1_1Heartbeat.html#a4d0f8c5e4d265f3e0f3dbfeaa9894b6a" title="GManager::Heartbeat::get_notify" alt="" coords="265,5,477,32"/></map>
 </div>
 </p>
-
-</div>
-</div>
-<a class="anchor" id="a529251b527032c19fc80819e99d4cd68"></a><!-- doxytag: member="GManager::Timeslide::~Timeslide" ref="a529251b527032c19fc80819e99d4cd68" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GManager::Timeslide::~Timeslide </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Timeslide_8cc_source.html#l00027">27</a> of file <a class="el" href="Timeslide_8cc_source.html">Timeslide.cc</a>.</p>
 
 </div>
 </div>
@@ -173,7 +168,7 @@ Here is the call graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -185,7 +180,7 @@ Here is the call graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

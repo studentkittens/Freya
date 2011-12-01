@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="421,5,616,32"/>
+<area shape="rect" id="node10" href="$classMPD_1_1Client.html#a2cf834d27006584829883044ec67bde4" title="MPD::Client::play_song_at_id" alt="" coords="177,56,373,83"/>
+<area shape="rect" id="node13" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="MPD::Client::connect" alt="" coords="201,107,349,133"/>
+<area shape="rect" id="node21" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="MPD::Client::disconnect" alt="" coords="436,208,601,235"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="936,120,1147,147"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="665,88,887,115"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="MPD::Connection::connect" alt="" coords="686,151,866,177"/>
+<area shape="rect" id="node18" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="424,107,613,133"/>
+<area shape="rect" id="node23" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="MPD::Connection::disconnect" alt="" coords="677,208,875,235"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$SettingsPlayback_8hh.html" title="src/Browser/SettingsPlayback.hh" alt="" coords="545,80,761,107"/>
+<area shape="rect" id="node5" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="427,155,589,181"/>
+<area shape="rect" id="node18" href="$SettingsNetwork_8hh.html" title="src/Browser/SettingsNetwork.hh" alt="" coords="260,80,469,107"/>
+<area shape="rect" id="node22" href="$SettingsGeneral_8hh.html" title="src/Browser/SettingsGeneral.hh" alt="" coords="29,80,235,107"/>
+<area shape="rect" id="node13" href="$SettingsPlayback_8cc.html" title="src/Browser/SettingsPlayback.cc" alt="" coords="772,229,988,256"/>
+<area shape="rect" id="node7" href="$Settings_8cc.html" title="src/Browser/Settings.cc" alt="" coords="585,229,748,256"/>
+<area shape="rect" id="node9" href="$SettingsGeneral_8cc.html" title="src/Browser/SettingsGeneral.cc" alt="" coords="5,229,211,256"/>
+<area shape="rect" id="node11" href="$SettingsNetwork_8cc.html" title="src/Browser/SettingsNetwork.cc" alt="" coords="236,229,445,256"/>
+<area shape="rect" id="node15" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="471,229,561,256"/>
+</map>

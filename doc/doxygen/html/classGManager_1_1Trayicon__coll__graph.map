@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classBrowser_1_1BasePopup.html" title="{Browser::BasePopup\n|# m_refUIManager\l# m_refActionGroup\l# m_UiDefinition\l# mp_Popup\l|+ BasePopup()\l+ menu_popup()\l# menu_add_item()\l# menu_construct()\l}" alt="" coords="5,528,149,693"/>
+<area shape="rect" id="node4" href="$classGManager_1_1AbstractGElement.html" title="{GManager::AbstractGElement\n|# mp_Client\l|+ AbstractGElement()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="175,557,372,664"/>
+<area shape="rect" id="node6" href="$classMPD_1_1Client.html" title="{MPD::Client\n||+ Client()\l+ ~Client()\l+ connect()\l+ disconnect()\l+ is_connected()\l+ send_command()\l+ list_queue()\l+ playback_next()\l+ playback_prev()\l+ playback_stop()\l+ playback_play()\l+ playback_pause()\l+ toggle_random()\l+ toggle_consume()\l+ toggle_repeat()\l+ toggle_single()\l+ play_song_at_id()\l+ playback_seek()\l+ playlist_remove()\l+ set_volume()\l+ get_status()\l+ get_notify()\l+ signal_connection_change()\l+ force_update()\l+ fill_queue()\l+ fill_playlists()\l+ fill_filelist()\l}" alt="" coords="176,5,371,464"/>
+</map>

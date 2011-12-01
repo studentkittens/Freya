@@ -84,61 +84,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00004"></a>00004 <span class="keyword">namespace </span>GManager
 <a name="l00005"></a>00005 {
 <a name="l00006"></a>00006 
-<a name="l00007"></a><a class="code" href="classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e">00007</a>     <a class="code" href="classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e">Statusicons::Statusicons</a>(<a class="code" href="classMPD_1_1Client.html">MPD::Client</a>&amp; client, <span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder)
-<a name="l00008"></a>00008     {
-<a name="l00009"></a>00009         ignore_updates = <span class="keyword">false</span>;
-<a name="l00010"></a>00010         mp_Client = &amp;client;
-<a name="l00011"></a>00011         mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal.">get_notify</a>().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_client_update));
-<a name="l00012"></a>00012 
-<a name="l00013"></a>00013         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_random&quot;</span>,mp_Random);
-<a name="l00014"></a>00014         mp_Random-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_random));
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_single&quot;</span>,mp_Single);
-<a name="l00017"></a>00017         mp_Single-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_single));
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_repeat&quot;</span>,mp_Repeat);
-<a name="l00020"></a>00020         mp_Repeat-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_repeat));
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_consume&quot;</span>,mp_Consume);
-<a name="l00023"></a>00023         mp_Consume-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_consume));
-<a name="l00024"></a>00024     }
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="classGManager_1_1Statusicons.html#a759d6dbb4fa6a00d9a5eaa357a7b8d94">00026</a>     <a class="code" href="classGManager_1_1Statusicons.html#a759d6dbb4fa6a00d9a5eaa357a7b8d94">Statusicons::~Statusicons</a>() { }
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028     <span class="keywordtype">void</span> Statusicons::on_client_update(<span class="keyword">enum</span> mpd_idle type, <a class="code" href="classMPD_1_1NotifyData.html">MPD::NotifyData</a>&amp; data)
-<a name="l00029"></a>00029     {
-<a name="l00030"></a>00030         <span class="keywordflow">if</span>(type &amp; (MPD_IDLE_OPTIONS))
-<a name="l00031"></a>00031         {
-<a name="l00032"></a>00032             ignore_updates = <span class="keyword">true</span>;
-<a name="l00033"></a>00033             <a class="code" href="classMPD_1_1Status.html">MPD::Status</a>&amp; status = data.<a class="code" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">get_status</a>();
-<a name="l00034"></a>00034             mp_Consume-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467">get_consume</a>()); 
-<a name="l00035"></a>00035             mp_Random-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455">get_random</a>()); 
-<a name="l00036"></a>00036             mp_Repeat-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c">get_repeat</a>()); 
-<a name="l00037"></a>00037             mp_Single-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e">get_single</a>()); 
-<a name="l00038"></a>00038             ignore_updates = <span class="keyword">false</span>;
-<a name="l00039"></a>00039         }
-<a name="l00040"></a>00040     }
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042     <span class="keywordtype">void</span> Statusicons::on_clicked_random(<span class="keywordtype">void</span>)
-<a name="l00043"></a>00043     {
-<a name="l00044"></a>00044         <span class="keywordflow">if</span>(!ignore_updates) mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62">toggle_random</a>(); 
-<a name="l00045"></a>00045     }
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047     <span class="keywordtype">void</span> Statusicons::on_clicked_single(<span class="keywordtype">void</span>)
-<a name="l00048"></a>00048     {
-<a name="l00049"></a>00049         <span class="keywordflow">if</span>(!ignore_updates) mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269">toggle_single</a>(); 
-<a name="l00050"></a>00050     }
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052     <span class="keywordtype">void</span> Statusicons::on_clicked_consume(<span class="keywordtype">void</span>)
-<a name="l00053"></a>00053     {
-<a name="l00054"></a>00054         <span class="keywordflow">if</span>(!ignore_updates) mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0">toggle_consume</a>(); 
-<a name="l00055"></a>00055     }
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057     <span class="keywordtype">void</span> Statusicons::on_clicked_repeat(<span class="keywordtype">void</span>)
-<a name="l00058"></a>00058     {
-<a name="l00059"></a>00059         <span class="keywordflow">if</span>(!ignore_updates) mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3">toggle_repeat</a>(); 
-<a name="l00060"></a>00060     }
-<a name="l00061"></a>00061 }
+<a name="l00007"></a><a class="code" href="classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e">00007</a>     <a class="code" href="classGManager_1_1Statusicons.html#a3885dac48dd60f450979d315c932715e">Statusicons::Statusicons</a>(<a class="code" href="classMPD_1_1Client.html">MPD::Client</a>&amp; client, <span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder) :
+<a name="l00008"></a>00008         <a class="code" href="classGManager_1_1AbstractGElement.html">AbstractGElement</a>(client)
+<a name="l00009"></a>00009     {
+<a name="l00010"></a>00010         ignore_updates = <span class="keyword">false</span>;
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_random&quot;</span>,mp_Random);
+<a name="l00013"></a>00013         mp_Random-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_random));
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_single&quot;</span>,mp_Single);
+<a name="l00016"></a>00016         mp_Single-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_single));
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_repeat&quot;</span>,mp_Repeat);
+<a name="l00019"></a>00019         mp_Repeat-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_repeat));
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021         <a class="code" href="Utils_8hh.html#ae113099ac6ab0c0b0ecb559b577ef044">BUILDER_GET</a>(builder,<span class="stringliteral">&quot;icon_consume&quot;</span>,mp_Consume);
+<a name="l00022"></a>00022         mp_Consume-&gt;signal_clicked().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Statusicons::on_clicked_consume));
+<a name="l00023"></a>00023     }
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025     <span class="keywordtype">void</span> Statusicons::on_connection_change(<span class="keywordtype">bool</span> is_connected)
+<a name="l00026"></a>00026     {
+<a name="l00027"></a>00027         <span class="comment">// TODO</span>
+<a name="l00028"></a>00028     }
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030     <span class="keywordtype">void</span> Statusicons::on_client_update(<span class="keyword">enum</span> mpd_idle type, <a class="code" href="classMPD_1_1NotifyData.html">MPD::NotifyData</a>&amp; data)
+<a name="l00031"></a>00031     {
+<a name="l00032"></a>00032         <span class="keywordflow">if</span>(type &amp; (MPD_IDLE_OPTIONS))
+<a name="l00033"></a>00033         {
+<a name="l00034"></a>00034             ignore_updates = <span class="keyword">true</span>;
+<a name="l00035"></a>00035             <a class="code" href="classMPD_1_1Status.html">MPD::Status</a>&amp; status = data.<a class="code" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">get_status</a>();
+<a name="l00036"></a>00036             mp_Consume-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467">get_consume</a>()); 
+<a name="l00037"></a>00037             mp_Random-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455">get_random</a>()); 
+<a name="l00038"></a>00038             mp_Repeat-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c">get_repeat</a>()); 
+<a name="l00039"></a>00039             mp_Single-&gt;set_active(status.<a class="code" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e">get_single</a>()); 
+<a name="l00040"></a>00040             ignore_updates = <span class="keyword">false</span>;
+<a name="l00041"></a>00041         }
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044     <span class="keywordtype">void</span> Statusicons::on_clicked_random(<span class="keywordtype">void</span>)
+<a name="l00045"></a>00045     {
+<a name="l00046"></a>00046         <span class="keywordflow">if</span>(!ignore_updates) <a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62">toggle_random</a>(); 
+<a name="l00047"></a>00047     }
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049     <span class="keywordtype">void</span> Statusicons::on_clicked_single(<span class="keywordtype">void</span>)
+<a name="l00050"></a>00050     {
+<a name="l00051"></a>00051         <span class="keywordflow">if</span>(!ignore_updates) <a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269">toggle_single</a>(); 
+<a name="l00052"></a>00052     }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <span class="keywordtype">void</span> Statusicons::on_clicked_consume(<span class="keywordtype">void</span>)
+<a name="l00055"></a>00055     {
+<a name="l00056"></a>00056         <span class="keywordflow">if</span>(!ignore_updates) <a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0">toggle_consume</a>(); 
+<a name="l00057"></a>00057     }
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059     <span class="keywordtype">void</span> Statusicons::on_clicked_repeat(<span class="keywordtype">void</span>)
+<a name="l00060"></a>00060     {
+<a name="l00061"></a>00061         <span class="keywordflow">if</span>(!ignore_updates) <a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3">toggle_repeat</a>(); 
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063 }
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -146,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -158,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53" title="Fetches the playlist from the mpd server." alt="" coords="216,31,373,57"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="693,5,904,32"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="422,31,645,57"/>
+<area shape="rect" id="node10" href="$classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d" title="Override this." alt="" coords="446,81,621,108"/>
+</map>

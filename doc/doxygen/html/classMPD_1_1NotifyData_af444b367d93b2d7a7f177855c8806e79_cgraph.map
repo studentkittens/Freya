@@ -1,7 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1NotifyData.html#acc5f2b1954ae442d0ee2a37b4431bc56" title="MPD::NotifyData::update_status" alt="" coords="255,5,468,32"/>
-<area shape="rect" id="node9" href="$classMPD_1_1NotifyData.html#a3daddbcea5f6fbc6d61737d92f3d3405" title="MPD::NotifyData::update_statistics" alt="" coords="246,56,477,83"/>
-<area shape="rect" id="node12" href="$classMPD_1_1NotifyData.html#a4a6bae1112fe62c88881a47508d76dc6" title="MPD::NotifyData::update_song" alt="" coords="259,107,464,133"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="526,56,749,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="797,56,1008,83"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="517,5,728,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="246,31,469,57"/>
 </map>

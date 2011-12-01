@@ -84,12 +84,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="Volumebutton_8hh_source.html">Volumebutton.hh</a>&quot;</code><br/>
 <code>#include &quot;../Utils/Utils.hh&quot;</code><br/>
+<code>#include &quot;../Notify/Notify.hh&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Volumebutton.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="Volumebutton_8cc__incl.png" border="0" usemap="#src_2GManager_2Volumebutton_8cc" alt=""/></div>
 <map name="src_2GManager_2Volumebutton_8cc" id="src_2GManager_2Volumebutton_8cc">
-<area shape="rect" id="node3" href="Volumebutton_8hh.html" title="Volumebutton.hh" alt="" coords="120,80,240,107"/></map>
+<area shape="rect" id="node3" href="Volumebutton_8hh.html" title="Volumebutton.hh" alt="" coords="177,80,297,107"/><area shape="rect" id="node11" href="AbstractGElement_8hh.html" title="AbstractGElement.hh" alt="" coords="332,155,479,181"/></map>
 </div>
 </div>
 <p><a href="Volumebutton_8cc_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +100,7 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGManager.html">GManager</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Volumebutton_8cc.html#a4bd482389a4bc42900d92d6b8a4db73b">UPDATE_TIMEOUT</a>&#160;&#160;&#160;0.05</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Volumebutton_8cc.html#a4bd482389a4bc42900d92d6b8a4db73b">UPDATE_TIMEOUT</a>&#160;&#160;&#160;0.1</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="a4bd482389a4bc42900d92d6b8a4db73b"></a><!-- doxytag: member="Volumebutton.cc::UPDATE_TIMEOUT" ref="a4bd482389a4bc42900d92d6b8a4db73b" args="" -->
@@ -107,13 +108,13 @@ Defines</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define UPDATE_TIMEOUT&#160;&#160;&#160;0.05</td>
+          <td class="memname">#define UPDATE_TIMEOUT&#160;&#160;&#160;0.1</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Volumebutton_8cc_source.html#l00004">4</a> of file <a class="el" href="Volumebutton_8cc_source.html">Volumebutton.cc</a>.</p>
+<p>Definition at line <a class="el" href="Volumebutton_8cc_source.html#l00005">5</a> of file <a class="el" href="Volumebutton_8cc_source.html">Volumebutton.cc</a>.</p>
 
 </div>
 </div>
@@ -123,7 +124,7 @@ Defines</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -135,7 +136,7 @@ Defines</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

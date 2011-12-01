@@ -1,16 +1,14 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$test__avahi_8cc.html" title="src/AvahiBrowser/test_avahi.cc" alt="" coords="134,80,340,107"/>
-<area shape="rect" id="node5" href="$Handler_8cc.html" title="src/Config/Handler.cc" alt="" coords="365,80,513,107"/>
-<area shape="rect" id="node7" href="$test__config_8cc.html" title="src/Config/test_config.cc" alt="" coords="539,80,707,107"/>
-<area shape="rect" id="node9" href="$includes_8hh.html" title="src/includes.hh" alt="" coords="731,80,841,107"/>
-<area shape="rect" id="node11" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="721,155,851,181"/>
-<area shape="rect" id="node13" href="$ClientTimerProxy_8hh.html" title="src/GManager/ClientTimerProxy.hh" alt="" coords="364,229,591,256"/>
-<area shape="rect" id="node21" href="$MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="435,379,572,405"/>
-<area shape="rect" id="node30" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="773,229,903,256"/>
-<area shape="rect" id="node32" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="929,229,1084,256"/>
-<area shape="rect" id="node15" href="$ClientTimerProxy_8cc.html" title="src/GManager/ClientTimerProxy.cc" alt="" coords="5,304,232,331"/>
-<area shape="rect" id="node17" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="257,304,439,331"/>
-<area shape="rect" id="node23" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="515,304,697,331"/>
-<area shape="rect" id="node19" href="$Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="229,379,411,405"/>
-<area shape="rect" id="node25" href="$Timeslide_8cc.html" title="src/GManager/Timeslide.cc" alt="" coords="597,379,779,405"/>
+<area shape="rect" id="node3" href="$test__avahi_8cc.html" title="src/Avahi/test_avahi.cc" alt="" coords="5,80,163,107"/>
+<area shape="rect" id="node5" href="$includes_8hh.html" title="src/includes.hh" alt="" coords="187,80,297,107"/>
+<area shape="rect" id="node20" href="$Handler_8cc.html" title="src/Config/Handler.cc" alt="" coords="323,80,471,107"/>
+<area shape="rect" id="node22" href="$test__config_8cc.html" title="src/Config/test_config.cc" alt="" coords="496,80,664,107"/>
+<area shape="rect" id="node24" href="$FreyaWindow_8hh.html" title="src/FreyaWindow.hh" alt="" coords="689,80,831,107"/>
+<area shape="rect" id="node7" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="188,155,317,181"/>
+<area shape="rect" id="node9" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="45,229,216,256"/>
+<area shape="rect" id="node13" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="224,304,315,331"/>
+<area shape="rect" id="node16" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="291,229,420,256"/>
+<area shape="rect" id="node18" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="446,229,601,256"/>
+<area shape="rect" id="node11" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="29,304,200,331"/>
+<area shape="rect" id="node26" href="$FreyaWindow_8cc.html" title="src/FreyaWindow.cc" alt="" coords="689,155,831,181"/>
 </map>

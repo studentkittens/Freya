@@ -87,18 +87,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html">Client</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Connection.html">Connection</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Directory.html">Directory</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Listener.html">Listener</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1NotifyData.html">NotifyData</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Playlist.html">Playlist</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html">Song</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Statistics.html">Statistics</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Status.html">Status</a></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef sigc::signal&lt; void, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">ConnectionNotifier</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="namespaceMPD.html#a0395985bd21236df18454092e2cc1f42">mpd_song</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMPD.html#a0395985bd21236df18454092e2cc1f42">mpd_song</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="namespaceMPD.html#acd9472f1ede8ba621cf7ec296735e25f">mpd_stats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMPD.html#acd9472f1ede8ba621cf7ec296735e25f">mpd_stats</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="namespaceMPD.html#accbda53f9e83eff4a768018b3c740bab">mpd_state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMPD.html#accbda53f9e83eff4a768018b3c740bab">mpd_state</a></td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
+<a class="anchor" id="a7a0d9604494c78e8bd9f637c38eb81b8"></a><!-- doxytag: member="MPD::ConnectionNotifier" ref="a7a0d9604494c78e8bd9f637c38eb81b8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef sigc::signal&lt;void,bool&gt; <a class="el" href="namespaceMPD.html#a7a0d9604494c78e8bd9f637c38eb81b8">MPD::ConnectionNotifier</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Client_8hh_source.html#l00015">15</a> of file <a class="el" href="Client_8hh_source.html">Client.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2878ba3d1824cafe5700cbd3defb26e2"></a><!-- doxytag: member="MPD::mpd_playlist" ref="a2878ba3d1824cafe5700cbd3defb26e2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a> <a class="el" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">MPD::mpd_playlist</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Playlist_8hh_source.html#l00008">8</a> of file <a class="el" href="Playlist_8hh_source.html">Playlist.hh</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0395985bd21236df18454092e2cc1f42"></a><!-- doxytag: member="MPD::mpd_song" ref="a0395985bd21236df18454092e2cc1f42" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -150,7 +184,7 @@ Typedefs</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,7 +196,7 @@ Typedefs</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

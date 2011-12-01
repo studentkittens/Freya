@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classBrowser_1_1BasePopup.html" title="{Browser::BasePopup\n|# m_refUIManager\l# m_refActionGroup\l# m_UiDefinition\l# mp_Popup\l|+ BasePopup()\l+ menu_popup()\l# menu_add_item()\l# menu_construct()\l}" alt="" coords="5,5,149,171"/>
+<area shape="rect" id="node4" href="$classGManager_1_1AbstractGElement.html" title="{GManager::AbstractGElement\n|# mp_Client\l|+ AbstractGElement()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="175,35,372,141"/>
+</map>

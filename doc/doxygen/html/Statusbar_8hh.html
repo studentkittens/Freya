@@ -84,20 +84,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;gtkmm.h&gt;</code><br/>
 <code>#include &quot;../MPD/Client.hh&quot;</code><br/>
-<code>#include &quot;<a class="el" href="ClientTimerProxy_8hh_source.html">ClientTimerProxy.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Heartbeat_8hh_source.html">Heartbeat.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="AbstractGElement_8hh_source.html">AbstractGElement.hh</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Statusbar.hh:</div>
 <div class="dyncontent">
 <div class="center"><img src="Statusbar_8hh__incl.png" border="0" usemap="#src_2GManager_2Statusbar_8hh" alt=""/></div>
 <map name="src_2GManager_2Statusbar_8hh" id="src_2GManager_2Statusbar_8hh">
-<area shape="rect" id="node7" href="ClientTimerProxy_8hh.html" title="ClientTimerProxy.hh" alt="" coords="153,80,293,107"/></map>
+<area shape="rect" id="node7" href="Heartbeat_8hh.html" title="Heartbeat.hh" alt="" coords="154,80,251,107"/><area shape="rect" id="node10" href="AbstractGElement_8hh.html" title="AbstractGElement.hh" alt="" coords="209,155,356,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Statusbar_8hh__dep__incl.png" border="0" usemap="#src_2GManager_2Statusbar_8hhdep" alt=""/></div>
 <map name="src_2GManager_2Statusbar_8hhdep" id="src_2GManager_2Statusbar_8hhdep">
-<area shape="rect" id="node3" href="Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="5,80,187,107"/><area shape="rect" id="node5" href="MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="211,80,348,107"/></map>
+<area shape="rect" id="node3" href="Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="5,80,187,107"/><area shape="rect" id="node5" href="Main_8cc.html" title="src/Main.cc" alt="" coords="212,80,303,107"/></map>
 </div>
 </div>
 <p><a href="Statusbar_8hh_source.html">Go to the source code of this file.</a></p>
@@ -115,7 +116,7 @@ Namespaces</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -127,7 +128,7 @@ Namespaces</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

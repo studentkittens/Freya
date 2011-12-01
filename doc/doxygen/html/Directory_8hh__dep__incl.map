@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$AbstractFilebrowser_8hh.html" title="src/AbstractFilebrowser.hh" alt="" coords="292,80,471,107"/>
+<area shape="rect" id="node14" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="464,229,593,256"/>
+<area shape="rect" id="node19" href="$Directory_8cc.html" title="src/MPD/Directory.cc" alt="" coords="556,80,704,107"/>
+<area shape="rect" id="node5" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="296,155,425,181"/>
+<area shape="rect" id="node7" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="37,229,208,256"/>
+<area shape="rect" id="node11" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="200,304,291,331"/>
+<area shape="rect" id="node16" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="283,229,439,256"/>
+<area shape="rect" id="node9" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="5,304,176,331"/>
+</map>

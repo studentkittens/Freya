@@ -83,21 +83,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;gtkmm.h&gt;</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include &quot;../MPD/Client.hh&quot;</span>
-<a name="l00006"></a>00006 
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="AbstractGElement_8hh.html">AbstractGElement.hh</a>&quot;</span>
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="keyword">namespace </span>GManager
 <a name="l00009"></a>00009 {
-<a name="l00010"></a><a class="code" href="classGManager_1_1PlaybackButtons.html">00010</a>     <span class="keyword">class </span><a class="code" href="classGManager_1_1PlaybackButtons.html">PlaybackButtons</a>
+<a name="l00010"></a><a class="code" href="classGManager_1_1PlaybackButtons.html">00010</a>     <span class="keyword">class </span><a class="code" href="classGManager_1_1PlaybackButtons.html">PlaybackButtons</a> : <span class="keyword">public</span> <a class="code" href="classGManager_1_1AbstractGElement.html">AbstractGElement</a>
 <a name="l00011"></a>00011     {
 <a name="l00012"></a>00012         <span class="keyword">public</span>:
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014             <a class="code" href="classGManager_1_1PlaybackButtons.html#a51fabdb3716685045c6ab87f0afac5c6">PlaybackButtons</a>(<a class="code" href="classMPD_1_1Client.html">MPD::Client</a>&amp; client, <span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder);
-<a name="l00015"></a>00015             <a class="code" href="classGManager_1_1PlaybackButtons.html#a7e773b1db001266034af689c0d1927de">~PlaybackButtons</a>();
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017         <span class="keyword">private</span>:
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019             <span class="keywordtype">void</span> on_client_update(<span class="keyword">enum</span> mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html">MPD::NotifyData</a>&amp; data);
-<a name="l00020"></a>00020 
+<a name="l00013"></a>00013             <a class="code" href="classGManager_1_1PlaybackButtons.html#a51fabdb3716685045c6ab87f0afac5c6">PlaybackButtons</a>(<a class="code" href="classMPD_1_1Client.html">MPD::Client</a>&amp; client, <span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder);
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015         <span class="keyword">private</span>:
+<a name="l00016"></a>00016             <span class="comment">/* Client Signals */</span>
+<a name="l00017"></a>00017             <span class="keywordtype">void</span> on_client_update(<span class="keyword">enum</span> mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html">MPD::NotifyData</a>&amp; data);
+<a name="l00018"></a>00018             <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> is_connected);
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020             <span class="comment">/* GTK Signals */</span>
 <a name="l00021"></a>00021             <span class="keywordtype">void</span> on_button_stop(<span class="keywordtype">void</span>);
 <a name="l00022"></a>00022             <span class="keywordtype">void</span> on_button_pause(<span class="keywordtype">void</span>);
 <a name="l00023"></a>00023             <span class="keywordtype">void</span> on_button_next(<span class="keywordtype">void</span>);
@@ -105,14 +105,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026             <span class="comment">/* Widgets */</span>
 <a name="l00027"></a>00027             Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029             Gtk::Image play_icon, pause_icon;
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031             <a class="code" href="classMPD_1_1Client.html">MPD::Client</a> * mp_Client;
-<a name="l00032"></a>00032     };
-<a name="l00033"></a>00033 }
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="preprocessor">#endif</span>
+<a name="l00028"></a>00028             Gtk::Image play_icon, pause_icon;
+<a name="l00029"></a>00029     };
+<a name="l00030"></a>00030 }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -120,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -132,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

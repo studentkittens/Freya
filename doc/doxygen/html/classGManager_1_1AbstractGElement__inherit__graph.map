@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classGManager_1_1BrowserList.html" title="{GManager::BrowserList\n||+ BrowserList()\l+ add()\l}" alt="" coords="5,205,163,297"/>
+<area shape="rect" id="node5" href="$classGManager_1_1Heartbeat.html" title="{GManager::Heartbeat\n||+ Heartbeat()\l+ ~Heartbeat()\l+ get_notify()\l+ play()\l+ pause()\l+ reset()\l+ set()\l+ get()\l}" alt="" coords="188,161,335,341"/>
+<area shape="rect" id="node7" href="$classGManager_1_1MenuList.html" title="{GManager::MenuList\n||+ MenuList()\l+ ~MenuList()\l}" alt="" coords="359,205,501,297"/>
+<area shape="rect" id="node9" href="$classGManager_1_1NotifyManager.html" title="{GManager::NotifyManager\n||+ NotifyManager()\l}" alt="" coords="526,212,700,289"/>
+<area shape="rect" id="node11" href="$classGManager_1_1PlaybackButtons.html" title="{GManager::PlaybackButtons\n||+ PlaybackButtons()\l}" alt="" coords="725,212,915,289"/>
+<area shape="rect" id="node13" href="$classGManager_1_1Statusbar.html" title="{GManager::Statusbar\n||+ Statusbar()\l+ ~Statusbar()\l}" alt="" coords="939,205,1085,297"/>
+<area shape="rect" id="node15" href="$classGManager_1_1Statusicons.html" title="{GManager::Statusicons\n||+ Statusicons()\l}" alt="" coords="1110,212,1268,289"/>
+<area shape="rect" id="node17" href="$classGManager_1_1Timeslide.html" title="{GManager::Timeslide\n||+ Timeslide()\l}" alt="" coords="1293,212,1440,289"/>
+<area shape="rect" id="node19" href="$classGManager_1_1Trayicon.html" title="{GManager::Trayicon\n||+ Trayicon()\l}" alt="" coords="1465,212,1604,289"/>
+<area shape="rect" id="node21" href="$classGManager_1_1Volumebutton.html" title="{GManager::Volumebutton\n||+ Volumebutton()\l}" alt="" coords="1629,212,1800,289"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal." alt="" coords="455,5,614,32"/>
+<area shape="rect" id="node5" href="$classGManager_1_1AbstractGElement.html#ab8a70be549ef79ddfba956ec53f05175" title="GManager::AbstractGElement::on_client_update" alt="" coords="383,56,686,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Client.html#ae08e59527a8db7c0e4483c1853f31554" title="MPD::Client::signal_connection_change" alt="" coords="407,107,662,133"/>
+<area shape="rect" id="node9" href="$classGManager_1_1AbstractGElement.html#af02781eb31e338a62b6c9c9240906ef0" title="GManager::AbstractGElement::on_connection_change" alt="" coords="365,157,704,184"/>
+</map>

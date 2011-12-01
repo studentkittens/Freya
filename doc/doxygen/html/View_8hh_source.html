@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Freya: src/AvahiBrowser/View.hh Source File</title>
+<title>Freya: src/Avahi/View.hh Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">src/AvahiBrowser/View.hh</div>  </div>
+<div class="title">src/Avahi/View.hh</div>  </div>
 </div>
 <div class="contents">
 <a href="View_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef FREYA_AVAHIVIEW_H</span>
@@ -89,47 +89,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009     {
 <a name="l00010"></a>00010         <span class="keyword">public</span>:
 <a name="l00011"></a>00011             <a class="code" href="classAvahi_1_1View.html#a3c7b2ee81a7f863d9b3ef328aadf31f4">View</a>(<span class="keywordtype">void</span>);
-<a name="l00012"></a>00012             <span class="keyword">virtual</span> <a class="code" href="classAvahi_1_1View.html#a7778732b3ea6120b2135b0e00ca3a31e" title="DTor ///.">~View</a>(<span class="keywordtype">void</span>);
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#a4d24168f7246ea9d2fc0aed6dacfa2d6" title="User functions ///.">server_append</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * ip, <span class="keyword">const</span> <span class="keywordtype">char</span> * hostname, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> port);
-<a name="l00015"></a>00015             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#a117b25b72aff7a5bfa671e7d6f50b672">server_delete</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
-<a name="l00016"></a>00016             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#aaf55a6de9769013df3ee8c454fbc7cc0">set_status</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * message);
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018             <span class="comment">/* Select callback */</span>
-<a name="l00019"></a><a class="code" href="classAvahi_1_1View.html#a86c760057f8c44b4fbb38ee2f48e75f4">00019</a>             sigc::signal&lt;void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int&gt; <a class="code" href="classAvahi_1_1View.html#a86c760057f8c44b4fbb38ee2f48e75f4">signal_select</a>;
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021         <span class="keyword">protected</span>:
-<a name="l00022"></a>00022             <span class="comment">//Signal handlers:</span>
-<a name="l00023"></a>00023             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#a71759737afe5d061c2c63ad25ae681c0" title="Event Callbacks ////.">on_button_cancel</a>();
-<a name="l00024"></a>00024             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#aa6ca048c7a2ee1b496a421604d05dc78">on_button_select</a>();
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026             <span class="comment">//Tree model columns:</span>
-<a name="l00027"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html">00027</a>             <span class="keyword">class </span><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html">ModelColumns</a> : <span class="keyword">public</span> Gtk::TreeModel::ColumnRecord
-<a name="l00028"></a>00028             {
-<a name="l00029"></a>00029                 <span class="keyword">public</span>:
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a4bf315595c1d34ef779fd13cfe7211de">00031</a>                     <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a4bf315595c1d34ef779fd13cfe7211de">ModelColumns</a>()
-<a name="l00032"></a>00032                     { add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">m_col_ip</a>); add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">m_col_hostname</a>); add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">m_col_name</a>); add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">m_col_port</a>);}
-<a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">00034</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">m_col_ip</a>;
-<a name="l00035"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">00035</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">m_col_hostname</a>;
-<a name="l00036"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">00036</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">m_col_name</a>;
-<a name="l00037"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">00037</a>                     Gtk::TreeModelColumn&lt;unsigned int&gt;  <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">m_col_port</a>;
-<a name="l00038"></a>00038             };
-<a name="l00039"></a>00039 
-<a name="l00040"></a><a class="code" href="classAvahi_1_1View.html#aa773461e7e6f17d1390a2d5fd78f6bdc">00040</a>             <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html">ModelColumns</a> <a class="code" href="classAvahi_1_1View.html#aa773461e7e6f17d1390a2d5fd78f6bdc">m_Columns</a>;
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042             <span class="comment">//Child widgets:</span>
-<a name="l00043"></a><a class="code" href="classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920">00043</a>             Gtk::VBox <a class="code" href="classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920">m_VBox</a>;
-<a name="l00044"></a>00044 
-<a name="l00045"></a><a class="code" href="classAvahi_1_1View.html#a805e4b24a823eac46b46de28429af698">00045</a>             Gtk::ScrolledWindow <a class="code" href="classAvahi_1_1View.html#a805e4b24a823eac46b46de28429af698">m_ScrolledWindow</a>;
-<a name="l00046"></a><a class="code" href="classAvahi_1_1View.html#a883479252bfb1a1dbeaa2bee1952f7a1">00046</a>             Gtk::TreeView <a class="code" href="classAvahi_1_1View.html#a883479252bfb1a1dbeaa2bee1952f7a1">m_TreeView</a>;
-<a name="l00047"></a><a class="code" href="classAvahi_1_1View.html#a6c46201c10d69b79e77c29bd95db26e3">00047</a>             Glib::RefPtr&lt;Gtk::ListStore&gt; <a class="code" href="classAvahi_1_1View.html#a6c46201c10d69b79e77c29bd95db26e3">m_refTreeModel</a>;
-<a name="l00048"></a>00048 
-<a name="l00049"></a><a class="code" href="classAvahi_1_1View.html#ab4fc391577fa25ebfef6b563ffaa2ee3">00049</a>             Gtk::HButtonBox <a class="code" href="classAvahi_1_1View.html#ab4fc391577fa25ebfef6b563ffaa2ee3">m_ButtonBox</a>;
-<a name="l00050"></a><a class="code" href="classAvahi_1_1View.html#ab95df6bb78bd65422f202384a36de889">00050</a>             Gtk::Button <a class="code" href="classAvahi_1_1View.html#ab95df6bb78bd65422f202384a36de889">m_Button_Cancel</a>;
-<a name="l00051"></a><a class="code" href="classAvahi_1_1View.html#a3e32d87f60ae0aaa55886b201a05640e">00051</a>             Gtk::Button <a class="code" href="classAvahi_1_1View.html#a3e32d87f60ae0aaa55886b201a05640e">m_Button_Select</a>;
-<a name="l00052"></a><a class="code" href="classAvahi_1_1View.html#a113fbf491d4ad2a7a72692a83362ba83">00052</a>             Gtk::Label  <a class="code" href="classAvahi_1_1View.html#a113fbf491d4ad2a7a72692a83362ba83">m_Status_Label</a>;
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#a4d24168f7246ea9d2fc0aed6dacfa2d6" title="User functions ///.">server_append</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * ip, <span class="keyword">const</span> <span class="keywordtype">char</span> * hostname, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> port);
+<a name="l00014"></a>00014             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#a117b25b72aff7a5bfa671e7d6f50b672">server_delete</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00015"></a>00015             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#aaf55a6de9769013df3ee8c454fbc7cc0">set_status</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * message);
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017             <span class="comment">/* Select callback */</span>
+<a name="l00018"></a><a class="code" href="classAvahi_1_1View.html#a86c760057f8c44b4fbb38ee2f48e75f4">00018</a>             sigc::signal&lt;void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int&gt; <a class="code" href="classAvahi_1_1View.html#a86c760057f8c44b4fbb38ee2f48e75f4">signal_select</a>;
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020         <span class="keyword">protected</span>:
+<a name="l00021"></a>00021             <span class="comment">//Signal handlers:</span>
+<a name="l00022"></a>00022             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#a71759737afe5d061c2c63ad25ae681c0" title="Event Callbacks ////.">on_button_cancel</a>();
+<a name="l00023"></a>00023             <span class="keywordtype">void</span> <a class="code" href="classAvahi_1_1View.html#aa6ca048c7a2ee1b496a421604d05dc78">on_button_select</a>();
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025             <span class="comment">//Tree model columns:</span>
+<a name="l00026"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html">00026</a>             <span class="keyword">class </span><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html">ModelColumns</a> : <span class="keyword">public</span> Gtk::TreeModel::ColumnRecord
+<a name="l00027"></a>00027             {
+<a name="l00028"></a>00028                 <span class="keyword">public</span>:
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a4bf315595c1d34ef779fd13cfe7211de">00030</a>                     <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a4bf315595c1d34ef779fd13cfe7211de">ModelColumns</a>()
+<a name="l00031"></a>00031                     { add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">m_col_ip</a>); add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">m_col_hostname</a>); add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">m_col_name</a>); add(<a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">m_col_port</a>);}
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">00033</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aba8d74afaa4481246a8ffa265821f9d9">m_col_ip</a>;
+<a name="l00034"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">00034</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#a926e0dc8c0bd4039ca719f5d9cdc40fd">m_col_hostname</a>;
+<a name="l00035"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">00035</a>                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#aa26f4532b5ffa512fb7a680d8a6d6f02">m_col_name</a>;
+<a name="l00036"></a><a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">00036</a>                     Gtk::TreeModelColumn&lt;unsigned int&gt;  <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html#ad7f34f934c84a05836e88805df9e3d04">m_col_port</a>;
+<a name="l00037"></a>00037             };
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="classAvahi_1_1View.html#aa773461e7e6f17d1390a2d5fd78f6bdc">00039</a>             <a class="code" href="classAvahi_1_1View_1_1ModelColumns.html">ModelColumns</a> <a class="code" href="classAvahi_1_1View.html#aa773461e7e6f17d1390a2d5fd78f6bdc">m_Columns</a>;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041             <span class="comment">//Child widgets:</span>
+<a name="l00042"></a><a class="code" href="classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920">00042</a>             Gtk::VBox <a class="code" href="classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920">m_VBox</a>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="classAvahi_1_1View.html#a805e4b24a823eac46b46de28429af698">00044</a>             Gtk::ScrolledWindow <a class="code" href="classAvahi_1_1View.html#a805e4b24a823eac46b46de28429af698">m_ScrolledWindow</a>;
+<a name="l00045"></a><a class="code" href="classAvahi_1_1View.html#a883479252bfb1a1dbeaa2bee1952f7a1">00045</a>             Gtk::TreeView <a class="code" href="classAvahi_1_1View.html#a883479252bfb1a1dbeaa2bee1952f7a1">m_TreeView</a>;
+<a name="l00046"></a><a class="code" href="classAvahi_1_1View.html#a6c46201c10d69b79e77c29bd95db26e3">00046</a>             Glib::RefPtr&lt;Gtk::ListStore&gt; <a class="code" href="classAvahi_1_1View.html#a6c46201c10d69b79e77c29bd95db26e3">m_refTreeModel</a>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="classAvahi_1_1View.html#ab4fc391577fa25ebfef6b563ffaa2ee3">00048</a>             Gtk::HButtonBox <a class="code" href="classAvahi_1_1View.html#ab4fc391577fa25ebfef6b563ffaa2ee3">m_ButtonBox</a>;
+<a name="l00049"></a><a class="code" href="classAvahi_1_1View.html#ab95df6bb78bd65422f202384a36de889">00049</a>             Gtk::Button <a class="code" href="classAvahi_1_1View.html#ab95df6bb78bd65422f202384a36de889">m_Button_Cancel</a>;
+<a name="l00050"></a><a class="code" href="classAvahi_1_1View.html#a3e32d87f60ae0aaa55886b201a05640e">00050</a>             Gtk::Button <a class="code" href="classAvahi_1_1View.html#a3e32d87f60ae0aaa55886b201a05640e">m_Button_Select</a>;
+<a name="l00051"></a><a class="code" href="classAvahi_1_1View.html#a113fbf491d4ad2a7a72692a83362ba83">00051</a>             Gtk::Label  <a class="code" href="classAvahi_1_1View.html#a113fbf491d4ad2a7a72692a83362ba83">m_Status_Label</a>;
+<a name="l00052"></a><a class="code" href="classAvahi_1_1View.html#a950ae29957fdf683b6c5d750105cc4a7">00052</a>             Gtk::Separator <a class="code" href="classAvahi_1_1View.html#a950ae29957fdf683b6c5d750105cc4a7">m_CtrlSep</a>;
 <a name="l00053"></a>00053     };
 <a name="l00054"></a>00054 }
 <a name="l00055"></a>00055 <span class="preprocessor">#endif //GTKMM_View_H</span>
@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -152,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

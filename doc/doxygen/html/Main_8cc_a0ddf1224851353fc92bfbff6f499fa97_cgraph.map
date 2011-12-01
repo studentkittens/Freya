@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classFreyaWindow.html#a9b18bf51d772bcdefee344a5c046f7d4" title="FreyaWindow::get_window" alt="" coords="109,5,288,32"/>
+<area shape="rect" id="node5" href="$classGManager_1_1BrowserList.html#a83907daf00679e0bf5861060275213b4" title="Add the browser to the list and manage it." alt="" coords="105,56,293,83"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91" title="Forces client update." alt="" coords="110,107,287,133"/>
+<area shape="rect" id="node7" href="$classAbstractBrowser.html#a507606b53c6076585fad1dde0f4806b7" title="Get the name of the browser (shown in the browserlist)" alt="" coords="365,5,549,32"/>
+<area shape="rect" id="node9" href="$classAbstractBrowser.html#a7700c8a1252d5a79ce81a197bab66463" title="Returns the set icon for this browser." alt="" coords="341,56,573,83"/>
+<area shape="rect" id="node13" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="893,132,1104,159"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="363,157,552,184"/>
+<area shape="rect" id="node17" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="622,157,845,184"/>
+</map>

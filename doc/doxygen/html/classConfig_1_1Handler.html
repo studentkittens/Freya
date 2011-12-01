@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
@@ -98,6 +99,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Handler.html#a7895612f90be60c3af3eee62ee30f1e8">get_value_as_int</a> (Glib::ustring)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374">set_value</a> (Glib::ustring, Glib::ustring)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Handler.html#a5acc969e8ea631b643b43e8096c71b58">set_value_as_int</a> (Glib::ustring, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Handler.html#aadb8ff7af16b5417fec2e50ac340809f">get_default_value</a> (Glib::ustring)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Handler.html#afcfeb4054b2d0fa49e50296d0a2f1bce">get_default_value_as_int</a> (Glib::ustring)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Handler.html#a61b0a42790fe7522d970115c72cc913c">save_config_now</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
@@ -122,6 +126,44 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aadb8ff7af16b5417fec2e50ac340809f"></a><!-- doxytag: member="Config::Handler::get_default_value" ref="aadb8ff7af16b5417fec2e50ac340809f" args="(Glib::ustring)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Glib::ustring Config::Handler::get_default_value </td>
+          <td>(</td>
+          <td class="paramtype">Glib::ustring&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00212">212</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afcfeb4054b2d0fa49e50296d0a2f1bce"></a><!-- doxytag: member="Config::Handler::get_default_value_as_int" ref="afcfeb4054b2d0fa49e50296d0a2f1bce" args="(Glib::ustring)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Config::Handler::get_default_value_as_int </td>
+          <td>(</td>
+          <td class="paramtype">Glib::ustring&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00217">217</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a234279c50d24218ec2ce7b5404fd3399"></a><!-- doxytag: member="Config::Handler::get_value" ref="a234279c50d24218ec2ce7b5404fd3399" args="(Glib::ustring)" -->
 <div class="memitem">
 <div class="memproto">
@@ -138,15 +180,6 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="Handler_8cc_source.html#l00023">23</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classConfig_1_1Handler_a234279c50d24218ec2ce7b5404fd3399_icgraph.png" border="0" usemap="#classConfig_1_1Handler_a234279c50d24218ec2ce7b5404fd3399_icgraph" alt=""/></div>
-<map name="classConfig_1_1Handler_a234279c50d24218ec2ce7b5404fd3399_icgraph" id="classConfig_1_1Handler_a234279c50d24218ec2ce7b5404fd3399_icgraph">
-<area shape="rect" id="node3" href="classConfig_1_1Handler.html#a7895612f90be60c3af3eee62ee30f1e8" title="Config::Handler::get_value_as_int" alt="" coords="232,5,451,32"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -165,14 +198,32 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00078">78</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
+<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00077">77</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a61b0a42790fe7522d970115c72cc913c"></a><!-- doxytag: member="Config::Handler::save_config_now" ref="a61b0a42790fe7522d970115c72cc913c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config::Handler::save_config_now </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00206">206</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classConfig_1_1Handler_a7895612f90be60c3af3eee62ee30f1e8_cgraph.png" border="0" usemap="#classConfig_1_1Handler_a7895612f90be60c3af3eee62ee30f1e8_cgraph" alt=""/></div>
-<map name="classConfig_1_1Handler_a7895612f90be60c3af3eee62ee30f1e8_cgraph" id="classConfig_1_1Handler_a7895612f90be60c3af3eee62ee30f1e8_cgraph">
-<area shape="rect" id="node3" href="classConfig_1_1Handler.html#a234279c50d24218ec2ce7b5404fd3399" title="Config::Handler::get_value" alt="" coords="273,5,450,32"/></map>
+<div class="center"><img src="classConfig_1_1Handler_a61b0a42790fe7522d970115c72cc913c_cgraph.png" border="0" usemap="#classConfig_1_1Handler_a61b0a42790fe7522d970115c72cc913c_cgraph" alt=""/></div>
+<map name="classConfig_1_1Handler_a61b0a42790fe7522d970115c72cc913c_cgraph" id="classConfig_1_1Handler_a61b0a42790fe7522d970115c72cc913c_cgraph">
+<area shape="rect" id="node3" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="Config::Model::save" alt="" coords="277,5,416,32"/></map>
 </div>
 </p>
 
@@ -203,7 +254,7 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00096">96</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
+<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00109">109</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -250,7 +301,7 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00113">113</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
+<p>Definition at line <a class="el" href="Handler_8cc_source.html#l00126">126</a> of file <a class="el" href="Handler_8cc_source.html">Handler.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -273,7 +324,7 @@ Here is the call graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -285,7 +336,7 @@ Here is the call graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

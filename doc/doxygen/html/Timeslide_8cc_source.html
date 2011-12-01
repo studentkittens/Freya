@@ -86,10 +86,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00006"></a>00006 <span class="preprocessor"></span>
 <a name="l00007"></a>00007 <span class="keyword">namespace </span>GManager
 <a name="l00008"></a>00008 {
-<a name="l00009"></a><a class="code" href="classGManager_1_1Timeslide.html#a6b25a5162891ab8684ea1923cf3eba7f">00009</a>     <a class="code" href="classGManager_1_1Timeslide.html#a6b25a5162891ab8684ea1923cf3eba7f">Timeslide::Timeslide</a>(<a class="code" href="classGManager_1_1ClientTimerProxy.html">ClientTimerProxy</a>&amp; tproxy, <a class="code" href="classMPD_1_1Client.html">MPD::Client</a>&amp; client, <span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder) :
-<a name="l00010"></a>00010         m_Timeguard()
-<a name="l00011"></a>00011     {
-<a name="l00012"></a>00012         mp_Client = &amp;client;
+<a name="l00009"></a><a class="code" href="classGManager_1_1Timeslide.html#a40a6b2caff63c01cd53d5e0bc4013d79">00009</a>     <a class="code" href="classGManager_1_1Timeslide.html#a40a6b2caff63c01cd53d5e0bc4013d79">Timeslide::Timeslide</a>(<a class="code" href="classGManager_1_1Heartbeat.html">Heartbeat</a>&amp; tproxy, <a class="code" href="classMPD_1_1Client.html">MPD::Client</a>&amp; client, <span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt;&amp; builder) :
+<a name="l00010"></a>00010         <a class="code" href="classGManager_1_1AbstractGElement.html">AbstractGElement</a>(client),
+<a name="l00011"></a>00011         m_Timeguard()
+<a name="l00012"></a>00012     {
 <a name="l00013"></a>00013         mp_Proxy  = &amp;tproxy;
 <a name="l00014"></a>00014         ignore_signal = <span class="keyword">false</span>;
 <a name="l00015"></a>00015 
@@ -97,74 +97,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017         m_Timeslide-&gt;set_range(0.0,100.0);
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019         m_Timeslide-&gt;signal_value_changed().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Timeslide::on_user_action));
-<a name="l00020"></a>00020         tproxy.<a class="code" href="classGManager_1_1ClientTimerProxy.html#a70d9769b728ad600d134277d5e7ab951">get_notify</a>().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Timeslide::tick));
-<a name="l00021"></a>00021         mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal.">get_notify</a>().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Timeslide::on_client_update));
-<a name="l00022"></a>00022         
-<a name="l00023"></a>00023     }
+<a name="l00020"></a>00020         tproxy.<a class="code" href="classGManager_1_1Heartbeat.html#a4d0f8c5e4d265f3e0f3dbfeaa9894b6a">get_notify</a>().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;Timeslide::tick));
+<a name="l00021"></a>00021     }
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023     <span class="comment">/* ------------------ */</span>
 <a name="l00024"></a>00024 
-<a name="l00025"></a>00025     <span class="comment">/* ------------------ */</span>
-<a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="classGManager_1_1Timeslide.html#a529251b527032c19fc80819e99d4cd68">00027</a>     <a class="code" href="classGManager_1_1Timeslide.html#a529251b527032c19fc80819e99d4cd68">Timeslide::~Timeslide</a>(<span class="keywordtype">void</span>) {}
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029     <span class="comment">/* ------------------ */</span>
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031     <span class="keywordtype">void</span> Timeslide::tick(<span class="keywordtype">double</span> time)
-<a name="l00032"></a>00032     {
-<a name="l00033"></a>00033         ignore_signal = <span class="keyword">true</span>;
-<a name="l00034"></a>00034         m_Timeslide-&gt;set_value(time);
-<a name="l00035"></a>00035         ignore_signal = <span class="keyword">false</span>;
-<a name="l00036"></a>00036     }
-<a name="l00037"></a>00037     
-<a name="l00038"></a>00038     <span class="comment">/* ------------------ */</span>
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040     <span class="keywordtype">void</span> Timeslide::on_user_action(<span class="keywordtype">void</span>)
-<a name="l00041"></a>00041     {
-<a name="l00042"></a>00042         <span class="comment">/* only allow updates every 0.1 seconds */</span>
-<a name="l00043"></a>00043         <span class="keywordflow">if</span>(!ignore_signal &amp;&amp; m_Timeguard.elapsed() &gt; <a class="code" href="Timeslide_8cc.html#a4bd482389a4bc42900d92d6b8a4db73b">UPDATE_TIMEOUT</a>)
-<a name="l00044"></a>00044         {
-<a name="l00045"></a>00045             <span class="keywordtype">double</span> new_value = m_Timeslide-&gt;get_value();
-<a name="l00046"></a>00046             <span class="keywordflow">if</span>(mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#ab441663ad6882786f3b8df5a05a4dc9f">is_connected</a>())
-<a name="l00047"></a>00047             {
-<a name="l00048"></a>00048                 <span class="keywordtype">unsigned</span> song_id = mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status.">get_status</a>()-&gt;get_song_id();
-<a name="l00049"></a>00049                 mp_Client-&gt;<a class="code" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523">playback_seek</a>(song_id,new_value);
-<a name="l00050"></a>00050             }
-<a name="l00051"></a>00051             mp_Proxy-&gt;<a class="code" href="classGManager_1_1ClientTimerProxy.html#aa5b5cb92a878528724ac1269d6ddcf12">set</a>(new_value);
-<a name="l00052"></a>00052             m_Timeguard.reset();
-<a name="l00053"></a>00053         }
-<a name="l00054"></a>00054     }
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056     <span class="comment">/* ------------------ */</span>
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058     <span class="keywordtype">void</span> Timeslide::on_client_update(<span class="keyword">enum</span> mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html">MPD::NotifyData</a>&amp; data)
-<a name="l00059"></a>00059     {
-<a name="l00060"></a>00060         <span class="keywordflow">if</span>(!ignore_signal &amp;&amp; event &amp; (MPD_IDLE_PLAYER))
-<a name="l00061"></a>00061         {
-<a name="l00062"></a>00062             <a class="code" href="classMPD_1_1Status.html">MPD::Status</a>&amp; status = data.<a class="code" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">get_status</a>();
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064             ignore_signal = <span class="keyword">true</span>;
-<a name="l00065"></a>00065             m_Timeslide-&gt;set_range(0.0,status.<a class="code" href="classMPD_1_1Status.html#a3b6b8b7cb5ea41c55e8babd50cafd250">get_total_time</a>());
-<a name="l00066"></a>00066             m_Timeslide-&gt;set_value(status.<a class="code" href="classMPD_1_1Status.html#a55147875771784b3ccb79267f0bf9c34">get_elapsed_time</a>());
-<a name="l00067"></a>00067             mp_Proxy-&gt;<a class="code" href="classGManager_1_1ClientTimerProxy.html#aa5b5cb92a878528724ac1269d6ddcf12">set</a>(status.<a class="code" href="classMPD_1_1Status.html#a55147875771784b3ccb79267f0bf9c34">get_elapsed_time</a>());
-<a name="l00068"></a>00068             ignore_signal = <span class="keyword">false</span>;
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070             <span class="keywordflow">switch</span>(data.<a class="code" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">get_status</a>().get_state())
-<a name="l00071"></a>00071             {
-<a name="l00072"></a>00072                 <span class="keywordflow">case</span> MPD_STATE_STOP:
-<a name="l00073"></a>00073                     mp_Proxy-&gt;<a class="code" href="classGManager_1_1ClientTimerProxy.html#a069cdc7faf186643524e9929817d28b6">reset</a>();
-<a name="l00074"></a>00074                     <span class="keywordflow">break</span>;
-<a name="l00075"></a>00075                 <span class="keywordflow">case</span> MPD_STATE_PAUSE:
-<a name="l00076"></a>00076                     mp_Proxy-&gt;<a class="code" href="classGManager_1_1ClientTimerProxy.html#aef43e21a30f224adf39abae154bbd073">pause</a>();
-<a name="l00077"></a>00077                     <span class="keywordflow">break</span>;
-<a name="l00078"></a>00078                 <span class="keywordflow">case</span> MPD_STATE_PLAY:
-<a name="l00079"></a>00079                     mp_Proxy-&gt;<a class="code" href="classGManager_1_1ClientTimerProxy.html#a8fc432e6d09e7f456bdcd367b5738fd4">play</a>();
-<a name="l00080"></a>00080                     <span class="keywordflow">break</span>;
-<a name="l00081"></a>00081                 <span class="keywordflow">case</span> MPD_STATE_UNKNOWN:
-<a name="l00082"></a>00082                 <span class="keywordflow">default</span>:
-<a name="l00083"></a>00083                     <span class="keywordflow">break</span>;
-<a name="l00084"></a>00084             }
-<a name="l00085"></a>00085         }
-<a name="l00086"></a>00086     }
-<a name="l00087"></a>00087 }
+<a name="l00025"></a>00025     <span class="keywordtype">void</span> Timeslide::tick(<span class="keywordtype">double</span> time)
+<a name="l00026"></a>00026     {
+<a name="l00027"></a>00027         ignore_signal = <span class="keyword">true</span>;
+<a name="l00028"></a>00028         m_Timeslide-&gt;set_value(time);
+<a name="l00029"></a>00029         ignore_signal = <span class="keyword">false</span>;
+<a name="l00030"></a>00030     }
+<a name="l00031"></a>00031     
+<a name="l00032"></a>00032     <span class="comment">/* ------------------ */</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034     <span class="keywordtype">void</span> Timeslide::on_user_action(<span class="keywordtype">void</span>)
+<a name="l00035"></a>00035     {
+<a name="l00036"></a>00036         <span class="comment">/* only allow updates every 0.1 seconds */</span>
+<a name="l00037"></a>00037         <span class="keywordflow">if</span>(!ignore_signal &amp;&amp; m_Timeguard.elapsed() &gt; <a class="code" href="Timeslide_8cc.html#a4bd482389a4bc42900d92d6b8a4db73b">UPDATE_TIMEOUT</a>)
+<a name="l00038"></a>00038         {
+<a name="l00039"></a>00039             <span class="keywordtype">double</span> new_value = m_Timeslide-&gt;get_value();
+<a name="l00040"></a>00040             <span class="keywordflow">if</span>(<a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#ab441663ad6882786f3b8df5a05a4dc9f">is_connected</a>())
+<a name="l00041"></a>00041             {
+<a name="l00042"></a>00042                 <span class="keywordtype">unsigned</span> song_id = <a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status.">get_status</a>()-&gt;get_song_id();
+<a name="l00043"></a>00043                 <a class="code" href="classGManager_1_1AbstractGElement.html#a1ea159ac3092a7179e41e0785101b030">mp_Client</a>-&gt;<a class="code" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523">playback_seek</a>(song_id,new_value);
+<a name="l00044"></a>00044             }
+<a name="l00045"></a>00045             mp_Proxy-&gt;<a class="code" href="classGManager_1_1Heartbeat.html#a3dca3db56b8ab5c8e600baabbf1c6c3b">set</a>(new_value);
+<a name="l00046"></a>00046             m_Timeguard.reset();
+<a name="l00047"></a>00047         }
+<a name="l00048"></a>00048     }
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050     <span class="comment">/* ------------------ */</span>
+<a name="l00051"></a>00051     
+<a name="l00052"></a>00052     <span class="keywordtype">void</span> Timeslide::on_connection_change(<span class="keywordtype">bool</span> is_connected)
+<a name="l00053"></a>00053     {
+<a name="l00054"></a>00054         <span class="comment">// TODO</span>
+<a name="l00055"></a>00055     }
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057     <span class="comment">/* ------------------ */</span>
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059     <span class="keywordtype">void</span> Timeslide::on_client_update(<span class="keyword">enum</span> mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html">MPD::NotifyData</a>&amp; data)
+<a name="l00060"></a>00060     {
+<a name="l00061"></a>00061         <span class="keywordflow">if</span>(!ignore_signal &amp;&amp; event &amp; (MPD_IDLE_PLAYER))
+<a name="l00062"></a>00062         {
+<a name="l00063"></a>00063             <a class="code" href="classMPD_1_1Status.html">MPD::Status</a>&amp; status = data.<a class="code" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">get_status</a>();
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065             ignore_signal = <span class="keyword">true</span>;
+<a name="l00066"></a>00066             m_Timeslide-&gt;set_range(0.0,status.<a class="code" href="classMPD_1_1Status.html#a3b6b8b7cb5ea41c55e8babd50cafd250">get_total_time</a>());
+<a name="l00067"></a>00067             m_Timeslide-&gt;set_value(status.<a class="code" href="classMPD_1_1Status.html#a55147875771784b3ccb79267f0bf9c34">get_elapsed_time</a>());
+<a name="l00068"></a>00068             mp_Proxy-&gt;<a class="code" href="classGManager_1_1Heartbeat.html#a3dca3db56b8ab5c8e600baabbf1c6c3b">set</a>(status.<a class="code" href="classMPD_1_1Status.html#a55147875771784b3ccb79267f0bf9c34">get_elapsed_time</a>());
+<a name="l00069"></a>00069             ignore_signal = <span class="keyword">false</span>;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071             <span class="keywordflow">switch</span>(data.<a class="code" href="classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03">get_status</a>().get_state())
+<a name="l00072"></a>00072             {
+<a name="l00073"></a>00073                 <span class="keywordflow">case</span> MPD_STATE_STOP:
+<a name="l00074"></a>00074                     mp_Proxy-&gt;<a class="code" href="classGManager_1_1Heartbeat.html#a23293bf720662cbb93f23985416fb150">reset</a>();
+<a name="l00075"></a>00075                     <span class="keywordflow">break</span>;
+<a name="l00076"></a>00076                 <span class="keywordflow">case</span> MPD_STATE_PAUSE:
+<a name="l00077"></a>00077                     mp_Proxy-&gt;<a class="code" href="classGManager_1_1Heartbeat.html#ae940cf159e953a8422648075727d7312">pause</a>();
+<a name="l00078"></a>00078                     <span class="keywordflow">break</span>;
+<a name="l00079"></a>00079                 <span class="keywordflow">case</span> MPD_STATE_PLAY:
+<a name="l00080"></a>00080                     mp_Proxy-&gt;<a class="code" href="classGManager_1_1Heartbeat.html#a7e460205dfa1aff69de200a21c721ad4">play</a>();
+<a name="l00081"></a>00081                     <span class="keywordflow">break</span>;
+<a name="l00082"></a>00082                 <span class="keywordflow">case</span> MPD_STATE_UNKNOWN:
+<a name="l00083"></a>00083                 <span class="keywordflow">default</span>:
+<a name="l00084"></a>00084                     <span class="keywordflow">break</span>;
+<a name="l00085"></a>00085             }
+<a name="l00086"></a>00086         }
+<a name="l00087"></a>00087     }
+<a name="l00088"></a>00088 }
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -172,7 +173,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -184,7 +185,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

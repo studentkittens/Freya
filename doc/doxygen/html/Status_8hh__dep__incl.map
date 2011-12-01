@@ -1,17 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Listener_8hh.html" title="src/MPD/Listener.hh" alt="" coords="901,155,1043,181"/>
-<area shape="rect" id="node31" href="$NotifyData_8hh.html" title="src/MPD/NotifyData.hh" alt="" coords="1010,80,1168,107"/>
-<area shape="rect" id="node36" href="$Status_8cc.html" title="src/MPD/Status.cc" alt="" coords="1193,80,1327,107"/>
-<area shape="rect" id="node5" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="772,229,901,256"/>
-<area shape="rect" id="node26" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="927,304,1083,331"/>
-<area shape="rect" id="node28" href="$Listener_8cc.html" title="src/MPD/Listener.cc" alt="" coords="1010,229,1152,256"/>
-<area shape="rect" id="node7" href="$ClientTimerProxy_8hh.html" title="src/GManager/ClientTimerProxy.hh" alt="" coords="363,304,589,331"/>
-<area shape="rect" id="node15" href="$MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="407,453,544,480"/>
-<area shape="rect" id="node24" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="772,304,901,331"/>
-<area shape="rect" id="node9" href="$ClientTimerProxy_8cc.html" title="src/GManager/ClientTimerProxy.cc" alt="" coords="212,379,439,405"/>
-<area shape="rect" id="node11" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="514,379,696,405"/>
-<area shape="rect" id="node17" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="5,379,187,405"/>
-<area shape="rect" id="node13" href="$Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="569,453,751,480"/>
-<area shape="rect" id="node19" href="$Timeslide_8cc.html" title="src/GManager/Timeslide.cc" alt="" coords="5,453,187,480"/>
-<area shape="rect" id="node34" href="$NotifyData_8cc.html" title="src/MPD/NotifyData.cc" alt="" coords="1067,155,1225,181"/>
+<area shape="rect" id="node3" href="$Listener_8hh.html" title="src/MPD/Listener.hh" alt="" coords="411,155,553,181"/>
+<area shape="rect" id="node21" href="$NotifyData_8hh.html" title="src/MPD/NotifyData.hh" alt="" coords="521,80,679,107"/>
+<area shape="rect" id="node26" href="$Status_8cc.html" title="src/MPD/Status.cc" alt="" coords="703,80,837,107"/>
+<area shape="rect" id="node5" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="283,229,412,256"/>
+<area shape="rect" id="node16" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="438,304,593,331"/>
+<area shape="rect" id="node18" href="$Listener_8cc.html" title="src/MPD/Listener.cc" alt="" coords="521,229,663,256"/>
+<area shape="rect" id="node7" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="37,304,208,331"/>
+<area shape="rect" id="node11" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="200,379,291,405"/>
+<area shape="rect" id="node14" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="283,304,412,331"/>
+<area shape="rect" id="node9" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="5,379,176,405"/>
+<area shape="rect" id="node24" href="$NotifyData_8cc.html" title="src/MPD/NotifyData.cc" alt="" coords="578,155,736,181"/>
 </map>

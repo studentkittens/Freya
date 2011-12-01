@@ -101,26 +101,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021         <span class="keywordtype">int</span> <a class="code" href="classConfig_1_1Handler.html#a7895612f90be60c3af3eee62ee30f1e8">get_value_as_int</a>(Glib::ustring);
 <a name="l00022"></a>00022         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374">set_value</a>(Glib::ustring, Glib::ustring);
 <a name="l00023"></a>00023         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Handler.html#a5acc969e8ea631b643b43e8096c71b58">set_value_as_int</a>(Glib::ustring,<span class="keywordtype">int</span>);
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025     <span class="keyword">private</span>:
-<a name="l00026"></a>00026         <span class="comment">/*internal traversing funcs*/</span>
-<a name="l00027"></a>00027         xmlNodePtr traverse(<span class="keyword">const</span> <span class="keywordtype">char</span>*, xmlNodePtr);
-<a name="l00028"></a>00028         xmlNodePtr _traverse(<span class="keyword">const</span> <span class="keywordtype">char</span>*, <span class="keywordtype">char</span>*, <span class="keywordtype">char</span>*, <span class="keywordtype">int</span>, xmlNodePtr);
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030         <span class="comment">/*model config member for data access*/</span>
-<a name="l00031"></a>00031         <a class="code" href="classConfig_1_1Model.html">Model</a> cfgmodel;
-<a name="l00032"></a>00032         Glib::ustring _get_value(Glib::ustring, <span class="keywordtype">bool</span>);
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034     };
-<a name="l00035"></a>00035 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a><a class="code" href="Handler_8hh.html#ae1de8dc4542f5d8a666be2dc70138fcf">00037</a> <span class="preprocessor">#define CONFIG_SET(x,y) Config::Handler::instance().set_value(x,y)</span>
-<a name="l00038"></a><a class="code" href="Handler_8hh.html#a4f3e6a11a09e9ebd48b7d97b512e28e3">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define CONFIG_GET(x)   Config::Handler::instance().get_value(x)</span>
-<a name="l00039"></a>00039 <span class="preprocessor"></span>
-<a name="l00040"></a><a class="code" href="Handler_8hh.html#aca2851bc87d20bf1710fd04a1f8fe8a4">00040</a> <span class="preprocessor">#define CONFIG_SET_AS_INT(x,y) Config::Handler::instance().set_value_as_int(x,y)</span>
-<a name="l00041"></a><a class="code" href="Handler_8hh.html#a873522bb89c35382b2b913f5018f4892">00041</a> <span class="preprocessor"></span><span class="preprocessor">#define CONFIG_GET_AS_INT(x)   Config::Handler::instance().get_value_as_int(x)</span>
+<a name="l00024"></a>00024         Glib::ustring <a class="code" href="classConfig_1_1Handler.html#aadb8ff7af16b5417fec2e50ac340809f">get_default_value</a>(Glib::ustring);
+<a name="l00025"></a>00025         <span class="keywordtype">int</span> <a class="code" href="classConfig_1_1Handler.html#afcfeb4054b2d0fa49e50296d0a2f1bce">get_default_value_as_int</a>(Glib::ustring);
+<a name="l00026"></a>00026         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Handler.html#a61b0a42790fe7522d970115c72cc913c">save_config_now</a>();
+<a name="l00027"></a>00027         
+<a name="l00028"></a>00028     <span class="keyword">private</span>:
+<a name="l00029"></a>00029         <span class="comment">/*internal traversing funcs*/</span>
+<a name="l00030"></a>00030         xmlNodePtr traverse(<span class="keyword">const</span> <span class="keywordtype">char</span>*, xmlNodePtr);
+<a name="l00031"></a>00031         xmlNodePtr _traverse(<span class="keyword">const</span> <span class="keywordtype">char</span>*, <span class="keywordtype">char</span>*, <span class="keywordtype">char</span>*, <span class="keywordtype">int</span>, xmlNodePtr);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="comment">/*model config member for data access*/</span>
+<a name="l00034"></a>00034         <a class="code" href="classConfig_1_1Model.html">Model</a> cfgmodel;
+<a name="l00035"></a>00035         Glib::ustring _get_value(Glib::ustring, <span class="keywordtype">bool</span>);
+<a name="l00036"></a>00036         <span class="keywordtype">int</span> _get_value_as_int(Glib::ustring, <span class="keywordtype">bool</span>);
+<a name="l00037"></a>00037     };
+<a name="l00038"></a>00038 }
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="Handler_8hh.html#ae1de8dc4542f5d8a666be2dc70138fcf">00040</a> <span class="preprocessor">#define CONFIG_SET(x,y) Config::Handler::instance().set_value(x,y)</span>
+<a name="l00041"></a><a class="code" href="Handler_8hh.html#a4f3e6a11a09e9ebd48b7d97b512e28e3">00041</a> <span class="preprocessor"></span><span class="preprocessor">#define CONFIG_GET(x)   Config::Handler::instance().get_value(x)</span>
 <a name="l00042"></a>00042 <span class="preprocessor"></span>
-<a name="l00043"></a>00043 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: Handler_89V106EN */</span>
+<a name="l00043"></a><a class="code" href="Handler_8hh.html#aca2851bc87d20bf1710fd04a1f8fe8a4">00043</a> <span class="preprocessor">#define CONFIG_SET_AS_INT(x,y) Config::Handler::instance().set_value_as_int(x,y)</span>
+<a name="l00044"></a><a class="code" href="Handler_8hh.html#a873522bb89c35382b2b913f5018f4892">00044</a> <span class="preprocessor"></span><span class="preprocessor">#define CONFIG_GET_AS_INT(x)   Config::Handler::instance().get_value_as_int(x)</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>
+<a name="l00046"></a><a class="code" href="Handler_8hh.html#ad3e3d2ab7212b8c3e8dc4c454061ba8c">00046</a> <span class="preprocessor">#define CONFIG_SAVE_NOW() Config::Handler::instance().save_config_now()</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>
+<a name="l00048"></a><a class="code" href="Handler_8hh.html#ac4174bd4ea86061e7de3e5447d68a8d5">00048</a> <span class="preprocessor">#define CONFIG_GET_DEFAULT(x) Config::Handler::instance().get_default_value(x)</span>
+<a name="l00049"></a><a class="code" href="Handler_8hh.html#af0bb872d0ae910301966ec13e4827f83">00049</a> <span class="preprocessor"></span><span class="preprocessor">#define CONFIG_GET_DEFAULT_AS_INT(x) Config::Handler::instance().get_default_value_as_int(x)</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span>
+<a name="l00051"></a>00051 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: Handler_89V106EN */</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -128,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

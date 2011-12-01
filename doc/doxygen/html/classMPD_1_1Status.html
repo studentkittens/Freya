@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
@@ -93,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Status.html#a6fe244acc8391a3aa6c415d93c17e256">Status</a> (<a class="el" href="includes_8hh.html#aa4e550b6c71adee68fe89a4b802a7c50">mpd_status</a> &amp;status)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Status.html#a5f43f1aa3f206ef9913b3fcb78c44e71">Status</a> (<a class="el" href="includes_8hh.html#aa4e550b6c71adee68fe89a4b802a7c50">mpd_status</a> &amp;status, unsigned long nextSongID)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Status.html#ab5631f990ba9900ff9648045ea5952d9">~Status</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Status.html#ab9ced2bc53a9e0372c75b6dcbac30317">get_volume</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c">get_repeat</a> (void)</td></tr>
@@ -122,7 +123,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock">
 <p>Definition at line <a class="el" href="Status_8hh_source.html#l00011">11</a> of file <a class="el" href="Status_8hh_source.html">Status.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a6fe244acc8391a3aa6c415d93c17e256"></a><!-- doxytag: member="MPD::Status::Status" ref="a6fe244acc8391a3aa6c415d93c17e256" args="(mpd_status &amp;status)" -->
+<a class="anchor" id="a5f43f1aa3f206ef9913b3fcb78c44e71"></a><!-- doxytag: member="MPD::Status::Status" ref="a5f43f1aa3f206ef9913b3fcb78c44e71" args="(mpd_status &amp;status, unsigned long nextSongID)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -130,8 +131,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">MPD::Status::Status </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="includes_8hh.html#aa4e550b6c71adee68fe89a4b802a7c50">mpd_status</a> &amp;&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>nextSongID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -556,6 +567,15 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="Status_8cc_source.html#l00050">50</a> of file <a class="el" href="Status_8cc_source.html">Status.cc</a>.</p>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Status_a180b8e6525ae2e345242a20db324d815_icgraph.png" border="0" usemap="#classMPD_1_1Status_a180b8e6525ae2e345242a20db324d815_icgraph" alt=""/></div>
+<map name="classMPD_1_1Status_a180b8e6525ae2e345242a20db324d815_icgraph" id="classMPD_1_1Status_a180b8e6525ae2e345242a20db324d815_icgraph">
+<area shape="rect" id="node3" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="MPD::Client::playback_pause" alt="" coords="214,5,410,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a3b6b8b7cb5ea41c55e8babd50cafd250"></a><!-- doxytag: member="MPD::Status::get_total_time" ref="a3b6b8b7cb5ea41c55e8babd50cafd250" args="(void)" -->
@@ -613,15 +633,6 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="Status_8cc_source.html#l00015">15</a> of file <a class="el" href="Status_8cc_source.html">Status.cc</a>.</p>
 
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMPD_1_1Status_ab9ced2bc53a9e0372c75b6dcbac30317_icgraph.png" border="0" usemap="#classMPD_1_1Status_ab9ced2bc53a9e0372c75b6dcbac30317_icgraph" alt=""/></div>
-<map name="classMPD_1_1Status_ab9ced2bc53a9e0372c75b6dcbac30317_icgraph" id="classMPD_1_1Status_ab9ced2bc53a9e0372c75b6dcbac30317_icgraph">
-<area shape="rect" id="node3" href="classMPD_1_1Client.html#aeab8c326b9a3548fb2ecc03b9b9fe3e5" title="MPD::Client::get_volume" alt="" coords="227,5,397,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -634,7 +645,7 @@ Here is the caller graph for this function:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -646,7 +657,7 @@ Here is the caller graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

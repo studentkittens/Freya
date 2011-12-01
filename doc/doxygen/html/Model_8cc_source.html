@@ -88,8 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00008"></a>00008     <span class="comment">/*reads file from hdd*/</span>
 <a name="l00009"></a><a class="code" href="classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520">00009</a>     <a class="code" href="classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520">Model::Model</a>()
 <a name="l00010"></a>00010     {
-<a name="l00011"></a>00011         <a class="code" href="classInit_1_1Initpath.html">Init::Initpath</a> path;
-<a name="l00012"></a>00012         Glib::ustring pfad = (<span class="keywordtype">char</span>*)path.<a class="code" href="classInit_1_1Initpath.html#a6734b523ef234cf3b2bd1fa95445c8ed">path_to_config</a>().c_str();
+<a name="l00011"></a>00011         <a class="code" href="classInit_1_1Path.html">Init::Path</a> path;
+<a name="l00012"></a>00012         Glib::ustring pfad(path.<a class="code" href="classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e">path_to_config</a>());
 <a name="l00013"></a>00013         setpath((<span class="keywordtype">char</span>*)pfad.c_str());
 <a name="l00014"></a>00014         this-&gt;<a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">load</a>(pathtofile);
 <a name="l00015"></a>00015         <span class="comment">/* loads default document to memory */</span>
@@ -104,91 +104,93 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024         this-&gt;<a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">save</a>();
 <a name="l00025"></a>00025         xmlFreeDoc(defaultDoc);
 <a name="l00026"></a>00026         xmlFreeDoc(fileDoc);
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028     }
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030     <span class="comment">/* ----------------------------------------- */</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032     <span class="comment">/*returns the doc pointer of users config.xml*/</span>
-<a name="l00033"></a><a class="code" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">00033</a>     xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">Model::getDocPtr</a>()
-<a name="l00034"></a>00034     {
-<a name="l00035"></a>00035         <span class="keywordflow">return</span> fileDoc;
-<a name="l00036"></a>00036     }
-<a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">00038</a>     xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">Model::getDefaultDocPtr</a>()
-<a name="l00039"></a>00039     {
-<a name="l00040"></a>00040         <span class="keywordflow">return</span> defaultDoc;
-<a name="l00041"></a>00041     }
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043     <span class="comment">/* ----------------------------------------- */</span>
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045     <span class="comment">/*xml file reader*/</span>
-<a name="l00046"></a><a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">00046</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">Model::load</a>(<span class="keywordtype">char</span>* file)
-<a name="l00047"></a>00047     {
-<a name="l00048"></a>00048         <span class="comment">/* try loading config.xml from hdd */</span>
-<a name="l00049"></a>00049         fileDoc = xmlParseFile(file);
-<a name="l00050"></a>00050         xmlNodePtr curNode;
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052         <span class="keywordflow">if</span>(NULL != fileDoc)
-<a name="l00053"></a>00053         {
-<a name="l00054"></a>00054             curNode = xmlDocGetRootElement(fileDoc);
-<a name="l00055"></a>00055             <span class="keywordflow">if</span> (NULL != curNode)
-<a name="l00056"></a>00056             {
-<a name="l00057"></a>00057                 <span class="keywordflow">if</span> (!(xmlStrcmp(curNode-&gt;name, (<span class="keyword">const</span> xmlChar*) <span class="stringliteral">&quot;freya&quot;</span>)))
-<a name="l00058"></a>00058                 {
-<a name="l00059"></a>00059                     <a class="code" href="Writer_8hh.html#abb58542afa78bcdb2c6e2ae5d2034127">Success</a>(<span class="stringliteral">&quot;Config succesfully read.&quot;</span>);
-<a name="l00060"></a>00060                 }
-<a name="l00061"></a>00061                 <span class="keywordflow">else</span>
-<a name="l00062"></a>00062                 {
-<a name="l00063"></a>00063                     <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;File does not look like a Freya config file.&quot;</span>);
-<a name="l00064"></a>00064                     xmlFreeDoc(fileDoc);
-<a name="l00065"></a>00065                     fileDoc = NULL;
-<a name="l00066"></a>00066                     curNode = NULL;
-<a name="l00067"></a>00067                 }
-<a name="l00068"></a>00068             }
-<a name="l00069"></a>00069             <span class="keywordflow">else</span>
-<a name="l00070"></a>00070             {
-<a name="l00071"></a>00071                 <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;Empty config file / invalid XML&quot;</span>);
-<a name="l00072"></a>00072                 xmlFreeDoc(fileDoc);
-<a name="l00073"></a>00073                 fileDoc = NULL;
-<a name="l00074"></a>00074             }
-<a name="l00075"></a>00075         }
-<a name="l00076"></a>00076         <span class="keywordflow">else</span>
-<a name="l00077"></a>00077         {
-<a name="l00078"></a>00078             <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;config.xml file not found.&quot;</span>);
-<a name="l00079"></a>00079         }
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081     }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083     <span class="comment">/* ----------------------------------------- */</span>
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085     <span class="comment">/* loads default document */</span>
-<a name="l00086"></a><a class="code" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">00086</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">Model::loadDefaultDoc</a>()
-<a name="l00087"></a>00087     {
-<a name="l00088"></a>00088         <span class="keyword">const</span> <span class="keywordtype">char</span>* tmp = defaultconfig.c_str();
-<a name="l00089"></a>00089         defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
-<a name="l00090"></a>00090     }
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092     <span class="comment">/* ----------------------------------------- */</span>
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094     <span class="comment">/*save default config aka Mr fileDoc*/</span>
-<a name="l00095"></a><a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">00095</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">Model::save</a>()
-<a name="l00096"></a>00096     {
-<a name="l00097"></a>00097         <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">save</a>((<span class="keywordtype">char</span>*)<a class="code" href="Model_8hh.html#aba0084f688762511c32aafc04fff3288">outputfile</a>, fileDoc);
-<a name="l00098"></a>00098     }
-<a name="l00099"></a>00099 
+<a name="l00027"></a>00027         g_free(pathtofile);
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029     }
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031     <span class="comment">/* ----------------------------------------- */</span>
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033     <span class="comment">/*returns the doc pointer of users config.xml*/</span>
+<a name="l00034"></a><a class="code" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">00034</a>     xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">Model::getDocPtr</a>()
+<a name="l00035"></a>00035     {
+<a name="l00036"></a>00036         <span class="keywordflow">return</span> fileDoc;
+<a name="l00037"></a>00037     }
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">00039</a>     xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">Model::getDefaultDocPtr</a>()
+<a name="l00040"></a>00040     {
+<a name="l00041"></a>00041         <span class="keywordflow">return</span> defaultDoc;
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044     <span class="comment">/* ----------------------------------------- */</span>
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046     <span class="comment">/*xml file reader*/</span>
+<a name="l00047"></a><a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">00047</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">Model::load</a>(<span class="keywordtype">char</span>* file)
+<a name="l00048"></a>00048     {
+<a name="l00049"></a>00049         <span class="comment">/* try loading config.xml from hdd */</span>
+<a name="l00050"></a>00050         fileDoc = xmlParseFile(file);
+<a name="l00051"></a>00051         xmlNodePtr curNode;
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="keywordflow">if</span>(NULL != fileDoc)
+<a name="l00054"></a>00054         {
+<a name="l00055"></a>00055             curNode = xmlDocGetRootElement(fileDoc);
+<a name="l00056"></a>00056             <span class="keywordflow">if</span> (NULL != curNode)
+<a name="l00057"></a>00057             {
+<a name="l00058"></a>00058                 <span class="keywordflow">if</span> (!(xmlStrcmp(curNode-&gt;name, (<span class="keyword">const</span> xmlChar*) <span class="stringliteral">&quot;freya&quot;</span>)))
+<a name="l00059"></a>00059                 {
+<a name="l00060"></a>00060                     <a class="code" href="Writer_8hh.html#abb58542afa78bcdb2c6e2ae5d2034127">Success</a>(<span class="stringliteral">&quot;Config succesfully read.&quot;</span>);
+<a name="l00061"></a>00061                 }
+<a name="l00062"></a>00062                 <span class="keywordflow">else</span>
+<a name="l00063"></a>00063                 {
+<a name="l00064"></a>00064                     <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;File does not look like a Freya config file.&quot;</span>);
+<a name="l00065"></a>00065                     xmlFreeDoc(fileDoc);
+<a name="l00066"></a>00066                     fileDoc = NULL;
+<a name="l00067"></a>00067                     curNode = NULL;
+<a name="l00068"></a>00068                 }
+<a name="l00069"></a>00069             }
+<a name="l00070"></a>00070             <span class="keywordflow">else</span>
+<a name="l00071"></a>00071             {
+<a name="l00072"></a>00072                 <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;Empty config file / invalid XML&quot;</span>);
+<a name="l00073"></a>00073                 xmlFreeDoc(fileDoc);
+<a name="l00074"></a>00074                 fileDoc = NULL;
+<a name="l00075"></a>00075             }
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077         <span class="keywordflow">else</span>
+<a name="l00078"></a>00078         {
+<a name="l00079"></a>00079             <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;config.xml file not found.&quot;</span>);
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082     }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     <span class="comment">/* ----------------------------------------- */</span>
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086     <span class="comment">/* loads default document */</span>
+<a name="l00087"></a><a class="code" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">00087</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">Model::loadDefaultDoc</a>()
+<a name="l00088"></a>00088     {
+<a name="l00089"></a>00089         <span class="keyword">const</span> <span class="keywordtype">char</span>* tmp = defaultconfig.c_str();
+<a name="l00090"></a>00090         defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093     <span class="comment">/* ----------------------------------------- */</span>
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095     <span class="comment">/*save default config aka Mr fileDoc*/</span>
+<a name="l00096"></a><a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">00096</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">Model::save</a>()
+<a name="l00097"></a>00097     {
+<a name="l00098"></a>00098         <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">save</a>(pathtofile, fileDoc);
+<a name="l00099"></a>00099     }
 <a name="l00100"></a>00100 
-<a name="l00101"></a>00101     <span class="comment">/*save alternative config*/</span>
-<a name="l00102"></a><a class="code" href="classConfig_1_1Model.html#ac7bd0ad7aa27056eeb400f47d0e56d26">00102</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">Model::save</a>(<span class="keywordtype">char</span>* altfile,xmlDocPtr doc)
-<a name="l00103"></a>00103     {
-<a name="l00104"></a>00104         xmlSaveFile(altfile,doc);
-<a name="l00105"></a>00105     }
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107     <span class="keywordtype">void</span> Model::setpath(<span class="keywordtype">char</span>* path)
-<a name="l00108"></a>00108     {
-<a name="l00109"></a>00109         pathtofile = path;
-<a name="l00110"></a>00110     }
-<a name="l00111"></a>00111 }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102     <span class="comment">/*save alternative config*/</span>
+<a name="l00103"></a><a class="code" href="classConfig_1_1Model.html#ac7bd0ad7aa27056eeb400f47d0e56d26">00103</a>     <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">Model::save</a>(<span class="keywordtype">char</span>* altfile,xmlDocPtr doc)
+<a name="l00104"></a>00104     {
+<a name="l00105"></a>00105         xmlSaveFile(altfile,doc);
+<a name="l00106"></a>00106     }
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108     <span class="keywordtype">void</span> Model::setpath(<span class="keywordtype">char</span>* path)
+<a name="l00109"></a>00109     {
+<a name="l00110"></a>00110         pathtofile = g_strdup_printf(<span class="stringliteral">&quot;%s&quot;</span>,path);
+<a name="l00111"></a>00111     }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 }
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -196,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -208,7 +210,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 19 2011 21:07:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

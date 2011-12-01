@@ -150,6 +150,7 @@ namespace MPD
             else
                 return this->send_command("play");
         }
+        return false;
     }
 
     //-------------------------------

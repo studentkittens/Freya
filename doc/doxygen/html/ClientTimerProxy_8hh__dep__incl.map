@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$ClientTimerProxy_8cc.html" title="src/GManager/ClientTimerProxy.cc" alt="" coords="5,80,232,107"/>
-<area shape="rect" id="node5" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="257,80,439,107"/>
-<area shape="rect" id="node9" href="$MainWindow_8cc.html" title="src/MainWindow.cc" alt="" coords="409,155,545,181"/>
-<area shape="rect" id="node11" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="515,80,697,107"/>
-<area shape="rect" id="node7" href="$Statusbar_8cc.html" title="src/GManager/Statusbar.cc" alt="" coords="202,155,384,181"/>
-<area shape="rect" id="node13" href="$Timeslide_8cc.html" title="src/GManager/Timeslide.cc" alt="" coords="570,155,752,181"/>
-</map>

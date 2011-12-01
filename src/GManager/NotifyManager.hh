@@ -9,10 +9,10 @@ namespace GManager
     class NotifyManager : public AbstractGElement
     {
         public:
-        NotifyManager(MPD::Client& client);
-        
+            NotifyManager(MPD::Client& client);
+
         private:
-            
+
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
     };

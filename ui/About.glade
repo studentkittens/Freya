@@ -4,6 +4,7 @@
   <object class="GtkAboutDialog" id="about_main">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
+    <property name="window_position">center-always</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">Freya</property>

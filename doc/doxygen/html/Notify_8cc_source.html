@@ -195,68 +195,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00115"></a>00115                 <span class="comment">/* shows the notification */</span>
 <a name="l00116"></a>00116                 notify_notification_show(notification,&amp;er);
 <a name="l00117"></a>00117 
-<a name="l00118"></a>00118             }
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120             clear_icon();
-<a name="l00121"></a>00121             working=<span class="keyword">false</span>;
-<a name="l00122"></a>00122         }
-<a name="l00123"></a>00123     }
-<a name="l00124"></a>00124     <span class="comment">//------------------------</span>
-<a name="l00125"></a>00125     <span class="keywordtype">void</span> Notify::re_init(<span class="keywordtype">void</span>)
-<a name="l00126"></a>00126     {
-<a name="l00127"></a>00127         <span class="keywordflow">if</span>(!working)
-<a name="l00128"></a>00128         {
-<a name="l00129"></a>00129             working=<span class="keyword">true</span>;
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132             <span class="keywordflow">if</span>(notify_is_initted())
-<a name="l00133"></a>00133                 notify_uninit();
+<a name="l00118"></a>00118                 <span class="keywordflow">if</span>(er != NULL)
+<a name="l00119"></a>00119                     <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;An Error occured showing the Notification&quot;</span>);
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121             }
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123             clear_icon();
+<a name="l00124"></a>00124             working=<span class="keyword">false</span>;
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126     }
+<a name="l00127"></a>00127     <span class="comment">//------------------------</span>
+<a name="l00128"></a>00128     <span class="keywordtype">void</span> Notify::re_init(<span class="keywordtype">void</span>)
+<a name="l00129"></a>00129     {
+<a name="l00130"></a>00130         <span class="keywordflow">if</span>(!working)
+<a name="l00131"></a>00131         {
+<a name="l00132"></a>00132             working=<span class="keyword">true</span>;
+<a name="l00133"></a>00133 
 <a name="l00134"></a>00134 
-<a name="l00135"></a>00135             this-&gt;timeout = <a class="code" href="Handler_8hh.html#a873522bb89c35382b2b913f5018f4892">CONFIG_GET_AS_INT</a>(<span class="stringliteral">&quot;settings.libnotify.timeout&quot;</span>);
-<a name="l00136"></a>00136             this-&gt;use_notify = <a class="code" href="Handler_8hh.html#a873522bb89c35382b2b913f5018f4892">CONFIG_GET_AS_INT</a>(<span class="stringliteral">&quot;settings.libnotify.signal&quot;</span>);
+<a name="l00135"></a>00135             <span class="keywordflow">if</span>(notify_is_initted())
+<a name="l00136"></a>00136                 notify_uninit();
 <a name="l00137"></a>00137 
-<a name="l00138"></a>00138             clear_icon();
-<a name="l00139"></a>00139             extra=<span class="keyword">false</span>;
-<a name="l00140"></a>00140             icon=NULL;
-<a name="l00141"></a>00141             notification = notify_notification_new(<span class="stringliteral">&quot;Freya&quot;</span>,NULL,NULL);
-<a name="l00142"></a>00142 
-<a name="l00143"></a>00143             <span class="keywordflow">if</span>(use_notify)
-<a name="l00144"></a>00144             {
-<a name="l00145"></a>00145                 <span class="keywordflow">if</span>(!notify_init(<span class="stringliteral">&quot;Freya&quot;</span>))
-<a name="l00146"></a>00146                 {
-<a name="l00147"></a>00147                     <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;Libnotify reports it&#39;s not working.&quot;</span>);
-<a name="l00148"></a>00148                 }
-<a name="l00149"></a>00149             }
-<a name="l00150"></a>00150 
-<a name="l00151"></a>00151             working=<span class="keyword">false</span>;
-<a name="l00152"></a>00152         }
-<a name="l00153"></a>00153     }
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155     <span class="comment">//------------------------</span>
-<a name="l00156"></a>00156 
-<a name="l00157"></a><a class="code" href="classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292">00157</a>     <span class="keywordtype">void</span> <a class="code" href="classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292">Notify::set_stock_icon</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name)
-<a name="l00158"></a>00158     {
-<a name="l00159"></a>00159         clear_icon();
-<a name="l00160"></a>00160         icon = <span class="keyword">new</span> Glib::ustring(name);
-<a name="l00161"></a>00161     }
-<a name="l00162"></a>00162     <span class="comment">//------------------------</span>
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164     <span class="keywordtype">void</span> Notify::clear_icon(<span class="keywordtype">void</span>)
-<a name="l00165"></a>00165     {
-<a name="l00166"></a>00166         <span class="keywordflow">if</span>(icon !=NULL)
-<a name="l00167"></a>00167         {
-<a name="l00168"></a>00168             <span class="keyword">delete</span> icon;
-<a name="l00169"></a>00169             icon=NULL;
-<a name="l00170"></a>00170         }
-<a name="l00171"></a>00171     }
-<a name="l00172"></a>00172     <span class="comment">//------------------------</span>
-<a name="l00173"></a>00173 
-<a name="l00174"></a><a class="code" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c">00174</a>     <span class="keywordtype">void</span> <a class="code" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c">Notify::set_next_extra</a>(<span class="keywordtype">void</span>)
-<a name="l00175"></a>00175     {
-<a name="l00176"></a>00176         extra=<span class="keyword">true</span>;
-<a name="l00177"></a>00177     }
-<a name="l00178"></a>00178     <span class="comment">//------------------------</span>
-<a name="l00179"></a>00179 }
+<a name="l00138"></a>00138             this-&gt;timeout = <a class="code" href="Handler_8hh.html#a873522bb89c35382b2b913f5018f4892">CONFIG_GET_AS_INT</a>(<span class="stringliteral">&quot;settings.libnotify.timeout&quot;</span>);
+<a name="l00139"></a>00139             this-&gt;use_notify = <a class="code" href="Handler_8hh.html#a873522bb89c35382b2b913f5018f4892">CONFIG_GET_AS_INT</a>(<span class="stringliteral">&quot;settings.libnotify.signal&quot;</span>);
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141             clear_icon();
+<a name="l00142"></a>00142             extra=<span class="keyword">false</span>;
+<a name="l00143"></a>00143             icon=NULL;
+<a name="l00144"></a>00144             notification = notify_notification_new(<span class="stringliteral">&quot;Freya&quot;</span>,NULL,NULL);
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146             <span class="keywordflow">if</span>(use_notify)
+<a name="l00147"></a>00147             {
+<a name="l00148"></a>00148                 <span class="keywordflow">if</span>(!notify_init(<span class="stringliteral">&quot;Freya&quot;</span>))
+<a name="l00149"></a>00149                 {
+<a name="l00150"></a>00150                     <a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">Error</a>(<span class="stringliteral">&quot;Libnotify reports it&#39;s not working.&quot;</span>);
+<a name="l00151"></a>00151                 }
+<a name="l00152"></a>00152             }
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154             working=<span class="keyword">false</span>;
+<a name="l00155"></a>00155         }
+<a name="l00156"></a>00156     }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158     <span class="comment">//------------------------</span>
+<a name="l00159"></a>00159 
+<a name="l00160"></a><a class="code" href="classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292">00160</a>     <span class="keywordtype">void</span> <a class="code" href="classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292">Notify::set_stock_icon</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name)
+<a name="l00161"></a>00161     {
+<a name="l00162"></a>00162         clear_icon();
+<a name="l00163"></a>00163         icon = <span class="keyword">new</span> Glib::ustring(name);
+<a name="l00164"></a>00164     }
+<a name="l00165"></a>00165     <span class="comment">//------------------------</span>
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167     <span class="keywordtype">void</span> Notify::clear_icon(<span class="keywordtype">void</span>)
+<a name="l00168"></a>00168     {
+<a name="l00169"></a>00169         <span class="keywordflow">if</span>(icon !=NULL)
+<a name="l00170"></a>00170         {
+<a name="l00171"></a>00171             <span class="keyword">delete</span> icon;
+<a name="l00172"></a>00172             icon=NULL;
+<a name="l00173"></a>00173         }
+<a name="l00174"></a>00174     }
+<a name="l00175"></a>00175     <span class="comment">//------------------------</span>
+<a name="l00176"></a>00176 
+<a name="l00177"></a><a class="code" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c">00177</a>     <span class="keywordtype">void</span> <a class="code" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c">Notify::set_next_extra</a>(<span class="keywordtype">void</span>)
+<a name="l00178"></a>00178     {
+<a name="l00179"></a>00179         extra=<span class="keyword">true</span>;
+<a name="l00180"></a>00180     }
+<a name="l00181"></a>00181     <span class="comment">//------------------------</span>
+<a name="l00182"></a>00182 }
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -276,7 +279,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:19:28 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 1 2011 20:25:35 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

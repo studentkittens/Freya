@@ -4,19 +4,13 @@
 namespace GManager
 {
     TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+        : AbstractClientUser(client)
     {
-        mp_Client = &client;
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&TitleLabel::on_client_update));
-
         BUILDER_GET(builder,"title_label",mp_TitleLabel);
         BUILDER_GET(builder,"artist_album_label",mp_ArtistAlbumLabel);
         BUILDER_GET(builder,"next_song_artist",mp_NextSongArtistLabel);
         BUILDER_GET(builder,"next_song_title",mp_NextSongTitleLabel);
     }
-
-    //----------------
-
-    TitleLabel::~TitleLabel() {}
 
     //----------------
     
@@ -37,6 +31,13 @@ namespace GManager
         g_free(artist_string);
     }
 
+    //----------------
+    
+    void TitleLabel::on_connection_change(bool is_connected)
+    {
+        /* Empty for now */
+    }
+    
     //----------------
 
     void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)

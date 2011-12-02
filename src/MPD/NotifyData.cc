@@ -67,15 +67,20 @@ namespace MPD
             {
                 retv_status = new Status(*status,NextSongID);
             }
+                
+            if(mp_NextSong != NULL) {
+                delete mp_NextSong;
+                mp_NextSong = NULL;
+            }
 
             mpd_song * c_next_song = mpd_run_get_queue_song_id(conn,NextSongID);
             if(c_next_song != NULL)
             {
-                if(mp_NextSong != NULL) {
-                    delete mp_NextSong;
-                    mp_NextSong = NULL;
-                }
                 mp_NextSong = new Song(*c_next_song);
+            }
+            else
+            {
+                mp_Conn->clear_error();
             }
         }
         return retv_status;
@@ -90,16 +95,16 @@ namespace MPD
 
     //------------------
 
-    Song& NotifyData::get_song(void)
+    Song * NotifyData::get_song(void)
     {
-        return *(mp_Song);
+        return mp_Song;
     } 
-    
+
     //------------------
 
-    Song& NotifyData::get_next_song(void)
+    Song * NotifyData::get_next_song(void)
     {
-        return *(mp_NextSong);
+        return mp_NextSong;
     } 
 
     //------------------

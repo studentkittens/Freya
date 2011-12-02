@@ -7,7 +7,7 @@
 namespace GManager
 {
     Volumebutton::Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractGElement(client),
+        AbstractClientUser(client),
         m_Timerguard()
     {
         ignore_signal = false;

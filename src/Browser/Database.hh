@@ -4,6 +4,7 @@
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
 #include "../AbstractItemlist.hh"
+#include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Directory.hh"
 #include "DatabasePopup.hh"
@@ -11,7 +12,7 @@
 namespace Browser
 {
     /* Does not inherig from frame this time */
-    class DatabaseBrowser : public AbstractBrowser, public AbstractFilebrowser 
+    class DatabaseBrowser : public AbstractBrowser, public AbstractFilebrowser, public AbstractClientUser 
     {
         public:
             DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
@@ -21,7 +22,9 @@ namespace Browser
             void add_directory(MPD::Directory * pDir);
             void add_song_file(MPD::Song * pSong);
 
-            void on_menu_db_clicked(void);
+            void on_menu_db_add_clicked(void);
+            void on_menu_db_refresh_clicked(void);
+            void on_menu_db_replace_clicked(void);
 
         private:
 
@@ -31,6 +34,9 @@ namespace Browser
             void go_one_up(void);
             void add_item(const char * path, bool is_file);
             bool on_button_press_event(GdkEventButton* event);
+
+            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
@@ -43,6 +49,8 @@ namespace Browser
                     Gtk::TreeModelColumn<bool> m_col_is_file;
             };
 
+            // MEMBERS //
+
             /* Actual widgets */
             Gtk::IconView * mp_IView;
             Gtk::Box * mp_ParentBox;
@@ -52,9 +60,7 @@ namespace Browser
 
             /* Models behind */
             ModelColumns m_Columns;
-            Glib::RefPtr<Gtk::TreeSelection> m_Selection;
             Glib::RefPtr<Gtk::ListStore> m_DirStore;
-            MPD::Client * mp_Client;
 
             /* The current path shown (NULL for root) */
             std::string mp_Path;

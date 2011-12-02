@@ -3,11 +3,11 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class Statusicons : public AbstractGElement
+    class Statusicons : public AbstractClientUser
     {
         public:
             Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

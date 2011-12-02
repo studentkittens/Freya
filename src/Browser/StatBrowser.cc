@@ -34,6 +34,7 @@ namespace Browser
         if (event & MPD_IDLE_DATABASE)
         {
             MPD::Statistics& stat = data.get_statistics();
+
             char newvalue[] = {0};
             g_snprintf(newvalue,512,"%u artists",stat.get_number_of_artists());
             noofartist->set_text(Glib::ustring(newvalue));
@@ -45,13 +46,9 @@ namespace Browser
             noofsongs->set_text(Glib::ustring(newvalue));
 
             dbplaytime->set_text(Utils::seconds_to_duration(stat.get_db_play_time()).c_str());
-
             playtime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
-
             uptime->set_text(Utils::seconds_to_duration(stat.get_uptime()).c_str());
-
             dbupdate->set_text(Utils::seconds_to_timestamp(stat.get_db_update_time()).c_str());
-        
         }
     }
 

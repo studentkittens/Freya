@@ -7,7 +7,7 @@
 namespace GManager
 {
     Timeslide::Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractGElement(client),
+        AbstractClientUser(client),
         m_Timeguard()
     {
         mp_Proxy  = &tproxy;

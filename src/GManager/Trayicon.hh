@@ -4,11 +4,11 @@
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
 #include "../Browser/BasePopup.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class Trayicon : public Gtk::StatusIcon, public Browser::BasePopup, public AbstractGElement
+    class Trayicon : public Gtk::StatusIcon, public Browser::BasePopup, public AbstractClientUser
     {
         public:
             Trayicon(MPD::Client& client,Gtk::Window& main_window);

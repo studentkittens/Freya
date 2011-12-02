@@ -3,9 +3,8 @@
 
 namespace GManager
 {
-
     Statusicons::Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         ignore_updates = false;
 

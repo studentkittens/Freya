@@ -6,6 +6,7 @@ namespace Browser
 {
     Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractBrowser("Queue",Gtk::Stock::ZOOM_FIT),
+        AbstractClientUser(client),
         m_FilterText("")
     {
         
@@ -58,9 +59,11 @@ namespace Browser
 
         /* Set up Popupmenu */
         mp_Popup = new QueuePopup(*mp_TreeView);
+        mp_Popup->get_action("q_remove").connect(sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
+        mp_Popup->get_action("q_playlist_add").connect(sigc::mem_fun(*this,&Queue::on_menu_add_to_pl_clicked));
+        mp_Popup->get_action("q_clear").connect(sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
 
         /* Now go and fill the queue */
-        mp_Client = &client;
         mp_Client->fill_queue(*this);
     }
 
@@ -141,6 +144,38 @@ namespace Browser
     Gtk::Widget * Queue::get_container(void)
     {
         return mp_QueueBox;
+    }
+
+    /*-------------------------------*/
+            
+    void Queue::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    {
+    }
+    
+    /*-------------------------------*/
+
+    void Queue::on_connection_change(bool is_connected)
+    {
+    }
+    
+    /*-------------------------------*/
+
+    /* Menuhandling */
+    void Queue::on_menu_clear_clicked(void)
+    {
+        mp_Client->queue_clear();
+    }
+
+    /*-------------------------------*/
+
+    void Queue::on_menu_remove_clicked(void)
+    {
+    }
+
+    /*-------------------------------*/
+
+    void Queue::on_menu_add_to_pl_clicked(void)
+    {
     }
 
     /*-------------------------------*/

@@ -3,9 +3,9 @@
 namespace GManager
 {
     NotifyManager::NotifyManager(MPD::Client& client) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
-        /* Everything by AbstractGElement already */
+        /* Everything by AbstractClientUser already */
     }
 
     // ------------------------------------

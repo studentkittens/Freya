@@ -4,12 +4,13 @@
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
 #include "../AbstractItemlist.hh"
+#include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "QueuePopup.hh"
 
 namespace Browser 
 {
-    class Queue : public AbstractBrowser, public AbstractItemlist 
+    class Queue : public AbstractBrowser, public AbstractItemlist, public AbstractClientUser
     {
         public:
             Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
@@ -24,8 +25,19 @@ namespace Browser
 
         private:
 
+            /* Implemtend from AbstractItemlist */
             void add_item(void * pSong);
 
+            /* Implemented from AbstractClientUser */
+            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
+
+            /* Menuhandling */
+            void on_menu_clear_clicked(void);
+            void on_menu_remove_clicked(void);
+            void on_menu_add_to_pl_clicked(void);
+
+            /* Other */
             void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
             bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
             void on_entry_activate(void);
@@ -44,6 +56,8 @@ namespace Browser
                     Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
             };
 
+            /* Members */
+
             Glib::ustring m_FilterText;
 
             /* Treeview related */
@@ -58,9 +72,6 @@ namespace Browser
 
             /* Selected data */
             Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
-
-            /* Client related */
-            MPD::Client * mp_Client;
 
             /* Popup */
             QueuePopup * mp_Popup;

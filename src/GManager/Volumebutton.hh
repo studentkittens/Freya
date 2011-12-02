@@ -4,11 +4,11 @@
 #include <gtkmm.h>
 #include <gtkmm/volumebutton.h>
 #include "../MPD/Client.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class Volumebutton : public AbstractGElement
+    class Volumebutton : public AbstractClientUser
     {
         public:
             Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

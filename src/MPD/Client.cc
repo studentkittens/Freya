@@ -114,7 +114,7 @@ namespace MPD
 
     bool Client::playback_play(void)
     {
-        
+
         return this->send_command("play");
     }
 
@@ -137,6 +137,46 @@ namespace MPD
     bool Client::playback_prev(void)
     {
         return this->send_command("previous");
+    }
+
+    //-------------------------------
+
+    void Client::queue_add(const char * path)
+    {
+        if(path != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_connection * conn = m_Conn.get_connection();
+                 mpd_run_add(conn,path);
+                )
+        }
+    }
+
+    //-------------------------------
+    
+    void Client::queue_clear(void)
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_run_clear(m_Conn.get_connection());
+            )
+    }
+    
+    //-------------------------------
+
+    unsigned Client::database_update(const char * path)
+    {
+        unsigned id = 0;
+        if(path != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_connection * conn = m_Conn.get_connection();
+                 id = mpd_run_update(conn,path);
+                )
+        }
+        return id;
     }
 
     //-------------------------------
@@ -295,9 +335,11 @@ namespace MPD
         {
             /* Check for errors at this connection and log them */
             mpd_connection * mpd_conn = m_Conn.get_connection();
-            if(mpd_connection_get_error(mpd_conn) != MPD_ERROR_SUCCESS)
+
+            /* Get the errorcode */
+            enum mpd_error err_code = mpd_connection_get_error(mpd_conn);
+            if(err_code != MPD_ERROR_SUCCESS)
             {
-                enum mpd_error err_code = mpd_connection_get_error(mpd_conn);
                 if(err_code == MPD_ERROR_SERVER)
                 {
                     Warning("ServerErrorId #%d: ",mpd_connection_get_server_error(mpd_conn));
@@ -443,5 +485,6 @@ namespace MPD
     }
 
     //--------------------
+
 
 } // END NAMESPACE 

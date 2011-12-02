@@ -3,11 +3,11 @@
 
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class BrowserList : public AbstractGElement
+    class BrowserList : public AbstractClientUser
     {
         public:
 

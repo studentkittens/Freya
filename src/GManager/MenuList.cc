@@ -10,7 +10,7 @@
 namespace GManager
 {
     MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         running=false;
         BUILDER_GET(builder,"menu_item_connect", menu_connect);

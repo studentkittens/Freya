@@ -20,7 +20,7 @@ namespace GManager
     Trayicon::Trayicon(MPD::Client& client,Gtk::Window& main_window) :
         Gtk::StatusIcon(Gtk::Stock::INFO),
         Browser::BasePopup(NULL,ui_info),
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         mp_Window = &main_window;
 
@@ -98,6 +98,8 @@ namespace GManager
     void Trayicon::on_connection_change(bool is_connected)
     {
         /*
+        // For some reason this crashes on disconnect.
+        // Huh?
         m_ActionNext->set_sensitive(is_connected);
         m_ActionPrev->set_sensitive(is_connected);
         m_ActionStop->set_sensitive(is_connected);

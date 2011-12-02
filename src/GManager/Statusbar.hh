@@ -4,12 +4,12 @@
 #include <gtkmm.h>
 
 #include "../MPD/Client.hh"
+#include "../AbstractClientUser.hh"
 #include "Heartbeat.hh"
-#include "AbstractGElement.hh"
 
 namespace GManager
 {
-    class Statusbar : public AbstractGElement
+    class Statusbar : public AbstractClientUser
     {
         public:
 

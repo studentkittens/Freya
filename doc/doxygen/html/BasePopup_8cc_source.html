@@ -111,28 +111,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00031"></a>00031     
 <a name="l00032"></a>00032     <span class="comment">/*-------------------------------*/</span>
 <a name="l00033"></a>00033 
-<a name="l00043"></a><a class="code" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac">00043</a>     <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac" title="Call this to add the actual action.">BasePopup::menu_add_item</a>(Glib::RefPtr&lt;Gtk::Action&gt;&amp; action,
-<a name="l00044"></a>00044             Glib::ustring item_name,
-<a name="l00045"></a>00045             Glib::ustring item_label,
-<a name="l00046"></a>00046             Glib::ustring item_tooltip,
-<a name="l00047"></a>00047             Gtk::StockID icon)
-<a name="l00048"></a>00048     {
-<a name="l00049"></a>00049         action = Gtk::Action::create(item_name,icon,item_label,item_tooltip);
-<a name="l00050"></a>00050         <a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">m_refActionGroup</a>-&gt;add(action);
-<a name="l00051"></a>00051     }
-<a name="l00052"></a>00052     
-<a name="l00053"></a>00053     <span class="comment">/*-------------------------------*/</span>
-<a name="l00054"></a>00054 
-<a name="l00059"></a><a class="code" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05">00059</a>     <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05" title="Call this when done with adding actions Convention: Menu must be called &quot;PopMenu&quot; in def...">BasePopup::menu_construct</a>(Glib::ustring menu_name)
-<a name="l00060"></a>00060     {
-<a name="l00061"></a>00061         <span class="comment">/* Set up the menu with all actions inside */</span>
-<a name="l00062"></a>00062         <a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a>-&gt;insert_action_group(<a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">m_refActionGroup</a>);
-<a name="l00063"></a>00063         <a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a>-&gt;add_ui_from_string(*<a class="code" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda">m_UiDefinition</a>);
-<a name="l00064"></a>00064         <a class="code" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e">mp_Popup</a> = (Gtk::Menu*)(<a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a>-&gt;get_widget(<span class="stringliteral">&quot;/&quot;</span> + menu_name));
-<a name="l00065"></a>00065     }
-<a name="l00066"></a>00066     
-<a name="l00067"></a>00067     <span class="comment">/*-------------------------------*/</span>
-<a name="l00068"></a>00068 }
+<a name="l00034"></a><a class="code" href="classBrowser_1_1BasePopup.html#a311124eb79746a5c4d43ab7055a09d74">00034</a>     Glib::SignalProxy0&lt;void&gt; <a class="code" href="classBrowser_1_1BasePopup.html#a311124eb79746a5c4d43ab7055a09d74" title="Get a signal proxy of a certain Gtk::Action in the menu.">BasePopup::get_action</a>(Glib::ustring name)
+<a name="l00035"></a>00035     {
+<a name="l00036"></a>00036         Glib::RefPtr&lt;Gtk::Action&gt; action = <a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">m_refActionGroup</a>-&gt;get_action(name);
+<a name="l00037"></a>00037         <span class="keywordflow">return</span> action-&gt;signal_activate();
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040     <span class="comment">/*-------------------------------*/</span>
+<a name="l00041"></a>00041 
+<a name="l00051"></a><a class="code" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac">00051</a>     <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac" title="Call this to add the actual action.">BasePopup::menu_add_item</a>(Glib::RefPtr&lt;Gtk::Action&gt;&amp; action,
+<a name="l00052"></a>00052             Glib::ustring item_name,
+<a name="l00053"></a>00053             Glib::ustring item_label,
+<a name="l00054"></a>00054             Glib::ustring item_tooltip,
+<a name="l00055"></a>00055             Gtk::StockID icon)
+<a name="l00056"></a>00056     {
+<a name="l00057"></a>00057         action = Gtk::Action::create(item_name,icon,item_label,item_tooltip);
+<a name="l00058"></a>00058         <a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">m_refActionGroup</a>-&gt;add(action);
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061     <span class="comment">/*-------------------------------*/</span>
+<a name="l00062"></a>00062 
+<a name="l00067"></a><a class="code" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05">00067</a>     <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05" title="Call this when done with adding actions Convention: Menu must be called &quot;PopMenu&quot; in def...">BasePopup::menu_construct</a>(Glib::ustring menu_name)
+<a name="l00068"></a>00068     {
+<a name="l00069"></a>00069         <span class="comment">/* Set up the menu with all actions inside */</span>
+<a name="l00070"></a>00070         <a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a>-&gt;insert_action_group(<a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">m_refActionGroup</a>);
+<a name="l00071"></a>00071         <a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a>-&gt;add_ui_from_string(*<a class="code" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda">m_UiDefinition</a>);
+<a name="l00072"></a>00072         <a class="code" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e">mp_Popup</a> = (Gtk::Menu*)(<a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a>-&gt;get_widget(<span class="stringliteral">&quot;/&quot;</span> + menu_name));
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075     <span class="comment">/*-------------------------------*/</span>
+<a name="l00076"></a>00076 }
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -152,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:02 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

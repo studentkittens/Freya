@@ -119,6 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1DatabaseBrowser.html#a3c007014f91fe1914185205d6768a4e9">add_directory</a> (<a class="el" href="classMPD_1_1Directory.html">MPD::Directory</a> *pDir)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1DatabaseBrowser.html#a299c3f0562d04e7af622eb882331d4bf">add_song_file</a> (<a class="el" href="classMPD_1_1Song.html">MPD::Song</a> *pSong)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this.  <a href="#a299c3f0562d04e7af622eb882331d4bf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1DatabaseBrowser.html#a2ab702dba63be2662d324e28664602d4">on_menu_db_clicked</a> (void)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
@@ -151,6 +152,15 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Database_8cc_source.html#l00007">7</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
 
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classBrowser_1_1DatabaseBrowser_aae4c80b5de53bef9e61f0ef7c8869a19_cgraph.png" border="0" usemap="#classBrowser_1_1DatabaseBrowser_aae4c80b5de53bef9e61f0ef7c8869a19_cgraph" alt=""/></div>
+<map name="classBrowser_1_1DatabaseBrowser_aae4c80b5de53bef9e61f0ef7c8869a19_cgraph" id="classBrowser_1_1DatabaseBrowser_aae4c80b5de53bef9e61f0ef7c8869a19_cgraph">
+<area shape="rect" id="node3" href="classBrowser_1_1BasePopup.html#a311124eb79746a5c4d43ab7055a09d74" title="Get a signal proxy of a certain Gtk::Action in the menu." alt="" coords="399,5,612,32"/><area shape="rect" id="node5" href="classBrowser_1_1DatabaseBrowser.html#a2ab702dba63be2662d324e28664602d4" title="Browser::DatabaseBrowser::on_menu_db_clicked" alt="" coords="349,56,661,83"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a0156e533c68dd911e8889efc6f281122"></a><!-- doxytag: member="Browser::DatabaseBrowser::~DatabaseBrowser" ref="a0156e533c68dd911e8889efc6f281122" args="()" -->
@@ -168,7 +178,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Database_8cc_source.html#l00041">41</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
+<p>Definition at line <a class="el" href="Database_8cc_source.html#l00048">48</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
 
 </div>
 </div>
@@ -190,7 +200,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classAbstractFilebrowser.html#afdc29d24e52529b095e519b0f4aa6cb2">AbstractFilebrowser</a>.</p>
 
-<p>Definition at line <a class="el" href="Database_8cc_source.html#l00055">55</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
+<p>Definition at line <a class="el" href="Database_8cc_source.html#l00062">62</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -229,7 +239,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractFilebrowser.html#ada8e6286a7aa715b969264bb65d1693a">AbstractFilebrowser</a>.</p>
 
-<p>Definition at line <a class="el" href="Database_8cc_source.html#l00063">63</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
+<p>Definition at line <a class="el" href="Database_8cc_source.html#l00070">70</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -263,7 +273,35 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractBrowser.html#aeb2a146bb6f19235ceff15aa314e1c07">AbstractBrowser</a>.</p>
 
-<p>Definition at line <a class="el" href="Database_8cc_source.html#l00048">48</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
+<p>Definition at line <a class="el" href="Database_8cc_source.html#l00055">55</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ab702dba63be2662d324e28664602d4"></a><!-- doxytag: member="Browser::DatabaseBrowser::on_menu_db_clicked" ref="a2ab702dba63be2662d324e28664602d4" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Browser::DatabaseBrowser::on_menu_db_clicked </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Database_8cc_source.html#l00042">42</a> of file <a class="el" href="Database_8cc_source.html">Database.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classBrowser_1_1DatabaseBrowser_a2ab702dba63be2662d324e28664602d4_icgraph.png" border="0" usemap="#classBrowser_1_1DatabaseBrowser_a2ab702dba63be2662d324e28664602d4_icgraph" alt=""/></div>
+<map name="classBrowser_1_1DatabaseBrowser_a2ab702dba63be2662d324e28664602d4_icgraph" id="classBrowser_1_1DatabaseBrowser_a2ab702dba63be2662d324e28664602d4_icgraph">
+<area shape="rect" id="node3" href="classBrowser_1_1DatabaseBrowser.html#aae4c80b5de53bef9e61f0ef7c8869a19" title="Browser::DatabaseBrowser::DatabaseBrowser" alt="" coords="366,5,661,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -289,7 +327,7 @@ Here is the call graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

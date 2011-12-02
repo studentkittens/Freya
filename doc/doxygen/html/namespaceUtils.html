@@ -84,39 +84,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html#a0bdcd17527f45f36ac32f494257cd61b">seconds_to_duration</a> (unsigned long duration)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html#a5474bab7122470a5f8806a1669f0e367">seconds_to_timestamp</a> (const long duration)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html#af28767b08913bc93a9e650a3fab15c09">seconds_to_duration</a> (unsigned long)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">converts a given time in seconds to a duration ustring  <a href="#af28767b08913bc93a9e650a3fab15c09"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUtils.html#aefc7849e9a3b51b53b084387a0aa8dd0">seconds_to_timestamp</a> (const long)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">converts a given time in seconds to a "timestamp"  <a href="#aefc7849e9a3b51b53b084387a0aa8dd0"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a0bdcd17527f45f36ac32f494257cd61b"></a><!-- doxytag: member="Utils::seconds_to_duration" ref="a0bdcd17527f45f36ac32f494257cd61b" args="(unsigned long duration)" -->
+<a class="anchor" id="af28767b08913bc93a9e650a3fab15c09"></a><!-- doxytag: member="Utils::seconds_to_duration" ref="af28767b08913bc93a9e650a3fab15c09" args="(unsigned long)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Glib::ustring Utils::seconds_to_duration </td>
           <td>(</td>
-          <td class="paramtype">unsigned long&#160;</td>
-          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>long</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
+<p>converts a given time in seconds to a duration ustring </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">long,duration</td><td>in seconds to convert</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>duration as ustring, e.g. "4 hours 2 minutes 0 seconds" </dd></dl>
+
 <p>Definition at line <a class="el" href="Utils_8cc_source.html#l00007">7</a> of file <a class="el" href="Utils_8cc_source.html">Utils.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceUtils_a0bdcd17527f45f36ac32f494257cd61b_icgraph.png" border="0" usemap="#namespaceUtils_a0bdcd17527f45f36ac32f494257cd61b_icgraph" alt=""/></div>
-<map name="namespaceUtils_a0bdcd17527f45f36ac32f494257cd61b_icgraph" id="namespaceUtils_a0bdcd17527f45f36ac32f494257cd61b_icgraph">
+<div class="center"><img src="namespaceUtils_af28767b08913bc93a9e650a3fab15c09_icgraph.png" border="0" usemap="#namespaceUtils_af28767b08913bc93a9e650a3fab15c09_icgraph" alt=""/></div>
+<map name="namespaceUtils_af28767b08913bc93a9e650a3fab15c09_icgraph" id="namespaceUtils_af28767b08913bc93a9e650a3fab15c09_icgraph">
 <area shape="rect" id="node3" href="test__utils_8cc.html#ac0f2228420376f4db7e1274f2b41667c" title="main" alt="" coords="232,5,283,32"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a5474bab7122470a5f8806a1669f0e367"></a><!-- doxytag: member="Utils::seconds_to_timestamp" ref="a5474bab7122470a5f8806a1669f0e367" args="(const long duration)" -->
+<a class="anchor" id="aefc7849e9a3b51b53b084387a0aa8dd0"></a><!-- doxytag: member="Utils::seconds_to_timestamp" ref="aefc7849e9a3b51b53b084387a0aa8dd0" args="(const long)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -124,20 +135,29 @@ Here is the caller graph for this function:</div>
           <td class="memname">Glib::ustring Utils::seconds_to_timestamp </td>
           <td>(</td>
           <td class="paramtype">const long&#160;</td>
-          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
+<p>converts a given time in seconds to a "timestamp" </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">long,duration</td><td>in seconds to convert</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>date as ustring, e.g. 2011-04-02 </dd></dl>
+
 <p>Definition at line <a class="el" href="Utils_8cc_source.html#l00052">52</a> of file <a class="el" href="Utils_8cc_source.html">Utils.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceUtils_a5474bab7122470a5f8806a1669f0e367_icgraph.png" border="0" usemap="#namespaceUtils_a5474bab7122470a5f8806a1669f0e367_icgraph" alt=""/></div>
-<map name="namespaceUtils_a5474bab7122470a5f8806a1669f0e367_icgraph" id="namespaceUtils_a5474bab7122470a5f8806a1669f0e367_icgraph">
+<div class="center"><img src="namespaceUtils_aefc7849e9a3b51b53b084387a0aa8dd0_icgraph.png" border="0" usemap="#namespaceUtils_aefc7849e9a3b51b53b084387a0aa8dd0_icgraph" alt=""/></div>
+<map name="namespaceUtils_aefc7849e9a3b51b53b084387a0aa8dd0_icgraph" id="namespaceUtils_aefc7849e9a3b51b53b084387a0aa8dd0_icgraph">
 <area shape="rect" id="node3" href="test__utils_8cc.html#ac0f2228420376f4db7e1274f2b41667c" title="main" alt="" coords="245,5,296,32"/></map>
 </div>
 </p>
@@ -162,7 +182,7 @@ Here is the caller graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

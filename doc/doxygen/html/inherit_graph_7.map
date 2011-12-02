@@ -1,11 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="15,107,134,133"/>
-<area shape="rect" id="node3" href="$classBrowser_1_1DatabaseBrowser.html" title="Browser::DatabaseBrowser" alt="" coords="193,5,375,32"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1PlaylistManager.html" title="Browser::PlaylistManager" alt="" coords="199,208,369,235"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1Queue.html" title="Browser::Queue" alt="" coords="226,107,342,133"/>
-<area shape="rect" id="node9" href="$classBrowser_1_1Settings.html" title="Browser::Settings" alt="" coords="221,56,347,83"/>
-<area shape="rect" id="node11" href="$classBrowser_1_1StatBrowser.html" title="Browser::StatBrowser" alt="" coords="209,157,359,184"/>
-<area shape="rect" id="node12" href="$classAbstractFilebrowser.html" title="AbstractFilebrowser" alt="" coords="5,5,144,32"/>
-<area shape="rect" id="node14" href="$classAbstractItemlist.html" title="AbstractItemlist" alt="" coords="17,157,132,184"/>
-<area shape="rect" id="node17" href="$classGtk_1_1Frame.html" title="Frame" alt="" coords="45,208,104,235"/>
+<area shape="rect" id="node1" href="$classConfig_1_1Handler.html" title="Config::Handler" alt="" coords="6,5,119,32"/>
 </map>

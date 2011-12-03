@@ -24,13 +24,6 @@ namespace MPD
 
     //------------------
 
-    Status& NotifyData::get_status(void)
-    {
-        return *(mp_Status);
-    } 
-
-    //------------------
-
     /* Since libmpdclient does not support the next-song-id,
      * we habe to improvise a little bit. 
      */
@@ -88,8 +81,19 @@ namespace MPD
 
     //------------------
 
+    Status& NotifyData::get_status(void)
+    {
+        /* This should never be NULL. */
+        g_assert(mp_Status);
+        return *(mp_Status);
+    } 
+
+    //------------------
+
     Statistics& NotifyData::get_statistics(void)
     {
+        /* This should never be NULL. */
+        g_assert(mp_Statistics);
         return *(mp_Statistics);
     } 
 
@@ -140,7 +144,7 @@ namespace MPD
             mp_Status = recv_status_own();
 
             /* Pray that this will never happen. */
-            if(!(c_song && mp_Status && c_stats))
+            if(!(mp_Status && c_stats))
                 Error("Status/Song/Statistic is empty although being connected. Prepare for a crash.");
         }
     }

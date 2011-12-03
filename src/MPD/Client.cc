@@ -70,14 +70,20 @@ namespace MPD
     void Client::go_idle(void)
     {
         check_error();
-        listener->enter();
+        if(listener->is_idling() == false)
+        {
+            listener->enter();
+        }
     }
 
     //-------------------------------
 
     void Client::go_busy(void)
     {
-        listener->leave();
+        if(listener->is_idling() == true)
+        {
+            listener->leave();
+        }
         check_error();
     }
 
@@ -220,6 +226,7 @@ namespace MPD
     {
         if(m_Conn.is_connected())
         {
+            g_message("Leaving....:");
             go_busy();
 
             mpd_connection * mpd_conn = m_Conn.get_connection();
@@ -231,6 +238,7 @@ namespace MPD
                     data_model.add_item(new Playlist(*ent));
                 }
             }
+            
             go_idle();
         }
     }
@@ -341,21 +349,14 @@ namespace MPD
             if(err_code != MPD_ERROR_SUCCESS)
             {
                 if(err_code == MPD_ERROR_SERVER)
-                {
                     Warning("ServerErrorId #%d: ",mpd_connection_get_server_error(mpd_conn));
-                }
                 else
-                {
                     Warning("Error #%d: ",err_code);
-                }
 
                 Warning("%s",mpd_connection_get_error_message(mpd_conn));
 
-                /* Clear nonfatal errors */
-                if(mpd_connection_clear_error(mpd_conn) == false)
-                {
-                    Fatal("Mentioned error is fatal.");
-                }
+                /* Clear non fatal errors */
+                m_Conn.clear_error();
 
                 /* Try to handle even fatal errors */
                 handle_errors(err_code);

@@ -60,13 +60,16 @@ namespace MPD
 
     void Listener::invoke_user_callback(long overwrite_events = -1)
     {
+        g_printerr("User callback?!");
         if(idle_events != 0)
         {
             /* Leave for callback - which is gonna be active */
             leave();
 
             if(overwrite_events != -1)
+            {
                 idle_events = (unsigned)overwrite_events;
+            }
 
             /* Somethin changed.. update therefore */
             m_NData.update_all();
@@ -94,6 +97,7 @@ namespace MPD
             /* Re-enter idle mode */
             enter();
         }
+        g_printerr("End of callback?!");
     }
 
     //--------------------------------
@@ -183,9 +187,14 @@ namespace MPD
 
     gboolean Listener::io_callback(Glib::IOCondition condition)
     {
+        g_printerr("\nIOoooooooo\n");
+
         /* Tell libmpdclient that it should do the IO now */
         if(mpd_async_io(async_conn, Listener::GIOCondition_to_MPDAsyncEvent(condition)) == false)
+        {
+            check_async_error();
             return false;
+        }
 
         /* There is incoming data - receive them */
         if((condition & G_IO_IN) || (condition & G_IO_PRI)) 
@@ -198,7 +207,7 @@ namespace MPD
         }
 
         enum mpd_async_event events = mpd_async_events(async_conn);
-        if (events == 0) 
+        if(events == 0) 
         {
             Debug("no events -> removing watch");
 
@@ -206,7 +215,7 @@ namespace MPD
             io_eventmask = (enum mpd_async_event)0;
             return false;
         }
-        else if (events != io_eventmask) 
+        else if(events != io_eventmask) 
         {
             /* different event mask: make new watch */
             create_watch(events);
@@ -220,6 +229,7 @@ namespace MPD
 
     bool Listener::enter(void)
     {
+        g_printerr("\nEeeenter\n");
         if(is_idling() == false)
         {
             if(mpd_async_send_command(async_conn, "idle", NULL) == false)
@@ -250,11 +260,13 @@ namespace MPD
 
     void Listener::leave(void)
     {
+        g_printerr("\nLeeeeave\n");
         if(is_idling() && mp_Conn->is_connected())
         {
             if(io_functor.connected()) 
             {
                 bool is_fatal = false;
+                is_idle = false;
 
                 /* New game - new dices */
                 io_eventmask = (enum mpd_async_event)0;
@@ -262,7 +274,14 @@ namespace MPD
                 /* Make sure no idling is running */
                 if(idle_events == 0)
                 {
-                    mpd_run_noidle(mp_Conn->get_connection());
+                    idle_events = mpd_run_noidle(mp_Conn->get_connection());
+                    invoke_user_callback(idle_events);
+                }
+                else
+                {
+                    // Im confused. Argh.
+                    //idle_events = mpd_recv_idle(mp_Conn->get_connection(),false);
+                    //invoke_user_callback(idle_events);
                 }
 
                 /* Check for errors that may happened shortly */            
@@ -274,16 +293,16 @@ namespace MPD
 
                 if(is_fatal == false)
                 {
-                    /* Indicate we left */
-                    is_idle = false;
-
                     /* Disconnect the watchdog for now */
                     io_functor.disconnect();
+
                 }
             }
             else Error("IOFunctor already disconnected");
         }
         else Warning("Cannot leave when already left (Dude!)");
+
+        g_message("/left");
     }
 
     //--------------------------------
@@ -298,7 +317,11 @@ namespace MPD
     void Listener::force_update(void)
     {
         idle_events = (enum mpd_idle)1;
-        mpd_run_noidle(mp_Conn->get_connection());
+        if(is_idling())
+        {
+            mpd_run_noidle(mp_Conn->get_connection());
+        }
+
         invoke_user_callback(UINT_MAX);
     }
 

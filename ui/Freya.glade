@@ -453,7 +453,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;b&gt;Wir werden alle sterben&lt;/b&gt;</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Not connected&lt;/b&gt;</property>
                             <property name="use_markup">True</property>
                             <property name="justify">fill</property>
                             <property name="ellipsize">end</property>
@@ -472,7 +472,7 @@ audio-volume-medium</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">by Knorkator - Album aller Zeiten</property>
+                            <property name="label" translatable="yes">Please set up your connection settings.</property>
                             <property name="ellipsize">end</property>
                             <property name="width_chars">28</property>
                             <property name="single_line_mode">True</property>
@@ -622,7 +622,7 @@ audio-volume-medium</property>
                             <property name="margin_left">2</property>
                             <property name="xalign">0</property>
                             <property name="yalign">0</property>
-                            <property name="label" translatable="yes">&lt;small&gt;Nur mal angenommen&lt;/small&gt;</property>
+                            <property name="label" translatable="yes">&lt;small&gt;Is this your first start?&lt;/small&gt;</property>
                             <property name="use_markup">True</property>
                             <property name="ellipsize">end</property>
                             <property name="single_line_mode">True</property>
@@ -640,7 +640,7 @@ audio-volume-medium</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">2</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;small&gt;&lt;i&gt;by&lt;/i&gt; Knorkator&lt;/small&gt;</property>
+                            <property name="label" translatable="yes">&lt;small&gt;We hope you enjoy this player!&lt;/small&gt;</property>
                             <property name="use_markup">True</property>
                             <property name="ellipsize">end</property>
                             <property name="single_line_mode">True</property>

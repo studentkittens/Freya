@@ -150,6 +150,12 @@ namespace Browser
             
     void Queue::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
+        g_printerr("Event = %d\n",event);
+        if(event & MPD_IDLE_PLAYLIST)
+        {
+            g_printerr("Refill.\n");
+            mp_Client->fill_queue(*this);
+        }
     }
     
     /*-------------------------------*/
@@ -164,6 +170,7 @@ namespace Browser
     void Queue::on_menu_clear_clicked(void)
     {
         mp_Client->queue_clear();
+        m_refTreeModel->clear();
     }
 
     /*-------------------------------*/

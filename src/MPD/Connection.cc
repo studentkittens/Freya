@@ -77,12 +77,12 @@ namespace MPD
     {
         if(conn != NULL) 
         {
-            enum mpd_error err_code = mpd_connection_get_error(mpd_conn);
+            enum mpd_error err_code = mpd_connection_get_error(conn);
             if(err_code != MPD_ERROR_SUCCESS)
             {
-                if(mpd_connection_clear_error(mpd_conn) == false)
+                if(mpd_connection_clear_error(conn) == false)
                 {
-                    const char * err_string = mpd_connection_get_error_message(mpd_conn);
+                    const char * err_string = mpd_connection_get_error_message(conn);
                     Warning("Cannot recover from error: %s",err_string);
                 }
             }

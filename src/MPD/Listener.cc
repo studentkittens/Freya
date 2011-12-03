@@ -13,14 +13,16 @@ namespace MPD
 
         idle_events = (enum mpd_idle)0;
         io_eventmask = (enum mpd_async_event)0;
+
         is_idle = false;
+        is_leaving = false;
 
         g_assert(notifier);
         mp_Notifier = notifier;
 
         g_assert(sync_conn.get_connection());
         m_NData.update_all();
-        
+       
         mp_Conn = &sync_conn;
     }
 
@@ -60,11 +62,12 @@ namespace MPD
 
     void Listener::invoke_user_callback(long overwrite_events = -1)
     {
-        g_printerr("User callback?!");
         if(idle_events != 0)
         {
             /* Leave for callback - which is gonna be active */
             leave();
+
+            is_working = true;
 
             if(overwrite_events != -1)
             {
@@ -94,10 +97,11 @@ namespace MPD
             /* Delete old events  */
             idle_events = 0;
 
+            is_working = false;
+
             /* Re-enter idle mode */
             enter();
         }
-        g_printerr("End of callback?!");
     }
 
     //--------------------------------
@@ -187,8 +191,6 @@ namespace MPD
 
     gboolean Listener::io_callback(Glib::IOCondition condition)
     {
-        g_printerr("\nIOoooooooo\n");
-
         /* Tell libmpdclient that it should do the IO now */
         if(mpd_async_io(async_conn, Listener::GIOCondition_to_MPDAsyncEvent(condition)) == false)
         {
@@ -232,6 +234,9 @@ namespace MPD
         g_printerr("\nEeeenter\n");
         if(is_idling() == false)
         {
+            if(is_leaving || is_working)
+                return false;
+
             if(mpd_async_send_command(async_conn, "idle", NULL) == false)
             {
                 check_async_error();
@@ -271,32 +276,39 @@ namespace MPD
                 /* New game - new dices */
                 io_eventmask = (enum mpd_async_event)0;
 
+                enum mpd_idle events;
+
                 /* Make sure no idling is running */
                 if(idle_events == 0)
                 {
-                    idle_events = mpd_run_noidle(mp_Conn->get_connection());
-                    invoke_user_callback(idle_events);
+                    g_message("Sending noidle");
+                    events = mpd_run_noidle(mp_Conn->get_connection());
                 }
                 else
                 {
-                    // Im confused. Argh.
-                    //idle_events = mpd_recv_idle(mp_Conn->get_connection(),false);
-                    //invoke_user_callback(idle_events);
+                    g_message("Receiving other events.");
+                    events = mpd_recv_idle(mp_Conn->get_connection(),false);
                 }
+                
+                is_leaving = true;
 
                 /* Check for errors that may happened shortly */            
-                if(mpd_connection_get_error(mp_Conn->get_connection()) != MPD_ERROR_SUCCESS) 
+                if(events == 0 && mpd_connection_get_error(mp_Conn->get_connection()) != MPD_ERROR_SUCCESS) 
                 {
                     Error("Error while leaving idle mode: %s",mpd_connection_get_error_message(mp_Conn->get_connection()));
-                    is_fatal = (mpd_connection_clear_error(mp_Conn->get_connection()) == false);
+                    is_fatal = mp_Conn->clear_error();
                 }
 
                 if(is_fatal == false)
                 {
+                    idle_events |= events;
+                    invoke_user_callback();
+
                     /* Disconnect the watchdog for now */
                     io_functor.disconnect();
-
                 }
+
+                is_leaving = false;
             }
             else Error("IOFunctor already disconnected");
         }

@@ -226,7 +226,6 @@ namespace MPD
     {
         if(m_Conn.is_connected())
         {
-            g_message("Leaving....:");
             go_busy();
 
             mpd_connection * mpd_conn = m_Conn.get_connection();

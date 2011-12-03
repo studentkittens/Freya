@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
         browser_list.add(settings_browser);
 
         /* Send a good morning to all widgets */
-       // client.force_update();
+        client.force_update();
 
         /* Instance after being connected (usually) */
         GManager::DisconnectManager(client,main_window.get_window(),builder);

@@ -36,7 +36,7 @@ namespace Browser
 
         mp_Popup = new PlaylistManagerPopup(*mp_TreeView);
 
-//        mp_Client->fill_playlists(*this);
+        mp_Client->fill_playlists(*this);
         show_all();
     }
 
@@ -113,12 +113,13 @@ namespace Browser
         {
             /* Update the list of playlists */
             m_refTreeModel->clear();
-            mp_Client->fill_playlists(*this);
+   //         mp_Client->fill_playlists(*this);
             g_printerr("-----------------------\n");
 
             // TODO: This is a test.
             m_refTreeModel->clear();
             mp_Client->fill_playlists(*this);
+           
         }
     }
 }

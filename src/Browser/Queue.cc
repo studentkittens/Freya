@@ -150,7 +150,6 @@ namespace Browser
             
     void Queue::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        g_printerr("Event = %d\n",event);
         if(event & MPD_IDLE_PLAYLIST)
         {
             g_printerr("Refill.\n");

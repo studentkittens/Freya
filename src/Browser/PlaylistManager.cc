@@ -113,13 +113,7 @@ namespace Browser
         {
             /* Update the list of playlists */
             m_refTreeModel->clear();
-   //         mp_Client->fill_playlists(*this);
-            g_printerr("-----------------------\n");
-
-            // TODO: This is a test.
-            m_refTreeModel->clear();
             mp_Client->fill_playlists(*this);
-           
         }
     }
 }

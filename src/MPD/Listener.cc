@@ -231,7 +231,6 @@ namespace MPD
 
     bool Listener::enter(void)
     {
-        g_printerr("\nEeeenter\n");
         if(is_idling() == false)
         {
             if(is_leaving || is_working)
@@ -265,7 +264,6 @@ namespace MPD
 
     void Listener::leave(void)
     {
-        g_printerr("\nLeeeeave\n");
         if(is_idling() && mp_Conn->is_connected())
         {
             if(io_functor.connected()) 
@@ -281,12 +279,10 @@ namespace MPD
                 /* Make sure no idling is running */
                 if(idle_events == 0)
                 {
-                    g_message("Sending noidle");
                     events = mpd_run_noidle(mp_Conn->get_connection());
                 }
                 else
                 {
-                    g_message("Receiving other events.");
                     events = mpd_recv_idle(mp_Conn->get_connection(),false);
                 }
                 
@@ -313,8 +309,6 @@ namespace MPD
             else Error("IOFunctor already disconnected");
         }
         else Warning("Cannot leave when already left (Dude!)");
-
-        g_message("/left");
     }
 
     //--------------------------------

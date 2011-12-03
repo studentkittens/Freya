@@ -15,6 +15,7 @@ namespace Notify
     class Notify
     {
         friend class Browser::Settings;
+        friend class NotifyTestSuite;
 
             DEF_SINGLETON( Notify )
         public:

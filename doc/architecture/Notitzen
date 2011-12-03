@@ -1,0 +1,135 @@
+Notitzen vom 03.12.2011
+
+TOOLS:
+======
+	(Dienst für andere MPD-Clients im Netz) Avahi-Daemon:
+	Begründung: 
+		Server-Browser
+	Git
+	Begründung:
+		 Versionsverwaltung
+	Glade
+	Begründung:
+		 Perfekt Trennung von View und Controller, sehr einfach GUI ERstellung
+	doxygen
+	Begründung:
+		Literate-Programming (Knut)
+
+Software:
+=========
+Avahai Daemon, MPD-Server (nicht zwingend)
+
+Hardware:
+=========
+Minimal: 500Mhz, 512MB, Festplattenspeicher < 1MB
+Optimal: 1Ghz, 512MB, Festplattenspeicher < 1MB
+
+Orgware:
+========
+git mit github (Link)
+doxygen
+Editor nach Wahl
+cmake, g++
+
+Alle Punkte stehen noch nicht fest. Diskussion möglich.
+
+compiler optionen, keine Warnings
+alias glibvg='valgrind G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --leak-check=full'
+
+Abhängigkeiten:
+- gtkmm-3.0
+- libmpdclient
+- libglyr
+
+=======
+
+Entwicklungsabhängikeiten:
+- git (Versionsverwaltung)
+  -- git commit -a -m "Commit-Message" # committen, d.h. 'stagen'
+  -- git push # Änderungen an github server raufladen
+  -- git pull # Änderungen der anderen vom server holen
+  -- Einrichtung: c3 fragen
+- cmake (Buildsystem)
+  -- cmake . # Buildfiles erstellen
+  -- make    # Kompilieren
+  -- sudo make install # zum installieren
+- Editor nach Wahl
+  -- eclipse ist okay - macht halt kaum Sinn
+  -- gVim, nano
+  -- Codeblocks, andere C++ IDEs, ed
+  -- Microsoft Word
+- Glade (Oberflächendesigner)
+  -- Spuckt ein xml file aus - kann von gtk geladen werden
+  -- callbacks und signale müssen im code gehandelt werden
+- Primäre Entwicklerplattform:
+  -- Linux.
+  -- Mac geht wohl auch.
+  -- Windows erstmal nicht.
+
+=======
+
+Verinfachtes ARbeiten durch einheitlichkeit etc. bla blub.
+
+Programmierrichtlinien
+- Allman stil: http://de.wikipedia.org/wiki/Einr%C3%BCckungsstil#Allman_.2F_BSD_.2F_.E2.80.9EEast_Coast.E2.80.9C
+- Tabstop = 4
+- keine globalen variablen
+- Sinnvolle Variablenbenennung, lowercase
+- Klassenmethoden nur in Ausnahmen bzw nur mit guten Gründen
+- valgrind darf keine Laufzeitfehler bringen, auch keine memory leaks.
+  (Show reachable geht in Ordnung, possibly lost unter Umständen auch)
+- camelcase bei Objektnamen, C-Style bei funktionsnamen: my_func_is_cool() - Präzise Namen.
+- modulare gestaltung - bitte kein GUI code mit Featurecode mischen.
+- Bitte kein Code "überoptimieren" - Sauberkeit > Performance. (Normal: Weniger LoC = besser)
+- 'make' sollte auch keine Warnings ausgeben die man nicht leicht vermeiden könnte
+- Prototyping
+
+Wer Namen wie folgendes macht wird öffentlich erschossen:
+
+class DrugStrengthFormCountryManufacturerPharmacyCopayProductPriceFactory
+{
+    public __a(int lol)
+    {
+
+    }
+}
+
+======
+Grobe Aufgabeaufteiung (in anderen Worten: Das heißt noch nix):
+===============================================================
+- Eddy: Gtkmm GUI, alles was sich in 5 minuten fixen lässt.
+- Softwaredesign: Marc (Visio), Dokumentation, "Kundekontakt" :-)
+- Katze: Logwriter, Configparser, cmdparser, cmake erweitern
+- Der komische andere: Anbindung an MPD, C-Hilfe, git repo und anderes Zeugs
+
+
+
+Grobe Kern-"Module":
+- MPDConnectionHandler
+  -- PollingThread
+  -- CommandoThread
+  -- Control Backend
+- Log Klasse
+- ProfileHandler
+- Config Parser
+- PlaylistHandler
+- Cmdline Parser
+
+GUI Klassen müsste man sich noch überlegen.
+
+
+Prozessmodell:
+- iterativ:
+  - Welches genau?
+  - Prototypen entwicklung, milestone unterteilung
+
+
+Geplante Features:
+-----------------
+++ Profile based (settings und playlists sind einem Profil zugeordnet)
++ Album art, lyrics, artistbio, artistimages
++ Standardmpd clients zeug: Random, shuffle, next, prev, stop, play/pause volume
+    + Audio information
++ server stats
+- Fürs erste noch kein Playlist handling (das steht nur so erst mal da)
+

@@ -26,6 +26,7 @@ Optimal: 1Ghz, 512MB, Festplattenspeicher < 1MB
 
 Orgware:
 ========
+valgrind
 git mit github (Link)
 doxygen
 Editor nach Wahl
@@ -76,13 +77,13 @@ Programmierrichtlinien
 - keine globalen variablen
 - Sinnvolle Variablenbenennung, lowercase
 - Klassenmethoden nur in Ausnahmen bzw nur mit guten Gründen
-- valgrind darf keine Laufzeitfehler bringen, auch keine memory leaks.
+- valgrind darf keine Laufzeitfehler bringen
   (Show reachable geht in Ordnung, possibly lost unter Umständen auch)
 - camelcase bei Objektnamen, C-Style bei funktionsnamen: my_func_is_cool() - Präzise Namen.
 - modulare gestaltung - bitte kein GUI code mit Featurecode mischen.
 - Bitte kein Code "überoptimieren" - Sauberkeit > Performance. (Normal: Weniger LoC = besser)
 - 'make' sollte auch keine Warnings ausgeben die man nicht leicht vermeiden könnte
-- Prototyping
+- make test soll alles durchlaufen
 
 Wer Namen wie folgendes macht wird öffentlich erschossen:
 
@@ -119,9 +120,8 @@ GUI Klassen müsste man sich noch überlegen.
 
 
 Prozessmodell:
-- iterativ:
+Wasserfallmodell mit Rücksprung
   - Welches genau?
-  - Prototypen entwicklung, milestone unterteilung
 
 
 Geplante Features:
@@ -132,4 +132,13 @@ Geplante Features:
     + Audio information
 + server stats
 - Fürs erste noch kein Playlist handling (das steht nur so erst mal da)
+
+libraries:
+==========
+C++:			Unix-System (Client läuft nicht auf Windows), Skillen, schlechte libraries für Java, GUI-Java Swing will keiner (Java benutzen nur weicheier)
+gtkmm3:			dynamisches layout, Swing unter C++ nicht nutzbar, leichtgewichtiger als qt(layout-basiert),
+libmpdclient vs libmpd:	libmpd liefert alten mpd-client mit (event-basierte bibliothek), libmpdclient ist low-level
+libxml2:		Standardisierte Config nach xml-standard, leichtgewichtig, überall installiert
+libnotify:		Benachrichtigung über interne Events, weit verbreited auf den meisten Linux Distributionen und Compatibel zu den verschiedenen Notification Daemons.
+Avahi-glib:		Server-Browser
 

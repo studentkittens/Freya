@@ -46,8 +46,7 @@ namespace GManager
                           *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_playback, *menu_misc, *menu_vol_inc, *menu_vol_dec,
                           *menu_about;
 
-            Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume,
-                               *menu_log;
+            Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume;
             Gtk::AboutDialog * window_about;
     };
 

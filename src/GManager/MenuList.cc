@@ -27,7 +27,6 @@ namespace GManager
         BUILDER_GET(builder,"menu_mode_consume", menu_consume);
         BUILDER_GET(builder,"menu_item_vol_up", menu_vol_inc);
         BUILDER_GET(builder,"menu_item_vol_down", menu_vol_dec);
-        BUILDER_GET(builder,"menu_item_log_activate", menu_log);
         BUILDER_GET(builder,"menu_about",menu_about);
         
         BUILDER_GET(builder,"playback_menuitem",menu_playback);

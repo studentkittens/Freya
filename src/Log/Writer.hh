@@ -32,8 +32,6 @@ namespace Log
 
     class Writer 
     {
-        friend class LogTestSuite;
-
         /* Make this class a singleton,
          * this implicitely defines a ctor,
          * Just the dtor is defined expl. below.

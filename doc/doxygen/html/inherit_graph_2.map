@@ -1,3 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classCmdArgParser.html" title="CmdArgParser" alt="" coords="6,5,114,32"/>
+<area shape="rect" id="node1" href="$classBrowser_1_1SettingsSub.html" title="Browser::SettingsSub" alt="" coords="5,56,155,83"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1SettingsGeneral.html" title="Browser::SettingsGeneral" alt="" coords="208,5,379,32"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1SettingsNetwork.html" title="Browser::SettingsNetwork" alt="" coords="206,56,381,83"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1SettingsPlayback.html" title="Browser::SettingsPlayback" alt="" coords="203,107,383,133"/>
 </map>

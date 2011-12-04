@@ -101,48 +101,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseBrowser.html#a3c007014f91fe1914185205d6768a4e9">add_directory</a>(<a class="code" href="classMPD_1_1Directory.html">MPD::Directory</a> * pDir);
 <a name="l00022"></a>00022             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseBrowser.html#a299c3f0562d04e7af622eb882331d4bf" title="Override this.">add_song_file</a>(<a class="code" href="classMPD_1_1Song.html">MPD::Song</a> * pSong);
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024         <span class="keyword">private</span>:
+<a name="l00024"></a>00024             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseBrowser.html#a2ab702dba63be2662d324e28664602d4">on_menu_db_clicked</a>(<span class="keywordtype">void</span>);
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026             <span class="keywordtype">void</span> on_item_activated(<span class="keyword">const</span> Gtk::TreeModel::Path&amp; path);
-<a name="l00027"></a>00027             <span class="keywordtype">void</span> on_home_button_clicked(<span class="keywordtype">void</span>);
-<a name="l00028"></a>00028             <span class="keywordtype">void</span> set_current_path(<span class="keyword">const</span> <span class="keywordtype">char</span> * path);
-<a name="l00029"></a>00029             <span class="keywordtype">void</span> go_one_up(<span class="keywordtype">void</span>);
-<a name="l00030"></a>00030             <span class="keywordtype">void</span> add_item(<span class="keyword">const</span> <span class="keywordtype">char</span> * path, <span class="keywordtype">bool</span> is_file);
-<a name="l00031"></a>00031             <span class="keywordtype">bool</span> on_button_press_event(GdkEventButton* event);
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033             <span class="keyword">class </span>ModelColumns : <span class="keyword">public</span> Gtk::TreeModel::<a class="code" href="classGtk_1_1TreeModel_1_1ColumnRecord.html">ColumnRecord</a>
-<a name="l00034"></a>00034             {
-<a name="l00035"></a>00035                 <span class="keyword">public</span>:
-<a name="l00036"></a>00036                     ModelColumns()
-<a name="l00037"></a>00037                     { add(m_col_path); add(m_col_name); add(m_col_icon); add(m_col_is_file); }
-<a name="l00038"></a>00038                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; m_col_name;
-<a name="l00039"></a>00039                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; m_col_path;
-<a name="l00040"></a>00040                     Gtk::TreeModelColumn&lt;Glib::RefPtr&lt;Gdk::Pixbuf&gt;&gt; m_col_icon;
-<a name="l00041"></a>00041                     Gtk::TreeModelColumn&lt;bool&gt; m_col_is_file;
-<a name="l00042"></a>00042             };
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044             <span class="comment">/* Actual widgets */</span>
-<a name="l00045"></a>00045             Gtk::IconView * mp_IView;
-<a name="l00046"></a>00046             Gtk::Box * mp_ParentBox;
-<a name="l00047"></a>00047             Gtk::Button * mp_HomeButton, * mp_DirUpButton;
-<a name="l00048"></a>00048             Gtk::Label * mp_StatusLabel;
-<a name="l00049"></a>00049             Glib::RefPtr&lt;Gdk::Pixbuf&gt; m_FileIcon, m_DirIcon;
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051             <span class="comment">/* Models behind */</span>
-<a name="l00052"></a>00052             ModelColumns m_Columns;
-<a name="l00053"></a>00053             Glib::RefPtr&lt;Gtk::TreeSelection&gt; m_Selection;
-<a name="l00054"></a>00054             Glib::RefPtr&lt;Gtk::ListStore&gt; m_DirStore;
-<a name="l00055"></a>00055             <a class="code" href="classMPD_1_1Client.html">MPD::Client</a> * mp_Client;
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057             <span class="comment">/* The current path shown (NULL for root) */</span>
-<a name="l00058"></a>00058             std::string mp_Path;
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060             <span class="comment">/* Popup menu */</span>
-<a name="l00061"></a>00061             <a class="code" href="classBrowser_1_1DatabasePopup.html">DatabasePopup</a> * mp_Popup;
-<a name="l00062"></a>00062     };
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: DATABASE_FOGI85CP */</span>
+<a name="l00026"></a>00026         <span class="keyword">private</span>:
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028             <span class="keywordtype">void</span> on_item_activated(<span class="keyword">const</span> Gtk::TreeModel::Path&amp; path);
+<a name="l00029"></a>00029             <span class="keywordtype">void</span> on_home_button_clicked(<span class="keywordtype">void</span>);
+<a name="l00030"></a>00030             <span class="keywordtype">void</span> set_current_path(<span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00031"></a>00031             <span class="keywordtype">void</span> go_one_up(<span class="keywordtype">void</span>);
+<a name="l00032"></a>00032             <span class="keywordtype">void</span> add_item(<span class="keyword">const</span> <span class="keywordtype">char</span> * path, <span class="keywordtype">bool</span> is_file);
+<a name="l00033"></a>00033             <span class="keywordtype">bool</span> on_button_press_event(GdkEventButton* event);
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035             <span class="keyword">class </span>ModelColumns : <span class="keyword">public</span> Gtk::TreeModel::<a class="code" href="classGtk_1_1TreeModel_1_1ColumnRecord.html">ColumnRecord</a>
+<a name="l00036"></a>00036             {
+<a name="l00037"></a>00037                 <span class="keyword">public</span>:
+<a name="l00038"></a>00038                     ModelColumns()
+<a name="l00039"></a>00039                     { add(m_col_path); add(m_col_name); add(m_col_icon); add(m_col_is_file); }
+<a name="l00040"></a>00040                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; m_col_name;
+<a name="l00041"></a>00041                     Gtk::TreeModelColumn&lt;Glib::ustring&gt; m_col_path;
+<a name="l00042"></a>00042                     Gtk::TreeModelColumn&lt;Glib::RefPtr&lt;Gdk::Pixbuf&gt;&gt; m_col_icon;
+<a name="l00043"></a>00043                     Gtk::TreeModelColumn&lt;bool&gt; m_col_is_file;
+<a name="l00044"></a>00044             };
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046             <span class="comment">/* Actual widgets */</span>
+<a name="l00047"></a>00047             Gtk::IconView * mp_IView;
+<a name="l00048"></a>00048             Gtk::Box * mp_ParentBox;
+<a name="l00049"></a>00049             Gtk::Button * mp_HomeButton, * mp_DirUpButton;
+<a name="l00050"></a>00050             Gtk::Label * mp_StatusLabel;
+<a name="l00051"></a>00051             Glib::RefPtr&lt;Gdk::Pixbuf&gt; m_FileIcon, m_DirIcon;
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053             <span class="comment">/* Models behind */</span>
+<a name="l00054"></a>00054             ModelColumns m_Columns;
+<a name="l00055"></a>00055             Glib::RefPtr&lt;Gtk::TreeSelection&gt; m_Selection;
+<a name="l00056"></a>00056             Glib::RefPtr&lt;Gtk::ListStore&gt; m_DirStore;
+<a name="l00057"></a>00057             <a class="code" href="classMPD_1_1Client.html">MPD::Client</a> * mp_Client;
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059             <span class="comment">/* The current path shown (NULL for root) */</span>
+<a name="l00060"></a>00060             std::string mp_Path;
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062             <span class="comment">/* Popup menu */</span>
+<a name="l00063"></a>00063             <a class="code" href="classBrowser_1_1DatabasePopup.html">DatabasePopup</a> * mp_Popup;
+<a name="l00064"></a>00064     };
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: DATABASE_FOGI85CP */</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -162,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:02 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

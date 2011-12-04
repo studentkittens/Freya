@@ -1,18 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classGManager_1_1AbstractGElement.html" title="GManager::AbstractGElement" alt="" coords="5,233,203,260"/>
-<area shape="rect" id="node3" href="$classGManager_1_1BrowserList.html" title="GManager::BrowserList" alt="" coords="275,5,434,32"/>
-<area shape="rect" id="node5" href="$classGManager_1_1Heartbeat.html" title="GManager::Heartbeat" alt="" coords="281,56,428,83"/>
-<area shape="rect" id="node7" href="$classGManager_1_1MenuList.html" title="GManager::MenuList" alt="" coords="283,107,426,133"/>
-<area shape="rect" id="node9" href="$classGManager_1_1NotifyManager.html" title="GManager::NotifyManager" alt="" coords="267,157,442,184"/>
-<area shape="rect" id="node11" href="$classGManager_1_1PlaybackButtons.html" title="GManager::PlaybackButtons" alt="" coords="260,208,449,235"/>
-<area shape="rect" id="node13" href="$classGManager_1_1Statusbar.html" title="GManager::Statusbar" alt="" coords="281,259,428,285"/>
-<area shape="rect" id="node15" href="$classGManager_1_1Statusicons.html" title="GManager::Statusicons" alt="" coords="275,309,434,336"/>
-<area shape="rect" id="node17" href="$classGManager_1_1Timeslide.html" title="GManager::Timeslide" alt="" coords="281,360,428,387"/>
-<area shape="rect" id="node19" href="$classGManager_1_1Trayicon.html" title="GManager::Trayicon" alt="" coords="285,461,425,488"/>
-<area shape="rect" id="node21" href="$classGManager_1_1Volumebutton.html" title="GManager::Volumebutton" alt="" coords="269,411,440,437"/>
-<area shape="rect" id="node22" href="$classBrowser_1_1BasePopup.html" title="Browser::BasePopup" alt="" coords="31,537,177,564"/>
-<area shape="rect" id="node24" href="$classBrowser_1_1DatabasePopup.html" title="Browser::DatabasePopup" alt="" coords="269,512,440,539"/>
-<area shape="rect" id="node26" href="$classBrowser_1_1PlaylistManagerPopup.html" title="Browser::PlaylistManagerPopup" alt="" coords="251,563,459,589"/>
-<area shape="rect" id="node28" href="$classBrowser_1_1QueuePopup.html" title="Browser::QueuePopup" alt="" coords="278,613,431,640"/>
-<area shape="rect" id="node30" href="$classGtk_1_1StatusIcon.html" title="StatusIcon" alt="" coords="61,461,147,488"/>
+<area shape="rect" id="node1" href="$classCxxTest_1_1RealTestDescription.html" title="RealTestDescription" alt="" coords="5,5,147,32"/>
+<area shape="rect" id="node3" href="$classTestDescription__LogTestSuite__testAddition.html" title="TestDescription_LogTestSuite_testAddition" alt="" coords="195,5,469,32"/>
 </map>

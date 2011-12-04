@@ -1,0 +1,158 @@
+\chapter{Lastenheft}
+\section{Zielbestimmungen}
+Welche Ziele sollen durch den Einsatz der Software erreicht werden?\ \\ \\
+Dem einzelnen Benutzer soll das abspielen von Musik über eine Netzwerkverbindung ermöglicht
+werden, dabei soll die Steuerung von einem lokalen Client übernommen werden. Die Musik soll
+in eine rzentralen Datenbank angelegt und über die Soundkarte eines Servers abgespielt werden.
+Die Client-Rechner sollen die Ausgabe steuern und Abspiellisten auf dem Server verwalten
+können. Die Bedienung soll für alle Benutzer sehr einfach und komfortabel über einen lokalen
+Client realisiert werden. Bei jedem Start des Clients, soll die letzte Sitzung wiederhergestellt
+werden, falls keine Daten eine beendeten Sitzung gefunden werden, sollen Standarteinstellungen
+verwendet werden.\ \\ \\
+Standartmäßig sollen den Benutzern folgende Funktionen zuf Verfügung stehen:
+\renewcommand{\labelitemi}{•}
+\begin{itemize}
+        \item Abspielen von Musik
+        \item Steuerung von Musik (Play, Stop, Skip, ...)
+        \item Decodieren von Musik
+        \item Input-Stream via HTTP
+\end{itemize}
+Weitere Funktionen müssen modular integrierbar sein, allerdings müssen sie noch nicht implementiert
+werden. Einige Beispiele für weitere Funktionen wären:
+\begin{itemize}
+	\item Finden von Album-Informationen
+	\item Profil-Steuerung
+	\item Visualisierung
+\end{itemize}
+Die Systemsprache soll auf Englisch festgelegt werden.
+\subsection{Projektbeteiligte}
+Wer soll an dem Projekt teilnehmen?
+\begin{itemize}
+	\item Christopher Pahl
+	\item Christoph Piechula
+	\item Eduard Schneider
+	\item Marc Tigges
+\end{itemize}
+\section{Produkteinsatz}
+Für welche Anwendungsbereiche und Zielgruppe ist die Software vorgesehen?\ \\ \\
+Der MPD-Client ist nicht auf bestimmte Gewerbe beschränkt, ein jeder soll diesen
+Client verwenden können. Grundlage für die Verwendung der Software ist die General
+Public License (GPL) Version 3 vom 29 Juni 2007.\ \\ \\
+Definition der GPL v3:
+\begin{center}
+	http://www.gnu.org/licenses/gpl.html
+\end{center}
+Die Software soll überall da eingesetzt werden, wo Musik abgespielt werden soll. 
+Dabei ist man nicht auf einen Rechner beschränkt, auch Fernseher und Musik-Spieler
+mit Internetzugang, entsprechender Softwareunterstützung und Audio output können 
+theoretisch ein solches Programm verwenden.\ \\ \\
+Hauptsächlich soll sich diese Software allerdings an Nutzer eines Rechners mit einem Unix-
+artigen System richten. Des weiteren soll die Zielgruppe vorerst auf Benutzer beschränkt
+sein, die Englisch verstehen.
+\section{Produktfunktionen}
+Welche sind die Hauptfunktionen aus Sicht des Auftraggebers?\ \\ \\
+\subsection{Benutzerfunktionen}
+Beim ersten Start des Systems soll eine Standard-Konfiguration geladen werden und die Verbindungseinstellungen
+zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
+die vom Benutzer erstellt wurde, falls diese denn lokal gefunden werden kann. Der Benutzer soll sämtliche
+Einstellungen selbstverständlich zu jeder Zeit ändern können.
+\subsubsection{Starten und Beenden}
+\begin{itemize}
+	\item F\_0010 Der Benutzer kann das System zu jedem Zeitpunkt starten.
+	\item F\_0020 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
+\end{itemize}
+\subsubsection{Persönliche Daten}
+Ein Benutzer verfügt über eine persönliche Verbindungseinstellung zum gewünschten MPD-Server.
+Diese Daten können von dem Benutzer zu jeder Zeit angepasst werden.
+\begin{itemize}
+	\item F\_0110 Der Benutzer kann sich zu jeder Zeit seine Verbindungsdaten anzeigen lassen.
+	\item F\_0120 Der Benutzer kann zu jeder Zeit seine persönlichen Daten anpassen.
+\end{itemize}
+\subsubsection{Persönliches Profil}
+Da die Software auf Unix-artige Systeme beschränkt werden soll, geht ein angenehmer Vorteil mit einher, nämlich das
+eine Profil-Verwaltung seitens des MPD-Clients nicht implementiert werden muss. Die verschiedenen Profile werden
+durch die verschiedenen Profile des gesamten Betriebssystems definiert und differenziert.
+\subsubsection{Persönliche Datenbank}
+Eine persönliche Datenbank soll lokal nicht vorhanden sein. Die Datenbank des Benutzers befindet sich auf dem MPD-Server.
+Einzig und alleine modulare Erweiterungen des MPD-Clients können lokale Datenbank-Implementierungen erfordern.
+\subsubsection{Kommunikation (Chat)}
+Kommunikation von MPD-Client zu MPD-Client kann theoretisch implementiert werden, eine solche Schnittstelle ist vorhanden.
+Allerdings soll hierauf verzichtet werden, da im Vordergrund das Abspielen und Verwalten von Musik steht und es deutlich
+einfachere und bessere Systeme gibt, mit Hilfe derer man kommunizieren kann.
+\subsubsection{Suchen}
+Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb der Abspiellisten soll implementiert werden.
+\begin{itemize}
+	\item F\_0210 Der Benutzer kann seine Queue durchsuchen.
+\end{itemize}
+\subsection{Administrator-Funktionen}
+Durch das Unix-artige System soll auch der Administrator-Zugriff geregelt werden. Sobald sich der Benutzer im Unix System
+als Administrator befindet, kann er auch den MPD-Client administrieren. Ein zusätzlicher Administrator-Modus muss also
+nicht implementiert werden.
+\section{Produktdaten}
+Welche Daten sollen persistent gespeichert werden?\ \\ \\
+Die vom Benutzer vorgenommenen Verbindungseinstellungen und Client spezifischen Einstellungen,
+sollen auf dem Rechner lokal und persistent gespeichert werden. Nur so kann ermöglicht werden,
+dass nach jedem Start des Systems diese Einstellungen geladen und übernommen werden können.\ \\
+Außerdem soll eine Log-Datei auf den einzelnen Rechnern angelegt werden, die dieses System
+verwenden. In dieser Log-Datei werden Nachrichten des Systems gespeichert, um eventuelle Fehler
+leicht finden und beheben zu können. Es soll zusätzlich der Zustand des Systems abgespeichert werden,
+wenn das System beendet wird um das System beim nächsten Start in diesen Zustand versetzen zu können.
+\begin{itemize}
+	\item D\_0010 Persönlichen Verbindungseinstellungen.
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+	\item D\_0020 Client spezifische Einstellungen.
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+	\item D\_0030 Eine Log-Datei.
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+	\item D\_0040 Der Zustand.
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+\end{itemize}
+\section{Produktleistungen}
+Werden für bestimmte Funktionen besondere Ansprüche in Bezug auf Zeit, Datenumfang oder Genauigkeit gestellt?\ \\ \\
+Wenn das System beendet wird, soll der aktuelle Zustand des Systems gespeichert werden.
+\begin{itemize}
+	\item L\_0010 Speicherung des Systemzustandes
+\end{itemize}
+Es soll möglichst wenig Speicher gebraucht werden, die CPU soll möglichst wenig belastet werden und der Netzwerk-Traffic
+soll gering gehalten werden.
+\begin{itemize}
+	\item L\_0020 Möglichst wenig Ressourchen-Verbrauch
+\end{itemize}
+Die Geschwindigkeit der Software ist auch abhänig von der jeweiligen Server-Lokation, der Benutzer wählt den Server
+d.h. somit ist auch der Benutzer teil-verantworltich für die Geschwindigkeit.\ \\ \\
+Der Status eines Liedes (Liedposition) wird alle 500 ms aktualisiert.
+\begin{itemize}
+	\item L\_0030 Lokaler Heartbeat alle 500 ms
+\end{itemize}
+\section{Qualitätsanforderungen}
+Welche qualitativen Anforderungen sind von besonderer Bedeutung?\ \\ \\
+Es soll auf folgende Priorität unter den Qualitätsanforderungen geachtet werden,
+dabei ist das erste Element das wichtigste und das letzte das unwichtigste.\ \\ \\
+Priorität 1: Robustheit\ \\
+Priorität 2: Zuverlässigkeit\ \\
+Priorität 3: Effizienz\ \\
+Priorität 4: Intuitive Benutzung\ \\
+Priorität 5: Design\ \\ \\
+\section{Ergänzungen}
+\subsection{Realisierung}
+Das System muss mit den Programmiersprachen C und/oder C++ realisiert werden. Dabei ist auf
+Objektorientierung zu achten, um Modularität und Wartbarkeit gewährleisten zu können.
+Es können beliebige Entwicklungsumgebungen verwendet werden. Um einfaches und sicheres arbeiten
+ermöglichen zu können, soll die Versionsverwaltungssoftware \"git\" benutzt werden, um die
+Entwicklungsdateien zu speichern und zu bearbeiten. Zu dem Projekt soll eine ausführliche
+Dokumentation erstellt werden, um dauerhafte Wartbarkeit und Anpassung des MPD-Client  gewährleisten
+zu können, dazu gehören auch entsprechende Software-Diagramme (wie z.B. UML).
+\subsection{Die nächste Version}
+Aufgrund des modularen Aufbaus kann das System beliebig oft und in verschiedene Richtungen weiterentwickelt werden.

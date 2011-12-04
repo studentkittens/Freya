@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="Init::Path::get_config_dir" alt="" coords="382,5,546,32"/>
-<area shape="rect" id="node5" href="$classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="Init::Path::path_to_config" alt="" coords="165,31,333,57"/>
+<area shape="rect" id="node3" href="$classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="returns absolute path to config dir e.g. /home/user/.config/freya" alt="" coords="382,5,546,32"/>
+<area shape="rect" id="node5" href="$classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="returns absolute path to config file e.g. /home/user/.config/freya/config.xml" alt="" coords="165,31,333,57"/>
 </map>

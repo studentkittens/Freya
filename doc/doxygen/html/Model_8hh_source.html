@@ -94,27 +94,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014         <a class="code" href="classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520">Model</a> ();
 <a name="l00015"></a>00015         <a class="code" href="classConfig_1_1Model.html#a93214204452c79c0a33f1604e1eb5deb">~Model</a> ();
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017         <span class="comment">/*loader and saver funcs for xml file*/</span>
-<a name="l00018"></a>00018         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">load</a>(<span class="keywordtype">char</span>*);
-<a name="l00019"></a>00019         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">loadDefaultDoc</a>();
-<a name="l00020"></a>00020         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">save</a>();
-<a name="l00021"></a>00021         <span class="comment">/*save as different filename eg. config.xml.bak*/</span>
-<a name="l00022"></a>00022         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">save</a>(<span class="keywordtype">char</span>*, xmlDocPtr);
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024         <span class="comment">/*xml document getter ieeeeee*/</span>
-<a name="l00025"></a>00025         xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">getDocPtr</a>();
-<a name="l00026"></a>00026         xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">getDefaultDocPtr</a>();
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028     <span class="keyword">private</span>:
-<a name="l00029"></a>00029         <span class="comment">/*xml document and xml node member*/</span>
-<a name="l00030"></a>00030         xmlDocPtr fileDoc;
-<a name="l00031"></a>00031         xmlDocPtr defaultDoc;
-<a name="l00032"></a>00032         <span class="keywordtype">void</span> setpath(<span class="keywordtype">char</span>*);
-<a name="l00033"></a>00033         <span class="keywordtype">char</span>* pathtofile;
-<a name="l00034"></a>00034     };
-<a name="l00035"></a>00035 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard */</span>
+<a name="l00017"></a>00017 
+<a name="l00023"></a>00023         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab" title="loads current configuration file from hard disk as fileDoc xmlDocPtr">load</a>(<span class="keywordtype">char</span>*);
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 
+<a name="l00029"></a>00029         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a" title="loads default config as defaultDoc xmlDocPtr">loadDefaultDoc</a>();
+<a name="l00030"></a>00030         
+<a name="l00034"></a>00034         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="saves _current_ config to hard disk (config.xml)">save</a>();
+<a name="l00035"></a>00035         
+<a name="l00042"></a>00042         <span class="keywordtype">void</span> <a class="code" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="saves _current_ config to hard disk (config.xml)">save</a>(<span class="keywordtype">char</span>*, xmlDocPtr);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 
+<a name="l00050"></a>00050         xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041" title="simple getter for xmlDocPtr">getDocPtr</a>();
+<a name="l00051"></a>00051 
+<a name="l00057"></a>00057         xmlDocPtr <a class="code" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9" title="simple getter for _default_ xmlDocPtr">getDefaultDocPtr</a>();
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059     <span class="keyword">private</span>:
+<a name="l00060"></a>00060         <span class="comment">/*xml document and xml node member*/</span>
+<a name="l00061"></a>00061         xmlDocPtr fileDoc;
+<a name="l00062"></a>00062         xmlDocPtr defaultDoc;
+<a name="l00063"></a>00063         <span class="keywordtype">void</span> setpath(<span class="keywordtype">char</span>*);
+<a name="l00064"></a>00064         <span class="keywordtype">char</span>* pathtofile;
+<a name="l00065"></a>00065     };
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard */</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -134,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:02 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

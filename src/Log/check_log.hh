@@ -13,6 +13,10 @@ class LogTestSuite : public CxxTest::TestSuite
             TS_ASSERT_EQUALS( 1 + 1, 2 );
 
             /* Test if linking works */
-            Log::Writer::instance();
+            Log::Writer& bla = Log::Writer::instance();
         }
+
+
+
+
 };

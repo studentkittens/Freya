@@ -27,8 +27,8 @@ namespace Browser
         mp_TreeView->set_model(m_refTreeModelFilter);
 
         /* Add the TreeView's view columns: */
-        mp_TreeView->append_column("ID", m_Columns.m_col_id);
-        mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
+        //mp_TreeView->append_column("ID", m_Columns.m_col_id);
+        //mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
         mp_TreeView->append_column("Artist", m_Columns.m_col_artist);
         mp_TreeView->append_column("Album", m_Columns.m_col_album);
         mp_TreeView->append_column("Title", m_Columns.m_col_title);
@@ -44,9 +44,9 @@ namespace Browser
             if(pColumn != NULL)
             {
                 pColumn->set_reorderable();
-                pColumn->set_expand(false);
+                pColumn->set_expand(true);
                 pColumn->set_resizable(true);
-                pColumn->set_sizing(Gtk::TREE_VIEW_COLUMN_GROW_ONLY);
+                pColumn->set_sizing(Gtk::TREE_VIEW_COLUMN_FIXED);
             }
         }
 
@@ -184,6 +184,7 @@ namespace Browser
     
     void Queue::on_menu_remove_clicked(void)
     {
+        // TODO. //
         std::vector<Gtk::TreePath> path_row_vec = m_TreeSelection->get_selected_rows();
 
         if(!path_row_vec.empty())
@@ -195,8 +196,8 @@ namespace Browser
                 if(iter)
                 {
                     Gtk::TreeRow row = *iter;
-                    unsigned song_id = row[m_Columns.m_col_id];
-                    mp_Client->queue_delete(song_id);
+                    unsigned song_pos = row[m_Columns.m_col_pos];
+                    mp_Client->queue_delete(song_pos);
                     m_refTreeModel->erase(iter);
                 }
             }

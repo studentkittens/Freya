@@ -62,6 +62,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="invisible_char">●</property>
+            <property name="placeholder_text">&lt;Insert your new playlistname here&gt;</property>
           </object>
           <packing>
             <property name="expand">False</property>

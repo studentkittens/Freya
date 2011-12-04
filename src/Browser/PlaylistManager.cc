@@ -28,8 +28,8 @@ namespace Browser
 
         /* Add the TreeView's view columns */
         mp_TreeView->append_column("", m_Columns.m_col_icon);
-        mp_TreeView->append_column("Playlists", m_Columns.m_col_name);
-        mp_TreeView->append_column("Last modified", m_Columns.m_col_last_modfied);
+        mp_TreeView->append_column_editable("Playlists", m_Columns.m_col_name);
+        mp_TreeView->append_column("Last modiefied", m_Columns.m_col_last_modfied);
         mp_TreeView->set_search_column(0);
 
         /* Connect buttons in bar */
@@ -80,15 +80,13 @@ namespace Browser
         row[m_Columns.m_col_plist] = playlist;
         row[m_Columns.m_col_name]  = playlist->get_path();
         row[m_Columns.m_col_icon]  = m_PlaylistIcon;
-
-        Glib::ustring timestamp = Utils::seconds_to_timestamp(playlist->get_last_modified());
-        row[m_Columns.m_col_last_modfied] = Glib::ustring("Last modified: ") + timestamp; 
+        row[m_Columns.m_col_last_modfied] = Utils::seconds_to_timestamp(playlist->get_last_modified());
     }
     
     
     /* ----------------------- */
-
-    void PlaylistManager::on_menu_del_clicked(void)
+    
+    void PlaylistManager::selection_helper(bool load_or_remove) 
     {
         std::vector<Gtk::TreeModel::Path> selection = m_Selection->get_selected_rows();
 
@@ -101,17 +99,31 @@ namespace Browser
             {
                 Gtk::TreeRow row = *it;
                 Glib::ustring pl_name = row[m_Columns.m_col_name];
-                mp_Client->playlist_remove(pl_name.c_str());
+
+                if(load_or_remove)
+                {
+                    mp_Client->playlist_load(pl_name.c_str());
+                }
+                else
+                {
+                    mp_Client->playlist_remove(pl_name.c_str());
+                }
             }
         }
+    }
+    
+    /* ----------------------- */
+
+    void PlaylistManager::on_menu_del_clicked(void)
+    {
+        selection_helper(false);
     }
     
     /* ----------------------- */
     
     void PlaylistManager::on_menu_append_clicked(void)
     {
-        // TODO //
-       mp_Client->playlist_load("Akrea");
+        selection_helper(true);
     }
     
     /* ----------------------- */

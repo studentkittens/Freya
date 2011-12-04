@@ -46,6 +46,7 @@ namespace Browser
                 pColumn->set_reorderable();
                 pColumn->set_expand(false);
                 pColumn->set_resizable(true);
+                pColumn->set_sizing(Gtk::TREE_VIEW_COLUMN_GROW_ONLY);
             }
         }
 

@@ -11,14 +11,19 @@ namespace Browser
         BUILDER_ADD(builder,"ui/PlaylistAddDialog.glade");
         BUILDER_GET_NO_MANAGE(builder,"playlist_add_dialog",mp_Dialog);
 
-        Gtk::Button * button_cancel, * button_add;
-        BUILDER_GET(builder,"playlist_cancel",button_cancel);
-        BUILDER_GET(builder,"playlist_add",button_add);
+        BUILDER_GET(builder,"playlist_cancel",mp_CancelButton);
+        BUILDER_GET(builder,"playlist_add",mp_ApplyButton);
+        BUILDER_GET(builder,"playlist_name_entry",mp_PlaylistEntry);
 
-        button_cancel->signal_clicked().connect(
+        mp_CancelButton->signal_clicked().connect(
                 sigc::mem_fun(*this,&PlaylistAddDialog::on_cancel_clicked));
-        button_add->signal_clicked().connect(
+        mp_ApplyButton->signal_clicked().connect(
                 sigc::mem_fun(*this,&PlaylistAddDialog::on_add_clicked));
+        mp_PlaylistEntry->signal_changed().connect(
+                sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_change));
+        mp_PlaylistEntry->signal_activate().connect(
+                sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_activate));
+
     }
 
     /* ----------------------- */
@@ -32,6 +37,9 @@ namespace Browser
 
     void PlaylistAddDialog::on_add_clicked(void)
     {
+        Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
+        g_printerr("Creating new playlist: %s\n",new_pl_name.c_str());
+
         // TODO: Add The Playlist here.. //
         on_cancel_clicked();
     }
@@ -53,5 +61,20 @@ namespace Browser
             is_running = true;
             mp_Dialog->show();
         }
+    }
+    
+    /* ----------------------- */
+
+    void PlaylistAddDialog::on_entry_change(void)
+    {
+        /* Get length of Text */
+        mp_ApplyButton->set_sensitive(mp_PlaylistEntry->get_text_length() > 0);
+    }
+    
+    /* ----------------------- */
+
+    void PlaylistAddDialog::on_entry_activate(void)
+    {
+        on_add_clicked();
     }
 }

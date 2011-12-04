@@ -17,10 +17,15 @@ namespace Browser
 
             void on_cancel_clicked(void);
             void on_add_clicked(void);
+            void on_entry_change(void);
+            void on_entry_activate(void);
 
             bool is_running;
             Gtk::Dialog * mp_Dialog;
             MPD::Client * mp_Client;
+
+            Gtk::Entry * mp_PlaylistEntry;
+            Gtk::Button * mp_ApplyButton, * mp_CancelButton; 
     };
 }
 

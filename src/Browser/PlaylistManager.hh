@@ -33,8 +33,9 @@ namespace Browser
 
             /* Menu Popup */
             void on_menu_append_clicked(void);
-            void on_menu_del_clicked(void);
             void on_menu_replace_clicked(void);
+            void on_menu_del_clicked(void);
+            void selection_helper(bool load_or_remove);
 
             /* Other */
             void on_add_clicked(void);

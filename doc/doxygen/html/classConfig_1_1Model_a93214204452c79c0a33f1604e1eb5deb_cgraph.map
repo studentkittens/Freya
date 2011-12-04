@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="Config::Model::save" alt="" coords="208,5,347,32"/>
+<area shape="rect" id="node3" href="$classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="saves _current_ config to hard disk (config.xml)" alt="" coords="208,5,347,32"/>
 </map>

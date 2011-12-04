@@ -175,8 +175,7 @@ namespace Browser
     {
         if(event & MPD_IDLE_DATABASE)
         {
-            // This needs a fix first.
-//            set_current_path(mp_Path.c_str());
+            set_current_path(mp_Path.c_str());
         }
     }
     

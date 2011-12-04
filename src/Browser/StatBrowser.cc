@@ -31,18 +31,20 @@ namespace Browser
 
     void StatBrowser::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
+        int const BUFFER = 512;
+
         if (event & MPD_IDLE_DATABASE)
         {
+            char newvalue[BUFFER] = {0};
             MPD::Statistics& stat = data.get_statistics();
-
-            char newvalue[] = {0};
-            g_snprintf(newvalue,512,"%u artists",stat.get_number_of_artists());
+            
+            g_snprintf(newvalue,BUFFER,"%u artists",stat.get_number_of_artists());
             noofartist->set_text(Glib::ustring(newvalue));
 
-            g_snprintf(newvalue,512,"%u albums",stat.get_number_of_albums());
+            g_snprintf(newvalue,BUFFER,"%u albums",stat.get_number_of_albums());
             noofalbums->set_text(Glib::ustring(newvalue));
 
-            g_snprintf(newvalue,512,"%u songs",stat.get_number_of_songs());
+            g_snprintf(newvalue,BUFFER,"%u songs",stat.get_number_of_songs());
             noofsongs->set_text(Glib::ustring(newvalue));
 
             dbplaytime->set_text(Utils::seconds_to_duration(stat.get_db_play_time()).c_str());

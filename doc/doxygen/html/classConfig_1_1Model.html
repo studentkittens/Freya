@@ -97,11 +97,17 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520">Model</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#a93214204452c79c0a33f1604e1eb5deb">~Model</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab">load</a> (char *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">loads current configuration file from hard disk as fileDoc xmlDocPtr  <a href="#a45d4f43a59384e7b63a7149f8087c7ab"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a">loadDefaultDoc</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">loads default config as defaultDoc xmlDocPtr  <a href="#a975ecd85cb8f15811b186804ecd6ed9a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0">save</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">saves _current_ config to hard disk (config.xml)  <a href="#a405b1928dd7221c6afc0639fce15f3d0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#ac7bd0ad7aa27056eeb400f47d0e56d26">save</a> (char *, xmlDocPtr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">alternative save function to write given xmlDoc to a given path  <a href="#ac7bd0ad7aa27056eeb400f47d0e56d26"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">xmlDocPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041">getDocPtr</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simple getter for xmlDocPtr  <a href="#a4025796bd976e71ce760996daaa87041"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">xmlDocPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9">getDefaultDocPtr</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simple getter for _default_ xmlDocPtr  <a href="#a06e607092b8b271fae4f6c3ad33867a9"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
@@ -128,7 +134,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfig_1_1Model_ab49608439fb79f5f8ac6454534efc520_cgraph.png" border="0" usemap="#classConfig_1_1Model_ab49608439fb79f5f8ac6454534efc520_cgraph" alt=""/></div>
 <map name="classConfig_1_1Model_ab49608439fb79f5f8ac6454534efc520_cgraph" id="classConfig_1_1Model_ab49608439fb79f5f8ac6454534efc520_cgraph">
-<area shape="rect" id="node3" href="classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="Init::Path::path_to_config" alt="" coords="217,5,385,32"/><area shape="rect" id="node7" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab" title="Config::Model::load" alt="" coords="234,56,369,83"/><area shape="rect" id="node9" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a" title="Config::Model::loadDefaultDoc" alt="" coords="201,107,402,133"/><area shape="rect" id="node5" href="classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="Init::Path::get_config_dir" alt="" coords="451,5,615,32"/></map>
+<area shape="rect" id="node3" href="classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="returns absolute path to config file e.g. /home/user/.config/freya/config.xml" alt="" coords="217,5,385,32"/><area shape="rect" id="node7" href="classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab" title="loads current configuration file from hard disk as fileDoc xmlDocPtr" alt="" coords="234,56,369,83"/><area shape="rect" id="node9" href="classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a" title="loads default config as defaultDoc xmlDocPtr" alt="" coords="201,107,402,133"/><area shape="rect" id="node5" href="classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="returns absolute path to config dir e.g. /home/user/.config/freya" alt="" coords="451,5,615,32"/></map>
 </div>
 </p>
 
@@ -155,7 +161,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfig_1_1Model_a93214204452c79c0a33f1604e1eb5deb_cgraph.png" border="0" usemap="#classConfig_1_1Model_a93214204452c79c0a33f1604e1eb5deb_cgraph" alt=""/></div>
 <map name="classConfig_1_1Model_a93214204452c79c0a33f1604e1eb5deb_cgraph" id="classConfig_1_1Model_a93214204452c79c0a33f1604e1eb5deb_cgraph">
-<area shape="rect" id="node3" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="Config::Model::save" alt="" coords="208,5,347,32"/></map>
+<area shape="rect" id="node3" href="classConfig_1_1Model.html#a405b1928dd7221c6afc0639fce15f3d0" title="saves _current_ config to hard disk (config.xml)" alt="" coords="208,5,347,32"/></map>
 </div>
 </p>
 
@@ -176,6 +182,9 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
+<p>simple getter for _default_ xmlDocPtr </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>xmlDocPtr to _default_ config </dd></dl>
+
 <p>Definition at line <a class="el" href="Model_8cc_source.html#l00039">39</a> of file <a class="el" href="Model_8cc_source.html">Model.cc</a>.</p>
 
 </div>
@@ -194,6 +203,9 @@ Here is the call graph for this function:</div>
 </div>
 <div class="memdoc">
 
+<p>simple getter for xmlDocPtr </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>xmlDocPtr to config file </dd></dl>
+
 <p>Definition at line <a class="el" href="Model_8cc_source.html#l00034">34</a> of file <a class="el" href="Model_8cc_source.html">Model.cc</a>.</p>
 
 <p><div class="dynheader">
@@ -201,7 +213,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfig_1_1Model_a4025796bd976e71ce760996daaa87041_icgraph.png" border="0" usemap="#classConfig_1_1Model_a4025796bd976e71ce760996daaa87041_icgraph" alt=""/></div>
 <map name="classConfig_1_1Model_a4025796bd976e71ce760996daaa87041_icgraph" id="classConfig_1_1Model_a4025796bd976e71ce760996daaa87041_icgraph">
-<area shape="rect" id="node3" href="classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374" title="Config::Handler::set_value" alt="" coords="225,5,402,32"/><area shape="rect" id="node5" href="classConfig_1_1Handler.html#a5acc969e8ea631b643b43e8096c71b58" title="Config::Handler::set_value_as_int" alt="" coords="451,5,669,32"/></map>
+<area shape="rect" id="node3" href="classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374" title="value setter for config option, use CONFIG_SET(x,y) macro instead" alt="" coords="225,5,402,32"/><area shape="rect" id="node5" href="classConfig_1_1Handler.html#a5acc969e8ea631b643b43e8096c71b58" title="int value setter for config option, use CONFIG_SET_AS_INT(x,y) macro instead" alt="" coords="451,5,669,32"/></map>
 </div>
 </p>
 
@@ -221,6 +233,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>loads current configuration file from hard disk as fileDoc xmlDocPtr </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*,path</td><td>to config.xml file as char ptr </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Definition at line <a class="el" href="Model_8cc_source.html#l00047">47</a> of file <a class="el" href="Model_8cc_source.html">Model.cc</a>.</p>
 
@@ -249,6 +269,8 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
+<p>loads default config as defaultDoc xmlDocPtr </p>
+
 <p>Definition at line <a class="el" href="Model_8cc_source.html#l00087">87</a> of file <a class="el" href="Model_8cc_source.html">Model.cc</a>.</p>
 
 <p><div class="dynheader">
@@ -276,6 +298,8 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
+<p>saves _current_ config to hard disk (config.xml) </p>
+
 <p>Definition at line <a class="el" href="Model_8cc_source.html#l00096">96</a> of file <a class="el" href="Model_8cc_source.html">Model.cc</a>.</p>
 
 <p><div class="dynheader">
@@ -283,7 +307,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfig_1_1Model_a405b1928dd7221c6afc0639fce15f3d0_icgraph.png" border="0" usemap="#classConfig_1_1Model_a405b1928dd7221c6afc0639fce15f3d0_icgraph" alt=""/></div>
 <map name="classConfig_1_1Model_a405b1928dd7221c6afc0639fce15f3d0_icgraph" id="classConfig_1_1Model_a405b1928dd7221c6afc0639fce15f3d0_icgraph">
-<area shape="rect" id="node3" href="classConfig_1_1Handler.html#a61b0a42790fe7522d970115c72cc913c" title="Config::Handler::save_config_now" alt="" coords="193,5,415,32"/><area shape="rect" id="node5" href="classConfig_1_1Model.html#a93214204452c79c0a33f1604e1eb5deb" title="Config::Model::~Model" alt="" coords="227,56,381,83"/></map>
+<area shape="rect" id="node3" href="classConfig_1_1Handler.html#a61b0a42790fe7522d970115c72cc913c" title="writes _current_ configuration as config.xml file to hard disk, use CONFIG_SAVE_NOW() macro instead..." alt="" coords="193,5,415,32"/><area shape="rect" id="node5" href="classConfig_1_1Model.html#a93214204452c79c0a33f1604e1eb5deb" title="Config::Model::~Model" alt="" coords="227,56,381,83"/></map>
 </div>
 </p>
 
@@ -314,6 +338,15 @@ Here is the caller graph for this function:</div>
 </div>
 <div class="memdoc">
 
+<p>alternative save function to write given xmlDoc to a given path </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*,alternative</td><td>path for saving config file </td></tr>
+    <tr><td class="paramname">xmlDocPtr,alternative</td><td>ptr to xmlDoc you want to save </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Definition at line <a class="el" href="Model_8cc_source.html#l00103">103</a> of file <a class="el" href="Model_8cc_source.html">Model.cc</a>.</p>
 
 </div>
@@ -340,7 +373,7 @@ Here is the caller graph for this function:</div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:03 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

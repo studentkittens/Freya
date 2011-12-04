@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1DatabaseBrowser.html" title="{Browser::DatabaseBrowser\n||+ DatabaseBrowser()\l+ ~DatabaseBrowser()\l+ get_container()\l+ add_directory()\l+ add_song_file()\l}" alt="" coords="5,147,187,283"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1DatabaseBrowser.html" title="{Browser::DatabaseBrowser\n||+ DatabaseBrowser()\l+ ~DatabaseBrowser()\l+ get_container()\l+ add_directory()\l+ add_song_file()\l+ on_menu_db_clicked()\l}" alt="" coords="5,147,187,298"/>
 </map>

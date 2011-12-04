@@ -1,0 +1,163 @@
+\chapter{Pflichtenheft}
+\section{Zielbestimmungen}
+\subsection{Muss-Kriterien}
+\renewcommand{\labelitemi}{•}
+\begin{itemize}
+	\item Server-Verbindung
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+	\item Client-Einstellungen
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+	\item Musik-Steuerung
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+	\item Sonstiges
+	\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+		\item Platzhalter
+	\end{itemize}
+\end{itemize}
+\subsection{Wunsch-Kriterien}
+\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+		\item Platzhalter
+\end{itemize}
+\subsection{Abgrenzungskriterien}
+\begin{itemize}
+		\item Platzhalter
+		\item Platzhalter
+		\item Platzhalter
+\end{itemize}
+\section{Produkteinsatz}
+Welche Anwendungsbereiche (Zweck), Zielgruppen (Wer mit welchen Qualifikationen), Betriebsbedingungen (Betriebszeit,
+Aufsicht)?\ \\ \\
+Der MPD-Client ist nicht auf bestimmte Gewerbe beschränkt, ein jeder soll diesen Client
+verwenden können. Grundlage für die Verwendung der Software ist die General Public License (GPL)
+Version 3 vom 29 Juni 2007.\ \\ \\
+Definition der GPL:
+\begin{center}
+http://www.gnu.org/licenses/gpl.html
+\end{center}
+\subsection{Anwendungsbereiche}
+Einzelpersonen verwenden dieses System, um überall da wo mit 
+einem Unix-artigen Betriebssystem Musik abgespielt werden soll.
+\subsection{Zielgruppen}
+Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
+wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern).\ \\ \\
+Es werden Basiskenntnisse zum Aufbau einer Netzwerkverbindung und zur Nutzung des Internets vorausgesetzt.
+Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig.\ \\ \\
+Der Benutzer muss die Systemsprache Englisch beherrschen.
+\subsection{Betriebsbedingungen}
+Das System soll sich bezüglich der Betriebsbedingungen nicht sonderlich von vergleichbaren Systemen bzw.
+Anwendungen unterscheiden und dementsprechend folgend Punkte erfüllen:
+\begin{itemize}
+	\item Betriebsdauer: Täglich, 24 Stunden
+	\item Keinerlei Wartung soll nötig sein
+	\item Sicherungen der Konfiguration müssen vom Benutzer vorgenommen werden
+\end{itemize}
+\section{Produktumgebung}
+\subsection{Software}
+\begin{itemize}
+	\item Avahi Daemon
+	\item MPD-Client
+\end{itemize}
+Ein MPD-Server ist nicht unbedingt von nöten.
+\subsection{Hardware}
+Minimale Hardwareanforderungen:
+Empfohlene Hardwareanforderungen:
+\subsection{Orgware}
+\begin{itemize}
+	\item git (Versionsverwaltungssoftware)
+	\item cmake (Compiler)
+	\item doxygen (Dokumentation)
+	\item Editor nach Wahl
+	\item Glade
+\end{itemize}
+\section{Produktfunktionen}
+Funktionen des MPD-Clients.\ \\ \\
+Beim ersten Start des Systems soll eine Standard-Konfiguration geladen werden und die Verbindungseinstellungen
+zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
+die vom Benutzer erstellt wurde, falls diese denn lokal gefunden werden kann. Der Benutzer soll sämtliche
+Einstellungen selbstverständlich zu jeder Zeit ändern können.
+\subsection{Allgemeine Funktionen}
+\subsubsection{Starten und Beenden}
+\begin{itemize}
+	\item F\_0010 Der Benutzer kann das System zu jedem Zeitpunkt starten.
+	\item F\_0020 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
+	\item F\_0030 Beim ersten Start wird ein Standart-System-Zustand geladen.
+	\item F\_0040 Beim Beenden wird der aktuelle System-Zustand gespeichert.
+	\item F\_0050 Bei jedem weiteren Start wird der letzte System-Zustand geladen.
+\end{itemize}
+\subsection{Benutzerfunktionen}
+\subsubsection{Benutzer-Kennung}
+Eine Benutzerkennung ist nicht erforderlich und wurde deshalb auch nicht implementiert.
+\subsubsection{Persönliche Daten}
+Verbindungseinstellungen müssen vorgenommen werden und können zu jedem Zeitpunkt geändert werden.
+\begin{itemize}
+	\item F\_0110 Der Benutzer kann Verbindungseinstellungen vornehmen und sie ändern
+\end{itemize}
+\subsubsection{Persönliche Konfiguration}
+config.xml
+log datei
+\subsubsection{Persönliches Profil}
+Da die Software auf Unix-artige Systeme beschränkt ist, wurde keine Profil-Verwaltung implementiert. Die
+verschiedenen Profile werden durch die verschiedenen Profile des gesamten Betriebssystems definiert und differenziert.
+\subsubsection{Persönliche Datenbank}
+Eine persönliche Datenbank ist lokal nicht vorhanden. Die Datenbank des Benutzers befindet sich auf dem MPD-Server.
+Einzig und alleine modulare Erweiterungen des MPD-Clients können lokale Datenbank-Implementierungen erfordern.
+\subsubsection{Kommunikation (Chat)}
+Kommunikation von MPD-Client zu MPD-Client kann theoretisch implementiert werden, eine solche Schnittstelle ist vorhanden.
+Allerdings wurde hierauf verzichtet, da im Vordergrund das Abspielen und Verwalten von Musik steht und es deutlich
+einfachere und bessere Systeme gibt, mit Hilfe derer man kommunizieren kann.
+\subsubsection{Suchen}
+Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb der Abspiellisten wurde implementiert.
+Dabei springt die Markierung des Textes beim eingeben von Zeichen in die Suche zu der ersten übereinstimmenden
+Stelle in der Playlist des Clients. Erst beim bestätigen der Eingabe im Suchfeld wird die Auswahl gefiltert.
+\begin{itemize}
+        \item F\_0210 Der Benutzer kann seine Queue durchsuchen.
+\end{itemize}
+\subsection{Abspielfunktionen}
+\begin{itemize}
+	\item Play
+	\item Skip
+	\item Stop
+	\item Pause
+	\item Shuffle
+	\item Loop
+\end{itemize}
+\subsubsection{Initialisierung}
+Platzhalter
+\subsubsection{Verlauf}
+\subsection{Administrator-Funktionen}
+Durch das Unix-artige System wird auch der Administrator-Zugriff geregelt. Sobald sich der Benutzer im Unix System
+als Administrator befindet, kann er auch den MPD-Client administrieren. Ein zusätzlicher Administrator-Modus wurde also
+nicht implementiert.
+\section{Produktdaten}
+\section{Produktleistungen}
+\section{Benutzeroberfläche}
+\subsection{Bildschirmlayout}
+\subsubsection{Startbildschirm}
+\subsubsection{Einstellungsfenster}
+\subsubsection{Verbindungsfenster}
+\subsubsection{Benutzermenü}
+\section{Produktmodellierung}
+\section{Qualitätsanforderungen}
+\section{Globale Testszenarien und Testfälle}
+\section{Entwicklungsumgebung}
+\subsection{Software}
+\subsection{Hardware}
+\subsection{Orgware}
+\section{Ergänzungen}
+\section{Glossar}

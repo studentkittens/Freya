@@ -14,9 +14,9 @@ namespace Browser {
             
 
             /**
-             * @brief simple getter function for gtk widget
+             * @brief implemented from AbstractBrowser
              *
-             * @return gtk widget ptr to _this_ container widget
+             * @return topcontainer of this browser
              */
             Gtk::Widget * get_container(void);
 

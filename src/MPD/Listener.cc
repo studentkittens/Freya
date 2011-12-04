@@ -289,9 +289,17 @@ namespace MPD
                 is_leaving = true;
 
                 /* Check for errors that may happened shortly */            
-                if(events == 0 && mpd_connection_get_error(mp_Conn->get_connection()) != MPD_ERROR_SUCCESS) 
+                if(events == 0)
                 {
-                    Error("Error while leaving idle mode: %s",mpd_connection_get_error_message(mp_Conn->get_connection()));
+                    enum mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
+                    if(err != MPD_ERROR_SUCCESS && err != MPD_ERROR_STATE)
+                    {
+                        if(err != MPD_ERROR_STATE)
+                        {
+                            Warning("Error#%d while leaving idle mode: %s",err,
+                                    mpd_connection_get_error_message(mp_Conn->get_connection()));
+                        }
+                    }
                     is_fatal = mp_Conn->clear_error();
                 }
 

@@ -124,19 +124,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00044"></a>00044             g_snprintf(newvalue,512,<span class="stringliteral">&quot;%u songs&quot;</span>,stat.<a class="code" href="classMPD_1_1Statistics.html#ac4593467147e25b6782b3a16328ddc7a">get_number_of_songs</a>());
 <a name="l00045"></a>00045             noofsongs-&gt;set_text(Glib::ustring(newvalue));
 <a name="l00046"></a>00046 
-<a name="l00047"></a>00047             dbplaytime-&gt;set_text(<a class="code" href="namespaceUtils.html#a0bdcd17527f45f36ac32f494257cd61b">Utils::seconds_to_duration</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#a1c03b44ca289b74f85ee9f68511243a7">get_db_play_time</a>()).c_str());
+<a name="l00047"></a>00047             dbplaytime-&gt;set_text(<a class="code" href="namespaceUtils.html#af28767b08913bc93a9e650a3fab15c09" title="converts a given time in seconds to a duration ustring">Utils::seconds_to_duration</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#a1c03b44ca289b74f85ee9f68511243a7">get_db_play_time</a>()).c_str());
 <a name="l00048"></a>00048 
-<a name="l00049"></a>00049             playtime-&gt;set_text(<a class="code" href="namespaceUtils.html#a0bdcd17527f45f36ac32f494257cd61b">Utils::seconds_to_duration</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#aa9a9961beef70fc5affd175a540568a6">get_play_time</a>()).c_str());
+<a name="l00049"></a>00049             playtime-&gt;set_text(<a class="code" href="namespaceUtils.html#af28767b08913bc93a9e650a3fab15c09" title="converts a given time in seconds to a duration ustring">Utils::seconds_to_duration</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#aa9a9961beef70fc5affd175a540568a6">get_play_time</a>()).c_str());
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051             uptime-&gt;set_text(<a class="code" href="namespaceUtils.html#a0bdcd17527f45f36ac32f494257cd61b">Utils::seconds_to_duration</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#a2edd242a0f8c8336a7bca471ad154d38">get_uptime</a>()).c_str());
+<a name="l00051"></a>00051             uptime-&gt;set_text(<a class="code" href="namespaceUtils.html#af28767b08913bc93a9e650a3fab15c09" title="converts a given time in seconds to a duration ustring">Utils::seconds_to_duration</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#a2edd242a0f8c8336a7bca471ad154d38">get_uptime</a>()).c_str());
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053             dbupdate-&gt;set_text(<a class="code" href="namespaceUtils.html#a5474bab7122470a5f8806a1669f0e367">Utils::seconds_to_timestamp</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#a282233c972b721924145a9dcbe0d510d">get_db_update_time</a>()).c_str());
+<a name="l00053"></a>00053             dbupdate-&gt;set_text(<a class="code" href="namespaceUtils.html#aefc7849e9a3b51b53b084387a0aa8dd0" title="converts a given time in seconds to a &quot;timestamp&quot;">Utils::seconds_to_timestamp</a>(stat.<a class="code" href="classMPD_1_1Statistics.html#a282233c972b721924145a9dcbe0d510d">get_db_update_time</a>()).c_str());
 <a name="l00054"></a>00054         
 <a name="l00055"></a>00055         }
 <a name="l00056"></a>00056     }
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058 
-<a name="l00059"></a><a class="code" href="classBrowser_1_1StatBrowser.html#a1e9c4c1ce5d5f7c93880085fce46cbaa">00059</a>     Gtk::Widget * <a class="code" href="classBrowser_1_1StatBrowser.html#a1e9c4c1ce5d5f7c93880085fce46cbaa" title="Tell BrowserList which element to manage.">StatBrowser::get_container</a>(<span class="keywordtype">void</span>)
+<a name="l00059"></a><a class="code" href="classBrowser_1_1StatBrowser.html#a1e9c4c1ce5d5f7c93880085fce46cbaa">00059</a>     Gtk::Widget * <a class="code" href="classBrowser_1_1StatBrowser.html#a1e9c4c1ce5d5f7c93880085fce46cbaa" title="simple getter function for gtk widget">StatBrowser::get_container</a>(<span class="keywordtype">void</span>)
 <a name="l00060"></a>00060     {
 <a name="l00061"></a>00061         <span class="keywordflow">return</span> <span class="keyword">this</span>;
 <a name="l00062"></a>00062     }
@@ -160,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 1 2011 20:40:02 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 2 2011 00:01:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

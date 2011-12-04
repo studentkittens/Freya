@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374" title="Config::Handler::set_value" alt="" coords="273,5,450,32"/>
-<area shape="rect" id="node5" href="$classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041" title="Config::Model::getDocPtr" alt="" coords="499,5,669,32"/>
+<area shape="rect" id="node3" href="$classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374" title="value setter for config option, use CONFIG_SET(x,y) macro instead" alt="" coords="273,5,450,32"/>
+<area shape="rect" id="node5" href="$classConfig_1_1Model.html#a4025796bd976e71ce760996daaa87041" title="simple getter for xmlDocPtr" alt="" coords="499,5,669,32"/>
 </map>

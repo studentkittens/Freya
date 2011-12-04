@@ -1,6 +1,6 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$classInit_1_1Path.html#ab35fcd7b7fb68b49b2715a800875537b" title="Init::Path::Path" alt="" coords="453,5,563,32"/>
-<area shape="rect" id="node5" href="$classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="Init::Path::path_to_config" alt="" coords="219,56,387,83"/>
-<area shape="rect" id="node10" href="$classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="Init::Path::path_to_log" alt="" coords="227,107,378,133"/>
+<area shape="rect" id="node5" href="$classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="returns absolute path to config file e.g. /home/user/.config/freya/config.xml" alt="" coords="219,56,387,83"/>
+<area shape="rect" id="node10" href="$classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt" alt="" coords="227,107,378,133"/>
 <area shape="rect" id="node7" href="$classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520" title="Config::Model::Model" alt="" coords="435,56,581,83"/>
 </map>

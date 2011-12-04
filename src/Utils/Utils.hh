@@ -3,6 +3,9 @@
 
 #include <glibmm.h>
 
+/* For Error() */
+#include "../Log/Writer.hh"
+
 /* Gtk::Builder macros */
 #define BUILDER_GET(builder_refp, widget_name, widget_ptr) \
     BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \

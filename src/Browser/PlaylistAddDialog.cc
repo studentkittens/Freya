@@ -4,6 +4,7 @@
 namespace Browser
 {
     PlaylistAddDialog::PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder) :
+        is_running(false),
         mp_Dialog(NULL)
     {
         mp_Client = &client;
@@ -40,12 +41,17 @@ namespace Browser
     void PlaylistAddDialog::on_cancel_clicked(void)
     {
         mp_Dialog->hide();
+        is_running = false;
     }
     
     /* ----------------------- */
 
     void PlaylistAddDialog::run(void)
     {
-        mp_Dialog->show();
+        if(is_running == false)
+        {
+            is_running = true;
+            mp_Dialog->show();
+        }
     }
 }

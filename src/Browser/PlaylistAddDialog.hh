@@ -18,6 +18,7 @@ namespace Browser
             void on_cancel_clicked(void);
             void on_add_clicked(void);
 
+            bool is_running;
             Gtk::Dialog * mp_Dialog;
             MPD::Client * mp_Client;
     };

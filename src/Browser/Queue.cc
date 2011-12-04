@@ -27,10 +27,12 @@ namespace Browser
         mp_TreeView->set_model(m_refTreeModelFilter);
 
         /* Add the TreeView's view columns: */
-        //mp_TreeView.append_column("ID", m_Columns.m_col_id);
+        mp_TreeView->append_column("ID", m_Columns.m_col_id);
+        mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
         mp_TreeView->append_column("Artist", m_Columns.m_col_artist);
         mp_TreeView->append_column("Album", m_Columns.m_col_album);
         mp_TreeView->append_column("Title", m_Columns.m_col_title);
+
         mp_TreeView->set_rules_hint(true);
         mp_TreeView->set_rubber_banding(true);
         mp_TreeView->set_search_column(1);
@@ -95,6 +97,7 @@ namespace Browser
         MPD::Song * new_song = (MPD::Song*)pSong;
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_id] = new_song->get_id();
+        row[m_Columns.m_col_pos] = new_song->get_pos();
 
         try { /* Check for NULLs just to be sure */
             row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
@@ -150,10 +153,13 @@ namespace Browser
             
     void Queue::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        g_printerr("Event = %d\n",event);
-        if(event & MPD_IDLE_PLAYLIST)
+        if(event & (MPD_IDLE_PLAYLIST))
         {
+            /* TODO: Make use of plchanges 
+             * Refilling always is expensive.
+             * */
             g_printerr("Refill.\n");
+            m_refTreeModel->clear();
             mp_Client->fill_queue(*this);
         }
     }
@@ -174,9 +180,63 @@ namespace Browser
     }
 
     /*-------------------------------*/
-
+    
     void Queue::on_menu_remove_clicked(void)
     {
+        std::vector<Gtk::TreePath> path_row_vec = m_TreeSelection->get_selected_rows();
+
+        if(!path_row_vec.empty())
+        {
+            if(path_row_vec.size() == 1)
+            {
+                Gtk::TreeModel::Path rowPath  = path_row_vec.front();
+                Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter(rowPath);
+                if(iter)
+                {
+                    Gtk::TreeRow row = *iter;
+                    unsigned song_id = row[m_Columns.m_col_id];
+                    mp_Client->queue_delete(song_id);
+                    m_refTreeModel->erase(iter);
+                }
+            }
+            else
+            {
+                /* Song IDs of the last and first song */
+                unsigned row_start = UINT_MAX;
+                unsigned row_end   = UINT_MAX;
+
+                /* Since we subtract one, we should check this before. */
+                for(unsigned it = path_row_vec.size(); it != 0; --it)
+                {
+                    /* Access! */
+                    Gtk::TreeModel::iterator rowIt = m_refTreeModel->get_iter(path_row_vec[it-1]);
+
+                    if(rowIt)
+                    {
+                        if(it == path_row_vec.size())
+                        {
+                            Gtk::TreeRow row = *rowIt;
+                            row_end = row[m_Columns.m_col_pos];
+                        }
+
+                        if(it == 1)
+                        {
+                            Gtk::TreeRow row = *rowIt;
+                            row_start = row[m_Columns.m_col_pos];
+                        }
+
+                        m_refTreeModel->erase(rowIt);
+                    }
+                }
+
+                if(row_start != UINT_MAX && row_end != UINT_MAX)
+                {
+                    g_message("Deleting: [%d-%d[ + %d",row_start,row_end,row_end);
+                    mp_Client->queue_delete_range(row_start,row_end);
+                    mp_Client->queue_delete(row_end);
+                }
+            }
+        }
     }
 
     /*-------------------------------*/

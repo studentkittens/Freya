@@ -73,6 +73,9 @@ namespace MPD
             /* true if in idlemode */
             bool is_idle;
 
+            bool is_leaving;
+            bool is_working;
+
             /* A reponse parser */
             struct mpd_parser * mp_Parser;
 

@@ -48,9 +48,10 @@ namespace Browser
                 public:
 
                     ModelColumns()
-                    { add(m_col_id); add(m_col_artist); add(m_col_album); add(m_col_title); }
+                    { add(m_col_id); add(m_col_pos); add(m_col_artist); add(m_col_album); add(m_col_title); }
 
-                    Gtk::TreeModelColumn<unsigned int>  m_col_id;
+                    Gtk::TreeModelColumn<unsigned>      m_col_id;
+                    Gtk::TreeModelColumn<unsigned>      m_col_pos;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_title;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_album;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
@@ -69,7 +70,6 @@ namespace Browser
             /* Actual data */
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
             Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
-
             /* Selected data */
             Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 

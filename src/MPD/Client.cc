@@ -158,7 +158,29 @@ namespace MPD
                 )
         }
     }
+    
+    //-------------------------------
 
+    void Client::queue_delete(unsigned pos)
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_connection * conn = m_Conn.get_connection();
+             mpd_run_delete(conn,pos);
+            )
+    }
+
+    //-------------------------------
+    
+    void Client::queue_delete_range(unsigned pos_start, unsigned pos_end)
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_connection * conn = m_Conn.get_connection();
+             mpd_run_delete_range(conn,pos_start,pos_end);
+            )
+    }
+    
     //-------------------------------
     
     void Client::queue_clear(void)
@@ -226,7 +248,6 @@ namespace MPD
     {
         if(m_Conn.is_connected())
         {
-            g_message("Leaving....:");
             go_busy();
 
             mpd_connection * mpd_conn = m_Conn.get_connection();
@@ -481,6 +502,32 @@ namespace MPD
             ACTIVITY_SECTION
                 (
                  mpd_run_rm(m_Conn.get_connection(),name);
+                )
+        }
+    }
+
+    //--------------------
+    
+    void Client::playlist_add(const char * name)
+    {
+        if(name != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_run_playlist_add(m_Conn.get_connection(),name,NULL);
+                )
+        }
+    }
+
+    //--------------------
+    
+    void Client::playlist_load(const char * name)
+    {
+        if(name != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_run_load(m_Conn.get_connection(),name);
                 )
         }
     }

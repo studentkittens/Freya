@@ -73,20 +73,22 @@ namespace MPD
 
     //--------------------------------------
     
-    void Connection::clear_error(void)
+    bool Connection::clear_error(void)
     {
+        bool retv = false;
         if(conn != NULL) 
         {
             enum mpd_error err_code = mpd_connection_get_error(conn);
             if(err_code != MPD_ERROR_SUCCESS)
             {
-                if(mpd_connection_clear_error(conn) == false)
+                if((retv = mpd_connection_clear_error(conn)) == false)
                 {
                     const char * err_string = mpd_connection_get_error_message(conn);
                     Warning("Cannot recover from error: %s",err_string);
                 }
             }
         }
+        return retv;
     }
 
     //--------------------------------------

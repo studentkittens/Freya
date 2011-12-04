@@ -4,6 +4,7 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     QueuePopup.cc
     PlaylistManager.cc
     PlaylistManagerPopup.cc
+    PlaylistAddDialog.cc
     Database.cc
     DatabasePopup.cc
     StatBrowser.cc

@@ -65,9 +65,6 @@ namespace Browser
         mp_Popup->get_action("q_remove").connect(sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
         mp_Popup->get_action("q_playlist_add").connect(sigc::mem_fun(*this,&Queue::on_menu_add_to_pl_clicked));
         mp_Popup->get_action("q_clear").connect(sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
-
-        /* Now go and fill the queue */
-        mp_Client->fill_queue(*this);
     }
 
     /*-------------------------------*/

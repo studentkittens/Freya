@@ -23,7 +23,8 @@ namespace Browser
             void add_song_file(MPD::Song * pSong);
 
             void on_menu_db_add_clicked(void);
-            void on_menu_db_refresh_clicked(void);
+            void on_menu_db_update_clicked(void);
+            void on_menu_db_rescan_clicked(void);
             void on_menu_db_replace_clicked(void);
 
         private:

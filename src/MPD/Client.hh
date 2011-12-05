@@ -56,8 +56,8 @@ namespace MPD
             void queue_delete_range(unsigned pos_start, unsigned pos_end);
 
             unsigned database_update(const char * path);
+            unsigned database_rescan(const char * path);
             
-
             /**
              * @brief set the volume
              * 

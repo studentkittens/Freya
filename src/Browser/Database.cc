@@ -37,9 +37,14 @@ namespace Browser
 
         /* Connect popup menu */
         mp_Popup = new DatabasePopup(*mp_IView); 
-        mp_Popup->get_action("db_add").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
-        mp_Popup->get_action("db_replace").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
-        mp_Popup->get_action("db_refresh").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_refresh_clicked));
+        mp_Popup->get_action("db_add").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
+        mp_Popup->get_action("db_replace").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
+        mp_Popup->get_action("db_update").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_update_clicked));
+        mp_Popup->get_action("db_rescan").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_rescan_clicked));
 
         /* An empy path means root */
         set_current_path("");
@@ -71,12 +76,22 @@ namespace Browser
 
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::on_menu_db_refresh_clicked(void)
+    void DatabaseBrowser::on_menu_db_update_clicked(void)
     {
         Info("Updating Database.");
         const char * path = mp_Path.c_str();
         path = (path && path[0]) ? path : NULL;
         mp_Client->database_update(path);
+    }
+    
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_menu_db_rescan_clicked(void)
+    {
+        Info("Updating Database.");
+        const char * path = mp_Path.c_str();
+        path = (path && path[0]) ? path : NULL;
+        mp_Client->database_rescan(path);
     }
     
     /*------------------------------------------------*/

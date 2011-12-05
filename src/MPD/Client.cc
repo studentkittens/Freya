@@ -196,15 +196,25 @@ namespace MPD
     unsigned Client::database_update(const char * path)
     {
         unsigned id = 0;
-        if(path != NULL)
-        {
-            ACTIVITY_SECTION
-                (
-                 mpd_connection * conn = m_Conn.get_connection();
-                 id = mpd_run_update(conn,path);
-                )
-        }
+        ACTIVITY_SECTION
+            (
+             mpd_connection * conn = m_Conn.get_connection();
+             id = mpd_run_update(conn,path);
+            )
         return id;
+    }
+
+    //-------------------------------
+
+    unsigned Client::database_rescan(const char * path)
+    {
+        unsigned id = 0;
+        ACTIVITY_SECTION
+            (
+             mpd_connection * conn = m_Conn.get_connection();
+             id = mpd_run_rescan(conn,path);
+            )
+            return id;
     }
 
     //-------------------------------
@@ -259,7 +269,7 @@ namespace MPD
                     data_model.add_item(new Playlist(*ent));
                 }
             }
-            
+
             go_idle();
         }
     }
@@ -507,7 +517,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::playlist_add(const char * name)
     {
         if(name != NULL)
@@ -520,7 +530,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::playlist_load(const char * name)
     {
         if(name != NULL)

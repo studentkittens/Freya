@@ -48,6 +48,9 @@ namespace Browser
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
 
+            void on_cell_edited(const Glib::ustring& path_string,const Glib::ustring& new_text);
+            void on_cell_get_data(Gtk::CellRenderer*, const Gtk::TreeModel::iterator& iter);
+
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
@@ -58,6 +61,7 @@ namespace Browser
                       add(m_col_plist);
                       add(m_col_name);
                       add(m_col_last_modfied); }
+
                     Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
                     Gtk::TreeModelColumn<MPD::Playlist*> m_col_plist;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
@@ -71,8 +75,19 @@ namespace Browser
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
             Glib::RefPtr<Gtk::TreeSelection> m_Selection;
 
+            /* We need to validate renames of playlists
+             * Therefore we render the cell on our own
+             * Taken from: 
+             * http://developer.gnome.org/gtkmm-tutorial/stable/sec-treeview-examples.html.de
+             */
+            Gtk::CellRendererText m_cellrenderer_validated;
+            Gtk::TreeView::Column m_treeviewcolumn_validated;
+
             /* Control buttons  */
             Gtk::Button * mp_AddButton, * mp_DelButton; 
+
+            /* Status label */
+            Gtk::Label * mp_StatusLabel;
 
             /* Popup menu */
             PlaylistManagerPopup * mp_Popup;

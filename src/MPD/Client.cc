@@ -515,6 +515,19 @@ namespace MPD
                 )
         }
     }
+    
+    //--------------------
+            
+    void Client::playlist_rename(const char * source, const char * dest)
+    {
+        if(source && dest)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_run_rename(m_Conn.get_connection(),source,dest);
+                )
+        }
+    }
 
     //--------------------
 

@@ -40,8 +40,7 @@ namespace GManager
         m_ActionPause->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_pause_clicked));
         m_ActionQuit->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_quit_clicked));
 
-        /* Dirty hack to fix the strange huge icon */
-        set(mp_Popup->render_icon_pixbuf(Gtk::Stock::INFO,Gtk::ICON_SIZE_LARGE_TOOLBAR));
+        set_from_file("ui/Trayicon.svg");
     }
 
     //-------------------------

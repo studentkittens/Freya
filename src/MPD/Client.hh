@@ -46,9 +46,11 @@ namespace MPD
             void play_song_at_id(unsigned song_id);           
             void playback_seek(unsigned song_id, unsigned abs_time);
 
+            /* TODO: This is more appropiate in MPD::Playlist.. */
             void playlist_remove(const char * name);
             void playlist_add(const char * name);
             void playlist_load(const char * name);
+            void playlist_rename(const char * source, const char * dest);
 
             void queue_add(const char * url);
             void queue_clear(void);

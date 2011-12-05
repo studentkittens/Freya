@@ -101,6 +101,7 @@ namespace MPD
                 tmp=Glib::Markup::escape_text(tmp);
             }
             result.replace(n,i-n+1,tmp);
+            n=i;
             n++;
         }
 

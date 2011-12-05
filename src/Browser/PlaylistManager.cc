@@ -16,6 +16,7 @@ namespace Browser
         BUILDER_GET(builder,"playlist_box",playlist_box);
         BUILDER_GET(builder,"playlist_add_pl",mp_AddButton);
         BUILDER_GET(builder,"playlist_delete_pl",mp_DelButton);
+        BUILDER_GET(builder,"playlist_status",mp_StatusLabel);
         playlist_box->reparent(*this);
 
         /* Render playlist icon */
@@ -28,13 +29,30 @@ namespace Browser
 
         /* Add the TreeView's view columns */
         mp_TreeView->append_column("", m_Columns.m_col_icon);
-        mp_TreeView->append_column_editable("Playlists", m_Columns.m_col_name);
-        mp_TreeView->append_column("Last modiefied", m_Columns.m_col_last_modfied);
-        mp_TreeView->set_search_column(0);
+        m_PlaylistTreeViewCol.set_title("Playlists");
+        m_PlaylistTreeViewCol.pack_start(m_PlaylistCellRender);
+        mp_TreeView->append_column(m_PlaylistTreeViewCol);
+        mp_TreeView->append_column("Last modified", m_Columns.m_col_last_modfied);
+
+        /* For Ctrl-F */
+        mp_TreeView->set_search_column(1);
+
+        /* Called once the cell needs to get the data from the model */
+        m_PlaylistTreeViewCol.set_cell_data_func(m_PlaylistCellRender,
+                sigc::mem_fun(*this,&PlaylistManager::on_cell_get_data));
+
+        /* Make the CellRenderer editable, and handle its editing signals */
+        m_PlaylistCellRender.property_editable() = true;
+
+        /* Called once editing is done by the user */
+        m_PlaylistCellRender.signal_edited().connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_cell_edited));
 
         /* Connect buttons in bar */
-        mp_AddButton->signal_clicked().connect(sigc::mem_fun(*this,&PlaylistManager::on_add_clicked));
-        mp_DelButton->signal_clicked().connect(sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
+        mp_AddButton->signal_clicked().connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_add_clicked));
+        mp_DelButton->signal_clicked().connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
 
         /* Cpnnect popups and row actions */
         mp_Popup = new PlaylistManagerPopup(*mp_TreeView);
@@ -53,6 +71,63 @@ namespace Browser
         /* Fill the actual content to the list */
         mp_Client->fill_playlists(*this);
         show_all();
+    }
+    
+    //-----------------------------------
+
+    /* Called when a name-cell is finished edited
+     * Validates the input, and renames the mpd playlist */
+    void PlaylistManager::on_cell_edited(const Glib::ustring& path_string,const Glib::ustring& new_text)
+    {
+        /* Get the position in the View.. */
+        Gtk::TreePath path(path_string);
+        Gtk::TreeModel::iterator edited_iter = m_refTreeModel->get_iter(path);
+        bool is_valid = true;
+
+        /* Lookup if Playlistname already there */
+        for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
+        {
+            Gtk::TreeRow row = *iter;
+            if(row[m_Columns.m_col_name] == new_text && iter != edited_iter)
+            {
+                is_valid = false;
+                break;
+            }
+        }
+
+        if(!is_valid)
+        {
+            /* Start editing again */
+            mp_TreeView->set_cursor(path, m_PlaylistTreeViewCol, m_PlaylistCellRender, true);
+            mp_StatusLabel->set_text("Playlist already exist. Choose a different name.");
+        }
+        else
+        {
+            if(edited_iter)
+            {
+                /* Put the new value in the model */
+                Gtk::TreeModel::Row row = *edited_iter;
+                Glib::ustring old_name = row[m_Columns.m_col_name];
+                if(old_name != new_text)
+                {
+                    mp_Client->playlist_rename(old_name.c_str(),new_text.c_str());
+                }
+            }
+            mp_StatusLabel->set_text("");
+        }
+    }
+
+    //-----------------------------------
+
+    void PlaylistManager::on_cell_get_data(Gtk::CellRenderer*, const Gtk::TreeModel::iterator& iter)
+    {
+        /* Get the value from the model and show it appropriately in the view */
+        if(iter)
+        {
+            Gtk::TreeModel::Row row = *iter;
+            Glib::ustring model_value = row[m_Columns.m_col_name];
+            m_PlaylistCellRender.property_text() = model_value;
+        }
     }
 
     /* ----------------------- */
@@ -82,10 +157,10 @@ namespace Browser
         row[m_Columns.m_col_icon]  = m_PlaylistIcon;
         row[m_Columns.m_col_last_modfied] = Utils::seconds_to_timestamp(playlist->get_last_modified());
     }
-    
-    
+
+
     /* ----------------------- */
-    
+
     void PlaylistManager::selection_helper(bool load_or_remove) 
     {
         std::vector<Gtk::TreeModel::Path> selection = m_Selection->get_selected_rows();
@@ -111,43 +186,43 @@ namespace Browser
             }
         }
     }
-    
+
     /* ----------------------- */
 
     void PlaylistManager::on_menu_del_clicked(void)
     {
         selection_helper(false);
     }
-    
+
     /* ----------------------- */
-    
+
     void PlaylistManager::on_menu_append_clicked(void)
     {
         selection_helper(true);
     }
-    
+
     /* ----------------------- */
-    
+
     void PlaylistManager::on_menu_replace_clicked(void)
     {
-       mp_Client->queue_clear();
-       on_menu_append_clicked();
+        mp_Client->queue_clear();
+        on_menu_append_clicked();
     }
-    
+
     /* ----------------------- */
-    
+
     bool PlaylistManager::on_row_double_click(GdkEventButton * event)
     {
         return false;
     }
-    
+
     /* ----------------------- */
-    
+
     void PlaylistManager::on_add_clicked(void)
     {
         mp_AddDialog->run();
     }
-    
+
     /* ----------------------- */
 
     void PlaylistManager::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
@@ -159,7 +234,7 @@ namespace Browser
             mp_Client->fill_playlists(*this);
         }
     }
-    
+
     /* ----------------------- */
 
     void PlaylistManager::on_connection_change(bool is_connected)

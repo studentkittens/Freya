@@ -62,9 +62,12 @@ namespace Browser
 
         /* Set up Popupmenu */
         mp_Popup = new QueuePopup(*mp_TreeView);
-        mp_Popup->get_action("q_remove").connect(sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
-        mp_Popup->get_action("q_playlist_add").connect(sigc::mem_fun(*this,&Queue::on_menu_add_to_pl_clicked));
-        mp_Popup->get_action("q_clear").connect(sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
+        mp_Popup->get_action("q_remove").connect(
+                sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
+        mp_Popup->get_action("q_add_as_pl").connect(
+                sigc::mem_fun(*this,&Queue::on_menu_add_as_pl_clicked));
+        mp_Popup->get_action("q_clear").connect(
+                sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
     }
 
     /*-------------------------------*/
@@ -166,6 +169,7 @@ namespace Browser
 
     void Queue::on_connection_change(bool is_connected)
     {
+        /* Empty for now */
     }
     
     /*-------------------------------*/
@@ -240,8 +244,9 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::on_menu_add_to_pl_clicked(void)
+    void Queue::on_menu_add_as_pl_clicked(void)
     {
+        mp_Client->playlist_save("Current");
     }
 
     /*-------------------------------*/

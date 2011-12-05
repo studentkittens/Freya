@@ -18,8 +18,8 @@ namespace Browser
     {
         menu_add_item(m_ActionAdd,"db_add","Add","Add to Queue",Gtk::Stock::ADD);
         menu_add_item(m_ActionReplace,"db_replace","Replace","remove selected playlists",Gtk::Stock::JUMP_TO);
-        menu_add_item(m_ActionRefresh,"db_update","Update","Update database",Gtk::Stock::REFRESH);
-        menu_add_item(m_ActionRefresh,"db_rescan","Rescan","Rescan database",Gtk::Stock::REFRESH);
+        menu_add_item(m_ActionUpdate,"db_update","Update","Update database",Gtk::Stock::REFRESH);
+        menu_add_item(m_ActionRescan,"db_rescan","Rescan","Rescan database",Gtk::Stock::REFRESH);
         menu_construct("DatabasePopupMenu");
     }
 }

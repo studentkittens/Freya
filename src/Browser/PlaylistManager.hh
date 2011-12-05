@@ -80,8 +80,8 @@ namespace Browser
              * Taken from: 
              * http://developer.gnome.org/gtkmm-tutorial/stable/sec-treeview-examples.html.de
              */
-            Gtk::CellRendererText m_cellrenderer_validated;
-            Gtk::TreeView::Column m_treeviewcolumn_validated;
+            Gtk::CellRendererText m_PlaylistCellRender;
+            Gtk::TreeView::Column m_PlaylistTreeViewCol;
 
             /* Control buttons  */
             Gtk::Button * mp_AddButton, * mp_DelButton; 

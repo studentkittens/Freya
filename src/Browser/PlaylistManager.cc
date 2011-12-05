@@ -29,23 +29,23 @@ namespace Browser
 
         /* Add the TreeView's view columns */
         mp_TreeView->append_column("", m_Columns.m_col_icon);
-        m_treeviewcolumn_validated.set_title("Playlists");
-        m_treeviewcolumn_validated.pack_start(m_cellrenderer_validated);
-        mp_TreeView->append_column(m_treeviewcolumn_validated);
-        mp_TreeView->append_column("Last modiefied", m_Columns.m_col_last_modfied);
+        m_PlaylistTreeViewCol.set_title("Playlists");
+        m_PlaylistTreeViewCol.pack_start(m_PlaylistCellRender);
+        mp_TreeView->append_column(m_PlaylistTreeViewCol);
+        mp_TreeView->append_column("Last modified", m_Columns.m_col_last_modfied);
 
         /* For Ctrl-F */
         mp_TreeView->set_search_column(1);
 
         /* Called once the cell needs to get the data from the model */
-        m_treeviewcolumn_validated.set_cell_data_func(m_cellrenderer_validated,
+        m_PlaylistTreeViewCol.set_cell_data_func(m_PlaylistCellRender,
                 sigc::mem_fun(*this,&PlaylistManager::on_cell_get_data));
 
         /* Make the CellRenderer editable, and handle its editing signals */
-        m_cellrenderer_validated.property_editable() = true;
+        m_PlaylistCellRender.property_editable() = true;
 
         /* Called once editing is done by the user */
-        m_cellrenderer_validated.signal_edited().connect(
+        m_PlaylistCellRender.signal_edited().connect(
                 sigc::mem_fun(*this,&PlaylistManager::on_cell_edited));
 
         /* Connect buttons in bar */
@@ -98,7 +98,7 @@ namespace Browser
         if(!is_valid)
         {
             /* Start editing again */
-            mp_TreeView->set_cursor(path, m_treeviewcolumn_validated, m_cellrenderer_validated, true);
+            mp_TreeView->set_cursor(path, m_PlaylistTreeViewCol, m_PlaylistCellRender, true);
             mp_StatusLabel->set_text("Playlist already exist. Choose a different name.");
         }
         else
@@ -126,7 +126,7 @@ namespace Browser
         {
             Gtk::TreeModel::Row row = *iter;
             Glib::ustring model_value = row[m_Columns.m_col_name];
-            m_cellrenderer_validated.property_text() = model_value;
+            m_PlaylistCellRender.property_text() = model_value;
         }
     }
 

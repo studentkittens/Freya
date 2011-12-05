@@ -8,7 +8,6 @@ namespace Browser
         "    <menuitem action='pl_append'/>"
         "    <menuitem action='pl_replace'/>"
         "    <separator />"
-        "    <menuitem action='pl_rename'/>"
         "    <menuitem action='pl_delete'/>"
         "    <separator />"
         "  </popup>"
@@ -19,7 +18,6 @@ namespace Browser
         menu_add_item(m_ActionAdd,"pl_append","Append","Append to Queue",Gtk::Stock::ADD);
         menu_add_item(m_ActionRepl,"pl_replace","Replace","Replace Queue contents",Gtk::Stock::JUMP_TO);
         menu_add_item(m_ActionDel,"pl_delete","Remove Playlist","Remove this Playlist",Gtk::Stock::DELETE);
-        menu_add_item(m_ActionRename,"pl_rename","Rename Playlist","Rename this playlist",Gtk::Stock::EDIT);
         menu_construct("PlaylistmanagerPopupMenu");
     }
 }

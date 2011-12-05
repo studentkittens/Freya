@@ -13,9 +13,9 @@ namespace Browser
 
         private:
             Glib::RefPtr<Gtk::Action> m_ActionAdd;
-            Glib::RefPtr<Gtk::Action> m_ActionAddToPL;
             Glib::RefPtr<Gtk::Action> m_ActionReplace;
-            Glib::RefPtr<Gtk::Action> m_ActionRefresh;
+            Glib::RefPtr<Gtk::Action> m_ActionUpdate;
+            Glib::RefPtr<Gtk::Action> m_ActionRescan;
     };
 }
 #endif /* end of include guard: FREYA_DATABASE_POPUP_GUARD */

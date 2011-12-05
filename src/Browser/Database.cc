@@ -39,6 +39,8 @@ namespace Browser
         mp_Popup = new DatabasePopup(*mp_IView); 
         mp_Popup->get_action("db_add").connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
+        mp_Popup->get_action("db_add_all").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_all_clicked));
         mp_Popup->get_action("db_replace").connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
         mp_Popup->get_action("db_update").connect(
@@ -75,6 +77,14 @@ namespace Browser
     }
 
     /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_menu_db_add_all_clicked(void)
+    {
+        mp_Client->queue_add("/");
+    }
+
+    /*------------------------------------------------*/
+    
     
     void DatabaseBrowser::on_menu_db_update_clicked(void)
     {

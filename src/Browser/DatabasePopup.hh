@@ -13,6 +13,7 @@ namespace Browser
 
         private:
             Glib::RefPtr<Gtk::Action> m_ActionAdd;
+            Glib::RefPtr<Gtk::Action> m_ActionAddAll;
             Glib::RefPtr<Gtk::Action> m_ActionReplace;
             Glib::RefPtr<Gtk::Action> m_ActionUpdate;
             Glib::RefPtr<Gtk::Action> m_ActionRescan;

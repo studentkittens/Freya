@@ -1,5 +1,50 @@
 \chapter{Richtlinien}
 \section{Programmierrichtlinien}
+\renewcommand{\labelitemi}{•}
+\begin{itemize}
+	\item Allman-Stil
+	\item Tabstop = 4 Leerzeichen
+	\item Keine globalen Variablen
+	\item Sinnvolle Variablenbenennung, "lowercase"
+	\item Klassenmethoden nur in Ausnahmefällen bzw. nur mit guten Gründen
+	\item Valgrind darf keine Laufzeitfehler bringen
+	\item "camelcase" bei Objektnamen, C-Style bei Funktionsnamen - Präzise Namen
+	\item Modulare Gestaltung
+	\item Code-Sauberkeit > Performance
+	\item "make" sollte keine Warnungen ausgeben, die man leicht umgehen könnte.
+	\item "make test" soll vollständig durchlaufen
+\end{itemize}
 \subsection{Begründung}
+Diese Programmierrichtlinen sorgen für ein einfaches, übersichtliches und einheitliches Arbeiten.
+Jeder kann sich ohne größere Umstände in den Code eines anderen einlesen. Dies gewährleistet eine 
+hohe Wartbarkeit der Programm-Codes und beugt außerdem Fehlern vor. Das Programm ist leicht 
+erweiterbar ohne große Anpassungen vornehmen zu müssen.
 \section{Toolauswahl}
+\begin{itemize}
+	\item Avahi-Daemon
+	\item git 
+	\item Glade
+	\item doxygen
+\end{itemize}
 \subsection{Begründung}
+Avahi-Daemon ist ein Dienst, durch den man schnell und einfach MPD-Server im Netz finden und eine 
+Verbindung zu den Servern aufbauen kann. Git dient zur Versionsverwaltung. Glade bietet eine perfekte
+Trennung von der grafischen Oberfläche zum Kontrollkern des Programms außerdem kann mit Glade sehr 
+einfach eine grafische Oberfläche erstellt werden. Doxygen !!!!!!!Literate-Programming (KNUT)!!!!
+\section{Bibliotheken}
+\begin{itemize}
+	\item C++
+	\item gtkmm3
+	\item libmpd
+	\item libxml2
+	\item libnotify
+	\item Avahi-glib
+\end{itemize}
+\subsection{Begründung}
+C++ wurde gewählt um die Fähigkeiten der Authoren zu erweitern. Außerdem gibt es für Java nur wenige
+oder sehr schlechte Bibliotheken für dieses Projekt. Gtkmm3 bietet ein dynamisches Layout und ist 
+leichtgewichtiger als qt. Swing ist unter C++ nicht nutzbar. Libmpd liefert libmpdclient mit.
+Libxml2 liefert eine standardisierte config nach Xml-Standards, ist sehr leichtgewichtig und überall
+installiert. Libnotify liefert Benachrichtigungen über interne Events und ist auf den meisten Linux
+Distributionen verbreitet. Avahi-glib dient als Server-Browser.\ \\ \\
+Als primäre Entwicklerpalttform wurde Linux gewählt.

@@ -2,7 +2,6 @@
 #define FREYA_CXX_UTILS_GUARD
 
 #include "Utils.hh"
-#include <iostream>
 
 class UtilsTestSuite : public CxxTest::TestSuite
 {
@@ -12,7 +11,7 @@ class UtilsTestSuite : public CxxTest::TestSuite
 // Utils::seconds_to_duration(unsinged long)
         void testseconds_to_duration_1_year(void)
         {
-            TS_ASSERT("52 weeks 0 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(60/*seconds*/ * 60/*minutes*/ * 24/*hours*/ * 365/*days*/));
+            TS_ASSERT("52 weeks 1 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(60/*seconds*/ * 60/*minutes*/ * 24/*hours*/ * 365/*days*/));
         }
         void testseconds_to_duration_check_if_always_the_same(void)
         {
@@ -52,15 +51,7 @@ class UtilsTestSuite : public CxxTest::TestSuite
         }
         void testseconds_to_duration_2_years(void)
         {
-            TS_ASSERT("104 weeks 0 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(2*60*60*24*365));
-        }
-        void testseconds_to_duration_25_years_10_hours_42_seconds(void)
-        {
-            TS_ASSERT("1300 weeks 0 days 10 hours 0 minutes 42 seconds" == Utils::seconds_to_duration(
-                                                                         25*60*60*24*365 /*25 years*/
-                                                                        +10*60*60 /*10 hours*/
-                                                                        +42 /*42 seconds*/
-                                                                        ));
+            TS_ASSERT("104 weeks 2 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(2*60*60*24*365));
         }
 
 
@@ -68,9 +59,7 @@ class UtilsTestSuite : public CxxTest::TestSuite
 //  Utils::seconds_to_timestamp(const long)
         void testseconds_to_timestamp_date1(void)
         {
-            Glib::ustring tstamp = Utils::seconds_to_timestamp(1323039600000);
-            std::cerr << "Got timestamp: " << tstamp << std::endl;
-            TS_ASSERT("2011-12-05" == tstamp);
+            TS_ASSERT("2011-12-05" == Utils::seconds_to_timestamp(1323039600));
         }
 };
 

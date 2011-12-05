@@ -15,8 +15,11 @@ namespace Notify
         if(notify_is_initted())
             notify_uninit();
 
+        if(notification!=NULL)
+            g_object_unref(G_OBJECT(notification));
         clear_icon();
     }
+
     //---------------------------
     /* Wrapper functions ... phiu I'm cool for providing all possible combinations of char* and ustring. Right? */
     //---------------------------
@@ -66,64 +69,52 @@ namespace Notify
     void Notify::_send(const char * hl, const char  * msg, GdkPixbuf * pixbuf )
     {
 
-        if(use_notify && !working && notify_is_initted())
+         if(use_notify && !working && notify_is_initted())
         {
             working=true;
-
+            NotifyNotification *notification_ptr;
             if(extra)
             {
-                NotifyNotification *notification2=notify_notification_new(
-                    hl!=NULL?hl:NULL,
-                    msg!=NULL?msg:NULL,
+                notification_ptr=notify_notification_new(
+                    hl!=NULL?hl:"",
+                    msg!=NULL?msg:"",
                     icon!=NULL?icon->c_str():NULL
                 );
 
-                if(pixbuf!=NULL)
-                {
-                    notify_notification_set_image_from_pixbuf(notification2,pixbuf);
-                }
-
-                notify_notification_set_timeout(notification2,timeout);
-
-                GError *er=NULL;
-
-                /* shows the notification */
-                notify_notification_show(notification2,&er);
-
-                if(er != NULL)
-                    Warning("An Error occured showing the Notification");
-
-                extra=false;
             }
             else
             {
                 notify_notification_update(
                     notification,
-                    hl!=NULL?hl:NULL,
-                    msg!=NULL?msg:NULL,
+                    hl!=NULL?hl:"",
+                    msg!=NULL?msg:"",
                     icon!=NULL?icon->c_str():NULL
                 );
-
-                if(pixbuf!=NULL)
-                {
-                    notify_notification_set_image_from_pixbuf(notification,pixbuf);
-                }
-
-                notify_notification_set_timeout(notification,timeout);
-
-                GError *er=NULL;
-
-                /* shows the notification */
-                notify_notification_show(notification,&er);
-
-                if(er != NULL)
-                    Warning("An Error occured showing the Notification");
-
+                notification_ptr = notification;
             }
 
+            if(pixbuf!=NULL)
+            {
+                notify_notification_set_image_from_pixbuf(notification_ptr,pixbuf);
+            }
+            notify_notification_set_timeout(notification_ptr,timeout);
+
+            GError *er=NULL;
+
+            /* shows the notification */
+            notify_notification_show(notification_ptr,&er);
+            if(er!=NULL)
+                Warning("There hase been a problem while trying to display the notification!");
+            if(extra)
+            {
+                extra=false;
+                g_object_unref(G_OBJECT(notification_ptr));
+            }
             clear_icon();
             working=false;
         }
+
+
     }
     //------------------------
     void Notify::re_init(void)
@@ -148,12 +139,13 @@ namespace Notify
             {
                 if(!notify_init("Freya"))
                 {
-                    Error("Libnotify reports it's not working.");
+                    Warning("Libnotify reports it's not working.");
                 }
             }
 
             working=false;
         }
+
     }
 
     //------------------------

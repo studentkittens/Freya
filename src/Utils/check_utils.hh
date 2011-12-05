@@ -2,6 +2,7 @@
 #define FREYA_CXX_UTILS_GUARD
 
 #include "Utils.hh"
+#include <iostream>
 
 class UtilsTestSuite : public CxxTest::TestSuite
 {
@@ -67,10 +68,10 @@ class UtilsTestSuite : public CxxTest::TestSuite
 //  Utils::seconds_to_timestamp(const long)
         void testseconds_to_timestamp_date1(void)
         {
-            TS_ASSERT("2011-12-05"==Utils::seconds_to_timestamp(1323039600000));
+            Glib::ustring tstamp = Utils::seconds_to_timestamp(1323039600000);
+            std::cerr << "Got timestamp: " << tstamp << std::endl;
+            TS_ASSERT("2011-12-05" == tstamp);
         }
-
-
 };
 
 

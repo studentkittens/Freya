@@ -18,15 +18,6 @@ namespace GManager
             if(current_song != NULL)
             {
                 MPD::Status& status = data.get_status();
-                char * title_notify = g_markup_printf_escaped("%s (Track %s)",
-                        current_song->get_tag(MPD_TAG_TITLE,0),
-                        current_song->get_tag(MPD_TAG_TRACK,0)
-                        );
-                char * artist_notify = g_markup_printf_escaped("by %s on %s (%s)",
-                        current_song->get_tag(MPD_TAG_ARTIST,0),
-                        current_song->get_tag(MPD_TAG_ALBUM,0),
-                        current_song->get_tag(MPD_TAG_DATE,0)
-                        );
 
                 if((status.get_state() == MPD_STATE_PLAY))
                     NOTIFY_STOCK_ICON("media-playback-start");
@@ -35,10 +26,8 @@ namespace GManager
                 else if((status.get_state() == MPD_STATE_PAUSE))
                     NOTIFY_STOCK_ICON("media-playback-pause");
 
-                NOTIFY_SEND(title_notify,artist_notify);
+                NOTIFY_SEND(current_song->song_format("${title} (Track ${track})",false),current_song->song_format("by ${artist} on ${album} (${date})",false));
 
-                g_free(title_notify);
-                g_free(artist_notify);
             }
         }
     }

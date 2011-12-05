@@ -2,7 +2,7 @@
 #define FREYA_SONG_GUARD
 
 #include "mpd/client.h"
-
+#include <glibmm.h>
 namespace MPD
 {
     typedef struct mpd_song mpd_song;
@@ -15,6 +15,8 @@ namespace MPD
 
             const char * get_uri(void);
             const char * get_tag(enum mpd_tag_type type, unsigned idx);
+            Glib::ustring song_format(const char* format);
+            Glib::ustring song_format(const char* format, bool markup);
             unsigned get_duration(void);
             time_t get_last_modified(void);
             void set_pos(unsigned pos);

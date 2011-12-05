@@ -98,9 +98,9 @@ namespace Browser
         row[m_Columns.m_col_pos] = new_song->get_pos();
 
         try { /* Check for NULLs just to be sure */
-            row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
-            row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
-            row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
+            row[m_Columns.m_col_title] =  new_song->song_format("${title}",false).c_str();
+            row[m_Columns.m_col_album] =  new_song->song_format("${album}",false).c_str();
+            row[m_Columns.m_col_artist] = new_song->song_format("${artist}",false).c_str();
         } catch(const std::logic_error& e) {
             Warning("Empty column: %s",e.what());
         }

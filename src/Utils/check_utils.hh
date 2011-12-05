@@ -2,7 +2,7 @@
 #define FREYA_CXX_UTILS_GUARD
 
 #include "Utils.hh"
-#include <iostream>
+
 class UtilsTestSuite : public CxxTest::TestSuite
 {
 

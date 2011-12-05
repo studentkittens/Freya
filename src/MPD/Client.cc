@@ -530,6 +530,16 @@ namespace MPD
     }
 
     //--------------------
+    
+    void Client::playlist_save(const char * name) 
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_run_save(m_Conn.get_connection(),name);
+            )
+    }
+    
+    //--------------------
 
     void Client::playlist_add(const char * name)
     {

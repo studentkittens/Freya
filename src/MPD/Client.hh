@@ -51,6 +51,7 @@ namespace MPD
             void playlist_add(const char * name);
             void playlist_load(const char * name);
             void playlist_rename(const char * source, const char * dest);
+            void playlist_save(const char * name);
 
             void queue_add(const char * url);
             void queue_clear(void);

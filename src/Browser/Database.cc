@@ -2,12 +2,14 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
+using namespace std;
+
 namespace Browser
 {
     DatabaseBrowser::DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Database",Gtk::Stock::DIRECTORY)
+        AbstractBrowser("Database",Gtk::Stock::DIRECTORY),
+        AbstractClientUser(client)
     {
-        mp_Client = &client;
         BUILDER_ADD(builder,"ui/Database.glade");
         BUILDER_GET(builder,"filebrowser_mainbox",mp_ParentBox);
         BUILDER_GET(builder,"filebrowser_iconview",mp_IView);
@@ -19,10 +21,13 @@ namespace Browser
         m_FileIcon = mp_IView->render_icon_pixbuf(Gtk::Stock::FILE,Gtk::ICON_SIZE_DIALOG);
 
         m_DirStore = Gtk::ListStore::create(m_Columns);
+
+        /* Set up Iconview */
         mp_IView->set_model(m_DirStore);
         mp_IView->set_text_column(m_Columns.m_col_name);
         mp_IView->set_pixbuf_column(m_Columns.m_col_icon);
 
+        /* Set up it's signals */
         mp_HomeButton->signal_clicked().connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_home_button_clicked));
         mp_DirUpButton->signal_clicked().connect(
@@ -32,17 +37,14 @@ namespace Browser
 
         /* Connect popup menu */
         mp_Popup = new DatabasePopup(*mp_IView); 
-        mp_Popup->get_action("db_add").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_clicked));
+        mp_Popup->get_action("db_add").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
+        mp_Popup->get_action("db_replace").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
+        mp_Popup->get_action("db_refresh").connect(sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_refresh_clicked));
 
+        /* An empy path means root */
         set_current_path("");
     }
     
-    /*------------------------------------------------*/
-
-    void DatabaseBrowser::on_menu_db_clicked(void)
-    {
-    }
-
     /*------------------------------------------------*/
 
     DatabaseBrowser::~DatabaseBrowser(void) 
@@ -50,6 +52,41 @@ namespace Browser
         delete mp_Popup;
     }
 
+    /* MENU STUFF*/
+
+    void DatabaseBrowser::on_menu_db_add_clicked(void)
+    {
+        std::vector<Gtk::TreePath> items = mp_IView->get_selected_items();
+        for(unsigned i = 0; i < items.size(); i++)
+        {
+            Gtk::TreeModel::iterator iter = m_DirStore->get_iter(items[i]);
+            if(iter)
+            {
+                Gtk::TreeRow row = *iter;
+                Glib::ustring path = row[m_Columns.m_col_path];
+                mp_Client->queue_add(path.c_str());
+            }
+        }
+    }
+
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_menu_db_refresh_clicked(void)
+    {
+        Info("Updating Database.");
+        const char * path = mp_Path.c_str();
+        path = (path && path[0]) ? path : NULL;
+        mp_Client->database_update(path);
+    }
+    
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_menu_db_replace_clicked(void)
+    {
+        mp_Client->queue_clear();
+        on_menu_db_add_clicked();
+    }
+    
     /*------------------------------------------------*/
 
     Gtk::Widget * DatabaseBrowser::get_container(void)
@@ -132,5 +169,22 @@ namespace Browser
         set_current_path(dir_up.c_str());
     }
 
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    {
+        if(event & MPD_IDLE_DATABASE)
+        {
+            set_current_path(mp_Path.c_str());
+        }
+    }
+    
+    /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_connection_change(bool is_connected)
+    {
+        /* Empty for now */
+    }
+    
     /*------------------------------------------------*/
 }

@@ -31,7 +31,7 @@ namespace Browser
     
     /*-------------------------------*/
 
-    Glib::SignalProxy0<void> BasePopup::get_action(Glib::ustring name)
+    Glib::SignalProxy0<void> BasePopup::get_action(const char * name)
     {
         Glib::RefPtr<Gtk::Action> action = m_refActionGroup->get_action(name);
         return action->signal_activate();

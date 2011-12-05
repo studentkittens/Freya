@@ -17,6 +17,7 @@ namespace MPD
             bool is_connected(void);
             bool connect(void);
             bool disconnect(void);
+            bool clear_error(void);
 
             /* Returns mpd_conn */
             mpd_connection * get_connection(void);

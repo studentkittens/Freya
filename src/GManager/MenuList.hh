@@ -4,11 +4,11 @@
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
 #include "../Notify/Notify.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class MenuList : public AbstractGElement
+    class MenuList : public AbstractClientUser
     {
         public:
 

@@ -19,7 +19,7 @@ namespace Browser
              *
              * @return a signal proxy, on which you can call connect()
              */
-            Glib::SignalProxy0<void> get_action(Glib::ustring name);
+            Glib::SignalProxy0<void> get_action(const char * name);
 
         protected:
 

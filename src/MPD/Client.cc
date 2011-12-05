@@ -70,14 +70,20 @@ namespace MPD
     void Client::go_idle(void)
     {
         check_error();
-        listener->enter();
+        if(listener->is_idling() == false)
+        {
+            listener->enter();
+        }
     }
 
     //-------------------------------
 
     void Client::go_busy(void)
     {
-        listener->leave();
+        if(listener->is_idling() == true)
+        {
+            listener->leave();
+        }
         check_error();
     }
 
@@ -114,7 +120,7 @@ namespace MPD
 
     bool Client::playback_play(void)
     {
-        
+
         return this->send_command("play");
     }
 
@@ -137,6 +143,68 @@ namespace MPD
     bool Client::playback_prev(void)
     {
         return this->send_command("previous");
+    }
+
+    //-------------------------------
+
+    void Client::queue_add(const char * path)
+    {
+        if(path != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_connection * conn = m_Conn.get_connection();
+                 mpd_run_add(conn,path);
+                )
+        }
+    }
+    
+    //-------------------------------
+
+    void Client::queue_delete(unsigned pos)
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_connection * conn = m_Conn.get_connection();
+             mpd_run_delete(conn,pos);
+            )
+    }
+
+    //-------------------------------
+    
+    void Client::queue_delete_range(unsigned pos_start, unsigned pos_end)
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_connection * conn = m_Conn.get_connection();
+             mpd_run_delete_range(conn,pos_start,pos_end);
+            )
+    }
+    
+    //-------------------------------
+    
+    void Client::queue_clear(void)
+    {
+        ACTIVITY_SECTION
+            (
+             mpd_run_clear(m_Conn.get_connection());
+            )
+    }
+    
+    //-------------------------------
+
+    unsigned Client::database_update(const char * path)
+    {
+        unsigned id = 0;
+        if(path != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_connection * conn = m_Conn.get_connection();
+                 id = mpd_run_update(conn,path);
+                )
+        }
+        return id;
     }
 
     //-------------------------------
@@ -191,6 +259,7 @@ namespace MPD
                     data_model.add_item(new Playlist(*ent));
                 }
             }
+            
             go_idle();
         }
     }
@@ -295,25 +364,20 @@ namespace MPD
         {
             /* Check for errors at this connection and log them */
             mpd_connection * mpd_conn = m_Conn.get_connection();
-            if(mpd_connection_get_error(mpd_conn) != MPD_ERROR_SUCCESS)
+
+            /* Get the errorcode */
+            enum mpd_error err_code = mpd_connection_get_error(mpd_conn);
+            if(err_code != MPD_ERROR_SUCCESS)
             {
-                enum mpd_error err_code = mpd_connection_get_error(mpd_conn);
                 if(err_code == MPD_ERROR_SERVER)
-                {
                     Warning("ServerErrorId #%d: ",mpd_connection_get_server_error(mpd_conn));
-                }
                 else
-                {
                     Warning("Error #%d: ",err_code);
-                }
 
                 Warning("%s",mpd_connection_get_error_message(mpd_conn));
 
-                /* Clear nonfatal errors */
-                if(mpd_connection_clear_error(mpd_conn) == false)
-                {
-                    Fatal("Mentioned error is fatal.");
-                }
+                /* Clear non fatal errors */
+                m_Conn.clear_error();
 
                 /* Try to handle even fatal errors */
                 handle_errors(err_code);
@@ -443,5 +507,32 @@ namespace MPD
     }
 
     //--------------------
+    
+    void Client::playlist_add(const char * name)
+    {
+        if(name != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_run_playlist_add(m_Conn.get_connection(),name,NULL);
+                )
+        }
+    }
+
+    //--------------------
+    
+    void Client::playlist_load(const char * name)
+    {
+        if(name != NULL)
+        {
+            ACTIVITY_SECTION
+                (
+                 mpd_run_load(m_Conn.get_connection(),name);
+                )
+        }
+    }
+
+    //--------------------
+
 
 } // END NAMESPACE 

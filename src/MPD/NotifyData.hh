@@ -16,8 +16,11 @@ namespace MPD
 
             Status& get_status(void);
             Statistics& get_statistics(void);
-            Song& get_song(void);
-            Song& get_next_song(void);
+
+            /* These return pointers since they can be NULL!
+             * Check for it therefore. */
+            Song * get_song(void);
+            Song * get_next_song(void);
 
             /**
              * @brief Update internal client state

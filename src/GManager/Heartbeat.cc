@@ -6,7 +6,7 @@
 namespace GManager
 {
     Heartbeat::Heartbeat(MPD::Client& client) :
-        AbstractGElement(client),
+        AbstractClientUser(client),
         signal_proxy()
     {
         timer = 0.0;

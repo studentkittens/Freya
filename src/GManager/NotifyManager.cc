@@ -3,9 +3,9 @@
 namespace GManager
 {
     NotifyManager::NotifyManager(MPD::Client& client) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
-        /* Everything by AbstractGElement already */
+        /* Everything by AbstractClientUser already */
     }
 
     // ------------------------------------
@@ -14,30 +14,32 @@ namespace GManager
     { 
         if(event & MPD_IDLE_PLAYER)
         {
-            MPD::Song& current_song = data.get_song();
-            MPD::Status& status = data.get_status();
+            MPD::Song * current_song = data.get_song();
+            if(current_song != NULL)
+            {
+                MPD::Status& status = data.get_status();
+                char * title_notify = g_markup_printf_escaped("%s (Track %s)",
+                        current_song->get_tag(MPD_TAG_TITLE,0),
+                        current_song->get_tag(MPD_TAG_TRACK,0)
+                        );
+                char * artist_notify = g_markup_printf_escaped("by %s on %s (%s)",
+                        current_song->get_tag(MPD_TAG_ARTIST,0),
+                        current_song->get_tag(MPD_TAG_ALBUM,0),
+                        current_song->get_tag(MPD_TAG_DATE,0)
+                        );
 
-            char * title_notify = g_markup_printf_escaped("%s (Track %s)",
-                    current_song.get_tag(MPD_TAG_TITLE,0),
-                    current_song.get_tag(MPD_TAG_TRACK,0)
-                    );
-            char * artist_notify = g_markup_printf_escaped("by %s on %s (%s)",
-                    current_song.get_tag(MPD_TAG_ARTIST,0),
-                    current_song.get_tag(MPD_TAG_ALBUM,0),
-                    current_song.get_tag(MPD_TAG_DATE,0)
-                    );
+                if((status.get_state() == MPD_STATE_PLAY))
+                    NOTIFY_STOCK_ICON("media-playback-start");
+                else if((status.get_state() == MPD_STATE_STOP))
+                    NOTIFY_STOCK_ICON("media-playback-stop");
+                else if((status.get_state() == MPD_STATE_PAUSE))
+                    NOTIFY_STOCK_ICON("media-playback-pause");
 
-            if((status.get_state() == MPD_STATE_PLAY))
-                NOTIFY_STOCK_ICON("media-playback-start");
-            else if((status.get_state() == MPD_STATE_STOP))
-                NOTIFY_STOCK_ICON("media-playback-stop");
-            else if((status.get_state() == MPD_STATE_PAUSE))
-                NOTIFY_STOCK_ICON("media-playback-pause");
+                NOTIFY_SEND(title_notify,artist_notify);
 
-            NOTIFY_SEND(title_notify,artist_notify);
-
-            g_free(title_notify);
-            g_free(artist_notify);
+                g_free(title_notify);
+                g_free(artist_notify);
+            }
         }
     }
 

@@ -7,7 +7,7 @@
 namespace GManager
 {
     Statusbar::Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         BUILDER_GET(builder,"statusbar",m_Statusbar);
 

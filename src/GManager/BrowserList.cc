@@ -7,7 +7,7 @@
 namespace GManager
 {
     BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 

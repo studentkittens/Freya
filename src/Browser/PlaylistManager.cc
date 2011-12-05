@@ -5,10 +5,9 @@
 namespace Browser
 {
     PlaylistManager::PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Playlists",Gtk::Stock::INDENT)
+        AbstractBrowser("Playlists",Gtk::Stock::INDENT),
+        AbstractClientUser(client)
     {
-        mp_Client = &client;
-
         BUILDER_ADD(builder,"ui/Playlists.glade");
         BUILDER_GET(builder,"playlist_treeview",mp_TreeView);
 
@@ -19,23 +18,39 @@ namespace Browser
         BUILDER_GET(builder,"playlist_delete_pl",mp_DelButton);
         playlist_box->reparent(*this);
 
-        //Create the Tree model:
+        /* Render playlist icon */
+        m_PlaylistIcon = mp_TreeView->render_icon_pixbuf(Gtk::Stock::INDENT,Gtk::ICON_SIZE_BUTTON);
+
+        /* Create the Tree model */
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         mp_TreeView->set_model(m_refTreeModel);
         m_Selection = mp_TreeView->get_selection();
 
-        //Add the TreeView's view columns:
-        mp_TreeView->append_column("Playlists", m_Columns.m_col_name);
-        mp_TreeView->append_column("Songs", m_Columns.m_col_num_songs);
-        mp_TreeView->append_column("Last modified", m_Columns.m_col_last_modfied);
+        /* Add the TreeView's view columns */
+        mp_TreeView->append_column("", m_Columns.m_col_icon);
+        mp_TreeView->append_column_editable("Playlists", m_Columns.m_col_name);
+        mp_TreeView->append_column("Last modiefied", m_Columns.m_col_last_modfied);
         mp_TreeView->set_search_column(0);
 
+        /* Connect buttons in bar */
         mp_AddButton->signal_clicked().connect(sigc::mem_fun(*this,&PlaylistManager::on_add_clicked));
-        mp_DelButton->signal_clicked().connect(sigc::mem_fun(*this,&PlaylistManager::on_del_clicked));
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&PlaylistManager::on_client_change));
+        mp_DelButton->signal_clicked().connect(sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
 
+        /* Cpnnect popups and row actions */
         mp_Popup = new PlaylistManagerPopup(*mp_TreeView);
+        mp_Popup->get_action("pl_append").connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_menu_append_clicked));
+        mp_Popup->get_action("pl_replace").connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_menu_replace_clicked));
+        mp_Popup->get_action("pl_delete").connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
+        mp_TreeView->signal_button_press_event().connect(
+                sigc::mem_fun(*this,&PlaylistManager::on_row_double_click));
 
+        /* Instance a new Adder dialog */
+        mp_AddDialog = new PlaylistAddDialog(client,builder);
+
+        /* Fill the actual content to the list */
         mp_Client->fill_playlists(*this);
         show_all();
     }
@@ -51,6 +66,7 @@ namespace Browser
 
     PlaylistManager::~PlaylistManager(void)
     {
+        delete mp_AddDialog;
         delete mp_Popup;
     }
 
@@ -63,15 +79,14 @@ namespace Browser
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_plist] = playlist;
         row[m_Columns.m_col_name]  = playlist->get_path();
-        row[m_Columns.m_col_num_songs] = 42;
-
-        Glib::ustring timestamp = Utils::seconds_to_timestamp(playlist->get_last_modified());
-        row[m_Columns.m_col_last_modfied] = Glib::ustring("Last modified: ") + timestamp; 
+        row[m_Columns.m_col_icon]  = m_PlaylistIcon;
+        row[m_Columns.m_col_last_modfied] = Utils::seconds_to_timestamp(playlist->get_last_modified());
     }
+    
     
     /* ----------------------- */
     
-    void PlaylistManager::handle_button_clicks(bool do_add)
+    void PlaylistManager::selection_helper(bool load_or_remove) 
     {
         std::vector<Gtk::TreeModel::Path> selection = m_Selection->get_selected_rows();
 
@@ -85,29 +100,57 @@ namespace Browser
                 Gtk::TreeRow row = *it;
                 Glib::ustring pl_name = row[m_Columns.m_col_name];
 
-                std::cerr << pl_name << std::endl;
-                mp_Client->playlist_remove(pl_name.c_str());
+                if(load_or_remove)
+                {
+                    mp_Client->playlist_load(pl_name.c_str());
+                }
+                else
+                {
+                    mp_Client->playlist_remove(pl_name.c_str());
+                }
             }
         }
     }
     
     /* ----------------------- */
 
+    void PlaylistManager::on_menu_del_clicked(void)
+    {
+        selection_helper(false);
+    }
+    
+    /* ----------------------- */
+    
+    void PlaylistManager::on_menu_append_clicked(void)
+    {
+        selection_helper(true);
+    }
+    
+    /* ----------------------- */
+    
+    void PlaylistManager::on_menu_replace_clicked(void)
+    {
+       mp_Client->queue_clear();
+       on_menu_append_clicked();
+    }
+    
+    /* ----------------------- */
+    
+    bool PlaylistManager::on_row_double_click(GdkEventButton * event)
+    {
+        return false;
+    }
+    
+    /* ----------------------- */
+    
     void PlaylistManager::on_add_clicked(void)
     {
-       handle_button_clicks(true);
+        mp_AddDialog->run();
     }
     
     /* ----------------------- */
 
-    void PlaylistManager::on_del_clicked(void)
-    {
-       handle_button_clicks(false);
-    }
-    
-    /* ----------------------- */
-
-    void PlaylistManager::on_client_change(enum mpd_idle event, MPD::NotifyData& data)
+    void PlaylistManager::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
         if(event & MPD_IDLE_STORED_PLAYLIST)
         {
@@ -115,5 +158,12 @@ namespace Browser
             m_refTreeModel->clear();
             mp_Client->fill_playlists(*this);
         }
+    }
+    
+    /* ----------------------- */
+
+    void PlaylistManager::on_connection_change(bool is_connected)
+    {
+        /* Empty for now */
     }
 }

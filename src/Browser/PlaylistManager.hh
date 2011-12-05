@@ -4,13 +4,19 @@
 #include <gtkmm.h>
 #include "../AbstractBrowser.hh"
 #include "../AbstractItemlist.hh"
+#include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Playlist.hh"
 #include "PlaylistManagerPopup.hh"
+#include "PlaylistAddDialog.hh"
 
 namespace Browser 
 {
-    class PlaylistManager : public Gtk::Frame, public AbstractBrowser, public AbstractItemlist
+    class PlaylistManager : 
+        public Gtk::Frame, 
+        public AbstractBrowser, 
+        public AbstractItemlist,
+        public AbstractClientUser
     {
         public:
             PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
@@ -25,12 +31,22 @@ namespace Browser
 
         private:
 
-            void on_add_clicked(void);
-            void on_del_clicked(void);
-            void handle_button_clicks(bool do_add);
+            /* Menu Popup */
+            void on_menu_append_clicked(void);
+            void on_menu_replace_clicked(void);
+            void on_menu_del_clicked(void);
+            void selection_helper(bool load_or_remove);
 
+            /* Other */
+            void on_add_clicked(void);
+            bool on_row_double_click(GdkEventButton * event);
+
+            /* Implemented from AbstractItemlist */
             void add_item(void * pPlaylist);
-            void on_client_change(enum mpd_idle event, MPD::NotifyData& data);
+
+            /* Implemented from AbstractClientUser */
+            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -38,10 +54,13 @@ namespace Browser
                 public:
 
                     ModelColumns()
-                    { add(m_col_plist); add(m_col_name); add(m_col_num_songs); add(m_col_last_modfied); }
+                    { add(m_col_icon);
+                      add(m_col_plist);
+                      add(m_col_name);
+                      add(m_col_last_modfied); }
+                    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
                     Gtk::TreeModelColumn<MPD::Playlist*> m_col_plist;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-                    Gtk::TreeModelColumn<unsigned> m_col_num_songs;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_last_modfied;
             };
 
@@ -52,14 +71,17 @@ namespace Browser
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
             Glib::RefPtr<Gtk::TreeSelection> m_Selection;
 
-            /* Client related */
-            MPD::Client * mp_Client;
-
             /* Control buttons  */
             Gtk::Button * mp_AddButton, * mp_DelButton; 
 
             /* Popup menu */
             PlaylistManagerPopup * mp_Popup;
+
+            /* Playlist Icon */
+            Glib::RefPtr<Gdk::Pixbuf> m_PlaylistIcon;
+
+            /* Add dialog */
+            PlaylistAddDialog * mp_AddDialog;
     };
 }
 

@@ -3,11 +3,11 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class PlaybackButtons : public AbstractGElement
+    class PlaybackButtons : public AbstractClientUser
     {
         public:
             PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

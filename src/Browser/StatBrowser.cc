@@ -48,13 +48,9 @@ namespace Browser
             noofsongs->set_text(Glib::ustring(newvalue));
 
             dbplaytime->set_text(Utils::seconds_to_duration(stat.get_db_play_time()).c_str());
-
             playtime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
-
             uptime->set_text(Utils::seconds_to_duration(stat.get_uptime()).c_str());
-
             dbupdate->set_text(Utils::seconds_to_timestamp(stat.get_db_update_time()).c_str());
-        
         }
     }
 

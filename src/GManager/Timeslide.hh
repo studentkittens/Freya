@@ -3,11 +3,11 @@
 
 #include <gtkmm.h>
 #include "Heartbeat.hh"
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
-    class Timeslide : public AbstractGElement
+    class Timeslide : public AbstractClientUser
     {
         public:
             Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

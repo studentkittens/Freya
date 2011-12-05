@@ -45,7 +45,18 @@ namespace MPD
 
             void play_song_at_id(unsigned song_id);           
             void playback_seek(unsigned song_id, unsigned abs_time);
+
             void playlist_remove(const char * name);
+            void playlist_add(const char * name);
+            void playlist_load(const char * name);
+
+            void queue_add(const char * url);
+            void queue_clear(void);
+            void queue_delete(unsigned pos);
+            void queue_delete_range(unsigned pos_start, unsigned pos_end);
+
+            unsigned database_update(const char * path);
+            
 
             /**
              * @brief set the volume

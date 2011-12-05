@@ -91,7 +91,8 @@ namespace Notify
                 notify_notification_show(notification2,&er);
 
                 if(er != NULL)
-                    Error("An Error occured showing the Notification");
+                    Warning("An Error occured showing the Notification");
+
                 extra=false;
             }
             else
@@ -116,7 +117,7 @@ namespace Notify
                 notify_notification_show(notification,&er);
 
                 if(er != NULL)
-                    Error("An Error occured showing the Notification");
+                    Warning("An Error occured showing the Notification");
 
             }
 

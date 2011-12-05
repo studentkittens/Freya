@@ -1,12 +1,12 @@
 #ifndef FREYA_NOTIFY_MANAGER_GUARD
 #define FREYA_NOTIFY_MANAGER_GUARD
 
-#include "AbstractGElement.hh"
+#include "../AbstractClientUser.hh"
 #include "../Notify/Notify.hh"
 
 namespace GManager
 {
-    class NotifyManager : public AbstractGElement
+    class NotifyManager : public AbstractClientUser
     {
         public:
             NotifyManager(MPD::Client& client);

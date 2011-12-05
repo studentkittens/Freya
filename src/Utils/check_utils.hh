@@ -13,6 +13,10 @@ class UtilsTestSuite : public CxxTest::TestSuite
         {
             TS_ASSERT("52 weeks 0 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(60/*seconds*/ * 60/*minutes*/ * 24/*hours*/ * 365/*days*/));
         }
+        void testseconds_to_duration_check_if_always_the_same(void)
+        {
+            TS_ASSERT(Utils::seconds_to_duration(60*60*24*365) == Utils::seconds_to_duration(60*60*24*365));
+        }
         void testseconds_to_duration_1_second(void)
         {
             TS_ASSERT("0 hours 0 minutes 1 seconds" == Utils::seconds_to_duration(1));
@@ -57,6 +61,8 @@ class UtilsTestSuite : public CxxTest::TestSuite
                                                                         +42 /*42 seconds*/
                                                                         ));
         }
+
+
 //-------------------------------------------------------------
 //  Utils::seconds_to_timestamp(const long)
         void testseconds_to_timestamp_date1(void)

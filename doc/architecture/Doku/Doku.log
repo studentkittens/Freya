@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.4)  5 DEC 2011 12:35
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.4)  5 DEC 2011 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -714,25 +714,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--1
 
  <./567px-Wasserfallmodell.png>] [7]
 Kapitel 3.
-ngerman: "ll is now obsolete, please use lll instead on input line 8.
-! ngerman: The command "\item is undefined.
-\grmn@dq@error ...and \dq \string #1 is undefined}
-                                                  
-l.9 	\item
-           Klassenmethoden nur in Ausnahmefällen bzw. nur mit guten Gründen
-? return
-OK, entering \nonstopmode...
-ngerman: "ck is now obsolete, please use ck instead on input line 11.
-! ngerman: The command "b is undefined.
-\grmn@dq@error ...and \dq \string #1 is undefined}
-                                                  
-l.11 	\item "camelcase" b
-                         ei Objektnamen, C-Style bei Funktionsnamen - Präzi...
-
-Use `` for a simple double quote character.
-
-ngerman: "mm is now obsolete, please use mmm instead on input line 14.
-ngerman: "mm is now obsolete, please use mmm instead on input line 15.
 [8
 
 ]) (./Definition.tex
@@ -891,10 +872,10 @@ Package rerunfilecheck Info: File `Doku.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
  ) 
 Here is how much of TeX's memory you used:
- 9139 strings out of 493633
- 132418 string characters out of 3148832
+ 9142 strings out of 493633
+ 132434 string characters out of 3148832
  244872 words of memory out of 3000000
- 12182 multiletter control sequences out of 15000+200000
+ 12185 multiletter control sequences out of 15000+200000
  14866 words of font info for 58 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  36i,8n,40p,234b,540s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -905,7 +886,7 @@ amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Doku.pdf (22 pages, 266402 bytes).
+Output written on Doku.pdf (22 pages, 266125 bytes).
 PDF statistics:
  517 PDF objects out of 1000 (max. 8388607)
  476 compressed objects within 5 object streams

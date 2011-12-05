@@ -35,7 +35,7 @@ namespace Browser
             /* Menuhandling */
             void on_menu_clear_clicked(void);
             void on_menu_remove_clicked(void);
-            void on_menu_add_to_pl_clicked(void);
+            void on_menu_add_as_pl_clicked(void);
 
             /* Other */
             void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);

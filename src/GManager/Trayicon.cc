@@ -40,8 +40,11 @@ namespace GManager
         m_ActionPause->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_pause_clicked));
         m_ActionQuit->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_quit_clicked));
 
-        /* Dirty hack to fix the strange huge icon */
-        set(mp_Popup->render_icon_pixbuf(Gtk::Stock::INFO,Gtk::ICON_SIZE_LARGE_TOOLBAR));
+        /* This doesnt work with stalonetray.. Huh? */
+        // set_from_file("ui/Trayicon.svg");
+        
+        // Silly hack to get the right size
+        set(mp_Window->render_icon_pixbuf(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_LARGE_TOOLBAR));
     }
 
     //-------------------------

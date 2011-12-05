@@ -15,7 +15,6 @@ namespace Browser
             Glib::RefPtr<Gtk::Action> m_ActionAdd;
             Glib::RefPtr<Gtk::Action> m_ActionDel;
             Glib::RefPtr<Gtk::Action> m_ActionRepl;
-            Glib::RefPtr<Gtk::Action> m_ActionRename;
     };
 }
 #endif 

@@ -80,18 +80,22 @@ namespace MPD
             tmp=
                  tmp=="artist"?get_tag(MPD_TAG_ARTIST,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
                  tmp=="title"?get_tag(MPD_TAG_TITLE,0)!=NULL?get_tag(MPD_TAG_TITLE,0):get_uri():
-                 tmp=="album"?get_tag(MPD_TAG_ALBUM,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="track"?get_tag(MPD_TAG_TRACK,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="name"?get_tag(MPD_TAG_NAME,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="date"?get_tag(MPD_TAG_DATE,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="album_artist"?get_tag(MPD_TAG_ALBUM_ARTIST,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="genre"?get_tag(MPD_TAG_GENRE,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="composer"?get_tag(MPD_TAG_COMPOSER,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="performer"?get_tag(MPD_TAG_PERFORMER,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="comment"?get_tag(MPD_TAG_COMMENT,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":
-                 tmp=="disc"?get_tag(MPD_TAG_DISC,0)!=NULL?get_tag(MPD_TAG_ARTIST,0):"unknown":" "
+                 tmp=="album"?get_tag(MPD_TAG_ALBUM,0)!=NULL?get_tag(MPD_TAG_ALBUM,0):"unknown":
+                 tmp=="track"?get_tag(MPD_TAG_TRACK,0)!=NULL?get_tag(MPD_TAG_TRACK,0):"unknown":
+                 tmp=="name"?get_tag(MPD_TAG_NAME,0)!=NULL?get_tag(MPD_TAG_NAME,0):"unknown":
+                 tmp=="date"?get_tag(MPD_TAG_DATE,0)!=NULL?get_tag(MPD_TAG_DATE,0):"unknown":
+                 tmp=="album_artist"?get_tag(MPD_TAG_ALBUM_ARTIST,0)!=NULL?get_tag(MPD_TAG_ALBUM_ARTIST,0):"unknown":
+                 tmp=="genre"?get_tag(MPD_TAG_GENRE,0)!=NULL?get_tag(MPD_TAG_GENRE,0):"unknown":
+                 tmp=="composer"?get_tag(MPD_TAG_COMPOSER,0)!=NULL?get_tag(MPD_TAG_COMPOSER,0):"unknown":
+                 tmp=="performer"?get_tag(MPD_TAG_PERFORMER,0)!=NULL?get_tag(MPD_TAG_PERFORMER,0):"unknown":
+                 tmp=="comment"?get_tag(MPD_TAG_COMMENT,0)!=NULL?get_tag(MPD_TAG_COMMENT,0):"unknown":
+                 tmp=="disc"?get_tag(MPD_TAG_DISC,0)!=NULL?get_tag(MPD_TAG_DISC,0):"unknown":" "
 
             ;
+
+            /* SCHOEN ODER? ODEEERRRRRR?! D: */
+
+
             if(markup)
             {
                 tmp=Glib::Markup::escape_text(tmp);

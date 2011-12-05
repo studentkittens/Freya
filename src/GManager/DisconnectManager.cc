@@ -17,13 +17,13 @@ namespace GManager
         if(is_connected)
         {
             Info("Got reconnected - unlocking gui");
-            mp_Main_Paned->set_sensitive(true);
+//            mp_Main_Paned->set_sensitive(true);
             mp_Top_Box->set_sensitive(true);
         }
         else
         {
             Info("Got disconnected - locking gui");
-            mp_Main_Paned->set_sensitive(false);
+//            mp_Main_Paned->set_sensitive(false);    /*prevents you from changing settings when disconnected*/
             mp_Top_Box->set_sensitive(false);
         }
     }

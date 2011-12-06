@@ -69,19 +69,16 @@ namespace GManager
     //-----------------------------
     void MenuList::on_menu_connect(void)
     {
-        Debug("Connect Menu activated");
         mp_Client->connect();
     }
     //-----------------------------
     void MenuList::on_menu_disconnect(void)
     {
         mp_Client->disconnect();
-        Debug("Disconnect Menu activated");
     }
     //-----------------------------
     void MenuList::on_menu_quit(void)
     {
-        /* TODO */
         Gtk::Main::quit();
     }
     //-----------------------------

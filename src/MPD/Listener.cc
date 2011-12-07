@@ -3,37 +3,75 @@
 
 namespace MPD
 {
+
+    /* Map appropiate Glib::IO events to MPD Async events,
+     * and other way round. 
+     */
+    static const int map_IOCondtion_MPDASync[][2] = 
+    {
+        {G_IO_IN,  MPD_ASYNC_EVENT_READ},
+        {G_IO_OUT, MPD_ASYNC_EVENT_WRITE},
+        {G_IO_HUP, MPD_ASYNC_EVENT_HUP},
+        {G_IO_ERR, MPD_ASYNC_EVENT_ERROR}
+    };
+
+
+    /* Number of rows in above table */
+    static const unsigned map_IOAsync_size = (sizeof(map_IOCondtion_MPDASync)/sizeof(unsigned));
+
     //--------------------------------
 
     Listener::Listener(EventNotifier * notifier, Connection& sync_conn) : m_NData(sync_conn)
     {
-        mp_Parser = mpd_parser_new();
-        async_conn = mpd_connection_get_async(sync_conn.get_connection());
-        async_socket_fd = mpd_async_get_fd(async_conn); 
 
+        /* No idle events, nor io events on startup,
+         * call force_update() if you want to init 
+         * your registered classes */
         idle_events = (enum mpd_idle)0;
         io_eventmask = (enum mpd_async_event)0;
 
+        /* No idling  -> client has to call enter() itself
+         * No leaving -> see above
+         * No forced  -> forced is called once all observers are built
+         * No working -> Callback will be called first (mostly) by force_update()
+         */
         is_idle = false;
         is_leaving = false;
+        is_forced = false;
+        is_working = false;
 
+        /* Save a pointer to sigc::signal */
         g_assert(notifier);
         mp_Notifier = notifier;
 
+        /* TODO: Does this belong here? */
         g_assert(sync_conn.get_connection());
         m_NData.update_all();
-       
+
+        /* Save a pointer so we can send sync commands
+         * like "noidle" */ 
         mp_Conn = &sync_conn;
+
+        /* Parser is used to parse the incoming events:
+         * changed: player
+         * changed: mixer
+         * ...
+         * and to convert them to appropiate enum values
+         */
+        mp_Parser = mpd_parser_new();
+
+        /* We need a non-blocking connection. */
+        async_conn = mpd_connection_get_async(sync_conn.get_connection());
+        async_socket_fd = mpd_async_get_fd(async_conn); 
     }
 
     //--------------------------------
 
     Listener::~Listener()
     {
+        // TODO: Is that everything? 
         if(mp_Parser!= NULL)
-        {
             mpd_parser_free(mp_Parser);
-        }
     }
 
     //--------------------------------
@@ -47,11 +85,15 @@ namespace MPD
     //--------------------------------
     //--------------------------------
 
+    /* Check if a error occured */
     bool Listener::check_async_error(void)
     {
+        g_assert(async_conn);
+
         bool result = false;
-        if(async_conn != NULL && mpd_async_get_error(async_conn) != MPD_ERROR_SUCCESS)
+        if(mpd_async_get_error(async_conn) != MPD_ERROR_SUCCESS)
         {
+            io_eventmask = (enum mpd_async_event)0;
             Warning("AsyncError: %s",mpd_async_get_error_message(async_conn));
             result = true;
         }
@@ -60,31 +102,34 @@ namespace MPD
 
     //--------------------------------
 
-    void Listener::invoke_user_callback(long overwrite_events = -1)
+    void Listener::invoke_user_callback(void)
     {
-        if(idle_events != 0)
+        if(idle_events != 0 || is_forced)
         {
             /* Leave for callback - which is gonna be active */
             leave();
 
+            /* Do not allow to call enter() in this period */
             is_working = true;
 
-            if(overwrite_events != -1)
+            if(is_forced)
             {
-                idle_events = (unsigned)overwrite_events;
+                /* Trigger all events (0xFFFFFF) */
+                idle_events = UINT_MAX; 
             }
 
-            /* Somethin changed.. update therefore */
             m_NData.update_all();
 
             /* Iterare over the enum (this is weird) */
-            for(unsigned mask = 1; /* empty */; mask = mask << 1)
+            for(unsigned mask = 1; /* empty */; mask <<= 1)
             {
                 const char * event_name = mpd_idle_name((enum mpd_idle)mask);
+
+                /* We assume the end of the 'enum' here */
                 if(event_name == NULL)
                     break;
 
-                unsigned actual_event = idle_events & mask;
+                unsigned actual_event = (idle_events & mask);
                 if(actual_event != 0)
                 {
                     Debug("  :%s",event_name);
@@ -94,9 +139,12 @@ namespace MPD
                 }
             }
 
-            /* Delete old events  */
+            /* Delete old events */
             idle_events = 0;
 
+            /* Callback finished, needs 
+             * to be set to false to re-enter
+             */
             is_working = false;
 
             /* Re-enter idle mode */
@@ -109,8 +157,8 @@ namespace MPD
     bool Listener::parse_response(char *line)
     {
         enum mpd_parser_result result;
-
         result = mpd_parser_feed(mp_Parser, line);
+
         switch (result) 
         {
             case MPD_PARSER_ERROR:
@@ -160,18 +208,13 @@ namespace MPD
                 return false;
         }
 
-        if (mpd_async_get_error(async_conn) != MPD_ERROR_SUCCESS)
-        {
-            io_eventmask = (enum mpd_async_event)0;
-            check_async_error();
-            return false;
-        }
-
+        check_async_error();
         return true;
     }
 
     //--------------------------------
 
+    /* Create the watchdog on the socket */
     void Listener::create_watch(enum mpd_async_event events)
     {
         /* Convert mpd events to glib events */
@@ -189,25 +232,33 @@ namespace MPD
 
     //--------------------------------
 
+    /* Called once data comes into the socket */
     gboolean Listener::io_callback(Glib::IOCondition condition)
     {
+        check_async_error();
+
+        enum mpd_async_event actual_event = GIOCondition_to_MPDAsyncEvent(condition);
+        g_printerr("Event = %d\n",actual_event);
+        g_printerr("Idle  = %d\n",idle_events);
+
         /* Tell libmpdclient that it should do the IO now */
-        if(mpd_async_io(async_conn, Listener::GIOCondition_to_MPDAsyncEvent(condition)) == false)
+        if(mpd_async_io(async_conn, actual_event) == false)
         {
             check_async_error();
             return false;
         }
 
         /* There is incoming data - receive them */
-        if((condition & G_IO_IN) || (condition & G_IO_PRI)) 
+        if(condition & G_IO_IN) 
         {
             if(recv_parseable() == false) 
             {
-                Error("Could not parse response");
+                Error("Could not parse response.");
                 return false;
             }
         }
 
+        /* Returning false disconnects watchdog */
         enum mpd_async_event events = mpd_async_events(async_conn);
         if(events == 0) 
         {
@@ -285,7 +336,7 @@ namespace MPD
                 {
                     events = mpd_recv_idle(mp_Conn->get_connection(),false);
                 }
-                
+
                 is_leaving = true;
 
                 /* Check for errors that may happened shortly */            
@@ -335,50 +386,36 @@ namespace MPD
         {
             mpd_run_noidle(mp_Conn->get_connection());
         }
-
-        invoke_user_callback(UINT_MAX);
+        
+        /* Inform watchers about events */
+        is_forced = true;
+        invoke_user_callback();
+        is_forced = false;
     }
 
     //--------------------------------
-    // Static methods
     //--------------------------------
 
     enum mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
     {
         int events = 0;
-
-        if (condition & G_IO_IN)
-            events |= MPD_ASYNC_EVENT_READ;
-
-        if (condition & G_IO_OUT)
-            events |= MPD_ASYNC_EVENT_WRITE;
-
-        if (condition & G_IO_HUP)
-            events |= MPD_ASYNC_EVENT_HUP;
-
-        if (condition & G_IO_ERR)
-            events |= MPD_ASYNC_EVENT_ERROR;
+        for(unsigned i = 0; i < map_IOAsync_size; i++)
+            if(condition & map_IOCondtion_MPDASync[i][0])
+                events |= map_IOCondtion_MPDASync[i][1];
 
         return (enum mpd_async_event)events;
     }
 
     //--------------------------------
 
+    /* Convert MPD's Async event to Glib's IO Socket events by a table */
     Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events)
     {
+        /* "Mix in" by using binary OR */
         int condition = 0;
-
-        if (events & MPD_ASYNC_EVENT_READ)
-            condition |= G_IO_IN;
-
-        if (events & MPD_ASYNC_EVENT_WRITE)
-            condition |= G_IO_OUT;
-
-        if (events & MPD_ASYNC_EVENT_HUP)
-            condition |= G_IO_HUP;
-
-        if (events & MPD_ASYNC_EVENT_ERROR)
-            condition |= G_IO_ERR;
+        for(unsigned i = 0; i < map_IOAsync_size; i++)
+            if(events & map_IOCondtion_MPDASync[i][1])
+                condition |= map_IOCondtion_MPDASync[i][0];
 
         return (Glib::IOCondition)condition;
     }

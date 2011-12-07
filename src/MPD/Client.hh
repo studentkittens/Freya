@@ -85,6 +85,9 @@ namespace MPD
              */
             EventNotifier& get_notify(void);
 
+            /* Commandlists */
+            void begin(void);
+            void commit(void);
 
             ConnectionNotifier& signal_connection_change(void);
 
@@ -118,6 +121,10 @@ namespace MPD
             void handle_errors(enum mpd_error err);
 
             /* Instancevars */
+
+            /* Client::begin() was called, 
+             * but not yet commit */
+            bool m_ListBegun;
 
             /* The wrapped up mpd_connection */
             Connection m_Conn;

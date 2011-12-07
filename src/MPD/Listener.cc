@@ -44,7 +44,7 @@ namespace MPD
         g_assert(notifier);
         mp_Notifier = notifier;
 
-        /* TODO: Does this belong here? */
+        /* Always make sure we have a valid status etc. */
         g_assert(sync_conn.get_connection());
         m_NData.update_all();
 
@@ -69,7 +69,8 @@ namespace MPD
 
     Listener::~Listener()
     {
-        // TODO: Is that everything? 
+        leave();
+            
         if(mp_Parser!= NULL)
             mpd_parser_free(mp_Parser);
     }
@@ -201,15 +202,19 @@ namespace MPD
     bool Listener::recv_parseable(void)
     {
         char * line = NULL;
+        bool retval = true;
 
         while ((line = mpd_async_recv_line(async_conn)) != NULL)
         {
             if(parse_response(line) == false)
-                return false;
+            {
+                retval = false;
+                break;
+            }
         }
 
         check_async_error();
-        return true;
+        return retval;
     }
 
     //--------------------------------
@@ -236,10 +241,7 @@ namespace MPD
     gboolean Listener::io_callback(Glib::IOCondition condition)
     {
         check_async_error();
-
         enum mpd_async_event actual_event = GIOCondition_to_MPDAsyncEvent(condition);
-        g_printerr("Event = %d\n",actual_event);
-        g_printerr("Idle  = %d\n",idle_events);
 
         /* Tell libmpdclient that it should do the IO now */
         if(mpd_async_io(async_conn, actual_event) == false)

@@ -29,7 +29,6 @@ namespace Browser
         /* Add the TreeView's view columns: */
         /* Useful for debugging purpose */
         //mp_TreeView->append_column("ID", m_Columns.m_col_id);
-        //mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
         mp_TreeView->append_column("Artist", m_Columns.m_col_artist);
         mp_TreeView->append_column("Album", m_Columns.m_col_album);
         mp_TreeView->append_column("Title", m_Columns.m_col_title);
@@ -100,7 +99,6 @@ namespace Browser
         MPD::Song * new_song = (MPD::Song*)pSong;
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_id] = new_song->get_id();
-        row[m_Columns.m_col_pos] = new_song->get_pos();
 
         try { /* Check for NULLs just to be sure */
             row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
@@ -121,6 +119,7 @@ namespace Browser
 
     /*-------------------------------*/
 
+    /* Called by search function, looksup if should be filtered out */
     bool Queue::on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter)
     {
         if(iter && !m_FilterText.empty())

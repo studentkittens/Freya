@@ -23,7 +23,7 @@ namespace GManager
 
     void Statusicons::on_connection_change(bool is_connected)
     {
-        // TODO
+        /* Empty for now */
     }
 
     void Statusicons::on_client_update(enum mpd_idle type, MPD::NotifyData& data)

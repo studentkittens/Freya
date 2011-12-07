@@ -51,7 +51,10 @@ namespace MPD
         if(listener)
         {
             if(listener != NULL)
+            {
+                listener->leave();
                 delete listener;
+            }
 
             m_Conn.disconnect();
             m_ConnNotifer.emit(false);

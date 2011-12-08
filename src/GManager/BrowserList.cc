@@ -91,7 +91,7 @@ namespace GManager
                     last_newline[0] = 0;
 
                 retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<span font='15.0' weight='light'>");
+                retv.insert(0,"<span font='13.0' weight='light'>");
                 retv.append("</span>");
 
             }

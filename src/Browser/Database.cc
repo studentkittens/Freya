@@ -39,6 +39,8 @@ namespace Browser
         mp_Popup = new DatabasePopup(*mp_IView); 
         mp_Popup->get_action("db_add").connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
+        mp_Popup->get_action("db_add_all").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_all_clicked));
         mp_Popup->get_action("db_replace").connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
         mp_Popup->get_action("db_update").connect(
@@ -62,9 +64,12 @@ namespace Browser
     void DatabaseBrowser::on_menu_db_add_clicked(void)
     {
         std::vector<Gtk::TreePath> items = mp_IView->get_selected_items();
-        for(unsigned i = 0; i < items.size(); i++)
+
+        /* This makes the loop a active section */
+        mp_Client->begin();
+        for(unsigned i = items.size(); i != 0; --i)
         {
-            Gtk::TreeModel::iterator iter = m_DirStore->get_iter(items[i]);
+            Gtk::TreeModel::iterator iter = m_DirStore->get_iter(items[i-1]);
             if(iter)
             {
                 Gtk::TreeRow row = *iter;
@@ -72,9 +77,21 @@ namespace Browser
                 mp_Client->queue_add(path.c_str());
             }
         }
+
+        /* Commit queued add commands */
+        mp_Client->commit();
     }
 
     /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_menu_db_add_all_clicked(void)
+    {
+        /* Add root dir */
+        mp_Client->queue_add("/");
+    }
+
+    /*------------------------------------------------*/
+    
     
     void DatabaseBrowser::on_menu_db_update_clicked(void)
     {

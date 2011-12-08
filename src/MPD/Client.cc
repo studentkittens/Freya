@@ -15,7 +15,7 @@ namespace MPD
 {
     //-------------------------------
 
-    Client::Client() : m_Conn(), m_Notifier()
+    Client::Client() : m_ListBegun(false), m_Conn(),  m_Notifier()
     {
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
@@ -51,7 +51,10 @@ namespace MPD
         if(listener)
         {
             if(listener != NULL)
+            {
+                listener->leave();
                 delete listener;
+            }
 
             m_Conn.disconnect();
             m_ConnNotifer.emit(false);
@@ -86,7 +89,27 @@ namespace MPD
         }
         check_error();
     }
+    
+    //-------------------------------
 
+    void Client::begin(void)
+    {
+        go_busy();
+        m_ListBegun = true;
+        mpd_command_list_begin(m_Conn.get_connection(),true);
+    }
+    
+    //-------------------------------
+
+    void Client::commit(void)
+    {
+        mpd_connection * conn = m_Conn.get_connection();
+        mpd_command_list_end(conn);
+        mpd_response_finish(conn);
+        m_ListBegun = false;
+        go_idle();
+    }
+    
     //-------------------------------
     //-------------------------------
 
@@ -151,27 +174,41 @@ namespace MPD
     {
         if(path != NULL)
         {
-            ACTIVITY_SECTION
-                (
-                 mpd_connection * conn = m_Conn.get_connection();
-                 mpd_run_add(conn,path);
-                )
+            mpd_connection * conn = m_Conn.get_connection();
+            if(m_ListBegun)
+            {
+                mpd_send_add(conn,path);
+            }
+            else
+            {
+                ACTIVITY_SECTION
+                    (
+                     mpd_run_add(conn,path);
+                    )
+            }
         }
     }
-    
+
     //-------------------------------
 
-    void Client::queue_delete(unsigned pos)
+    void Client::queue_delete(unsigned id)
     {
+        mpd_connection * conn = m_Conn.get_connection();
+        if(m_ListBegun)
+        {
+            mpd_send_delete_id(conn,id);
+        }
+        else
+        {
         ACTIVITY_SECTION
             (
-             mpd_connection * conn = m_Conn.get_connection();
-             mpd_run_delete(conn,pos);
+             mpd_run_delete_id(conn,id);
             )
+        }
     }
 
     //-------------------------------
-    
+
     void Client::queue_delete_range(unsigned pos_start, unsigned pos_end)
     {
         ACTIVITY_SECTION
@@ -180,9 +217,9 @@ namespace MPD
              mpd_run_delete_range(conn,pos_start,pos_end);
             )
     }
-    
+
     //-------------------------------
-    
+
     void Client::queue_clear(void)
     {
         ACTIVITY_SECTION
@@ -190,7 +227,7 @@ namespace MPD
              mpd_run_clear(m_Conn.get_connection());
             )
     }
-    
+
     //-------------------------------
 
     unsigned Client::database_update(const char * path)
@@ -201,7 +238,7 @@ namespace MPD
              mpd_connection * conn = m_Conn.get_connection();
              id = mpd_run_update(conn,path);
             )
-        return id;
+            return id;
     }
 
     //-------------------------------
@@ -515,9 +552,9 @@ namespace MPD
                 )
         }
     }
-    
+
     //--------------------
-            
+
     void Client::playlist_rename(const char * source, const char * dest)
     {
         if(source && dest)
@@ -530,7 +567,7 @@ namespace MPD
     }
 
     //--------------------
-    
+
     void Client::playlist_save(const char * name) 
     {
         ACTIVITY_SECTION
@@ -538,7 +575,7 @@ namespace MPD
              mpd_run_save(m_Conn.get_connection(),name);
             )
     }
-    
+
     //--------------------
 
     void Client::playlist_add(const char * name)

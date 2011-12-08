@@ -48,14 +48,14 @@ namespace MPD
              * Utility (therefore static) function to
              * convert a GIOCondition bit mask to #mpd_async_event.
              */
-            static enum mpd_async_event GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition);
+            enum mpd_async_event GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition);
 
             //--------------------------------
 
             /**
              * Converts a #mpd_async_event bit mask to GIOCondition.
              */
-            static Glib::IOCondition MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events);
+            Glib::IOCondition MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events);
 
 
             /* check if async connection is doing weird things */
@@ -63,7 +63,7 @@ namespace MPD
             bool recv_parseable(void);
             gboolean io_callback(Glib::IOCondition condition);
             bool parse_response(char *line);
-            void invoke_user_callback(long overwrite_events);
+            void invoke_user_callback(void);
             void create_watch(enum mpd_async_event events);
 
             //-----------------//
@@ -73,8 +73,16 @@ namespace MPD
             /* true if in idlemode */
             bool is_idle;
 
+            /* True while executing leave(),
+             * prevents enter() from being called
+             * */
             bool is_leaving;
+
+            /* True while callback is executed */
             bool is_working;
+
+            /* True when a forced update was requested */
+            bool is_forced;
 
             /* A reponse parser */
             struct mpd_parser * mp_Parser;

@@ -105,7 +105,18 @@ int main(int argc, char *argv[])
         client.force_update();
 
         main_window.get_window()->show();
+
+        /* ------START -------- */
+
         kit.run();
+
+        /*------ END ---------- */ 
+
+        if(CONFIG_GET_AS_INT("settings.connection.stoponexit"))
+        {
+            client.playback_stop();
+        }
+
         client.disconnect();
     }
     catch(const Gtk::BuilderError& e)

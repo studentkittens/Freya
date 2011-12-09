@@ -40,43 +40,55 @@
 \contentsline {subsection}{\numberline {6.1.1}Muss-Kriterien}{17}{subsection.6.1.1}
 \contentsline {subsection}{\numberline {6.1.2}Wunsch-Kriterien}{17}{subsection.6.1.2}
 \contentsline {subsection}{\numberline {6.1.3}Abgrenzungskriterien}{17}{subsection.6.1.3}
-\contentsline {section}{\numberline {6.2}Produkteinsatz}{18}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Anwendungsbereiche}{18}{subsection.6.2.1}
+\contentsline {section}{\numberline {6.2}Produkteinsatz}{17}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Anwendungsbereiche}{17}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}Zielgruppen}{18}{subsection.6.2.2}
 \contentsline {subsection}{\numberline {6.2.3}Betriebsbedingungen}{18}{subsection.6.2.3}
 \contentsline {section}{\numberline {6.3}Produktumgebung}{18}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Software}{18}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Hardware}{19}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Orgware}{19}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.2}Hardware}{18}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Orgware}{18}{subsection.6.3.3}
 \contentsline {section}{\numberline {6.4}Produktfunktionen}{19}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}Allgemeine Funktionen}{19}{subsection.6.4.1}
 \contentsline {subsubsection}{\numberline {6.4.1.1}Starten und Beenden}{19}{subsubsection.6.4.1.1}
 \contentsline {subsection}{\numberline {6.4.2}Benutzerfunktionen}{19}{subsection.6.4.2}
 \contentsline {subsubsection}{\numberline {6.4.2.1}Benutzer-Kennung}{19}{subsubsection.6.4.2.1}
 \contentsline {subsubsection}{\numberline {6.4.2.2}Pers\IeC {\"o}nliche Daten}{19}{subsubsection.6.4.2.2}
-\contentsline {subsubsection}{\numberline {6.4.2.3}Pers\IeC {\"o}nliche Konfiguration}{20}{subsubsection.6.4.2.3}
-\contentsline {subsubsection}{\numberline {6.4.2.4}Pers\IeC {\"o}nliches Profil}{20}{subsubsection.6.4.2.4}
-\contentsline {subsubsection}{\numberline {6.4.2.5}Pers\IeC {\"o}nliche Datenbank}{20}{subsubsection.6.4.2.5}
+\contentsline {subsubsection}{\numberline {6.4.2.3}Pers\IeC {\"o}nliche Konfiguration}{19}{subsubsection.6.4.2.3}
+\contentsline {subsubsection}{\numberline {6.4.2.4}Pers\IeC {\"o}nliches Profil}{19}{subsubsection.6.4.2.4}
+\contentsline {subsubsection}{\numberline {6.4.2.5}Pers\IeC {\"o}nliche Datenbank}{19}{subsubsection.6.4.2.5}
 \contentsline {subsubsection}{\numberline {6.4.2.6}Kommunikation (Chat)}{20}{subsubsection.6.4.2.6}
 \contentsline {subsubsection}{\numberline {6.4.2.7}Suchen}{20}{subsubsection.6.4.2.7}
 \contentsline {subsection}{\numberline {6.4.3}Abspielfunktionen}{20}{subsection.6.4.3}
 \contentsline {subsubsection}{\numberline {6.4.3.1}Initialisierung}{20}{subsubsection.6.4.3.1}
-\contentsline {subsubsection}{\numberline {6.4.3.2}Verlauf}{21}{subsubsection.6.4.3.2}
-\contentsline {subsection}{\numberline {6.4.4}Administrator-Funktionen}{21}{subsection.6.4.4}
+\contentsline {subsubsection}{\numberline {6.4.3.2}Verlauf}{20}{subsubsection.6.4.3.2}
+\contentsline {subsection}{\numberline {6.4.4}Administrator-Funktionen}{20}{subsection.6.4.4}
 \contentsline {section}{\numberline {6.5}Produktdaten}{21}{section.6.5}
 \contentsline {section}{\numberline {6.6}Produktleistungen}{21}{section.6.6}
-\contentsline {section}{\numberline {6.7}Benutzeroberfl\IeC {\"a}che}{21}{section.6.7}
-\contentsline {subsection}{\numberline {6.7.1}Bildschirmlayout}{21}{subsection.6.7.1}
-\contentsline {subsubsection}{\numberline {6.7.1.1}Startbildschirm}{21}{subsubsection.6.7.1.1}
-\contentsline {subsubsection}{\numberline {6.7.1.2}Einstellungsfenster}{21}{subsubsection.6.7.1.2}
-\contentsline {subsubsection}{\numberline {6.7.1.3}Verbindungsfenster}{21}{subsubsection.6.7.1.3}
-\contentsline {subsubsection}{\numberline {6.7.1.4}Benutzermen\IeC {\"u}}{21}{subsubsection.6.7.1.4}
-\contentsline {section}{\numberline {6.8}Produktmodellierung}{21}{section.6.8}
-\contentsline {section}{\numberline {6.9}Qualit\IeC {\"a}tsanforderungen}{21}{section.6.9}
-\contentsline {section}{\numberline {6.10}Globale Testszenarien und Testf\IeC {\"a}lle}{21}{section.6.10}
-\contentsline {section}{\numberline {6.11}Entwicklungsumgebung}{21}{section.6.11}
-\contentsline {subsection}{\numberline {6.11.1}Software}{21}{subsection.6.11.1}
-\contentsline {subsection}{\numberline {6.11.2}Hardware}{21}{subsection.6.11.2}
-\contentsline {subsection}{\numberline {6.11.3}Orgware}{21}{subsection.6.11.3}
-\contentsline {section}{\numberline {6.12}Erg\IeC {\"a}nzungen}{21}{section.6.12}
-\contentsline {section}{\numberline {6.13}Glossar}{21}{section.6.13}
+\contentsline {section}{\numberline {6.7}Qualit\IeC {\"a}tsanforderungen}{21}{section.6.7}
+\contentsline {section}{\numberline {6.8}Globale Testszenarien und Testf\IeC {\"a}lle}{21}{section.6.8}
+\contentsline {section}{\numberline {6.9}Entwicklungsumgebung}{21}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Software}{21}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Hardware}{21}{subsection.6.9.2}
+\contentsline {subsection}{\numberline {6.9.3}Orgware}{21}{subsection.6.9.3}
+\contentsline {section}{\numberline {6.10}Erg\IeC {\"a}nzungen}{21}{section.6.10}
+\contentsline {section}{\numberline {6.11}Glossar}{21}{section.6.11}
+\contentsline {chapter}{\numberline {7}Design-Dokument}{22}{chapter.7}
+\contentsline {section}{\numberline {7.1}Einleitung}{22}{section.7.1}
+\contentsline {section}{\numberline {7.2}Softwarearchitektur}{22}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Architekutr\IeC {\"u}bersicht}{22}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Funktionen}{22}{subsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.1}Beispiel-Abspielfunktionen}{22}{subsubsection.7.2.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2.2}Beispiel-Playlist erstellen}{22}{subsubsection.7.2.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.3}Beispiel-Dateibrowser}{22}{subsubsection.7.2.2.3}
+\contentsline {subsection}{\numberline {7.2.3}Oberfl\IeC {\"a}che}{22}{subsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.3.1}Titelleiste}{22}{subsubsection.7.2.3.1}
+\contentsline {subsubsection}{\numberline {7.2.3.2}Seitenmen\IeC {\"u}}{22}{subsubsection.7.2.3.2}
+\contentsline {subsubsection}{\numberline {7.2.3.3}Fu\IeC {\ss }leiste}{22}{subsubsection.7.2.3.3}
+\contentsline {subsubsection}{\numberline {7.2.3.4}Anzeige}{22}{subsubsection.7.2.3.4}
+\contentsline {subsection}{\numberline {7.2.4}Short-Cuts}{22}{subsection.7.2.4}
+\contentsline {section}{\numberline {7.3}Use-Case-F\IeC {\"a}lle}{22}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Musik abspielen}{22}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Musik zuf\IeC {\"a}llig abspielen}{22}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Musik im Consume Mode abspielen}{22}{subsection.7.3.3}
+\contentsline {subsection}{\numberline {7.3.4}Playlist erstellen}{22}{subsection.7.3.4}

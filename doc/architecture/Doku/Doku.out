@@ -49,14 +49,23 @@
 \BOOKMARK [2][-]{subsection.6.4.4}{Administrator-Funktionen}{section.6.4}% 49
 \BOOKMARK [1][-]{section.6.5}{Produktdaten}{chapter.6}% 50
 \BOOKMARK [1][-]{section.6.6}{Produktleistungen}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.7}{Benutzeroberfl\344che}{chapter.6}% 52
-\BOOKMARK [2][-]{subsection.6.7.1}{Bildschirmlayout}{section.6.7}% 53
-\BOOKMARK [1][-]{section.6.8}{Produktmodellierung}{chapter.6}% 54
-\BOOKMARK [1][-]{section.6.9}{Qualit\344tsanforderungen}{chapter.6}% 55
-\BOOKMARK [1][-]{section.6.10}{Globale Testszenarien und Testf\344lle}{chapter.6}% 56
-\BOOKMARK [1][-]{section.6.11}{Entwicklungsumgebung}{chapter.6}% 57
-\BOOKMARK [2][-]{subsection.6.11.1}{Software}{section.6.11}% 58
-\BOOKMARK [2][-]{subsection.6.11.2}{Hardware}{section.6.11}% 59
-\BOOKMARK [2][-]{subsection.6.11.3}{Orgware}{section.6.11}% 60
-\BOOKMARK [1][-]{section.6.12}{Erg\344nzungen}{chapter.6}% 61
-\BOOKMARK [1][-]{section.6.13}{Glossar}{chapter.6}% 62
+\BOOKMARK [1][-]{section.6.7}{Qualit\344tsanforderungen}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.8}{Globale Testszenarien und Testf\344lle}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.9}{Entwicklungsumgebung}{chapter.6}% 54
+\BOOKMARK [2][-]{subsection.6.9.1}{Software}{section.6.9}% 55
+\BOOKMARK [2][-]{subsection.6.9.2}{Hardware}{section.6.9}% 56
+\BOOKMARK [2][-]{subsection.6.9.3}{Orgware}{section.6.9}% 57
+\BOOKMARK [1][-]{section.6.10}{Erg\344nzungen}{chapter.6}% 58
+\BOOKMARK [1][-]{section.6.11}{Glossar}{chapter.6}% 59
+\BOOKMARK [0][-]{chapter.7}{Design-Dokument}{}% 60
+\BOOKMARK [1][-]{section.7.1}{Einleitung}{chapter.7}% 61
+\BOOKMARK [1][-]{section.7.2}{Softwarearchitektur}{chapter.7}% 62
+\BOOKMARK [2][-]{subsection.7.2.1}{Architekutr\374bersicht}{section.7.2}% 63
+\BOOKMARK [2][-]{subsection.7.2.2}{Funktionen}{section.7.2}% 64
+\BOOKMARK [2][-]{subsection.7.2.3}{Oberfl\344che}{section.7.2}% 65
+\BOOKMARK [2][-]{subsection.7.2.4}{Short-Cuts}{section.7.2}% 66
+\BOOKMARK [1][-]{section.7.3}{Use-Case-F\344lle}{chapter.7}% 67
+\BOOKMARK [2][-]{subsection.7.3.1}{Musik abspielen}{section.7.3}% 68
+\BOOKMARK [2][-]{subsection.7.3.2}{Musik zuf\344llig abspielen}{section.7.3}% 69
+\BOOKMARK [2][-]{subsection.7.3.3}{Musik im Consume Mode abspielen}{section.7.3}% 70
+\BOOKMARK [2][-]{subsection.7.3.4}{Playlist erstellen}{section.7.3}% 71

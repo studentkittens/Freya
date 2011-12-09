@@ -82,9 +82,8 @@ namespace GManager
         else
             pause();
     }
-            
+    
+    /* Implemented from AbstractClientUser, but empty in this case */    
     void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
-    {
-        // TODO
-    }
+    {}
 }

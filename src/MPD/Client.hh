@@ -8,17 +8,34 @@
 /* Songlist interface */
 #include "../AbstractItemlist.hh"
 #include "../AbstractFilebrowser.hh"
-
+#include "AbstractClientExtension.hh"
 
 namespace MPD
 {
+    /**
+     * @brief You can call connect on this.
+     *
+     * It gets emitted by the client whenever the connection changes,
+     * i.e. when getting disconnected or connected, in former case 
+     * 'false' is passed as argument, in the latter 'true'
+     */
     typedef sigc::signal<void,bool> ConnectionNotifier;
 
     class Client
     {
         public:
 
+            /**
+             * @brief Instance the client
+             *
+             * If settings.connection.autoconnect is set to true
+             * This also connects already anc calls force_update()
+             */
             Client();
+
+            /**
+             * @brief Disconnects also.
+             */
             ~Client();
 
             void connect(void);
@@ -85,11 +102,16 @@ namespace MPD
              */
             EventNotifier& get_notify(void);
 
+            /**
+             * @brief Register for connection changes
+             *
+             * @return a sigc::signal, you can call connect() on
+             */
+            ConnectionNotifier& signal_connection_change(void);
+            
             /* Commandlists */
             void begin(void);
             void commit(void);
-
-            ConnectionNotifier& signal_connection_change(void);
 
             /**
              * @brief Forces client update

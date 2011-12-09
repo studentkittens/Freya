@@ -40,10 +40,9 @@ namespace GManager
         m_ActionPause->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_pause_clicked));
         m_ActionQuit->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_quit_clicked));
 
-        /* This doesnt work with stalonetray.. Huh? */
+        /* TODO This doesnt work with stalonetray.. Huh? */
         // set_from_file("ui/Trayicon.svg");
-        
-        // Silly hack to get the right size
+        /* Silly hack to get the right size */
         set(mp_Window->render_icon_pixbuf(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_LARGE_TOOLBAR));
     }
 
@@ -100,14 +99,10 @@ namespace GManager
     
     void Trayicon::on_connection_change(bool is_connected)
     {
-        /*
-        // For some reason this crashes on disconnect.
-        // Huh?
         m_ActionNext->set_sensitive(is_connected);
         m_ActionPrev->set_sensitive(is_connected);
         m_ActionStop->set_sensitive(is_connected);
         m_ActionPause->set_sensitive(is_connected);
-        */
     }
     
     //---------------------------

@@ -110,7 +110,6 @@ namespace GManager
     {
         menu_connect->set_sensitive(!is_connected);
         menu_disconnect->set_sensitive(is_connected);
-
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
     }
@@ -119,7 +118,7 @@ namespace GManager
 
     void MenuList::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
     {
-        if(event && MPD_IDLE_OPTIONS && !running)
+        if((event & MPD_IDLE_OPTIONS) && !running)
         {
             running=true;
             MPD::Status &stat = data.get_status();

@@ -7,7 +7,7 @@ using namespace std;
 namespace Browser
 {
     DatabaseBrowser::DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Database",Gtk::Stock::DIRECTORY),
+        AbstractBrowser("Database",true,true,Gtk::Stock::DIRECTORY),
         AbstractClientUser(client)
     {
         BUILDER_ADD(builder,"ui/Database.glade");

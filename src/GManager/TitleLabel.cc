@@ -14,6 +14,14 @@ namespace GManager
 
     //----------------
     
+    void TitleLabel::stash_next_title(void)
+    {
+        mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
+        mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+    }
+
+    //----------------
+
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
         MPD::Song * current_song = data.get_next_song(); 
@@ -34,8 +42,7 @@ namespace GManager
         }
         else
         {
-            mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
-            mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+            stash_next_title();
         }
     }
 
@@ -43,7 +50,12 @@ namespace GManager
 
     void TitleLabel::on_connection_change(bool is_connected)
     {
-        /* Empty for now */
+        if(!is_connected)
+        {
+            mp_TitleLabel->set_markup("<b>You do not seem to be connected :-(</b>");
+            mp_ArtistAlbumLabel->set_markup("<small>Adjust your settings and try File->Connect</small>");
+            stash_next_title();
+        }
     }
 
     //----------------

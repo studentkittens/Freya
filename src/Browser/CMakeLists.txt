@@ -12,6 +12,7 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     SettingsNetwork.cc
     SettingsGeneral.cc
     SettingsPlayback.cc
+    Fortuna.cc
     )
 
 TARGET_LINK_LIBRARIES(FreyaBrowserLib FreyaAvahiLib ${GTKMM3_PACKAGE_LIBRARIES})

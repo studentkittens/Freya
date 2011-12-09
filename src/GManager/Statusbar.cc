@@ -31,6 +31,8 @@ namespace GManager
     {
        if(is_connected == false)
           mp_Lastdata = NULL; 
+
+        m_Statusbar->set_text("Not connected");
     }
     
     /* ------------------ */

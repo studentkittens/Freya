@@ -2,12 +2,12 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
-#define FORTUNE_BUF_SIZE 1024
 
 namespace GManager
 {
     BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractClientUser(client)
+        AbstractClientUser(client),
+        m_NoBrowsers("No Browsers found. This is weird.")
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -28,76 +28,44 @@ namespace GManager
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
 
-        /* Setup startscreen (fortunes) */
-        Gtk::ScrolledWindow * fortune_scrl_window = NULL;
-        Gtk::Button * fortune_refresh = NULL;
-        BUILDER_ADD(builder,"ui/Startscreen.glade");
-        BUILDER_GET(builder,"fortune_scrolledwindow",fortune_scrl_window);
-        BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
-        BUILDER_GET(builder,"fortune_refresh",fortune_refresh);
-
-        fortune_refresh->signal_clicked().connect(sigc::mem_fun(*this,&BrowserList::on_refresh_fortune));
-        on_refresh_fortune();        
-
-        mp_List->add(*fortune_scrl_window);
+        mp_List->add(m_NoBrowsers);
         mp_List->show_all();
     }
 
     //----------------------------
 
     void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
-    {
-        //TODO: 
-    }
+    {}
 
     //----------------------------
 
     void BrowserList::on_connection_change(bool is_connected)
     {
-        //TODO: Jump to settings tab.
-    }
-
-    //----------------------------
-    
-    void BrowserList::on_refresh_fortune(void)
-    {
-        Glib::ustring fortune = get_fortune();
-        if(!fortune.empty())
+        /* Jump to Settingstab on disconnect,
+         * and make other browser insensitive,
+         * or make them sensitive on connect again
+         * */
+        for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
         {
-            mp_FortuneLabel->set_markup(fortune);
-        }
-    }
-    
-    //----------------------------
-
-    Glib::ustring BrowserList::get_fortune(void)
-    {
-        FILE * pipe = NULL;
-        const char * const command = "fortune -s -n 340";
-        Glib::ustring retv = "";
-
-        /* Open a pipe to the fortune command and read from it,
-         * if it isn't installed we will get a string containing
-         * "fortune:" - in this case the old text stays.
-         */
-        if((pipe = popen(command,"r")))
-        {
-            char fortune_buf[FORTUNE_BUF_SIZE];
-            int bytes = fread(fortune_buf,1,FORTUNE_BUF_SIZE,pipe);
-            if(bytes != 0 && !strstr(fortune_buf,"fortune:"))
+            Gtk::TreeRow row = *iter;
+            AbstractBrowser * browser = row[m_Columns.m_col_browser];
+            if(browser != NULL)
             {
-                char * last_newline = strrchr(fortune_buf,'\n');
-                if(last_newline != NULL)
-                    last_newline[0] = 0;
-
-                retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<span font='13.0' weight='light'>");
-                retv.append("</span>");
-
+                if(!is_connected && browser->is_visible() && !browser->needs_connection())
+                {
+                    change_browser(browser);
+                }
+                else if(browser->needs_connection())
+                {
+                    Gtk::Widget * container = browser->get_container();
+                    if(container != NULL)
+                    {
+                        container->set_sensitive(is_connected);
+                    }
+                }
             }
-            pclose(pipe);
         }
-        return retv;
+        mp_PluginListview->set_sensitive(is_connected);
     }
 
     //----------------------------
@@ -115,6 +83,13 @@ namespace GManager
     }
 
     //----------------------------
+    
+    void BrowserList::set(AbstractBrowser& browser)
+    {
+        change_browser(&browser);
+    }
+    
+    //----------------------------
 
     void BrowserList::change_browser(AbstractBrowser * browser)
     {
@@ -122,7 +97,7 @@ namespace GManager
         {
             Glib::ustring name = browser->get_name();
             Debug("Adding browser: %s",name.c_str());
-            
+
             /* Get last element of box. Eddy...Duuuude!
              * What did you do earlier here?! */        
             Gtk::Widget* element = mp_List->get_children().back();

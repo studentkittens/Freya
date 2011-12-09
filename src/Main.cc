@@ -12,13 +12,13 @@
 #include "GManager/MenuList.hh"
 #include "GManager/NotifyManager.hh"
 #include "GManager/Trayicon.hh"
-#include "GManager/DisconnectManager.hh"
 
 #include "Browser/Queue.hh"
 #include "Browser/PlaylistManager.hh"
 #include "Browser/Database.hh"
 #include "Browser/StatBrowser.hh"
 #include "Browser/Settings.hh"
+#include "Browser/Fortuna.hh"
 #include "Log/Writer.hh"
 
 #include "Utils/Utils.hh"
@@ -68,11 +68,11 @@ int main(int argc, char *argv[])
         Browser::Settings settings_browser(builder,&tray);
         browser_list.add(settings_browser);
 
+        Browser::Fortuna easter_egg(builder);
+        browser_list.set(easter_egg);
+
         /* Send a good morning to all widgets */
         client.force_update();
-
-        /* Instance after being connected (usually) */
-        GManager::DisconnectManager(client,main_window.get_window(),builder);
 
         main_window.get_window()->show();
         kit.run();

@@ -51,7 +51,7 @@ namespace GManager
     
     void Timeslide::on_connection_change(bool is_connected)
     {
-        // TODO
+        m_Timeslide->set_sensitive(is_connected);
     }
 
     /* ------------------ */

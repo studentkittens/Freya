@@ -32,7 +32,7 @@ namespace GManager
     
     void Volumebutton::on_connection_change(bool is_connected)
     {
-        // TODO
+        mp_VButton->set_sensitive(is_connected);
     }
 
     // -------------------

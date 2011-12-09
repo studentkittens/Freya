@@ -20,17 +20,21 @@ namespace GManager
              */
             void add(AbstractBrowser& browser);
 
+            /**
+             * @brief Set a specfici browser
+             *
+             * Note: The browser should be already added with add()
+             *
+             * @param browser
+             */
+            void set(AbstractBrowser& browser);
+
         private:
 
             void change_browser(AbstractBrowser * browser);
             void on_selection_changed(void);
-
-            /* Fortunes :-) */
-            Glib::ustring get_fortune(void);
-
             void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
-            void on_refresh_fortune(void);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -58,7 +62,7 @@ namespace GManager
             Gtk::Box * mp_List;
             
             /* fortune label on startup */
-            Gtk::Label * mp_FortuneLabel;
+            Gtk::Label m_NoBrowsers;
     };
 }
 

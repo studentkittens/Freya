@@ -5,7 +5,7 @@
 namespace Browser
 {
     Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Queue",Gtk::Stock::ZOOM_FIT),
+        AbstractBrowser("Queue",true,true,Gtk::Stock::ZOOM_FIT),
         AbstractClientUser(client),
         m_FilterText("")
     {

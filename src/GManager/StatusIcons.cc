@@ -23,7 +23,10 @@ namespace GManager
 
     void Statusicons::on_connection_change(bool is_connected)
     {
-        /* Empty for now */
+        mp_Random->set_sensitive(is_connected);
+        mp_Single->set_sensitive(is_connected);
+        mp_Repeat->set_sensitive(is_connected);
+        mp_Consume->set_sensitive(is_connected);
     }
 
     void Statusicons::on_client_update(enum mpd_idle type, MPD::NotifyData& data)

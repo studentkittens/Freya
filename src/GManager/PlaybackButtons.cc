@@ -60,5 +60,11 @@ namespace GManager
     
     //----------------------------
 
-    void PlaybackButtons::on_connection_change(bool is_connected) { /* Empty. */ }
+    void PlaybackButtons::on_connection_change(bool is_connected) 
+    {
+       stop_button->set_sensitive(is_connected);
+       prev_button->set_sensitive(is_connected);
+       next_button->set_sensitive(is_connected);
+       pause_button->set_sensitive(is_connected);
+    }
 }

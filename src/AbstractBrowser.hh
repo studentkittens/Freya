@@ -11,10 +11,23 @@ class AbstractBrowser
 {
     public:
 
-        AbstractBrowser(const char * name, Gtk::StockID icon) : m_Name(name) 
-        {
-            icon_id = icon;
-        }
+        /**
+         * @brief Inherit from this class to be able to add this browser to the browserlist
+         *
+         * @param name The name shown in the list
+         * @param is_visible if it is visible in the list (most likely true)
+         * @param needs_connection false if this browser works withouth a connection
+         * @param icon the icon shown lefthand to the name
+         */
+        AbstractBrowser(const char * name,
+                        bool is_visible, 
+                        bool needs_connection,
+                        Gtk::StockID icon) 
+            : m_Name(name),
+              m_IconId(icon),
+              m_NeedsConnection(needs_connection),
+              m_IsVisible(is_visible)
+        {} 
 
         /**
          * @brief Tell BrowserList which element to manage 
@@ -39,12 +52,28 @@ class AbstractBrowser
          *
          * @return See above.
          */
-        Gtk::StockID get_icon_stock_id(void) { return icon_id; } 
+        Gtk::StockID get_icon_stock_id(void) { return m_IconId; } 
+
+        /**
+         * @brief Tells if browser is visible in browserlist
+         *
+         * @return a boolean
+         */
+        bool is_visible(void) { return m_IsVisible; }
+
+        /**
+         * @brief If this browser works without a connection (if false)
+         *
+         * @return a boolean 
+         */
+        bool needs_connection(void) { return m_NeedsConnection; }  
 
     private:
 
         Glib::ustring m_Name;
-        Gtk::StockID icon_id;
+        Gtk::StockID m_IconId;
+        bool m_NeedsConnection;
+        bool m_IsVisible;
 };
 
 #endif

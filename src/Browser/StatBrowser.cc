@@ -5,7 +5,7 @@
 namespace Browser
 {
     StatBrowser::StatBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Statistics",Gtk::Stock::INFO)
+        AbstractBrowser("Statistics",true,true,Gtk::Stock::INFO)
     {
         Gtk::Grid * container = NULL;
         BUILDER_ADD(builder,"ui/Statistics.glade");

@@ -77,21 +77,22 @@
 \contentsline {section}{\numberline {6.11}Glossar}{22}{section.6.11}
 \contentsline {chapter}{\numberline {7}Design-Dokument}{23}{chapter.7}
 \contentsline {section}{\numberline {7.1}Einleitung}{23}{section.7.1}
-\contentsline {section}{\numberline {7.2}Softwarearchitektur}{23}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Architekutr\IeC {\"u}bersicht}{23}{subsection.7.2.1}
-\contentsline {subsubsection}{\numberline {7.2.1.1}Namespace-\IeC {\"U}bersicht}{23}{subsubsection.7.2.1.1}
-\contentsline {subsection}{\numberline {7.2.2}Funktionen}{23}{subsection.7.2.2}
-\contentsline {subsubsection}{\numberline {7.2.2.1}Beispiel-Abspielfunktionen}{23}{subsubsection.7.2.2.1}
-\contentsline {subsubsection}{\numberline {7.2.2.2}Beispiel-Playlist erstellen}{23}{subsubsection.7.2.2.2}
-\contentsline {subsubsection}{\numberline {7.2.2.3}Beispiel-Dateibrowser}{23}{subsubsection.7.2.2.3}
-\contentsline {subsection}{\numberline {7.2.3}Oberfl\IeC {\"a}che}{23}{subsection.7.2.3}
-\contentsline {subsubsection}{\numberline {7.2.3.1}Titelleiste}{23}{subsubsection.7.2.3.1}
-\contentsline {subsubsection}{\numberline {7.2.3.2}Seitenmen\IeC {\"u}}{23}{subsubsection.7.2.3.2}
-\contentsline {subsubsection}{\numberline {7.2.3.3}Fu\IeC {\ss }leiste}{23}{subsubsection.7.2.3.3}
-\contentsline {subsubsection}{\numberline {7.2.3.4}Anzeige}{23}{subsubsection.7.2.3.4}
-\contentsline {subsection}{\numberline {7.2.4}Short-Cuts}{23}{subsection.7.2.4}
-\contentsline {section}{\numberline {7.3}Use-Case-F\IeC {\"a}lle}{23}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Musik abspielen}{23}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Musik zuf\IeC {\"a}llig abspielen}{23}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Musik im Consume Mode abspielen}{23}{subsection.7.3.3}
-\contentsline {subsection}{\numberline {7.3.4}Playlist erstellen}{23}{subsection.7.3.4}
+\contentsline {section}{\numberline {7.2}Softwarearchitektur}{24}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Architekutr\IeC {\"u}bersicht}{24}{subsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.1.1}Namespace-\IeC {\"U}bersicht}{24}{subsubsection.7.2.1.1}
+\contentsline {subsubsection}{\numberline {7.2.1.2}Beschreibung}{25}{subsubsection.7.2.1.2}
+\contentsline {subsection}{\numberline {7.2.2}Funktionen}{25}{subsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.1}Beispiel-Abspielfunktionen}{25}{subsubsection.7.2.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2.2}Beispiel-Playlist erstellen}{25}{subsubsection.7.2.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.3}Beispiel-Dateibrowser}{25}{subsubsection.7.2.2.3}
+\contentsline {subsection}{\numberline {7.2.3}Oberfl\IeC {\"a}che}{25}{subsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.3.1}Titelleiste}{25}{subsubsection.7.2.3.1}
+\contentsline {subsubsection}{\numberline {7.2.3.2}Seitenmen\IeC {\"u}}{25}{subsubsection.7.2.3.2}
+\contentsline {subsubsection}{\numberline {7.2.3.3}Fu\IeC {\ss }leiste}{25}{subsubsection.7.2.3.3}
+\contentsline {subsubsection}{\numberline {7.2.3.4}Anzeige}{25}{subsubsection.7.2.3.4}
+\contentsline {subsection}{\numberline {7.2.4}Short-Cuts}{25}{subsection.7.2.4}
+\contentsline {section}{\numberline {7.3}Use-Case-F\IeC {\"a}lle}{25}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Musik abspielen}{25}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Musik zuf\IeC {\"a}llig abspielen}{25}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Musik im Consume Mode abspielen}{25}{subsection.7.3.3}
+\contentsline {subsection}{\numberline {7.3.4}Playlist erstellen}{25}{subsection.7.3.4}

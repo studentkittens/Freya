@@ -34,7 +34,7 @@ namespace Browser
         mp_TreeView->append_column(m_PlaylistTreeViewCol);
         mp_TreeView->append_column("Last modified", m_Columns.m_col_last_modfied);
 
-        /* For Ctrl-F */
+        /* Directly jumping is just this line.. */
         mp_TreeView->set_search_column(1);
 
         /* Called once the cell needs to get the data from the model */
@@ -146,6 +146,18 @@ namespace Browser
     }
 
     /* ----------------------- */
+    
+    void PlaylistManager::clear(void)
+    {
+        for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
+        {
+            MPD::Playlist * pl = (*iter)[m_Columns.m_col_plist];
+            delete pl;
+        }
+        m_refTreeModel->clear();
+    }
+    
+    /* ----------------------- */
 
     void PlaylistManager::add_item(void * pPlaylist)
     {
@@ -230,7 +242,7 @@ namespace Browser
         if(event & MPD_IDLE_STORED_PLAYLIST)
         {
             /* Update the list of playlists */
-            m_refTreeModel->clear();
+            clear();
             mp_Client->fill_playlists(*this);
         }
     }
@@ -238,7 +250,5 @@ namespace Browser
     /* ----------------------- */
 
     void PlaylistManager::on_connection_change(bool is_connected)
-    {
-        /* Empty for now */
-    }
+    {}
 }

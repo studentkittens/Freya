@@ -9,7 +9,10 @@ namespace MPD
 
     Statistics::~Statistics(void)
     {
-        mpd_stats_free(mp_Statistics);
+        if(mp_Statistics)
+        {
+            mpd_stats_free(mp_Statistics);
+        }
     }
 
     unsigned Statistics::get_number_of_artists(void)

@@ -78,6 +78,9 @@ namespace Browser
             /* other widgets */
             Gtk::Entry * mp_Entry;
             Gtk::Box * mp_QueueBox;
+
+            /* Currently shown version of the Queue */
+            unsigned m_PlaylistVersion;
     };
 }
 #endif //FREYA_QUEUE_H

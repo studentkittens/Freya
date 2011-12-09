@@ -48,14 +48,17 @@ namespace MPD
 
     void Client::disconnect(void)
     {
-        if(listener)
+        if(m_Conn.is_connected())
         {
-            if(listener != NULL)
+            if(listener)
             {
-                listener->leave();
-                delete listener;
-            }
+                if(listener != NULL)
+                {
+                    listener->leave();
+                    delete listener;
+                }
 
+            }
             m_Conn.disconnect();
             m_ConnNotifer.emit(false);
         }
@@ -89,7 +92,7 @@ namespace MPD
         }
         check_error();
     }
-    
+
     //-------------------------------
 
     void Client::begin(void)
@@ -98,7 +101,7 @@ namespace MPD
         m_ListBegun = true;
         mpd_command_list_begin(m_Conn.get_connection(),true);
     }
-    
+
     //-------------------------------
 
     void Client::commit(void)
@@ -109,7 +112,7 @@ namespace MPD
         m_ListBegun = false;
         go_idle();
     }
-    
+
     //-------------------------------
     //-------------------------------
 
@@ -200,10 +203,10 @@ namespace MPD
         }
         else
         {
-        ACTIVITY_SECTION
-            (
-             mpd_run_delete_id(conn,id);
-            )
+            ACTIVITY_SECTION
+                (
+                 mpd_run_delete_id(conn,id);
+                )
         }
     }
 
@@ -350,7 +353,7 @@ namespace MPD
                         default:
                             break;
                     }
-                    mpd_entity_free(ent);
+                   // mpd_entity_free(ent);
                 }
             }
             go_idle();
@@ -384,8 +387,11 @@ namespace MPD
             case MPD_ERROR_CLOSED:
                 {
                     disconnect();
-                    int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval");
-                    Glib::signal_timeout().connect(sigc::mem_fun(*this, &Client::timeout_reconnect),interval,G_PRIORITY_DEFAULT_IDLE);
+                    int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval") * 1000;
+                    Glib::signal_timeout().connect(
+                            sigc::mem_fun(*this, &Client::timeout_reconnect),
+                            interval,G_PRIORITY_DEFAULT_IDLE);
+
                     Info("Starting reconnect campaign. Will try again every %d seconds.",interval);
                     break;
                 }

@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
 
         main_window.get_window()->show();
         kit.run();
+        client.disconnect();
     }
     catch(const Gtk::BuilderError& e)
     {

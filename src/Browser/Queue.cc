@@ -7,7 +7,8 @@ namespace Browser
     Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractBrowser("Queue",true,true,Gtk::Stock::ZOOM_FIT),
         AbstractClientUser(client),
-        m_FilterText("")
+        m_FilterText(""),
+        m_PlaylistVersion(0)
     {
         
         BUILDER_ADD(builder,"ui/Queue.glade");
@@ -107,6 +108,7 @@ namespace Browser
         } catch(const std::logic_error& e) {
             Warning("Empty column: %s",e.what());
         }
+        delete new_song;
     }
     
     /*-------------------------------*/
@@ -157,22 +159,30 @@ namespace Browser
     {
         if(event & (MPD_IDLE_PLAYLIST))
         {
-            /* TODO: Make use of plchanges 
-             * Refilling always is expensive.
-             * */
-            g_printerr("Refill.\n");
-            m_refTreeModel->clear();
-            mp_Client->fill_queue(*this);
+            MPD::Status& status = data.get_status();
+            unsigned qv = status.get_queue_version();
+
+            if(qv > m_PlaylistVersion)
+            {
+                /* TODO: Make use of plchanges 
+                 * Refilling always is expensive.
+                 * */
+                g_printerr("Refill.\n");
+                m_refTreeModel->clear();
+                mp_Client->fill_queue(*this);
+            }
+            
+            m_PlaylistVersion = qv;
         }
     }
-    
+
     /*-------------------------------*/
 
     void Queue::on_connection_change(bool is_connected)
     {
         /* Empty for now */
     }
-    
+
     /*-------------------------------*/
 
     /* Menuhandling */
@@ -183,7 +193,7 @@ namespace Browser
     }
 
     /*-------------------------------*/
-    
+
     void Queue::on_menu_remove_clicked(void)
     {
         std::vector<Gtk::TreePath> path_row_vec = m_TreeSelection->get_selected_rows();

@@ -132,6 +132,7 @@ namespace Browser
     {
         g_assert(pDir);
         add_item(pDir->get_path(),false);
+        delete pDir;
     }
 
     /*------------------------------------------------*/
@@ -140,6 +141,7 @@ namespace Browser
     {
         g_assert(pSong);
         add_item(pSong->get_uri(),true);
+        delete pSong;
     }
 
     /*------------------------------------------------*/

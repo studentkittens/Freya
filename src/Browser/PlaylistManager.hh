@@ -41,6 +41,9 @@ namespace Browser
             void on_add_clicked(void);
             bool on_row_double_click(GdkEventButton * event);
 
+            /* Clear list (frees memory) */
+            void clear(void);
+
             /* Implemented from AbstractItemlist */
             void add_item(void * pPlaylist);
 

@@ -30,15 +30,19 @@ namespace Browser
 
         private:
 
+            /* GUI Signals */
             void on_item_activated(const Gtk::TreeModel::Path& path);
             void on_home_button_clicked(void);
-            void set_current_path(const char * path);
-            void go_one_up(void);
-            void add_item(const char * path, bool is_file);
             bool on_button_press_event(GdkEventButton* event);
 
+            /* Client Signals */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
+           
+            /* Logic */ 
+            void add_item(const char * path, bool is_file);
+            void set_current_path(const char * path);
+            void go_one_up(void);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {

@@ -52,7 +52,7 @@ namespace Browser
         FILE * pipe = NULL;
         if((pipe = popen(FORTUNE_COMMAND,"r")))
         {
-            char fortune_buf[FORTUNE_BUF_SIZE];
+            char fortune_buf[FORTUNE_BUF_SIZE] = {0};
             int bytes = fread(fortune_buf,1,FORTUNE_BUF_SIZE,pipe);
             if(bytes != 0 && !strstr(fortune_buf,"fortune:"))
             {

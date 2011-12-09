@@ -135,19 +135,11 @@ namespace MPD
             mpd_song * c_song = NULL;
             mpd_stats * c_stats = NULL;
 
-            mpd_command_list_begin(mpd_conn,true);
-            mpd_send_current_song(mpd_conn);
-            mpd_send_stats(mpd_conn);
-            mpd_command_list_end(mpd_conn);
-
-            c_song  = mpd_recv_song(mpd_conn);
-            mpd_response_next(mpd_conn);
-            c_stats = mpd_recv_stats(mpd_conn);
-            mpd_response_finish(mpd_conn);
+            c_song  = mpd_run_current_song(mpd_conn);
+            c_stats = mpd_run_stats(mpd_conn);
 
             mpd_send_status(mpd_conn);
             mp_Status = recv_status_own();
-            mpd_response_finish(mpd_conn);
 
             if(c_song)   mp_Song = new Song(*c_song);
             if(c_stats)  mp_Statistics = new Statistics(*c_stats);

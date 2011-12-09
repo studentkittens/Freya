@@ -8,7 +8,6 @@
 /* Songlist interface */
 #include "../AbstractItemlist.hh"
 #include "../AbstractFilebrowser.hh"
-#include "AbstractClientExtension.hh"
 
 namespace MPD
 {

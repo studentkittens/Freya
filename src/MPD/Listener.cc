@@ -61,8 +61,8 @@ namespace MPD
         /* No idle events, nor io events on startup,
          * call force_update() if you want to init 
          * your registered classes */
-        idle_events = (enum mpd_idle)0;
-        io_eventmask = (enum mpd_async_event)0;
+        idle_events = (mpd_idle)0;
+        io_eventmask = (mpd_async_event)0;
 
         /* No idling  -> client has to call enter() itself
          * No leaving -> see above
@@ -128,7 +128,7 @@ namespace MPD
         bool result = false;
         if(mpd_async_get_error(async_conn) != MPD_ERROR_SUCCESS)
         {
-            io_eventmask = (enum mpd_async_event)0;
+            io_eventmask = (mpd_async_event)0;
             Warning("AsyncError: %s",mpd_async_get_error_message(async_conn));
             result = true;
         }
@@ -158,7 +158,7 @@ namespace MPD
             /* Iterare over the enum (this is weird) */
             for(unsigned mask = 1; /* empty */; mask <<= 1)
             {
-                const char * event_name = mpd_idle_name((enum mpd_idle)mask);
+                const char * event_name = mpd_idle_name((mpd_idle)mask);
 
                 /* We assume the end of the 'enum' here */
                 if(event_name == NULL)
@@ -170,7 +170,7 @@ namespace MPD
                     //Debug("  :%s",event_name);
 
                     /* Notify observers */
-                    mp_Notifier->emit((enum mpd_idle)actual_event,m_NData);
+                    mp_Notifier->emit((mpd_idle)actual_event,m_NData);
                 }
             }
 
@@ -191,14 +191,14 @@ namespace MPD
 
     bool Listener::parse_response(char *line)
     {
-        enum mpd_parser_result result;
+        mpd_parser_result result;
         result = mpd_parser_feed(mp_Parser, line);
 
         switch (result) 
         {
             case MPD_PARSER_ERROR:
 
-                io_eventmask = (enum mpd_async_event)0;
+                io_eventmask = (mpd_async_event)0;
                 check_async_error();
                 Error("ParserError: %d - %s",
                         mpd_parser_get_server_error(mp_Parser),
@@ -217,13 +217,13 @@ namespace MPD
 
             case MPD_PARSER_MALFORMED:
 
-                io_eventmask = (enum mpd_async_event)0;
+                io_eventmask = (mpd_async_event)0;
                 check_async_error();
                 return false;
 
             case MPD_PARSER_SUCCESS:
 
-                io_eventmask = (enum mpd_async_event)0;
+                io_eventmask = (mpd_async_event)0;
                 invoke_user_callback();
                 return true;
 
@@ -254,7 +254,7 @@ namespace MPD
     //--------------------------------
 
     /* Create the watchdog on the socket */
-    void Listener::create_watch(enum mpd_async_event events)
+    void Listener::create_watch(mpd_async_event events)
     {
         /* Convert mpd events to glib events */
         Glib::IOCondition condition = Listener::MPDAsyncEvent_to_GIOCondition(events);
@@ -275,7 +275,7 @@ namespace MPD
     gboolean Listener::io_callback(Glib::IOCondition condition)
     {
         check_async_error();
-        enum mpd_async_event actual_event = GIOCondition_to_MPDAsyncEvent(condition);
+        mpd_async_event actual_event = GIOCondition_to_MPDAsyncEvent(condition);
 
         /* Tell libmpdclient that it should do the IO now */
         if(mpd_async_io(async_conn, actual_event) == false)
@@ -295,13 +295,13 @@ namespace MPD
         }
 
         /* Returning false disconnects watchdog */
-        enum mpd_async_event events = mpd_async_events(async_conn);
+        mpd_async_event events = mpd_async_events(async_conn);
         if(events == 0) 
         {
             Debug("no events -> removing watch");
 
             /* no events - disable watch */
-            io_eventmask = (enum mpd_async_event)0;
+            io_eventmask = (mpd_async_event)0;
             return false;
         }
         else if(events != io_eventmask) 
@@ -330,7 +330,7 @@ namespace MPD
             }
 
             /* Get a bitmask of events that needs to be watched */
-            enum mpd_async_event events = mpd_async_events(async_conn);
+            mpd_async_event events = mpd_async_events(async_conn);
 
             /* Indicate we get into idlemode */
             is_idle = true;
@@ -359,9 +359,9 @@ namespace MPD
                 is_idle = false;
 
                 /* New game - new dices */
-                io_eventmask = (enum mpd_async_event)0;
+                io_eventmask = (mpd_async_event)0;
 
-                enum mpd_idle events;
+                mpd_idle events;
 
                 /* Make sure no idling is running */
                 if(idle_events == 0)
@@ -372,7 +372,7 @@ namespace MPD
                 is_leaving = true;
 
                 /* Check for errors that may happened shortly */            
-                enum mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
+                mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
                 if(err != MPD_ERROR_SUCCESS)
                 {
                         Warning("Error#%d while leaving idle mode: %s",err,
@@ -405,7 +405,7 @@ namespace MPD
 
     void Listener::force_update(void)
     {
-        idle_events = (enum mpd_idle)1;
+        idle_events = (mpd_idle)1;
         if(is_idling())
         {
             mpd_run_noidle(mp_Conn->get_connection());
@@ -420,20 +420,20 @@ namespace MPD
     //--------------------------------
     //--------------------------------
 
-    enum mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
+    mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
     {
         int events = 0;
         for(unsigned i = 0; i < map_IOAsync_size; i++)
             if(condition & map_IOCondtion_MPDASync[i][0])
                 events |= map_IOCondtion_MPDASync[i][1];
 
-        return (enum mpd_async_event)events;
+        return (mpd_async_event)events;
     }
 
     //--------------------------------
 
     /* Convert MPD's Async event to Glib's IO Socket events by a table */
-    Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events)
+    Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(mpd_async_event events)
     {
         /* "Mix in" by using binary OR */
         int condition = 0;

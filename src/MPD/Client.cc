@@ -47,7 +47,7 @@ namespace MPD
                 m_Conn.get_connection(); \
                 if(conn != NULL) {       \
 
-    /* Go back idling, *never* forget this :P */                
+    /* Go back idling, *never* forget this. */                
     #define GET_LAID                  \
                 }                     \
                 go_idle();            \
@@ -55,7 +55,7 @@ namespace MPD
 
     //-------------------------------
 
-    Client::Client() : m_ListBegun(false), m_Notifier()
+    Client::Client() 
     {
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
@@ -74,60 +74,14 @@ namespace MPD
 
     void Client::connect(void)
     {
-        m_Conn.signal_error().connect(
-                sigc::mem_fun(*this,&Client::handle_errors));
-
-        if(m_Conn.connect())
-        {
-            m_Conn.clear_error();
-
-            mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
-            go_idle();
-            m_ConnNotifer.emit(true);
-            mp_Listener->force_update();
-        }
+        __connect();
     }
 
     //-------------------------------
 
     void Client::disconnect(void)
     {
-        if(m_Conn.is_connected())
-        {
-            m_Conn.clear_error();
-            if(mp_Listener)
-            {
-                if(mp_Listener != NULL)
-                {
-                    mp_Listener->leave();
-                    delete mp_Listener;
-                }
-
-            }
-            m_Conn.disconnect();
-            m_ConnNotifer.emit(false);
-        }
-    }
-
-
-    //-------------------------------
-
-    void Client::begin(void)
-    {
-        go_busy();
-        m_ListBegun = true;
-        mpd_command_list_begin(m_Conn.get_connection(),true);
-    }
-
-    //-------------------------------
-
-    void Client::commit(void)
-    {
-        mpd_connection * conn = m_Conn.get_connection();
-        mpd_command_list_end(conn);
-        mpd_response_finish(conn);
-        m_ListBegun = false;
-        go_idle();
+        __disconnect();
     }
 
     //-------------------------------
@@ -182,6 +136,20 @@ namespace MPD
 
     //-------------------------------
 
+    bool Client::playback_pause(void)
+    {
+        if(m_Conn.is_connected())
+        {
+            if(get_status()->get_state() != MPD_STATE_STOP)
+                return this->send_command("pause");
+            else
+                return this->send_command("play");
+        }
+        return false;
+    }
+    
+    //-------------------------------
+    
     void Client::queue_add(const char * path)
     {
         if(path != NULL)
@@ -269,20 +237,6 @@ namespace MPD
         GET_LAID
 
         return id;
-    }
-
-    //-------------------------------
-
-    bool Client::playback_pause(void)
-    {
-        if(m_Conn.is_connected())
-        {
-            if(get_status()->get_state() != MPD_STATE_STOP)
-                return this->send_command("pause");
-            else
-                return this->send_command("play");
-        }
-        return false;
     }
 
     //-------------------------------
@@ -382,61 +336,6 @@ namespace MPD
         GET_LAID
     }
 
-    //-------------------------------
-
-    gboolean Client::timeout_reconnect(void)
-    {
-        connect();
-
-        gboolean retv = m_Conn.is_connected();
-        if(retv)
-        {
-            Info("Succesfully reconnected.");
-        }
-        return (retv == false);
-    }
-
-    //-------------------------------
-
-    void Client::handle_errors(bool is_fatal, mpd_error err)
-    {
-        switch(err)
-        {
-            case MPD_ERROR_SUCCESS:
-                {
-                    break;
-                }
-            case MPD_ERROR_CLOSED:
-                {
-                    disconnect();
-                    int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval") * 1000;
-                    Glib::signal_timeout().connect(
-                            sigc::mem_fun(*this, &Client::timeout_reconnect),
-                            interval,G_PRIORITY_DEFAULT_IDLE);
-
-                    Info("Starting reconnect campaign. Will try again every %d seconds.",interval);
-                    break;
-                }
-            case MPD_ERROR_SERVER:
-            case MPD_ERROR_OOM:
-            case MPD_ERROR_ARGUMENT:
-            case MPD_ERROR_STATE:
-            case MPD_ERROR_TIMEOUT:
-            case MPD_ERROR_SYSTEM:
-            case MPD_ERROR_RESOLVER:
-            case MPD_ERROR_MALFORMED:
-            default:
-                break;
-        }
-    }
-
-    //--------------------
-
-    EventNotifier& Client::signal_client_update(void)
-    {
-        return m_Notifier; 
-    }
-
     //--------------------
 
     void Client::toggle_random(void)
@@ -480,6 +379,8 @@ namespace MPD
         }
         GET_LAID
     }
+    
+    //--------------------
 
     void Client::play_song_at_id(unsigned song_id)
     {
@@ -488,27 +389,6 @@ namespace MPD
              mpd_run_play_id(conn,song_id);
         }
         GET_LAID
-    }
-
-    //--------------------
-
-    Status * Client::get_status(void)
-    {
-        if(m_Conn.is_connected())
-        {
-            return &(mp_Listener->signal_client_update_data().get_status());
-        }
-        Warning("get_status() while being disconnected");
-
-        return NULL;
-    }
-
-    //--------------------
-
-    void Client::force_update(void)
-    {
-        if(m_Conn.is_connected())
-            mp_Listener->force_update();
     }
 
     //--------------------
@@ -531,13 +411,6 @@ namespace MPD
              mpd_run_set_volume(conn,vol);
         }
         GET_LAID
-    }
-
-    //--------------------
-
-    ConnectionNotifier& Client::signal_connection_change(void)
-    {
-        return m_ConnNotifer;
     }
 
     //--------------------

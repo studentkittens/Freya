@@ -39,15 +39,6 @@
 
 namespace MPD
 {
-    /**
-     * @brief You can call connect on this.
-     *
-     * It gets emitted by the client whenever the connection changes,
-     * i.e. when getting disconnected or connected, in former case 
-     * 'false' is passed as argument, in the latter 'true'
-     */
-    typedef sigc::signal<void,bool> ConnectionNotifier;
-
     class Client : public BaseClient
     {
         public:
@@ -67,12 +58,6 @@ namespace MPD
 
             void connect(void);
             void disconnect(void);
-
-            /* Go to next song */
-            bool send_command(const char * command);
-
-            /* List contents of current playlist */
-            void list_queue(void);
 
             /* Playback */
             bool playback_next(void);
@@ -107,43 +92,6 @@ namespace MPD
             void set_volume(unsigned vol);
 
             /**
-             * @brief Get the current MPD::Status
-             *
-             * @return A reference to it. Do not modify.
-             */
-            Status * get_status(void);
-
-            /**
-             * @brief Get the notify sigc::signal
-             *
-             * Use connect() on it. This is called always once a ne, ...w event
-             * happens. See the typedef in Listener.hh for the exact signature
-             *, ...
-             * @return the sigc::signal
-             */
-            EventNotifier& signal_client_update(void);
-
-            /**
-             * @brief Register for connection changes
-             *
-             * @return a sigc::signal, you can call connect() on
-             */
-            ConnectionNotifier& signal_connection_change(void);
-            
-            /* Commandlists */
-            void begin(void);
-            void commit(void);
-
-            /**
-             * @brief Forces client update
-             *
-             * Updates status, stats, current song 
-             * and sends all possible events to all connected listeners
-             *
-             */
-            void force_update(void);
-
-            /**
              * @brief Fetches the playlist from the mpd server
              *
              * @param data_model A user defined class, that inherits from AbstractSonglist 
@@ -154,26 +102,18 @@ namespace MPD
             void fill_playlists(AbstractItemlist& data_model);
             void fill_ouputs(AbstractItemlist& data_model);
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
-
-        private:
             
-            // --------------
-
-            gboolean timeout_reconnect(void);
-            void handle_errors(bool is_fatal, mpd_error err);
-
-
-            // --------------
-
-            /* Client::begin() was called, 
-             * but not yet commit */
-            bool m_ListBegun;
-
-            /* The slot which observers can connect to */
-            EventNotifier m_Notifier;
-
-            /* Inform observers if connection changes happened */
-            ConnectionNotifier m_ConnNotifer;
+            /**
+             * @brief Send a command to the server
+             *
+             * The output will be printed in the cmd,
+             * it is therefore just useful for debugging purpose
+             *
+             * @param command See the protocol reference: http://www.musicpd.org/doc/protocol/index.html
+             *
+             * @return true on succesfull execution
+             */
+            bool send_command(const char * command);
     };
 
 }

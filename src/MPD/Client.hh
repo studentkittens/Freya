@@ -31,9 +31,7 @@
 #ifndef FREYA_CLIENT_GUARD
 #define FREYA_CLIENT_GUARD
 
-#include "../includes.hh"
-#include  "Connection.hh"
-#include  "Listener.hh"
+#include  "BaseClient.hh"
 
 /* Songlist interface */
 #include "../AbstractItemlist.hh"
@@ -50,7 +48,7 @@ namespace MPD
      */
     typedef sigc::signal<void,bool> ConnectionNotifier;
 
-    class Client
+    class Client : public BaseClient
     {
         public:
 
@@ -69,7 +67,6 @@ namespace MPD
 
             void connect(void);
             void disconnect(void);
-            bool is_connected(void);
 
             /* Go to next song */
             bool send_command(const char * command);
@@ -92,11 +89,6 @@ namespace MPD
             void play_song_at_id(unsigned song_id);           
             void playback_seek(unsigned song_id, unsigned abs_time);
 
-            /* TODO: This is more appropiate in MPD::Playlist.. */
-            void playlist_remove(const char * name);
-            void playlist_add(const char * name);
-            void playlist_load(const char * name);
-            void playlist_rename(const char * source, const char * dest);
             void playlist_save(const char * name);
 
             void queue_add(const char * url);
@@ -160,28 +152,22 @@ namespace MPD
              */
             void fill_queue(AbstractItemlist& data_model);
             void fill_playlists(AbstractItemlist& data_model);
+            void fill_ouputs(AbstractItemlist& data_model);
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
 
         private:
-
-            void go_idle(void);
-            void go_busy(void);
+            
+            // --------------
 
             gboolean timeout_reconnect(void);
-            bool check_error(void);
-            void handle_errors(enum mpd_error err);
+            void handle_errors(bool is_fatal, mpd_error err);
 
-            /* Instancevars */
+
+            // --------------
 
             /* Client::begin() was called, 
              * but not yet commit */
             bool m_ListBegun;
-
-            /* The wrapped up mpd_connection */
-            Connection m_Conn;
-
-            /* The event notifier */
-            Listener * listener;
 
             /* The slot which observers can connect to */
             EventNotifier m_Notifier;

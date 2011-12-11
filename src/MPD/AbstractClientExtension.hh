@@ -31,18 +31,36 @@
 #ifndef FREYA_ABSTRACTCLIENTEXTENSION_HH
 #define FREYA_ABSTRACTCLIENTEXTENSION_HH
 
+#include "BaseClient.hh"
+
 namespace MPD
 {
-    class Client;
-
     class AbstractClientExtension
     {
         public:
-            AbstractClientExtension(MPD::Client& client);
+            AbstractClientExtension(MPD::BaseClient& base_client)
+            {
+                mp_BaseClient = &base_client;
+            }
 
-        private:
-            MPD::Client * client;
+        protected:
+            MPD::BaseClient * mp_BaseClient;
     };
+
+    /* Go into active mode */
+    #define EXTERNAL_GET_BUSY                   \
+            if(mp_BaseClient->is_connected())   \
+            {                                   \
+                mp_BaseClient->go_busy();       \
+                mpd_connection * conn =         \
+                mp_BaseClient->get_connection();\
+                if(conn != NULL) {              
+
+    /* Go back idling, *never* forget this */                
+    #define EXTERNAL_GET_LAID             \
+                }                         \
+                mp_BaseClient->go_idle(); \
+            }                             
 
 }
 

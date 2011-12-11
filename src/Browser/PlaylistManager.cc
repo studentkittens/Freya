@@ -140,7 +140,8 @@ namespace Browser
                 Glib::ustring old_name = row[m_Columns.m_col_name];
                 if(old_name != new_text)
                 {
-                    mp_Client->playlist_rename(old_name.c_str(),new_text.c_str());
+                    MPD::Playlist * PList = row[m_Columns.m_col_plist];
+                    PList->rename(new_text.c_str());
                 }
             }
             mp_StatusLabel->set_text("");
@@ -215,15 +216,15 @@ namespace Browser
             if(it)
             {
                 Gtk::TreeRow row = *it;
-                Glib::ustring pl_name = row[m_Columns.m_col_name];
+                MPD::Playlist * PList = row[m_Columns.m_col_plist];
 
                 if(load_or_remove)
                 {
-                    mp_Client->playlist_load(pl_name.c_str());
+                    PList->load();
                 }
                 else
                 {
-                    mp_Client->playlist_remove(pl_name.c_str());
+                    PList->remove();
                 }
             }
         }

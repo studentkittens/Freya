@@ -35,7 +35,7 @@
 
 namespace MPD
 {
-    class Directory
+    class Directory 
     {
         public:
             Directory(mpd_directory& dir);

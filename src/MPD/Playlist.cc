@@ -32,12 +32,16 @@
 
 namespace MPD
 {
-    Playlist::Playlist(mpd_playlist& playlist)
+    Playlist::Playlist(MPD::BaseClient& base_client, mpd_playlist& playlist) : 
+        AbstractClientExtension(base_client)
     {
         mpc_playlist = &playlist;
     }
 
-    Playlist::Playlist(const Playlist& copy_this)
+    //---------------------------
+
+    Playlist::Playlist(const Playlist& copy_this) :
+        AbstractClientExtension(*mp_BaseClient)
     {
         if(copy_this.mpc_playlist != NULL)
         {
@@ -45,19 +49,86 @@ namespace MPD
         }
     }
 
+    //---------------------------
+
     Playlist::~Playlist(void)
     {
         if(mpc_playlist != NULL)
             mpd_playlist_free(mpc_playlist);
     }
 
+    //---------------------------
+
     const char * Playlist::get_path(void)
     {
         return mpd_playlist_get_path(mpc_playlist);
     }
 
+    //---------------------------
+
     time_t Playlist::get_last_modified(void)
     {
         return mpd_playlist_get_last_modified(mpc_playlist);
     }
+    
+    //---------------------------
+    // CLIENT EXTENSIONS 
+    //---------------------------
+    
+    void Playlist::remove(void)
+    {
+        EXTERNAL_GET_BUSY
+        {
+            mpd_run_rm(conn,get_path());
+        }
+        EXTERNAL_GET_LAID
+    }
+
+    //---------------------------
+
+    void Playlist::load(void)
+    {
+        EXTERNAL_GET_BUSY
+        {
+            mpd_run_load(conn,get_path());
+        } 
+        EXTERNAL_GET_LAID
+    }
+
+    //---------------------------
+
+    void Playlist::rename(const char * new_name)
+    {
+        if(new_name != NULL)
+        {
+            EXTERNAL_GET_BUSY
+            {
+                mpd_run_rename(conn,get_path(),new_name);
+            } 
+            EXTERNAL_GET_LAID
+        }
+    }
+
+    //---------------------------
+    
+    void Playlist::add_song(const char * uri)
+    {
+        if(uri != NULL)
+        {
+            EXTERNAL_GET_BUSY
+            {
+                mpd_run_playlist_add(conn,get_path(),uri);
+            } 
+            EXTERNAL_GET_LAID
+        }
+    }
+    
+    //---------------------------
+    
+    void Playlist::add_song(MPD::Song& song)
+    {
+        add_song(song.get_uri());
+    }
+    
+    //---------------------------
 }

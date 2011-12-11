@@ -32,6 +32,10 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
+/* g_sprintf */
+#include <glib.h>
+#include <glib/gprintf.h>
+
 #define MAX_TIME_BUF 42
 
 namespace GManager

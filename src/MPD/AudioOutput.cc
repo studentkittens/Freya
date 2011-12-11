@@ -32,13 +32,10 @@
 
 namespace MPD
 {
-    AudioOutput::AudioOutput(MPD::Connection& conn, mpd_output * output)
+    AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) : 
+        AbstractClientExtension(client)
     {
-        mp_Output = output;
-        mp_Conn   = &conn;
-
-        g_assert(mp_Conn);
-        g_assert(output);
+        mp_Output = &output;
     }
 
     /* ----------------- */
@@ -58,15 +55,35 @@ namespace MPD
         return mpd_output_get_enabled(mp_Output);
     }
 
+    //-----------------------
+    // CLIENT EXTENSIONS
+    //-----------------------    
+
     bool AudioOutput::enable(void)
     {
+        bool retv = false;
         unsigned id = get_id();
-        return mpd_run_enable_output(mp_Conn->get_connection(),id);
+
+        EXTERNAL_GET_BUSY 
+        {
+            retv = mpd_run_enable_output(mp_BaseClient->get_connection(),id);
+        }
+        EXTERNAL_GET_LAID
+        
+            return retv;
     }
 
     bool AudioOutput::disable(void)
     {
+        bool retv = false;
         unsigned id = get_id();
-        return mpd_run_disable_output(mp_Conn->get_connection(),id);
+
+        EXTERNAL_GET_BUSY 
+        {
+            retv = mpd_run_disable_output(mp_BaseClient->get_connection(),id);
+        }
+        EXTERNAL_GET_LAID
+
+        return retv;
     }
 }

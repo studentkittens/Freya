@@ -31,10 +31,17 @@
 #ifndef FREYA_MPDCONNECTION_GUARD
 #define FREYA_MPDCONNECTION_GUARD
 
-#include "../includes.hh"
+#include <mpd/client.h>
+#include <glibmm.h>
 
 namespace MPD
 {
+    typedef sigc::signal<  
+                         void, /* No interaction */
+                         bool, /* is_fatal       */
+                         mpd_error
+                        >ErrorNotify;
+
     class Connection
     {
         public:
@@ -48,6 +55,8 @@ namespace MPD
             bool connect(void);
             bool disconnect(void);
             bool clear_error(void);
+            bool check_error(void);
+            ErrorNotify& signal_error(void);
 
             /* Returns mpd_conn */
             mpd_connection * get_connection(void);
@@ -57,6 +66,10 @@ namespace MPD
             /* The connection from libmpdclient to MPD
             */
             mpd_connection * conn;
+
+            /* Emit is called on this when check_error() 
+             * reports an error */
+            ErrorNotify m_ErrorSig;
     };
 
 }

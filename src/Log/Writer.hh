@@ -81,6 +81,7 @@ namespace Log
          * @param ... a va_list to allow printf style logging
          */
         void message(const char *file, int line, LOGLEVEL level, const char *msg, ...); 		
+        
         /**
          * @brief Clear the logfile (but keep it open)
          */
@@ -88,11 +89,11 @@ namespace Log
 
         private:
 
+
         Glib::ustring m_Logpath;
         FILE * m_Logfile;                                                              	
 
-        const char * convert_enum_to_str(LOGLEVEL level);                                       
-        const char * convert_enum_to_col(LOGLEVEL level);                                       
+        const char * convert_enum_to_str(LOGLEVEL level, bool& append_location); 
         void get_current_time(char buffer[]);									
     };
 }

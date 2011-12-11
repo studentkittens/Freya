@@ -33,6 +33,10 @@
 
 namespace MPD
 {
+    /* Typdefs for the lazy */
+    typedef struct mpd_connection mpd_connection;
+    typedef struct mpd_status mpd_status;
+    typedef struct mpd_entity mpd_entity;
 
     /* Map appropiate Glib::IO events to MPD Async events,
      * and other way round. 
@@ -100,7 +104,7 @@ namespace MPD
     Listener::~Listener()
     {
         leave();
-            
+
         if(mp_Parser!= NULL)
             mpd_parser_free(mp_Parser);
     }
@@ -163,7 +167,7 @@ namespace MPD
                 unsigned actual_event = (idle_events & mask);
                 if(actual_event != 0)
                 {
-                    Debug("  :%s",event_name);
+                    //Debug("  :%s",event_name);
 
                     /* Notify observers */
                     mp_Notifier->emit((enum mpd_idle)actual_event,m_NData);
@@ -338,7 +342,7 @@ namespace MPD
         }
         else
         {
-            Warning("Cannot enter idling mode: Already idling.");
+            Debug("Cannot enter idling mode: Already idling.");
             return false;
         }
     }
@@ -364,27 +368,17 @@ namespace MPD
                 {
                     events = mpd_run_noidle(mp_Conn->get_connection());
                 }
-                else
-                {
-                    events = mpd_recv_idle(mp_Conn->get_connection(),false);
-                }
 
                 is_leaving = true;
 
                 /* Check for errors that may happened shortly */            
-                if(events == 0)
+                enum mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
+                if(err != MPD_ERROR_SUCCESS)
                 {
-                    enum mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
-                    if(err != MPD_ERROR_SUCCESS && err != MPD_ERROR_STATE)
-                    {
-                        if(err != MPD_ERROR_STATE)
-                        {
-                            Warning("Error#%d while leaving idle mode: %s",err,
-                                    mpd_connection_get_error_message(mp_Conn->get_connection()));
-                        }
-                    }
-                    is_fatal = mp_Conn->clear_error();
+                        Warning("Error#%d while leaving idle mode: %s",err,
+                                mpd_connection_get_error_message(mp_Conn->get_connection()));
                 }
+                is_fatal = mp_Conn->clear_error();
 
                 if(is_fatal == false)
                 {
@@ -397,9 +391,7 @@ namespace MPD
 
                 is_leaving = false;
             }
-            else Error("IOFunctor already disconnected");
         }
-        else Warning("Cannot leave when already left (Dude!)");
     }
 
     //--------------------------------
@@ -418,7 +410,7 @@ namespace MPD
         {
             mpd_run_noidle(mp_Conn->get_connection());
         }
-        
+
         /* Inform watchers about events */
         is_forced = true;
         invoke_user_callback();

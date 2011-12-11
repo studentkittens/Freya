@@ -31,16 +31,16 @@
 #ifndef FREYA_AUDIOOUTPUT_GUARD
 #define FREYA_AUDIOOUTPUT_GUARD
 
-#include "Client.hh"
+#include "AbstractClientExtension.hh"
 
 namespace MPD
 {
     typedef struct mpd_output mpd_output;
 
-    class AudioOutput
+    class AudioOutput : AbstractClientExtension 
     {
         public:
-            AudioOutput(MPD::Connection& conn, mpd_output * output);
+            AudioOutput(MPD::BaseClient& client, mpd_output& output);
             unsigned get_id(void);
             const char * get_name(void);
             bool get_enabled(void);
@@ -49,7 +49,6 @@ namespace MPD
 
         private:
             mpd_output * mp_Output;
-            MPD::Connection * mp_Conn;
     };
 }
 

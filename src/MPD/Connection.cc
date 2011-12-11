@@ -30,6 +30,7 @@
 **************************************************************/
 #include "Connection.hh"
 #include "../Log/Writer.hh"
+#include "../Config/Handler.hh"
 
 namespace MPD
 {
@@ -51,6 +52,7 @@ namespace MPD
 
     mpd_connection * Connection::get_connection(void)
     {
+        check_error();
         if(is_connected())
             return conn;
         else
@@ -61,11 +63,19 @@ namespace MPD
 
     bool Connection::connect(void)
     {
-        /* Get connection settings */
+        if(is_connected())
+            return false;
+
+        /* Timeout in seconds */
         int timeout = CONFIG_GET_AS_INT("settings.connection.timeout") * 1000; 
-        int port    = CONFIG_GET_AS_INT("settings.connection.port"); 
+
+        /* Port as integer */
+        int port = CONFIG_GET_AS_INT("settings.connection.port"); 
+
+        /* Hostname, might be an IP or a hostname like localhost */
         Glib::ustring str_host = CONFIG_GET("settings.connection.host").c_str();
 
+        /* Instance underlying C struct */
         mpd_connection * mpd_conn = mpd_connection_new(str_host.c_str(), port, timeout);
         if(mpd_conn != NULL)
         {
@@ -103,6 +113,13 @@ namespace MPD
 
     //--------------------------------------
     
+    ErrorNotify& Connection::signal_error(void)
+    {
+        return m_ErrorSig;
+    }
+    
+    //--------------------------------------
+    
     bool Connection::clear_error(void)
     {
         bool retv = false;
@@ -121,5 +138,51 @@ namespace MPD
         return retv;
     }
 
+    //--------------------------------------
+    
+    bool Connection::check_error(void)
+    {
+        bool result = false;
+        if(is_connected())
+        {
+            bool is_fatal = false;
+
+            /* Get the errorcode */
+            mpd_error err_code = mpd_connection_get_error(conn);
+
+            /* Cross fingers.. */
+            if(err_code != MPD_ERROR_SUCCESS)
+            {
+                const int buf_size = 1024;
+                char error_buf[buf_size] = {0};
+
+                /* Build string */
+                if(err_code == MPD_ERROR_SERVER)
+                    g_snprintf(error_buf,buf_size,"(server) #%d: %s",
+                            mpd_connection_get_server_error(conn),
+                            mpd_connection_get_error_message(conn));
+                else
+                    g_snprintf(error_buf,buf_size,"(client) #%d: %s: ",
+                            err_code,
+                            mpd_connection_get_error_message(conn));
+
+                /* Clear non fatal errors */
+                is_fatal = clear_error();
+
+                if(is_fatal)
+                    Error("%s",error_buf);
+                else
+                    Warning("%s",error_buf);
+
+                /* Notify Observers */
+                m_ErrorSig.emit(is_fatal,err_code);
+
+                /* An error occured */
+                result = true;
+            }
+        }
+        return result;
+    }
+    
     //--------------------------------------
 }

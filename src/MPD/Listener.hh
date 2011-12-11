@@ -31,7 +31,11 @@
 #ifndef FREYA_LISTENER_GUARD
 #define FREYA_LISTENER_GUARD
 
-#include "../includes.hh"
+#include <mpd/client.h>
+#include <mpd/async.h>
+#include <mpd/parser.h>
+#include <glibmm.h>
+
 #include "Status.hh"
 #include "NotifyData.hh"
 #include "Connection.hh"
@@ -64,7 +68,7 @@ namespace MPD
             // Classmembers  //
             //---------------//
 
-            NotifyData& get_notify_data(void);
+            NotifyData& signal_client_update_data(void);
 
 
             /**

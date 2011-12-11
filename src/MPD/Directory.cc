@@ -32,7 +32,7 @@
 
 namespace MPD
 {
-    Directory::Directory(mpd_directory& dir)
+    Directory::Directory(mpd_directory& dir) 
     {
         mp_Dir = &dir;
     }

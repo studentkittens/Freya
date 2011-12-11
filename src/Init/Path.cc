@@ -82,11 +82,7 @@ namespace Init
         {
             if (g_file_test(configfile, G_FILE_TEST_IS_REGULAR))
             {
-                if (!g_access( configfile,W_OK|R_OK))
-                {
-                    g_message("%s config succesfully read.", configfile);
-                }
-                else
+                if (g_access( configfile,W_OK|R_OK))
                 {
                     g_warning("%s probably a permission problem.",configfile);
                 }

@@ -31,6 +31,9 @@
 #include "Queue.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
+#include <vector>
+
+using namespace std;
 
 namespace Browser
 {
@@ -197,7 +200,7 @@ namespace Browser
                 /* TODO: Make use of plchanges 
                  * Refilling always is expensive.
                  * */
-                g_printerr("Refill.\n");
+                Info("Refilling Queue");
                 m_refTreeModel->clear();
                 mp_Client->fill_queue(*this);
             }

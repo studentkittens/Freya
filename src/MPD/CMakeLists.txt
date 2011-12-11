@@ -1,7 +1,8 @@
 ADD_LIBRARY(FreyaMPDLib 
             Connection.cc
-            Client.cc
             Listener.cc
+            BaseClient.cc
+            Client.cc
             Status.cc
             Statistics.cc
             Playlist.cc

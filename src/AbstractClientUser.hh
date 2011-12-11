@@ -42,7 +42,7 @@ class AbstractClientUser
             mp_Client = &client;
 
             /* Connect to client changes */
-            client.get_notify().connect(sigc::mem_fun(*this,
+            client.signal_client_update().connect(sigc::mem_fun(*this,
                         &AbstractClientUser::on_client_update));
 
             /* Connect to connection change */

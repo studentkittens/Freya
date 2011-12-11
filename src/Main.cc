@@ -55,6 +55,40 @@
 
 using namespace std;
 
+#include <signal.h>
+
+static struct sigaction sa_struct;
+
+static void signal_handler(int signo)
+{
+    switch(signo)
+    {
+        case SIGINT:
+            Info("Closing.");
+            break;
+        default: 
+            Info("Freya received an unexpted signal (%s)"
+                 "Please go to https://github.com/studentkittens/Freya/issues"
+                 "and start to throw bad words like 'backtrace' with us.",
+                 Glib::strsignal(signo).c_str());
+            break;  
+    }
+    Gtk::Main::quit();
+}
+
+static void register_sighandler(void)
+{
+    sa_struct.sa_handler = signal_handler;
+    sigemptyset(&sa_struct.sa_mask);
+    sa_struct.sa_flags = 0;
+
+    /* Register all relevant signals */
+    sigaction(SIGSEGV,&sa_struct,NULL);
+    sigaction(SIGFPE,&sa_struct,NULL);
+    sigaction(SIGABRT,&sa_struct,NULL);
+    sigaction(SIGINT, &sa_struct,NULL);
+}
+
 int main(int argc, char *argv[])
 {
     Gtk::Main kit(argc,argv);
@@ -63,6 +97,8 @@ int main(int argc, char *argv[])
     {
         /* Instance the client */
         MPD::Client client;
+
+        register_sighandler();
 
         /* Get the glade file */
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
@@ -105,7 +141,18 @@ int main(int argc, char *argv[])
         client.force_update();
 
         main_window.get_window()->show();
+
+        /* ------START -------- */
+
         kit.run();
+
+        /*------ END ---------- */ 
+
+        if(CONFIG_GET_AS_INT("settings.playback.stoponexit"))
+        {
+            client.playback_stop();
+        }
+
         client.disconnect();
     }
     catch(const Gtk::BuilderError& e)

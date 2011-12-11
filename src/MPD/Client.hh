@@ -31,9 +31,7 @@
 #ifndef FREYA_CLIENT_GUARD
 #define FREYA_CLIENT_GUARD
 
-#include "../includes.hh"
-#include  "Connection.hh"
-#include  "Listener.hh"
+#include  "BaseClient.hh"
 
 /* Songlist interface */
 #include "../AbstractItemlist.hh"
@@ -41,16 +39,7 @@
 
 namespace MPD
 {
-    /**
-     * @brief You can call connect on this.
-     *
-     * It gets emitted by the client whenever the connection changes,
-     * i.e. when getting disconnected or connected, in former case 
-     * 'false' is passed as argument, in the latter 'true'
-     */
-    typedef sigc::signal<void,bool> ConnectionNotifier;
-
-    class Client
+    class Client : public BaseClient
     {
         public:
 
@@ -69,13 +58,6 @@ namespace MPD
 
             void connect(void);
             void disconnect(void);
-            bool is_connected(void);
-
-            /* Go to next song */
-            bool send_command(const char * command);
-
-            /* List contents of current playlist */
-            void list_queue(void);
 
             /* Playback */
             bool playback_next(void);
@@ -92,11 +74,6 @@ namespace MPD
             void play_song_at_id(unsigned song_id);           
             void playback_seek(unsigned song_id, unsigned abs_time);
 
-            /* TODO: This is more appropiate in MPD::Playlist.. */
-            void playlist_remove(const char * name);
-            void playlist_add(const char * name);
-            void playlist_load(const char * name);
-            void playlist_rename(const char * source, const char * dest);
             void playlist_save(const char * name);
 
             void queue_add(const char * url);
@@ -115,43 +92,6 @@ namespace MPD
             void set_volume(unsigned vol);
 
             /**
-             * @brief Get the current MPD::Status
-             *
-             * @return A reference to it. Do not modify.
-             */
-            Status * get_status(void);
-
-            /**
-             * @brief Get the notify sigc::signal
-             *
-             * Use connect() on it. This is called always once a ne, ...w event
-             * happens. See the typedef in Listener.hh for the exact signature
-             *, ...
-             * @return the sigc::signal
-             */
-            EventNotifier& get_notify(void);
-
-            /**
-             * @brief Register for connection changes
-             *
-             * @return a sigc::signal, you can call connect() on
-             */
-            ConnectionNotifier& signal_connection_change(void);
-            
-            /* Commandlists */
-            void begin(void);
-            void commit(void);
-
-            /**
-             * @brief Forces client update
-             *
-             * Updates status, stats, current song 
-             * and sends all possible events to all connected listeners
-             *
-             */
-            void force_update(void);
-
-            /**
              * @brief Fetches the playlist from the mpd server
              *
              * @param data_model A user defined class, that inherits from AbstractSonglist 
@@ -160,34 +100,20 @@ namespace MPD
              */
             void fill_queue(AbstractItemlist& data_model);
             void fill_playlists(AbstractItemlist& data_model);
+            void fill_ouputs(AbstractItemlist& data_model);
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
-
-        private:
-
-            void go_idle(void);
-            void go_busy(void);
-
-            gboolean timeout_reconnect(void);
-            bool check_error(void);
-            void handle_errors(enum mpd_error err);
-
-            /* Instancevars */
-
-            /* Client::begin() was called, 
-             * but not yet commit */
-            bool m_ListBegun;
-
-            /* The wrapped up mpd_connection */
-            Connection m_Conn;
-
-            /* The event notifier */
-            Listener * listener;
-
-            /* The slot which observers can connect to */
-            EventNotifier m_Notifier;
-
-            /* Inform observers if connection changes happened */
-            ConnectionNotifier m_ConnNotifer;
+            
+            /**
+             * @brief Send a command to the server
+             *
+             * The output will be printed in the cmd,
+             * it is therefore just useful for debugging purpose
+             *
+             * @param command See the protocol reference: http://www.musicpd.org/doc/protocol/index.html
+             *
+             * @return true on succesfull execution
+             */
+            bool send_command(const char * command);
     };
 
 }

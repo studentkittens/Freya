@@ -176,7 +176,7 @@ namespace MPD
 
             /* Pray that this will never happen. */
             if(!(mp_Status && c_stats))
-                Error("Status/Song/Statistic is empty although being connected. Prepare for a crash.");
+                Error("Status/Statistic is empty although being connected. Prepare for a crash.");
         }
     }
 }

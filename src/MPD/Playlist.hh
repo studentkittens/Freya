@@ -32,14 +32,17 @@
 #define FREYA_PLAYLIST_GUARD
 
 #include <mpd/client.h>
+#include "AbstractClientExtension.hh"
+#include "Song.hh"
 
 namespace MPD
 {
     typedef struct mpd_playlist mpd_playlist;
-    class Playlist
+
+    class Playlist : public AbstractClientExtension
     {
         public:
-            Playlist(mpd_playlist& c_playlist);
+            Playlist(MPD::BaseClient& base_client, mpd_playlist& c_playlist);
             Playlist(const Playlist& copy_this);
             virtual ~Playlist(void);
 
@@ -54,6 +57,38 @@ namespace MPD
              * that is unknown
              */
             time_t get_last_modified(void);
+            
+            /**
+             * @brief 
+             */
+            void remove(void);
+
+            /**
+             * @brief 
+             */
+            void load(void);
+
+            /**
+             * @brief 
+             *
+             * @param new_name
+             */
+            void rename(const char * new_name);
+
+            /**
+             * @brief 
+             *
+             * @param uri
+             */
+            void add_song(const char * uri);
+            
+             
+            /**
+             * @brief Add song to this playlist
+             *
+             * @param song a valid MPD::Song
+             */
+            void add_song(MPD::Song& song);
 
         private:
             mpd_playlist * mpc_playlist;

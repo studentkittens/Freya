@@ -43,6 +43,9 @@
 
 #define TIME_BUF_SIZE 128
 
+/* Clear after 2MB logsize */
+#define MAX_LOG_SIZE (2 * 1024 * 1024)
+
 /* Those work sadly only on Unix 
  * win32 will just print out the actual escapes
  * */
@@ -65,6 +68,14 @@ namespace Log
         m_Logfile = fopen(m_Logpath.c_str(),"a");
         if(m_Logfile != NULL)
         {
+            GStatBuf buf;
+            g_stat(m_Logpath.c_str(),&buf);
+            if(buf.st_size >= MAX_LOG_SIZE)
+            {
+                g_printerr("Clearing Log because it's size exceeds %d Bytes.",MAX_LOG_SIZE);
+                clear();
+            }
+
             fprintf(m_Logfile,"#####################################\n");
         }
         else
@@ -91,49 +102,72 @@ namespace Log
     {
         if(this->m_Logfile != NULL)
         {
+            /* Write all va_args in the tmp_buf,
+             * allocate memory as necessary */
             gchar * tmp_buf = NULL;
-
             va_list params;
             va_start(params,fmt);
             g_vasprintf(&tmp_buf,fmt,params);
             va_end(params);
 
+            /* Write current time in the buffer */
             char buffer[TIME_BUF_SIZE] = {0};
             get_current_time(buffer);
+            
+            /* Convert enum to an approp. string */
+            bool append_location = false;
+            const char * title = convert_enum_to_str(level,append_location);
 
-            /* Formatting */
-            gchar * format = g_strdup_printf("[%s - %s] %s (at %s:%d)\n", convert_enum_to_str(level), buffer, tmp_buf, File, Line);
-            gsize fmt_len = strlen(format);
+            std::stringstream bufstream;
+
+            /* Add Prefix */
+            bufstream << "[" << title << " " << buffer << "] ";
+
+            /* Infix the message */
+            bufstream << tmp_buf;
+
+            /* Do the suffix */
+            if(append_location)
+                bufstream << " (" << Glib::path_get_basename(File) << ":" << Line << ")"; 
+
+            bufstream << std::endl;
 
             /* Write it to all streams */
-            fwrite(format,1,fmt_len,m_Logfile);
-            fwrite(format,1,fmt_len,stderr);
+            std::string format = bufstream.str();
+            fwrite(format.c_str(),1,format.size(),m_Logfile);
+            fwrite(format.c_str(),1,format.size(),stderr);
             fflush(m_Logfile);
 
             /* Format is dyn. allocated - free */
-            g_free(format);
             g_free(tmp_buf);
         }
     }
 
     /*-----------------------------------------------*/
-
-    const char* Writer::convert_enum_to_str(LOGLEVEL level) 
+    
+    const char* Writer::convert_enum_to_str(LOGLEVEL level, bool& append_location) 
     {
         switch(level) {
             case LOG_OK: 
+                append_location = false;
                 return COL_GRE"DONE "COL_NCO;
             case LOG_ERROR:
+                append_location = true;
                 return COL_RED"ERROR"COL_NCO;
             case LOG_FATAL_ERROR:
+                append_location = true;
                 return COL_RED"FATAL"COL_NCO;
             case LOG_INFO:
+                append_location = false;
                 return COL_NCO"INFO "COL_NCO;
             case LOG_WARN:
+                append_location = true;
                 return COL_YEL"WARN "COL_NCO;
             case LOG_DEBUG: 
+                append_location = true;
                 return COL_BLU"DEBUG"COL_NCO;
             default:
+                append_location = false;
                 return COL_NCO"INFO "COL_NCO;
         }
     }

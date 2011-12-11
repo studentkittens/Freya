@@ -50,7 +50,7 @@ namespace GManager
 
             Heartbeat(MPD::Client& client);
             ~Heartbeat(void);
-            TimerNotifier& get_notify(void); 
+            TimerNotifier& signal_client_update(void); 
            
             void play(void); 
             void pause(void);

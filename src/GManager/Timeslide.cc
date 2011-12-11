@@ -47,7 +47,7 @@ namespace GManager
         m_Timeslide->set_range(0.0,100.0);
 
         m_Timeslide->signal_value_changed().connect(sigc::mem_fun(*this,&Timeslide::on_user_action));
-        tproxy.get_notify().connect(sigc::mem_fun(*this,&Timeslide::tick));
+        tproxy.signal_client_update().connect(sigc::mem_fun(*this,&Timeslide::tick));
     }
 
     /* ------------------ */

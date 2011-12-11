@@ -121,7 +121,7 @@ namespace MPD
              *, ...
              * @return the sigc::signal
              */
-            EventNotifier& get_notify(void);
+            EventNotifier& signal_client_update(void);
 
             /**
              * @brief Register for connection changes

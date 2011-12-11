@@ -49,7 +49,7 @@ namespace GManager
         mp_Lastdata = NULL;
         mp_Heartbeat = &tproxy;
 
-        mp_Heartbeat->get_notify().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
+        mp_Heartbeat->signal_client_update().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
     }
 
     /* ------------------ */

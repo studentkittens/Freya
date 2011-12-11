@@ -432,7 +432,7 @@ namespace MPD
 
     //--------------------
 
-    EventNotifier& Client::get_notify(void)
+    EventNotifier& Client::signal_client_update(void)
     {
         return m_Notifier; 
     }
@@ -496,7 +496,7 @@ namespace MPD
     {
         if(m_Conn.is_connected())
         {
-            return &(mp_Listener->get_notify_data().get_status());
+            return &(mp_Listener->signal_client_update_data().get_status());
         }
         Warning("get_status() while being disconnected");
 
@@ -549,20 +549,6 @@ namespace MPD
             mpd_run_save(conn,name);
         }
         GET_LAID
-    }
-
-    //--------------------
-
-    void Client::playlist_add(const char * name)
-    {
-        if(name != NULL)
-        {
-            GET_BUSY
-            {
-                mpd_run_playlist_add(conn,name,NULL);
-            }
-            GET_LAID
-        }
     }
 
 } // END NAMESPACE 

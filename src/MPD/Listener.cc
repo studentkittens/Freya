@@ -396,7 +396,7 @@ namespace MPD
 
     //--------------------------------
 
-    NotifyData& Listener::get_notify_data(void)
+    NotifyData& Listener::signal_client_update_data(void)
     {
         return m_NData;
     }

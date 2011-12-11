@@ -48,7 +48,7 @@ namespace Browser
         BUILDER_GET(builder, "dbupdate",dbupdate);
         BUILDER_GET(builder, "statistics_grid",container);
 
-        client.get_notify().connect(sigc::mem_fun(*this,&StatBrowser::on_client_update));
+        client.signal_client_update().connect(sigc::mem_fun(*this,&StatBrowser::on_client_update));
         container->reparent(*this);
 
         show_all();

@@ -100,7 +100,7 @@ namespace GManager
 
     // -------------
 
-    TimerNotifier& Heartbeat::get_notify(void)
+    TimerNotifier& Heartbeat::signal_client_update(void)
     {
         return signal_proxy;
     }

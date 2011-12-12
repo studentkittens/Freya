@@ -36,6 +36,7 @@
 
 namespace MPD
 {
+
     /**
      * @brief You can call connect on this.
      *
@@ -60,7 +61,6 @@ namespace MPD
     class BaseClient
     {
         public:
-            BaseClient(void);
             void go_idle(void);
             void go_busy(void);
 
@@ -106,6 +106,11 @@ namespace MPD
             void force_update(void);
 
         protected:
+            
+            /**
+             * @brief Do not allow to instantiate BaseClient
+             */
+            BaseClient(void);
            
             bool __connect(void);
             bool __disconnect(void);

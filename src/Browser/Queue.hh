@@ -37,6 +37,7 @@
 #include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "QueuePopup.hh"
+#include "PlaylistAddDialog.hh"
 
 namespace Browser 
 {
@@ -108,6 +109,7 @@ namespace Browser
             /* other widgets */
             Gtk::Entry * mp_Entry;
             Gtk::Box * mp_QueueBox;
+            PlaylistAddDialog * mp_AddDialog;
 
             /* Currently shown version of the Queue */
             unsigned m_PlaylistVersion;

@@ -44,7 +44,6 @@ namespace Browser
         /* Get the box and parent it to the main frame */
         Gtk::Box * playlist_box = NULL;
         BUILDER_GET(builder,"playlist_box",playlist_box);
-        BUILDER_GET(builder,"playlist_add_pl",mp_AddButton);
         BUILDER_GET(builder,"playlist_delete_pl",mp_DelButton);
         BUILDER_GET(builder,"playlist_status",mp_StatusLabel);
         playlist_box->reparent(*this);
@@ -79,8 +78,6 @@ namespace Browser
                 sigc::mem_fun(*this,&PlaylistManager::on_cell_edited));
 
         /* Connect buttons in bar */
-        mp_AddButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_add_clicked));
         mp_DelButton->signal_clicked().connect(
                 sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
 
@@ -94,9 +91,6 @@ namespace Browser
                 sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
         mp_TreeView->signal_button_press_event().connect(
                 sigc::mem_fun(*this,&PlaylistManager::on_row_double_click));
-
-        /* Instance a new Adder dialog */
-        mp_AddDialog = new PlaylistAddDialog(client,builder);
 
         /* Fill the actual content to the list */
         mp_Client->fill_playlists(*this);
@@ -173,7 +167,6 @@ namespace Browser
     PlaylistManager::~PlaylistManager(void)
     {
         clear();
-        delete mp_AddDialog;
         delete mp_Popup;
     }
 
@@ -259,13 +252,6 @@ namespace Browser
     bool PlaylistManager::on_row_double_click(GdkEventButton * event)
     {
         return false;
-    }
-
-    /* ----------------------- */
-
-    void PlaylistManager::on_add_clicked(void)
-    {
-        mp_AddDialog->run();
     }
 
     /* ----------------------- */

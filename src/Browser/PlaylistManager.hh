@@ -68,7 +68,6 @@ namespace Browser
             void selection_helper(bool load_or_remove);
 
             /* Other */
-            void on_add_clicked(void);
             bool on_row_double_click(GdkEventButton * event);
 
             /* Clear list (frees memory) */
@@ -116,8 +115,8 @@ namespace Browser
             Gtk::CellRendererText m_PlaylistCellRender;
             Gtk::TreeView::Column m_PlaylistTreeViewCol;
 
-            /* Control buttons  */
-            Gtk::Button * mp_AddButton, * mp_DelButton; 
+            /* Control buttons */
+            Gtk::Button * mp_DelButton; 
 
             /* Status label */
             Gtk::Label * mp_StatusLabel;

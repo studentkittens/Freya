@@ -103,6 +103,8 @@ namespace Browser
                 sigc::mem_fun(*this,&Queue::on_menu_add_as_pl_clicked));
         mp_Popup->get_action("q_clear").connect(
                 sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
+
+        mp_AddDialog = new PlaylistAddDialog(client,builder);
     }
 
     /*-------------------------------*/
@@ -110,6 +112,7 @@ namespace Browser
     Queue::~Queue(void)
     {
         delete mp_Popup;
+        delete mp_AddDialog;
     }
     
     /*-------------------------------*/
@@ -256,7 +259,7 @@ namespace Browser
 
     void Queue::on_menu_add_as_pl_clicked(void)
     {
-        mp_Client->playlist_save("Current");
+        mp_AddDialog->run();
     }
 
     /*-------------------------------*/

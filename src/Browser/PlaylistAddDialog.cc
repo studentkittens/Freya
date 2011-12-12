@@ -68,9 +68,7 @@ namespace Browser
     void PlaylistAddDialog::on_add_clicked(void)
     {
         Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
-        g_printerr("Creating new playlist: %s\n",new_pl_name.c_str());
-
-        // TODO: Add The Playlist here.. //
+        mp_Client->playlist_save(new_pl_name.c_str()); 
         on_cancel_clicked();
     }
 

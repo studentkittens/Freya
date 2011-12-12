@@ -61,7 +61,7 @@ namespace MPD
         /* No idle events, nor io events on startup,
          * call force_update() if you want to init 
          * your registered classes */
-        idle_events = (mpd_idle)0;
+        idle_events  = 0;
         io_eventmask = (mpd_async_event)0;
 
         /* No idling  -> client has to call enter() itself

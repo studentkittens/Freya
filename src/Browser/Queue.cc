@@ -51,6 +51,8 @@ namespace Browser
 
         mp_Entry->signal_activate().connect(
                 sigc::mem_fun(*this,&Queue::on_entry_activate));
+        mp_Entry->signal_icon_press().connect(
+                sigc::mem_fun(*this, &Queue::on_entry_clear_icon));
 
         //Create the Tree model:
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
@@ -143,13 +145,24 @@ namespace Browser
         }
         delete new_song;
     }
-    
+
     /*-------------------------------*/
 
     void Queue::on_entry_activate(void)
     {
         m_FilterText = mp_Entry->get_text();
         m_refTreeModelFilter->refilter();
+    }
+
+    /*-------------------------------*/
+
+    void Queue::on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event)
+    {
+        if(icon_pos == Gtk::ENTRY_ICON_SECONDARY)
+        {
+            mp_Entry->set_text("");
+            mp_Entry->activate();
+        }
     }
 
     /*-------------------------------*/

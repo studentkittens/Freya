@@ -51,7 +51,6 @@ namespace Notify
     }
 
     //---------------------------
-    /* Wrapper functions ... phiu I'm cool for providing all possible combinations of char* and ustring. Right? */
     //---------------------------
     //---------------------------
     void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
@@ -64,35 +63,6 @@ namespace Notify
         _send(hl.c_str(),msg.c_str(),pixbuf);
     }
     //---------------------------
-    void Notify::send_big(const char *hl, const char *msg)
-    {
-        _send(hl,msg,NULL);
-    }
-    //---------------------------
-    void Notify::send_big(Glib::ustring hl, const char *msg)
-    {
-        _send(hl.c_str(),msg,NULL);
-    }
-    //---------------------------
-    void Notify::send_big(const char *hl, Glib::ustring msg)
-    {
-        _send(hl,msg.c_str(),NULL);
-    }
-    //---------------------------
-    void Notify::send_full(const char *hl, const char *msg, GdkPixbuf * pixbuf )
-    {
-        _send(hl,msg,pixbuf);
-    }
-    //---------------------------
-    void Notify::send_full(Glib::ustring hl, const char *msg, GdkPixbuf * pixbuf )
-    {
-        _send(hl.c_str(),msg,pixbuf);
-    }
-    //---------------------------
-    void Notify::send_full(const char *hl, Glib::ustring msg, GdkPixbuf * pixbuf )
-    {
-        _send(hl,msg.c_str(),pixbuf);
-    }
     //---------------------------
     /**/
     //---------------------------

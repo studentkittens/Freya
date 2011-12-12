@@ -28,24 +28,35 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_MAIN_WINDOW_GUARD
-#define FREYA_MAIN_WINDOW_GUARD
+#ifndef FREYA_FORTUNA_GUARD
+#define FREYA_FORTUNA_GUARD
 
+#include "../AbstractBrowser.hh"
 #include <gtkmm.h>
-#include "Log/Writer.hh"
-#include "Utils/Utils.hh"
-#include "Config/Handler.hh"
 
-class FreyaWindow 
+namespace Browser
 {
-    public:
-        FreyaWindow(const Glib::RefPtr<Gtk::Builder> &builder);
-        ~FreyaWindow();
-        Gtk::Window* get_window(void);
-    protected:
-        bool on_delete_event(GdkEventAny* event);
-    private:
-        Gtk::Window * main_window;
-};
+    class Fortuna : public AbstractBrowser
+    {
+        public:
+       
+            Fortuna(Glib::RefPtr<Gtk::Builder>& builder);
 
-#endif
+            /* Implemented from AbstractBrowser */
+            Gtk::Widget * get_container(void);
+
+        private:
+
+            /* Workers */
+            Glib::ustring get_fortune(void);
+            void on_refresh_fortune(void);
+
+            /* Widgets */
+            Gtk::ScrolledWindow * mp_FortuneScroll;
+            Gtk::Label * mp_FortuneLabel;
+            Gtk::Button * mp_FortuneRefresh;
+    };
+}
+
+
+#endif /* end of include guard: FREYA_FORTUNA_GUARD */

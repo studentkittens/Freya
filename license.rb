@@ -1,3 +1,7 @@
+require 'find'
+require 'tempfile'
+
+$license = <<-eos
  /***********************************************************
 * This file is part of Freya 
 * - A free MPD Gtk3 MPD Client -
@@ -10,7 +14,7 @@
 *
 *              __..--''``---....___   _..._    __
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
+*   ///_.-' _..--.'_    \                    `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
 *    / // // //  `-._,_)' // / ``--...____..-' /// / //  
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
@@ -28,24 +32,27 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_MAIN_WINDOW_GUARD
-#define FREYA_MAIN_WINDOW_GUARD
+eos
 
-#include <gtkmm.h>
-#include "Log/Writer.hh"
-#include "Utils/Utils.hh"
-#include "Config/Handler.hh"
+# Insert license at beginning, using a crappy tmp file.
+def do_prepend path
+    Tempfile.open File.basename(path) do |tempfile|
+        tempfile << $license 
 
-class FreyaWindow 
-{
-    public:
-        FreyaWindow(const Glib::RefPtr<Gtk::Builder> &builder);
-        ~FreyaWindow();
-        Gtk::Window* get_window(void);
-    protected:
-        bool on_delete_event(GdkEventAny* event);
-    private:
-        Gtk::Window * main_window;
-};
+        File.open(path, 'r+') do |file|
+            tempfile << file.read
+            file.pos = tempfile.pos = 0
+            file << tempfile.read
+        end
+    end
+end
 
-#endif
+# Recurse everything in $pwd
+Find.find('./') do |file|
+    if file.end_with? ".cc" or file.end_with? ".hh" 
+        if File.writable? file
+            puts "Adding license to: #{file}"
+            do_prepend file
+        end
+    end
+end

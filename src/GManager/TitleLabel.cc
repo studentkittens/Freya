@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "TitleLabel.hh"
 #include "../Utils/Utils.hh"
 #include "../Notify/Notify.hh"
@@ -14,6 +44,14 @@ namespace GManager
 
     //----------------
     
+    void TitleLabel::stash_next_title(void)
+    {
+        mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
+        mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+    }
+
+    //----------------
+
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
         MPD::Song * current_song = data.get_next_song(); 
@@ -26,8 +64,7 @@ namespace GManager
         }
         else
         {
-            mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
-            mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+            stash_next_title();
         }
     }
 
@@ -35,7 +72,12 @@ namespace GManager
 
     void TitleLabel::on_connection_change(bool is_connected)
     {
-        /* Empty for now */
+        if(!is_connected)
+        {
+            mp_TitleLabel->set_markup("<b>You do not seem to be connected :-(</b>");
+            mp_ArtistAlbumLabel->set_markup("<small>Adjust your settings and try File->Connect</small>");
+            stash_next_title();
+        }
     }
 
     //----------------

@@ -28,24 +28,62 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_MAIN_WINDOW_GUARD
-#define FREYA_MAIN_WINDOW_GUARD
+#include "AudioOutput.hh"
 
-#include <gtkmm.h>
-#include "Log/Writer.hh"
-#include "Utils/Utils.hh"
-#include "Config/Handler.hh"
-
-class FreyaWindow 
+namespace MPD
 {
-    public:
-        FreyaWindow(const Glib::RefPtr<Gtk::Builder> &builder);
-        ~FreyaWindow();
-        Gtk::Window* get_window(void);
-    protected:
-        bool on_delete_event(GdkEventAny* event);
-    private:
-        Gtk::Window * main_window;
-};
+    AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) : 
+        AbstractClientExtension(client)
+    {
+        mp_Output = &output;
+    }
 
-#endif
+    /* ----------------- */
+    
+    unsigned AudioOutput::get_id(void)
+    {
+        return mpd_output_get_id(mp_Output); 
+    }
+
+    const char * AudioOutput::get_name(void)
+    {
+        return mpd_output_get_name(mp_Output);
+    }
+
+    bool AudioOutput::get_enabled(void)
+    {
+        return mpd_output_get_enabled(mp_Output);
+    }
+
+    //-----------------------
+    // CLIENT EXTENSIONS
+    //-----------------------    
+
+    bool AudioOutput::enable(void)
+    {
+        bool retv = false;
+        unsigned id = get_id();
+
+        EXTERNAL_GET_BUSY 
+        {
+            retv = mpd_run_enable_output(mp_BaseClient->get_connection(),id);
+        }
+        EXTERNAL_GET_LAID
+        
+            return retv;
+    }
+
+    bool AudioOutput::disable(void)
+    {
+        bool retv = false;
+        unsigned id = get_id();
+
+        EXTERNAL_GET_BUSY 
+        {
+            retv = mpd_run_disable_output(mp_BaseClient->get_connection(),id);
+        }
+        EXTERNAL_GET_LAID
+
+        return retv;
+    }
+}

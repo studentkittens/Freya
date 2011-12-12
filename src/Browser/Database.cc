@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "Database.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
@@ -7,7 +37,7 @@ using namespace std;
 namespace Browser
 {
     DatabaseBrowser::DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Database",Gtk::Stock::DIRECTORY),
+        AbstractBrowser("Database",true,true,Gtk::Stock::DIRECTORY),
         AbstractClientUser(client)
     {
         BUILDER_ADD(builder,"ui/Database.glade");
@@ -39,6 +69,8 @@ namespace Browser
         mp_Popup = new DatabasePopup(*mp_IView); 
         mp_Popup->get_action("db_add").connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
+        mp_Popup->get_action("db_add_all").connect(
+                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_all_clicked));
         mp_Popup->get_action("db_replace").connect(
                 sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
         mp_Popup->get_action("db_update").connect(
@@ -62,9 +94,12 @@ namespace Browser
     void DatabaseBrowser::on_menu_db_add_clicked(void)
     {
         std::vector<Gtk::TreePath> items = mp_IView->get_selected_items();
-        for(unsigned i = 0; i < items.size(); i++)
+
+        /* This makes the loop a active section */
+        mp_Client->begin();
+        for(unsigned i = items.size(); i != 0; --i)
         {
-            Gtk::TreeModel::iterator iter = m_DirStore->get_iter(items[i]);
+            Gtk::TreeModel::iterator iter = m_DirStore->get_iter(items[i-1]);
             if(iter)
             {
                 Gtk::TreeRow row = *iter;
@@ -72,9 +107,21 @@ namespace Browser
                 mp_Client->queue_add(path.c_str());
             }
         }
+
+        /* Commit queued add commands */
+        mp_Client->commit();
     }
 
     /*------------------------------------------------*/
+    
+    void DatabaseBrowser::on_menu_db_add_all_clicked(void)
+    {
+        /* Add root dir */
+        mp_Client->queue_add("/");
+    }
+
+    /*------------------------------------------------*/
+    
     
     void DatabaseBrowser::on_menu_db_update_clicked(void)
     {
@@ -115,6 +162,7 @@ namespace Browser
     {
         g_assert(pDir);
         add_item(pDir->get_path(),false);
+        delete pDir;
     }
 
     /*------------------------------------------------*/
@@ -123,6 +171,7 @@ namespace Browser
     {
         g_assert(pSong);
         add_item(pSong->get_uri(),true);
+        delete pSong;
     }
 
     /*------------------------------------------------*/

@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "PlaylistManager.hh"
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
@@ -5,7 +35,7 @@
 namespace Browser
 {
     PlaylistManager::PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Playlists",Gtk::Stock::INDENT),
+        AbstractBrowser("Playlists",true,true,Gtk::Stock::INDENT),
         AbstractClientUser(client)
     {
         BUILDER_ADD(builder,"ui/Playlists.glade");
@@ -34,7 +64,7 @@ namespace Browser
         mp_TreeView->append_column(m_PlaylistTreeViewCol);
         mp_TreeView->append_column("Last modified", m_Columns.m_col_last_modfied);
 
-        /* For Ctrl-F */
+        /* Directly jumping is just this line.. */
         mp_TreeView->set_search_column(1);
 
         /* Called once the cell needs to get the data from the model */
@@ -110,7 +140,8 @@ namespace Browser
                 Glib::ustring old_name = row[m_Columns.m_col_name];
                 if(old_name != new_text)
                 {
-                    mp_Client->playlist_rename(old_name.c_str(),new_text.c_str());
+                    MPD::Playlist * PList = row[m_Columns.m_col_plist];
+                    PList->rename(new_text.c_str());
                 }
             }
             mp_StatusLabel->set_text("");
@@ -146,6 +177,18 @@ namespace Browser
     }
 
     /* ----------------------- */
+    
+    void PlaylistManager::clear(void)
+    {
+        for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
+        {
+            MPD::Playlist * pl = (*iter)[m_Columns.m_col_plist];
+            delete pl;
+        }
+        m_refTreeModel->clear();
+    }
+    
+    /* ----------------------- */
 
     void PlaylistManager::add_item(void * pPlaylist)
     {
@@ -173,15 +216,15 @@ namespace Browser
             if(it)
             {
                 Gtk::TreeRow row = *it;
-                Glib::ustring pl_name = row[m_Columns.m_col_name];
+                MPD::Playlist * PList = row[m_Columns.m_col_plist];
 
                 if(load_or_remove)
                 {
-                    mp_Client->playlist_load(pl_name.c_str());
+                    PList->load();
                 }
                 else
                 {
-                    mp_Client->playlist_remove(pl_name.c_str());
+                    PList->remove();
                 }
             }
         }
@@ -230,7 +273,7 @@ namespace Browser
         if(event & MPD_IDLE_STORED_PLAYLIST)
         {
             /* Update the list of playlists */
-            m_refTreeModel->clear();
+            clear();
             mp_Client->fill_playlists(*this);
         }
     }
@@ -238,7 +281,5 @@ namespace Browser
     /* ----------------------- */
 
     void PlaylistManager::on_connection_change(bool is_connected)
-    {
-        /* Empty for now */
-    }
+    {}
 }

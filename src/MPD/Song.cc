@@ -39,6 +39,17 @@ namespace MPD
     
     /*------------------------------*/
     
+    Song::Song(const MPD::Song& other)
+    {
+       mpd_song * other_song = other.mp_Song;
+       if(other_song != NULL)
+           mp_Song = mpd_song_dup(other_song);
+       else
+           mp_Song = NULL;
+    }
+    
+    /*------------------------------*/
+    
     Song::~Song(void)
     {
         mpd_song_free(mp_Song);

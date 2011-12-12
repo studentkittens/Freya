@@ -31,7 +31,9 @@
 #include "Queue.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
+
 #include <vector>
+#include <gdk/gdkkeysyms.h> 
 
 using namespace std;
 
@@ -41,7 +43,8 @@ namespace Browser
         AbstractBrowser("Queue",true,true,Gtk::Stock::ZOOM_FIT),
         AbstractClientUser(client),
         m_FilterText(""),
-        m_PlaylistVersion(0)
+        m_PlaylistVersion(0),
+        mp_CurrentSong(NULL)
     {
         
         BUILDER_ADD(builder,"ui/Queue.glade");
@@ -105,6 +108,13 @@ namespace Browser
                 sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
 
         mp_AddDialog = new PlaylistAddDialog(client,builder);
+
+        /* Key events */
+        mp_TreeView->signal_key_press_event().connect(
+                sigc::mem_fun(*this,&Queue::on_key_press_handler));
+        mp_TreeView->signal_key_release_event().connect(
+                sigc::mem_fun(*this,&Queue::on_key_press_handler));
+        mp_TreeView->add_events(Gdk::KEY_PRESS_MASK | Gdk::KEY_RELEASE_MASK);
     }
 
     /*-------------------------------*/
@@ -113,6 +123,7 @@ namespace Browser
     {
         delete mp_Popup;
         delete mp_AddDialog;
+        delete mp_CurrentSong;
     }
     
     /*-------------------------------*/
@@ -198,6 +209,11 @@ namespace Browser
             MPD::Status& status = data.get_status();
             unsigned qv = status.get_queue_version();
 
+            delete mp_CurrentSong;
+            MPD::Song * to_copy = data.get_song();
+            if(to_copy != NULL)
+                mp_CurrentSong = new MPD::Song(*to_copy);
+
             if(qv > m_PlaylistVersion)
             {
                 /* TODO: Make use of plchanges 
@@ -260,6 +276,31 @@ namespace Browser
     void Queue::on_menu_add_as_pl_clicked(void)
     {
         mp_AddDialog->run();
+    }
+
+    /*-------------------------------*/
+   
+    bool Queue::on_key_press_handler(GdkEventKey * event)
+    {
+        g_assert(event);
+        if(event->type   == GDK_KEY_RELEASE &&
+           event->keyval == GDK_KEY_space   &&
+           mp_CurrentSong != NULL)
+        {
+            char buf[42] = {0};
+            g_snprintf(buf,100,"%d",mp_CurrentSong->get_pos());
+
+            mp_TreeView->set_cursor(Gtk::TreePath(buf));
+            return true;
+        }
+        else if(event->type   == GDK_KEY_RELEASE  &&
+                event->state  &  (GDK_CONTROL_MASK|GDK_SHIFT_MASK) &&
+                event->keyval == GDK_KEY_f)
+        {
+            mp_Entry->grab_focus();
+            return true;
+        }
+        return false;
     }
 
     /*-------------------------------*/

@@ -67,10 +67,15 @@ static void signal_handler(int signo)
             Info("Closing.");
             break;
         default: 
-            Info("Freya received an unexpted signal (%s)"
-                 "Please go to https://github.com/studentkittens/Freya/issues"
-                 "and start to throw bad words like 'backtrace' with us.",
+            Fatal("Freya received an unexpted signal (%s)\n"
+                 "                 Please go to https://github.com/studentkittens/Freya/issues\n"
+                 "                 and start to throw bad words like 'backtrace' at us.\n"
+                 "                 This message was emitted from: ",
                  Glib::strsignal(signo).c_str());
+
+            Info("Will try to save data and exit now.");
+            Config::Handler::instance().save_config_now();
+            exit(-42);
             break;  
     }
     Gtk::Main::quit();

@@ -41,6 +41,7 @@ namespace MPD
     {
         public:
             Song(const mpd_song& song);
+            Song(const MPD::Song& other);
             ~Song(void);
 
             const char * get_uri(void);

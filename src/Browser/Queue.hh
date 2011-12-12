@@ -72,6 +72,7 @@ namespace Browser
             void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
             bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
             void on_entry_activate(void);
+            bool on_key_press_handler(GdkEventKey * event);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -113,6 +114,9 @@ namespace Browser
 
             /* Currently shown version of the Queue */
             unsigned m_PlaylistVersion;
+
+            /* Current Song */
+            MPD::Song * mp_CurrentSong;
     };
 }
 #endif //FREYA_QUEUE_H

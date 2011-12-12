@@ -44,18 +44,18 @@ namespace MPD
 
     bool BaseClient::__connect(void)
     {
+        /* Call handle_errors on any found error */
         m_Conn.signal_error().connect(
                 sigc::mem_fun(*this,&BaseClient::handle_errors));
 
         if(m_Conn.connect())
         {
-            m_Conn.clear_error();
-
             mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
             go_idle();
             m_ConnNotifer.emit(true);
             mp_Listener->force_update();
         }
+
         return is_connected();
     }
 
@@ -65,7 +65,6 @@ namespace MPD
     {
         if(m_Conn.is_connected())
         {
-            m_Conn.clear_error();
             if(mp_Listener)
             {
                 if(mp_Listener != NULL)

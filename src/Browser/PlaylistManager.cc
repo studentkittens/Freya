@@ -172,6 +172,7 @@ namespace Browser
 
     PlaylistManager::~PlaylistManager(void)
     {
+        clear();
         delete mp_AddDialog;
         delete mp_Popup;
     }
@@ -195,6 +196,7 @@ namespace Browser
         g_assert(pPlaylist);
         MPD::Playlist * playlist = (MPD::Playlist*)pPlaylist;
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
+
         row[m_Columns.m_col_plist] = playlist;
         row[m_Columns.m_col_name]  = playlist->get_path();
         row[m_Columns.m_col_icon]  = m_PlaylistIcon;

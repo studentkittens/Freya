@@ -306,12 +306,14 @@ namespace MPD
                 {
                     switch(mpd_entity_get_type(ent))
                     {
+                        /* Making duplicates is silly, but that's how mpd_entity_get_song/dir works */
                         case MPD_ENTITY_TYPE_DIRECTORY:
                             {
                                 mpd_directory * dir = (mpd_directory*)mpd_entity_get_directory(ent);
                                 if(dir != NULL)
                                 {
-                                    data_model.add_directory(new MPD::Directory(*dir));
+                                    mpd_directory * dup_dir = mpd_directory_dup(dir);
+                                    data_model.add_directory(new MPD::Directory(*dup_dir));
                                 }
                                 break;
                             }
@@ -320,16 +322,17 @@ namespace MPD
                                 mpd_song * song = (mpd_song*)mpd_entity_get_song(ent);
                                 if(song != NULL)
                                 {
-                                    data_model.add_song_file(new MPD::Song(*song));
+                                    mpd_song * dup_song = mpd_song_dup(song);
+                                    data_model.add_song_file(new MPD::Song(*dup_song));
                                 }
                                 break;
                             }
                         case MPD_ENTITY_TYPE_PLAYLIST:
                         case MPD_ENTITY_TYPE_UNKNOWN:
                         default:
-                            mpd_entity_free(ent);
                             break;
                     }
+                    mpd_entity_free(ent);
                 }
             }
         }

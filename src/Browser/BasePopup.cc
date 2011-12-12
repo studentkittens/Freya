@@ -54,7 +54,6 @@ namespace Browser
         if(event->type == GDK_BUTTON_PRESS && event->button == 3)
         {
             mp_Popup->popup(event->button,event->time);
-            return true;
         }
         return false;
     }

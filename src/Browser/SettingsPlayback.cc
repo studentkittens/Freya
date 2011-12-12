@@ -29,11 +29,14 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "SettingsPlayback.hh"
-#include "../Utils/Utils.hh"
 #include "Settings.hh"
+#include "../MPD/Client.hh"
+#include "../Utils/Utils.hh"
+
 namespace Browser
 {
-    SettingsPlayback::SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
+    SettingsPlayback::SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
+        AbstractClientUser(client),
         crossfade_name("settings.playback.crossfade"),
         stoponexit_name("settings.playback.stoponexit")
     {
@@ -50,10 +53,10 @@ namespace Browser
 
     void SettingsPlayback::accept_new_settings(void)
     {
-        int crossfade_value = (int) crossfade->get_value_as_int();
+        unsigned crossfade_value = crossfade->get_value_as_int();
         bool stoponexit_value =  stoponexit->get_active();
-
-        CONFIG_SET_AS_INT(crossfade_name,crossfade_value);
+        
+        mp_Client->playback_crossfade(crossfade_value);
         CONFIG_SET_AS_INT(stoponexit_name,stoponexit_value?1:0);
     }
 
@@ -72,4 +75,23 @@ namespace Browser
         crossfade->set_value(CONFIG_GET_DEFAULT_AS_INT(crossfade_name));
         stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);
     }
+    
+    //----------------------------
+    
+    void SettingsPlayback::on_client_update(mpd_idle event, MPD::NotifyData& data)
+    {
+        if(event & MPD_IDLE_OPTIONS)
+        {
+            crossfade->set_value(data.get_status().get_crossfade());
+        }
+    }
+    
+    //----------------------------
+    
+    void SettingsPlayback::on_connection_change(bool is_connected)
+    {
+        crossfade->set_sensitive(is_connected);
+    }
+    
+    //----------------------------
 }

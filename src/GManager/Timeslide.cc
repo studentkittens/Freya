@@ -95,24 +95,7 @@ namespace GManager
             ignore_signal = true;
             m_Timeslide->set_range(0.0,status.get_total_time());
             m_Timeslide->set_value(status.get_elapsed_time());
-            mp_Proxy->set(status.get_elapsed_time());
             ignore_signal = false;
-
-            switch(data.get_status().get_state())
-            {
-                case MPD_STATE_STOP:
-                    mp_Proxy->reset();
-                    break;
-                case MPD_STATE_PAUSE:
-                    mp_Proxy->pause();
-                    break;
-                case MPD_STATE_PLAY:
-                    mp_Proxy->play();
-                    break;
-                case MPD_STATE_UNKNOWN:
-                default:
-                    break;
-            }
         }
     }
 }

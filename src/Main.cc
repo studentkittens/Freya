@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
         Browser::StatBrowser stat_browser(client,builder);
         browser_list.add(stat_browser);
 
-        Browser::Settings settings_browser(builder,&tray);
+        Browser::Settings settings_browser(client,builder,&tray);
         browser_list.add(settings_browser);
 
         Browser::Fortuna easter_egg(builder);

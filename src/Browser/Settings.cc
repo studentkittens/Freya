@@ -34,7 +34,7 @@
 #include "../Notify/Notify.hh"
 namespace Browser
 {
-    Settings::Settings(const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray):
+    Settings::Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray):
         AbstractBrowser("Settings",true,false,Gtk::Stock::PREFERENCES)
     {
         BUILDER_ADD(builder,"ui/Settings.glade");
@@ -43,10 +43,8 @@ namespace Browser
         BUILDER_GET(builder,"reset_button",reset_button);
         BUILDER_GET(builder,"settings_main",settings_main);
 
-
-
         sub_sections.push_back(new SettingsNetwork(builder, this));
-        sub_sections.push_back(new SettingsPlayback(builder, this));
+        sub_sections.push_back(new SettingsPlayback(client,builder,this));
         sub_sections.push_back(new SettingsGeneral(builder, this, tray));
 
         ok_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_ok));

@@ -406,6 +406,17 @@ namespace MPD
     }
 
     //--------------------
+    
+    void Client::playback_crossfade(unsigned seconds)
+    {
+        GET_BUSY
+        {
+            mpd_run_crossfade(conn,seconds);
+        }
+        GET_LAID
+    }
+    
+    //--------------------
 
     void Client::set_volume(unsigned vol)
     {

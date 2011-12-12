@@ -34,21 +34,28 @@
 #include <gtkmm.h>
 
 #include "../Config/Handler.hh"
+#include "../MPD/Client.hh"
+#include "../AbstractClientUser.hh"
 #include "SettingsSub.hh"
 
 namespace Browser
 {
     class Settings;
-    class SettingsPlayback : public SettingsSub
+    class SettingsPlayback : public SettingsSub, public AbstractClientUser
     {
         public:
-            SettingsPlayback(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
+            SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
             ~SettingsPlayback();
 
             void accept_new_settings(void);
             void decline_new_settings(void);
             void reset_settings(void);
+
         private:
+
+            void on_client_update(mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
+
             Glib::ustring name, crossfade_name, stoponexit_name;
         /* Widgets */
             Gtk::SpinButton *crossfade;

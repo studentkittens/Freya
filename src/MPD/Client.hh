@@ -65,6 +65,9 @@ namespace MPD
             bool playback_stop(void);
             bool playback_play(void);
             bool playback_pause(void);
+            
+            void playback_seek(unsigned song_id, unsigned abs_time);
+            void playback_crossfade(unsigned seconds);
 
             void toggle_random(void);
             void toggle_consume(void);
@@ -72,7 +75,6 @@ namespace MPD
             void toggle_single(void);
 
             void play_song_at_id(unsigned song_id);           
-            void playback_seek(unsigned song_id, unsigned abs_time);
 
             void playlist_save(const char * name);
 

@@ -25,7 +25,6 @@ namespace Config
             "            <totrayonclose>0</totrayonclose>\n"
             "        </trayicon>\n"
             "        <playback>\n"
-            "            <crossfade>0</crossfade>\n"
             "            <stoponexit>0</stoponexit>\n"
             "        </playback>\n"
             "    </settings>\n"

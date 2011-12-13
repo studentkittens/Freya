@@ -61,15 +61,40 @@ namespace MPD
     class BaseClient
     {
         public:
+            /**
+             * @brief Go into idle mode, you are not allowed to send commands while idling!
+             */
             void go_idle(void);
+            /**
+             * @brief Leave idle mode, so you can send commands to the server
+             */
             void go_busy(void);
 
-            /* Convinience method for Clientextension */
-            mpd_connection * get_connection(void);
+            /**
+             * @brief Returns the underlying connection
+             *
+             * You are not supposed to call this as user of the client,
+             * it's use is intended as client extension that need to 
+             * send it's own commands to MPD.
+             *
+             * @return A ref to a MPD::Connection
+             */
+            Connection& get_connection(void);
     
+            /**
+             * @brief true if connected
+             *
+             * @return 
+             */
             bool is_connected(void);
 
+            /**
+             * @brief Start a commandlist
+             */
             void begin(void);
+            /**
+             * @brief Commit the commandlist
+             */
             void commit(void);
             
             /**
@@ -112,7 +137,17 @@ namespace MPD
              */
             BaseClient(void);
            
+            /**
+             * @brief This is called internally by MPD::Client and does the actual connect work
+             *
+             * @return is_connected()
+             */
             bool __connect(void);
+            /**
+             * @brief Same as __connect()
+             *
+             * @return is_connected()
+             */
             bool __disconnect(void);
 
             /**
@@ -125,19 +160,36 @@ namespace MPD
              */
             gboolean timeout_reconnect(void);
 
+            /**
+             * @brief Called when MPD::Connection notices an connection error
+             *
+             * @param is_fatal the error is fatal 
+             * @param err the error code
+             */
             void handle_errors(bool is_fatal, mpd_error err);
 
+            /**
+             * @brief The connection to the MPD server
+             */
             MPD::Connection m_Conn;
+            /**
+             * @brief Event Listener
+             */
             MPD::Listener * mp_Listener;
             
-            /* Client::begin() was called, 
-             * but not yet commit */
+            /**
+             * @brief BaseClient::begin() was called but not yet BaseClient::commit()
+             */
             bool m_ListBegun;
             
-            /* The slot which observers can connect to */
+            /**
+             * @brief Listener calls emit() on this once events happen.
+             */
             EventNotifier m_Notifier;
 
-            /* Inform observers if connection changes happened */
+            /**
+             * @brief Connection Errors are reported through this.
+             */
             ConnectionNotifier m_ConnNotifer;
     };
 }

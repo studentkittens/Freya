@@ -104,9 +104,9 @@ namespace MPD
     
     //-------------------------------
     
-    mpd_connection * BaseClient::get_connection(void)
+    Connection& BaseClient::get_connection(void)
     {
-        return m_Conn.get_connection();
+        return m_Conn;
     }
 
     //-------------------------------

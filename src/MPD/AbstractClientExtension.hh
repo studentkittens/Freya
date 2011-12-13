@@ -44,7 +44,27 @@ namespace MPD
             }
 
         protected:
+
             MPD::BaseClient * mp_BaseClient;
+
+            /**
+             * @brief Get the underlying C struct
+             *
+             * @return a pointer to a valid mpd_connection
+             */
+            mpd_connection * get_c_connection()
+            {
+                g_assert(mp_BaseClient);
+                if(mp_BaseClient->is_connected())
+                {
+                    MPD::Connection& conn = mp_BaseClient->get_connection();
+                    return conn.get_connection();
+                }
+                else
+                {
+                    return NULL;
+                }
+            }
     };
 
     /* Go into active mode */
@@ -53,7 +73,7 @@ namespace MPD
             {                                   \
                 mp_BaseClient->go_busy();       \
                 mpd_connection * conn =         \
-                mp_BaseClient->get_connection();\
+                get_c_connection();             \
                 if(conn != NULL) {              
 
     /* Go back idling, *never* forget this */                

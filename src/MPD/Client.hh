@@ -48,6 +48,7 @@ namespace MPD
              *
              * If settings.connection.autoconnect is set to true
              * This also connects already anc calls force_update()
+             * Use is_connected() to check if beign connected.
              */
             Client();
 
@@ -108,21 +109,66 @@ namespace MPD
              */
             bool playback_pause(void);
             
+            /**
+             * @brief Seek forward in song song_id, to abs_time from start
+             *
+             * @param song_id The song to seek in
+             * @param abs_time Time in seconds starting from 0
+             */
             void playback_seek(unsigned song_id, unsigned abs_time);
+            /**
+             * @brief Set blending between songs in seconds
+             *
+             * @param seconds
+             */
             void playback_crossfade(unsigned seconds);
 
+            /**
+             * @brief Toggle randome mode
+             */
             void toggle_random(void);
+            /**
+             * @brief Toggle consume mode (song gets deleted from playlist after playing)
+             */
             void toggle_consume(void);
+            /**
+             * @brief Toggle repeat mode (repeat playlist)
+             */
             void toggle_repeat(void);
+            /**
+             * @brief Toggle single mode (stops playing after one song)
+             */
             void toggle_single(void);
 
+            /**
+             * @brief Play song at ID (not the Pos in the Queue!)
+             *
+             * @param song_id 
+             */
             void play_song_at_id(unsigned song_id);           
+            /**
+             * @brief Save the current queue as playlist of name @name
+             *
+             * @param name
+             */
             void playlist_save(const char * name);
 
+            /**
+             * @brief Add song from the database to the queue
+             *
+             * @param url a path to the song, does not start with /
+             */
             void queue_add(const char * url);
+            /**
+             * @brief Clears entire queue
+             */
             void queue_clear(void);
+            /**
+             * @brief Deletes song in the queue
+             *
+             * @param pos
+             */
             void queue_delete(unsigned pos);
-            void queue_delete_range(unsigned pos_start, unsigned pos_end);
 
             /**
              * @brief Update the database
@@ -160,8 +206,24 @@ namespace MPD
              * @return the number of filled items.
              */
             void fill_queue(AbstractItemlist& data_model);
+            /**
+             * @brief Fetches all playlists from the server
+             *
+             * @param data_model A user defined class, that inherits from AbstractSonglist 
+             */
             void fill_playlists(AbstractItemlist& data_model);
+            /**
+             * @brief  Fetches all available outputs from the server
+             *
+             * @param data_model A user defined class, that inherits from AbstractSonglist 
+             */
             void fill_ouputs(AbstractItemlist& data_model);
+            /**
+             * @brief Fetches a list of files in the database
+             *
+             * @param data_model A user defined class, that inherits from AbstractSonglist 
+             * @param path A certain path, or /
+             */
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
             
             /**

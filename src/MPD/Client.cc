@@ -191,17 +191,6 @@ namespace MPD
 
     //-------------------------------
 
-    void Client::queue_delete_range(unsigned pos_start, unsigned pos_end)
-    {
-        GET_BUSY
-        {
-            mpd_run_delete_range(conn,pos_start,pos_end);
-        }
-        GET_LAID
-    }
-
-    //-------------------------------
-
     void Client::queue_clear(void)
     {
         GET_BUSY

@@ -110,7 +110,6 @@ namespace GManager
     //-----------------------------
     void MenuList::on_menu_quit(void)
     {
-        /* TODO */
         Gtk::Main::quit();
     }
     //-----------------------------

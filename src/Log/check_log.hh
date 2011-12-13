@@ -47,41 +47,43 @@ class LogTestSuite : public CxxTest::TestSuite
             Init::Path path;
             int aval = 0;
             long fsize_a,fsize_b = 0;
-            GStatBuf test;
-            memset(&test,0,sizeof(GStatBuf));
+            GStatBuf statbuf;
+            memset(&statbuf,0,sizeof(GStatBuf));
 
             /* gets a logwriter instance, should create a log if not avaiable */
             Log::Writer::instance(); 
-            aval = g_stat(path.path_to_log().c_str(),&test); 
+            aval = g_stat(path.path_to_log().c_str(),&statbuf); 
            
             if(aval != -1)
             {
-                fsize_a = test.st_size;
+                fsize_a = statbuf.st_size;
                 printf("filesize var_a: %ld bytes. \n",fsize_a);
                
-                fsize_b = test.st_size;
+                fsize_b = statbuf.st_size;
                 printf("filesize var_b: %ld bytes. \n",fsize_b);
                 
                 /* log size equal? */
                 TS_ASSERT_EQUALS(fsize_a,fsize_b);
 
-                /* writing a wanring to log*/
-                Warning("test warning, might be displayed in wrong order inside cxx testing log\n");
+                /* writing a message to log, messeage should grow by 12 bytes + 64 bytes date/log footprint */
+                Info("test message");
                 printf("writing message to log.\n");
 
                 /*reinit stat struct and get new filesize */
-                g_stat(path.path_to_log().c_str(),&test); 
-                fsize_b = test.st_size;
+                g_stat(path.path_to_log().c_str(),&statbuf); 
+                fsize_b = statbuf.st_size;
                 printf("new filesize var_b: %ld bytes. \n",fsize_b);
                 
                 /* file_b bigger after writing to log? */
                 TS_ASSERT(fsize_a < fsize_b);
+
+                /* file_b size increased properly? file_a + written bytes? */
+                TS_ASSERT(fsize_a+12+64 == fsize_b);
             }
             else
             {
                 TS_FAIL("error occured, logfile possibly not avaiable.");
             }
-
         }
 
 };

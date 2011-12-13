@@ -56,14 +56,56 @@ namespace MPD
              */
             ~Client();
 
+            /**
+             * @brief Connect to the MPD Server specified in the config
+             *
+             * See also #BaseClient
+             */
             void connect(void);
+            /**
+             * @brief Disconnects from the currently connected server
+             *
+             * If already disconnected it does plain nothing.
+             * If connection was lost violently #BaseClient will try to
+             * periodically reconnect.
+             */
             void disconnect(void);
 
-            /* Playback */
+            /**
+             * @brief Go to next song
+             *
+             * @return true on success
+             */
             bool playback_next(void);
+            /**
+             * @brief Go the prev song
+             *
+             * @return true on success
+             */
             bool playback_prev(void);
+            /**
+             * @brief Stop playback
+             *
+             * Will remember the current song.
+             * You have to call playback_play() to "unstop"
+             *
+             * @return true on success
+             */
             bool playback_stop(void);
+            /**
+             * @brief Resume from stopmode
+             *
+             * @return true on success
+             */
             bool playback_play(void);
+            /**
+             * @brief Toggle pause-state
+             *
+             * When playing it gets paused, 
+             * when being paused it starts playing.
+             *
+             * @return true on success
+             */
             bool playback_pause(void);
             
             void playback_seek(unsigned song_id, unsigned abs_time);
@@ -75,7 +117,6 @@ namespace MPD
             void toggle_single(void);
 
             void play_song_at_id(unsigned song_id);           
-
             void playlist_save(const char * name);
 
             void queue_add(const char * url);
@@ -83,7 +124,25 @@ namespace MPD
             void queue_delete(unsigned pos);
             void queue_delete_range(unsigned pos_start, unsigned pos_end);
 
+            /**
+             * @brief Update the database
+             *
+             * Add new files to mpd's database
+             *
+             * @param path a certain path, or "/" for everything
+             *
+             * @return an update id
+             */
             unsigned database_update(const char * path);
+            /**
+             * @brief Full rescan of the database
+             *         
+             * This is a very expensive operation and might take some time.
+             *
+             * @param path an optional path, "/" means everything.
+             *
+             * @return an update id
+             */
             unsigned database_rescan(const char * path);
             
             /**

@@ -36,12 +36,15 @@
 #include "../AbstractItemlist.hh"
 #include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
+
 #include "QueuePopup.hh"
+#include "QueueMerger.hh"
+#include "QueueModelColumns.hh"
 #include "PlaylistAddDialog.hh"
 
 namespace Browser 
 {
-    class Queue : public AbstractBrowser, public AbstractItemlist, public AbstractClientUser
+    class Queue : public AbstractBrowser, public AbstractClientUser
     {
         public:
             Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
@@ -56,8 +59,15 @@ namespace Browser
 
         private:
 
+            /* Init */
+            void configure_columns(void);
+            void configure_signals(void);
+
             /* Implemtend from AbstractItemlist */
             void add_item(void * pSong);
+
+            /* Util */
+            void merge_changes(MPD::Song * pSong);
 
             /* Implemented from AbstractClientUser */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
@@ -74,33 +84,24 @@ namespace Browser
             void on_entry_activate(void);
             bool on_key_press_handler(GdkEventKey * event);
 
-            /* Tree model columns: */
-            class ModelColumns : public Gtk::TreeModel::ColumnRecord
-            {
-                public:
-
-                    ModelColumns()
-                    { add(m_col_id); add(m_col_artist); add(m_col_album); add(m_col_title); }
-
-                    Gtk::TreeModelColumn<unsigned>      m_col_id;
-                    Gtk::TreeModelColumn<Glib::ustring> m_col_title;
-                    Gtk::TreeModelColumn<Glib::ustring> m_col_album;
-                    Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
-            };
-
-            /* Members */
+            /*----------------------*/
+            /*----------------------*/
+            /*----------------------*/
 
             Glib::ustring m_FilterText;
 
             /* Treeview related */
-            ModelColumns m_Columns;
+            QueueModelColumns m_Columns;
 
             /* View of the list */
             Gtk::TreeView * mp_TreeView;
 
             /* Actual data */
             Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+
+            /* Filtered data */
             Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
+
             /* Selected data */
             Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
@@ -112,11 +113,11 @@ namespace Browser
             Gtk::Box * mp_QueueBox;
             PlaylistAddDialog * mp_AddDialog;
 
-            /* Currently shown version of the Queue */
-            unsigned m_PlaylistVersion;
-
             /* Current Song */
             MPD::Song * mp_CurrentSong;
+
+            /* Handles updating the queue */
+            QueueMerger * mp_Merger;
     };
 }
 #endif //FREYA_QUEUE_H

@@ -207,6 +207,14 @@ namespace MPD
              */
             void fill_queue(AbstractItemlist& data_model);
             /**
+             * @brief 
+             *
+             * @param data_model A user defined class, that inherits from AbstractSonglist 
+             * @param last_version The changes since this version
+             * @param first_pos The position of the song that changed first is stored here
+             */
+            void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos);
+            /**
              * @brief Fetches all playlists from the server
              *
              * @param data_model A user defined class, that inherits from AbstractSonglist 

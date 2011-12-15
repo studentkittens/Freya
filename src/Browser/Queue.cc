@@ -119,7 +119,7 @@ namespace Browser
     {
         /* Add the TreeView's view columns: */
         /* Useful for debugging purpose */
-        mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
+        //mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
         mp_TreeView->append_column("Artist", m_Columns.m_col_artist);
         mp_TreeView->append_column("Album", m_Columns.m_col_album);
         mp_TreeView->append_column("Title", m_Columns.m_col_title);
@@ -243,6 +243,9 @@ namespace Browser
 
         if(!path_row_vec.empty())
         {
+            unsigned first_pos = 0;
+
+            mp_Merger->disable_merge_once();
             mp_Client->begin();
 
             /* Since we subtract one, we should check this before. */
@@ -252,12 +255,17 @@ namespace Browser
                 if(rowIt)
                 {
                     Gtk::TreeRow row = *rowIt;
+                    first_pos = row[m_Columns.m_col_pos];
+
                     unsigned song_id = row[m_Columns.m_col_id];
                     mp_Client->queue_delete(song_id);
-                   // m_refTreeModel->erase(rowIt);
+                    m_refTreeModel->erase(rowIt);
                 }
             }
+
+            /* Commit and update queue for the sake of efficiency.. */
             mp_Client->commit();
+            mp_Merger->recalculate_positions(first_pos);
         }
     }
 

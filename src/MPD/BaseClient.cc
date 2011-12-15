@@ -53,7 +53,7 @@ namespace MPD
             mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
             go_idle();
             m_ConnNotifer.emit(true);
-            mp_Listener->force_update();
+            force_update();
         }
 
         return is_connected();

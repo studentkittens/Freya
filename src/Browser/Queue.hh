@@ -32,7 +32,6 @@
 #define FREYA_QUEUE_H
 
 #include <gtkmm.h>
-#include "../AbstractBrowser.hh"
 #include "../AbstractItemlist.hh"
 #include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
@@ -41,6 +40,7 @@
 #include "QueueMerger.hh"
 #include "QueueModelColumns.hh"
 #include "PlaylistAddDialog.hh"
+#include "AbstractBrowser.hh"
 
 namespace Browser 
 {

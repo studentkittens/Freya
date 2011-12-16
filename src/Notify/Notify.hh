@@ -31,7 +31,8 @@
 #ifndef FREYA_NOTIFY_GUARD
 #define FREYA_NOTIFY_GUARD
 
-#include "../Singleton.hh"
+#include "../Utils/Singleton.hh"
+
 #include <gtkmm.h>
 #include <libnotify/notify.h>
 namespace Browser

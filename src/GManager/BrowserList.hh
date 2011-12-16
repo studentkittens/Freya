@@ -32,7 +32,7 @@
 #define FREYA_BROWSERLIST_GUARD
 
 #include <gtkmm.h>
-#include "../AbstractBrowser.hh"
+#include "../Browser/AbstractBrowser.hh"
 #include "../AbstractClientUser.hh"
 
 namespace GManager

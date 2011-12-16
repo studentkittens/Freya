@@ -38,8 +38,9 @@
 #include "SettingsNetwork.hh"
 #include "SettingsGeneral.hh"
 #include "SettingsSub.hh"
+
+#include "AbstractBrowser.hh"
 #include "../Config/Handler.hh"
-#include "../AbstractBrowser.hh"
 #include "../AbstractClientUser.hh"
 #include "../GManager/Trayicon.hh"
 

@@ -32,11 +32,12 @@
 #define PLAYLISTMANAGER_LUYIHGVL
 
 #include <gtkmm.h>
-#include "../AbstractBrowser.hh"
 #include "../AbstractItemlist.hh"
 #include "../AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Playlist.hh"
+
+#include "AbstractBrowser.hh"
 #include "PlaylistManagerPopup.hh"
 #include "PlaylistAddDialog.hh"
 

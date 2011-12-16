@@ -230,10 +230,19 @@ namespace MPD
              * @brief Fetches a list of files in the database
              *
              * @param data_model A user defined class, that inherits from AbstractSonglist 
-             * @param path A certain path, or /
+             * @param path A certain path, or NULL which will add /
              */
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
-            
+           
+            /**
+             * @brief 
+             *
+             * @param data_model
+             * @param path
+             * @param search_term
+             */
+//            void fill_filelist_filtered(AbstractFilebrowser& data_model, const char * path, const char * search_term);
+
             /**
              * @brief Send a command to the server
              *

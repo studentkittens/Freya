@@ -52,7 +52,10 @@ namespace MPD
     
     Song::~Song(void)
     {
-        mpd_song_free(mp_Song);
+        if(mp_Song != NULL)
+        {
+            mpd_song_free(mp_Song);
+        }
     }
 
     /*------------------------------*/

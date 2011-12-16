@@ -36,9 +36,10 @@ using namespace std;
 
 namespace Browser
 {
-    DatabaseBrowser::DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
+    Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractBrowser("Database",true,true,Gtk::Stock::DIRECTORY),
-        AbstractClientUser(client)
+        AbstractClientUser(client),
+        mp_SearchEntry(NULL)
     {
         BUILDER_ADD(builder,"ui/Database.glade");
         BUILDER_GET(builder,"filebrowser_mainbox",mp_ParentBox);
@@ -46,6 +47,7 @@ namespace Browser
         BUILDER_GET(builder,"filebrowser_home",mp_HomeButton);
         BUILDER_GET(builder,"filebrowser_oneup",mp_DirUpButton);
         BUILDER_GET(builder,"filebrowser_statuslabel",mp_StatusLabel);
+        BUILDER_GET(builder,"filebrowser_search_entry",mp_SearchEntry);
 
         m_DirIcon  = mp_IView->render_icon_pixbuf(Gtk::Stock::DIRECTORY,Gtk::ICON_SIZE_DIALOG);
         m_FileIcon = mp_IView->render_icon_pixbuf(Gtk::Stock::FILE,Gtk::ICON_SIZE_DIALOG);
@@ -59,39 +61,52 @@ namespace Browser
 
         /* Set up it's signals */
         mp_HomeButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_home_button_clicked));
+                sigc::mem_fun(*this,&Database::on_home_button_clicked));
         mp_DirUpButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::go_one_up));
+                sigc::mem_fun(*this,&Database::go_one_up));
         mp_IView->signal_item_activated().connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_item_activated));
+                sigc::mem_fun(*this,&Database::on_item_activated));
+        mp_SearchEntry->signal_activate().connect(
+                sigc::mem_fun(*this,&Database::on_search_entry_activated));
+        
 
         /* Connect popup menu */
         mp_Popup = new DatabasePopup(*mp_IView); 
         mp_Popup->get_action("db_add").connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_clicked));
+                sigc::mem_fun(*this,&Database::on_menu_db_add_clicked));
         mp_Popup->get_action("db_add_all").connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_add_all_clicked));
+                sigc::mem_fun(*this,&Database::on_menu_db_add_all_clicked));
         mp_Popup->get_action("db_replace").connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_replace_clicked));
+                sigc::mem_fun(*this,&Database::on_menu_db_replace_clicked));
         mp_Popup->get_action("db_update").connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_update_clicked));
+                sigc::mem_fun(*this,&Database::on_menu_db_update_clicked));
         mp_Popup->get_action("db_rescan").connect(
-                sigc::mem_fun(*this,&DatabaseBrowser::on_menu_db_rescan_clicked));
+                sigc::mem_fun(*this,&Database::on_menu_db_rescan_clicked));
+       
+        /* Key events */
+        mp_IView->signal_key_press_event().connect(
+                sigc::mem_fun(*this,&Database::on_key_press_handler));
+
+        mp_IView->signal_key_release_event().connect(
+                sigc::mem_fun(*this,&Database::on_key_press_handler));
 
         /* An empy path means root */
         set_current_path("");
+
+        /* Make icon view react on key events */
+        mp_IView->add_events(Gdk::KEY_PRESS_MASK | Gdk::KEY_RELEASE_MASK);
     }
     
     /*------------------------------------------------*/
 
-    DatabaseBrowser::~DatabaseBrowser(void) 
+    Database::~Database(void) 
     {
         delete mp_Popup;
     }
 
     /* MENU STUFF*/
 
-    void DatabaseBrowser::on_menu_db_add_clicked(void)
+    void Database::on_menu_db_add_clicked(void)
     {
         std::vector<Gtk::TreePath> items = mp_IView->get_selected_items();
 
@@ -114,7 +129,7 @@ namespace Browser
 
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::on_menu_db_add_all_clicked(void)
+    void Database::on_menu_db_add_all_clicked(void)
     {
         /* Add root dir */
         mp_Client->queue_add("/");
@@ -123,7 +138,7 @@ namespace Browser
     /*------------------------------------------------*/
     
     
-    void DatabaseBrowser::on_menu_db_update_clicked(void)
+    void Database::on_menu_db_update_clicked(void)
     {
         Info("Updating Database.");
         const char * path = mp_Path.c_str();
@@ -133,7 +148,7 @@ namespace Browser
     
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::on_menu_db_rescan_clicked(void)
+    void Database::on_menu_db_rescan_clicked(void)
     {
         Info("Updating Database.");
         const char * path = mp_Path.c_str();
@@ -143,7 +158,7 @@ namespace Browser
     
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::on_menu_db_replace_clicked(void)
+    void Database::on_menu_db_replace_clicked(void)
     {
         mp_Client->queue_clear();
         on_menu_db_add_clicked();
@@ -151,14 +166,14 @@ namespace Browser
     
     /*------------------------------------------------*/
 
-    Gtk::Widget * DatabaseBrowser::get_container(void)
+    Gtk::Widget * Database::get_container(void)
     {
         return mp_ParentBox;
     }
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::add_directory(MPD::Directory * pDir)
+    void Database::add_directory(MPD::Directory * pDir)
     {
         g_assert(pDir);
         add_item(pDir->get_path(),false);
@@ -167,7 +182,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::add_song_file(MPD::Song * pSong)
+    void Database::add_song_file(MPD::Song * pSong)
     {
         g_assert(pSong);
         add_item(pSong->get_uri(),true);
@@ -176,7 +191,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::add_item(const char * path, bool is_file)
+    void Database::add_item(const char * path, bool is_file)
     {
         g_assert(path);
         Gtk::TreeModel::Row row = *(m_DirStore->append());
@@ -188,7 +203,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::on_home_button_clicked(void)
+    void Database::on_home_button_clicked(void)
     {
         m_DirStore->clear();
         mp_Client->fill_filelist(*this,NULL);
@@ -197,23 +212,27 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::on_item_activated(const Gtk::TreeModel::Path& path)
+    void Database::on_item_activated(const Gtk::TreeModel::Path& path)
     {
         Gtk::TreeModel::iterator iter = m_DirStore->get_iter(path);
         if(iter)
         {
             Gtk::TreeRow row = *iter;
+            Glib::ustring path = row[m_Columns.m_col_path];
             if(row[m_Columns.m_col_is_file] == false)
             {
-                Glib::ustring path = row[m_Columns.m_col_path];
                 set_current_path(path.c_str());
+            }
+            else
+            {
+                mp_Client->queue_add(path.c_str());
             }
         }
     }
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::set_current_path(const char * path)
+    void Database::set_current_path(const char * path)
     {
         mp_Path = path;
         m_DirStore->clear();
@@ -223,7 +242,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void DatabaseBrowser::go_one_up(void)
+    void Database::go_one_up(void)
     {
         std::string dir_up = Glib::path_get_dirname(mp_Path);
 
@@ -235,7 +254,7 @@ namespace Browser
 
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+    void Database::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
         if(event & MPD_IDLE_DATABASE)
         {
@@ -245,10 +264,62 @@ namespace Browser
     
     /*------------------------------------------------*/
     
-    void DatabaseBrowser::on_connection_change(bool is_connected)
+    void Database::on_connection_change(bool is_connected)
     {
         /* Empty for now */
     }
     
     /*------------------------------------------------*/
+    
+    void Database::focus_item_starting_with(const char * prefix)
+    {
+        if(prefix == NULL)
+            return;
+
+        gsize prefix_len = strlen(prefix);
+        unsigned cursor  = 0;    
+
+        for(Gtk::TreeModel::iterator iter = m_DirStore->get_iter("0"); iter; iter++)
+        {
+            Gtk::TreeRow row = *iter;
+            Glib::ustring row_str = row[m_Columns.m_col_name];
+            if(row_str.compare(0,prefix_len,prefix) == 0)
+            {
+                Gtk::TreePath focus_path(Utils::int_to_string(cursor));
+                mp_IView->select_path(focus_path);
+                break;
+            }
+            cursor++;
+        }
+    }
+    
+    /*------------------------------------------------*/
+    
+    void Database::on_search_entry_activated(void)
+    {
+        //TODO
+    }
+    
+    /*------------------------------------------------*/
+
+    bool Database::on_key_press_handler(GdkEventKey * event)
+    {
+        g_assert(event);
+        if(event->type   == GDK_KEY_RELEASE &&
+           event->keyval == GDK_KEY_BackSpace)
+        {
+            go_one_up();
+            return true;
+        }
+        else if(event->type == GDK_KEY_RELEASE &&
+                event->keyval >= GDK_KEY_0 &&
+                event->keyval <= GDK_KEY_z)
+        {
+            gchar * key_name = gdk_keyval_name(event->keyval);
+            g_message("Pressed: %s",key_name);
+            focus_item_starting_with(key_name);
+        }
+
+        return false;
+    }
 }

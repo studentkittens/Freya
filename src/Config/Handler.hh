@@ -35,7 +35,7 @@
 #include <libxml/parser.h>
 
 #include "Model.hh"
-#include "../Singleton.hh"
+#include "../Utils/Singleton.hh"
 
 namespace Config
 {

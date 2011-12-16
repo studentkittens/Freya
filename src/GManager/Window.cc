@@ -28,24 +28,52 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_MAIN_WINDOW_GUARD
-#define FREYA_MAIN_WINDOW_GUARD
+#include "Window.hh"
+#include "../Log/Writer.hh"
+#include "../Utils/Utils.hh"
+#include "../Config/Handler.hh"
 
-#include <gtkmm.h>
-#include "Log/Writer.hh"
-#include "Utils/Utils.hh"
-#include "Config/Handler.hh"
-
-class FreyaWindow 
+namespace GManager
 {
-    public:
-        FreyaWindow(const Glib::RefPtr<Gtk::Builder> &builder);
-        ~FreyaWindow();
-        Gtk::Window* get_window(void);
-    protected:
-        bool on_delete_event(GdkEventAny* event);
-    private:
-        Gtk::Window * main_window;
-};
+    Window::Window(const Glib::RefPtr<Gtk::Builder> &builder)
+    {
+        main_window=NULL;
+        BUILDER_GET_NO_MANAGE(builder,"FreyaMainWindow",main_window);
 
-#endif
+        main_window->signal_delete_event().connect(sigc::mem_fun(*this,&Window::on_delete_event));
+
+    }
+
+    /*-------------------------*/
+
+    Window::~Window()
+    {
+        if(main_window!=NULL)
+        {
+            delete main_window;
+            main_window=NULL;
+        }
+    }
+
+    /*-------------------------*/
+
+    bool Window::on_delete_event(GdkEventAny* event)
+    {
+        if(CONFIG_GET_AS_INT("settings.trayicon.totrayonclose"))
+        {
+            main_window->hide();
+        }
+        else
+        {
+            Gtk::Main::quit();
+        }
+        return true;
+    }
+
+    /*-------------------------*/
+
+    Gtk::Window* Window::get_window(void)
+    {
+        return this->main_window;
+    }
+}

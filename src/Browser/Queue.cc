@@ -94,7 +94,8 @@ namespace Browser
                 sigc::mem_fun(*this,&Queue::on_filter_row_visible));
 
         /* Double click on a row */
-        mp_TreeView->signal_row_activated().connect(sigc::mem_fun(*this,&Queue::on_row_activated));
+        mp_TreeView->signal_row_activated().connect(
+                sigc::mem_fun(*this,&Queue::on_row_activated));
 
         /* Set up Popupmenu */
         mp_Popup = new QueuePopup(*mp_TreeView);
@@ -238,7 +239,6 @@ namespace Browser
 
     void Queue::on_menu_remove_clicked(void)
     {
-        //TODO: Might get more efficient here.
         std::vector<Gtk::TreePath> path_row_vec = m_TreeSelection->get_selected_rows();
 
         if(!path_row_vec.empty())
@@ -285,11 +285,9 @@ namespace Browser
            event->keyval == GDK_KEY_space   &&
            mp_CurrentSong != NULL)
         {
-            char buf[42] = {0};
-            g_snprintf(buf,100,"%d",mp_CurrentSong->get_pos());
-
-            mp_TreeView->set_cursor(Gtk::TreePath(buf));
-            return true;
+            Gtk::TreePath path(Utils::int_to_string(mp_CurrentSong->get_pos()));  
+            mp_TreeView->scroll_to_row(path);
+            return false;
         }
         else if(event->type   == GDK_KEY_RELEASE  &&
                 event->state  &  (GDK_CONTROL_MASK|GDK_SHIFT_MASK) &&

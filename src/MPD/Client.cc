@@ -318,7 +318,7 @@ namespace MPD
     {
         GET_BUSY
         {
-            if(mpd_send_list_meta(conn, path) != FALSE)
+            if(mpd_send_list_meta(conn, (path) ? path : "/") != FALSE)
             {
                 mpd_entity * ent = NULL;
                 while((ent = mpd_recv_entity(conn)))
@@ -358,6 +358,8 @@ namespace MPD
         GET_LAID
     }
 
+    //--------------------
+    
     //--------------------
 
     void Client::toggle_random(void)

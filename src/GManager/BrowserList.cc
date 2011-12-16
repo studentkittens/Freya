@@ -137,7 +137,9 @@ namespace GManager
                 mp_List->remove(*element);
             }
 
-            mp_List->add(*(browser->get_container()));
+            Gtk::Widget * content = browser->get_container();
+            content->grab_focus();
+            mp_List->add(*(content));
         }
         else
         {

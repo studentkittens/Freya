@@ -225,7 +225,7 @@ namespace Browser
             }
             else
             {
-                mp_Client->queue_add(path.c_str());
+                on_menu_db_add_clicked();
             }
         }
     }

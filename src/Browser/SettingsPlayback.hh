@@ -35,7 +35,7 @@
 
 #include "../Config/Handler.hh"
 #include "../MPD/Client.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "SettingsSub.hh"
 
 namespace Browser

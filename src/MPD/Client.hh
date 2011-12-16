@@ -34,8 +34,8 @@
 #include  "BaseClient.hh"
 
 /* Songlist interface */
-#include "../AbstractItemlist.hh"
-#include "../AbstractFilebrowser.hh"
+#include "AbstractItemlist.hh"
+#include "AbstractFilebrowser.hh"
 
 namespace MPD
 {

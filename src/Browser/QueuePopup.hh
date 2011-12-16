@@ -31,8 +31,8 @@
 #ifndef FREYA_QUEUE_POPUP_GUARD
 #define FREYA_QUEUE_POPUP_GUARD
 
-#include <gtkmm.h>
 #include "BasePopup.hh"
+#include <gtkmm.h>
 
 namespace Browser
 {

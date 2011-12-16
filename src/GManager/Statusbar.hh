@@ -34,7 +34,7 @@
 #include <gtkmm.h>
 
 #include "../MPD/Client.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "Heartbeat.hh"
 
 namespace GManager

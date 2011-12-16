@@ -31,8 +31,8 @@
 #ifndef FREYA_ABSTRACT_FILEBROWSER_GUARD
 #define FREYA_ABSTRACT_FILEBROWSER_GUARD
 
-#include "MPD/Song.hh"
-#include "MPD/Directory.hh"
+#include "Song.hh"
+#include "Directory.hh"
 
 class AbstractFilebrowser
 {

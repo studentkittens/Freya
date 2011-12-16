@@ -34,6 +34,7 @@
 namespace Browser
 {
     PlaylistAddDialog::PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder) :
+        AbstractClientUser(client),
         is_running(false),
         mp_Dialog(NULL)
     {
@@ -105,4 +106,14 @@ namespace Browser
     {
         on_add_clicked();
     }
+    
+    /* ----------------------- */
+            
+    void PlaylistAddDialog::on_client_update(mpd_idle event, MPD::NotifyData& data)
+    {}
+    
+    /* ----------------------- */
+
+    void PlaylistAddDialog::on_connection_change(bool is_connected)
+    {}
 }

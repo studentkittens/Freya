@@ -34,8 +34,8 @@
 #include <gtkmm.h>
 
 #include "../Config/Handler.hh"
-#include "SettingsSub.hh"
 #include "../GManager/Trayicon.hh"
+#include "SettingsSub.hh"
 
 namespace Browser
 {

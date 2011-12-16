@@ -43,7 +43,6 @@ namespace Browser {
             StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&);
             ~StatBrowser ();
             
-
             /**
              * @brief implemented from AbstractBrowser
              *

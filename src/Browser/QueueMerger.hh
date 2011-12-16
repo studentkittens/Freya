@@ -1,8 +1,8 @@
 #ifndef FREYA_QUEUE_MERGER
 #define FREYA_QUEUE_MERGER
 
-#include "../AbstractItemlist.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractItemlist.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "QueueModelColumns.hh"
 
 #include <gtkmm.h>

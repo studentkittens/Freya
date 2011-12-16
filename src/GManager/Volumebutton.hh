@@ -32,9 +32,12 @@
 #define FREYA_VOLUMEBUTTON_GUARD
 
 #include <gtkmm.h>
+
+/* Needs to be included itself for some reason.. */
 #include <gtkmm/volumebutton.h>
+
 #include "../MPD/Client.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 
 namespace GManager
 {

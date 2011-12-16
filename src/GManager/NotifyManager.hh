@@ -31,7 +31,7 @@
 #ifndef FREYA_NOTIFY_MANAGER_GUARD
 #define FREYA_NOTIFY_MANAGER_GUARD
 
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../Notify/Notify.hh"
 
 namespace GManager

@@ -32,8 +32,8 @@
 #define FREYA_QUEUE_H
 
 #include <gtkmm.h>
-#include "../AbstractItemlist.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractItemlist.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 
 #include "QueuePopup.hh"

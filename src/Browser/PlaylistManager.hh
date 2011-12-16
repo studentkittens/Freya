@@ -32,8 +32,8 @@
 #define PLAYLISTMANAGER_LUYIHGVL
 
 #include <gtkmm.h>
-#include "../AbstractItemlist.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractItemlist.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Playlist.hh"
 

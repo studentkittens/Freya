@@ -33,8 +33,8 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../Notify/Notify.hh"
-#include "../AbstractClientUser.hh"
 
 namespace GManager
 {

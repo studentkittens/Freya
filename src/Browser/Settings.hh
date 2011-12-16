@@ -41,7 +41,6 @@
 
 #include "AbstractBrowser.hh"
 #include "../Config/Handler.hh"
-#include "../AbstractClientUser.hh"
 #include "../GManager/Trayicon.hh"
 
 using namespace std;
@@ -53,8 +52,8 @@ namespace Browser
         public:
             Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
             ~Settings();
-            Gtk::Widget* get_container(void);
 
+            Gtk::Widget* get_container(void);
             void settings_changed(void);
 
         private:

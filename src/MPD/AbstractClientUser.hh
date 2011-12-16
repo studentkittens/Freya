@@ -31,7 +31,7 @@
 #ifndef FREYA_ABSTRACT_CLIENTUSER_GUARD
 #define FREYA_ABSTRACT_CLIENTUSER_GUARD
 
-#include "MPD/Client.hh"
+#include "Client.hh"
 
 class AbstractClientUser 
 {

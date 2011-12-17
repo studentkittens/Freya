@@ -178,7 +178,6 @@ namespace Browser
     {
         g_assert(pDir);
         add_item(pDir->get_path(),false);
-//        delete pDir;
     }
 
     /*------------------------------------------------*/
@@ -187,7 +186,6 @@ namespace Browser
     {
         g_assert(pSong);
         add_item(pSong->get_uri(),true);
-//       delete pSong;
     }
 
     /*------------------------------------------------*/
@@ -235,7 +233,7 @@ namespace Browser
     {
         mp_Path = path;
         m_DirStore->clear();
-        m_Cache.fill_filelist_from_cache(*this,mp_Path.c_str());
+        m_Cache.fill_filelist_from_cache(*this,mp_Path);
         mp_StatusLabel->set_text(!mp_Path.empty() ? mp_Path : "Root");
     }
 

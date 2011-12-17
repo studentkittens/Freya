@@ -1,14 +1,44 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #ifndef FREYA_MENULIST_GUARD
 #define FREYA_MENULIST_GUARD
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../Notify/Notify.hh"
-#include "AbstractGElement.hh"
 
 namespace GManager
 {
-    class MenuList : public AbstractGElement
+    class MenuList : public AbstractClientUser
     {
         public:
 
@@ -47,8 +77,7 @@ namespace GManager
 			  *menu_playback, *menu_misc, *menu_vol_inc,*menu_vol_dec,
                           *menu_about;
 
-            Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume,
-                               *menu_log;
+            Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume;
             Gtk::AboutDialog * window_about;
     };
 

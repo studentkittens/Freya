@@ -1,7 +1,41 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #ifndef FREYA_LISTENER_GUARD
 #define FREYA_LISTENER_GUARD
 
-#include "../includes.hh"
+#include <mpd/client.h>
+#include <mpd/async.h>
+#include <mpd/parser.h>
+#include <glibmm.h>
+
 #include "Status.hh"
 #include "NotifyData.hh"
 #include "Connection.hh"
@@ -34,7 +68,7 @@ namespace MPD
             // Classmembers  //
             //---------------//
 
-            NotifyData& get_notify_data(void);
+            NotifyData& signal_client_update_data(void);
 
 
             /**
@@ -48,14 +82,14 @@ namespace MPD
              * Utility (therefore static) function to
              * convert a GIOCondition bit mask to #mpd_async_event.
              */
-            static enum mpd_async_event GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition);
+            enum mpd_async_event GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition);
 
             //--------------------------------
 
             /**
              * Converts a #mpd_async_event bit mask to GIOCondition.
              */
-            static Glib::IOCondition MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events);
+            Glib::IOCondition MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events);
 
 
             /* check if async connection is doing weird things */
@@ -63,7 +97,7 @@ namespace MPD
             bool recv_parseable(void);
             gboolean io_callback(Glib::IOCondition condition);
             bool parse_response(char *line);
-            void invoke_user_callback(long overwrite_events);
+            void invoke_user_callback(void);
             void create_watch(enum mpd_async_event events);
 
             //-----------------//
@@ -72,6 +106,17 @@ namespace MPD
 
             /* true if in idlemode */
             bool is_idle;
+
+            /* True while executing leave(),
+             * prevents enter() from being called
+             * */
+            bool is_leaving;
+
+            /* True while callback is executed */
+            bool is_working;
+
+            /* True when a forced update was requested */
+            bool is_forced;
 
             /* A reponse parser */
             struct mpd_parser * mp_Parser;
@@ -83,7 +128,7 @@ namespace MPD
             int async_socket_fd;
 
             /* What IO events did happen? */
-            enum mpd_async_event io_eventmask;
+            mpd_async_event io_eventmask;
 
             /* The actual events (like "player","mixer".. etc) */
             unsigned idle_events;

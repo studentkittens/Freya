@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "MenuList.hh"
 
 #include "../Log/Writer.hh"
@@ -10,7 +40,7 @@
 namespace GManager
 {
     MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder) :
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         running=false;
         BUILDER_GET(builder,"menu_item_connect", menu_connect);
@@ -27,7 +57,6 @@ namespace GManager
         BUILDER_GET(builder,"menu_mode_consume", menu_consume);
         BUILDER_GET(builder,"menu_item_vol_up", menu_vol_inc);
         BUILDER_GET(builder,"menu_item_vol_down", menu_vol_dec);
-        BUILDER_GET(builder,"menu_item_log_activate", menu_log);
         BUILDER_GET(builder,"menu_about",menu_about);
         
         BUILDER_GET(builder,"playback_menuitem",menu_playback);
@@ -108,7 +137,6 @@ namespace GManager
     {
         menu_connect->set_sensitive(!is_connected);
         menu_disconnect->set_sensitive(is_connected);
-
         menu_playback->set_sensitive(is_connected);
         menu_misc->set_sensitive(is_connected);
     }
@@ -117,7 +145,7 @@ namespace GManager
 
     void MenuList::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
     {
-        if(event && MPD_IDLE_OPTIONS && !running)
+        if((event & MPD_IDLE_OPTIONS) && !running)
         {
             running=true;
             MPD::Status &stat = data.get_status();

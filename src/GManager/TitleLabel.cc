@@ -1,13 +1,41 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "TitleLabel.hh"
 #include "../Utils/Utils.hh"
 #include "../Notify/Notify.hh"
 namespace GManager
 {
     TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+        : AbstractClientUser(client)
     {
-        mp_Client = &client;
-        mp_Client->get_notify().connect(sigc::mem_fun(*this,&TitleLabel::on_client_update));
-
         BUILDER_GET(builder,"title_label",mp_TitleLabel);
         BUILDER_GET(builder,"artist_album_label",mp_ArtistAlbumLabel);
         BUILDER_GET(builder,"next_song_artist",mp_NextSongArtistLabel);
@@ -15,26 +43,49 @@ namespace GManager
     }
 
     //----------------
-
-    TitleLabel::~TitleLabel() {}
+    
+    void TitleLabel::stash_next_title(void)
+    {
+        mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
+        mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+    }
 
     //----------------
-    
+
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
-        MPD::Song& current_song = data.get_next_song(); 
-        char * title_string = g_markup_printf_escaped("<small>%s</small>",
-                current_song.get_tag(MPD_TAG_TITLE,0)
-                );
-        char * artist_string = g_markup_printf_escaped("<small>%s</small>",
-                current_song.get_tag(MPD_TAG_ARTIST,0)
-                );
+        MPD::Song * current_song = data.get_next_song(); 
+        if(current_song != NULL)
+        {
+            char * title_string = g_markup_printf_escaped("<small>%s</small>",
+                    current_song->get_tag(MPD_TAG_TITLE,0)
+                    );
+            char * artist_string = g_markup_printf_escaped("<small>%s</small>",
+                    current_song->get_tag(MPD_TAG_ARTIST,0)
+                    );
 
-        mp_NextSongArtistLabel->set_markup(artist_string);
-        mp_NextSongTitleLabel->set_markup(title_string);
+            mp_NextSongArtistLabel->set_markup(artist_string);
+            mp_NextSongTitleLabel->set_markup(title_string);
 
-        g_free(title_string);
-        g_free(artist_string);
+            g_free(title_string);
+            g_free(artist_string);
+        }
+        else
+        {
+            stash_next_title();
+        }
+    }
+
+    //----------------
+
+    void TitleLabel::on_connection_change(bool is_connected)
+    {
+        if(!is_connected)
+        {
+            mp_TitleLabel->set_markup("<b>You do not seem to be connected :-(</b>");
+            mp_ArtistAlbumLabel->set_markup("<small>Adjust your settings and try File->Connect</small>");
+            stash_next_title();
+        }
     }
 
     //----------------
@@ -43,22 +94,30 @@ namespace GManager
     {
         if(event & (MPD_IDLE_PLAYER))
         {
-            MPD::Song& current_song = data.get_song();
-            char * title_string = g_markup_printf_escaped("<b>%s</b> (Track %s)",
-                    current_song.get_tag(MPD_TAG_TITLE,0),
-                    current_song.get_tag(MPD_TAG_TRACK,0)
-                    );
-            char * artist_album = g_markup_printf_escaped("<small>by <b>%s</b> on <b>%s</b> (%s)</small>",
-                    current_song.get_tag(MPD_TAG_ARTIST,0),
-                    current_song.get_tag(MPD_TAG_ALBUM,0),
-                    current_song.get_tag(MPD_TAG_DATE,0)
-                    );
+            MPD::Song * current_song = data.get_song();
+            if(current_song != NULL)
+            {
+                char * title_string = g_markup_printf_escaped("<b>%s</b> (Track %s)",
+                        current_song->get_tag(MPD_TAG_TITLE,0),
+                        current_song->get_tag(MPD_TAG_TRACK,0)
+                        );
+                char * artist_album = g_markup_printf_escaped("<small>by <b>%s</b> on <b>%s</b> (%s)</small>",
+                        current_song->get_tag(MPD_TAG_ARTIST,0),
+                        current_song->get_tag(MPD_TAG_ALBUM,0),
+                        current_song->get_tag(MPD_TAG_DATE,0)
+                        );
 
-            mp_TitleLabel->set_markup(title_string); 
-            mp_ArtistAlbumLabel->set_markup(artist_album); 
+                mp_TitleLabel->set_markup(title_string); 
+                mp_ArtistAlbumLabel->set_markup(artist_album); 
 
-            g_free(artist_album);
-            g_free(title_string);
+                g_free(artist_album);
+                g_free(title_string);
+            }
+            else
+            {
+                mp_TitleLabel->set_markup("<b>Not Playing</b>"); 
+                mp_ArtistAlbumLabel->set_markup("<small>Select a new Song</small>"); 
+            }
         }
 
         if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS))

@@ -1,6 +1,38 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include <stdio.h>
-#include "Utils.hh"
 #include <time.h>
+#include <glib.h>
+
+#include "Utils.hh"
 
 namespace Utils {
 
@@ -48,6 +80,7 @@ namespace Utils {
         return retv;
     }
 
+    /*-----------------------*/
 
     Glib::ustring seconds_to_timestamp(const long duration)
     {
@@ -60,5 +93,15 @@ namespace Utils {
         strftime (retv,512, "%F",timestr);
     
         return Glib::ustring(retv);
+    }
+    
+    /*-----------------------*/
+
+    std::string int_to_string(int num)
+    {
+        unsigned size = (ABS(num) % 10) + 2;
+        char num_buf[size];
+        g_snprintf(num_buf,size,"%d",num);
+        return std::string(num_buf);
     }
 }

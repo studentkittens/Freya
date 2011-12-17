@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "Trayicon.hh"
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
@@ -20,7 +50,7 @@ namespace GManager
     Trayicon::Trayicon(MPD::Client& client,Gtk::Window& main_window) :
         Gtk::StatusIcon(Gtk::Stock::INFO),
         Browser::BasePopup(NULL,ui_info),
-        AbstractGElement(client)
+        AbstractClientUser(client)
     {
         mp_Window = &main_window;
 
@@ -40,8 +70,10 @@ namespace GManager
         m_ActionPause->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_pause_clicked));
         m_ActionQuit->signal_activate().connect(sigc::mem_fun(*this,&Trayicon::on_quit_clicked));
 
-        /* Dirty hack to fix the strange huge icon */
-        set(mp_Popup->render_icon_pixbuf(Gtk::Stock::INFO,Gtk::ICON_SIZE_LARGE_TOOLBAR));
+        /* TODO This doesnt work with stalonetray.. Huh? */
+        // set_from_file("ui/Trayicon.svg");
+        /* Silly hack to get the right size */
+        set(mp_Window->render_icon_pixbuf(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_LARGE_TOOLBAR));
     }
 
     //-------------------------
@@ -97,12 +129,10 @@ namespace GManager
     
     void Trayicon::on_connection_change(bool is_connected)
     {
-        /*
         m_ActionNext->set_sensitive(is_connected);
         m_ActionPrev->set_sensitive(is_connected);
         m_ActionStop->set_sensitive(is_connected);
         m_ActionPause->set_sensitive(is_connected);
-        */
     }
     
     //---------------------------

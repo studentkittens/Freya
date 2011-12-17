@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "Timeslide.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
@@ -7,7 +37,7 @@
 namespace GManager
 {
     Timeslide::Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractGElement(client),
+        AbstractClientUser(client),
         m_Timeguard()
     {
         mp_Proxy  = &tproxy;
@@ -17,7 +47,7 @@ namespace GManager
         m_Timeslide->set_range(0.0,100.0);
 
         m_Timeslide->signal_value_changed().connect(sigc::mem_fun(*this,&Timeslide::on_user_action));
-        tproxy.get_notify().connect(sigc::mem_fun(*this,&Timeslide::tick));
+        tproxy.signal_client_update().connect(sigc::mem_fun(*this,&Timeslide::tick));
     }
 
     /* ------------------ */
@@ -51,7 +81,7 @@ namespace GManager
     
     void Timeslide::on_connection_change(bool is_connected)
     {
-        // TODO
+        m_Timeslide->set_sensitive(is_connected);
     }
 
     /* ------------------ */
@@ -65,24 +95,7 @@ namespace GManager
             ignore_signal = true;
             m_Timeslide->set_range(0.0,status.get_total_time());
             m_Timeslide->set_value(status.get_elapsed_time());
-            mp_Proxy->set(status.get_elapsed_time());
             ignore_signal = false;
-
-            switch(data.get_status().get_state())
-            {
-                case MPD_STATE_STOP:
-                    mp_Proxy->reset();
-                    break;
-                case MPD_STATE_PAUSE:
-                    mp_Proxy->pause();
-                    break;
-                case MPD_STATE_PLAY:
-                    mp_Proxy->play();
-                    break;
-                case MPD_STATE_UNKNOWN:
-                default:
-                    break;
-            }
         }
     }
 }

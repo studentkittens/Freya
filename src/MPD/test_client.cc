@@ -1,5 +1,36 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "Client.hh"
-#include "Listener.hh"
+#include "../Log/Writer.hh"
+
 #include <cstring>
 
 using namespace Glib;
@@ -32,36 +63,6 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 retv = false;
                 break;
             }
-        case 'n':
-            {
-                client->send_command("next"); 
-                break;
-            }
-        case 'x':
-            {
-                client->send_command("previous");
-                break;
-            }
-        case 's':
-            {
-                client->send_command("stop");
-                break;
-            }
-        case 'p':
-            {
-                client->send_command("play");
-                break;
-            }
-        case '#':
-            {
-                client->play_song_at_id(2);
-                break;
-            }
-        case 'c':
-            {
-                client->connect();
-                break;
-            }
         case ':':
             {
                 char cmd[256] = {0};
@@ -75,25 +76,20 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 /* Do not unread newline */
                 return true;
             }
-        case 'd':
+        default:
             {
-                client->disconnect();
                 break;
             }
     }
 
     /* Unread characters left on the stream (if any) */
     while ((c = getchar()) != EOF && c != '\n'); 
+
     return retv;
 }
 
 //--------------------------------------
 //--------------------------------------
-
-// Anmerkung: Das ist momentan mehr oder minder zusammen gehackter Code
-// der meinen eigenen Verständniss dient - hier ist alles weit weg von
-// offiziell - irgendwie muss ich mich ja mit der lib beschäftigen.
-// -c3
 
 int main(int argc, char *argv[])
 {
@@ -110,6 +106,10 @@ int main(int argc, char *argv[])
     g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data); 
 
     freya.force_update();
+
+    Info("Enter your command prepended with a ':'");
+    Info("Example: :status or :next");
+    Info("Type 'q' to quit.");
 
     /* Start listening to events */
     app_loop->run();

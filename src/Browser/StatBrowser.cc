@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "StatBrowser.hh"
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
@@ -5,7 +35,7 @@
 namespace Browser
 {
     StatBrowser::StatBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Statistics",Gtk::Stock::INFO)
+        AbstractBrowser("Statistics",true,true,Gtk::Stock::INFO)
     {
         Gtk::Grid * container = NULL;
         BUILDER_ADD(builder,"ui/Statistics.glade");
@@ -18,7 +48,7 @@ namespace Browser
         BUILDER_GET(builder, "dbupdate",dbupdate);
         BUILDER_GET(builder, "statistics_grid",container);
 
-        client.get_notify().connect(sigc::mem_fun(*this,&StatBrowser::on_client_update));
+        client.signal_client_update().connect(sigc::mem_fun(*this,&StatBrowser::on_client_update));
         container->reparent(*this);
 
         show_all();
@@ -48,13 +78,9 @@ namespace Browser
             noofsongs->set_text(Glib::ustring(newvalue));
 
             dbplaytime->set_text(Utils::seconds_to_duration(stat.get_db_play_time()).c_str());
-
             playtime->set_text(Utils::seconds_to_duration(stat.get_play_time()).c_str());
-
             uptime->set_text(Utils::seconds_to_duration(stat.get_uptime()).c_str());
-
             dbupdate->set_text(Utils::seconds_to_timestamp(stat.get_db_update_time()).c_str());
-        
         }
     }
 

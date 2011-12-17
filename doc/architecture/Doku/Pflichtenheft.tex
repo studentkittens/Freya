@@ -4,29 +4,21 @@
 \renewcommand{\labelitemi}{•}
 \begin{itemize}
 	\item Server-Verbindung
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
 	\item Client-Einstellungen
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
 	\item Musik-Steuerung
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
-	\item Sonstiges
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
 \end{itemize}
 \subsection{Wunsch-Kriterien}
 \begin{itemize}
-		\item Platzhalter
+	\item Liedsuche
+	\item Liedinformationen taggen
+	\item Liedstatistik
+	\item Album-Covers
 \end{itemize}
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-		\item Platzhalter
+	\item Chat
+	\item Musik-Visualisierung
+	\item Social-Network Schnittstelle
 \end{itemize}
 \section{Produkteinsatz}
 Welche Anwendungsbereiche (Zweck), Zielgruppen (Wer mit welchen Qualifikationen), Betriebsbedingungen (Betriebszeit,
@@ -39,8 +31,10 @@ Definition der GPL:
 http://www.gnu.org/licenses/gpl.html
 \end{center}
 \subsection{Anwendungsbereiche}
-Einzelpersonen verwenden dieses System, um überall da wo mit 
+Einzelpersonen verwenden dieses System überall da, wo mit 
 einem Unix-artigen Betriebssystem Musik abgespielt werden soll.
+Solche Systeme sind z.B. Personal Computer, Fernseher, Musikanlagen
+und eventuell auch diverse Smartphones.
 \subsection{Zielgruppen}
 Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
 wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern).\ \\ \\
@@ -83,19 +77,13 @@ Einstellungen selbstverständlich zu jeder Zeit ändern können.
 \subsubsection{Starten und Beenden}
 \begin{itemize}
 	\item F\_0010 Der Benutzer kann das System zu jedem Zeitpunkt starten.
-	\item F\_0020 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
-	\item F\_0030 Beim ersten Start wird ein Standart-System-Zustand geladen.
-	\item F\_0040 Beim Beenden wird der aktuelle System-Zustand gespeichert.
-	\item F\_0050 Bei jedem weiteren Start wird der letzte System-Zustand geladen.
+	\item F\_0011 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
+	\item F\_0012 Beim ersten Start wird ein Standart-System-Zustand geladen.
+	\item F\_0013 Beim Beenden wird der aktuelle System-Zustand gespeichert.
+	\item F\_0014 Bei jedem weiteren Start wird der letzte System-Zustand geladen.
 \end{itemize}
-\subsection{Benutzerfunktionen}
-\subsubsection{Benutzer-Kennung}
-Eine Benutzerkennung ist nicht erforderlich und wurde deshalb auch nicht implementiert.
-\subsubsection{Persönliche Daten}
-Verbindungseinstellungen müssen vorgenommen werden und können zu jedem Zeitpunkt geändert werden.
-\begin{itemize}
-	\item F\_0110 Der Benutzer kann Verbindungseinstellungen vornehmen und sie ändern
-\end{itemize}
+\subsubsection{Abspielen von Musik}
+	\item F\_0020 
 \subsubsection{Persönliche Konfiguration}
 config.xml
 log datei

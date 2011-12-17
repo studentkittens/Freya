@@ -32,22 +32,25 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
-#define UPDATE_TIMEOUT 0.1
+#define UPDATE_TIMEOUT 0.05
 
 namespace GManager
 {
     Timeslide::Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(client),
+        current_song_id(0),
+        ignore_signal(false),
+        mp_Heartbeat(&tproxy),
         m_Timeguard()
     {
-        mp_Proxy  = &tproxy;
-        ignore_signal = false;
-
         BUILDER_GET(builder,"time_slide",m_Timeslide);
         m_Timeslide->set_range(0.0,100.0);
 
-        m_Timeslide->signal_value_changed().connect(sigc::mem_fun(*this,&Timeslide::on_user_action));
-        tproxy.signal_client_update().connect(sigc::mem_fun(*this,&Timeslide::tick));
+        m_Timeslide->signal_value_changed().connect(
+                sigc::mem_fun(*this,&Timeslide::on_user_action));
+
+        tproxy.signal_client_update().connect(
+                sigc::mem_fun(*this,&Timeslide::tick));
     }
 
     /* ------------------ */
@@ -61,24 +64,30 @@ namespace GManager
     
     /* ------------------ */
 
+    void Timeslide::do_scroll(void)
+    {
+        mp_Client->playback_seek(current_song_id,m_Timeslide->get_value());
+    }
+    
+    /* ------------------ */
+
     void Timeslide::on_user_action(void)
     {
         /* only allow updates every 0.1 seconds */
         if(!ignore_signal && m_Timeguard.elapsed() > UPDATE_TIMEOUT)
         {
-            double new_value = m_Timeslide->get_value();
             if(mp_Client->is_connected())
             {
-                unsigned song_id = mp_Client->get_status()->get_song_id();
-                mp_Client->playback_seek(song_id,new_value);
+                Glib::signal_idle().connect_once(
+                        sigc::mem_fun(*this,&Timeslide::do_scroll),Glib::PRIORITY_LOW);
             }
-            mp_Proxy->set(new_value);
+            mp_Heartbeat->set(m_Timeslide->get_value());
             m_Timeguard.reset();
         }
     }
 
     /* ------------------ */
-    
+
     void Timeslide::on_connection_change(bool is_connected)
     {
         m_Timeslide->set_sensitive(is_connected);
@@ -91,11 +100,17 @@ namespace GManager
         if(!ignore_signal && event & (MPD_IDLE_PLAYER))
         {
             MPD::Status& status = data.get_status();
+            MPD::Song * current_song = data.get_song();
 
-            ignore_signal = true;
-            m_Timeslide->set_range(0.0,status.get_total_time());
-            m_Timeslide->set_value(status.get_elapsed_time());
-            ignore_signal = false;
+            if(current_song != NULL)
+            {
+                current_song_id = current_song->get_id();
+
+                ignore_signal = true;
+                m_Timeslide->set_range(0.0,status.get_total_time());
+                m_Timeslide->set_value(status.get_elapsed_time());
+                ignore_signal = false;
+            }
         }
     }
 }

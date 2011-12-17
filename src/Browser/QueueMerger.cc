@@ -1,5 +1,6 @@
 #include "QueueMerger.hh"
 #include "../Log/Writer.hh"
+#include "../Utils/Utils.hh"
 
 namespace Browser
 {
@@ -28,9 +29,7 @@ namespace Browser
     
     Gtk::TreeModel::iterator QueueMerger::get_iter_at_pos(int pos)
     {
-        char int_buf[16] = {0};
-        g_snprintf(int_buf,sizeof(int_buf),"%d",pos);
-        return mp_QueueModel->get_iter(int_buf);
+        return mp_QueueModel->get_iter(Utils::int_to_string(pos));
     }
 
     /*-------------------*/
@@ -40,7 +39,7 @@ namespace Browser
         row[mp_QueueColumns->m_col_id]  = pSong->get_id();
         row[mp_QueueColumns->m_col_pos] = pSong->get_pos();
 
-        try { /* Check for NULLs just to be sure */
+        try {
             row[mp_QueueColumns->m_col_title]  = pSong->get_tag(MPD_TAG_TITLE,0);
             row[mp_QueueColumns->m_col_album]  = pSong->get_tag(MPD_TAG_ALBUM,0);
             row[mp_QueueColumns->m_col_artist] = pSong->get_tag(MPD_TAG_ARTIST,0);
@@ -130,7 +129,7 @@ namespace Browser
                     mp_QueueModel->clear();  
                     mp_Client->fill_queue(*this);
 
-                    /* This usually only necessary on startup. */
+                    /* This is usually only necessary on startup. */
                     needsRefill = false;
                 }
                 else

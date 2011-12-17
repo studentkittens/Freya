@@ -42,52 +42,54 @@ Definition der GPL v3:
 \begin{center}
 	http://www.gnu.org/licenses/gpl.html
 \end{center}
-Die Software soll überall da eingesetzt werden, wo Musik abgespielt werden soll. 
-Dabei ist man nicht auf einen Rechner beschränkt, auch Fernseher und Musik-Spieler
-mit Internetzugang, entsprechender Softwareunterstützung und Audio output können 
-theoretisch ein solches Programm verwenden.\ \\ \\
-Hauptsächlich soll sich diese Software allerdings an Nutzer eines Rechners mit einem Unix-
-artigen System richten. Des weiteren soll die Zielgruppe vorerst auf Benutzer beschränkt
-sein, die Englisch verstehen.
+\subsection{Anwendungsbereiche}
+Einzelpersonen verwenden dieses System überall da, wo mit
+einem Unix-artigen Betriebssystem Musik abgespielt werden soll.
+Das wären z.B. Personal Computer, Musikanlagen, Laptops und evtl.
+sogar diverse Smartphones
+\subsection{Zielgruppen}
+Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
+wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern).\ \\ \\
+Es werden Basiskenntnisse zum Aufbau einer Netzwerkverbindung und zur Nutzung des Internets vorausgesetzt.
+Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig.\ \\ \\
+Der Benutzer muss die Systemsprache Englisch beherrschen.
+\subsection{Betriebsbedingungen}
+Das System soll sich bezüglich der Betriebsbedingungen nicht sonderlich von vergleichbaren Systemen bzw.
+Anwendungen unterscheiden und dementsprechend folgend Punkte erfüllen:
+\begin{itemize}
+        \item Betriebsdauer: Täglich, 24 Stunden
+        \item Keinerlei Wartung soll nötig sein
+        \item Sicherungen der Konfiguration müssen vom Benutzer vorgenommen werden
+\end{itemize}
+\section{Produktumgebung}
+\subsection{Software}
+Softwareabhängigkeiten sollen durch den Entwickler bestimmt werden.
+Dies gewährleistet, dass der Entwickler diesbezüglich nicht eingeschränkt wird
+und somit mehr Möglichkeiten hat.
+\subsection{Hardware}
+Das Produkt soll möglichst wenig Anforderungen and die Hardware stellen, da
+die Software eventuell auch auf sehr Hardwarearmen Geräten (wie z.B. Smartphones)
+verwendet werden soll.
+\subsection{Orgware}
+Es soll nach Möglichkeit keine Orgware von nöten sein. Der Nutzer der Software soll sich
+um möglichst wenig nebenläufiges zu kümmern haben.
 \section{Produktfunktionen}
-Welche sind die Hauptfunktionen aus Sicht des Auftraggebers?\ \\ \\
-\subsection{Benutzerfunktionen}
+Welche sind die Hauptfunktionen aus Sicht des Auftraggebers?
+\subsection{Allgemein}
 Beim ersten Start des Systems soll eine Standard-Konfiguration geladen werden und die Verbindungseinstellungen
 zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
 die vom Benutzer erstellt wurde, falls diese denn lokal gefunden werden kann. Der Benutzer soll sämtliche
 Einstellungen selbstverständlich zu jeder Zeit ändern können.
-\subsubsection{Starten und Beenden}
-\begin{itemize}
-	\item F\_0010 Der Benutzer kann das System zu jedem Zeitpunkt starten.
-	\item F\_0020 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
-\end{itemize}
-\subsubsection{Persönliche Daten}
-Ein Benutzer verfügt über eine persönliche Verbindungseinstellung zum gewünschten MPD-Server.
-Diese Daten können von dem Benutzer zu jeder Zeit angepasst werden.
-\begin{itemize}
-	\item F\_0110 Der Benutzer kann sich zu jeder Zeit seine Verbindungsdaten anzeigen lassen.
-	\item F\_0120 Der Benutzer kann zu jeder Zeit seine persönlichen Daten anpassen.
-\end{itemize}
-\subsubsection{Persönliches Profil}
-Da die Software auf Unix-artige Systeme beschränkt werden soll, geht ein angenehmer Vorteil mit einher, nämlich das
-eine Profil-Verwaltung seitens des MPD-Clients nicht implementiert werden muss. Die verschiedenen Profile werden
-durch die verschiedenen Profile des gesamten Betriebssystems definiert und differenziert.
-\subsubsection{Persönliche Datenbank}
-Eine persönliche Datenbank soll lokal nicht vorhanden sein. Die Datenbank des Benutzers befindet sich auf dem MPD-Server.
-Einzig und alleine modulare Erweiterungen des MPD-Clients können lokale Datenbank-Implementierungen erfordern.
-\subsubsection{Kommunikation (Chat)}
-Kommunikation von MPD-Client zu MPD-Client kann theoretisch implementiert werden, eine solche Schnittstelle ist vorhanden.
-Allerdings soll hierauf verzichtet werden, da im Vordergrund das Abspielen und Verwalten von Musik steht und es deutlich
-einfachere und bessere Systeme gibt, mit Hilfe derer man kommunizieren kann.
-\subsubsection{Suchen}
-Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb der Abspiellisten soll implementiert werden.
-\begin{itemize}
-	\item F\_0210 Der Benutzer kann seine Queue durchsuchen.
-\end{itemize}
-\subsection{Administrator-Funktionen}
-Durch das Unix-artige System soll auch der Administrator-Zugriff geregelt werden. Sobald sich der Benutzer im Unix System
-als Administrator befindet, kann er auch den MPD-Client administrieren. Ein zusätzlicher Administrator-Modus muss also
-nicht implementiert werden.
+Natürlich sollen alle üblichen Musik Abspielfunktionen vorhanden sein, dazu gehört Play, Stop, Previous
+und Next. Aber auch erweiterte Funktionen wie Repeat, Consume und Random sollen einstellbar sein.
+Der Benutzer soll über die Software direkten Zugriff auf sein Dateisystem haben, um nach Musik zu suchen und
+diese abspielen zu können. Aus dem Dateisystem heraus soll der Nutzer ebenfalls die Möglichkeit haben, Musik-Dateien
+direkt zu Playlisten und Warteschlangen hinzuzufügen.
+Verbindungseinstellungen müssen auf möglichst einfache Art und Weise vorgenommen werden können, wenn möglich
+sollte dem Nutzer eine Liste von verfügbaren Servern angezeigt werden. 
+Dem Nutzer soll ermöglicht werden, dass er nach bestimmten Titeln, Alben oder Interpreten suchen kann, da 
+es mit dieser Software möglich ist, auch sehr große Musik-Datenbanken zu steuern.
+Administratorfunktionen müssen nicht implementiert werden, das sie vom Unix-System übernommen werden.
 \section{Produktdaten}
 Welche Daten sollen persistent gespeichert werden?\ \\ \\
 Die vom Benutzer vorgenommenen Verbindungseinstellungen und Client spezifischen Einstellungen,
@@ -96,29 +98,14 @@ dass nach jedem Start des Systems diese Einstellungen geladen und übernommen we
 Außerdem soll eine Log-Datei auf den einzelnen Rechnern angelegt werden, die dieses System
 verwenden. In dieser Log-Datei werden Nachrichten des Systems gespeichert, um eventuelle Fehler
 leicht finden und beheben zu können. Es soll zusätzlich der Zustand des Systems abgespeichert werden,
-wenn das System beendet wird um das System beim nächsten Start in diesen Zustand versetzen zu können.
-\begin{itemize}
-	\item D\_0010 Persönlichen Verbindungseinstellungen.
-	\begin{itemize}
-		\item Platzhalter
-		\item Platzhalter
-	\end{itemize}
-	\item D\_0020 Client spezifische Einstellungen.
-	\begin{itemize}
-		\item Platzhalter
-		\item Platzhalter
-	\end{itemize}
-	\item D\_0030 Eine Log-Datei.
-	\begin{itemize}
-		\item Platzhalter
-		\item Platzhalter
-	\end{itemize}
-	\item D\_0040 Der Zustand.
-	\begin{itemize}
-		\item Platzhalter
-		\item Platzhalter
-	\end{itemize}
-\end{itemize}
+wenn das System beendet wird um das System beim nächsten Start in diesen Zustand versetzen zu können.\ \\
+Dem Nutzer sollen viele verschiedene Informationen angezeigt werden, nicht nur Standardinformationen
+wie Titel, Album und Interpret, sondern auch Musik-Qualität, -Länge und Lautstärke.
+Es soll außerdem eine primitive Statistik implementiert werden die anzeigt, wie viele Lieder, Alben und
+Interpreten in der Datenbank vorhanden sind, wie lange man schon mit dem Server verbunden ist und wie 
+lange die gesamte Abspielzeit aller Lieder in der Datenbank dauert.\ \\
+Eine Profilverwaltung muss nicht implementiert werden, dies soll über das Unix-System geregelt werden.\ \\
+Eine lokale Datenbank muss ebenfalls nicht vorhanden sein, dies wird durch den MPD-Server ermöglicht.\ \\
 \section{Produktleistungen}
 Werden für bestimmte Funktionen besondere Ansprüche in Bezug auf Zeit, Datenumfang oder Genauigkeit gestellt?\ \\ \\
 Wenn das System beendet wird, soll der aktuelle Zustand des Systems gespeichert werden.

@@ -9,6 +9,7 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     PlaylistAddDialog.cc
     Database.cc
     DatabasePopup.cc
+    DatabaseCache.cc
     StatBrowser.cc
     Settings.cc
     SettingsNetwork.cc

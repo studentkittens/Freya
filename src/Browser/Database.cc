@@ -39,7 +39,8 @@ namespace Browser
     Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractBrowser("Database",true,true,Gtk::Stock::DIRECTORY),
         AbstractClientUser(client),
-        mp_SearchEntry(NULL)
+        mp_SearchEntry(NULL),
+        m_Cache(client)
     {
         BUILDER_ADD(builder,"ui/Database.glade");
         BUILDER_GET(builder,"filebrowser_mainbox",mp_ParentBox);
@@ -177,7 +178,6 @@ namespace Browser
     {
         g_assert(pDir);
         add_item(pDir->get_path(),false);
-        delete pDir;
     }
 
     /*------------------------------------------------*/
@@ -186,7 +186,6 @@ namespace Browser
     {
         g_assert(pSong);
         add_item(pSong->get_uri(),true);
-        delete pSong;
     }
 
     /*------------------------------------------------*/
@@ -205,8 +204,6 @@ namespace Browser
 
     void Database::on_home_button_clicked(void)
     {
-        m_DirStore->clear();
-        mp_Client->fill_filelist(*this,NULL);
         set_current_path("");
     }
 
@@ -236,7 +233,7 @@ namespace Browser
     {
         mp_Path = path;
         m_DirStore->clear();
-        mp_Client->fill_filelist(*this,mp_Path.c_str());
+        m_Cache.fill_filelist_from_cache(*this,mp_Path);
         mp_StatusLabel->set_text(!mp_Path.empty() ? mp_Path : "Root");
     }
 

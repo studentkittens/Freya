@@ -1,3 +1,35 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
+
+
 #include "QueueMerger.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
@@ -11,6 +43,7 @@ namespace Browser
         mergeDisabled(false),
         needsRefill(true),
         mergeIterIsValid(false),
+        wasReconnected(true),
         lastPlaylistVersion(0),
         playlistLength(0),
         mergePos(0),
@@ -123,10 +156,11 @@ namespace Browser
                 unsigned qu_l = status.get_queue_length();
 
                 /* Do a full refill if requested (e.g. on startup) */
-                if(needsRefill)
+                if((wasReconnected && qu_v > lastPlaylistVersion))
                 {
+                    needsRefill = true;
                     Info("Doing full refill of the queue.");
-                    mp_QueueModel->clear();  
+                    mp_QueueModel->clear(); 
                     mp_Client->fill_queue(*this);
 
                     /* This is usually only necessary on startup. */
@@ -153,10 +187,13 @@ namespace Browser
     /*-------------------*/
 
     void QueueMerger::on_connection_change(bool is_connected)
-    {}
+    {
+        /* This is also true on startup */
+        wasReconnected = is_connected; 
+    }
 
     /*-------------------*/
- 
+
     void QueueMerger::recalculate_positions(unsigned pos)
     {
         for(Gtk::TreeModel::iterator iter = get_iter_at_pos(pos); iter; iter++)
@@ -164,6 +201,6 @@ namespace Browser
             (*iter)[mp_QueueColumns->m_col_pos] = pos++;
         }
     }   
-    
+
     /*-------------------*/
 }

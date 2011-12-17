@@ -210,6 +210,7 @@ namespace Browser
         {
             /* Delete old song, retrieve new and copy it */
             delete mp_CurrentSong;
+            mp_CurrentSong = NULL;
             MPD::Song * to_copy = data.get_song();
 
             if(to_copy != NULL)

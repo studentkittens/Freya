@@ -173,34 +173,20 @@ Einstellungen selbstverständlich zu jeder Zeit ändern können.
 	\item F\_0090 Der Benutzer kann die Lautstärke regeln
 \end{itemize}
 \subsection{Suchen}
-\subsubsection{Abspielen von Musik}
-	\item F\_0020 
-\subsubsection{Persönliche Konfiguration}
-config.xml
-log datei
-\subsubsection{Persönliches Profil}
-Da die Software auf Unix-artige Systeme beschränkt ist, wurde keine Profil-Verwaltung implementiert. Die
-verschiedenen Profile werden durch die verschiedenen Profile des gesamten Betriebssystems definiert und differenziert.
-\subsubsection{Persönliche Datenbank}
-Eine persönliche Datenbank ist lokal nicht vorhanden. Die Datenbank des Benutzers befindet sich auf dem MPD-Server.
-Einzig und alleine modulare Erweiterungen des MPD-Clients können lokale Datenbank-Implementierungen erfordern.
-\subsubsection{Kommunikation (Chat)}
-Kommunikation von MPD-Client zu MPD-Client kann theoretisch implementiert werden, eine solche Schnittstelle ist vorhanden.
-Allerdings wurde hierauf verzichtet, da im Vordergrund das Abspielen und Verwalten von Musik steht und es deutlich
-einfachere und bessere Systeme gibt, mit Hilfe derer man kommunizieren kann.
-\subsubsection{Suchen}
-Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb der Abspiellisten wurde implementiert.
-Dabei springt die Markierung des Textes beim eingeben von Zeichen in die Suche zu der ersten übereinstimmenden
-Stelle in der Playlist des Clients. Erst beim bestätigen der Eingabe im Suchfeld wird die Auswahl gefiltert.
+Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb der 
+Abspiellisten wurde implementiert. Dabei springt die Markierung des Textes beim 
+eingeben von Zeichen in die Suche zu der ersten übereinstimmenden Stelle in der 
+Plaxlist des Clients. Erst beim bestätigen der Eingabe im Suchfeld wird die Auswahl 
+gefilter.
 \begin{itemize}
-        \item F\_0110 Der Benutzer kann seine Queue durchsuchen.
+	\item F\_0110 Der Benutzer kann seine Queue durchsuchen.
 	\item F\_0111 Der Benutzer kann sein Dateisystem durchsuchen.
 \end{itemize}
 \subsection{Sonstiges}
 \begin{itemize}
-	\item F\_0120 Verbinden		(ctrl + C)
-	\item F\_0121 Trennen		(ctrl + D)
-	\item F\_0122 Beenden		(ctrl + Q)
+	\item F\_0120 Verbinden	(ctrl + C)
+	\item F\_0121 Trennen	(ctrl + D)
+	\item F\_0122 Beenden	(ctrl + Q)
 \end{itemize}
 \subsection{Administrator-Funktionen}
 Durch das Unix-artige System wird der Administrator-Zugriff geregelt. Sobald sich der Benutzer im Unix System
@@ -264,30 +250,37 @@ Client Einstellungen werden lokal gespeichert.
 	\item config.xml
 	\item ....
 \end{itemize}
-\section{Produktleistungen}
-Wenn das System beendet wird, soll der aktuelle Zustand des Systems gespeichert werden.
-\begin{itemize}
-        \item L\_0010 Speicherung des Systemzustandes
-\end{itemize}
-Es soll möglichst wenig Speicher gebraucht werden, die CPU soll möglichst wenig belastet werden und der Netzwerk-Traffic
-soll gering gehalten werden.
-\begin{itemize}
-        \item L\_0020 Möglichst wenig Ressourchen-Verbrauch
-\end{itemize}
-Die Geschwindigkeit der Software ist auch abhänig von der jeweiligen Server-Lokation, der Benutzer wählt den Server
-d.h. somit ist auch der Benutzer teil-verantworltich für die Geschwindigkeit.\ \\ \\
-Der Status eines Liedes (Liedposition) wird alle 500 ms aktualisiert.
-\begin{itemize}
-        \item L\_0030 Lokaler Heartbeat alle 500 ms
-\end{itemize}
 \section{Qualitätsanforderungen}
-Es soll auf folgende Priorität unter den Qualitätsanforderungen geachtet werden,
-dabei ist das erste Element das wichtigste und das letzte das unwichtigste.\ \\ \\
-Priorität 1: Robustheit\ \\
-Priorität 2: Zuverlässigkeit\ \\
-Priorität 3: Effizienz\ \\
-Priorität 4: Intuitive Benutzung\ \\
-Priorität 5: Design\ \\ \\
+Die Software soll natürlich von hoher Qualität sein. Hierfür sollen folgende
+Anforderungen erfüllt werden:
+\subsection{Q\_0001 Korrektheit}
+Die Software muss fehlerfrei und korrekt sein. Es wurden Testszenarien und Testfälle erstellt,
+um Fehler zu finden und auszubessern. Aber auch wenn nach Veröffentlichung der Software ein 
+Fehler gefunden werden sollte, wird dieser sofort ausgebessert. Bei schwerwiegenden Fehlern
+werden die Nutzer direkt auf den Fehler aufmerksam gemacht.
+\subsection{Q\_0002 Wartbarkeit}
+Der Wartungsaufwandt der Software ist gering bis garnicht vorhanden. Ändert sich die Umgebungssoftware
+(z.B. der MPD-Server) dann sind die Änderungen so geringfügig bzw. trivial, dass sie den MPD-Client 
+nicht beeinflussen werden. Fehler der Software (sollten Fehler auftreten) wären leicht analysier- bzw.
+prüfbar und natürlich auch leicht zu beheben. Zur Warbarkeit gehört ebenso die Modularität, d. h.
+die Software ist technisch so realisiert, dass sie leicht erweitert werden kann, Stichwort Model View
+Controller (MVC). Kritische Stellen werden von Fehlerbehandlungroutinen abgearbeitet.
+Alle diese Routinen schreiben Meldungen in eine Log-Datei.
+\subsection{Q\_0003 Zuverlässigkeit}
+Das System funktioniert und reagiert tollerant auf fehlerhafte Eingaben bzw. fehlerhafte Benutzung.
+Das Programm funktioniert sieben Tage die Woche und 24h am Tag und muss nicht abgeschaltet werden.
+\subsection{Q\_0004 Effizienz}
+Der MPD-Client ist technisch effizient. Das Programm ist schnell geladen und Eingaben des Benutzers
+werden praktisch sofort ausgeführt. Es gibt so gut wie keine Wartezeiten, jedenfalls sind diese 
+so genannten Reaktionszeiten für den Benutzer nicht merkbar. Selbst bei sehr großen Musik-Datenbanken
+und Playlists benötigt das Programm kaum Rechenzeit und sonstige Hardware-resourcen.
+\subsection{Q\_0005Flexibilität}
+Unterstzützung von Standarts.
+
+\subsection{Q\_0006 Benutzbarkeit}
+
+\subsection{Q\_0007 Design}
+
 \section{Globale Testszenarien und Testfälle}
 \subsection{Cxxtest}
 \subsection{Testprotokoll}

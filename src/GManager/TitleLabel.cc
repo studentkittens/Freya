@@ -101,7 +101,7 @@ namespace GManager
                         current_song->get_tag(MPD_TAG_TITLE,0),
                         current_song->get_tag(MPD_TAG_TRACK,0)
                         );
-                char * artist_album = g_markup_printf_escaped("<small>by <b>%s</b> on <b>%s</b> (%s)</small>",
+                char * artist_album = g_markup_printf_escaped("<small><span weight='light'><i>by</i></span> %s <span weight='light'><i>on</i></span> %s (%s)</small>",
                         current_song->get_tag(MPD_TAG_ARTIST,0),
                         current_song->get_tag(MPD_TAG_ALBUM,0),
                         current_song->get_tag(MPD_TAG_DATE,0)

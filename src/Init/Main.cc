@@ -147,7 +147,8 @@ int main(int argc, char *argv[])
         browser_list.set(easter_egg);
 
         /* Send a good morning to all widgets */
-        client.force_update();
+       // client.force_update();
+        client.connect();
 
         main_window.get_window()->show();
 

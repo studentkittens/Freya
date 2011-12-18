@@ -1,0 +1,98 @@
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Rahmenbedingungen}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Prozess-Anforderungen}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{M\366gliche Themen}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Wasserfallmodell mit R\374cksprung}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Definition}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Warum dieses Modell?}{chapter.2}% 7
+\BOOKMARK [0][-]{chapter.3}{Richtlinien}{}% 8
+\BOOKMARK [1][-]{section.3.1}{Programmierrichtlinien}{chapter.3}% 9
+\BOOKMARK [2][-]{subsection.3.1.1}{Begr\374ndung}{section.3.1}% 10
+\BOOKMARK [1][-]{section.3.2}{Toolauswahl}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.2.1}{Begr\374ndung}{section.3.2}% 12
+\BOOKMARK [1][-]{section.3.3}{Bibliotheken}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.3.1}{Begr\374ndung}{section.3.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Definition des Projekts}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Definition des MPD}{chapter.4}% 16
+\BOOKMARK [2][-]{subsection.4.1.1}{Der MPD kann:}{section.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.1.2}{Der MPD kann nicht:}{section.4.1}% 18
+\BOOKMARK [1][-]{section.4.2}{Definiton des MPD-Client}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{Grafische \334bersicht}{chapter.4}% 20
+\BOOKMARK [0][-]{chapter.5}{Lastenheft}{}% 21
+\BOOKMARK [1][-]{section.5.1}{Zielbestimmungen}{chapter.5}% 22
+\BOOKMARK [2][-]{subsection.5.1.1}{Projektbeteiligte}{section.5.1}% 23
+\BOOKMARK [1][-]{section.5.2}{Produkteinsatz}{chapter.5}% 24
+\BOOKMARK [2][-]{subsection.5.2.1}{Anwendungsbereiche}{section.5.2}% 25
+\BOOKMARK [2][-]{subsection.5.2.2}{Zielgruppen}{section.5.2}% 26
+\BOOKMARK [2][-]{subsection.5.2.3}{Betriebsbedingungen}{section.5.2}% 27
+\BOOKMARK [1][-]{section.5.3}{Produktumgebung}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.3.1}{Software}{section.5.3}% 29
+\BOOKMARK [2][-]{subsection.5.3.2}{Hardware}{section.5.3}% 30
+\BOOKMARK [2][-]{subsection.5.3.3}{Orgware}{section.5.3}% 31
+\BOOKMARK [1][-]{section.5.4}{Produktfunktionen}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.4.1}{Allgemein}{section.5.4}% 33
+\BOOKMARK [1][-]{section.5.5}{Produktdaten}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.6}{Qualit\344tsanforderungen}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.7}{Erg\344nzungen}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.7.1}{Realisierung}{section.5.7}% 37
+\BOOKMARK [2][-]{subsection.5.7.2}{Die n\344chste Version}{section.5.7}% 38
+\BOOKMARK [0][-]{chapter.6}{Pflichtenheft}{}% 39
+\BOOKMARK [1][-]{section.6.1}{Zielbestimmungen}{chapter.6}% 40
+\BOOKMARK [2][-]{subsection.6.1.1}{Projektbeteiligte}{section.6.1}% 41
+\BOOKMARK [2][-]{subsection.6.1.2}{Muss-Kriterien}{section.6.1}% 42
+\BOOKMARK [2][-]{subsection.6.1.3}{Wunsch-Kriterien}{section.6.1}% 43
+\BOOKMARK [2][-]{subsection.6.1.4}{Abgrenzungskriterien}{section.6.1}% 44
+\BOOKMARK [1][-]{section.6.2}{Produkteinsatz}{chapter.6}% 45
+\BOOKMARK [2][-]{subsection.6.2.1}{Anwendungsbereiche}{section.6.2}% 46
+\BOOKMARK [2][-]{subsection.6.2.2}{Zielgruppen}{section.6.2}% 47
+\BOOKMARK [2][-]{subsection.6.2.3}{Betriebsbedingungen}{section.6.2}% 48
+\BOOKMARK [1][-]{section.6.3}{Produktumgebung}{chapter.6}% 49
+\BOOKMARK [2][-]{subsection.6.3.1}{Software}{section.6.3}% 50
+\BOOKMARK [2][-]{subsection.6.3.2}{Hardware}{section.6.3}% 51
+\BOOKMARK [2][-]{subsection.6.3.3}{Orgware}{section.6.3}% 52
+\BOOKMARK [1][-]{section.6.4}{Produktfunktionen}{chapter.6}% 53
+\BOOKMARK [2][-]{subsection.6.4.1}{Starten und Beenden}{section.6.4}% 54
+\BOOKMARK [2][-]{subsection.6.4.2}{Abspielen von Musik \(Buttons\)}{section.6.4}% 55
+\BOOKMARK [2][-]{subsection.6.4.3}{Abspielen von Musik \(Short-Cuts\)}{section.6.4}% 56
+\BOOKMARK [2][-]{subsection.6.4.4}{Queue \(Warteschlange\)}{section.6.4}% 57
+\BOOKMARK [2][-]{subsection.6.4.5}{Playlist}{section.6.4}% 58
+\BOOKMARK [2][-]{subsection.6.4.6}{Dateibrowser}{section.6.4}% 59
+\BOOKMARK [2][-]{subsection.6.4.7}{Statistik}{section.6.4}% 60
+\BOOKMARK [2][-]{subsection.6.4.8}{Einstellungen}{section.6.4}% 61
+\BOOKMARK [2][-]{subsection.6.4.9}{Lautst\344rke}{section.6.4}% 62
+\BOOKMARK [2][-]{subsection.6.4.10}{Suchen}{section.6.4}% 63
+\BOOKMARK [2][-]{subsection.6.4.11}{Sonstiges}{section.6.4}% 64
+\BOOKMARK [2][-]{subsection.6.4.12}{Administrator-Funktionen}{section.6.4}% 65
+\BOOKMARK [1][-]{section.6.5}{Produktdaten}{chapter.6}% 66
+\BOOKMARK [2][-]{subsection.6.5.1}{Anzeige}{section.6.5}% 67
+\BOOKMARK [2][-]{subsection.6.5.2}{Pers\366nliches Profil}{section.6.5}% 68
+\BOOKMARK [2][-]{subsection.6.5.3}{Pers\366nliche Datenbank}{section.6.5}% 69
+\BOOKMARK [2][-]{subsection.6.5.4}{Pers\366nliche Einstellungen}{section.6.5}% 70
+\BOOKMARK [1][-]{section.6.6}{Qualit\344tsanforderungen}{chapter.6}% 71
+\BOOKMARK [2][-]{subsection.6.6.1}{Q\1370001 Korrektheit}{section.6.6}% 72
+\BOOKMARK [2][-]{subsection.6.6.2}{Q\1370002 Wartbarkeit}{section.6.6}% 73
+\BOOKMARK [2][-]{subsection.6.6.3}{Q\1370003 Zuverl\344ssigkeit}{section.6.6}% 74
+\BOOKMARK [2][-]{subsection.6.6.4}{Q\1370004 Effizienz}{section.6.6}% 75
+\BOOKMARK [2][-]{subsection.6.6.5}{Q\1370005Flexibilit\344t}{section.6.6}% 76
+\BOOKMARK [2][-]{subsection.6.6.6}{Q\1370006 Benutzbarkeit}{section.6.6}% 77
+\BOOKMARK [2][-]{subsection.6.6.7}{Q\1370007 Design}{section.6.6}% 78
+\BOOKMARK [1][-]{section.6.7}{Globale Testszenarien und Testf\344lle}{chapter.6}% 79
+\BOOKMARK [2][-]{subsection.6.7.1}{Cxxtest}{section.6.7}% 80
+\BOOKMARK [2][-]{subsection.6.7.2}{Testprotokoll}{section.6.7}% 81
+\BOOKMARK [1][-]{section.6.8}{Entwicklungsumgebung}{chapter.6}% 82
+\BOOKMARK [2][-]{subsection.6.8.1}{Software}{section.6.8}% 83
+\BOOKMARK [2][-]{subsection.6.8.2}{Hardware}{section.6.8}% 84
+\BOOKMARK [2][-]{subsection.6.8.3}{Orgware}{section.6.8}% 85
+\BOOKMARK [1][-]{section.6.9}{Glossar}{chapter.6}% 86
+\BOOKMARK [0][-]{chapter.7}{Design-Dokument}{}% 87
+\BOOKMARK [1][-]{section.7.1}{Einleitung}{chapter.7}% 88
+\BOOKMARK [1][-]{section.7.2}{Softwarearchitektur}{chapter.7}% 89
+\BOOKMARK [2][-]{subsection.7.2.1}{Architekutr\374bersicht}{section.7.2}% 90
+\BOOKMARK [2][-]{subsection.7.2.2}{Funktionen}{section.7.2}% 91
+\BOOKMARK [2][-]{subsection.7.2.3}{Oberfl\344che}{section.7.2}% 92
+\BOOKMARK [2][-]{subsection.7.2.4}{Short-Cuts}{section.7.2}% 93
+\BOOKMARK [1][-]{section.7.3}{Use-Case-F\344lle}{chapter.7}% 94
+\BOOKMARK [2][-]{subsection.7.3.1}{Musik abspielen}{section.7.3}% 95
+\BOOKMARK [2][-]{subsection.7.3.2}{Musik zuf\344llig abspielen}{section.7.3}% 96
+\BOOKMARK [2][-]{subsection.7.3.3}{Musik im Consume Mode abspielen}{section.7.3}% 97
+\BOOKMARK [2][-]{subsection.7.3.4}{Playlist erstellen}{section.7.3}% 98

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  19 DEC 2011 21:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  19 DEC 2011 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1027,131 +1027,111 @@ Overfull \hbox (47.41759pt too wide) in paragraph at lines 573--700
  []
 
 [31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 703--720
+Underfull \hbox (badness 10000) in paragraph at lines 703--722
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 703--720
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 703--722
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--720
+Underfull \hbox (badness 10000) in paragraph at lines 703--722
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 703--720
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 703--720
+Underfull \hbox (badness 10000) in paragraph at lines 703--722
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 703--720
+Underfull \hbox (badness 10000) in paragraph at lines 703--722
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 703--722
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 703--722
+
+ []
+
+
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 703--722
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 721--739
+Underfull \hbox (badness 10000) in paragraph at lines 723--741
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 721--739
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 723--741
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 721--739
+Underfull \hbox (badness 10000) in paragraph at lines 723--741
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 721--739
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 723--741
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 721--739
+Underfull \hbox (badness 10000) in paragraph at lines 723--741
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 721--739
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 723--741
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 740--758
+Underfull \hbox (badness 10000) in paragraph at lines 742--760
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 740--758
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 742--760
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 740--758
+Underfull \hbox (badness 10000) in paragraph at lines 742--760
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 740--758
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 742--760
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 740--758
+Underfull \hbox (badness 10000) in paragraph at lines 742--760
 
  []
 
 
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 740--758
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 742--760
 [] 
  []
 
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 759--777
-
- []
-
-
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 759--777
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 759--777
-
- []
-
-
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 759--777
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 759--777
-
- []
-
-
-Overfull \hbox (47.41759pt too wide) in paragraph at lines 759--777
-[] 
- []
-
-) (./DesignDokument.tex [34]
+[33]) (./DesignDokument.tex [34]
 Kapitel 7.
 ngerman: "FF is now obsolete, please use FFF instead on input line 3.
 [35
 
-] <Namespace_Uebersicht.png, id=680, 1333.45235pt x 1476.57529pt>
+] <Namespace_Uebersicht.png, id=679, 1333.45235pt x 1476.57529pt>
 File: Namespace_Uebersicht.png Graphic file (type png)
 
 <use Namespace_Uebersicht.png>
@@ -1170,8 +1150,8 @@ Package rerunfilecheck Info: File `Doku.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55.
  ) 
 Here is how much of TeX's memory you used:
- 9235 strings out of 493633
- 133975 string characters out of 3148831
+ 9234 strings out of 493633
+ 133954 string characters out of 3148831
  264872 words of memory out of 3000000
  12221 multiletter control sequences out of 15000+200000
  14866 words of font info for 58 fonts, out of 3000000 for 9000
@@ -1184,10 +1164,10 @@ amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Doku.pdf (37 pages, 359765 bytes).
+Output written on Doku.pdf (37 pages, 359725 bytes).
 PDF statistics:
- 766 PDF objects out of 1000 (max. 8388607)
- 706 compressed objects within 8 object streams
- 166 named destinations out of 1000 (max. 500000)
+ 765 PDF objects out of 1000 (max. 8388607)
+ 705 compressed objects within 8 object streams
+ 165 named destinations out of 1000 (max. 500000)
  792 words of extra memory for PDF output out of 10000 (max. 10000000)
 

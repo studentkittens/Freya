@@ -92,8 +92,7 @@
 \contentsline {subsubsection}{\numberline {6.7.2.5}Statistik}{33}{subsubsection.6.7.2.5}
 \contentsline {subsubsection}{\numberline {6.7.2.6}Einstellungen}{33}{subsubsection.6.7.2.6}
 \contentsline {subsubsection}{\numberline {6.7.2.7}Lautst\IeC {\"a}rke}{33}{subsubsection.6.7.2.7}
-\contentsline {subsubsection}{\numberline {6.7.2.8}Suchen}{33}{subsubsection.6.7.2.8}
-\contentsline {subsubsection}{\numberline {6.7.2.9}Sonstiges}{34}{subsubsection.6.7.2.9}
+\contentsline {subsubsection}{\numberline {6.7.2.8}Sonstiges}{33}{subsubsection.6.7.2.8}
 \contentsline {section}{\numberline {6.8}Entwicklungsumgebung}{34}{section.6.8}
 \contentsline {subsection}{\numberline {6.8.1}Software}{34}{subsection.6.8.1}
 \contentsline {subsection}{\numberline {6.8.2}Hardware}{34}{subsection.6.8.2}

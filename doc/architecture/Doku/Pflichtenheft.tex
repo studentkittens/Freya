@@ -755,19 +755,45 @@ Fall 1 x 10 & Fall 1 x 10 & Ja\\
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
 \hline
+Verbinden & Verbindung zum MPD-Server & Ja\\
+\hline
+Trennen & Verbindung zum Server trennen & Ja\\
+\hline
+Beenden & MPD-Client beenden & Ja\\
+\hline
 \end{tabular}
+\ \\ \\
 \textbf{Kombinierte Ausführung}\ \\ \\
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
 \hline
+Verbinden\newline Verbinden & Verbindung zum MPD-Server\newline Verbindung zum MPD-Server & Ja\\
+\hline
+Verbinden\newline Trennen & Verbindung zum MPD-Server\newline Verbindzung zum Server trennen & Ja\\
+\hline
+Verbinden\newline Beenden & Verbindung zum MPD-Server\newline MPD-Client beenden & Ja\\
+\hline
+Trennen\newline Beenden & Verbindung zum Server trennen\newline MPD-Client beenden & Ja\\
+\hline
 \end{tabular}
+\ \\ \\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
 \textbf{Mehrfache Ausführung}\ \\ \\
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
 \hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Nur 1 x ausführbar & Ja\\
+\hline
+Fall 4 x 10 & Nur 1 x ausführbar & Ja\\
+\hline
 \end{tabular}
+\newpage
 \section{Entwicklungsumgebung}
 \subsection{Software}
 \begin{itemize}

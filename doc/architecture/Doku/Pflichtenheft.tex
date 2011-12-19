@@ -303,6 +303,65 @@ anderen Funktionen kombiniert und mehrfach ausgeführt werden. Zu jedem dieser F
 festzulegen und anschließend zu überprüfen ob das erwartete Ergebnis eingetroffen ist. Das eingetroffene Ergebnis
 ist ebenfalls zu protokollieren.
 \subsubsection{Abspielfunktionen}
+Einfache Ausführung:\ \\ \\
+\begin{tabular}[c]{|l|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Play & Musik spielt ab.\newline Play wird zu Pause. & Ja\\
+\hline
+Pause & Musik pausiert.\newline Pause wird zu Play. & Ja\\
+\hline
+Next & Nächstes Lied abspielen & Ja\\
+\hline
+Previous & Vorheriges Lied abspielen & Ja\\
+\hline
+Stop & Beende abspielen\newline Pause wird zu Play. & Ja\\
+\hline
+Skipping & An Liedposition springen & Ja\\
+\hline
+Random & Musik der Queue zufällig abspielen & Ja\\
+\hline 
+Repeat & Ein Lied wiederholen & Ja\\
+\hline
+Repeat all & Queue wiederholen & Ja\\
+\hline
+Consume Mode & Ein abgespieltes Lied entfernen & Ja\\
+\hline
+Single Mode & Ein Lied abspielen, dann Stoppen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+Kombinierte Ausführung:\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Play, Stop, Play & Musik spielt ab.\newline Musik stoppt.\newline Musik spielt ab. & Ja\\
+\hline
+Play, Pause, Play & Musik spiel ab.\newline Musik pausiert.\newline Musik spiel ab. & Ja\\
+\hline
+Next, Next & Skip weiter.\newline Skip weiter. & Ja\\
+\hline
+Previous, Previous & Skip zurück.\newline Skip zurück & Ja\\
+\hline
+Next, Previous & Skip weiter.\newline Skip zurück & Ja\\
+\hline
+Previous, Next & Skip zurück.\newline Skip weiter & Ja\\
+\hline
+Random, Repeat all & Musik der Queue zufällig abspielen\newline Queue wiederholen & Ja\\
+\hline
+Random, Consume Mode & Musik der queue zufällig abspielen\newline Ein abgespieltes Lied entfernen & Ja\\
+\hline
+Random, Single Mode & Musik der Queue zufällig abspielen\newline Ein Lied abspielen, dann stoppen & Ja\\
+\hline
+Consume Mode, Single Mode & Ein abgespieltes Lied entfernen\newline Ein Lied abspielen, dann Stoppen & Ja\\
+\hline
+Consume Mode, Repeat all & Kann nur einmal durchlaufen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+Mehrfache Ausführung:\ \\ \\
 \section{Entwicklungsumgebung}
 \subsection{Software}
 \begin{itemize}

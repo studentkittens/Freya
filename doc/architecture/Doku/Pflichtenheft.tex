@@ -274,16 +274,34 @@ Der MPD-Client ist technisch effizient. Das Programm ist schnell geladen und Ein
 werden praktisch sofort ausgeführt. Es gibt so gut wie keine Wartezeiten, jedenfalls sind diese 
 so genannten Reaktionszeiten für den Benutzer nicht merkbar. Selbst bei sehr großen Musik-Datenbanken
 und Playlists benötigt das Programm kaum Rechenzeit und sonstige Hardware-resourcen.
-\subsection{Q\_0005Flexibilität}
-Unterstzützung von Standarts.
-
-\subsection{Q\_0006 Benutzbarkeit}
-
-\subsection{Q\_0007 Design}
-
+\subsection{Q\_0005 Benutzbarkeit}
+Die Software ist leicht verständlich und intuitiv bedienbar. Nötige Kenntnisse zur Nutzung des 
+MPD-Clients sind leicht zu erlernen.
+\subsection{Q\_0006 Design}
+Das Design soll ansprechend und modern sein, allerdings wenn es Konflikte zwischen technischer Umsetzung 
+und Design oder Effizienz und Design geben sollte, ist stets im Interesse der technischen Umsetzung bzw. 
+der Effizienz zu entscheiden.
 \section{Globale Testszenarien und Testfälle}
 \subsection{Cxxtest}
+CxxTest ist mit JUnit, CPPUnit oder xUnit zu vergleichen und somit ein leichtgewichtiges Framework für C++.
+Der Vorteil gegenüber ähnlichen bzw. anderen Testmöglichkeiten sind die folgenden:
+\begin{itemize}
+	\item Es wird kein RTTI benötigt (Run-Time Type Information)
+	\item Benötigt keine Member Template Funktionen
+	\item Benötigt keine Exception-Behandlung
+	\item Benötigt keine externen Bibliotheken (Memory Managment, File/Console I/O, Grafische Bibliotheken)
+	\item Wird allein durch Header-Dateien (und ein Python-Skript) realisiert.
+	\item Benötigt keine manuelle Regestrierung von Tests und Test-Suits
+\end{itemize}
+All diese Punkte machen CxxTest extrem portabel und nutzbar. Der Aufwandt zur Erstellung von Tests
+wird minimiert.
+\subsubsection{Testfälle}
 \subsection{Testprotokoll}
+Um Fehler aufzuspühren, die die grafische Oberfläche betreffen, wurd ein Testprotokoll erstellt in dem zunächst
+alle möglichen Funktionen der grafischen Oberfläche aufgelistet werden. Außerdem müssen diese Funktionen mit 
+anderen Funktionen kombiniert und mehrfach ausgeführt werden. Zu jedem dieser Fälle ist ein zu erwartendes Ergebnis
+festzulegen und anschließend zu überprüfen ob das erwartete Ergebnis eingetroffen ist. Das eingetroffene Ergebnis
+ist ebenfalls zu protokollieren.
 \section{Entwicklungsumgebung}
 \subsection{Software}
 \begin{itemize}

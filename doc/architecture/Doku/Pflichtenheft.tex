@@ -301,9 +301,9 @@ Um Fehler aufzuspühren, die die grafische Oberfläche betreffen, wurd ein Testp
 alle möglichen Funktionen der grafischen Oberfläche aufgelistet werden. Außerdem müssen diese Funktionen mit 
 anderen Funktionen kombiniert und mehrfach ausgeführt werden. Zu jedem dieser Fälle ist ein zu erwartendes Ergebnis
 festzulegen und anschließend zu überprüfen ob das erwartete Ergebnis eingetroffen ist. Das eingetroffene Ergebnis
-ist ebenfalls zu protokollieren.
+ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortcuts geprüft.
 \subsubsection{Abspielfunktionen}
-Einfache Ausführung:\ \\ \\
+\textbf{Einfache Ausführung:}\ \\ \\
 \begin{tabular}[c]{|l|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -331,8 +331,8 @@ Consume Mode & Ein abgespieltes Lied entfernen & Ja\\
 Single Mode & Ein Lied abspielen, dann Stoppen & Ja\\
 \hline
 \end{tabular}
-\ \\ \\
-Kombinierte Ausführung:\ \\ \\
+\newpage
+\textbf{Kombinierte Ausführung:}\ \\ \\
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -379,14 +379,14 @@ Repeat all, 3 & Queue wiederholen\newline 3 & Ja\\
 \hline
 Repeat all, 4 & Queue wiederholen\newline 4 & Ja\\
 \hline
-Repeat all, 5 & Queue wiederholen\newline 5 & Ja\\
-\hline
-Repeat all, 6 & Queue wiederholen\newline 6 & Ja\\
-\hline
 \end{tabular}
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Repeat all, 5 & Queue wiederholen\newline 5 & Ja\\
+\hline
+Repeat all, 6 & Queue wiederholen\newline 6 & Ja\\
 \hline
 Consume Mode, 1 & Ein abgespieltes Lied entfernen\newline 1 & Ja\\
 \hline
@@ -413,8 +413,104 @@ Single Mode, 5 & Ein Lied abspielen, dann Stoppen\newline 5 & Ja\\
 Single Mode, 6 & Ein Lied abspielen, dann Stoppen\newline 6 & Ja\\
 \hline
 \end{tabular}
-\ \\ \\
-Mehrfache Ausführung:\ \\ \\
+\newpage
+Im folgenden wird auf das Protokoll der konbinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung:}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Fall 3 x 10 & Ja\\
+\hline
+Fall 4 x 10 & Fall 4 x 10 & Ja\\
+\hline
+Fall 5 x 10 & Fall 5 x 10 & Ja\\
+\hline
+Fall 6 x 10 & Fall 6 x 10 & Ja\\
+\hline
+Fall 12 x 10 & Fall 12 x 10 & Ja\\
+\hline
+Fall 13 x 10 & Fall 13 x 10 & Ja\\
+\hline
+Fall 14 x 10 & Fall 14 x 10 & Ja\\
+\hline
+Fall 15 x 10 & Fall 15 x 10 & Ja\\
+\hline
+Fall 16 x 10 & Fall 16 x 10 & Ja\\
+\hline
+Fall 17 x 10 & Fall 17 x 10 & Ja\\
+\hline
+Fall 18 x 10 & Fall 18 x 10 & Ja\\
+\hline
+Fall 19 x 10 & Fall 19 x 10 & Ja\\
+\hline
+Fall 20 x 10 & Fall 20 x 10 & Ja\\
+\hline
+Fall 21 x 10 & Fall 21 x 10 & Ja\\
+\hline
+Fall 22 x 10 & Fall 22 x 10 & Ja\\
+\hline
+Fall 23 x 10 & Fall 23 x 10 & Ja\\
+\hline
+Fall 24 x 10 & Fall 24 x 10 & Ja\\
+\hline
+Fall 25 x 10 & Fall 25 x 10 & Ja\\
+\hline
+Fall 26 x 10 & Fall 26 x 10 & Ja\\
+\hline
+Fall 27 x 10 & Fall 27 x 10 & Ja\\
+\hline
+Fall 28 x 10 & Fall 28 x 10 & Ja\\
+\hline 
+Fall 29 x 10 & Fall 29 x 10 & Ja\\
+\hline
+Fall 30 x 10 & Fall 30 x 10 & Ja\\
+\hline
+Fall 31 x 10 & Fall 31 x 10 & Ja\\
+\hline
+Fall 32 x 10 & Fall 32 x 10 & Ja\\
+\hline
+Fall 33 x 10 & Fall 33 x 10 & Ja\\
+\hline
+Fall 34 x 10 & Fall 34 x 10 & Ja\\
+\hline
+Fall 35 x 10 & Fall 35 x 10 & Ja\\
+\hline
+\end{tabular}
+\subsubsection{Queue-Funktionen}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\subsubsection{Playlist-Funktionen}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\subsubsection{Dateibrowser-Funktionen}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\subsubsection{Statistik}
+Für die Statistik kann kein Testprotokoll angewandt werden.
+\subsubsection{Einstellungen}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\subsubsection{Lautstärke}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\subsubsection{Suchen}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\subsubsection{Sonstiges}
+\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
 \section{Entwicklungsumgebung}
 \subsection{Software}
 \begin{itemize}

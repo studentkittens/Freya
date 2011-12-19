@@ -297,7 +297,7 @@ All diese Punkte machen CxxTest extrem portabel und nutzbar. Der Aufwandt zur Er
 wird minimiert.
 \subsubsection{Testfälle}
 \subsection{Testprotokoll}
-Um Fehler aufzuspühren, die die grafische Oberfläche betreffen, wurd ein Testprotokoll erstellt in dem zunächst
+Um Fehler aufzuspühren, die die grafische Oberfläche betreffen, wurde ein Testprotokoll erstellt in dem zunächst
 alle möglichen Funktionen der grafischen Oberfläche aufgelistet werden. Außerdem müssen diese Funktionen mit 
 anderen Funktionen kombiniert und mehrfach ausgeführt werden. Zu jedem dieser Fälle ist ein zu erwartendes Ergebnis
 festzulegen und anschließend zu überprüfen ob das erwartete Ergebnis eingetroffen ist. Das eingetroffene Ergebnis
@@ -483,8 +483,44 @@ Fall 35 x 10 & Fall 35 x 10 & Ja\\
 \end{tabular}
 \subsubsection{Queue-Funktionen}
 \textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Remove & Ein Lied aus Queue entfernen & Ja\\
+\hline
+Clear & Alle Lieder aus Queue entfernen & Ja\\
+\hline
+Save as Playlist & Queue als Playlist speichern & Ja\\
+\hline
+Suchen & Nach eingegebenem Wort suchen & Ja\\
+\hline
+\end{tabular}
+\newpage
 \textbf{Kombinierte Ausführung}\ \\ \\
+Kombinierte Ausführung der Funktionen der Queue machen nicht wirklich viel Sinn da z.B.
+die Funktion Clear die Queue löscht. Auch Save as Playlist wird wohl kaum öfter als einmal
+pro Queue angewandt. Die einzige Kombination die Sinn macht getestet zu werden ist die 
+folgende:\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Suchen, Remove & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
 \textbf{Mehrfache Ausführung}\ \\ \\
+Die mehrfache Ausführung ist ähnlich unsinnig wie die der kombinierten Ausführung.
+Mehrmals hintereinander die Queue löschen ist nicht möglich, genauso wie man wohl kaum 
+mehrmals die gleiche Playlist erstellt. So bleibt wieder nur ein Testfall zu prüfen:\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Suchen, Remove x 10 & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen x 10& Ja\\
+\hline
+\end{tabular}
 \subsubsection{Playlist-Funktionen}
 \textbf{Einfache Ausführung}\ \\ \\
 \textbf{Kombinierte Ausführung}\ \\ \\

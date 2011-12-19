@@ -337,17 +337,17 @@ Kombinierte Ausführung:\ \\ \\
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
 \hline
-Play, Stop, Play & Musik spielt ab.\newline Musik stoppt.\newline Musik spielt ab. & Ja\\
+Play, Stop, Play(1) & Musik spielt ab.\newline Musik stoppt.\newline Musik spielt ab. & Ja\\
 \hline
-Play, Pause, Play & Musik spiel ab.\newline Musik pausiert.\newline Musik spiel ab. & Ja\\
+Play, Pause, Play(2) & Musik spiel ab.\newline Musik pausiert.\newline Musik spiel ab. & Ja\\
 \hline
-Next, Next & Skip weiter.\newline Skip weiter. & Ja\\
+Next, Next(3) & Skip weiter.\newline Skip weiter. & Ja\\
 \hline
-Previous, Previous & Skip zurück.\newline Skip zurück & Ja\\
+Previous, Previous(4) & Skip zurück.\newline Skip zurück & Ja\\
 \hline
-Next, Previous & Skip weiter.\newline Skip zurück & Ja\\
+Next, Previous(5) & Skip weiter.\newline Skip zurück & Ja\\
 \hline
-Previous, Next & Skip zurück.\newline Skip weiter & Ja\\
+Previous, Next(6) & Skip zurück.\newline Skip weiter & Ja\\
 \hline
 Random, Repeat all & Musik der Queue zufällig abspielen\newline Queue wiederholen & Ja\\
 \hline
@@ -358,6 +358,59 @@ Random, Single Mode & Musik der Queue zufällig abspielen\newline Ein Lied abspi
 Consume Mode, Single Mode & Ein abgespieltes Lied entfernen\newline Ein Lied abspielen, dann Stoppen & Ja\\
 \hline
 Consume Mode, Repeat all & Kann nur einmal durchlaufen & Ja\\
+\hline
+Random, 1 & Musik der Queue zufällig abspielen\newline 1 & Ja\\
+\hline
+Random, 2 & Musik der Queue zufällig abspielen\newline 2 & Ja\\
+\hline
+Random, 3 & Musik der Queue zufällig abspielen\newline 3 & Ja\\
+\hline
+Random, 4 & Musik der Queue zufällig abspielen\newline 4 & Ja\\
+\hline
+Random, 5 & Musik der Queue zufällig abspielen\newline 5 & Ja\\
+\hline
+Random, 6 & Musik der Queue zufällig abspielen\newline 6 & Ja\\
+\hline
+Repeat all, 1 & Queue wiederholen\newline 1 & Ja\\
+\hline
+Repeat all, 2 & Queue wiederholen\newline 2 & Ja\\
+\hline
+Repeat all, 3 & Queue wiederholen\newline 3 & Ja\\
+\hline
+Repeat all, 4 & Queue wiederholen\newline 4 & Ja\\
+\hline
+Repeat all, 5 & Queue wiederholen\newline 5 & Ja\\
+\hline
+Repeat all, 6 & Queue wiederholen\newline 6 & Ja\\
+\hline
+\end{tabular}
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Consume Mode, 1 & Ein abgespieltes Lied entfernen\newline 1 & Ja\\
+\hline
+Consume Mode, 2 & Ein abgespieltes Lied entfernen\newline 2 & Ja\\
+\hline
+Consume Mode, 3 & Ein abgespieltes Lied entfernen\newline 3 & Ja\\
+\hline
+Consume Mode, 4 & Ein abgespieltes Lied entfernen\newline 4 & Ja\\
+\hline
+Consume Mode, 5 & Ein abgespieltes Lied entfernen\newline 5 & Ja\\
+\hline
+Consume Mode, 6 & Ein abgespieltes Lied entfernen\newline 6 & Ja\\
+\hline
+Single Mode, 1 & Ein Lied abspielen, dann Stoppen\newline 1 & Ja\\
+\hline
+Single Mode, 2 & Ein Lied abspielen, dann Stoppen\newline 2 & Ja\\
+\hline
+Single Mode, 3 & Ein Lied abspielen, dann Stoppen\newline 3 & Ja\\
+\hline
+Single Mode, 4 & Ein Lied abspielen, dann Stoppen\newline 4 & Ja\\
+\hline
+Single Mode, 5 & Ein Lied abspielen, dann Stoppen\newline 5 & Ja\\
+\hline
+Single Mode, 6 & Ein Lied abspielen, dann Stoppen\newline 6 & Ja\\
 \hline
 \end{tabular}
 \ \\ \\

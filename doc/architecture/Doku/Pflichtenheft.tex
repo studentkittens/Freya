@@ -414,7 +414,7 @@ Single Mode, 6 & Ein Lied abspielen, dann Stoppen\newline 6 & Ja\\
 \hline
 \end{tabular}
 \newpage
-Im folgenden wird auf das Protokoll der konbinierten Ausführung referenziert.\ \\ \\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
 \textbf{Mehrfache Ausführung:}\ \\ \\
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
@@ -527,17 +527,46 @@ Suchen, Remove x 10 & Nach eingegebenem Wort suchen\newline Ein Lied aus der Que
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
 \hline
+Hinzufügen & Playlist hinzufügen & Ja\\
+\hline
+Ersetzen & Playlist ersetzen & Ja\\
+\hline
+Playlist entfernen & Playlist löschen & Ja\\
+\hline
 \end{tabular}
+\ \\ \\
 \textbf{Kombinierte Ausführung}\ \\ \\
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
 \hline
+Hinzufügen, Hinzufügen & Playlist hinzufügen\newline Playlist hinzufügen & Ja\\
+\hline
+Ersetzen, Ersetzen & Playlist ersetzen\newline Playlist ersetzen & Ja\\
+\hline
+Entfernen, Entfernen & Playlist entfernen\newline Playlist entfernen & Ja\\
+\hline
+Hinzufügen, Entfernen & Playlist hinzufügen\newline Playlist löschen & Ja\\
+\hline
+Ersetzen, Entfernen & Playlist ersetzen\newline Playlist entfernen & Ja\\
+\hline
 \end{tabular}
-\textbf{Mehrfache Ausführung}\ \\ \\
+\newpage
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung:}\ \\ \\
 \begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
 \hline
 \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Fall 3 x 10 & Ja\\
+\hline
+Fall 4 x 10 & Fall 4 x 10 & Ja\\
+\hline
+Fall 5 x 10 & Fall 5 x 10 & Ja\\
 \hline
 \end{tabular}
 \subsubsection{Dateibrowser-Funktionen}

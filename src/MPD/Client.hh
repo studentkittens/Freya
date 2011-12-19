@@ -235,15 +235,6 @@ namespace MPD
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
            
             /**
-             * @brief 
-             *
-             * @param data_model
-             * @param path
-             * @param search_term
-             */
-//            void fill_filelist_filtered(AbstractFilebrowser& data_model, const char * path, const char * search_term);
-
-            /**
              * @brief Send a command to the server
              *
              * The output will be printed in the cmd,

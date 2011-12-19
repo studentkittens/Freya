@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  19 DEC 2011 19:40
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  19 DEC 2011 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -917,123 +917,183 @@ Overfull \hbox (47.41759pt too wide) in paragraph at lines 500--524
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--528
+Underfull \hbox (badness 10000) in paragraph at lines 525--543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--528
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 525--543
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--528
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 525--543
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 525--543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--528
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 525--543
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 544--561
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 544--561
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 544--561
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--581
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 564--581
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--581
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 535--538
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 564--581
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--581
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 535--538
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 535--538
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 535--538
-
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 564--581
+[] 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 539--542
+Underfull \hbox (badness 10000) in paragraph at lines 582--600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--542
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 582--600
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--542
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 582--600
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--542
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 582--600
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--619
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 543--546
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 601--619
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--619
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 543--546
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 601--619
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--619
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 543--546
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 601--619
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 543--546
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 620--638
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--550
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 620--638
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--550
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 547--550
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 547--550
-
+Overfull \hbox (47.41759pt too wide) in paragraph at lines 620--638
+[] 
  []
 
 [31]) (./DesignDokument.tex [32]
@@ -1074,7 +1134,7 @@ amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Doku.pdf (35 pages, 353781 bytes).
+Output written on Doku.pdf (35 pages, 354804 bytes).
 PDF statistics:
  754 PDF objects out of 1000 (max. 8388607)
  697 compressed objects within 7 object streams

@@ -27,6 +27,7 @@ namespace Browser
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool);
             void on_toggle(const Glib::ustring& path);
+            bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
         private:
             Glib::RefPtr<Gtk::ListStore> treeModel;
             Gtk::TreeView * treeViewPtr;

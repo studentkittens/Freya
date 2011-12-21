@@ -22,6 +22,7 @@ namespace Browser
         Gtk::CellRendererToggle *cell = (Gtk::CellRendererToggle*) treeViewPtr->get_column_cell_renderer(0);
         cell->set_activatable(true);
         cell->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsOutputs::on_toggle));
+        treeViewPtr->get_selection()->set_select_function( sigc::mem_fun(*this,&Browser::SettingsOutputs::on_select));
     }
 
 
@@ -30,6 +31,11 @@ namespace Browser
     void SettingsOutputs::on_toggle(const Glib::ustring& path)
     {
         sett->settings_changed();
+    }
+
+    bool SettingsOutputs::on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool)
+    {
+        return false;
     }
 
     void SettingsOutputs::on_client_update(enum mpd_idle event, MPD::NotifyData &data)

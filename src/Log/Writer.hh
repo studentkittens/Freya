@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #ifndef FREYA_LOG_WRITER_GUARD
 #define FREYA_LOG_WRITER_GUARD
 
@@ -51,6 +81,7 @@ namespace Log
          * @param ... a va_list to allow printf style logging
          */
         void message(const char *file, int line, LOGLEVEL level, const char *msg, ...); 		
+        
         /**
          * @brief Clear the logfile (but keep it open)
          */
@@ -58,11 +89,11 @@ namespace Log
 
         private:
 
+
         Glib::ustring m_Logpath;
         FILE * m_Logfile;                                                              	
 
-        const char * convert_enum_to_str(LOGLEVEL level);                                       
-        const char * convert_enum_to_col(LOGLEVEL level);                                       
+        const char * convert_enum_to_str(LOGLEVEL level, bool& append_location); 
         void get_current_time(char buffer[]);									
     };
 }

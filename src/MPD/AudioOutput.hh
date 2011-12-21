@@ -28,24 +28,28 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_MAIN_WINDOW_GUARD
-#define FREYA_MAIN_WINDOW_GUARD
+#ifndef FREYA_AUDIOOUTPUT_GUARD
+#define FREYA_AUDIOOUTPUT_GUARD
 
-#include <gtkmm.h>
-#include "Log/Writer.hh"
-#include "Utils/Utils.hh"
-#include "Config/Handler.hh"
+#include "AbstractClientExtension.hh"
 
-class FreyaWindow 
+namespace MPD
 {
-    public:
-        FreyaWindow(const Glib::RefPtr<Gtk::Builder> &builder);
-        ~FreyaWindow();
-        Gtk::Window* get_window(void);
-    protected:
-        bool on_delete_event(GdkEventAny* event);
-    private:
-        Gtk::Window * main_window;
-};
+    typedef struct mpd_output mpd_output;
 
-#endif
+    class AudioOutput : AbstractClientExtension 
+    {
+        public:
+            AudioOutput(MPD::BaseClient& client, mpd_output& output);
+            unsigned get_id(void);
+            const char * get_name(void);
+            bool get_enabled(void);
+            bool enable(void);
+            bool disable(void);
+
+        private:
+            mpd_output * mp_Output;
+    };
+}
+
+#endif /* end of include guard: FREYA_AUDIOOUTPUT_GUARD */

@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "Notify.hh"
 #include "../Config/Handler.hh"
 #include "../Log/Writer.hh"
@@ -21,7 +51,6 @@ namespace Notify
     }
 
     //---------------------------
-    /* Wrapper functions ... phiu I'm cool for providing all possible combinations of char* and ustring. Right? */
     //---------------------------
     //---------------------------
     void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
@@ -34,35 +63,6 @@ namespace Notify
         _send(hl.c_str(),msg.c_str(),pixbuf);
     }
     //---------------------------
-    void Notify::send_big(const char *hl, const char *msg)
-    {
-        _send(hl,msg,NULL);
-    }
-    //---------------------------
-    void Notify::send_big(Glib::ustring hl, const char *msg)
-    {
-        _send(hl.c_str(),msg,NULL);
-    }
-    //---------------------------
-    void Notify::send_big(const char *hl, Glib::ustring msg)
-    {
-        _send(hl,msg.c_str(),NULL);
-    }
-    //---------------------------
-    void Notify::send_full(const char *hl, const char *msg, GdkPixbuf * pixbuf )
-    {
-        _send(hl,msg,pixbuf);
-    }
-    //---------------------------
-    void Notify::send_full(Glib::ustring hl, const char *msg, GdkPixbuf * pixbuf )
-    {
-        _send(hl.c_str(),msg,pixbuf);
-    }
-    //---------------------------
-    void Notify::send_full(const char *hl, Glib::ustring msg, GdkPixbuf * pixbuf )
-    {
-        _send(hl,msg.c_str(),pixbuf);
-    }
     //---------------------------
     /**/
     //---------------------------

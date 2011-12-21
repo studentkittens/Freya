@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #ifndef FREYA_DATABASE_FOGI85CP
 #define FREYA_DATABASE_FOGI85CP
 
@@ -30,21 +60,30 @@ namespace Browser
 
         private:
 
+            /* GUI Signals */
             void on_item_activated(const Gtk::TreeModel::Path& path);
             void on_home_button_clicked(void);
-            void set_current_path(const char * path);
-            void go_one_up(void);
-            void add_item(const char * path, bool is_file);
             bool on_button_press_event(GdkEventButton* event);
 
+            /* Client Signals */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
+           
+            /* Logic */ 
+            void add_item(const char * path, bool is_file);
+            void set_current_path(const char * path);
+            void go_one_up(void);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
                 public:
                     ModelColumns()
-                    { add(m_col_path); add(m_col_name); add(m_col_icon); add(m_col_is_file); }
+                    { add(m_col_path);
+                      add(m_col_name);
+                      add(m_col_icon);
+                      add(m_col_is_file);
+                    }
+
                     Gtk::TreeModelColumn<Glib::ustring> m_col_name;
                     Gtk::TreeModelColumn<Glib::ustring> m_col_path;
                     Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;

@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "NotifyData.hh"
 #include "../Log/Writer.hh"
 
@@ -135,26 +165,18 @@ namespace MPD
             mpd_song * c_song = NULL;
             mpd_stats * c_stats = NULL;
 
-            mpd_command_list_begin(mpd_conn,true);
-            mpd_send_current_song(mpd_conn);
-            mpd_send_stats(mpd_conn);
-            mpd_command_list_end(mpd_conn);
-
-            c_song  = mpd_recv_song(mpd_conn);
-            mpd_response_next(mpd_conn);
-            c_stats = mpd_recv_stats(mpd_conn);
-            mpd_response_finish(mpd_conn);
+            c_song  = mpd_run_current_song(mpd_conn);
+            c_stats = mpd_run_stats(mpd_conn);
 
             mpd_send_status(mpd_conn);
             mp_Status = recv_status_own();
-            mpd_response_finish(mpd_conn);
 
             if(c_song)   mp_Song = new Song(*c_song);
             if(c_stats)  mp_Statistics = new Statistics(*c_stats);
 
             /* Pray that this will never happen. */
             if(!(mp_Status && c_stats))
-                Error("Status/Song/Statistic is empty although being connected. Prepare for a crash.");
+                Error("Status/Statistic is empty although being connected. Prepare for a crash.");
         }
     }
 }

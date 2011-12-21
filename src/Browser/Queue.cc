@@ -1,13 +1,47 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "Queue.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
+#include <vector>
+
+using namespace std;
 
 namespace Browser
 {
     Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Queue",Gtk::Stock::ZOOM_FIT),
+        AbstractBrowser("Queue",true,true,Gtk::Stock::ZOOM_FIT),
         AbstractClientUser(client),
-        m_FilterText("")
+        m_FilterText(""),
+        m_PlaylistVersion(0)
     {
         
         BUILDER_ADD(builder,"ui/Queue.glade");
@@ -17,6 +51,8 @@ namespace Browser
 
         mp_Entry->signal_activate().connect(
                 sigc::mem_fun(*this,&Queue::on_entry_activate));
+        mp_Entry->signal_icon_press().connect(
+                sigc::mem_fun(*this, &Queue::on_entry_clear_icon));
 
         //Create the Tree model:
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
@@ -101,20 +137,32 @@ namespace Browser
         row[m_Columns.m_col_id] = new_song->get_id();
 
         try { /* Check for NULLs just to be sure */
-            row[m_Columns.m_col_title] =  new_song->song_format("${title}",false).c_str();
-            row[m_Columns.m_col_album] =  new_song->song_format("${album}",false).c_str();
-            row[m_Columns.m_col_artist] = new_song->song_format("${artist}",false).c_str();
+            row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
+            row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
+            row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
         } catch(const std::logic_error& e) {
             Warning("Empty column: %s",e.what());
         }
+        delete new_song;
     }
-    
+
     /*-------------------------------*/
 
     void Queue::on_entry_activate(void)
     {
         m_FilterText = mp_Entry->get_text();
         m_refTreeModelFilter->refilter();
+    }
+
+    /*-------------------------------*/
+
+    void Queue::on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event)
+    {
+        if(icon_pos == Gtk::ENTRY_ICON_SECONDARY)
+        {
+            mp_Entry->set_text("");
+            mp_Entry->activate();
+        }
     }
 
     /*-------------------------------*/
@@ -157,22 +205,30 @@ namespace Browser
     {
         if(event & (MPD_IDLE_PLAYLIST))
         {
-            /* TODO: Make use of plchanges 
-             * Refilling always is expensive.
-             * */
-            g_printerr("Refill.\n");
-            m_refTreeModel->clear();
-            mp_Client->fill_queue(*this);
+            MPD::Status& status = data.get_status();
+            unsigned qv = status.get_queue_version();
+
+            if(qv > m_PlaylistVersion)
+            {
+                /* TODO: Make use of plchanges 
+                 * Refilling always is expensive.
+                 * */
+                Info("Refilling Queue");
+                m_refTreeModel->clear();
+                mp_Client->fill_queue(*this);
+            }
+            
+            m_PlaylistVersion = qv;
         }
     }
-    
+
     /*-------------------------------*/
 
     void Queue::on_connection_change(bool is_connected)
     {
         /* Empty for now */
     }
-    
+
     /*-------------------------------*/
 
     /* Menuhandling */
@@ -183,7 +239,7 @@ namespace Browser
     }
 
     /*-------------------------------*/
-    
+
     void Queue::on_menu_remove_clicked(void)
     {
         std::vector<Gtk::TreePath> path_row_vec = m_TreeSelection->get_selected_rows();

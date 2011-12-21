@@ -28,24 +28,40 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_MAIN_WINDOW_GUARD
-#define FREYA_MAIN_WINDOW_GUARD
+#ifndef FREYA_ABSTRACTCLIENTEXTENSION_HH
+#define FREYA_ABSTRACTCLIENTEXTENSION_HH
 
-#include <gtkmm.h>
-#include "Log/Writer.hh"
-#include "Utils/Utils.hh"
-#include "Config/Handler.hh"
+#include "BaseClient.hh"
 
-class FreyaWindow 
+namespace MPD
 {
-    public:
-        FreyaWindow(const Glib::RefPtr<Gtk::Builder> &builder);
-        ~FreyaWindow();
-        Gtk::Window* get_window(void);
-    protected:
-        bool on_delete_event(GdkEventAny* event);
-    private:
-        Gtk::Window * main_window;
-};
+    class AbstractClientExtension
+    {
+        public:
+            AbstractClientExtension(MPD::BaseClient& base_client)
+            {
+                mp_BaseClient = &base_client;
+            }
 
-#endif
+        protected:
+            MPD::BaseClient * mp_BaseClient;
+    };
+
+    /* Go into active mode */
+    #define EXTERNAL_GET_BUSY                   \
+            if(mp_BaseClient->is_connected())   \
+            {                                   \
+                mp_BaseClient->go_busy();       \
+                mpd_connection * conn =         \
+                mp_BaseClient->get_connection();\
+                if(conn != NULL) {              
+
+    /* Go back idling, *never* forget this */                
+    #define EXTERNAL_GET_LAID             \
+                }                         \
+                mp_BaseClient->go_idle(); \
+            }                             
+
+}
+
+#endif /* end of include guard: FREYA_ABSTRACTCLIENTEXTENSION_HH */

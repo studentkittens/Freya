@@ -1,3 +1,33 @@
+ /***********************************************************
+* This file is part of Freya 
+* - A free MPD Gtk3 MPD Client -
+* 
+* Authors: Christopher Pahl, Christoph Piechula,
+*          Eduard Schneider, Marc Tigges
+*
+* Copyright (C) [2011-2012]
+* Hosted at: https://github.com/studentkittens/Freya
+*
+*              __..--''``---....___   _..._    __
+*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+*   ///_.-' _..--.'_                        `( ) ) // //
+*   / (_..-' // (< _     ;_..__               ; `' / ///
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+*
+* Freya is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Freya is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Freya. If not, see <http://www.gnu.org/licenses/>.
+**************************************************************/
 #include "SettingsOutputs.hh"
 #include "Settings.hh"
 #include "../MPD/AudioOutput.hh"
@@ -49,10 +79,7 @@ namespace Browser
 
     void SettingsOutputs::on_connection_change(bool is_connected)
     {
-        if(!is_connected)
-            treeViewPtr->set_sensitive(false);
-        else
-            treeViewPtr->set_sensitive(true);
+        treeViewPtr->set_sensitive(is_connected);
     }
 
     void SettingsOutputs::decline_new_settings(void)
@@ -62,26 +89,26 @@ namespace Browser
 
     void SettingsOutputs::accept_new_settings(void)
     {
-            running=true;
-            typedef Gtk::TreeModel::Children type_children;
-            type_children children = treeModel->children();
-            for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
-            {
-                Gtk::TreeModel::Row row = *iter;
-                if(row[treeColumns.colActive])
-                    (*(row[treeColumns.colOutput])).enable();
-                else
-                    (*(row[treeColumns.colOutput])).disable();
-            }
-            treeModel->clear();
-            mp_Client->fill_outputs(*this);
+        running = true;
+        typedef Gtk::TreeModel::Children type_children;
+        type_children children = treeModel->children();
+        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+        {
+            Gtk::TreeModel::Row row = *iter;
+            if(row[treeColumns.colActive])
+                (*(row[treeColumns.colOutput])).enable();
+            else
+                (*(row[treeColumns.colOutput])).disable();
+        }
+        treeModel->clear();
+        mp_Client->fill_outputs(*this);
 
-            running=false;
+        running = false;
     }
 
     void SettingsOutputs::reset_settings(void)
     {
-        running=true;
+        running = true;
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
         for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
@@ -89,7 +116,7 @@ namespace Browser
             Gtk::TreeModel::Row row = *iter;
             row[treeColumns.colActive] = (*(row[treeColumns.colOutput])).get_enabled();
         }
-        running=false;
+        running = false;
     }
 
     void SettingsOutputs::add_item(void * item)

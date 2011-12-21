@@ -82,7 +82,11 @@ namespace Browser
             void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
             bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
             void on_entry_activate(void);
+<<<<<<< HEAD
+            void on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
+=======
             bool on_key_press_handler(GdkEventKey * event);
+>>>>>>> master
 
             /*----------------------*/
             /*----------------------*/

@@ -89,6 +89,8 @@ namespace Browser
         /* Start searching */
         mp_Entry->signal_activate().connect(
                 sigc::mem_fun(*this,&Queue::on_entry_activate));
+        mp_Entry->signal_icon_press().connect(
+                sigc::mem_fun(*this, &Queue::on_entry_clear_icon));
 
         m_refTreeModelFilter->set_visible_func(
                 sigc::mem_fun(*this,&Queue::on_filter_row_visible));
@@ -162,10 +164,43 @@ namespace Browser
 
     /*-------------------------------*/
 
+<<<<<<< HEAD
+    void Queue::add_item(void * pSong)
+    {
+        g_assert(pSong);
+        MPD::Song * new_song = (MPD::Song*)pSong;
+        Gtk::TreeModel::Row row = *(m_refTreeModel->append());
+        row[m_Columns.m_col_id] = new_song->get_id();
+
+        try { /* Check for NULLs just to be sure */
+            row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
+            row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
+            row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
+        } catch(const std::logic_error& e) {
+            Warning("Empty column: %s",e.what());
+        }
+        delete new_song;
+    }
+
+    /*-------------------------------*/
+
+=======
+>>>>>>> master
     void Queue::on_entry_activate(void)
     {
         m_FilterText = mp_Entry->get_text();
         m_refTreeModelFilter->refilter();
+    }
+
+    /*-------------------------------*/
+
+    void Queue::on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event)
+    {
+        if(icon_pos == Gtk::ENTRY_ICON_SECONDARY)
+        {
+            mp_Entry->set_text("");
+            mp_Entry->activate();
+        }
     }
 
     /*-------------------------------*/

@@ -89,18 +89,6 @@ namespace GManager
             MPD::Song * current_song = data.get_song();
             if(current_song != NULL)
             {
-<<<<<<< HEAD
-=======
-                char * title_string = g_markup_printf_escaped("<b>%s</b> (Track %s)",
-                        current_song->get_tag(MPD_TAG_TITLE,0),
-                        current_song->get_tag(MPD_TAG_TRACK,0)
-                        );
-                char * artist_album = g_markup_printf_escaped("<small><span weight='light'><i>by</i></span> %s <span weight='light'><i>on</i></span> %s (%s)</small>",
-                        current_song->get_tag(MPD_TAG_ARTIST,0),
-                        current_song->get_tag(MPD_TAG_ALBUM,0),
-                        current_song->get_tag(MPD_TAG_DATE,0)
-                        );
->>>>>>> master
 
                 mp_TitleLabel->set_markup(current_song->song_format("<b>${title}</b> (Track ${track})")); 
                 mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small>by <b>${artist}</b> on <b>${album}</b> (${date})</small>")); 

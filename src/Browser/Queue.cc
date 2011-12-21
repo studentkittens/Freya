@@ -164,7 +164,6 @@ namespace Browser
 
     /*-------------------------------*/
 
-<<<<<<< HEAD
     void Queue::add_item(void * pSong)
     {
         g_assert(pSong);
@@ -184,8 +183,6 @@ namespace Browser
 
     /*-------------------------------*/
 
-=======
->>>>>>> master
     void Queue::on_entry_activate(void)
     {
         m_FilterText = mp_Entry->get_text();

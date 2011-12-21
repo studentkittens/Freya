@@ -40,10 +40,6 @@ namespace MPD
     }
 
     /*------------------------------*/
-<<<<<<< HEAD
-
-=======
-    
     Song::Song(const MPD::Song& other)
     {
        mpd_song * other_song = other.mp_Song;
@@ -52,10 +48,9 @@ namespace MPD
        else
            mp_Song = NULL;
     }
-    
+
     /*------------------------------*/
-    
->>>>>>> master
+
     Song::~Song(void)
     {
         if(mp_Song != NULL)

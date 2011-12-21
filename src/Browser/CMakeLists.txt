@@ -15,6 +15,7 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     SettingsNetwork.cc
     SettingsGeneral.cc
     SettingsPlayback.cc
+    SettingsOutputs.cc
     Fortuna.cc
     )
 

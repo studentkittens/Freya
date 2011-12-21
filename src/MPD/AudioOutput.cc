@@ -29,7 +29,6 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "AudioOutput.hh"
-
 namespace MPD
 {
     AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) : 
@@ -69,7 +68,7 @@ namespace MPD
             retv = mpd_run_enable_output(conn,id);
         }
         EXTERNAL_GET_LAID
-        
+
         return retv;
     }
 

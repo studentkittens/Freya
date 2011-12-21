@@ -28,24 +28,21 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef INIT_SP0811FS
-
-#define INIT_SP0811FS
-#include <glib.h>
-#include <cstring>
-#include <glibmm.h>
-#include <glib.h>
-#include <glib/gstdio.h>
-class init
+#ifndef FREYA_OUTPUTCOLUMNS_GUARD
+#define FREYA_OUTPUTCOLUMNS_GUARD
+#include "../MPD/AudioOutput.hh"
+namespace Browser
 {
-public:
-    init ();
-    ~init ();
-    Glib::ustring get_config_dir();
-    void dir_is_avaiable();
-    void create_dir();
-private:
-    /* data */
-};
+    class OutputsModelColumns : public Gtk::TreeModel::ColumnRecord
+    {
+        public:
+            OutputsModelColumns()
+            { add(colName); add(colActive); add(colOutput);}
+            Gtk::TreeModelColumn<Glib::ustring> colName;
+            Gtk::TreeModelColumn<bool> colActive;
+            Gtk::TreeModelColumn<MPD::AudioOutput*> colOutput;
+    };
+                                                                                                            
+}
 
-#endif /* end of include guard: INIT_SP0811FS */
+#endif

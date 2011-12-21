@@ -296,7 +296,7 @@ namespace MPD
 
     //-------------------------------
     
-    void Client::fill_ouputs(AbstractItemlist& data_model)
+    void Client::fill_outputs(AbstractItemlist& data_model)
     {
         GET_BUSY
         {

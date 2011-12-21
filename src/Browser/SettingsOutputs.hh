@@ -28,46 +28,51 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_SETTINGS_GUARD
-#define FREYA_SETTINGS_GUARD
+#ifndef FREYA_SETTINGS_OUTPUTS_GUARD
+#define FREYA_SETTINGS_OUTPUTS_GUARD
 
 #include <gtkmm.h>
-#include <vector>
 
-#include "SettingsPlayback.hh"
-#include "SettingsNetwork.hh"
-#include "SettingsGeneral.hh"
-#include "SettingsOutputs.hh"
 #include "SettingsSub.hh"
-
-#include "AbstractBrowser.hh"
-#include "../Config/Handler.hh"
-#include "../GManager/Trayicon.hh"
-
-using namespace std;
+#include "OutputsModelColumns.hh"
+#include "../MPD/AbstractItemlist.hh"
+#include "../MPD/AbstractClientUser.hh"
+#include "../MPD/Client.hh"
+#include "../Utils/Utils.hh"
 
 namespace Browser
 {
-    class Settings : public AbstractBrowser
+    class Settings;
+    class SettingsOutputs : public SettingsSub, public AbstractItemlist, public AbstractClientUser
     {
         public:
-            Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
-            ~Settings();
+            SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+            ~SettingsOutputs();
 
-            Gtk::Widget* get_container(void);
-            void settings_changed(void);
+            void accept_new_settings(void);
+            void decline_new_settings(void);
+            void reset_settings(void);
+            void add_item(void *item);
+
+        protected:
+            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool);
+            void on_toggle(const Glib::ustring& path);
+            bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
 
         private:
-            void on_button_ok(void);
-            void on_button_cancel(void);
-            void on_button_reset(void);
-            vector<SettingsSub*> sub_sections;
-
-            /* Widgets */
-            Gtk::Button *ok_button, *cancel_button, *reset_button;
-            Gtk::Box *settings_main;
-
+            Glib::RefPtr<Gtk::ListStore> treeModel;
+            Gtk::TreeView * treeViewPtr;
+            OutputsModelColumns treeColumns;
+            MPD::Client* client;
+            Settings *sett;
+            bool running;
     };
+
+
 }
+
+
+
 
 #endif

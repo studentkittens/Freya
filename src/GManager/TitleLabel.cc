@@ -91,7 +91,7 @@ namespace GManager
             {
 
                 mp_TitleLabel->set_markup(current_song->song_format("<b>${title}</b> (Track ${track})")); 
-                mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small>by <b>${artist}</b> on <b>${album}</b> (${date})</small>")); 
+                mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small><span weight='light'><i>by</i></span> ${artist} <span weight='light'><i>on</i></span> ${album} (${date})</small>")); 
 
             }
             else

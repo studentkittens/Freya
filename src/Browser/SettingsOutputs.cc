@@ -34,7 +34,7 @@ namespace Browser
 
     void SettingsOutputs::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
     {
-        if(event & (MPD_IDLE_PLAYER))
+        if(event & (MPD_IDLE_OUTPUT))
         {
             treeModel->clear();
             mp_Client->fill_outputs(*this);
@@ -62,8 +62,9 @@ namespace Browser
             else
                 (*(row[treeColumns.colOutput])).disable();
         }
-            treeModel->clear();
-            mp_Client->fill_outputs(*this);
+
+//            treeModel->clear();
+//            mp_Client->fill_outputs(*this);
 
     }
 

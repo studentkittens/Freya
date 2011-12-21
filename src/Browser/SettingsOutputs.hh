@@ -33,6 +33,7 @@ namespace Browser
             OutputsModelColumns treeColumns;
             MPD::Client* client;
             Settings *sett;
+            bool running;
     };
 
 

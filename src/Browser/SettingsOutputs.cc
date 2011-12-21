@@ -6,7 +6,7 @@ namespace Browser
 {
 
     SettingsOutputs::SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett)
-    : AbstractClientUser(client)
+    : AbstractClientUser(client), running(false)
     {
         this->sett = sett;
         BUILDER_GET(builder,"output_treeView",treeViewPtr);
@@ -34,7 +34,7 @@ namespace Browser
 
     void SettingsOutputs::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
     {
-        if(event & (MPD_IDLE_OUTPUT))
+        if(!running && (event & (MPD_IDLE_OUTPUT)))
         {
             treeModel->clear();
             mp_Client->fill_outputs(*this);
@@ -43,6 +43,10 @@ namespace Browser
 
     void SettingsOutputs::on_connection_change(bool is_connected)
     {
+        if(!is_connected)
+            treeViewPtr->set_sensitive(false);
+        else
+            treeViewPtr->set_sensitive(true);
     }
 
     void SettingsOutputs::decline_new_settings(void)
@@ -52,24 +56,26 @@ namespace Browser
 
     void SettingsOutputs::accept_new_settings(void)
     {
-        typedef Gtk::TreeModel::Children type_children;
-        type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
-        {
-            Gtk::TreeModel::Row row = *iter;
-            if(row[treeColumns.colActive])
-                (*(row[treeColumns.colOutput])).enable();
-            else
-                (*(row[treeColumns.colOutput])).disable();
-        }
+            running=true;
+            typedef Gtk::TreeModel::Children type_children;
+            type_children children = treeModel->children();
+            for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+            {
+                Gtk::TreeModel::Row row = *iter;
+                if(row[treeColumns.colActive])
+                    (*(row[treeColumns.colOutput])).enable();
+                else
+                    (*(row[treeColumns.colOutput])).disable();
+            }
+            treeModel->clear();
+            mp_Client->fill_outputs(*this);
 
-//            treeModel->clear();
-//            mp_Client->fill_outputs(*this);
-
+            running=false;
     }
 
     void SettingsOutputs::reset_settings(void)
     {
+        running=true;
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
         for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
@@ -77,7 +83,7 @@ namespace Browser
             Gtk::TreeModel::Row row = *iter;
             row[treeColumns.colActive] = (*(row[treeColumns.colOutput])).get_enabled();
         }
-
+        running=false;
     }
 
     void SettingsOutputs::add_item(void * item)

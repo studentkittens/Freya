@@ -26,12 +26,13 @@ namespace Browser
         protected:
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool);
-
+            void on_toggle(const Glib::ustring& path);
         private:
             Glib::RefPtr<Gtk::ListStore> treeModel;
             Gtk::TreeView * treeViewPtr;
             OutputsModelColumns treeColumns;
             MPD::Client* client;
+            Settings *sett;
     };
 
 

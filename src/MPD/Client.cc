@@ -302,7 +302,7 @@ namespace MPD
             if(mpd_send_outputs(conn) != FALSE) 
             {
                 mpd_output * ent = NULL;
-                while(ent = mpd_recv_output(conn))
+                while((ent = mpd_recv_output(conn)))
                 {
                     data_model.add_item(new AudioOutput(*this,*ent));
                 }

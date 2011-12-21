@@ -29,7 +29,7 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "AudioOutput.hh"
-
+#include "../Log/Writer.hh"
 namespace MPD
 {
     AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) : 
@@ -67,9 +67,10 @@ namespace MPD
         EXTERNAL_GET_BUSY 
         {
             retv = mpd_run_enable_output(conn,id);
+            Debug("enabling");
         }
         EXTERNAL_GET_LAID
-        
+
         return retv;
     }
 
@@ -81,6 +82,7 @@ namespace MPD
         EXTERNAL_GET_BUSY 
         {
             retv = mpd_run_disable_output(conn,id);
+            Debug("disabling");
         }
         EXTERNAL_GET_LAID
 

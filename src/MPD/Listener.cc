@@ -61,7 +61,7 @@ namespace MPD
         /* No idle events, nor io events on startup,
          * call force_update() if you want to init 
          * your registered classes */
-        idle_events = (mpd_idle)0;
+        idle_events  = 0;
         io_eventmask = (mpd_async_event)0;
 
         /* No idling  -> client has to call enter() itself
@@ -197,7 +197,7 @@ namespace MPD
         switch (result) 
         {
             case MPD_PARSER_ERROR:
-
+            {
                 io_eventmask = (mpd_async_event)0;
                 check_async_error();
                 Error("ParserError: %d - %s",
@@ -205,28 +205,29 @@ namespace MPD
                         mpd_parser_get_message(mp_Parser));
 
                 return false;
-
+            }
             case MPD_PARSER_PAIR:
-
-                if(g_strcmp0(mpd_parser_get_name(mp_Parser),"changed") == 0)
+            {
+                const char * name = NULL;
+                if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
                 {
                     const char * value = mpd_parser_get_value(mp_Parser);
                     idle_events |= mpd_idle_name_parse(value);
                 }
                 break;
-
+            }
             case MPD_PARSER_MALFORMED:
-
+            {
                 io_eventmask = (mpd_async_event)0;
                 check_async_error();
                 return false;
-
+            }
             case MPD_PARSER_SUCCESS:
-
+            {
                 io_eventmask = (mpd_async_event)0;
                 invoke_user_callback();
                 return true;
-
+            }
         }
         return true;
     }
@@ -361,7 +362,7 @@ namespace MPD
                 /* New game - new dices */
                 io_eventmask = (mpd_async_event)0;
 
-                mpd_idle events;
+                mpd_idle events = (mpd_idle)0;
 
                 /* Make sure no idling is running */
                 if(idle_events == 0)
@@ -377,13 +378,19 @@ namespace MPD
                 {
                         Warning("Error#%d while leaving idle mode: %s",err,
                                 mpd_connection_get_error_message(mp_Conn->get_connection()));
-                }
-                is_fatal = mp_Conn->clear_error();
 
+                        is_fatal = mp_Conn->clear_error();
+                }
+
+                /* Finish up */
                 if(is_fatal == false)
                 {
                     idle_events |= events;
-                    invoke_user_callback();
+
+                    if(is_forced == false)
+                    {
+                        invoke_user_callback();
+                    }
 
                     /* Disconnect the watchdog for now */
                     io_functor.disconnect();
@@ -410,6 +417,7 @@ namespace MPD
         {
             mpd_run_noidle(mp_Conn->get_connection());
         }
+
 
         /* Inform watchers about events */
         is_forced = true;

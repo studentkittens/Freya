@@ -59,7 +59,7 @@ namespace MPD
     {
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
-            connect();
+         //   connect();
         }
     }
 
@@ -110,7 +110,6 @@ namespace MPD
 
     bool Client::playback_play(void)
     {
-        return this->send_command("play");
     }
 
     //-------------------------------
@@ -191,17 +190,6 @@ namespace MPD
 
     //-------------------------------
 
-    void Client::queue_delete_range(unsigned pos_start, unsigned pos_end)
-    {
-        GET_BUSY
-        {
-            mpd_run_delete_range(conn,pos_start,pos_end);
-        }
-        GET_LAID
-    }
-
-    //-------------------------------
-
     void Client::queue_clear(void)
     {
         GET_BUSY
@@ -258,6 +246,36 @@ namespace MPD
     }
 
     //-------------------------------
+    
+    void Client::fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos)
+    {
+        bool is_first = true;
+        GET_BUSY
+        {
+            if(mpd_send_queue_changes_meta(conn,last_version) != FALSE)
+            {
+                mpd_song * ent = NULL;
+                while((ent = mpd_recv_song(conn)))
+                {
+                    Song * new_song = new Song(*ent);
+                    if(is_first)
+                    {
+                        first_pos = new_song->get_pos();
+                        is_first = false;
+                    }
+                    data_model.add_item(new_song);
+                }
+            }
+
+            if(is_first)
+            {
+                first_pos = get_status()->get_queue_length();
+            }
+        }
+        GET_LAID
+    }
+    
+    //-------------------------------
 
     void Client::fill_playlists(AbstractItemlist& data_model)
     {
@@ -299,7 +317,7 @@ namespace MPD
     {
         GET_BUSY
         {
-            if(mpd_send_list_meta(conn, path) != FALSE)
+            if(mpd_send_list_meta(conn, (path) ? path : "/") != FALSE)
             {
                 mpd_entity * ent = NULL;
                 while((ent = mpd_recv_entity(conn)))
@@ -339,6 +357,8 @@ namespace MPD
         GET_LAID
     }
 
+    //--------------------
+    
     //--------------------
 
     void Client::toggle_random(void)
@@ -405,6 +425,17 @@ namespace MPD
         GET_LAID
     }
 
+    //--------------------
+    
+    void Client::playback_crossfade(unsigned seconds)
+    {
+        GET_BUSY
+        {
+            mpd_run_crossfade(conn,seconds);
+        }
+        GET_LAID
+    }
+    
     //--------------------
 
     void Client::set_volume(unsigned vol)

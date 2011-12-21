@@ -32,7 +32,7 @@
 #include "../Utils/Utils.hh"
 #include "../Notify/Notify.hh"
 
-#define UPDATE_TIMEOUT 0.1//seconds
+#define UPDATE_TIMEOUT 0.05//seconds
 
 namespace GManager
 {
@@ -67,11 +67,21 @@ namespace GManager
 
     // -------------------
     
+    void Volumebutton::do_volume_step(void)
+    {
+        mp_Client->set_volume(mp_VButton->get_value() * 100);
+    }
+
+    // -------------------
+
     void Volumebutton::on_user_change(double val)
     {
         if(!ignore_signal && m_Timerguard.elapsed() > UPDATE_TIMEOUT) 
         {
-            mp_Client->set_volume(mp_VButton->get_value() * 100);
+            Glib::signal_idle().connect_once(
+                    sigc::mem_fun(*this,&Volumebutton::do_volume_step),
+                    Glib::PRIORITY_LOW);
+
             m_Timerguard.reset();
         }
     }

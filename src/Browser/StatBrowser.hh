@@ -32,17 +32,17 @@
 
 #define STATBROWSER_H0M8CVQP
 
-#include "../AbstractBrowser.hh"
-#include "../MPD/Client.hh"
 #include <gtkmm.h>
+#include "../MPD/Client.hh"
 #include "../Utils/Utils.hh"
+#include "AbstractBrowser.hh"
+
 namespace Browser {
     class StatBrowser : public Gtk::Frame, public AbstractBrowser {
         public:
             StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&);
             ~StatBrowser ();
             
-
             /**
              * @brief implemented from AbstractBrowser
              *

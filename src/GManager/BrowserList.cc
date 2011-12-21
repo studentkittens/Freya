@@ -32,12 +32,11 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
-
 namespace GManager
 {
     BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(client),
-        m_NoBrowsers("No Browsers found. This is weird.")
+        m_NoBrowsers("No Browsers found. This is weird and probably a bug.")
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -58,6 +57,8 @@ namespace GManager
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
 
+        /* Add a "Here are no browsers label, in case something
+         * goes terribly wrong */
         mp_List->add(m_NoBrowsers);
         mp_List->show_all();
     }
@@ -136,7 +137,9 @@ namespace GManager
                 mp_List->remove(*element);
             }
 
-            mp_List->add(*(browser->get_container()));
+            Gtk::Widget * content = browser->get_container();
+            content->grab_focus();
+            mp_List->add(*(content));
         }
         else
         {

@@ -1,0 +1,114 @@
+-------------------------------------------------------------
+Kurze Zusammenfassung, Config Handler & Model, Path, Utils.
+-------------------------------------------------------------
+
+
+----------------------
+Utils (Utils.{cc,hh})
+----------------------
+
+- Im Utils namespace befinden sich folgende Hilfsfunktionen zur Dauer/Timestampberechnung:
+
+    ->  Glib::ustring seconds_to_duration(unsigned long); Umrechnung in einen Dauer-String Bsp.: "4 hours 2 minutes 0 seconds"
+    ->  Glib::ustring seconds_to_timestamp(const long); Umrechnung in einen Timestamp, Bsp: "2011-04-02"
+    ->  std::string int_to_string(int num); Umwandlung eines Integer Wertes in einen String
+
+Diese grundlegenden Funktionen wurden ausgelagert damit sie von mehreren Klassen verwendet werden können und um Redundanzen im 
+Code zu vermeiden.
+
+
+
+---------------------------------
+Konfigurationsdatei (config.xml)
+---------------------------------
+
+- Die Freya Konfigurationsdatei wurde im simplen XML Format realisiert, XML wurde gewählt um das Parsen zu vereinfachen und um
+  ein standardisiertes Format nach außen bereitzustellen. 
+
+- Die Konfigurations- und Logdatei wird nach XDG Standard ($XDG_CONFIG_HOME) unter $HOME/.config/freya/<config.xml,log.txt> gespeichert.
+  XDG Standard: http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables
+
+- Aufbau der Konfig: < hier config xml einfügen >
+
+
+
+--------------------------
+Init::Path (Path.{cc,hh})
+--------------------------
+
+- Die Init::Path Klasse ist für die Initialisierung und das Management der Freya Config Pfade zuständig.
+  Bei der Initialisierung wird überprüft ob das Konfigurationsverzeichnis vorhanden ist, wenn nicht wird ein Neues
+  angelegt und anschließend wird eine default config.xml geschrieben. Eine default config ist im Quellcode als 
+  globaler konstanter String einkompiliert. (Config::defaultcfg.inl)
+  
+  Schlägt das Erstellen der Konfigurationsdatei fehl, so wird versucht eine entsprechende Fehlermeldung in die Log Datei zu schreiben 
+  falls diese zuvor erfolgreich angelegt wurde. Zusätzlich werden DEBUG ausgaben auf dem Bildschirm angezeigt wenn das Programm
+  über ein Terminal gestartet wird.
+
+
+
+------------------------------
+Config::Model (Model.{cc,hh})
+------------------------------
+
+- Die Config::Model Klasse gehört nach dem MVC Paradigma zur Model Schicht. Diese Klasse hält die nötigen Daten (Konfigurationsdatei)
+  die zum Betrieb von Freya nötig sind im Speicher vor und bietet Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte.
+
+- Wie bereits erwähnt wird die Konfigurationsdatei im XML Format gespeichert. Zum Parsen der XML Datei wir die C Programmbibliothek 
+  libxml2 verwendet. Diese Library wurde gewählt, weil sie alle benötigten Funktionen enthält, nach dem ANSI-C Standard implementiert ist
+  und bereits seit über einem Jahrzehnt Quasi-Standard im C Umfeld ist.
+
+  -> http://xmlsoft.org/
+  -> http://en.wikipedia.org/wiki/Libxml2
+  -> Quellen zur Implementierung: http://xmlsoft.org/tutorial/index.html
+                                  http://student.santarosa.edu/~dturover/?node=libxml2  
+  
+- Über die Init::Path Klasse holt sich das Model bei seiner Instanziierung den Pfad zur Konfigurationsdatei, parst diese
+  sowie die default Config und initialisiert zwei XML Document Pointer die auf ein DOM Objekt, welches einen Dokumentenbaum enthält, zeigen.
+  Anschließend kann man über diese DOM Objekte traversieren und Werte der Konfigurationsdatei lesen oder setzten.
+
+- Die default config wurde implementiert um fehlerhaften Werten oder einer kaputten Konfiguration vorzubeugen. Ist ein benötigter Wert
+  nicht in der User config vorhanden oder ist diese beschädigt so wird auf die default config zugegriffen.
+
+- Bei Beendigung des Models wird das aktuelle Objekt als XML Konfigurationsdatei auf die Festplatte geschrieben.
+
+- Wie andere Objekte auch, nutzt das Model die Log-Klasse um zu Informationen und Fehler zu protokollieren.
+
+
+
+----------------------------------
+Config::Handler (Handler.{cc,hh})
+----------------------------------
+
+- Die Config::Handler Klasse gehört nach dem MVC Paradigma zur Controller Schicht. Diese Klasse ist für das Management bzw für den
+  Zugriff auf das Model und somit die Konfigurationsdatei zuständig. Sie enthält Methoden zum Lesen und Setzen der einzelnen Optionen.
+  Der Config::Handler wurde als Singleton implementiert um einen zentralen Zugriff über eine einzelne Schnittstelle zu ermöglichen.
+
+- Der Handler besitzt einen Pointer auf das aktuelle Model Objekt um direkten Zugriff auf die Dokument Pointer zu haben. Desweiteren
+  wurden Wrapper um die get und set value Methoden geschrieben um verschiedene Datentypen lesen und setzen zu können, so kann gleich eine Teil-
+  validierung erfolgen.
+
+- Grundlegende Funktionsweise am Beispiel: "Lesen eines Wertes aus der Konfigurationsdatei":
+  
+  -> je nach Datentyp (String oder Integer) wird der entsprechende getter aufgerufen
+
+      -> dieser holt sich das Dokument Objekt über die Model Instanz
+      -> anschließend wird mittels einer traverse Methode der Dokumentenbaum durchlaufen, wird der gesuchte Wert gefunden
+         so wird dieser zurückgegeben, kann kein Wert ermittelt werden, so wird auf das Default Dokument Objekt zugegriffen
+         und der entsprechende default Wert an den Aufrufer zurück gegeben.
+
+- Der Config::Handler stellt folgende Makros bereit:
+
+     -> CONFIG_SET(x,y) 
+     -> CONFIG_GET(x)   
+     -> CONFIG_SET_AS_INT(x,y) 
+     -> CONFIG_GET_AS_INT(x)   
+     -> CONFIG_SAVE_NOW() 
+     -> CONFIG_GET_DEFAULT(x)
+     -> CONFIG_GET_DEFAULT_AS_INT(x)
+
+- Über die die save_now() Methode kann die aktuelle Konfiguration direkt über das Model gespeichert werden.
+
+- Alle Methoden nutzen nach Möglichkeit die Log-Klasse um Informationen und Fehler in der Logdatei zu protokollieren.
+
+

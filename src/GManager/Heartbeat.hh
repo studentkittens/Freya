@@ -32,13 +32,7 @@
 #define FREYA_HEARTBEAT_GUARD
 
 #include "../MPD/Client.hh"
-#include "../AbstractClientUser.hh"
-
-/* Explanation:
- * This class listens on the Client to get player signals, 
- * additionally it emits a signal every 500ms, for widgets
- * like the statusbar. In short: it is some sort of signalproxy
- */
+#include "../MPD/AbstractClientUser.hh"
 
 typedef sigc::signal<void,double> TimerNotifier;
 

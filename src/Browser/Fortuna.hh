@@ -31,7 +31,7 @@
 #ifndef FREYA_FORTUNA_GUARD
 #define FREYA_FORTUNA_GUARD
 
-#include "../AbstractBrowser.hh"
+#include "AbstractBrowser.hh"
 #include <gtkmm.h>
 
 namespace Browser

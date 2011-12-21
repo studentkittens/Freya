@@ -29,7 +29,8 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "Client.hh"
-#include "Listener.hh"
+#include "../Log/Writer.hh"
+
 #include <cstring>
 
 using namespace Glib;
@@ -62,41 +63,12 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 retv = false;
                 break;
             }
-        case 'n':
-            {
-                client->send_command("next"); 
-                break;
-            }
-        case 'x':
-            {
-                client->send_command("previous");
-                break;
-            }
-        case 's':
-            {
-                client->send_command("stop");
-                break;
-            }
-        case 'p':
-            {
-                client->send_command("play");
-                break;
-            }
-        case '#':
-            {
-                client->play_song_at_id(2);
-                break;
-            }
-        case 'c':
-            {
-                client->connect();
-                break;
-            }
         case ':':
             {
                 char cmd[256] = {0};
                 if(fgets(cmd,255,stdin))
                 {
+                    /* Chomp newline */
                     char * nl = strrchr(cmd,'\n');
                     if(nl != NULL) nl[0] = 0;
                     client->send_command(cmd);
@@ -105,25 +77,20 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 /* Do not unread newline */
                 return true;
             }
-        case 'd':
+        default:
             {
-                client->disconnect();
                 break;
             }
     }
 
     /* Unread characters left on the stream (if any) */
     while ((c = getchar()) != EOF && c != '\n'); 
+
     return retv;
 }
 
 //--------------------------------------
 //--------------------------------------
-
-// Anmerkung: Das ist momentan mehr oder minder zusammen gehackter Code
-// der meinen eigenen Verständniss dient - hier ist alles weit weg von
-// offiziell - irgendwie muss ich mich ja mit der lib beschäftigen.
-// -c3
 
 int main(int argc, char *argv[])
 {
@@ -139,7 +106,11 @@ int main(int argc, char *argv[])
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
     g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data); 
 
-    freya.force_update();
+    freya.connect();
+
+    Info("Enter your command prepended with a ':'");
+    Info("Example: :status or :next");
+    Info("Type 'q' to quit.");
 
     /* Start listening to events */
     app_loop->run();

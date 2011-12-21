@@ -32,21 +32,23 @@
 #define FREYA_DATABASE_FOGI85CP
 
 #include <gtkmm.h>
-#include "../AbstractBrowser.hh"
-#include "../AbstractItemlist.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractItemlist.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/Directory.hh"
+
+#include "DatabaseCache.hh"
 #include "DatabasePopup.hh"
+#include "AbstractBrowser.hh"
 
 namespace Browser
 {
     /* Does not inherig from frame this time */
-    class DatabaseBrowser : public AbstractBrowser, public AbstractFilebrowser, public AbstractClientUser 
+    class Database : public AbstractBrowser, public AbstractFilebrowser, public AbstractClientUser 
     {
         public:
-            DatabaseBrowser(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
-            virtual ~DatabaseBrowser();
+            Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
+            virtual ~Database();
 
             Gtk::Widget * get_container(void);
             void add_directory(MPD::Directory * pDir);
@@ -63,7 +65,9 @@ namespace Browser
             /* GUI Signals */
             void on_item_activated(const Gtk::TreeModel::Path& path);
             void on_home_button_clicked(void);
+            void on_search_entry_activated(void);
             bool on_button_press_event(GdkEventButton* event);
+            bool on_key_press_handler(GdkEventKey * event);
 
             /* Client Signals */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
@@ -73,6 +77,7 @@ namespace Browser
             void add_item(const char * path, bool is_file);
             void set_current_path(const char * path);
             void go_one_up(void);
+            void focus_item_starting_with(const char * prefix);
 
             class ModelColumns : public Gtk::TreeModel::ColumnRecord
             {
@@ -98,6 +103,7 @@ namespace Browser
             Gtk::Button * mp_HomeButton, * mp_DirUpButton;
             Gtk::Label * mp_StatusLabel;
             Glib::RefPtr<Gdk::Pixbuf> m_FileIcon, m_DirIcon;
+            Gtk::Entry * mp_SearchEntry;
 
             /* Models behind */
             ModelColumns m_Columns;
@@ -108,6 +114,10 @@ namespace Browser
 
             /* Popup menu */
             DatabasePopup * mp_Popup;
+
+            /* A local memcache of the db files */
+            DatabaseCache m_Cache;
+
     };
 }
 

@@ -33,7 +33,7 @@
 
 #include <gtkmm.h>
 #include "Heartbeat.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 
 namespace GManager
 {
@@ -47,10 +47,12 @@ namespace GManager
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool is_connected);
             void on_user_action(void);
+            void do_scroll(void);
 
+            unsigned current_song_id;
             bool ignore_signal;
             Gtk::Scale * m_Timeslide;
-            GManager::Heartbeat * mp_Proxy;
+            GManager::Heartbeat * mp_Heartbeat;
 
             Glib::Timer m_Timeguard;
     };

@@ -34,6 +34,7 @@
 namespace Browser
 {
     PlaylistAddDialog::PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder) :
+        AbstractClientUser(client),
         is_running(false),
         mp_Dialog(NULL)
     {
@@ -68,9 +69,7 @@ namespace Browser
     void PlaylistAddDialog::on_add_clicked(void)
     {
         Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
-        g_printerr("Creating new playlist: %s\n",new_pl_name.c_str());
-
-        // TODO: Add The Playlist here.. //
+        mp_Client->playlist_save(new_pl_name.c_str()); 
         on_cancel_clicked();
     }
 
@@ -107,4 +106,14 @@ namespace Browser
     {
         on_add_clicked();
     }
+    
+    /* ----------------------- */
+            
+    void PlaylistAddDialog::on_client_update(mpd_idle event, MPD::NotifyData& data)
+    {}
+    
+    /* ----------------------- */
+
+    void PlaylistAddDialog::on_connection_change(bool is_connected)
+    {}
 }

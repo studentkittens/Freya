@@ -33,8 +33,8 @@
 
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
+#include "../MPD/AbstractClientUser.hh"
 #include "../Notify/Notify.hh"
-#include "../AbstractClientUser.hh"
 
 namespace GManager
 {
@@ -73,7 +73,8 @@ namespace GManager
 
             /* Widgets */
             Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,
-                          *menu_play, *menu_stop, *menu_prev, *menu_next, *menu_playback, *menu_misc, *menu_vol_inc, *menu_vol_dec,
+                          *menu_play, *menu_stop, *menu_prev, *menu_next,
+			  *menu_playback, *menu_misc, *menu_vol_inc,*menu_vol_dec,
                           *menu_about;
 
             Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume;
@@ -81,6 +82,7 @@ namespace GManager
     };
 
 }
+
 
 
 #endif

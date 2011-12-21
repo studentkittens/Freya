@@ -33,7 +33,7 @@
 
 #include <glibmm.h>
 #include <stdio.h>
-#include "../Singleton.hh"
+#include "../Utils/Singleton.hh"
 
 /* Not supposed to used directly, use the macros below */
 #define _MSG(level, msg, ...) Log::Writer::instance().message(__FILE__, __LINE__, level, msg,  ##__VA_ARGS__)

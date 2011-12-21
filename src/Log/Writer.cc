@@ -72,7 +72,7 @@ namespace Log
             g_stat(m_Logpath.c_str(),&buf);
             if(buf.st_size >= MAX_LOG_SIZE)
             {
-                g_printerr("Clearing Log because it's size exceeds %d Bytes.",MAX_LOG_SIZE);
+                g_message("Clearing Log because it's size exceeds %d Bytes.",MAX_LOG_SIZE);
                 clear();
             }
 

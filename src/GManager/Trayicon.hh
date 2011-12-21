@@ -34,7 +34,7 @@
 #include <gtkmm.h>
 #include "../MPD/Client.hh"
 #include "../Browser/BasePopup.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 
 namespace GManager
 {

@@ -32,11 +32,13 @@
 #define FREYA_PLAYLISTADD_DIALOG
 
 #include "../MPD/Client.hh"
+#include "../MPD/AbstractClientUser.hh"
+
 #include <gtkmm.h>
 
 namespace Browser
 {
-    class PlaylistAddDialog 
+    class PlaylistAddDialog : public AbstractClientUser
     {
         public:
             PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
@@ -50,10 +52,12 @@ namespace Browser
             void on_entry_change(void);
             void on_entry_activate(void);
 
+            /* From AbstractClientUser */
+            void on_client_update(mpd_idle event, MPD::NotifyData& data);
+            void on_connection_change(bool is_connected);
+
             bool is_running;
             Gtk::Dialog * mp_Dialog;
-            MPD::Client * mp_Client;
-
             Gtk::Entry * mp_PlaylistEntry;
             Gtk::Button * mp_ApplyButton, * mp_CancelButton; 
     };

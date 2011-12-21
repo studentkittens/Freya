@@ -115,5 +115,24 @@ namespace GManager
     
     /* Implemented from AbstractClientUser, but empty in this case */    
     void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
-    {}
+    {
+        if(event & (MPD_IDLE_DATABASE | MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
+        {
+            MPD::Status& status = data.get_status();
+            set(status.get_elapsed_time());
+            switch(status.get_state())
+            {
+                case MPD_STATE_PLAY:
+                    play();
+                    break;
+                case MPD_STATE_STOP:
+                case MPD_STATE_PAUSE:
+                    pause();
+                    break;
+                case MPD_STATE_UNKNOWN:
+                default:
+                    break;
+            }
+        }
+    }
 }

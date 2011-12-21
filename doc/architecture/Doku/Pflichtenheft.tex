@@ -1,32 +1,32 @@
 \chapter{Pflichtenheft}
 \section{Zielbestimmungen}
+\subsection{Projektbeteiligte}
+Wer soll an dem Projekt teilnehmen?
+\begin{itemize}
+        \item Christopher Pahl
+        \item Christoph Piechula
+        \item Eduard Schneider
+        \item Marc Tigges
+\end{itemize}
 \subsection{Muss-Kriterien}
 \renewcommand{\labelitemi}{•}
 \begin{itemize}
 	\item Server-Verbindung
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
 	\item Client-Einstellungen
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
 	\item Musik-Steuerung
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
-	\item Sonstiges
-	\begin{itemize}
-		\item Platzhalter
-	\end{itemize}
 \end{itemize}
 \subsection{Wunsch-Kriterien}
 \begin{itemize}
-		\item Platzhalter
+	\item Liedinformationen taggen
+	\item Musikstatistik
+	\item Album Covers
+	\item Liedsuche
 \end{itemize}
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-		\item Platzhalter
+	\item Musik-Visualisierung
+	\item Chat
+	\item Social-Network-Schnittstelle
 \end{itemize}
 \section{Produkteinsatz}
 Welche Anwendungsbereiche (Zweck), Zielgruppen (Wer mit welchen Qualifikationen), Betriebsbedingungen (Betriebszeit,
@@ -39,8 +39,10 @@ Definition der GPL:
 http://www.gnu.org/licenses/gpl.html
 \end{center}
 \subsection{Anwendungsbereiche}
-Einzelpersonen verwenden dieses System, um überall da wo mit 
+Einzelpersonen verwenden dieses System überall da, wo mit 
 einem Unix-artigen Betriebssystem Musik abgespielt werden soll.
+Das wären z.B. Personal Computer, Musikanlagen, Laptops und evtl.
+sogar diverse Smartphones
 \subsection{Zielgruppen}
 Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
 wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern).\ \\ \\
@@ -79,23 +81,100 @@ Beim ersten Start des Systems soll eine Standard-Konfiguration geladen werden un
 zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
 die vom Benutzer erstellt wurde, falls diese denn lokal gefunden werden kann. Der Benutzer soll sämtliche
 Einstellungen selbstverständlich zu jeder Zeit ändern können.
-\subsection{Allgemeine Funktionen}
-\subsubsection{Starten und Beenden}
+\subsection{Starten und Beenden}
 \begin{itemize}
 	\item F\_0010 Der Benutzer kann das System zu jedem Zeitpunkt starten.
-	\item F\_0020 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
-	\item F\_0030 Beim ersten Start wird ein Standart-System-Zustand geladen.
-	\item F\_0040 Beim Beenden wird der aktuelle System-Zustand gespeichert.
-	\item F\_0050 Bei jedem weiteren Start wird der letzte System-Zustand geladen.
+	\item F\_0011 Der Benutzer kann das System zu jedem Zeitpunkt beenden.
+	\item F\_0012 Beim ersten Start wird ein Standart-System-Zustand geladen.
+	\item F\_0013 Beim Beenden wird der aktuelle System-Zustand gespeichert.
+	\item F\_0014 Bei jedem weiteren Start wird der letzte System-Zustand geladen.
 \end{itemize}
-\subsection{Benutzerfunktionen}
-\subsubsection{Benutzer-Kennung}
-Eine Benutzerkennung ist nicht erforderlich und wurde deshalb auch nicht implementiert.
-\subsubsection{Persönliche Daten}
-Verbindungseinstellungen müssen vorgenommen werden und können zu jedem Zeitpunkt geändert werden.
+\subsection{Abspielen von Musik (Buttons)}
 \begin{itemize}
-	\item F\_0110 Der Benutzer kann Verbindungseinstellungen vornehmen und sie ändern
+	\item F\_0020 Der Benutzer kann Musik abspielen (Play)
+	\item F\_0021 Der Benutzer kann Musik stoppen (Stop)
+	\item F\_0022 Der Benutzer kann Musik pausieren (Pause)
+	\item F\_0023 Der Benutzer kann Musik vor und zurück schalten (Skip)
+	\item F\_0024 Der Benutzer kann Musik vor und zurück spuhlen (Seek)
+	\item F\_0025 Der Benutzer kann Musik zufällig abspielen (random)
+	\item F\_0026 Der Benutzer kann Musik wiederholen (repeat)
+	\item F\_0027 Der Benutzer kann Musik im Consume-Mode abspielen
+	\item F\_0028 Der Benutzer kann Musik im Single-Mode abspielen
 \end{itemize}
+\subsection{Abspielen von Musik (Short-Cuts)}
+\begin{itemize}
+	\item F\_0030 Play 	(ctrl + G)
+        \item F\_0031 Stop 	(ctrl + S)
+        \item F\_0032 Previous 	(ctrl + P)
+        \item F\_0033 Next	(ctrl + N)
+	\item F\_0034 Random	(ctrl + Z)
+	\item F\_0035 Single	(ctrl + Y)
+	\item F\_0036 Repeate	(ctrl + R)
+	\item F\_0037 Consume	(ctrl + T)
+\end{itemize}
+\subsection{Queue (Warteschlange)}
+\begin{itemize}
+	\item F\_0040 Der Benutzer kann einzelne Lieder aus der Queue entfernen
+	\item F\_0041 Der Benutzer kann alle Lieder aus der Queue entfernen
+	\item F\_0042 Der Benutzer kann kann die Queue als Playlist speichern
+	\item F\_0043 Der Benutzer kann Interpret, Album und Titel beliebig anordnen
+\end{itemize}
+\subsection{Playlist}
+\begin{itemize}
+	\item F\_0050 Der Benutzer kann eine neue Playliste erstellen
+	\item F\_0051 Der Benutzer kann eine vorhandene Playlist ersetzen
+	\item F\_0052 Der Benutzer kann eine Playlist löschen
+\end{itemize}
+\subsection{Dateibrowser}
+\begin{itemize}
+	\item F\_0060 Der Benutzer kann durch sein Dateisystem navigieren
+	\item F\_0061 Der Benutzer kann einzelne Dateien zur Queue hinzufügen
+	\item F\_0062 Der Benutzer kann mehrere Dateien zur Queue hinzufügen
+	\item F\_0063 Der Benutzer kann Dateien ersetzen
+	\item F\_0064 Der Benutzer kann Die Anzeige aktualisieren
+	\item F\_0065 Der Benutzer kann die Anzeige neu einlesen
+\end{itemize}
+\subsection{Statistik}
+\begin{itemize}
+	\item F\_0070 Der Benutzer kann eine gesamt Statistik einsehen
+	\begin{itemize}
+		\item Anzahl der Interpreten
+		\item Anzahl der Alben
+		\item Anzahl der Lieder
+		\item Musiklänge der Datenbank
+		\item Abspielzeit	
+		\item Zeit Online bzw. mit MPD verbunden
+		\item Letzter Datenbank-Update
+	\end{itemize}
+\end{itemize}
+\subsection{Einstellungen}
+\begin{itemize}
+	\item F\_0080 Der Benutzer kann Netzwerk-Einstellungen vornehmen
+	\begin{itemize}
+		\item Server IP / Port
+		\item Reconnect Timout in Sekunden
+		\item Avahi-Browser (Serverauswahl)
+		\item Autoconnect
+	\end{itemize}
+	\item F\_0081 Der Benutzer kann Playback-Einstellungen vornehmen	
+	\begin{itemize}
+		\item Crossface in Sekunden
+		\item Musik beim verlassen stoppen
+	\end{itemize}
+	\item F\_0082 Der Benutzer kann Allgemein-Einstellungen vornehmen
+	\begin{itemize}
+		\item Notifications(libnotify) nutzen
+		\item Tray-Icon anzeigen
+	\end{itemize}	
+	\item F\_0083 Der Benutzer kann die Standarteinstellungen wiederherstellen
+\end{itemize}
+\subsection{Lautstärke}
+\begin{itemize}
+	\item F\_0090 Der Benutzer kann die Lautstärke regeln
+\end{itemize}
+\subsection{Suchen}
+\subsubsection{Abspielen von Musik}
+	\item F\_0020 
 \subsubsection{Persönliche Konfiguration}
 config.xml
 log datei
@@ -114,38 +193,119 @@ Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb 
 Dabei springt die Markierung des Textes beim eingeben von Zeichen in die Suche zu der ersten übereinstimmenden
 Stelle in der Playlist des Clients. Erst beim bestätigen der Eingabe im Suchfeld wird die Auswahl gefiltert.
 \begin{itemize}
-        \item F\_0210 Der Benutzer kann seine Queue durchsuchen.
+        \item F\_0110 Der Benutzer kann seine Queue durchsuchen.
+	\item F\_0111 Der Benutzer kann sein Dateisystem durchsuchen.
 \end{itemize}
-\subsection{Abspielfunktionen}
+\subsection{Sonstiges}
 \begin{itemize}
-	\item Play
-	\item Skip
-	\item Stop
-	\item Pause
-	\item Shuffle
-	\item Loop
+	\item F\_0120 Verbinden		(ctrl + C)
+	\item F\_0121 Trennen		(ctrl + D)
+	\item F\_0122 Beenden		(ctrl + Q)
 \end{itemize}
-\subsubsection{Initialisierung}
-Platzhalter
-\subsubsection{Verlauf}
 \subsection{Administrator-Funktionen}
-Durch das Unix-artige System wird auch der Administrator-Zugriff geregelt. Sobald sich der Benutzer im Unix System
+Durch das Unix-artige System wird der Administrator-Zugriff geregelt. Sobald sich der Benutzer im Unix System
 als Administrator befindet, kann er auch den MPD-Client administrieren. Ein zusätzlicher Administrator-Modus wurde also
 nicht implementiert.
 \section{Produktdaten}
+\subsection{Anzeige}
+\subsubsection{Titelleiste}
+\begin{itemize}
+	\item D\_0010 Titel
+	\item D\_0011 Interpret
+	\item D\_0012 Album
+	\item D\_0013 Liedposition
+	\item D\_0014 Lautstärke
+\end{itemize}
+\subsubsection{Queue}
+\begin{itemize}
+	\item D\_0020 Titel
+	\item D\_0021 Interpret
+	\item D\_0022 Album
+\end{itemize}
+\subsubsection{Playlist}
+\begin{itemize}
+	\item D\_0030 Name der Playlist
+	\item D\_0031 Zuletzt geändert
+\end{itemize}
+\subsubsection{Statistik}
+\begin{itemize}
+        \item D\_0040 Anzahl der Interpreten
+        \item D\_0041 Anzahl der Alben
+        \item D\_0042 Anzahl der Lieder
+        \item D\_0043 Musiklänge der Datenbank
+        \item D\_0044 Abspielzeit
+        \item D\_0045 Zeit Online bzw. mit MPD verbunden
+	\item D\_0046 Letzter Datenbank-Update
+\end{itemize}
+\subsubsection{Fußleiste}
+\begin{itemize}
+	\item D\_0050 Qualität in Mhz
+	\item D\_0051 Qualität in bit
+	\item D\_0052 Qualität in kbit
+	\item D\_0053 Outputart (Stereo, Sourround,...)
+	\item D\_0054 Zeit aktuell von insgesamt
+	\item D\_0055 Anzahl an Liedern
+	\item D\_0056 Komplette Abspielzeit
+	\item D\_0057 Lautstärke
+\end{itemize}
+\subsubsection{Sonstiges}
+\begin{itemize}
+	\item D\_0060 Nächster Song (Seitenleiste)
+\end{itemize}
+\subsection{Persönliches Profil}
+Da die Software auf Unix-artige Systeme beschränkt ist, wurde keine Profil-Verwaltung implementiert. Die
+verschiedenen Profile werden durch die verschiedenen Profile des gesamten Betriebssystems definiert und differenziert.
+\subsection{Persönliche Datenbank}
+Eine persönliche Datenbank ist lokal nicht vorhanden. Die Datenbank des Benutzers befindet sich auf dem MPD-Server.
+Einzig und alleine modulare Erweiterungen des MPD-Clients können lokale Datenbank-Implementierungen erfordern.
+\subsection{Persönliche Einstellungen}
+Client Einstellungen werden lokal gespeichert.
+\begin{itemize}
+	\item config.xml
+	\item ....
+\end{itemize}
 \section{Produktleistungen}
-\section{Benutzeroberfläche}
-\subsection{Bildschirmlayout}
-\subsubsection{Startbildschirm}
-\subsubsection{Einstellungsfenster}
-\subsubsection{Verbindungsfenster}
-\subsubsection{Benutzermenü}
-\section{Produktmodellierung}
+Wenn das System beendet wird, soll der aktuelle Zustand des Systems gespeichert werden.
+\begin{itemize}
+        \item L\_0010 Speicherung des Systemzustandes
+\end{itemize}
+Es soll möglichst wenig Speicher gebraucht werden, die CPU soll möglichst wenig belastet werden und der Netzwerk-Traffic
+soll gering gehalten werden.
+\begin{itemize}
+        \item L\_0020 Möglichst wenig Ressourchen-Verbrauch
+\end{itemize}
+Die Geschwindigkeit der Software ist auch abhänig von der jeweiligen Server-Lokation, der Benutzer wählt den Server
+d.h. somit ist auch der Benutzer teil-verantworltich für die Geschwindigkeit.\ \\ \\
+Der Status eines Liedes (Liedposition) wird alle 500 ms aktualisiert.
+\begin{itemize}
+        \item L\_0030 Lokaler Heartbeat alle 500 ms
+\end{itemize}
 \section{Qualitätsanforderungen}
+Es soll auf folgende Priorität unter den Qualitätsanforderungen geachtet werden,
+dabei ist das erste Element das wichtigste und das letzte das unwichtigste.\ \\ \\
+Priorität 1: Robustheit\ \\
+Priorität 2: Zuverlässigkeit\ \\
+Priorität 3: Effizienz\ \\
+Priorität 4: Intuitive Benutzung\ \\
+Priorität 5: Design\ \\ \\
 \section{Globale Testszenarien und Testfälle}
+\subsection{Cxxtest}
+\subsection{Testprotokoll}
 \section{Entwicklungsumgebung}
 \subsection{Software}
+\begin{itemize}
+	\item unix System
+	\item MPD-Server	
+	\item Avahi-Browser
+\end{itemize}
 \subsection{Hardware}
+Keine Anforderungen spezifiziert
 \subsection{Orgware}
-\section{Ergänzungen}
+\begin{itemize}
+	\item git (Versionsverwaltungssoftware)
+	\item cmake (Compiler)
+	\item doxygen (Dokumentation)
+	\item Editor nach Wahl
+	\item Glade
+\end{itemize}
 \section{Glossar}

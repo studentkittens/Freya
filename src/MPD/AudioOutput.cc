@@ -66,11 +66,11 @@ namespace MPD
 
         EXTERNAL_GET_BUSY 
         {
-            retv = mpd_run_enable_output(mp_BaseClient->get_connection(),id);
+            retv = mpd_run_enable_output(conn,id);
         }
         EXTERNAL_GET_LAID
         
-            return retv;
+        return retv;
     }
 
     bool AudioOutput::disable(void)
@@ -80,7 +80,7 @@ namespace MPD
 
         EXTERNAL_GET_BUSY 
         {
-            retv = mpd_run_disable_output(mp_BaseClient->get_connection(),id);
+            retv = mpd_run_disable_output(conn,id);
         }
         EXTERNAL_GET_LAID
 

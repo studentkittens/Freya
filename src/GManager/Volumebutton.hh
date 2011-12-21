@@ -32,9 +32,12 @@
 #define FREYA_VOLUMEBUTTON_GUARD
 
 #include <gtkmm.h>
+
+/* Needs to be included itself for some reason.. */
 #include <gtkmm/volumebutton.h>
+
 #include "../MPD/Client.hh"
-#include "../AbstractClientUser.hh"
+#include "../MPD/AbstractClientUser.hh"
 
 namespace GManager
 {
@@ -49,6 +52,7 @@ namespace GManager
             void on_connection_change(bool is_connected);
             void on_user_change(double val);
             void volume_notify(int curVol);
+            void do_volume_step(void);
 
             bool ignore_signal;
             Gtk::VolumeButton * mp_VButton;

@@ -78,5 +78,15 @@ namespace Utils
      * @return date as ustring, e.g. 2011-04-02
      */
     Glib::ustring seconds_to_timestamp(const long);
+    
+    
+    /**
+     * @brief Simply converts any integer to a std::string
+     *
+     * @param num the integer
+     *
+     * @return a std::string containing just the number (copy for further use!)
+     */
+    std::string int_to_string(int num);
 }
 #endif       

@@ -31,7 +31,9 @@
 #include "Queue.hh"
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
+
 #include <vector>
+#include <gdk/gdkkeysyms.h> 
 
 using namespace std;
 
@@ -41,30 +43,86 @@ namespace Browser
         AbstractBrowser("Queue",true,true,Gtk::Stock::ZOOM_FIT),
         AbstractClientUser(client),
         m_FilterText(""),
-        m_PlaylistVersion(0)
+        mp_CurrentSong(NULL)
     {
-        
         BUILDER_ADD(builder,"ui/Queue.glade");
         BUILDER_GET(builder,"queue_treeview",mp_TreeView);
         BUILDER_GET(builder,"queue_search_entry",mp_Entry);
         BUILDER_GET(builder,"queue_box",mp_QueueBox);
 
+        /* Create the Tree model */
+        m_refTreeModel = Gtk::ListStore::create(m_Columns);
+        m_refTreeModelFilter = Gtk::TreeModelFilter::create(m_refTreeModel);
+        mp_TreeView->set_model(m_refTreeModelFilter);
+        
+        /* Create the merger, it handles the updating of the queue */
+        mp_Merger = new QueueMerger(client,m_refTreeModel,m_Columns); 
+
+        configure_signals();
+        configure_columns();
+
+        /* Selections */
+        m_TreeSelection = mp_TreeView->get_selection();
+        m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
+
+        /* Init the playlist add dialog */
+        mp_AddDialog = new PlaylistAddDialog(client,builder);
+
+        /* Make TreeView react on Keyevents */
+        mp_TreeView->add_events(Gdk::KEY_PRESS_MASK | Gdk::KEY_RELEASE_MASK);
+    }
+
+    /*-------------------------------*/
+    
+    Queue::~Queue(void)
+    {
+        delete mp_Popup;
+        delete mp_AddDialog;
+        delete mp_CurrentSong;
+        delete mp_Merger;
+    }
+    
+    /*-------------------------------*/
+    
+    void Queue::configure_signals(void)
+    {
+        /* Start searching */
         mp_Entry->signal_activate().connect(
                 sigc::mem_fun(*this,&Queue::on_entry_activate));
         mp_Entry->signal_icon_press().connect(
                 sigc::mem_fun(*this, &Queue::on_entry_clear_icon));
 
-        //Create the Tree model:
-        m_refTreeModel = Gtk::ListStore::create(m_Columns);
-        m_refTreeModelFilter = Gtk::TreeModelFilter::create(m_refTreeModel);
         m_refTreeModelFilter->set_visible_func(
                 sigc::mem_fun(*this,&Queue::on_filter_row_visible));
 
-        mp_TreeView->set_model(m_refTreeModelFilter);
+        /* Double click on a row */
+        mp_TreeView->signal_row_activated().connect(
+                sigc::mem_fun(*this,&Queue::on_row_activated));
 
+        /* Set up Popupmenu */
+        mp_Popup = new QueuePopup(*mp_TreeView);
+        mp_Popup->get_action("q_remove").connect(
+                sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
+        mp_Popup->get_action("q_add_as_pl").connect(
+                sigc::mem_fun(*this,&Queue::on_menu_add_as_pl_clicked));
+        mp_Popup->get_action("q_clear").connect(
+                sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
+
+        /* Key events */
+        mp_TreeView->signal_key_press_event().connect(
+                sigc::mem_fun(*this,&Queue::on_key_press_handler));
+
+        mp_TreeView->signal_key_release_event().connect(
+                sigc::mem_fun(*this,&Queue::on_key_press_handler));
+    }
+    
+    /*-------------------------------*/
+    
+    void Queue::configure_columns(void)
+    {
         /* Add the TreeView's view columns: */
         /* Useful for debugging purpose */
-        //mp_TreeView->append_column("ID", m_Columns.m_col_id);
+        //mp_TreeView->append_column("Pos", m_Columns.m_col_pos);
         mp_TreeView->append_column("Artist", m_Columns.m_col_artist);
         mp_TreeView->append_column("Album", m_Columns.m_col_album);
         mp_TreeView->append_column("Title", m_Columns.m_col_title);
@@ -89,29 +147,6 @@ namespace Browser
 
         /* Misc settings to tree view */
         mp_TreeView->set_headers_clickable(true);
-
-        /* Selections */
-        m_TreeSelection = mp_TreeView->get_selection();
-        m_TreeSelection->set_mode(Gtk::SELECTION_MULTIPLE);
-
-        /* Double click on a row */
-        mp_TreeView->signal_row_activated().connect(sigc::mem_fun(*this,&Queue::on_row_activated));
-
-        /* Set up Popupmenu */
-        mp_Popup = new QueuePopup(*mp_TreeView);
-        mp_Popup->get_action("q_remove").connect(
-                sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
-        mp_Popup->get_action("q_add_as_pl").connect(
-                sigc::mem_fun(*this,&Queue::on_menu_add_as_pl_clicked));
-        mp_Popup->get_action("q_clear").connect(
-                sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
-    }
-
-    /*-------------------------------*/
-    
-    Queue::~Queue(void)
-    {
-        delete mp_Popup;
     }
     
     /*-------------------------------*/
@@ -129,6 +164,7 @@ namespace Browser
 
     /*-------------------------------*/
 
+<<<<<<< HEAD
     void Queue::add_item(void * pSong)
     {
         g_assert(pSong);
@@ -148,6 +184,8 @@ namespace Browser
 
     /*-------------------------------*/
 
+=======
+>>>>>>> master
     void Queue::on_entry_activate(void)
     {
         m_FilterText = mp_Entry->get_text();
@@ -200,25 +238,20 @@ namespace Browser
     }
 
     /*-------------------------------*/
-            
+
     void Queue::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        if(event & (MPD_IDLE_PLAYLIST))
+        if(event & (MPD_IDLE_PLAYER))
         {
-            MPD::Status& status = data.get_status();
-            unsigned qv = status.get_queue_version();
+            /* Delete old song, retrieve new and copy it */
+            delete mp_CurrentSong;
+            mp_CurrentSong = NULL;
+            MPD::Song * to_copy = data.get_song();
 
-            if(qv > m_PlaylistVersion)
+            if(to_copy != NULL)
             {
-                /* TODO: Make use of plchanges 
-                 * Refilling always is expensive.
-                 * */
-                Info("Refilling Queue");
-                m_refTreeModel->clear();
-                mp_Client->fill_queue(*this);
+                mp_CurrentSong = new MPD::Song(*to_copy);
             }
-            
-            m_PlaylistVersion = qv;
         }
     }
 
@@ -246,6 +279,9 @@ namespace Browser
 
         if(!path_row_vec.empty())
         {
+            unsigned first_pos = 0;
+
+            mp_Merger->disable_merge_once();
             mp_Client->begin();
 
             /* Since we subtract one, we should check this before. */
@@ -255,13 +291,17 @@ namespace Browser
                 if(rowIt)
                 {
                     Gtk::TreeRow row = *rowIt;
+                    first_pos = row[m_Columns.m_col_pos];
+
                     unsigned song_id = row[m_Columns.m_col_id];
                     mp_Client->queue_delete(song_id);
                     m_refTreeModel->erase(rowIt);
                 }
             }
 
+            /* Commit and update queue for the sake of efficiency.. */
             mp_Client->commit();
+            mp_Merger->recalculate_positions(first_pos);
         }
     }
 
@@ -269,7 +309,30 @@ namespace Browser
 
     void Queue::on_menu_add_as_pl_clicked(void)
     {
-        mp_Client->playlist_save("Current");
+        mp_AddDialog->run();
+    }
+
+    /*-------------------------------*/
+
+    bool Queue::on_key_press_handler(GdkEventKey * event)
+    {
+        g_assert(event);
+        if(event->type   == GDK_KEY_RELEASE &&
+           event->keyval == GDK_KEY_space   &&
+           mp_CurrentSong != NULL)
+        {
+            Gtk::TreePath path(Utils::int_to_string(mp_CurrentSong->get_pos()));  
+            mp_TreeView->scroll_to_row(path);
+            return false;
+        }
+        else if(event->type   == GDK_KEY_RELEASE  &&
+                event->state  &  (GDK_CONTROL_MASK|GDK_SHIFT_MASK) &&
+                event->keyval == GDK_KEY_f)
+        {
+            mp_Entry->grab_focus();
+            return true;
+        }
+        return false;
     }
 
     /*-------------------------------*/

@@ -37,6 +37,7 @@
 #include "SettingsPlayback.hh"
 #include "SettingsNetwork.hh"
 #include "SettingsGeneral.hh"
+#include "SettingsOutputs.hh"
 #include "SettingsSub.hh"
 
 #include "AbstractBrowser.hh"

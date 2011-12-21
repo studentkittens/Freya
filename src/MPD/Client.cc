@@ -295,14 +295,14 @@ namespace MPD
 
     //-------------------------------
     
-    void Client::fill_ouputs(AbstractItemlist& data_model)
+    void Client::fill_outputs(AbstractItemlist& data_model)
     {
         GET_BUSY
         {
             if(mpd_send_outputs(conn) != FALSE) 
             {
                 mpd_output * ent = NULL;
-                while((ent = mpd_recv_output(conn)))
+                while(ent = mpd_recv_output(conn))
                 {
                     data_model.add_item(new AudioOutput(*this,*ent));
                 }

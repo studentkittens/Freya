@@ -225,7 +225,7 @@ namespace MPD
              *
              * @param data_model A user defined class, that inherits from AbstractSonglist 
              */
-            void fill_ouputs(AbstractItemlist& data_model);
+            void fill_outputs(AbstractItemlist& data_model);
             /**
              * @brief Fetches a list of files in the database
              *

@@ -32,6 +32,7 @@
 #include "../Utils/Utils.hh"
 #include "../Log/Writer.hh"
 #include "../Notify/Notify.hh"
+#include "../MPD/AbstractItemlist.hh"
 namespace Browser
 {
     Settings::Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray):
@@ -46,6 +47,8 @@ namespace Browser
         sub_sections.push_back(new SettingsNetwork(builder, this));
         sub_sections.push_back(new SettingsPlayback(client,builder,this));
         sub_sections.push_back(new SettingsGeneral(builder, this, tray));
+        sub_sections.push_back(new SettingsOutputs(client,builder,this));
+
 
         ok_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_ok));
         cancel_button->signal_clicked().connect(sigc::mem_fun(*this,&Settings::on_button_cancel));

@@ -65,9 +65,11 @@ Anwendungen unterscheiden und dementsprechend folgend Punkte erfüllen:
 \subsection{Software}
 \begin{itemize}
 	\item Avahi Daemon
-	\item MPD-Client
+	\item MPD-Server
 \end{itemize}
-Ein MPD-Server ist nicht unbedingt von nöten.
+Ein MPD-Server muss nicht unbedingt lokal installiert sein, dann muss 
+allerdings über das Netzwerk (Internet) ein Server erreichbar sein.
+Avahi Daemon ist optional. Er ist nicht von nöten aber praktisch..
 \subsection{Hardware}
 Minimale Hardwareanforderungen: 500 Mhz, 512MB Ram, Festplattenspeicher < 1MB
 Empfohlene Hardwareanforderungen: 1 Ghz, 512MB Ram, Festplattenspeicher < 1MB
@@ -81,7 +83,7 @@ Empfohlene Hardwareanforderungen: 1 Ghz, 512MB Ram, Festplattenspeicher < 1MB
 \end{itemize}
 \section{Produktfunktionen}
 Funktionen des MPD-Clients.\ \\ \\
-Beim ersten Start des Systems soll eine Standard-Konfiguration geladen werden und die Verbindungseinstellungen
+Beim ersten Start des Systems soll eine einkompilierte Standard-Konfiguration geladen werden und die Verbindungseinstellungen
 zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
 die vom Benutzer erstellt wurde, falls diese denn lokal gefunden werden kann. Der Benutzer soll sämtliche
 Einstellungen selbstverständlich zu jeder Zeit ändern können.
@@ -131,7 +133,7 @@ Einstellungen selbstverständlich zu jeder Zeit ändern können.
 \end{itemize}
 \subsection{Dateibrowser}
 \begin{itemize}
-	\item F\_0060 Der Benutzer kann durch sein Dateisystem navigieren
+	\item F\_0060 Der Benutzer kann durch sein Dateisystem \footnote{Es handelt sich hierbei nicht wirklich um ein Dateisystem, nur um eine Darstellung der Musikfiles des Ordners, der in der Konfigurationsdatei des MPD-Servers also Musik-Ordner festgelegt wurde} navigieren
 	\item F\_0061 Der Benutzer kann einzelne Dateien zur Queue hinzufügen
 	\item F\_0062 Der Benutzer kann mehrere Dateien zur Queue hinzufügen
 	\item F\_0063 Der Benutzer kann Dateien ersetzen
@@ -249,7 +251,7 @@ verschiedenen Profile werden durch die verschiedenen Profile des gesamten Betrie
 Eine persönliche Datenbank ist lokal nicht vorhanden. Die Datenbank des Benutzers befindet sich auf dem MPD-Server.
 Einzig und alleine modulare Erweiterungen des MPD-Clients können lokale Datenbank-Implementierungen erfordern.
 \subsection{Persönliche Einstellungen}
-Client Einstellungen werden lokal gespeichert.
+Client Einstellungen werden lokal gespeichert, außerdem ist stets eine Defaultconfig vorhanden, falls die des Dateisystems defekt ist.
 \begin{itemize}
 	\item config.xml
 	\item ....
@@ -287,18 +289,26 @@ und Design oder Effizienz und Design geben sollte, ist stets im Interesse der te
 der Effizienz zu entscheiden.
 \section{Globale Testszenarien und Testfälle}
 \subsection{Cxxtest}
-CxxTest ist mit JUnit, CPPUnit oder xUnit zu vergleichen und somit ein leichtgewichtiges Framework für C++.
-Der Vorteil gegenüber ähnlichen bzw. anderen Testmöglichkeiten sind die folgenden:
+\begin{quote}
+CxxTest is a JUnit/CppUnit/xUnit-like framework for C/C++.\ \\ \\
+It is focussed on being a lightweight framework that is well suited for 
+integration into embedded systems development projects.\ \\ \\
+CxxTest's advantages over existing alternatives are that it:\ \\ \\
 \begin{itemize}
-	\item Es wird kein RTTI benötigt (Run-Time Type Information)
-	\item Benötigt keine Member Template Funktionen
-	\item Benötigt keine Exception-Behandlung
-	\item Benötigt keine externen Bibliotheken (Memory Managment, File/Console I/O, Grafische Bibliotheken)
-	\item Wird allein durch Header-Dateien (und ein Python-Skript) realisiert.
-	\item Benötigt keine manuelle Regestrierung von Tests und Test-Suits
+	\item Doesn't require RTTI
+    	\item Doesn't require member template functions
+    	\item Doesn't require exception handling
+	\item Doesn't require any external libraries (including memory management, file/console I/O, graphics libraries)
+	\item Is distributed entirely as a set of header files (and a python script).
+	\item Doesn't require the user to manually register tests and test suites 
 \end{itemize}
-All diese Punkte machen CxxTest extrem portabel und nutzbar. Der Aufwandt zur Erstellung von Tests
-wird minimiert.
+This makes it extremely portable and usable.\ \\ \\
+Currently CxxTest is about to get a major update. The stable version 
+(3.10.1) is available in the documents and files section.\ \\ \\
+For more information you may visit our wiki. If you are interested in 
+helping this project you can start by browsing the code and looking at the 
+currently open issues. 
+\end{quote} \footnote{http://cxxtest.tigris.org/}
 \subsubsection{Testfälle}
 \subsection{Testprotokoll}
 Um Fehler aufzuspühren, die die grafische Oberfläche betreffen, wurde ein Testprotokoll erstellt in dem zunächst
@@ -804,13 +814,16 @@ Fall 4 x 10 & Nur 1 x ausführbar & Ja\\
 	\item unix System
 	\item MPD-Server	
 	\item Avahi-Browser
+	\item gcc (Compiler)
+	\item libmpdclient
+	\item gtkmm libraries
 \end{itemize}
 \subsection{Hardware}
 Keine Anforderungen spezifiziert
 \subsection{Orgware}
 \begin{itemize}
 	\item git (Versionsverwaltungssoftware)
-	\item cmake (Compiler)
+	\item cmake (Buildtool)
 	\item doxygen (Dokumentation)
 	\item Editor nach Wahl
 	\item Glade

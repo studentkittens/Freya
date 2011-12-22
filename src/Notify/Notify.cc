@@ -69,6 +69,8 @@ namespace Notify
     void Notify::_send(const char * hl, const char  * msg, GdkPixbuf * pixbuf )
     {
 
+        while(working);
+
          if(use_notify && !working && notify_is_initted())
         {
             working=true;
@@ -119,7 +121,8 @@ namespace Notify
     //------------------------
     void Notify::re_init(void)
     {
-        if(!working)
+        while(working);
+
         {
             working=true;
 
@@ -132,7 +135,7 @@ namespace Notify
 
             clear_icon();
             extra=false;
-            icon=NULL;
+
             notification = notify_notification_new("Freya",NULL,NULL);
 
             if(use_notify)

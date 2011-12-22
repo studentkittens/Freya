@@ -117,8 +117,8 @@ namespace MPD
 
         while(n<result.size())
         {
-            n=result.find_first_of("${",n);
-            i=result.find_first_of("}",n);
+            n=result.find("${",n);
+            i=result.find("}",n);
             if(n>=result.size())
                 continue;
             Glib::ustring tmp = result.substr(n+2,i-n-2);
@@ -168,8 +168,7 @@ namespace MPD
             }
 
             result.replace(n,i-n+1,tmp);
-            n=i;
-            n++;
+            n=n+tmp.size()+1;
         }
 
 

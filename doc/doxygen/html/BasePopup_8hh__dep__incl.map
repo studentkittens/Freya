@@ -1,16 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$BasePopup_8cc.html" title="src/Browser/BasePopup.cc" alt="" coords="5,80,187,107"/>
-<area shape="rect" id="node5" href="$DatabasePopup_8hh.html" title="src/Browser/DatabasePopup.hh" alt="" coords="211,80,417,107"/>
-<area shape="rect" id="node15" href="$PlaylistManagerPopup_8hh.html" title="src/Browser/PlaylistManagerPopup.hh" alt="" coords="442,80,685,107"/>
-<area shape="rect" id="node24" href="$QueuePopup_8hh.html" title="src/Browser/QueuePopup.hh" alt="" coords="923,80,1112,107"/>
-<area shape="rect" id="node7" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="16,155,187,181"/>
-<area shape="rect" id="node13" href="$DatabasePopup_8cc.html" title="src/Browser/DatabasePopup.cc" alt="" coords="211,155,417,181"/>
-<area shape="rect" id="node9" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="16,229,187,256"/>
-<area shape="rect" id="node11" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="413,229,504,256"/>
-<area shape="rect" id="node17" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager.hh" alt="" coords="442,155,648,181"/>
-<area shape="rect" id="node22" href="$PlaylistManagerPopup_8cc.html" title="src/Browser/PlaylistManagerPopup.cc" alt="" coords="673,155,916,181"/>
-<area shape="rect" id="node19" href="$PlaylistManager_8cc.html" title="src/Browser/PlaylistManager.cc" alt="" coords="529,229,735,256"/>
-<area shape="rect" id="node26" href="$Queue_8hh.html" title="src/Browser/Queue.hh" alt="" coords="941,155,1093,181"/>
-<area shape="rect" id="node31" href="$QueuePopup_8cc.html" title="src/Browser/QueuePopup.cc" alt="" coords="1117,155,1307,181"/>
-<area shape="rect" id="node28" href="$Queue_8cc.html" title="src/Browser/Queue.cc" alt="" coords="941,229,1093,256"/>
+<area shape="rect" id="node3" href="$DatabasePopup_8hh.html" title="src/Browser/DatabasePopup.hh" alt="" coords="5,80,211,107"/>
+<area shape="rect" id="node7" href="$PlaylistManagerPopup_8hh.html" title="src/Browser/PlaylistManagerPopup.hh" alt="" coords="235,80,479,107"/>
+<area shape="rect" id="node11" href="$QueuePopup_8hh.html" title="src/Browser/QueuePopup.hh" alt="" coords="504,80,693,107"/>
+<area shape="rect" id="node15" href="$Trayicon_8hh.html" title="src/GManager/Trayicon.hh" alt="" coords="717,80,893,107"/>
+<area shape="rect" id="node5" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="23,155,193,181"/>
+<area shape="rect" id="node9" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager.hh" alt="" coords="254,155,460,181"/>
+<area shape="rect" id="node13" href="$Queue_8hh.html" title="src/Browser/Queue.hh" alt="" coords="523,155,675,181"/>
+<area shape="rect" id="node17" href="$SettingsGeneral_8hh.html" title="src/Browser/SettingsGeneral.hh" alt="" coords="701,155,907,181"/>
+<area shape="rect" id="node19" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="793,229,956,256"/>
 </map>

@@ -70,7 +70,11 @@ namespace Log
 
         public:
 
+        /**
+         * @brief Closes the Log also properly. It is not fatal when not being called.
+         */
         ~Writer();
+
         /**
          * @brief Actual instance method called. Do not use directly! 
          *
@@ -81,7 +85,7 @@ namespace Log
          * @param ... a va_list to allow printf style logging
          */
         void message(const char *file, int line, LOGLEVEL level, const char *msg, ...); 		
-        
+
         /**
          * @brief Clear the logfile (but keep it open)
          */

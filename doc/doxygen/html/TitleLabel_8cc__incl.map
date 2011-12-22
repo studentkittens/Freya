@@ -1,3 +1,19 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$TitleLabel_8hh.html" title="TitleLabel.hh" alt="" coords="53,80,149,107"/>
+<area shape="rect" id="node3" href="$TitleLabel_8hh.html" title="TitleLabel.hh" alt="" coords="327,80,423,107"/>
+<area shape="rect" id="node51" href="$Utils_8hh.html" title="../Utils/Utils.hh" alt="" coords="714,80,824,107"/>
+<area shape="rect" id="node61" href="$Notify_8hh.html" title="../Notify/Notify.hh" alt="" coords="518,80,644,107"/>
+<area shape="rect" id="node7" href="$Client_8hh.html" title="../MPD/Client.hh" alt="" coords="243,229,363,256"/>
+<area shape="rect" id="node48" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="204,155,401,181"/>
+<area shape="rect" id="node9" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="291,304,395,331"/>
+<area shape="rect" id="node40" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="419,304,551,331"/>
+<area shape="rect" id="node42" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="5,453,160,480"/>
+<area shape="rect" id="node11" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="339,379,425,405"/>
+<area shape="rect" id="node26" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="553,528,660,555"/>
+<area shape="rect" id="node21" href="$Status_8hh.html" title="Status.hh" alt="" coords="331,528,409,555"/>
+<area shape="rect" id="node24" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="287,453,389,480"/>
+<area shape="rect" id="node30" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="434,528,528,555"/>
+<area shape="rect" id="node34" href="$Song_8hh.html" title="Song.hh" alt="" coords="237,528,307,555"/>
+<area shape="rect" id="node45" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="52,528,145,555"/>
+<area shape="rect" id="node54" href="$Writer_8hh.html" title="../Log/Writer.hh" alt="" coords="713,155,824,181"/>
+<area shape="rect" id="node59" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="565,229,701,256"/>
 </map>

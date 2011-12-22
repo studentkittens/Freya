@@ -36,16 +36,6 @@
 
 namespace MPD
 {
-
-    /**
-     * @brief You can call connect on this.
-     *
-     * It gets emitted by the client whenever the connection changes,
-     * i.e. when getting disconnected or connected, in former case 
-     * 'false' is passed as argument, in the latter 'true'
-     */
-    typedef sigc::signal<void,bool,bool> ConnectionNotifier;
-    
     /**
      * @brief The Base to MPD::Client
      *
@@ -151,6 +141,22 @@ namespace MPD
             bool __disconnect(void);
 
             /**
+             * @brief The connection to the MPD server
+             */
+            MPD::Connection m_Conn;
+            /**
+             * @brief Event Listener
+             */
+            MPD::Listener * mp_Listener;
+            
+            /**
+             * @brief BaseClient::begin() was called but not yet BaseClient::commit()
+             */
+            bool m_ListBegun;
+       
+        private:
+
+            /**
              * @brief Called periodically when mpd disconnects us
              *
              * This usually happens when mpd server was killed.
@@ -169,28 +175,9 @@ namespace MPD
             void handle_errors(bool is_fatal, mpd_error err);
 
             /**
-             * @brief The connection to the MPD server
-             */
-            MPD::Connection m_Conn;
-            /**
-             * @brief Event Listener
-             */
-            MPD::Listener * mp_Listener;
-            
-            /**
-             * @brief BaseClient::begin() was called but not yet BaseClient::commit()
-             */
-            bool m_ListBegun;
-            
-            /**
              * @brief Listener calls emit() on this once events happen.
              */
             EventNotifier m_Notifier;
-
-            /**
-             * @brief Connection Errors are reported through this.
-             */
-            ConnectionNotifier m_ConnNotifer;
     };
 }
 

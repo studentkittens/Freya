@@ -1,5 +1,5 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classGtk_1_1StatusIcon.html" title="{Gtk::StatusIcon\n||}" alt="" coords="5,57,120,135"/>
 <area shape="rect" id="node4" href="$classBrowser_1_1BasePopup.html" title="{Browser::BasePopup\n|# m_refUIManager\l# m_refActionGroup\l# m_UiDefinition\l# mp_Popup\l|+ BasePopup()\l+ menu_popup()\l+ get_action()\l# menu_add_item()\l# menu_construct()\l}" alt="" coords="145,6,289,186"/>
-<area shape="rect" id="node6" href="$classGManager_1_1AbstractGElement.html" title="{GManager::AbstractGElement\n|# mp_Client\l|+ AbstractGElement()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="315,43,512,149"/>
+<area shape="rect" id="node6" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="314,43,488,149"/>
 </map>

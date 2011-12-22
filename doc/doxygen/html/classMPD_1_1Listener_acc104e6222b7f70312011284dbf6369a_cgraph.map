@@ -1,5 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="454,5,677,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1NotifyData.html#af444b367d93b2d7a7f177855c8806e79" title="Update internal client state." alt="" coords="214,56,405,83"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="725,31,936,57"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="454,56,677,83"/>
+<area shape="rect" id="node12" href="$classMPD_1_1NotifyData.html#af444b367d93b2d7a7f177855c8806e79" title="Update internal client state." alt="" coords="214,107,405,133"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="725,5,928,32"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="976,56,1187,83"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="984,5,1179,32"/>
 </map>

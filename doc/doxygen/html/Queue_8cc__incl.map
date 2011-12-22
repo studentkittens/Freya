@@ -1,5 +1,24 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Queue_8hh.html" title="Queue.hh" alt="" coords="234,80,312,107"/>
-<area shape="rect" id="node13" href="$QueuePopup_8hh.html" title="QueuePopup.hh" alt="" coords="513,155,628,181"/>
-<area shape="rect" id="node16" href="$BasePopup_8hh.html" title="BasePopup.hh" alt="" coords="517,229,624,256"/>
+<area shape="rect" id="node3" href="$Queue_8hh.html" title="Queue.hh" alt="" coords="646,80,724,107"/>
+<area shape="rect" id="node77" href="$Writer_8hh.html" title="../Log/Writer.hh" alt="" coords="1275,155,1385,181"/>
+<area shape="rect" id="node84" href="$Utils_8hh.html" title="../Utils/Utils.hh" alt="" coords="1322,80,1432,107"/>
+<area shape="rect" id="node7" href="$AbstractItemlist_8hh.html" title="../MPD/AbstractItemlist.hh" alt="" coords="556,379,735,405"/>
+<area shape="rect" id="node9" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="163,229,360,256"/>
+<area shape="rect" id="node11" href="$Client_8hh.html" title="Client.hh" alt="" coords="336,304,409,331"/>
+<area shape="rect" id="node52" href="$QueuePopup_8hh.html" title="QueuePopup.hh" alt="" coords="923,155,1037,181"/>
+<area shape="rect" id="node58" href="$QueueMerger_8hh.html" title="QueueMerger.hh" alt="" coords="439,155,557,181"/>
+<area shape="rect" id="node62" href="$QueueModelColumns_8hh.html" title="QueueModelColumns.hh" alt="" coords="536,229,700,256"/>
+<area shape="rect" id="node67" href="$PlaylistAddDialog_8hh.html" title="PlaylistAddDialog.hh" alt="" coords="89,155,231,181"/>
+<area shape="rect" id="node72" href="$AbstractBrowser_8hh.html" title="AbstractBrowser.hh" alt="" coords="670,155,807,181"/>
+<area shape="rect" id="node13" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="321,379,425,405"/>
+<area shape="rect" id="node45" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="506,528,661,555"/>
+<area shape="rect" id="node15" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="219,453,305,480"/>
+<area shape="rect" id="node30" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="300,603,407,629"/>
+<area shape="rect" id="node25" href="$Status_8hh.html" title="Status.hh" alt="" coords="45,603,123,629"/>
+<area shape="rect" id="node28" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="33,528,135,555"/>
+<area shape="rect" id="node34" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="165,603,259,629"/>
+<area shape="rect" id="node38" href="$Song_8hh.html" title="Song.hh" alt="" coords="549,603,619,629"/>
+<area shape="rect" id="node48" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="431,603,524,629"/>
+<area shape="rect" id="node54" href="$BasePopup_8hh.html" title="BasePopup.hh" alt="" coords="923,229,1029,256"/>
+<area shape="rect" id="node82" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="1155,229,1292,256"/>
 </map>

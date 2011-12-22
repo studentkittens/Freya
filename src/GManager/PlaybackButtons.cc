@@ -36,8 +36,8 @@ namespace GManager
 {
     PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(instance), 
-        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_BUTTON), 
-        pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_BUTTON)
+        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_SMALL_TOOLBAR), 
+        pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_SMALL_TOOLBAR)
     {
         BUILDER_GET(builder,"stop_button",stop_button);
         BUILDER_GET(builder,"pause_button",pause_button);

@@ -1,7 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="187,80,289,107"/>
-<area shape="rect" id="node5" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="5,155,112,181"/>
-<area shape="rect" id="node9" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="137,155,231,181"/>
-<area shape="rect" id="node13" href="$Status_8hh.html" title="Status.hh" alt="" coords="255,155,333,181"/>
-<area shape="rect" id="node16" href="$Song_8hh.html" title="Song.hh" alt="" coords="358,155,428,181"/>
+<area shape="rect" id="node3" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="229,80,331,107"/>
+<area shape="rect" id="node21" href="$Writer_8hh.html" title="../Log/Writer.hh" alt="" coords="444,80,555,107"/>
+<area shape="rect" id="node5" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="227,155,333,181"/>
+<area shape="rect" id="node11" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="107,155,201,181"/>
+<area shape="rect" id="node14" href="$Status_8hh.html" title="Status.hh" alt="" coords="5,155,83,181"/>
+<area shape="rect" id="node17" href="$Song_8hh.html" title="Song.hh" alt="" coords="358,155,428,181"/>
+<area shape="rect" id="node26" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="590,155,727,181"/>
 </map>

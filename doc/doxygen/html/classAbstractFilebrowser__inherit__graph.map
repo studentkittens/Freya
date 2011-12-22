@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1DatabaseBrowser.html" title="{Browser::DatabaseBrowser\n||+ DatabaseBrowser()\l+ ~DatabaseBrowser()\l+ get_container()\l+ add_directory()\l+ add_song_file()\l+ on_menu_db_clicked()\l}" alt="" coords="5,147,187,298"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="{Browser::Database\n||+ Database()\l+ ~Database()\l+ get_container()\l+ add_directory()\l+ add_song_file()\l+ on_menu_db_add_clicked()\l+ on_menu_db_add_all_clicked()\l+ on_menu_db_update_clicked()\l+ on_menu_db_rescan_clicked()\l+ on_menu_db_replace_clicked()\l}" alt="" coords="5,147,219,357"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1DatabaseCache.html" title="{Browser::DatabaseCache\n||+ DatabaseCache()\l+ ~DatabaseCache()\l+ fill_filelist_from_cache()\l}" alt="" coords="243,199,415,305"/>
 </map>

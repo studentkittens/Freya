@@ -1,3 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="5,80,112,107"/>
+<area shape="rect" id="node3" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="75,80,181,107"/>
+<area shape="rect" id="node9" href="$Writer_8hh.html" title="../Log/Writer.hh" alt="" coords="205,80,316,107"/>
+<area shape="rect" id="node16" href="$Handler_8hh.html" title="../Config/Handler.hh" alt="" coords="429,80,568,107"/>
+<area shape="rect" id="node14" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="310,155,447,181"/>
+<area shape="rect" id="node22" href="$Model_8hh.html" title="Model.hh" alt="" coords="600,155,673,181"/>
+<area shape="rect" id="node27" href="$Path_8hh.html" title="../Init/Path.hh" alt="" coords="713,229,815,256"/>
 </map>

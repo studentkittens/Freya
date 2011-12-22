@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="MPD::Connection::disconnect" alt="" coords="261,5,459,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="507,5,717,32"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="Disconnects connection." alt="" coords="261,5,459,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="507,5,717,32"/>
 </map>

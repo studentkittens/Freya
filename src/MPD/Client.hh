@@ -39,6 +39,9 @@
 
 namespace MPD
 {
+    /**
+     * @brief The client implements concrete commands of the MPD Protocol
+     */
     class Client : public BaseClient
     {
         public:

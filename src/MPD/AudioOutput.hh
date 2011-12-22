@@ -37,14 +37,49 @@ namespace MPD
 {
     typedef struct mpd_output mpd_output;
 
+    /**
+     * @brief Wrapper for mpd_output, implements also two client commands:
+     * enable() and disable()
+     */
     class AudioOutput : AbstractClientExtension 
     {
         public:
+            /**
+             * @brief You cannot instance this class yourself.
+             *
+             * @param client 
+             * @param output
+             */
             AudioOutput(MPD::BaseClient& client, mpd_output& output);
+            /**
+             * @brief Output ID - this is usually not needed
+             *
+             * @return an unsigned integer, starting from 0
+             */
             unsigned get_id(void);
+            /**
+             * @brief Get the name of this putput
+             *
+             * @return a nullterminated string
+             */
             const char * get_name(void);
+            /**
+             * @brief Obvious.
+             *
+             * @return 
+             */
             bool get_enabled(void);
+            /**
+             * @brief Enable this output
+             *
+             * @return true on success
+             */
             bool enable(void);
+            /**
+             * @brief Disable this output
+             *
+             * @return true on success
+             */
             bool disable(void);
 
         private:

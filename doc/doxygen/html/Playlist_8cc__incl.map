@@ -1,3 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Playlist_8hh.html" title="Playlist.hh" alt="" coords="33,80,115,107"/>
+<area shape="rect" id="node3" href="$Playlist_8hh.html" title="Playlist.hh" alt="" coords="539,80,620,107"/>
+<area shape="rect" id="node7" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="617,155,799,181"/>
+<area shape="rect" id="node33" href="$Song_8hh.html" title="Song.hh" alt="" coords="347,453,417,480"/>
+<area shape="rect" id="node9" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="629,229,733,256"/>
+<area shape="rect" id="node11" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="338,304,424,331"/>
+<area shape="rect" id="node25" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="459,453,565,480"/>
+<area shape="rect" id="node20" href="$Status_8hh.html" title="Status.hh" alt="" coords="94,453,172,480"/>
+<area shape="rect" id="node23" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="145,379,247,405"/>
+<area shape="rect" id="node29" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="197,453,291,480"/>
 </map>

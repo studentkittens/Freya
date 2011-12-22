@@ -35,13 +35,34 @@
 
 namespace Avahi
 {
+    /**
+     * @brief Representation of the Avahi::Browser, do not use this yourself
+     */
     class View : public Gtk::Window
     {
         public:
             View(void);
 
+            /**
+             * @brief Append a new server to the View
+             *
+             * @param ip the ip field
+             * @param hostname the hostname 
+             * @param name server name (chosen by the admin)
+             * @param port The port we'd onnect to
+             */
             void server_append(const char * ip, const char * hostname, const char * name, unsigned int port);
+            /**
+             * @brief Delete a server by it's name
+             *
+             * @param name the name of the server (which is hopefully unique)
+             */
             void server_delete(const char * name);
+            /**
+             * @brief Set the status label
+             *
+             * @param message
+             */
             void set_status(const char * message);
 
             /* Select callback */

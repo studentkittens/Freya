@@ -39,6 +39,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the statusbar
+     *
+     * Updates the statusbar every 0.5 seconds
+     */
     class Statusbar : public AbstractClientUser
     {
         public:

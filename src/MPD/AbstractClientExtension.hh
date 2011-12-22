@@ -35,9 +35,18 @@
 
 namespace MPD
 {
+    /**
+     * @brief Abstract base class for classes that want to implement spefic MPD Commands.
+     */
     class AbstractClientExtension
     {
         public:
+
+            /**
+             * @brief ClientExtensions need a reference to the Client.
+             *
+             * @param base_client a reference to the MPD::Client
+             */
             AbstractClientExtension(MPD::BaseClient& base_client)
             {
                 mp_BaseClient = &base_client;

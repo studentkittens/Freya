@@ -37,6 +37,13 @@
 
 namespace GManager
 {
+    /**
+     * @brief List of Browsers in sidebar
+     *
+     * Manages a list of AbstractBrowser and switches
+     * to the first browser that needs no connection on disconnect.
+     * Also supports hidden Browsers (Browser::Fortune e.g.)
+     */
     class BrowserList : public AbstractClientUser
     {
         public:

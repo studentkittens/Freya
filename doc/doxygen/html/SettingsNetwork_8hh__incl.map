@@ -1,3 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node7" href="$SettingsSub_8hh.html" title="SettingsSub.hh" alt="" coords="266,80,376,107"/>
+<area shape="rect" id="node5" href="$Handler_8hh.html" title="../Config/Handler.hh" alt="" coords="188,80,327,107"/>
+<area shape="rect" id="node24" href="$SettingsSub_8hh.html" title="SettingsSub.hh" alt="" coords="537,80,647,107"/>
+<area shape="rect" id="node26" href="$Browser_8hh.html" title="../Avahi/Browser.hh" alt="" coords="807,80,944,107"/>
+<area shape="rect" id="node11" href="$Model_8hh.html" title="Model.hh" alt="" coords="295,155,368,181"/>
+<area shape="rect" id="node22" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="5,155,141,181"/>
+<area shape="rect" id="node16" href="$Path_8hh.html" title="../Init/Path.hh" alt="" coords="408,229,509,256"/>
+<area shape="rect" id="node28" href="$View_8hh.html" title="View.hh" alt="" coords="536,155,605,181"/>
 </map>

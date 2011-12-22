@@ -302,7 +302,7 @@ namespace Avahi
 
     /* --------------------------------------- */
 
-    View& Browser::get_window(void)
+    Gtk::Window& Browser::get_window(void)
     {
         return *(window);
     }

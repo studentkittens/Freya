@@ -1,3 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="277,5,488,32"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="277,56,480,83"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="528,5,739,32"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="536,56,731,83"/>
 </map>

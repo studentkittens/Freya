@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Updates the top titlelabel, and the down nextsong label in the sidebar
+     *
+     * Formats the song and updates on the Player/Option events.
+     */
     class TitleLabel : public AbstractClientUser
     {
         public:

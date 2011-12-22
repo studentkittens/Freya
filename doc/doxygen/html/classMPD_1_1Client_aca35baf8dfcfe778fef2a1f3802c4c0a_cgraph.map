@@ -1,4 +1,12 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="MPD::Connection::disconnect" alt="" coords="219,5,416,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="464,5,675,32"/>
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#ab52d2ea1627dee76befa9cd1e87b81ce" title="Same as __connect()" alt="" coords="219,119,429,146"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="1315,170,1525,197"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef" title="MPD::Listener::leave" alt="" coords="510,271,655,298"/>
+<area shape="rect" id="node21" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="Disconnects connection." alt="" coords="1067,119,1264,146"/>
+<area shape="rect" id="node24" href="$classMPD_1_1Connection.html#a5820eccc7eeec1bbcfb046ccf3be3e46" title="Call emit() on the ConnectionNotifier signal." alt="" coords="737,170,1015,197"/>
+<area shape="rect" id="node27" href="$classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected" alt="" coords="478,18,687,45"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Listener.html#ad433ccebdd1a35631022448a1c5372b4" title="MPD::Listener::is_idling" alt="" coords="795,271,957,298"/>
+<area shape="rect" id="node12" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="765,221,987,247"/>
+<area shape="rect" id="node17" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="1323,373,1517,399"/>
+<area shape="rect" id="node14" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="1064,347,1267,374"/>
 </map>

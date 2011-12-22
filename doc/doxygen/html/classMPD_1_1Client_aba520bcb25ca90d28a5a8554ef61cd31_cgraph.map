@@ -1,5 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="MPD::Client::send_command" alt="" coords="240,5,435,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="755,5,965,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="483,31,706,57"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="Send a command to the server." alt="" coords="240,5,435,32"/>
 </map>

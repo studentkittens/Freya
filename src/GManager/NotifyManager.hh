@@ -36,6 +36,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manages Notifications that are triggered on player events
+     *
+     * It does not offer any relevant public methods
+     */
     class NotifyManager : public AbstractClientUser
     {
         public:

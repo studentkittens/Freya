@@ -1,8 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="241,5,463,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Client.html#a718581d2bb49efc307f8806130ef719d" title="Get the current MPD::Status." alt="" coords="271,56,433,83"/>
-<area shape="rect" id="node14" href="$classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455" title="MPD::Status::get_random" alt="" coords="265,107,439,133"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="512,5,723,32"/>
-<area shape="rect" id="node10" href="$classMPD_1_1Listener.html#ad7acf6045c8a4fa8f039aa04cd1034b1" title="MPD::Listener::get_notify_data" alt="" coords="516,56,719,83"/>
-<area shape="rect" id="node12" href="$classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="521,107,713,133"/>
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#aa736c68e6ac83a52fe80cc846a4e8483" title="Get the current MPD::Status." alt="" coords="241,56,434,83"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="509,5,720,32"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Listener.html#ac6be3a750a7dcb10d8db24fa10749bca" title="MPD::Listener::signal_client_update_data" alt="" coords="483,56,747,83"/>
+<area shape="rect" id="node9" href="$classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="519,107,711,133"/>
 </map>

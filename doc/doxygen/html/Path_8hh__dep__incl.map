@@ -1,19 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Model_8hh.html" title="src/Config/Model.hh" alt="" coords="412,80,551,107"/>
-<area shape="rect" id="node35" href="$Path_8cc.html" title="src/Init/Path.cc" alt="" coords="575,80,685,107"/>
-<area shape="rect" id="node37" href="$test__path_8cc.html" title="src/Init/test_path.cc" alt="" coords="711,80,849,107"/>
-<area shape="rect" id="node5" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="323,155,471,181"/>
-<area shape="rect" id="node33" href="$Model_8cc.html" title="src/Config/Model.cc" alt="" coords="496,155,635,181"/>
-<area shape="rect" id="node7" href="$test__avahi_8cc.html" title="src/Avahi/test_avahi.cc" alt="" coords="5,229,163,256"/>
-<area shape="rect" id="node9" href="$includes_8hh.html" title="src/includes.hh" alt="" coords="187,229,297,256"/>
-<area shape="rect" id="node24" href="$Handler_8cc.html" title="src/Config/Handler.cc" alt="" coords="323,229,471,256"/>
-<area shape="rect" id="node26" href="$test__config_8cc.html" title="src/Config/test_config.cc" alt="" coords="496,229,664,256"/>
-<area shape="rect" id="node28" href="$FreyaWindow_8hh.html" title="src/FreyaWindow.hh" alt="" coords="689,229,831,256"/>
-<area shape="rect" id="node11" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="188,304,317,331"/>
-<area shape="rect" id="node13" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="45,379,216,405"/>
-<area shape="rect" id="node17" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="224,453,315,480"/>
-<area shape="rect" id="node20" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="291,379,420,405"/>
-<area shape="rect" id="node22" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="446,379,601,405"/>
-<area shape="rect" id="node15" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="29,453,200,480"/>
-<area shape="rect" id="node30" href="$FreyaWindow_8cc.html" title="src/FreyaWindow.cc" alt="" coords="689,304,831,331"/>
+<area shape="rect" id="node3" href="$Model_8hh.html" title="src/Config/Model.hh" alt="" coords="260,80,399,107"/>
+<area shape="rect" id="node18" href="$check__log_8hh.html" title="src/Log/check_log.hh" alt="" coords="423,80,569,107"/>
+<area shape="rect" id="node5" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="255,155,403,181"/>
+<area shape="rect" id="node7" href="$SettingsPlayback_8hh.html" title="src/Browser/SettingsPlayback.hh" alt="" coords="5,229,221,256"/>
+<area shape="rect" id="node9" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="248,304,411,331"/>
+<area shape="rect" id="node11" href="$SettingsNetwork_8hh.html" title="src/Browser/SettingsNetwork.hh" alt="" coords="296,229,505,256"/>
+<area shape="rect" id="node14" href="$SettingsGeneral_8hh.html" title="src/Browser/SettingsGeneral.hh" alt="" coords="531,229,737,256"/>
 </map>

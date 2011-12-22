@@ -31,16 +31,20 @@
 #ifndef FREYA_ABSTRACT_SONGLIST_GUARD
 #define FREYA_ABSTRACT_SONGLIST_GUARD
 
+/**
+ * @brief Inhertit from this class to use MPD::Client's fill_* methods.
+ */
 class AbstractItemlist
 {
     public:
 
+        
         /**
-         * @brief Override this
+         * @brief Called after calling (e.g.) fill_queue() 
          *
-         * @param song
+         * Cast this to the correct type, fill_queue delivers you for example a MPD::Song*
          *
-         * @return 
+         * @param item a dynamically allocated item
          */
         virtual void add_item(void * item) = 0; 
 };

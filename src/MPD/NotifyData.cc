@@ -142,41 +142,43 @@ namespace MPD
 
     //------------------
 
-    void NotifyData::update_all(void)
+    void NotifyData::update_all(unsigned event)
     {
-        if(mp_Song != NULL) {
-            delete mp_Song;
-            mp_Song = NULL;
-        }
-
-        if(mp_Statistics != NULL) {
-            delete mp_Statistics;
-            mp_Statistics = NULL;
-        }
-
-        if(mp_Status != NULL) {
-            delete mp_Status;
-            mp_Status = NULL;
-        }
-
         if(mp_Conn->is_connected())
         {
             mpd_connection * mpd_conn = mp_Conn->get_connection();
-            mpd_song * c_song = NULL;
-            mpd_stats * c_stats = NULL;
+            
+            /*-------------------------------*/
 
-            c_song  = mpd_run_current_song(mpd_conn);
-            c_stats = mpd_run_stats(mpd_conn);
+            if(event & MPD_IDLE_PLAYER) {
+                delete mp_Song;
+                mp_Song = NULL;
 
-            mpd_send_status(mpd_conn);
-            mp_Status = recv_status_own();
+                mpd_song * c_song  = mpd_run_current_song(mpd_conn);
+                if(c_song)
+                    mp_Song = new Song(*c_song);
+            }
 
-            if(c_song)   mp_Song = new Song(*c_song);
-            if(c_stats)  mp_Statistics = new Statistics(*c_stats);
+            /*-------------------------------*/
 
-            /* Pray that this will never happen. */
-            if(!(mp_Status && c_stats))
-                Error("Status/Statistic is empty although being connected. Prepare for a crash.");
+            if(event & (MPD_IDLE_DATABASE|MPD_IDLE_UPDATE)) {
+                delete mp_Statistics;
+                mp_Statistics = NULL;
+
+                mpd_stats * c_stats = mpd_run_stats(mpd_conn);
+                if(c_stats)
+                    mp_Statistics = new Statistics(*c_stats);
+            }
+
+            /*-------------------------------*/
+
+            if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS|MPD_IDLE_MIXER|MPD_IDLE_OUTPUT|MPD_IDLE_QUEUE)) {
+                delete mp_Status;
+                mp_Status = NULL;
+
+                mpd_send_status(mpd_conn);
+                mp_Status = recv_status_own();
+            }
         }
     }
 }

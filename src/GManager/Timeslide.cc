@@ -108,7 +108,7 @@ namespace GManager
 
                 ignore_signal = true;
                 m_Timeslide->set_range(0.0,status.get_total_time());
-                m_Timeslide->set_value(status.get_elapsed_time());
+                m_Timeslide->set_value(status.get_elapsed_ms() / 1000.0);
                 ignore_signal = false;
             }
         }

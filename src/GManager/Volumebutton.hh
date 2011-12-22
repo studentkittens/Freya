@@ -41,6 +41,12 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manages the Volumebutton
+     *
+     * Updates on the mixer event, only updates every 0.05 seconds to prevent high ressource-usage.
+     * Also schedules an Glib::signal_idle() event instead of executing it directly.
+     */
     class Volumebutton : public AbstractClientUser
     {
         public:

@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the Timeslide in the topbar
+     *
+     * Updates the time every 500ms according to the Heartbeat.
+     */
     class Timeslide : public AbstractClientUser
     {
         public:

@@ -1,7 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a6de7800d2042c323f8e9d51ba73b4bbd" title="Get the notify sigc::signal." alt="" coords="331,5,490,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209" title="MPD::Client::fill_playlists" alt="" coords="325,56,496,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="816,31,1027,57"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="545,56,767,83"/>
-<area shape="rect" id="node12" href="$classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d" title="Override this." alt="" coords="569,107,743,133"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1BasePopup.html#aa539764bd4fe4b52e5e41bfe2244e362" title="Get a signal proxy of a certain Gtk::Action in the menu." alt="" coords="325,5,539,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209" title="Fetches all playlists from the server." alt="" coords="347,56,517,83"/>
+<area shape="rect" id="node7" href="$classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d" title="Called after calling (e.g.) fill_queue()" alt="" coords="587,56,762,83"/>
 </map>

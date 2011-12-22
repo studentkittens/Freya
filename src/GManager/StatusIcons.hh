@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the status icons in the down sidebar
+     *
+     * Toggles/updates random, consume, repeat, single.
+     */
     class Statusicons : public AbstractClientUser
     {
         public:

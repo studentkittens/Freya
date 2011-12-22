@@ -1,4 +1,17 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$NotifyManager_8hh.html" title="NotifyManager.hh" alt="" coords="96,80,221,107"/>
-<area shape="rect" id="node5" href="$AbstractGElement_8hh.html" title="AbstractGElement.hh" alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node3" href="$NotifyManager_8hh.html" title="NotifyManager.hh" alt="" coords="349,80,475,107"/>
+<area shape="rect" id="node5" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="203,155,400,181"/>
+<area shape="rect" id="node48" href="$Notify_8hh.html" title="../Notify/Notify.hh" alt="" coords="461,155,587,181"/>
+<area shape="rect" id="node7" href="$Client_8hh.html" title="Client.hh" alt="" coords="245,229,319,256"/>
+<area shape="rect" id="node9" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="407,304,511,331"/>
+<area shape="rect" id="node40" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="217,304,348,331"/>
+<area shape="rect" id="node42" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="5,453,160,480"/>
+<area shape="rect" id="node11" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="415,379,501,405"/>
+<area shape="rect" id="node26" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="620,528,727,555"/>
+<area shape="rect" id="node21" href="$Status_8hh.html" title="Status.hh" alt="" coords="398,528,476,555"/>
+<area shape="rect" id="node24" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="533,453,635,480"/>
+<area shape="rect" id="node30" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="501,528,595,555"/>
+<area shape="rect" id="node34" href="$Song_8hh.html" title="Song.hh" alt="" coords="303,528,373,555"/>
+<area shape="rect" id="node45" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="52,528,145,555"/>
+<area shape="rect" id="node50" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="345,229,481,256"/>
 </map>

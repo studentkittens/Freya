@@ -1,5 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="MPD::Client::disconnect" alt="" coords="197,5,363,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="MPD::Connection::disconnect" alt="" coords="411,5,608,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="656,5,867,32"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server." alt="" coords="197,119,363,146"/>
+<area shape="rect" id="node5" href="$classMPD_1_1BaseClient.html#ab52d2ea1627dee76befa9cd1e87b81ce" title="Same as __connect()" alt="" coords="411,119,621,146"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="1507,170,1717,197"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef" title="MPD::Listener::leave" alt="" coords="702,271,847,298"/>
+<area shape="rect" id="node23" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="Disconnects connection." alt="" coords="1259,119,1456,146"/>
+<area shape="rect" id="node26" href="$classMPD_1_1Connection.html#a5820eccc7eeec1bbcfb046ccf3be3e46" title="Call emit() on the ConnectionNotifier signal." alt="" coords="929,170,1207,197"/>
+<area shape="rect" id="node29" href="$classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected" alt="" coords="670,18,879,45"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Listener.html#ad433ccebdd1a35631022448a1c5372b4" title="MPD::Listener::is_idling" alt="" coords="987,271,1149,298"/>
+<area shape="rect" id="node14" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="957,221,1179,247"/>
+<area shape="rect" id="node19" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="1515,373,1709,399"/>
+<area shape="rect" id="node16" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="1256,347,1459,374"/>
 </map>

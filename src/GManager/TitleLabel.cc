@@ -31,6 +31,7 @@
 #include "TitleLabel.hh"
 #include "../Utils/Utils.hh"
 #include "../Notify/Notify.hh"
+
 namespace GManager
 {
     TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)

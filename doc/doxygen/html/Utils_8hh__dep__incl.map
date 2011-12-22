@@ -1,8 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="5,80,176,107"/>
-<area shape="rect" id="node5" href="$FreyaWindow_8hh.html" title="src/FreyaWindow.hh" alt="" coords="201,80,343,107"/>
-<area shape="rect" id="node9" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="336,155,427,181"/>
-<area shape="rect" id="node12" href="$test__utils_8cc.html" title="src/Utils/test_utils.cc" alt="" coords="419,80,565,107"/>
-<area shape="rect" id="node14" href="$Utils_8cc.html" title="src/Utils/Utils.cc" alt="" coords="589,80,709,107"/>
-<area shape="rect" id="node7" href="$FreyaWindow_8cc.html" title="src/FreyaWindow.cc" alt="" coords="169,155,311,181"/>
+<area shape="rect" id="node3" href="$SettingsOutputs_8hh.html" title="src/Browser/SettingsOutputs.hh" alt="" coords="5,80,213,107"/>
+<area shape="rect" id="node7" href="$StatBrowser_8hh.html" title="src/Browser/StatBrowser.hh" alt="" coords="237,80,424,107"/>
+<area shape="rect" id="node9" href="$check__utils_8hh.html" title="src/Utils/check_utils.hh" alt="" coords="449,80,607,107"/>
+<area shape="rect" id="node5" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="28,155,191,181"/>
 </map>

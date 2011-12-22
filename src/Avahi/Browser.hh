@@ -47,13 +47,32 @@ namespace Avahi
      */
     typedef sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int> SelectNotify;
 
+    /**
+     * @brief This class offers a simple Zeroconf Serverbrowser
+     *
+     * It also instances a View of it (Avahi::View)
+     * To show the window call show() on get_window()
+     */
     class Browser
     {
         public:
 
+            /**
+             * @brief Instance the underlying browser and already start querying
+             */
             Browser();
+
+            /**
+             * @brief Clean up before you can instance another one
+             */
             ~Browser();
-            View& get_window(void);
+
+            /**
+             * @brief Get the Gtk::Window of the view
+             *
+             * @return a reference to Gtk::Window, you might want to call show() on it
+             */
+            Gtk::Window& get_window(void);
 
             /**
              * @brief Check if Browser is ready for use

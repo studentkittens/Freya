@@ -1,6 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Browser_8hh.html" title="src/Avahi/Browser.hh" alt="" coords="93,80,240,107"/>
-<area shape="rect" id="node9" href="$View_8cc.html" title="src/Avahi/View.cc" alt="" coords="264,80,392,107"/>
-<area shape="rect" id="node5" href="$Browser_8cc.html" title="src/Avahi/Browser.cc" alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node7" href="$test__avahi_8cc.html" title="src/Avahi/test_avahi.cc" alt="" coords="177,155,335,181"/>
+<area shape="rect" id="node3" href="$Browser_8hh.html" title="src/Avahi/Browser.hh" alt="" coords="36,80,183,107"/>
+<area shape="rect" id="node5" href="$SettingsNetwork_8hh.html" title="src/Browser/SettingsNetwork.hh" alt="" coords="4,155,213,181"/>
+<area shape="rect" id="node7" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="28,229,191,256"/>
 </map>

@@ -38,6 +38,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief The Manager for the Topmenus
+     *
+     * Also defines quite some keybindings, but no releveant public methods.
+     */
     class MenuList : public AbstractClientUser
     {
         public:

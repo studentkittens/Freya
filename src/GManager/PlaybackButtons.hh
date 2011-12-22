@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manages the Playbackbuttons
+     *
+     * Does nothing more than catching signals, and changing symbols.
+     */
     class PlaybackButtons : public AbstractClientUser
     {
         public:

@@ -1,5 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$classBrowser_1_1SettingsGeneral.html#a46649cd79edd4739db74c54b9b6ce293" title="Browser::SettingsGeneral::SettingsGeneral" alt="" coords="300,5,572,32"/>
 <area shape="rect" id="node5" href="$classBrowser_1_1SettingsNetwork.html#af46cd7f0457fe63bd1e79c2629ae89ba" title="Browser::SettingsNetwork::SettingsNetwork" alt="" coords="296,56,576,83"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1SettingsPlayback.html#a0b7399abee9f8e8f4e3ab860199f8c32" title="Browser::SettingsPlayback::SettingsPlayback" alt="" coords="291,107,581,133"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html#af05964243600a8dc06c6589bf265dfb4" title="Browser::SettingsOutputs::on_toggle" alt="" coords="318,107,554,133"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1SettingsPlayback.html#aa8c978029b7b9ef0161e332494fda1c7" title="Browser::SettingsPlayback::SettingsPlayback" alt="" coords="291,157,581,184"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1SettingsOutputs.html#abe833fd95ac2b53a0f277b384dd93597" title="Browser::SettingsOutputs::SettingsOutputs" alt="" coords="629,107,904,133"/>
 </map>

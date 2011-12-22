@@ -1,4 +1,20 @@
 <map id="G" name="G">
-<area shape="rect" id="node11" href="$QueuePopup_8hh.html" title="QueuePopup.hh" alt="" coords="514,80,628,107"/>
-<area shape="rect" id="node14" href="$BasePopup_8hh.html" title="BasePopup.hh" alt="" coords="518,155,624,181"/>
+<area shape="rect" id="node5" href="$AbstractItemlist_8hh.html" title="../MPD/AbstractItemlist.hh" alt="" coords="572,304,751,331"/>
+<area shape="rect" id="node7" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="699,155,896,181"/>
+<area shape="rect" id="node9" href="$Client_8hh.html" title="Client.hh" alt="" coords="853,229,927,256"/>
+<area shape="rect" id="node50" href="$QueuePopup_8hh.html" title="QueuePopup.hh" alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node56" href="$QueueMerger_8hh.html" title="QueueMerger.hh" alt="" coords="502,80,620,107"/>
+<area shape="rect" id="node60" href="$QueueModelColumns_8hh.html" title="QueueModelColumns.hh" alt="" coords="357,155,521,181"/>
+<area shape="rect" id="node65" href="$PlaylistAddDialog_8hh.html" title="PlaylistAddDialog.hh" alt="" coords="823,80,965,107"/>
+<area shape="rect" id="node70" href="$AbstractBrowser_8hh.html" title="AbstractBrowser.hh" alt="" coords="145,80,281,107"/>
+<area shape="rect" id="node11" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="1037,304,1141,331"/>
+<area shape="rect" id="node43" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="599,453,755,480"/>
+<area shape="rect" id="node13" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="1046,379,1132,405"/>
+<area shape="rect" id="node28" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="1225,528,1332,555"/>
+<area shape="rect" id="node23" href="$Status_8hh.html" title="Status.hh" alt="" coords="1003,528,1081,555"/>
+<area shape="rect" id="node26" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="1127,453,1229,480"/>
+<area shape="rect" id="node32" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="1106,528,1200,555"/>
+<area shape="rect" id="node36" href="$Song_8hh.html" title="Song.hh" alt="" coords="909,528,979,555"/>
+<area shape="rect" id="node46" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="647,528,740,555"/>
+<area shape="rect" id="node52" href="$BasePopup_8hh.html" title="BasePopup.hh" alt="" coords="29,155,136,181"/>
 </map>

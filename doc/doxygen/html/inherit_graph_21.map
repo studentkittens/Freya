@@ -1,3 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classMPD_1_1Playlist.html" title="MPD::Playlist" alt="" coords="6,5,109,32"/>
+<area shape="rect" id="node1" href="$classCxxTest_1_1TestSuite.html" title="TestSuite" alt="" coords="6,56,85,83"/>
+<area shape="rect" id="node3" href="$classLogTestSuite.html" title="LogTestSuite" alt="" coords="141,5,240,32"/>
+<area shape="rect" id="node5" href="$classNotifyTestSuite.html" title="NotifyTestSuite" alt="" coords="134,56,247,83"/>
+<area shape="rect" id="node7" href="$classUtilsTestSuite.html" title="UtilsTestSuite" alt="" coords="138,107,243,133"/>
 </map>

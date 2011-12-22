@@ -1,4 +1,18 @@
 <map id="G" name="G">
-<area shape="rect" id="node13" href="$DatabasePopup_8hh.html" title="DatabasePopup.hh" alt="" coords="671,80,804,107"/>
-<area shape="rect" id="node16" href="$BasePopup_8hh.html" title="BasePopup.hh" alt="" coords="684,155,791,181"/>
+<area shape="rect" id="node5" href="$AbstractItemlist_8hh.html" title="../MPD/AbstractItemlist.hh" alt="" coords="427,304,605,331"/>
+<area shape="rect" id="node7" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="539,155,736,181"/>
+<area shape="rect" id="node9" href="$Client_8hh.html" title="Client.hh" alt="" coords="600,229,673,256"/>
+<area shape="rect" id="node46" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="343,379,436,405"/>
+<area shape="rect" id="node51" href="$DatabaseCache_8hh.html" title="DatabaseCache.hh" alt="" coords="579,80,713,107"/>
+<area shape="rect" id="node55" href="$DatabasePopup_8hh.html" title="DatabasePopup.hh" alt="" coords="5,80,139,107"/>
+<area shape="rect" id="node61" href="$AbstractBrowser_8hh.html" title="AbstractBrowser.hh" alt="" coords="214,80,351,107"/>
+<area shape="rect" id="node11" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="629,304,733,331"/>
+<area shape="rect" id="node43" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="758,304,913,331"/>
+<area shape="rect" id="node13" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="550,379,636,405"/>
+<area shape="rect" id="node28" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="589,528,696,555"/>
+<area shape="rect" id="node23" href="$Status_8hh.html" title="Status.hh" alt="" coords="367,528,445,555"/>
+<area shape="rect" id="node26" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="587,453,689,480"/>
+<area shape="rect" id="node32" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="470,528,564,555"/>
+<area shape="rect" id="node36" href="$Song_8hh.html" title="Song.hh" alt="" coords="721,528,791,555"/>
+<area shape="rect" id="node58" href="$BasePopup_8hh.html" title="BasePopup.hh" alt="" coords="32,155,139,181"/>
 </map>

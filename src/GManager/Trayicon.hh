@@ -38,6 +38,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the trayicon
+     *
+     * It is deriving from Gtk::StatusIcon, that's why you may call show()/hide() functions here.
+     */
     class Trayicon : public Gtk::StatusIcon, public Browser::BasePopup, public AbstractClientUser
     {
         public:

@@ -1,6 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager.hh" alt="" coords="91,80,297,107"/>
-<area shape="rect" id="node9" href="$PlaylistManagerPopup_8cc.html" title="src/Browser/PlaylistManagerPopup.cc" alt="" coords="322,80,565,107"/>
-<area shape="rect" id="node5" href="$PlaylistManager_8cc.html" title="src/Browser/PlaylistManager.cc" alt="" coords="5,155,211,181"/>
-<area shape="rect" id="node7" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="236,155,327,181"/>
+<area shape="rect" id="node3" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager.hh" alt="" coords="23,80,229,107"/>
 </map>

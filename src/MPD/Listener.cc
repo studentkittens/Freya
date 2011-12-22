@@ -153,7 +153,7 @@ namespace MPD
                 idle_events = UINT_MAX; 
             }
 
-            m_NData.update_all();
+            m_NData.update_all(idle_events);
 
             /* Iterare over the enum (this is weird) */
             for(unsigned mask = 1; /* empty */; mask <<= 1)

@@ -1,6 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53" title="Fetches the playlist from the mpd server." alt="" coords="236,5,393,32"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209" title="MPD::Client::fill_playlists" alt="" coords="229,56,400,83"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1Queue.html#ad9c6134968389a77b55f315a91593781" title="Browser::Queue::Queue" alt="" coords="503,5,665,32"/>
-<area shape="rect" id="node9" href="$classBrowser_1_1PlaylistManager.html#a8fb376706ded26806dae08b247c8d0fc" title="Browser::PlaylistManager::PlaylistManager" alt="" coords="448,56,720,83"/>
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53" title="Fetches the playlist from the mpd server." alt="" coords="257,5,415,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#ac1c2016a6740bf6762aacbeccd68874b" title="MPD::Client::fill_queue_changes" alt="" coords="229,56,443,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209" title="Fetches all playlists from the server." alt="" coords="251,107,421,133"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Client.html#a491475fc391a4686acf13cf9324aa0ff" title="Fetches all available outputs from the server." alt="" coords="253,157,419,184"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1PlaylistManager.html#a8fb376706ded26806dae08b247c8d0fc" title="Browser::PlaylistManager::PlaylistManager" alt="" coords="507,107,779,133"/>
+<area shape="rect" id="node13" href="$classBrowser_1_1SettingsOutputs.html#a9f938de8f82e856677e222ea26e4a0c9" title="Derived class have to implement this." alt="" coords="503,157,782,184"/>
+<area shape="rect" id="node15" href="$classBrowser_1_1SettingsOutputs.html#aa4e41b81802050f9496eb434cce1555b" title="Browser::SettingsOutputs::accept_new_settings" alt="" coords="491,208,794,235"/>
 </map>

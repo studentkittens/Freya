@@ -1,3 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1DatabaseBrowser.html#a299c3f0562d04e7af622eb882331d4bf" title="Override this." alt="" coords="193,5,463,32"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1Database.html#af1c41d7e92fabefce0cda220d2d53a9f" title="Called when a song shall be added." alt="" coords="193,5,415,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html#a4272c573e2f9a3c59dfa094d4bd53189" title="Add song to this playlist." alt="" coords="221,56,387,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Song.html#a1d4f2f4015826c12947bf31c38de1b0d" title="MPD::Song::get_tag" alt="" coords="233,107,375,133"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Song.html#aac5bbd5d497dbc4af5a9a540a81c0bff" title="MPD::Song::song_format" alt="" coords="464,107,635,133"/>
 </map>

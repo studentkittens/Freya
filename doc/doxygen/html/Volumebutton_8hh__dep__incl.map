@@ -1,4 +1,4 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$Volumebutton_8cc.html" title="src/GManager/Volumebutton.cc" alt="" coords="5,80,211,107"/>
-<area shape="rect" id="node5" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="236,80,327,107"/>
+<area shape="rect" id="node5" href="$Main_8cc.html" title="src/Init/Main.cc" alt="" coords="236,80,347,107"/>
 </map>

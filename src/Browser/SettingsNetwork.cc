@@ -94,7 +94,7 @@ namespace Browser
         CONFIG_SET(ip_name,ip_value);
         CONFIG_SET_AS_INT(port_name,port_value);
         CONFIG_SET_AS_INT(timeout_name,timeout_value);
-        CONFIG_SET_AS_INT(autoconnect_name,autoconnect_value?1:0);
+        CONFIG_SET_AS_INT(autoconnect_name,autoconnect_value ? 1 : 0);
     }
 
     //----------------------------
@@ -104,8 +104,7 @@ namespace Browser
         ip->set_text(CONFIG_GET(ip_name));
         port->set_value((double)CONFIG_GET_AS_INT(port_name));
         recon_timeout->set_value((double)CONFIG_GET_AS_INT(timeout_name));
-        int autocon = CONFIG_GET_AS_INT(autoconnect_name);
-        autoconnect->set_active(autocon==1?true:false);
+        autoconnect->set_active(CONFIG_GET_AS_INT(autoconnect_name));
     }
 
     //----------------------------
@@ -115,7 +114,7 @@ namespace Browser
         handle = new Avahi::Browser();
         if(handle->is_connected())
         {
-            handle->get_signal().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
+            handle->signal_selection_done().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
             handle->get_window().show();
         }
         else

@@ -51,7 +51,7 @@ int main (int argc, char *argv[])
 
     if(handle.is_connected())
     {
-        handle.get_signal().connect(sigc::ptr_fun(selected_callback));
+        handle.signal_selection_done().connect(sigc::ptr_fun(selected_callback));
 
         /* Start the GLIB Main Loop */
         Gtk::Main::run(handle.get_window());

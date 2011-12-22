@@ -127,7 +127,6 @@ namespace GManager
         if(browser != NULL)
         {
             Glib::ustring name = browser->get_name();
-            Debug("Adding browser: %s",name.c_str());
 
             /* Get last element of box. Eddy...Duuuude!
              * What did you do earlier here?! */        

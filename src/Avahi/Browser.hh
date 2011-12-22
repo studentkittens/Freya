@@ -42,6 +42,11 @@
 
 namespace Avahi
 {
+    /**
+     * @brief Called when the user selectes a server from the list 
+     */
+    typedef sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int> SelectNotify;
+
     class Browser
     {
         public:
@@ -49,38 +54,90 @@ namespace Avahi
             Browser();
             ~Browser();
             View& get_window(void);
+
+            /**
+             * @brief Check if Browser is ready for use
+             *
+             * @return obvious.
+             */
             bool is_connected(void);
 
-            sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int>& get_signal(void);
+            /**
+             * @brief Call connect on 
+             *
+             * See the typedef above, for the needed prototype
+             *
+             * @return a sigc::signal on which you can call conncet()
+             */
+            SelectNotify& signal_selection_done(void);
 
         private:
-            /* methods */
-            void client_callback(AVAHI_GCC_UNUSED AvahiClient *client, AvahiClientState state);
-            static void wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client, AvahiClientState state, AVAHI_GCC_UNUSED void * self);
+
+            /* CALLBACKS */
+
+            void client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
+                    AvahiClientState state);
+
+            static void wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
+                    AvahiClientState state,
+                    void * self);
 
             /* Argh... Avahi loves huge functions */
-            void resolve_callback(AvahiServiceResolver * r,AvahiIfIndex interface, AvahiProtocol protocol,AvahiResolverEvent event,
-                    const char *name, const char *type, const char *domain, const char *host_name, const AvahiAddress *address,
-                    uint16_t port, AvahiStringList *txt, AvahiLookupResultFlags flags);
+            void resolve_callback(
+                    AvahiServiceResolver * resolver,
+                    AVAHI_GCC_UNUSED AvahiIfIndex interface,
+                    AVAHI_GCC_UNUSED AvahiProtocol protocol,
+                    AvahiResolverEvent event,
+                    const char *name,
+                    const char *type,
+                    const char *domain,
+                    const char *host_name,
+                    const AvahiAddress *address,
+                    uint16_t port,
+                    AVAHI_GCC_UNUSED AvahiStringList *txt,
+                    AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
 
-            static void wrap_resolve_callback(AvahiServiceResolver * r,AvahiIfIndex interface, AvahiProtocol protocol,AvahiResolverEvent event,
-                    const char *name, const char *type, const char *domain, const char *host_name, const AvahiAddress *address,
-                    uint16_t port, AvahiStringList *txt, AvahiLookupResultFlags flags, void* userdata);
+            static void wrap_resolve_callback(AvahiServiceResolver * r,
+                    AvahiIfIndex interface,
+                    AvahiProtocol protocol,
+                    AvahiResolverEvent event,
+                    const char *name,
+                    const char *type,
+                    const char *domain,
+                    const char *host_name,
+                    const AvahiAddress *address,
+                    uint16_t port,
+                    AvahiStringList *txt,
+                    AvahiLookupResultFlags flags,
+                    void * self);
 
-            /* Servicebrowser callback.. *sigh* Why am I writing this ton of params */
-            void service_browser_callback(AvahiServiceBrowser *b, AvahiIfIndex interface, AvahiProtocol protocol, AvahiBrowserEvent event, 
-                    const char *name, const char *type, const char *domain, 
-                    AVAHI_GCC_UNUSED AvahiLookupResultFlags flags); 
+            /* Servicebrowser callback.. *sigh* Why am I writing this ton of params..? */
+            void service_browser_callback(AvahiServiceBrowser *b,
+                    AvahiIfIndex interface,
+                    AvahiProtocol protocol,
+                    AvahiBrowserEvent event, 
+                    const char *name,
+                    const char *type,
+                    const char *domain, 
+                    AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
 
-            static void wrap_service_browser_callback(AvahiServiceBrowser *b, AvahiIfIndex interface, AvahiProtocol protocol, AvahiBrowserEvent event, 
-                    const char *name, const char *type, const char *domain, 
-                    AVAHI_GCC_UNUSED AvahiLookupResultFlags flags, void * userdata); 
+            static void wrap_service_browser_callback(AvahiServiceBrowser *b,
+                    AvahiIfIndex interface,
+                    AvahiProtocol protocol,
+                    AvahiBrowserEvent event, 
+                    const char *name,
+                    const char *type,
+                    const char *domain, 
+                    AvahiLookupResultFlags flags,
+                    void * userdata);
+            
+            /* -------------------------------------- */
 
             void check_client_error(const gchar * prefix_message);
-
             void update_status_label(void);
 
-            /* vars */
+            /* -------------------------------------- */
+
             AvahiClient * client;
             AvahiGLibPoll * glib_poll;
             View * window;

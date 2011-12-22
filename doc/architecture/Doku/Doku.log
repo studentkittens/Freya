@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  20 DEC 2011 20:34
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  22 DEC 2011 10:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -717,7 +717,7 @@ Kapitel 3.
 [9
 
 ]) (./Definition.tex
-Underfull \hbox (badness 10000) in paragraph at lines 44--1
+Underfull \hbox (badness 10000) in paragraph at lines 43--1
 
  []
 
@@ -745,11 +745,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
-[12] <Mpd-overview.png, id=567, 741.84846pt x 734.43616pt>
+[12] <Mpd-overview.png, id=577, 741.84846pt x 734.43616pt>
 File: Mpd-overview.png Graphic file (type png)
 
 <use Mpd-overview.png>
-Package pdftex.def Info: Mpd-overview.png used on input line 66.
+Package pdftex.def Info: Mpd-overview.png used on input line 64.
 (pdftex.def)             Requested size: 445.11252pt x 440.6651pt.
 ) (./Lastenheft.tex [13 <./Mpd-overview.png>]
 Kapitel 5.
@@ -1231,7 +1231,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--51
 
  []
 
-[37] <Namespace_Uebersicht.png, id=697, 1333.45235pt x 1476.57529pt>
+[37] <Namespace_Uebersicht.png, id=707, 1333.45235pt x 1476.57529pt>
 File: Namespace_Uebersicht.png Graphic file (type png)
 
 <use Namespace_Uebersicht.png>
@@ -1250,8 +1250,8 @@ Package rerunfilecheck Info: File `Doku.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55.
  ) 
 Here is how much of TeX's memory you used:
- 9242 strings out of 493633
- 134032 string characters out of 3148831
+ 9247 strings out of 493633
+ 134091 string characters out of 3148831
  264872 words of memory out of 3000000
  12222 multiletter control sequences out of 15000+200000
  14866 words of font info for 58 fonts, out of 3000000 for 9000
@@ -1264,10 +1264,10 @@ amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Doku.pdf (40 pages, 369300 bytes).
+Output written on Doku.pdf (40 pages, 371143 bytes).
 PDF statistics:
- 789 PDF objects out of 1000 (max. 8388607)
- 726 compressed objects within 8 object streams
- 172 named destinations out of 1000 (max. 500000)
+ 800 PDF objects out of 1000 (max. 8388607)
+ 737 compressed objects within 8 object streams
+ 177 named destinations out of 1000 (max. 500000)
  800 words of extra memory for PDF output out of 10000 (max. 10000000)
 

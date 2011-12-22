@@ -105,7 +105,7 @@ namespace GManager
         return signal_proxy;
     }
            
-    void Heartbeat::on_connection_change(bool is_connected)
+    void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
     {
         if(is_connected) 
             play();

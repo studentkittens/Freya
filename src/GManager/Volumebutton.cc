@@ -60,7 +60,7 @@ namespace GManager
 
     // -------------------
     
-    void Volumebutton::on_connection_change(bool is_connected)
+    void Volumebutton::on_connection_change(bool server_changed, bool is_connected)
     {
         mp_VButton->set_sensitive(is_connected);
     }

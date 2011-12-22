@@ -88,7 +88,7 @@ namespace Browser
     
     //----------------------------
     
-    void SettingsPlayback::on_connection_change(bool is_connected)
+    void SettingsPlayback::on_connection_change(bool server_changed, bool is_connected)
     {
         crossfade->set_sensitive(is_connected);
     }

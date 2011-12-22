@@ -49,7 +49,7 @@ namespace GManager
         private:
 
             void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
             void on_user_change(double val);
             void volume_notify(int curVol);
             void do_volume_step(void);

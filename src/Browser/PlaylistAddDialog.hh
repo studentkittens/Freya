@@ -54,7 +54,7 @@ namespace Browser
 
             /* From AbstractClientUser */
             void on_client_update(mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             bool is_running;
             Gtk::Dialog * mp_Dialog;

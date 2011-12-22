@@ -88,7 +88,7 @@ namespace GManager
 
     /* ------------------ */
 
-    void Timeslide::on_connection_change(bool is_connected)
+    void Timeslide::on_connection_change(bool server_changed, bool is_connected)
     {
         m_Timeslide->set_sensitive(is_connected);
     }

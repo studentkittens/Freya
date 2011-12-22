@@ -268,6 +268,6 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistManager::on_connection_change(bool is_connected)
+    void PlaylistManager::on_connection_change(bool server_changed, bool is_connected)
     {}
 }

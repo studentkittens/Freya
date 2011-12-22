@@ -54,7 +54,7 @@ class AbstractClientUser
 
         /* You have to implement both of these functions. */
         virtual void on_client_update(enum mpd_idle, MPD::NotifyData& data) = 0;
-        virtual void on_connection_change(bool is_connected) = 0;
+        virtual void on_connection_change(bool server_changed, bool is_connected) = 0;
 
         /* Setting the client is error-prone. This class does this for you. */
         MPD::Client * mp_Client;

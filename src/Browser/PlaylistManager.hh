@@ -79,7 +79,7 @@ namespace Browser
 
             /* Implemented from AbstractClientUser */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             void on_cell_edited(const Glib::ustring& path_string,const Glib::ustring& new_text);
             void on_cell_get_data(Gtk::CellRenderer*, const Gtk::TreeModel::iterator& iter);

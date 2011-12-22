@@ -261,7 +261,7 @@ namespace Browser
     
     /*------------------------------------------------*/
     
-    void Database::on_connection_change(bool is_connected)
+    void Database::on_connection_change(bool server_changed, bool is_connected)
     {
         /* Empty for now */
     }

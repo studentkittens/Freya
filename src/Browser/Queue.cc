@@ -254,7 +254,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::on_connection_change(bool is_connected)
+    void Queue::on_connection_change(bool server_changed, bool is_connected)
     {
         /* Empty for now */
     }

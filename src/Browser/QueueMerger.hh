@@ -73,7 +73,7 @@ namespace Browser
              *
              * @param is_connected
              */
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             /**
              * @brief Set the contents of a single row

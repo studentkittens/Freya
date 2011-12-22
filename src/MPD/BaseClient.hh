@@ -44,7 +44,7 @@ namespace MPD
      * i.e. when getting disconnected or connected, in former case 
      * 'false' is passed as argument, in the latter 'true'
      */
-    typedef sigc::signal<void,bool> ConnectionNotifier;
+    typedef sigc::signal<void,bool,bool> ConnectionNotifier;
     
     /**
      * @brief The Base to MPD::Client

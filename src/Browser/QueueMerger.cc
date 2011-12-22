@@ -186,7 +186,7 @@ namespace Browser
 
     /*-------------------*/
 
-    void QueueMerger::on_connection_change(bool is_connected)
+    void QueueMerger::on_connection_change(bool server_changed, bool is_connected)
     {
         // TODO on_connection_change should also tell if server changed..
         /* This is also true on startup */

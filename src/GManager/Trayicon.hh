@@ -48,7 +48,7 @@ namespace GManager
             void on_activate(void);
             void on_popup_menu (guint button, guint32 activate_time);
 
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
 
             void on_next_clicked(void);

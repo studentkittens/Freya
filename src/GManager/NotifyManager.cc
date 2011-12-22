@@ -64,7 +64,7 @@ namespace GManager
 
     // ------------------------------------
 
-    void NotifyManager::on_connection_change(bool is_connected)
+    void NotifyManager::on_connection_change(bool server_changed, bool is_connected)
     {
         NOTIFY_EXTRA();
         if(is_connected)

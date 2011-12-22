@@ -71,7 +71,7 @@ namespace Browser
 
             /* Client Signals */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
            
             /* Logic */ 
             void add_item(const char * path, bool is_file);

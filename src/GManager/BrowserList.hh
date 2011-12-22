@@ -64,7 +64,7 @@ namespace GManager
             void change_browser(AbstractBrowser * browser);
             void on_selection_changed(void);
             void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord

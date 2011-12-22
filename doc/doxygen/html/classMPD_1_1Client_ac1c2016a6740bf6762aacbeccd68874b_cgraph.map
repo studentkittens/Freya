@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Song.html#a0f81936a2e3a4af57f32fb77a38e9931" title="MPD::Song::get_pos" alt="" coords="299,5,443,32"/>
+<area shape="rect" id="node5" href="$classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d" title="Called after calling (e.g.) fill_queue()" alt="" coords="283,56,458,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1BaseClient.html#aa736c68e6ac83a52fe80cc846a4e8483" title="Get the current MPD::Status." alt="" coords="274,107,467,133"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Status.html#aa954ec951a6b5a10ea56b58682f93290" title="MPD::Status::get_queue_length" alt="" coords="267,157,475,184"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="549,56,760,83"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Listener.html#ac6be3a750a7dcb10d8db24fa10749bca" title="MPD::Listener::signal_client_update_data" alt="" coords="523,107,787,133"/>
+<area shape="rect" id="node13" href="$classMPD_1_1NotifyData.html#a3a1bf07f999740ea717b80862c6e8a03" title="MPD::NotifyData::get_status" alt="" coords="559,157,751,184"/>
+</map>

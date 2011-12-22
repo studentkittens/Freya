@@ -1,0 +1,21 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$SettingsSub_8hh.html" title="SettingsSub.hh" alt="" coords="102,80,212,107"/>
+<area shape="rect" id="node7" href="$OutputsModelColumns_8hh.html" title="OutputsModelColumns.hh" alt="" coords="563,80,736,107"/>
+<area shape="rect" id="node44" href="$AbstractItemlist_8hh.html" title="../MPD/AbstractItemlist.hh" alt="" coords="371,229,549,256"/>
+<area shape="rect" id="node46" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="237,80,435,107"/>
+<area shape="rect" id="node48" href="$Client_8hh.html" title="Client.hh" alt="" coords="299,155,372,181"/>
+<area shape="rect" id="node59" href="$Utils_8hh.html" title="../Utils/Utils.hh" alt="" coords="831,453,941,480"/>
+<area shape="rect" id="node9" href="$AudioOutput_8hh.html" title="../MPD/AudioOutput.hh" alt="" coords="579,155,737,181"/>
+<area shape="rect" id="node11" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="573,229,755,256"/>
+<area shape="rect" id="node13" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="520,304,624,331"/>
+<area shape="rect" id="node15" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="481,379,567,405"/>
+<area shape="rect" id="node30" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="573,528,680,555"/>
+<area shape="rect" id="node25" href="$Status_8hh.html" title="Status.hh" alt="" coords="351,528,429,555"/>
+<area shape="rect" id="node28" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="429,453,531,480"/>
+<area shape="rect" id="node34" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="454,528,548,555"/>
+<area shape="rect" id="node38" href="$Song_8hh.html" title="Song.hh" alt="" coords="257,528,327,555"/>
+<area shape="rect" id="node52" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="23,453,179,480"/>
+<area shape="rect" id="node55" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="71,528,164,555"/>
+<area shape="rect" id="node62" href="$Writer_8hh.html" title="../Log/Writer.hh" alt="" coords="881,528,992,555"/>
+<area shape="rect" id="node67" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="966,603,1103,629"/>
+</map>

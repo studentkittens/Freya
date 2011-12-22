@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Playlist.html#a73f105968f5199d5e7706e916bc7843c" title="MPD::Playlist::add_song" alt="" coords="222,5,389,32"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Song.html#a3954999da03b83814be43a1ff6b31d4a" title="MPD::Song::get_uri" alt="" coords="237,56,374,83"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html#ab603b0469df658c26fdedcc215588644" title="MPD::Playlist::get_path" alt="" coords="438,5,599,32"/>
+</map>

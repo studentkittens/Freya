@@ -1,0 +1,29 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="248,208,451,235"/>
+<area shape="rect" id="node48" href="$classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef" title="MPD::Listener::leave" alt="" coords="854,183,999,209"/>
+<area shape="rect" id="node5" href="$classMPD_1_1BaseClient.html#a1ae401e7cb615434e54c83e12a813154" title="Go into idle mode, you are not allowed to send commands while idling!" alt="" coords="524,183,697,209"/>
+<area shape="rect" id="node27" href="$classMPD_1_1BaseClient.html#aa4d2de679da027f3caec92192d5356e0" title="Leave idle mode, so you can send commands to the server." alt="" coords="1144,233,1325,260"/>
+<area shape="rect" id="node32" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="499,411,722,437"/>
+<area shape="rect" id="node7" href="$classMPD_1_1BaseClient.html#ae9d8effd942ee9224718cefffa359298" title="This is called internally by MPD::Client and does the actual connect work." alt="" coords="1396,157,1588,184"/>
+<area shape="rect" id="node18" href="$classMPD_1_1BaseClient.html#ad62d3555a2641c06a8b8342f1a4c5e2c" title="Commit the commandlist." alt="" coords="839,284,1014,311"/>
+<area shape="rect" id="node9" href="$classMPD_1_1BaseClient.html#adf47e06e3827d3a2bd4d565fefe70b19" title="Called periodically when mpd disconnects us." alt="" coords="1673,157,1911,184"/>
+<area shape="rect" id="node14" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config." alt="" coords="1718,56,1866,83"/>
+<area shape="rect" id="node11" href="$classMPD_1_1BaseClient.html#ad8ccae64ab894435176eb8d6ddf7340e" title="Called when MPD::Connection notices an connection error." alt="" coords="2039,157,2249,184"/>
+<area shape="rect" id="node16" href="$Main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="2119,56,2169,83"/>
+<area shape="rect" id="node20" href="$classBrowser_1_1Database.html#ad60d32e36bdda8452042850772845782" title="Browser::Database::on_menu_db_add_clicked" alt="" coords="1646,284,1938,311"/>
+<area shape="rect" id="node22" href="$classBrowser_1_1Database.html#ae2ff265e1e01db6cc715214e40255624" title="Browser::Database::Database" alt="" coords="2350,309,2549,336"/>
+<area shape="rect" id="node24" href="$classBrowser_1_1Database.html#ab4613c03affa62eb71a93e9e3bad2387" title="Browser::Database::on_menu_db_replace_clicked" alt="" coords="1987,309,2301,336"/>
+<area shape="rect" id="node29" href="$classMPD_1_1BaseClient.html#af2f9a83095b554f470639f2f9633113c" title="Start a commandlist." alt="" coords="1411,233,1573,260"/>
+<area shape="rect" id="node34" href="$classMPD_1_1AbstractClientExtension.html#a80cba49b38e27a09b53d87420b2015cb" title="Get the underlying C struct." alt="" coords="771,487,1082,513"/>
+<area shape="rect" id="node38" href="$classMPD_1_1Client.html#a45b90a72613c9f13a1a85d033dae1307" title="Add song from the database to the queue." alt="" coords="1409,360,1575,387"/>
+<area shape="rect" id="node44" href="$classMPD_1_1Client.html#a436bca992eb75b753667b40c74698147" title="Deletes song in the queue." alt="" coords="837,537,1016,564"/>
+<area shape="rect" id="node46" href="$classMPD_1_1Listener.html#acc104e6222b7f70312011284dbf6369a" title="MPD::Listener::Listener" alt="" coords="1155,512,1315,539"/>
+<area shape="rect" id="node61" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="832,335,1021,361"/>
+<area shape="rect" id="node66" href="$classMPD_1_1NotifyData.html#af444b367d93b2d7a7f177855c8806e79" title="Update internal client state." alt="" coords="831,436,1022,463"/>
+<area shape="rect" id="node41" href="$classBrowser_1_1Database.html#a22de9b77d203b8f028e349003d91e098" title="Browser::Database::on_menu_db_add_all_clicked" alt="" coords="1988,360,2300,387"/>
+<area shape="rect" id="node50" href="$classMPD_1_1BaseClient.html#ab52d2ea1627dee76befa9cd1e87b81ce" title="Same as __connect()" alt="" coords="1387,81,1597,108"/>
+<area shape="rect" id="node59" href="$classMPD_1_1Listener.html#af2eca42ec5d9ea1a53edd8e798780e97" title="MPD::Listener::~Listener" alt="" coords="1151,183,1319,209"/>
+<area shape="rect" id="node53" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server." alt="" coords="1709,5,1875,32"/>
+<area shape="rect" id="node56" href="$classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2" title="Disconnects also." alt="" coords="2072,5,2216,32"/>
+<area shape="rect" id="node63" href="$classMPD_1_1BaseClient.html#a820d4c8e20e112335ffd3136abb65704" title="Forces client update." alt="" coords="1131,335,1338,361"/>
+</map>

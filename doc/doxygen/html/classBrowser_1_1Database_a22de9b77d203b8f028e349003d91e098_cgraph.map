@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a45b90a72613c9f13a1a85d033dae1307" title="Add song from the database to the queue." alt="" coords="365,31,531,57"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="579,31,802,57"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="851,56,1053,83"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="1101,5,1312,32"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="1109,56,1304,83"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#aa736c68e6ac83a52fe80cc846a4e8483" title="Get the current MPD::Status." alt="" coords="318,132,511,159"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="Toggle pause&#45;state." alt="" coords="569,5,765,32"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Client.html#ac1c2016a6740bf6762aacbeccd68874b" title="MPD::Client::fill_queue_changes" alt="" coords="560,56,773,83"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="Toggle randome mode." alt="" coords="573,107,760,133"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="Toggle consume mode (song gets deleted from playlist after playing)" alt="" coords="568,157,765,184"/>
+<area shape="rect" id="node13" href="$classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="Toggle repeat mode (repeat playlist)" alt="" coords="577,208,757,235"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="Toggle single mode (stops playing after one song)" alt="" coords="577,259,756,285"/>
+</map>

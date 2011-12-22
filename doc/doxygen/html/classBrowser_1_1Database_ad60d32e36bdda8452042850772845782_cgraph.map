@@ -1,0 +1,15 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#af2f9a83095b554f470639f2f9633113c" title="Start a commandlist." alt="" coords="353,183,516,209"/>
+<area shape="rect" id="node28" href="$classMPD_1_1Client.html#a45b90a72613c9f13a1a85d033dae1307" title="Add song from the database to the queue." alt="" coords="829,5,995,32"/>
+<area shape="rect" id="node31" href="$classMPD_1_1BaseClient.html#ad62d3555a2641c06a8b8342f1a4c5e2c" title="Commit the commandlist." alt="" coords="347,233,522,260"/>
+<area shape="rect" id="node5" href="$classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected" alt="" coords="571,233,781,260"/>
+<area shape="rect" id="node9" href="$classMPD_1_1BaseClient.html#aa4d2de679da027f3caec92192d5356e0" title="Leave idle mode, so you can send commands to the server." alt="" coords="585,183,767,209"/>
+<area shape="rect" id="node17" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="1043,56,1266,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="1565,183,1776,209"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Listener.html#ad433ccebdd1a35631022448a1c5372b4" title="MPD::Listener::is_idling" alt="" coords="1074,284,1235,311"/>
+<area shape="rect" id="node13" href="$classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef" title="MPD::Listener::leave" alt="" coords="839,157,985,184"/>
+<area shape="rect" id="node19" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="1315,208,1517,235"/>
+<area shape="rect" id="node22" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="1573,81,1768,108"/>
+<area shape="rect" id="node35" href="$classMPD_1_1BaseClient.html#a1ae401e7cb615434e54c83e12a813154" title="Go into idle mode, you are not allowed to send commands while idling!" alt="" coords="589,335,763,361"/>
+<area shape="rect" id="node39" href="$classMPD_1_1Listener.html#af8275ba3e9731b1dd0274864b97e39f4" title="MPD::Listener::enter" alt="" coords="841,360,983,387"/>
+</map>

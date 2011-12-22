@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#ab52d2ea1627dee76befa9cd1e87b81ce" title="Same as __connect()" alt="" coords="793,56,1002,83"/>
+<area shape="rect" id="node30" href="$classMPD_1_1BaseClient.html#adf47e06e3827d3a2bd4d565fefe70b19" title="Called periodically when mpd disconnects us." alt="" coords="265,208,503,235"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="1901,208,2112,235"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Listener.html#ae2630770d810978e087486ec103b2cef" title="MPD::Listener::leave" alt="" coords="1118,309,1263,336"/>
+<area shape="rect" id="node21" href="$classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a" title="Disconnects connection." alt="" coords="1392,5,1589,32"/>
+<area shape="rect" id="node24" href="$classMPD_1_1Connection.html#a5820eccc7eeec1bbcfb046ccf3be3e46" title="Call emit() on the ConnectionNotifier signal." alt="" coords="1051,107,1330,133"/>
+<area shape="rect" id="node27" href="$classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected" alt="" coords="1086,208,1295,235"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Listener.html#ad433ccebdd1a35631022448a1c5372b4" title="MPD::Listener::is_idling" alt="" coords="1410,461,1571,488"/>
+<area shape="rect" id="node12" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="1379,360,1602,387"/>
+<area shape="rect" id="node17" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="1909,436,2104,463"/>
+<area shape="rect" id="node14" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="1651,411,1853,437"/>
+<area shape="rect" id="node32" href="$classMPD_1_1BaseClient.html#ae9d8effd942ee9224718cefffa359298" title="This is called internally by MPD::Client and does the actual connect work." alt="" coords="552,208,744,235"/>
+<area shape="rect" id="node34" href="$classMPD_1_1Connection.html#a05c6f1d19148cb4c310c0c83de02b539" title="get a sigc::connection that is emit()&#39;d once an error occures" alt="" coords="797,461,998,488"/>
+<area shape="rect" id="node37" href="$classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1" title="Tries to connect accordingly to the values in the config." alt="" coords="1662,157,1842,184"/>
+<area shape="rect" id="node40" href="$classMPD_1_1BaseClient.html#a1ae401e7cb615434e54c83e12a813154" title="Go into idle mode, you are not allowed to send commands while idling!" alt="" coords="811,411,984,437"/>
+<area shape="rect" id="node48" href="$classMPD_1_1BaseClient.html#a820d4c8e20e112335ffd3136abb65704" title="Forces client update." alt="" coords="794,259,1001,285"/>
+<area shape="rect" id="node44" href="$classMPD_1_1Listener.html#af8275ba3e9731b1dd0274864b97e39f4" title="MPD::Listener::enter" alt="" coords="1119,411,1262,437"/>
+<area shape="rect" id="node51" href="$classMPD_1_1Listener.html#ac02e0bb2cedb20b6056f447078308604" title="Emits callback forced with current data." alt="" coords="1096,360,1285,387"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a2ff4623046dd31961f093a8a6f1677c4" title="Fetches a list of files in the database." alt="" coords="363,31,519,57"/>
+<area shape="rect" id="node5" href="$classAbstractFilebrowser.html#afdc29d24e52529b095e519b0f4aa6cb2" title="Called when a Directory shall be added." alt="" coords="569,5,793,32"/>
+<area shape="rect" id="node7" href="$classAbstractFilebrowser.html#ada8e6286a7aa715b969264bb65d1693a" title="Called when a song shall be added." alt="" coords="568,68,795,95"/>
+</map>

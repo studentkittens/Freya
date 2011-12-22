@@ -189,6 +189,12 @@ namespace MPD
 
     //--------------------------------
 
+    /*
+     * Parse a respone and add every occured event
+     * to the idle_events bitmask, in case of errors
+     * the parsing is aborted, on success the client
+     * -callback is called.
+     */
     bool Listener::parse_response(char *line)
     {
         mpd_parser_result result;
@@ -234,6 +240,14 @@ namespace MPD
 
     //--------------------------------
 
+    /* Reads respone from server line by line,
+     * till OK comes in, or an error is occured 
+     *    changed: player 
+     *    changed: mixer
+     *    ....
+     *    OK
+     *
+     */
     bool Listener::recv_parseable(void)
     {
         char * line = NULL;

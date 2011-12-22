@@ -36,29 +36,75 @@
 
 namespace MPD
 {
-    typedef sigc::signal<  
-                         void, /* No interaction */
-                         bool, /* is_fatal       */
-                         mpd_error
-                        >ErrorNotify;
+    typedef sigc::signal<void, bool,mpd_error> ErrorNotify;
 
     class Connection
     {
         public:
 
-            /* Publicinstance */
+            /**
+             * @brief Initializes a new connection object
+             */
             Connection(void);
+            /**
+             * @brief Automatically disconnects
+             */
             ~Connection(void);
 
-            /* Init */
+            /**
+             * @brief is connected?
+             *
+             * @return true if connected
+             */
             bool is_connected(void);
+
+            /**
+             * @brief Tries to connect accordingly to the values in the config 
+             *
+             * is_connected() hast to be false.
+             *
+             * @return true on success
+             */
             bool connect(void);
+            /**
+             * @brief Disconnects connection
+             *
+             * @return true on success
+             */
             bool disconnect(void);
+            /**
+             * @brief Clears any occured errors
+             *  
+             * If an error occured you might have to call this before
+             * you continue to use the connection, mostly this called
+             * automatically by check_error(), which is executed in
+             * every idle/busy cycle.
+             *
+             * @return true if error was not fatal
+             */
             bool clear_error(void);
+
+            /**
+             * @brief check if an error occured
+             *
+             * Clears error, calls emit() on ErrorNotify
+             *
+             * @return true if yes
+             */
             bool check_error(void);
+
+            /**
+             * @brief get a sigc::connection that is emit()'d once an error occures
+             *
+             * @return a sigc::connection - call connect() on it
+             */
             ErrorNotify& signal_error(void);
 
-            /* Returns mpd_conn */
+            /**
+             * @brief Returns the underlying C structure
+             *
+             * @return NULL if disconnected.
+             */
             mpd_connection * get_connection(void);
 
         private:

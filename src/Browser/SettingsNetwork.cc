@@ -39,14 +39,15 @@ namespace Browser
         ip_name("settings.connection.host"),
         port_name("settings.connection.port"),
         timeout_name("settings.connection.reconnectinterval"),
-        autoconnect_name("settings.connection.autoconnect")
+        autoconnect_name("settings.connection.autoconnect"),
+        handle(NULL)
     {
         BUILDER_GET(builder,"ip_textfield",ip);
         BUILDER_GET(builder,"port_spinbutton",port);
         BUILDER_GET(builder,"reconnect_spinbutton",recon_timeout);
         BUILDER_GET(builder,"avahi_button",avahi);
         BUILDER_GET(builder,"autoconnect_checkbox",autoconnect);
-        handle = NULL;
+
         avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
         BUILDER_ADD(builder,"ui/AvahiWarning.glade");
         BUILDER_GET_NO_MANAGE(builder,"avahi_warning",avahi_warning);
@@ -57,6 +58,7 @@ namespace Browser
         autoconnect->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 
+    //----------------------------
 
     SettingsNetwork::~SettingsNetwork(void)
     {
@@ -91,6 +93,7 @@ namespace Browser
         port_value = port->get_value_as_int();
         timeout_value = recon_timeout->get_value_as_int();
         autoconnect_value = autoconnect->get_active();
+
         CONFIG_SET(ip_name,ip_value);
         CONFIG_SET_AS_INT(port_name,port_value);
         CONFIG_SET_AS_INT(timeout_name,timeout_value);
@@ -122,7 +125,6 @@ namespace Browser
             avahi_warning->run();
             avahi_warning->hide();
         }
-
     }
     //----------------------------
 
@@ -137,7 +139,6 @@ namespace Browser
         ip->set_text(CONFIG_GET_DEFAULT(ip_name));
         port->set_value((double)CONFIG_GET_DEFAULT_AS_INT(port_name));
         recon_timeout->set_value((double)CONFIG_GET_DEFAULT_AS_INT(timeout_name));
-        int autocon = CONFIG_GET_DEFAULT_AS_INT(autoconnect_name);
-        autoconnect->set_active(autocon==1?true:false);
+        autoconnect->set_active(CONFIG_GET_DEFAULT_AS_INT(autoconnect_name));
     }
 }

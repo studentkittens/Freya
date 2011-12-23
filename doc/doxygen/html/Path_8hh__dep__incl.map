@@ -1,9 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Model_8hh.html" title="src/Config/Model.hh" alt="" coords="260,80,399,107"/>
-<area shape="rect" id="node18" href="$check__log_8hh.html" title="src/Log/check_log.hh" alt="" coords="423,80,569,107"/>
-<area shape="rect" id="node5" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="255,155,403,181"/>
-<area shape="rect" id="node7" href="$SettingsPlayback_8hh.html" title="src/Browser/SettingsPlayback.hh" alt="" coords="5,229,221,256"/>
-<area shape="rect" id="node9" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="248,304,411,331"/>
-<area shape="rect" id="node11" href="$SettingsNetwork_8hh.html" title="src/Browser/SettingsNetwork.hh" alt="" coords="296,229,505,256"/>
-<area shape="rect" id="node14" href="$SettingsGeneral_8hh.html" title="src/Browser/SettingsGeneral.hh" alt="" coords="531,229,737,256"/>
+<area shape="rect" id="node3" href="$Model_8hh.html" title="src/Config/Model.hh" alt="" coords="325,80,464,107"/>
+<area shape="rect" id="node18" href="$check__log_8hh.html" title="src/Log/check_log.hh" alt="" coords="488,80,635,107"/>
+<area shape="rect" id="node5" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="320,155,468,181"/>
+<area shape="rect" id="node7" href="$SettingsPlayback_8hh.html" title="src/Browser/Settings/SettingsPlayback.hh" alt="" coords="5,229,272,256"/>
+<area shape="rect" id="node9" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="287,304,501,331"/>
+<area shape="rect" id="node11" href="$SettingsNetwork_8hh.html" title="src/Browser/Settings/SettingsNetwork.hh" alt="" coords="349,229,611,256"/>
+<area shape="rect" id="node14" href="$SettingsGeneral_8hh.html" title="src/Browser/Settings/SettingsGeneral.hh" alt="" coords="636,229,893,256"/>
 </map>

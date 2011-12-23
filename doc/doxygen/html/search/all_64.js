@@ -19,5 +19,6 @@ var searchData=
   ['directory_2ehh',['Directory.hh',['../Directory_8hh.html',1,'']]],
   ['disable',['disable',['../classMPD_1_1AudioOutput.html#a8e89a5b526193acd51811ec985bcee04',1,'MPD::AudioOutput']]],
   ['disable_5fmerge_5fonce',['disable_merge_once',['../classBrowser_1_1QueueMerger.html#a879bbd69d3e66edf9c0e81b3a1c9f4c1',1,'Browser::QueueMerger']]],
-  ['disconnect',['disconnect',['../classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a',1,'MPD::Client::disconnect()'],['../classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a',1,'MPD::Connection::disconnect()']]]
+  ['disconnect',['disconnect',['../classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a',1,'MPD::Client::disconnect()'],['../classMPD_1_1Connection.html#a412cbc1c3f209be97cc67f2c272f6a6a',1,'MPD::Connection::disconnect()']]],
+  ['doxygen_5fnamespace_2ehh',['doxygen_namespace.hh',['../doxygen__namespace_8hh.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$OutputsModelColumns_8hh.html" title="src/Browser/OutputsModelColumns.hh" alt="" coords="5,80,251,107"/>
-<area shape="rect" id="node5" href="$SettingsOutputs_8hh.html" title="src/Browser/SettingsOutputs.hh" alt="" coords="24,155,232,181"/>
-<area shape="rect" id="node7" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="47,229,209,256"/>
+<area shape="rect" id="node3" href="$OutputsModelColumns_8hh.html" title="src/Browser/Settings/OutputsModelColumns.hh" alt="" coords="4,80,301,107"/>
+<area shape="rect" id="node5" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="23,155,283,181"/>
+<area shape="rect" id="node7" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="46,229,260,256"/>
 </map>

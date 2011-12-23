@@ -105,6 +105,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Browser::DatabaseCache" --><!-- doxytag: inherits="AbstractClientUser,AbstractFilebrowser" -->
+<p>Acts as a Proxy betwenn <a class="el" href="classBrowser_1_1Database.html" title="The Database Browser.">Browser::Database</a> and <a class="el" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>, but caches requested data.  
+ <a href="classBrowser_1_1DatabaseCache.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="DatabaseCache_8hh_source.html">DatabaseCache.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Browser::DatabaseCache:</div>
@@ -129,8 +132,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as <a class="el" href="classMPD_1_1Client.html#a2ff4623046dd31961f093a8a6f1677c4" title="Fetches a list of files in the database.">MPD::Client::fill_filelist()</a>, but gets locally cached data.  <a href="#a121851c370e90b22772ec661c8fea9ed"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="DatabaseCache_8hh_source.html#l00040">40</a> of file <a class="el" href="DatabaseCache_8hh_source.html">DatabaseCache.hh</a>.</p>
+<div class="textblock"><p>Acts as a Proxy betwenn <a class="el" href="classBrowser_1_1Database.html" title="The Database Browser.">Browser::Database</a> and <a class="el" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>, but caches requested data. </p>
+<p>Once the <a class="el" href="classBrowser_1_1Database.html" title="The Database Browser.">Database</a> requests a list of files for a certain path, a hashmap is looked up if it's already cached, if not <a class="el" href="classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data.">DatabaseCache</a> asks the client for the filelist.</p>
+<p>As Hashmap a std::map was used, with the Path as key and a vector of values as Hashvalue. </p>
+
+<p>Definition at line <a class="el" href="DatabaseCache_8hh_source.html#l00048">48</a> of file <a class="el" href="DatabaseCache_8hh_source.html">DatabaseCache.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9347f07f0976d0a88ac1f70c7823b672"></a><!-- doxytag: member="Browser::DatabaseCache::DatabaseCache" ref="a9347f07f0976d0a88ac1f70c7823b672" args="(MPD::Client &amp;client)" -->
 <div class="memitem">
@@ -204,7 +210,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/Browser/<a class="el" href="DatabaseCache_8hh_source.html">DatabaseCache.hh</a></li>
+<li>src/Browser/Database/<a class="el" href="DatabaseCache_8hh_source.html">DatabaseCache.hh</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -224,7 +230,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 22 2011 23:27:42 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 17:28:27 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

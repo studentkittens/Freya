@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classConfig_1_1Handler.html#a61b0a42790fe7522d970115c72cc913c" title="writes _current_ configuration as config.xml file to hard disk, use CONFIG_SAVE_NOW() macro instead..." alt="" coords="193,5,415,32"/>
-<area shape="rect" id="node5" href="$classConfig_1_1Model.html#a93214204452c79c0a33f1604e1eb5deb" title="Config::Model::~Model" alt="" coords="227,56,381,83"/>
-</map>

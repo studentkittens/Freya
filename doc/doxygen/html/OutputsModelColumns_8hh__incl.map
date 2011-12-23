@@ -1,11 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$AudioOutput_8hh.html" title="../MPD/AudioOutput.hh" alt="" coords="49,80,207,107"/>
-<area shape="rect" id="node5" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="37,155,219,181"/>
-<area shape="rect" id="node7" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="76,229,180,256"/>
-<area shape="rect" id="node9" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="237,304,323,331"/>
-<area shape="rect" id="node24" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="119,453,225,480"/>
-<area shape="rect" id="node19" href="$Status_8hh.html" title="Status.hh" alt="" coords="463,453,541,480"/>
-<area shape="rect" id="node22" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="362,379,464,405"/>
-<area shape="rect" id="node28" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="345,453,439,480"/>
-<area shape="rect" id="node32" href="$Song_8hh.html" title="Song.hh" alt="" coords="250,453,320,480"/>
+<area shape="rect" id="node3" href="$AudioOutput_8hh.html" title="../../MPD/AudioOutput.hh" alt="" coords="69,80,240,107"/>
+<area shape="rect" id="node5" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="64,155,245,181"/>
+<area shape="rect" id="node7" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="103,229,207,256"/>
+<area shape="rect" id="node9" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="263,304,349,331"/>
+<area shape="rect" id="node24" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="145,453,252,480"/>
+<area shape="rect" id="node19" href="$Status_8hh.html" title="Status.hh" alt="" coords="490,453,568,480"/>
+<area shape="rect" id="node22" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="389,379,491,405"/>
+<area shape="rect" id="node28" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="371,453,465,480"/>
+<area shape="rect" id="node32" href="$Song_8hh.html" title="Song.hh" alt="" coords="277,453,347,480"/>
 </map>

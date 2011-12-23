@@ -106,6 +106,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Browser::Database" --><!-- doxytag: inherits="AbstractBrowser,AbstractFilebrowser,AbstractClientUser" -->
+<p>The <a class="el" href="classBrowser_1_1Database.html" title="The Database Browser.">Database</a> <a class="el" href="namespaceBrowser.html" title="Test.">Browser</a>.  
+ <a href="classBrowser_1_1Database.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Database_8hh_source.html">Database.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Browser::Database:</div>
@@ -125,25 +128,24 @@ Collaboration diagram for Browser::Database:</div>
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>ModelColumns</b></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The column definition. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#ae2ff265e1e01db6cc715214e40255624">Database</a> (<a class="el" href="classMPD_1_1Client.html">MPD::Client</a> &amp;client, Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds itself after passing a builder reference.  <a href="#ae2ff265e1e01db6cc715214e40255624"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#a32215da5c08d33d2cbb6ebceaf1dcef6">~Database</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::Widget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#a47782ad1da8f3766c864a052750fa763">get_container</a> (void)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell BrowserList which element to manage.  <a href="#a47782ad1da8f3766c864a052750fa763"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented from <a class="el" href="classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist.">AbstractBrowser</a>.  <a href="#a47782ad1da8f3766c864a052750fa763"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#ae495fbfb967cc00e696b7e2fa5b35902">add_directory</a> (<a class="el" href="classMPD_1_1Directory.html">MPD::Directory</a> *pDir)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a Directory shall be added.  <a href="#ae495fbfb967cc00e696b7e2fa5b35902"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented from <a class="el" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>.  <a href="#ae495fbfb967cc00e696b7e2fa5b35902"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#af1c41d7e92fabefce0cda220d2d53a9f">add_song_file</a> (<a class="el" href="classMPD_1_1Song.html">MPD::Song</a> *pSong)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a song shall be added.  <a href="#af1c41d7e92fabefce0cda220d2d53a9f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#ad60d32e36bdda8452042850772845782">on_menu_db_add_clicked</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#a22de9b77d203b8f028e349003d91e098">on_menu_db_add_all_clicked</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#a1a1c0a6f3d2c3b13ed41d7e3fc2d8677">on_menu_db_update_clicked</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#a64b5e83a7144a83e631bbc90ea6fcd03">on_menu_db_rescan_clicked</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Database.html#ab4613c03affa62eb71a93e9e3bad2387">on_menu_db_replace_clicked</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented from <a class="el" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>.  <a href="#af1c41d7e92fabefce0cda220d2d53a9f"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="Database_8hh_source.html#l00047">47</a> of file <a class="el" href="Database_8hh_source.html">Database.hh</a>.</p>
+<div class="textblock"><p>The <a class="el" href="classBrowser_1_1Database.html" title="The Database Browser.">Database</a> <a class="el" href="namespaceBrowser.html" title="Test.">Browser</a>. </p>
+<p>In order to use the Client's fill_filelist function it inherits from <a class="el" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>, Since it is a <a class="el" href="namespaceBrowser.html" title="Test.">Browser</a> itself it also inherits from <a class="el" href="classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist.">AbstractBrowser</a> so it can be added to the Browserlist But instead from filling the data directly from the client <a class="el" href="classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data.">DatabaseCache</a> is used (over the Proxy pattern) </p>
+
+<p>Definition at line <a class="el" href="Database_8hh_source.html#l00053">53</a> of file <a class="el" href="Database_8hh_source.html">Database.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae2ff265e1e01db6cc715214e40255624"></a><!-- doxytag: member="Browser::Database::Database" ref="ae2ff265e1e01db6cc715214e40255624" args="(MPD::Client &amp;client, Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder)" -->
 <div class="memitem">
@@ -169,6 +171,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Builds itself after passing a builder reference. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client</td><td></td></tr>
+    <tr><td class="paramname">builder</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -197,17 +208,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#ae495fbfb967cc00e696b7e2fa5b35902">Browser::Database::add_directory</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classMPD_1_1Directory.html">MPD::Directory</a> *&#160;</td>
-          <td class="paramname"><em>item</em></td><td>)</td>
+          <td class="paramname"><em>pDir</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Called when a Directory shall be added. </p>
+<p>Implemented from <a class="el" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>. </p>
+<p>You are not supposed to call this yourself.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">item</td><td>a instance of <a class="el" href="classMPD_1_1Directory.html" title="A wrapper for mpd_directory.">MPD::Directory</a>, dynamically allocated </td></tr>
+    <tr><td class="paramname">pDir</td><td>A dyn. allocated <a class="el" href="classMPD_1_1Directory.html" title="A wrapper for mpd_directory.">MPD::Directory</a> instance </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,17 +236,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#af1c41d7e92fabefce0cda220d2d53a9f">Browser::Database::add_song_file</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classMPD_1_1Song.html">MPD::Song</a> *&#160;</td>
-          <td class="paramname"><em>item</em></td><td>)</td>
+          <td class="paramname"><em>pSong</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Called when a song shall be added. </p>
+<p>Implemented from <a class="el" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>. </p>
+<p>You are not supposed to call this yourself.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">item</td><td>a instance of <a class="el" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a>, dynamically allocated </td></tr>
+    <tr><td class="paramname">pSong</td><td>A dyn. allocated <a class="el" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> instance </td></tr>
   </table>
   </dd>
 </dl>
@@ -258,101 +271,16 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Tell BrowserList which element to manage. </p>
-<p>You are supposed to override this.</p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>A reference to the containing widget of the browser </dd></dl>
+<p>Implemented from <a class="el" href="classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist.">AbstractBrowser</a>. </p>
+<p>You are not supposed to call this yourself.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The surrounding mainbox </dd></dl>
 
 <p>Implements <a class="el" href="classAbstractBrowser.html#aeb2a146bb6f19235ceff15aa314e1c07">AbstractBrowser</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a22de9b77d203b8f028e349003d91e098"></a><!-- doxytag: member="Browser::Database::on_menu_db_add_all_clicked" ref="a22de9b77d203b8f028e349003d91e098" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#a22de9b77d203b8f028e349003d91e098">Browser::Database::on_menu_db_add_all_clicked</a> </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad60d32e36bdda8452042850772845782"></a><!-- doxytag: member="Browser::Database::on_menu_db_add_clicked" ref="ad60d32e36bdda8452042850772845782" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#ad60d32e36bdda8452042850772845782">Browser::Database::on_menu_db_add_clicked</a> </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ab4613c03affa62eb71a93e9e3bad2387"></a><!-- doxytag: member="Browser::Database::on_menu_db_replace_clicked" ref="ab4613c03affa62eb71a93e9e3bad2387" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#ab4613c03affa62eb71a93e9e3bad2387">Browser::Database::on_menu_db_replace_clicked</a> </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a64b5e83a7144a83e631bbc90ea6fcd03"></a><!-- doxytag: member="Browser::Database::on_menu_db_rescan_clicked" ref="a64b5e83a7144a83e631bbc90ea6fcd03" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#a64b5e83a7144a83e631bbc90ea6fcd03">Browser::Database::on_menu_db_rescan_clicked</a> </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a1a1c0a6f3d2c3b13ed41d7e3fc2d8677"></a><!-- doxytag: member="Browser::Database::on_menu_db_update_clicked" ref="a1a1c0a6f3d2c3b13ed41d7e3fc2d8677" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classBrowser_1_1Database.html#a1a1c0a6f3d2c3b13ed41d7e3fc2d8677">Browser::Database::on_menu_db_update_clicked</a> </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/Browser/<a class="el" href="Database_8hh_source.html">Database.hh</a></li>
+<li>src/Browser/Database/<a class="el" href="Database_8hh_source.html">Database.hh</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -372,7 +300,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 22 2011 23:27:42 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 17:28:27 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

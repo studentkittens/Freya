@@ -1,7 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classGtk_1_1StatusIcon.html" title="{Gtk::StatusIcon\n||}" alt="" coords="69,1335,184,1412"/>
-<area shape="rect" id="node4" href="$classBrowser_1_1BasePopup.html" title="{Browser::BasePopup\n|# m_refUIManager\l# m_refActionGroup\l# m_UiDefinition\l# mp_Popup\l|+ BasePopup()\l+ menu_popup()\l+ get_action()\l# menu_add_item()\l# menu_construct()\l}" alt="" coords="209,1283,353,1463"/>
-<area shape="rect" id="node14" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="474,1320,648,1427"/>
+<area shape="rect" id="node2" href="$classGtk_1_1StatusIcon.html" title="{Gtk::StatusIcon\n||}" alt="" coords="69,1327,184,1404"/>
+<area shape="rect" id="node4" href="$classBrowser_1_1BasePopup.html" title="A Baseclass for Widgets that want to implement easily popup widgets." alt="" coords="209,1283,353,1448"/>
+<area shape="rect" id="node14" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="474,1312,648,1419"/>
 <area shape="rect" id="node16" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="600,627,795,1218"/>
 <area shape="rect" id="node18" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="600,293,795,576"/>
 <area shape="rect" id="node20" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="457,35,649,200"/>

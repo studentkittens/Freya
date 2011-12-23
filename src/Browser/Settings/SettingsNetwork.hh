@@ -40,6 +40,9 @@
 namespace Browser
 {
     class Settings;
+    /**
+     * @brief Network Settings Tab.
+     */
     class SettingsNetwork : public  SettingsSub
     {
         public:

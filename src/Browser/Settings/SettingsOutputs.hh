@@ -43,6 +43,9 @@
 namespace Browser
 {
     class Settings;
+    /**
+     * @brief Outputlist Tab
+     */
     class SettingsOutputs : public SettingsSub, public AbstractItemlist, public AbstractClientUser
     {
         public:

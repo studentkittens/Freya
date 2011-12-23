@@ -28,7 +28,7 @@
 <area shape="rect" id="node57" href="$classBrowser_1_1BasePopup.html" title="A Baseclass for Widgets that want to implement easily popup widgets." alt="" coords="7,1247,153,1273"/>
 <area shape="rect" id="node59" href="$classBrowser_1_1DatabasePopup.html" title="The popup that shows up when rightclickin an icon." alt="" coords="221,1221,392,1248"/>
 <area shape="rect" id="node61" href="$classBrowser_1_1PlaylistManagerPopup.html" title="The Popup for Browser::PlaylistManager." alt="" coords="203,1272,411,1299"/>
-<area shape="rect" id="node63" href="$classBrowser_1_1QueuePopup.html" title="The Popup for Browser::PlaylistManager." alt="" coords="230,1323,383,1349"/>
+<area shape="rect" id="node63" href="$classBrowser_1_1QueuePopup.html" title="The Popup for Browser::Queue." alt="" coords="230,1323,383,1349"/>
 <area shape="rect" id="node65" href="$classGtk_1_1Frame.html" title="Frame" alt="" coords="51,31,109,57"/>
 <area shape="rect" id="node68" href="$classBrowser_1_1SettingsSub.html" title="Browser::SettingsSub" alt="" coords="5,1044,155,1071"/>
 <area shape="rect" id="node70" href="$classBrowser_1_1SettingsGeneral.html" title="Browser::SettingsGeneral" alt="" coords="221,1069,392,1096"/>

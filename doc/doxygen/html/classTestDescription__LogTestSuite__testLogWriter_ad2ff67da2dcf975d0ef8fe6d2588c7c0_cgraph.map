@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classLogTestSuite.html#a1bd9ded59feb684cc45833ae1df80bc4" title="LogTestSuite::testLogWriter" alt="" coords="390,5,575,32"/>
-<area shape="rect" id="node5" href="$classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt" alt="" coords="625,5,775,32"/>
-<area shape="rect" id="node7" href="$classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="returns absolute path to config dir e.g. /home/user/.config/freya" alt="" coords="825,5,989,32"/>
-</map>

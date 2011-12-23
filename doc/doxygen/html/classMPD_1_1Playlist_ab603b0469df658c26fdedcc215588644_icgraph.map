@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Playlist.html#a6e26ca4e6052df194e96999f650acb71" title="MPD::Playlist::remove" alt="" coords="223,5,377,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html#a3eb55e207271cd7a8359fe53c3527f09" title="MPD::Playlist::load" alt="" coords="233,56,367,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Playlist.html#a8bdbe85a78f14f88e1c3a7403869155d" title="MPD::Playlist::rename" alt="" coords="223,107,377,133"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Playlist.html#a73f105968f5199d5e7706e916bc7843c" title="MPD::Playlist::add_song" alt="" coords="217,157,383,184"/>
-<area shape="rect" id="node11" href="$classMPD_1_1Playlist.html#a4272c573e2f9a3c59dfa094d4bd53189" title="Add song to this playlist." alt="" coords="433,157,599,184"/>
-</map>

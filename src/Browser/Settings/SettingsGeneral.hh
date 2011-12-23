@@ -39,7 +39,12 @@
 
 namespace Browser
 {
+    /* Prototype */
     class Settings;
+
+    /**
+     * @brief General Settings Tab.
+     */
     class SettingsGeneral : public SettingsSub
     {
         public:

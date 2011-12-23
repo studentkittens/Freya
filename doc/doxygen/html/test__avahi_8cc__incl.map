@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Browser_8hh.html" title="Browser.hh" alt="" coords="455,80,543,107"/>
-<area shape="rect" id="node19" href="$Handler_8hh.html" title="../Config/Handler.hh" alt="" coords="972,80,1111,107"/>
-<area shape="rect" id="node5" href="$View_8hh.html" title="View.hh" alt="" coords="7,155,76,181"/>
-<area shape="rect" id="node25" href="$Model_8hh.html" title="Model.hh" alt="" coords="1079,155,1152,181"/>
-<area shape="rect" id="node36" href="$Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="1178,155,1315,181"/>
-<area shape="rect" id="node30" href="$Path_8hh.html" title="../Init/Path.hh" alt="" coords="1219,229,1320,256"/>
-</map>

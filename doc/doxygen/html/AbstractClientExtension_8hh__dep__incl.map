@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$AudioOutput_8hh.html" title="src/MPD/AudioOutput.hh" alt="" coords="63,80,231,107"/>
-<area shape="rect" id="node11" href="$Playlist_8hh.html" title="src/MPD/Playlist.hh" alt="" coords="291,80,429,107"/>
-<area shape="rect" id="node5" href="$OutputsModelColumns_8hh.html" title="src/Browser/OutputsModelColumns.hh" alt="" coords="5,155,251,181"/>
-<area shape="rect" id="node7" href="$SettingsOutputs_8hh.html" title="src/Browser/SettingsOutputs.hh" alt="" coords="24,229,232,256"/>
-<area shape="rect" id="node9" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="47,304,209,331"/>
-<area shape="rect" id="node13" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager.hh" alt="" coords="275,155,481,181"/>
+<area shape="rect" id="node3" href="$Playlist_8hh.html" title="src/MPD/Playlist.hh" alt="" coords="161,80,300,107"/>
+<area shape="rect" id="node7" href="$AudioOutput_8hh.html" title="src/MPD/AudioOutput.hh" alt="" coords="361,80,529,107"/>
+<area shape="rect" id="node5" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="5,155,309,181"/>
+<area shape="rect" id="node9" href="$OutputsModelColumns_8hh.html" title="src/Browser/Settings/OutputsModelColumns.hh" alt="" coords="333,155,631,181"/>
+<area shape="rect" id="node11" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="353,229,612,256"/>
+<area shape="rect" id="node13" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="375,304,589,331"/>
 </map>

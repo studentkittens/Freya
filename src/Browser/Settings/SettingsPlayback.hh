@@ -41,6 +41,9 @@
 namespace Browser
 {
     class Settings;
+    /**
+     * @brief Playback Settings Tab
+     */
     class SettingsPlayback : public SettingsSub, public AbstractClientUser
     {
         public:

@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1SettingsOutputs.html#af05964243600a8dc06c6589bf265dfb4" title="Browser::SettingsOutputs::on_toggle" alt="" coords="329,5,565,32"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html#a43ee4d1387e089f4e121bbd8c2d0c26f" title="Browser::SettingsOutputs::on_select" alt="" coords="329,56,565,83"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1Settings.html#a0f660aeb61b832e654fdcd92b3bd62d1" title="Browser::Settings::settings_changed" alt="" coords="614,5,850,32"/>
-</map>

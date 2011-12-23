@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node4" href="$classMPD_1_1Client.html" title="{MPD::Client\n||+ Client()\l+ ~Client()\l+ connect()\l+ disconnect()\l+ playback_next()\l+ playback_prev()\l+ playback_stop()\l+ playback_play()\l+ playback_pause()\l+ playback_seek()\land 5 more...+ playlist_save()\l+ queue_add()\l+ queue_clear()\l+ queue_delete()\l+ database_update()\l+ database_rescan()\l+ set_volume()\l+ fill_queue()\l+ fill_queue_changes()\l+ fill_playlists()\l+ fill_outputs()\l+ fill_filelist()\l+ send_command()\l* playlist_save()\l* queue_add()\l* queue_clear()\l* queue_delete()\l* database_update()\l* database_rescan()\l* set_volume()\l* fill_queue()\l* fill_queue_changes()\l* fill_playlists()\l* fill_outputs()\l* fill_filelist()\l* send_command()\l}" alt="" coords="423,673,617,1263"/>
-<area shape="rect" id="node6" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="423,294,617,621"/>
-<area shape="rect" id="node10" href="$classMPD_1_1Listener.html" title="{MPD::Listener\n||+ Listener()\l+ ~Listener()\l+ enter()\l+ leave()\l+ is_idling()\l+ signal_client_update_data()\l+ force_update()\l}" alt="" coords="352,35,544,200"/>
-<area shape="rect" id="node14" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="640,5,835,229"/>
-</map>

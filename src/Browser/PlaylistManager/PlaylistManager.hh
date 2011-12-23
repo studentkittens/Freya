@@ -121,9 +121,6 @@ namespace Browser
             Gtk::CellRendererText m_PlaylistCellRender;
             Gtk::TreeView::Column m_PlaylistTreeViewCol;
 
-            /* Control buttons */
-            Gtk::Button * mp_DelButton; 
-
             /* Status label */
             Gtk::Label * mp_StatusLabel;
 

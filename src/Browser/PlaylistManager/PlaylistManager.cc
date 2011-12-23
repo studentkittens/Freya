@@ -44,7 +44,6 @@ namespace Browser
         /* Get the box and parent it to the main frame */
         Gtk::Box * playlist_box = NULL;
         BUILDER_GET(builder,"playlist_box",playlist_box);
-        BUILDER_GET(builder,"playlist_delete_pl",mp_DelButton);
         BUILDER_GET(builder,"playlist_status",mp_StatusLabel);
         playlist_box->reparent(*this);
 
@@ -76,10 +75,6 @@ namespace Browser
         /* Called once editing is done by the user */
         m_PlaylistCellRender.signal_edited().connect(
                 sigc::mem_fun(*this,&PlaylistManager::on_cell_edited));
-
-        /* Connect buttons in bar */
-        mp_DelButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
 
         /* Cpnnect popups and row actions */
         mp_Popup = new PlaylistManagerPopup(*mp_TreeView);

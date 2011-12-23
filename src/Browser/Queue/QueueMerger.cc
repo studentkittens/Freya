@@ -159,13 +159,12 @@ namespace Browser
                 /* Do a full refill if requested (e.g. on startup) */
                 if(serverChanged || (wasReconnected && qu_v > lastPlaylistVersion))
                 {
-                    needsRefill = true;
                     Info("Doing full refill of the queue.");
                     mp_QueueModel->clear(); 
+                    needsRefill = true;
                     mp_Client->fill_queue(*this);
-
-                    /* This is usually only necessary on startup. */
                     needsRefill = false;
+
                     serverChanged = false;
                     wasReconnected = false;
                 }

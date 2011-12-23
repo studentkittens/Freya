@@ -51,6 +51,8 @@ namespace MPD
             {
                 mp_BaseClient = &base_client;
             }
+        
+            virtual ~AbstractClientExtension() {};
 
         protected:
 

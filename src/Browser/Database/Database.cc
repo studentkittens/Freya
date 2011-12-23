@@ -29,6 +29,7 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "Database.hh"
+#include "DatabaseCache.hh"
 #include "../../Log/Writer.hh"
 #include "../../Utils/Utils.hh"
 
@@ -39,9 +40,11 @@ namespace Browser
     Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractBrowser("Database",true,true,Gtk::Stock::DIRECTORY),
         AbstractClientUser(client),
-        mp_SearchEntry(NULL),
-        m_Cache(client)
+        mp_SearchEntry(NULL)
     {
+        /* Instance the Database Cache, a sort of Proxy of MPD::Client */
+        mp_Cache = new DatabaseCache(client);
+
         BUILDER_ADD(builder,"ui/Database.glade");
         BUILDER_GET(builder,"filebrowser_mainbox",mp_ParentBox);
         BUILDER_GET(builder,"filebrowser_iconview",mp_IView);
@@ -91,9 +94,6 @@ namespace Browser
         mp_IView->signal_key_release_event().connect(
                 sigc::mem_fun(*this,&Database::on_key_press_handler));
 
-        /* An empy path means root */
-        set_current_path("");
-
         /* Make icon view react on key events */
         mp_IView->add_events(Gdk::KEY_PRESS_MASK | Gdk::KEY_RELEASE_MASK);
     }
@@ -103,6 +103,7 @@ namespace Browser
     Database::~Database(void) 
     {
         delete mp_Popup;
+        delete mp_Cache;
     }
 
     /* MENU STUFF*/
@@ -233,8 +234,8 @@ namespace Browser
     {
         mp_Path = path;
         m_DirStore->clear();
-        m_Cache.fill_filelist_from_cache(*this,mp_Path);
-        mp_StatusLabel->set_text(!mp_Path.empty() ? mp_Path : "Root");
+        mp_Cache->fill_filelist(*this,path);
+        mp_StatusLabel->set_text(!mp_Path.empty() ? ("/" + mp_Path) : "/");
     }
 
     /*------------------------------------------------*/

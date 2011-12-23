@@ -1,4 +1,4 @@
- /***********************************************************
+/***********************************************************
 * This file is part of Freya 
 * - A free MPD Gtk3 MPD Client -
 * 
@@ -28,27 +28,25 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_ABSTRACT_SONGLIST_GUARD
-#define FREYA_ABSTRACT_SONGLIST_GUARD
+
+#ifndef FREYA_ABSTRACTFILE_GENERATOR
+#define FREYA_ABSTRACTFILE_GENERATOR
+
+#include "AbstractFilebrowser.hh"
 
 /**
- * @brief Inhertit from this class to use MPD::Client's fill_* methods.
+ * @brief This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)
+ *
+ * Instead of talking directly with the client in order to request data some classes want to
+ * do implement something own, like for example a caching of the data.
+ *
+ * An example would be the DatabaseCache that implements this class. It caches all data, 
+ * and requests data only if not cached yet.
  */
-class AbstractItemlist
-{
+class AbstractFileGenerator {
     public:
-
-        
-        /**
-         * @brief Called after calling (e.g.) fill_queue() 
-         *
-         * Cast this to the correct type, fill_queue delivers you for example a MPD::Song*
-         *
-         * @param item a dynamically allocated item
-         */
-        virtual void add_item(void * item) = 0; 
-            
-        virtual ~AbstractItemlist() {};
+        virtual void fill_filelist(AbstractFilebrowser& data_model, const char * path) = 0;
+        virtual ~AbstractFileGenerator() {};
 };
 
-#endif
+#endif /* end of include guard: FREYA_ABSTRACTFILE_GENERATOR */

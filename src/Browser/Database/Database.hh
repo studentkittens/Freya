@@ -37,7 +37,6 @@
 #include "../../MPD/Client.hh"
 #include "../../MPD/Directory.hh"
 
-#include "DatabaseCache.hh"
 #include "DatabasePopup.hh"
 #include "../AbstractBrowser.hh"
 
@@ -159,7 +158,7 @@ namespace Browser
             DatabasePopup * mp_Popup;
 
             /* A local memcache of the db files */
-            DatabaseCache m_Cache;
+            AbstractFileGenerator * mp_Cache;
 
     };
 }

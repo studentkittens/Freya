@@ -34,15 +34,15 @@
 #include  "BaseClient.hh"
 
 /* Songlist interface */
-#include "AbstractItemlist.hh"
-#include "AbstractFilebrowser.hh"
+#include "AbstractItemGenerator.hh"
+#include "AbstractFileGenerator.hh"
 
 namespace MPD
 {
     /**
      * @brief The client implements concrete commands of the MPD Protocol
      */
-    class Client : public BaseClient
+    class Client : public BaseClient, public AbstractItemGenerator
     {
         public:
 

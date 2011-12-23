@@ -107,7 +107,10 @@ int main(int argc, char *argv[])
         browser_list.set(easter_egg);
 
         /* Send a good morning to all widgets */
-        client.connect();
+        if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
+        {
+            client.connect();
+        }
 
         main_window.get_window()->show();
 

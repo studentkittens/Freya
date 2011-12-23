@@ -55,13 +55,7 @@ namespace MPD
 
     //-------------------------------
 
-    Client::Client() 
-    {
-        if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
-        {
-         //   connect();
-        }
-    }
+    Client::Client() {}
 
     //-------------------------------
 

@@ -1,6 +1,10 @@
 Eine liste von features der GUI (das gehört eigentlich ins Pflichtenheft?)
 ---------------------------------------------------------------------------
 
+Die Funktionen des Clients wurde exemplarisch in einem Mockup gezeigt.
+(Funktionsfrei - sieh final_mockup im git)
+Die Liste unten spiegelt aber die detaillierte version wieder.
+
 Von links oben nach rechts unten.
 
 Menü:

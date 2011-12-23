@@ -50,17 +50,19 @@ namespace Browser
 
     /* ------------------------------ */
 
-    void DatabaseCache::fill_filelist_from_cache(AbstractFilebrowser& data_model, Glib::ustring Path)
+    void DatabaseCache::fill_filelist(AbstractFilebrowser& data_model, const char * Path)
     {
         /* Get it from the hashmap */
-        const CacheVectorType& v = cacheMap[Path];
+        Glib::ustring peristentPath = Path;
+        const CacheVectorType& v = cacheMap[peristentPath];
            
         /* Read in data from client, if not cached yet */
         if(v.empty())
         {
+            g_message("Caching..");
             /* Get files from the server */
             lastVec = (CacheVectorType*)&v;
-            mp_Client->fill_filelist(*this,Path.c_str());
+            mp_Client->fill_filelist(*this,Path);
         }
 
         /* Iterare over the requested stuff, call data_model's add */

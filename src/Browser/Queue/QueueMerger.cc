@@ -44,6 +44,7 @@ namespace Browser
         needsRefill(true),
         mergeIterIsValid(false),
         wasReconnected(true),
+        serverChanged(true),
         lastPlaylistVersion(0),
         playlistLength(0),
         mergePos(0),
@@ -156,7 +157,7 @@ namespace Browser
                 unsigned qu_l = status.get_queue_length();
 
                 /* Do a full refill if requested (e.g. on startup) */
-                if((wasReconnected && qu_v > lastPlaylistVersion))
+                if(serverChanged || (wasReconnected && qu_v > lastPlaylistVersion))
                 {
                     needsRefill = true;
                     Info("Doing full refill of the queue.");
@@ -165,6 +166,8 @@ namespace Browser
 
                     /* This is usually only necessary on startup. */
                     needsRefill = false;
+                    serverChanged = false;
+                    wasReconnected = false;
                 }
                 else
                 {
@@ -188,9 +191,9 @@ namespace Browser
 
     void QueueMerger::on_connection_change(bool server_changed, bool is_connected)
     {
-        // TODO on_connection_change should also tell if server changed..
         /* This is also true on startup */
         wasReconnected = is_connected; 
+        server_changed = server_changed;
     }
 
     /*-------------------*/

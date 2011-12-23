@@ -294,7 +294,7 @@ namespace Browser
     
     void Database::on_search_entry_activated(void)
     {
-        //TODO
+        //TODO: Needs a Search API first.
     }
     
     /*------------------------------------------------*/

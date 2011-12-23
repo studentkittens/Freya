@@ -33,9 +33,6 @@
 
 #include <gtkmm.h>
 
-/**
- * @brief Test.
- */
 namespace Browser
 {
     /**

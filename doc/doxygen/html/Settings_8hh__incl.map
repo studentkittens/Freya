@@ -1,10 +1,10 @@
 <map id="G" name="G">
 <area shape="rect" id="node7" href="$SettingsPlayback_8hh.html" title="SettingsPlayback.hh" alt="" coords="1681,80,1823,107"/>
 <area shape="rect" id="node10" href="$Handler_8hh.html" title="../../Config/Handler.hh" alt="" coords="1051,155,1201,181"/>
-<area shape="rect" id="node72" href="$SettingsSub_8hh.html" title="SettingsSub.hh" alt="" coords="1551,155,1661,181"/>
+<area shape="rect" id="node72" href="$AbstractSettings_8hh.html" title="AbstractSettings.hh" alt="" coords="1541,155,1677,181"/>
 <area shape="rect" id="node76" href="$SettingsNetwork_8hh.html" title="SettingsNetwork.hh" alt="" coords="1065,80,1201,107"/>
 <area shape="rect" id="node96" href="$SettingsGeneral_8hh.html" title="SettingsGeneral.hh" alt="" coords="1277,80,1411,107"/>
-<area shape="rect" id="node100" href="$Trayicon_8hh.html" title="../../GManager/Trayicon.hh" alt="" coords="1348,155,1527,181"/>
+<area shape="rect" id="node100" href="$Trayicon_8hh.html" title="../../GManager/Trayicon.hh" alt="" coords="1337,155,1516,181"/>
 <area shape="rect" id="node109" href="$SettingsOutputs_8hh.html" title="SettingsOutputs.hh" alt="" coords="2039,80,2173,107"/>
 <area shape="rect" id="node133" href="$AbstractBrowser_8hh.html" title="../AbstractBrowser.hh" alt="" coords="1847,80,1995,107"/>
 <area shape="rect" id="node29" href="$Client_8hh.html" title="../../MPD/Client.hh" alt="" coords="1845,304,1976,331"/>
@@ -22,8 +22,8 @@
 <area shape="rect" id="node51" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="2698,603,2792,629"/>
 <area shape="rect" id="node55" href="$Song_8hh.html" title="Song.hh" alt="" coords="2469,603,2539,629"/>
 <area shape="rect" id="node66" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="2348,603,2441,629"/>
-<area shape="rect" id="node81" href="$Browser_8hh.html" title="../../Avahi/Browser.hh" alt="" coords="515,155,663,181"/>
-<area shape="rect" id="node83" href="$View_8hh.html" title="View.hh" alt="" coords="1005,229,1075,256"/>
+<area shape="rect" id="node80" href="$Browser_8hh.html" title="../../Avahi/Browser.hh" alt="" coords="515,155,663,181"/>
+<area shape="rect" id="node82" href="$View_8hh.html" title="View.hh" alt="" coords="1005,229,1075,256"/>
 <area shape="rect" id="node104" href="$BasePopup_8hh.html" title="../Browser/BasePopup.hh" alt="" coords="1379,229,1549,256"/>
 <area shape="rect" id="node113" href="$OutputsModelColumns_8hh.html" title="OutputsModelColumns.hh" alt="" coords="2329,155,2503,181"/>
 <area shape="rect" id="node123" href="$Utils_8hh.html" title="../../Utils/Utils.hh" alt="" coords="2163,155,2285,181"/>

@@ -48,13 +48,24 @@ using namespace std;
 
 namespace Browser
 {
+    /**
+     * @brief The Settingsbrowser shown in the sidebar
+     */
     class Settings : public AbstractBrowser
     {
         public:
             Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
             ~Settings();
 
+            /**
+             * @brief Implemented from AbstractBrowser
+             *
+             * @return 
+             */
             Gtk::Widget* get_container(void);
+            /**
+             * @brief Called when saving the Config (makes ok/cancel insensitive)
+             */
             void settings_changed(void);
 
         private:

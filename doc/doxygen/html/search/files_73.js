@@ -5,7 +5,6 @@ var searchData=
   ['settingsnetwork_2ehh',['SettingsNetwork.hh',['../SettingsNetwork_8hh.html',1,'']]],
   ['settingsoutputs_2ehh',['SettingsOutputs.hh',['../SettingsOutputs_8hh.html',1,'']]],
   ['settingsplayback_2ehh',['SettingsPlayback.hh',['../SettingsPlayback_8hh.html',1,'']]],
-  ['settingssub_2ehh',['SettingsSub.hh',['../SettingsSub_8hh.html',1,'']]],
   ['signalhandler_2ehh',['SignalHandler.hh',['../SignalHandler_8hh.html',1,'']]],
   ['singleton_2ehh',['Singleton.hh',['../Singleton_8hh.html',1,'']]],
   ['song_2ehh',['Song.hh',['../Song_8hh.html',1,'']]],

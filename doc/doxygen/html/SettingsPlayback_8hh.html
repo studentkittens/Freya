@@ -87,13 +87,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="Handler_8hh_source.html">../../Config/Handler.hh</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Client_8hh_source.html">../../MPD/Client.hh</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="AbstractClientUser_8hh_source.html">../../MPD/AbstractClientUser.hh</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="SettingsSub_8hh_source.html">SettingsSub.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="AbstractSettings_8hh_source.html">AbstractSettings.hh</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for SettingsPlayback.hh:</div>
 <div class="dyncontent">
 <div class="center"><img src="SettingsPlayback_8hh__incl.png" border="0" usemap="#src_2Browser_2Settings_2SettingsPlayback_8hh" alt=""/></div>
 <map name="src_2Browser_2Settings_2SettingsPlayback_8hh" id="src_2Browser_2Settings_2SettingsPlayback_8hh">
-<area shape="rect" id="node5" href="Handler_8hh.html" title="../../Config/Handler.hh" alt="" coords="290,80,440,107"/><area shape="rect" id="node24" href="Client_8hh.html" title="../../MPD/Client.hh" alt="" coords="533,155,664,181"/><area shape="rect" id="node64" href="AbstractClientUser_8hh.html" title="../../MPD/AbstractClientUser.hh" alt="" coords="517,80,725,107"/><area shape="rect" id="node67" href="SettingsSub_8hh.html" title="SettingsSub.hh" alt="" coords="750,80,860,107"/><area shape="rect" id="node11" href="Model_8hh.html" title="Model.hh" alt="" coords="99,155,172,181"/><area shape="rect" id="node22" href="Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="198,155,335,181"/><area shape="rect" id="node16" href="Path_8hh.html" title="../Init/Path.hh" alt="" coords="5,229,107,256"/><area shape="rect" id="node26" href="BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="401,229,505,256"/><area shape="rect" id="node56" href="AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="533,229,664,256"/><area shape="rect" id="node58" href="AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="754,379,909,405"/><area shape="rect" id="node28" href="Listener_8hh.html" title="Listener.hh" alt="" coords="410,304,496,331"/><area shape="rect" id="node42" href="Connection_8hh.html" title="Connection.hh" alt="" coords="189,453,296,480"/><area shape="rect" id="node37" href="Status_8hh.html" title="Status.hh" alt="" coords="599,453,677,480"/><area shape="rect" id="node40" href="NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="402,379,504,405"/><area shape="rect" id="node46" href="Statistics_8hh.html" title="Statistics.hh" alt="" coords="386,453,480,480"/><area shape="rect" id="node50" href="Song_8hh.html" title="Song.hh" alt="" coords="505,453,575,480"/><area shape="rect" id="node61" href="Directory_8hh.html" title="Directory.hh" alt="" coords="769,453,863,480"/></map>
+<area shape="rect" id="node5" href="Handler_8hh.html" title="../../Config/Handler.hh" alt="" coords="290,80,440,107"/><area shape="rect" id="node24" href="Client_8hh.html" title="../../MPD/Client.hh" alt="" coords="533,155,664,181"/><area shape="rect" id="node64" href="AbstractClientUser_8hh.html" title="../../MPD/AbstractClientUser.hh" alt="" coords="517,80,725,107"/><area shape="rect" id="node67" href="AbstractSettings_8hh.html" title="AbstractSettings.hh" alt="" coords="750,80,887,107"/><area shape="rect" id="node11" href="Model_8hh.html" title="Model.hh" alt="" coords="99,155,172,181"/><area shape="rect" id="node22" href="Singleton_8hh.html" title="../Utils/Singleton.hh" alt="" coords="198,155,335,181"/><area shape="rect" id="node16" href="Path_8hh.html" title="../Init/Path.hh" alt="" coords="5,229,107,256"/><area shape="rect" id="node26" href="BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="401,229,505,256"/><area shape="rect" id="node56" href="AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="533,229,664,256"/><area shape="rect" id="node58" href="AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="754,379,909,405"/><area shape="rect" id="node28" href="Listener_8hh.html" title="Listener.hh" alt="" coords="410,304,496,331"/><area shape="rect" id="node42" href="Connection_8hh.html" title="Connection.hh" alt="" coords="189,453,296,480"/><area shape="rect" id="node37" href="Status_8hh.html" title="Status.hh" alt="" coords="599,453,677,480"/><area shape="rect" id="node40" href="NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="402,379,504,405"/><area shape="rect" id="node46" href="Statistics_8hh.html" title="Statistics.hh" alt="" coords="386,453,480,480"/><area shape="rect" id="node50" href="Song_8hh.html" title="Song.hh" alt="" coords="505,453,575,480"/><area shape="rect" id="node61" href="Directory_8hh.html" title="Directory.hh" alt="" coords="769,453,863,480"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -108,10 +108,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1SettingsPlayback.html">Browser::SettingsPlayback</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Playback <a class="el" href="classBrowser_1_1Settings.html" title="The Settingsbrowser shown in the sidebar.">Settings</a> Tab.  <a href="classBrowser_1_1SettingsPlayback.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBrowser.html">Browser</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Test. </p>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>The <a class="el" href="namespaceBrowser.html" title="The Browser contains all Browsers, and related classes, shown in the sidebar.">Browser</a> contains all Browsers, and related classes, shown in the sidebar. </p>
 <br/></td></tr>
 </table>
 </div><!-- contents -->
@@ -132,7 +133,7 @@ Namespaces</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 17:28:27 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 18:12:52 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

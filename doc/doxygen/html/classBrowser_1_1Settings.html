@@ -105,6 +105,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Browser::Settings" --><!-- doxytag: inherits="AbstractBrowser" -->
+<p>The Settingsbrowser shown in the sidebar.  
+ <a href="classBrowser_1_1Settings.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Settings_8hh_source.html">Settings.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Browser::Settings:</div>
@@ -126,12 +129,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Settings.html#a55c91e4d3d40acff4feb04a9d428de75">Settings</a> (<a class="el" href="classMPD_1_1Client.html">MPD::Client</a> &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder, <a class="el" href="classGManager_1_1Trayicon.html">GManager::Trayicon</a> *tray)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Settings.html#a7f752dbb3ba4c035bbf8d04c0c93fba1">~Settings</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::Widget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Settings.html#aa3a07587d5642fb21e8e591b55dc4732">get_container</a> (void)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell BrowserList which element to manage.  <a href="#aa3a07587d5642fb21e8e591b55dc4732"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented from <a class="el" href="classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist.">AbstractBrowser</a>.  <a href="#aa3a07587d5642fb21e8e591b55dc4732"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1Settings.html#a0f660aeb61b832e654fdcd92b3bd62d1">settings_changed</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when saving the <a class="el" href="namespaceConfig.html" title="The Config namespace offers macros to manipulate and get values from the config.">Config</a> (makes ok/cancel insensitive)  <a href="#a0f660aeb61b832e654fdcd92b3bd62d1"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="Settings_8hh_source.html#l00051">51</a> of file <a class="el" href="Settings_8hh_source.html">Settings.hh</a>.</p>
+<div class="textblock"><p>The Settingsbrowser shown in the sidebar. </p>
+
+<p>Definition at line <a class="el" href="Settings_8hh_source.html#l00054">54</a> of file <a class="el" href="Settings_8hh_source.html">Settings.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a55c91e4d3d40acff4feb04a9d428de75"></a><!-- doxytag: member="Browser::Settings::Settings" ref="a55c91e4d3d40acff4feb04a9d428de75" args="(MPD::Client &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder, GManager::Trayicon *tray)" -->
 <div class="memitem">
@@ -198,9 +203,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Tell BrowserList which element to manage. </p>
-<p>You are supposed to override this.</p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>A reference to the containing widget of the browser </dd></dl>
+<p>Implemented from <a class="el" href="classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist.">AbstractBrowser</a>. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
 
 <p>Implements <a class="el" href="classAbstractBrowser.html#aeb2a146bb6f19235ceff15aa314e1c07">AbstractBrowser</a>.</p>
 
@@ -220,6 +224,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Called when saving the <a class="el" href="namespaceConfig.html" title="The Config namespace offers macros to manipulate and get values from the config.">Config</a> (makes ok/cancel insensitive) </p>
 
 </div>
 </div>
@@ -244,7 +250,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 17:28:27 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 18:12:52 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

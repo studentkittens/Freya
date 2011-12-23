@@ -1,5 +1,5 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="5,183,176,289"/>
 <area shape="rect" id="node5" href="$classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="201,175,364,297"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="{Browser::SettingsOutputs\n||+ SettingsOutputs()\l+ ~SettingsOutputs()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l+ add_item()\l# on_client_update()\l# on_connection_change()\l# on_toggle()\l# on_select()\l}" alt="" coords="389,131,563,341"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="389,131,563,341"/>
 </map>

@@ -23,7 +23,6 @@ var searchData=
   ['settingsnetwork',['SettingsNetwork',['../classBrowser_1_1SettingsNetwork.html#af46cd7f0457fe63bd1e79c2629ae89ba',1,'Browser::SettingsNetwork']]],
   ['settingsoutputs',['SettingsOutputs',['../classBrowser_1_1SettingsOutputs.html#abe833fd95ac2b53a0f277b384dd93597',1,'Browser::SettingsOutputs']]],
   ['settingsplayback',['SettingsPlayback',['../classBrowser_1_1SettingsPlayback.html#aa8c978029b7b9ef0161e332494fda1c7',1,'Browser::SettingsPlayback']]],
-  ['settingssub',['SettingsSub',['../classBrowser_1_1SettingsSub.html#a691a421f36cee47409eb84ff731a95b5',1,'Browser::SettingsSub']]],
   ['signal_5fclient_5fupdate',['signal_client_update',['../classGManager_1_1Heartbeat.html#a7a08bca0b290d181295b8b2dc60c9535',1,'GManager::Heartbeat::signal_client_update()'],['../classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e',1,'MPD::BaseClient::signal_client_update()']]],
   ['signal_5fclient_5fupdate_5fdata',['signal_client_update_data',['../classMPD_1_1Listener.html#af2c0c7c63c430b35442f3885d3aed99f',1,'MPD::Listener']]],
   ['signal_5fconnection_5fchange',['signal_connection_change',['../classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c',1,'MPD::BaseClient::signal_connection_change()'],['../classMPD_1_1Connection.html#ac06e6530271d3637fb83714f0f49ad1a',1,'MPD::Connection::signal_connection_change()']]],

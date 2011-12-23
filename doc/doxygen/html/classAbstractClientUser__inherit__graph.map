@@ -5,8 +5,8 @@
 <area shape="rect" id="node9" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="565,212,736,319"/>
 <area shape="rect" id="node11" href="$classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist." alt="" coords="760,212,880,319"/>
 <area shape="rect" id="node13" href="$classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="905,205,1068,326"/>
-<area shape="rect" id="node15" href="$classBrowser_1_1SettingsOutputs.html" title="{Browser::SettingsOutputs\n||+ SettingsOutputs()\l+ ~SettingsOutputs()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l+ add_item()\l# on_client_update()\l# on_connection_change()\l# on_toggle()\l# on_select()\l}" alt="" coords="1093,161,1267,370"/>
-<area shape="rect" id="node17" href="$classBrowser_1_1SettingsPlayback.html" title="{Browser::SettingsPlayback\n||+ SettingsPlayback()\l+ ~SettingsPlayback()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l}" alt="" coords="1291,197,1471,333"/>
+<area shape="rect" id="node15" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="1093,161,1267,370"/>
+<area shape="rect" id="node17" href="$classBrowser_1_1SettingsPlayback.html" title="Playback Settings Tab." alt="" coords="1291,197,1471,333"/>
 <area shape="rect" id="node19" href="$classGManager_1_1BrowserList.html" title="List of Browsers in sidebar." alt="" coords="1495,212,1653,319"/>
 <area shape="rect" id="node21" href="$classGManager_1_1Heartbeat.html" title="A software clock that emits a signal every 500ms." alt="" coords="1679,175,1837,355"/>
 <area shape="rect" id="node23" href="$classGManager_1_1MenuList.html" title="The Manager for the Topmenus." alt="" coords="1863,219,2005,311"/>

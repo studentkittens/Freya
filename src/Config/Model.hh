@@ -38,6 +38,9 @@
 
 namespace Config
 {
+    /**
+     * @brief Data needed by Config::Handler
+     */
     class Model
     {
     public:

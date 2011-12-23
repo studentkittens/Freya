@@ -59,7 +59,6 @@ namespace Browser
         /* Read in data from client, if not cached yet */
         if(v.empty())
         {
-            g_message("Caching..");
             /* Get files from the server */
             lastVec = (CacheVectorType*)&v;
             mp_Client->fill_filelist(*this,Path);

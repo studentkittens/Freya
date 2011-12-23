@@ -36,12 +36,12 @@
 #include "../Config/Handler.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/AbstractClientUser.hh"
-#include "SettingsSub.hh"
+#include "AbstractSettings.hh"
 
 namespace Browser
 {
     class Settings;
-    class SettingsPlayback : public SettingsSub, public AbstractClientUser
+    class SettingsPlayback : public AbstractSettings, public AbstractClientUser
     {
         public:
             SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);

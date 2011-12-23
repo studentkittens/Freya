@@ -33,7 +33,7 @@
 
 #include <gtkmm.h>
 
-#include "SettingsSub.hh"
+#include "AbstractSettings.hh"
 #include "OutputsModelColumns.hh"
 #include "../MPD/AbstractItemlist.hh"
 #include "../MPD/AbstractClientUser.hh"
@@ -43,7 +43,7 @@
 namespace Browser
 {
     class Settings;
-    class SettingsOutputs : public SettingsSub, public AbstractItemlist, public AbstractClientUser
+    class SettingsOutputs : public AbstractSettings, public AbstractItemlist, public AbstractClientUser
     {
         public:
             SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);

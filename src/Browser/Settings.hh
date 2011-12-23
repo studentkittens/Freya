@@ -38,7 +38,7 @@
 #include "SettingsNetwork.hh"
 #include "SettingsGeneral.hh"
 #include "SettingsOutputs.hh"
-#include "SettingsSub.hh"
+#include "AbstractSettings.hh"
 
 #include "AbstractBrowser.hh"
 #include "../Config/Handler.hh"
@@ -61,7 +61,7 @@ namespace Browser
             void on_button_ok(void);
             void on_button_cancel(void);
             void on_button_reset(void);
-            vector<SettingsSub*> sub_sections;
+            vector<AbstractSettings*> sub_sections;
 
             /* Widgets */
             Gtk::Button *ok_button, *cancel_button, *reset_button;

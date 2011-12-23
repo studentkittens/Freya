@@ -34,13 +34,13 @@
 #include <gtkmm.h>
 
 #include "../Config/Handler.hh"
-#include "SettingsSub.hh"
+#include "AbstractSettings.hh"
 #include "../Avahi/Browser.hh"
 
 namespace Browser
 {
     class Settings;
-    class SettingsNetwork : public  SettingsSub
+    class SettingsNetwork : public  AbstractSettings
     {
         public:
             SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);

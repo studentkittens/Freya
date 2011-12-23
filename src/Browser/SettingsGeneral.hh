@@ -35,12 +35,12 @@
 
 #include "../Config/Handler.hh"
 #include "../GManager/Trayicon.hh"
-#include "SettingsSub.hh"
+#include "AbstractSettings.hh"
 
 namespace Browser
 {
     class Settings;
-    class SettingsGeneral : public SettingsSub
+    class SettingsGeneral : public AbstractSettings
     {
         public:
             SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon *trayptr);

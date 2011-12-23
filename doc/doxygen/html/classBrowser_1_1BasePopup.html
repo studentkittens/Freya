@@ -107,41 +107,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Browser::BasePopup" -->
+<p>A Baseclass for Widgets that want to implement easily popup widgets.  
+ <a href="classBrowser_1_1BasePopup.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Browser::BasePopup:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBrowser_1_1BasePopup__inherit__graph.png" border="0" usemap="#Browser_1_1BasePopup_inherit__map" alt="Inheritance graph"/></div>
 <map name="Browser_1_1BasePopup_inherit__map" id="Browser_1_1BasePopup_inherit__map">
-<area shape="rect" id="node3" href="classBrowser_1_1DatabasePopup.html" title="{Browser::DatabasePopup\n||+ DatabasePopup()\l}" alt="" coords="5,235,176,312"/><area shape="rect" id="node5" href="classBrowser_1_1PlaylistManagerPopup.html" title="{Browser::PlaylistManagerPopup\n||+ PlaylistManagerPopup()\l}" alt="" coords="200,235,408,312"/><area shape="rect" id="node7" href="classBrowser_1_1QueuePopup.html" title="{Browser::QueuePopup\n||+ QueuePopup()\l}" alt="" coords="433,235,585,312"/><area shape="rect" id="node9" href="classGManager_1_1Trayicon.html" title="Manager for the trayicon." alt="" coords="610,235,749,312"/></map>
+<area shape="rect" id="node3" href="classBrowser_1_1DatabasePopup.html" title="The popup that shows up when rightclickin an icon." alt="" coords="5,219,176,296"/><area shape="rect" id="node5" href="classBrowser_1_1PlaylistManagerPopup.html" title="The Popup for Browser::PlaylistManager." alt="" coords="200,219,408,296"/><area shape="rect" id="node7" href="classBrowser_1_1QueuePopup.html" title="The Popup for Browser::PlaylistManager." alt="" coords="433,219,585,296"/><area shape="rect" id="node9" href="classGManager_1_1Trayicon.html" title="Manager for the trayicon." alt="" coords="610,219,749,296"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Browser::BasePopup:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBrowser_1_1BasePopup__coll__graph.png" border="0" usemap="#Browser_1_1BasePopup_coll__map" alt="Collaboration graph"/></div>
+<map name="Browser_1_1BasePopup_coll__map" id="Browser_1_1BasePopup_coll__map">
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#a0d78897b01fa9ca67f96a8e5cda57d4b">BasePopup</a> (Gtk::Widget *to_register, Glib::ustring &amp;ui_definition)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#ab536917e89330409369105c74c32009f">menu_popup</a> (GdkEventButton *event)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Glib::SignalProxy0&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#aefb430f370f4e7eaf4b1d3d779312070">get_action</a> (const char *name)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a signal proxy of a certain Gtk::Action in the menu.  <a href="#aefb430f370f4e7eaf4b1d3d779312070"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac">menu_add_item</a> (Glib::RefPtr&lt; Gtk::Action &gt; &amp;action, Glib::ustring item_name, Glib::ustring item_label, Glib::ustring item_tooltip, Gtk::StockID icon)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an item to the Menu Popup.  <a href="#a1e9a7ed9e04c13fe4a099e67024141ac"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05">menu_construct</a> (Glib::ustring menu_name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this when done with adding actions Convention: Menu must be called "PopMenu" in def.  <a href="#ab8d49d3892bf338ba451e60728feae05"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this when done with adding actions.  <a href="#ab8d49d3892bf338ba451e60728feae05"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Glib::RefPtr&lt; Gtk::UIManager &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">m_refUIManager</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This object stores the parsed UI Definition.  <a href="#ab0a4588eb5b33b273c7d89050ce5d4e8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Glib::RefPtr&lt; Gtk::ActionGroup &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">m_refActionGroup</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">All actions are added to this object.  <a href="#a3c973ebad14569817861ebc1bc7555ad"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Glib::ustring *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda">m_UiDefinition</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual definition.  <a href="#ad79adeca7fca372b1fe4e65c375a3eda"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::Menu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e">mp_Popup</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The visible popup.  <a href="#a56add1e6c06f1b400dd664a74adb672e"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00038">38</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
+<div class="textblock"><p>A Baseclass for Widgets that want to implement easily popup widgets. </p>
+<p>This class registers the needed signals and parses a UI Definition given by the derived class. See <a class="el" href="classBrowser_1_1QueuePopup.html" title="The Popup for Browser::PlaylistManager.">QueuePopup</a>, <a class="el" href="classBrowser_1_1DatabasePopup.html" title="The popup that shows up when rightclickin an icon.">DatabasePopup</a> or <a class="el" href="classBrowser_1_1PlaylistManagerPopup.html" title="The Popup for Browser::PlaylistManager.">PlaylistManagerPopup</a> for examples how this exactly works. </p>
+
+<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00047">47</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0d78897b01fa9ca67f96a8e5cda57d4b"></a><!-- doxytag: member="Browser::BasePopup::BasePopup" ref="a0d78897b01fa9ca67f96a8e5cda57d4b" args="(Gtk::Widget *to_register, Glib::ustring &amp;ui_definition)" -->
 <div class="memitem">
@@ -167,6 +178,13 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_register</td><td>The widget to register, for example a Gtk::TreeView </td></tr>
+    <tr><td class="paramname">ui_definition</td><td>The ui definition defining the Menu structure </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -240,6 +258,18 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Add an item to the Menu Popup. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>the action defined in the UI definition </td></tr>
+    <tr><td class="paramname">item_name</td><td>The name of the titem </td></tr>
+    <tr><td class="paramname">item_label</td><td>The visual name of the item </td></tr>
+    <tr><td class="paramname">item_tooltip</td><td>A tooltip, that is actually not shown </td></tr>
+    <tr><td class="paramname">icon</td><td>The icon shown lefthand to the label </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ab8d49d3892bf338ba451e60728feae05"></a><!-- doxytag: member="Browser::BasePopup::menu_construct" ref="ab8d49d3892bf338ba451e60728feae05" args="(Glib::ustring menu_name)" -->
@@ -257,24 +287,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Call this when done with adding actions Convention: Menu must be called "PopMenu" in def. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab536917e89330409369105c74c32009f"></a><!-- doxytag: member="Browser::BasePopup::menu_popup" ref="ab536917e89330409369105c74c32009f" args="(GdkEventButton *event)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classBrowser_1_1BasePopup.html#ab536917e89330409369105c74c32009f">Browser::BasePopup::menu_popup</a> </td>
-          <td>(</td>
-          <td class="paramtype">GdkEventButton *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>Call this when done with adding actions. </p>
 
 </div>
 </div>
@@ -290,7 +303,9 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00057">57</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
+<p>All actions are added to this object. </p>
+
+<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00077">77</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
 
 </div>
 </div>
@@ -305,7 +320,9 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00056">56</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
+<p>This object stores the parsed UI Definition. </p>
+
+<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00073">73</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
 
 </div>
 </div>
@@ -320,7 +337,9 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00058">58</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
+<p>The actual definition. </p>
+
+<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00081">81</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
 
 </div>
 </div>
@@ -335,7 +354,9 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00059">59</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
+<p>The visible popup. </p>
+
+<p>Definition at line <a class="el" href="BasePopup_8hh_source.html#l00085">85</a> of file <a class="el" href="BasePopup_8hh_source.html">BasePopup.hh</a>.</p>
 
 </div>
 </div>
@@ -360,7 +381,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 22 2011 23:27:42 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 16:53:37 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

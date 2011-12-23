@@ -76,14 +76,39 @@ namespace MPD
              */
             const char * get_tag(enum mpd_tag_type type, unsigned idx);
             /**
-             * @brief 
+             * @brief Formats the data of the song into a string
              *
-             * @param format
-             * @param markup
+             * You can use the following formatting strings inside format
+             *   - artist
+             *   - title
+             *   - album
+             *   - track
+             *   - name
+             *   - data
+             *   - album_artist
+             *   - genre
+             *   - composer
+             *   - performer
+             *   - comment
+             *   - disc
+             *   
+             * Each of these values should be placed inside ${fill_tagtype_in_here},
+             * If the tagtype is not known, it gets not escaped, if the tag is empty,
+             * it is escaped with "unknown".
+             *
+             * If markup ist set the string gets already markup'd for use in Gtk Widgets.
+             *
+             * @param format The format prototype
+             * @param markup if markup should be done (see Glib::Markup::escape())
+             *
+             * @return the ready formatted string
+             */
+            Glib::ustring song_format(const char* format, bool markup=true);
+            /**
+             * @brief Get duratin of song in seconds
              *
              * @return 
              */
-            Glib::ustring song_format(const char* format, bool markup=true);
             unsigned get_duration(void);
             /**
              * @brief Get seconds since last modifieGet seconds since last modifieff

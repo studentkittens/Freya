@@ -43,12 +43,12 @@
 #include "../GManager/NotifyManager.hh"
 #include "../GManager/Trayicon.hh"
 
-#include "../Browser/Queue.hh"
-#include "../Browser/PlaylistManager.hh"
-#include "../Browser/Database.hh"
-#include "../Browser/StatBrowser.hh"
-#include "../Browser/Settings.hh"
-#include "../Browser/Fortuna.hh"
+#include "../Browser/Queue/Queue.hh"
+#include "../Browser/PlaylistManager/PlaylistManager.hh"
+#include "../Browser/Database/Database.hh"
+#include "../Browser/Statistics/StatBrowser.hh"
+#include "../Browser/Settings/Settings.hh"
+#include "../Browser/Fortuna/Fortuna.hh"
 #include "../Log/Writer.hh"
 
 #include "../Utils/Utils.hh"

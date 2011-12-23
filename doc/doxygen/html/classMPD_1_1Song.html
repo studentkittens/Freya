@@ -122,7 +122,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#a79f51b7bf3edbd09a348dc9445c5e971">get_tag</a> (enum mpd_tag_type type, unsigned idx)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a certain tag from the song.  <a href="#a79f51b7bf3edbd09a348dc9445c5e971"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#aac5bbd5d497dbc4af5a9a540a81c0bff">song_format</a> (const char *format, bool markup=true)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the data of the song into a string.  <a href="#aac5bbd5d497dbc4af5a9a540a81c0bff"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#a2741b1880486ff1cf860badbcb99befd">get_duration</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get duratin of song in seconds.  <a href="#a2741b1880486ff1cf860badbcb99befd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#ac1645568a1b2f957644863e68f7d69fb">get_last_modified</a> (void)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get seconds since last modifieGet seconds since last modifieff.  <a href="#ac1645568a1b2f957644863e68f7d69fb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#ad0a1286c0c703b0bde67108272b61739">set_pos</a> (unsigned pos)</td></tr>
@@ -220,6 +222,9 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Get duratin of song in seconds. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a1caec3e5310483060dc5ebe6dc22cbd4"></a><!-- doxytag: member="MPD::Song::get_id" ref="a1caec3e5310483060dc5ebe6dc22cbd4" args="(void)" -->
@@ -308,7 +313,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Get a certain tag from the song. </p>
-<p>use <a class="el" href="classMPD_1_1Song.html#aac5bbd5d497dbc4af5a9a540a81c0bff">song_format()</a> if you just want a easy way to convert a <a class="el" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> to a nice string.</p>
+<p>use <a class="el" href="classMPD_1_1Song.html#aac5bbd5d497dbc4af5a9a540a81c0bff" title="Formats the data of the song into a string.">song_format()</a> if you just want a easy way to convert a <a class="el" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> to a nice string.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>The typ of the tag </td></tr>
@@ -390,14 +395,33 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Formats the data of the song into a string. </p>
+<p>You can use the following formatting strings inside format</p>
+<ul>
+<li>artist</li>
+<li>title</li>
+<li>album</li>
+<li>track</li>
+<li>name</li>
+<li>data</li>
+<li>album_artist</li>
+<li>genre</li>
+<li>composer</li>
+<li>performer</li>
+<li>comment</li>
+<li>disc</li>
+</ul>
+<p>Each of these values should be placed inside ${fill_tagtype_in_here}, If the tagtype is not known, it gets not escaped, if the tag is empty, it is escaped with "unknown".</p>
+<p>If markup ist set the string gets already markup'd for use in Gtk Widgets.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">format</td><td></td></tr>
-    <tr><td class="paramname">markup</td><td></td></tr>
+    <tr><td class="paramname">format</td><td>The format prototype </td></tr>
+    <tr><td class="paramname">markup</td><td>if markup should be done (see Glib::Markup::escape())</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the ready formatted string </dd></dl>
 
 </div>
 </div>
@@ -422,7 +446,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 22 2011 23:27:42 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 16:53:38 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

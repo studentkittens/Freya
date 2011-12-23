@@ -106,6 +106,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Browser::QueueModelColumns" --><!-- doxytag: inherits="Gtk::TreeModel::ColumnRecord" -->
+<p>The Column Definition of <a class="el" href="classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist.">Browser::Queue</a>.  
+ <a href="classBrowser_1_1QueueModelColumns.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Browser::QueueModelColumns:</div>
@@ -128,17 +131,24 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::TreeModelColumn&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueModelColumns.html#a3f80b74d9b56ad328ff5058f8399bf43">m_col_id</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID of the Song.  <a href="#a3f80b74d9b56ad328ff5058f8399bf43"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::TreeModelColumn&lt; unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueModelColumns.html#a467016957119bf14d6a928fb8746c0c5">m_col_pos</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The Position of the Song in the <a class="el" href="classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist.">Queue</a>.  <a href="#a467016957119bf14d6a928fb8746c0c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::TreeModelColumn<br class="typebreak"/>
 &lt; Glib::ustring &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueModelColumns.html#a503cf5785e6e95c464cb27c002b3f352">m_col_title</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Titlestring.  <a href="#a503cf5785e6e95c464cb27c002b3f352"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::TreeModelColumn<br class="typebreak"/>
 &lt; Glib::ustring &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueModelColumns.html#a2687450ca9eebea98b488d1b62a1a0d2">m_col_album</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Albumstring.  <a href="#a2687450ca9eebea98b488d1b62a1a0d2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Gtk::TreeModelColumn<br class="typebreak"/>
 &lt; Glib::ustring &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueModelColumns.html#a1f29d0c49aec21044e7bc63a585df8fb">m_col_artist</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Artiststring.  <a href="#a1f29d0c49aec21044e7bc63a585df8fb"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00009">9</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
+<div class="textblock"><p>The Column Definition of <a class="el" href="classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist.">Browser::Queue</a>. </p>
+<p>This is a separate (as opposed to a local nested class) because it is also needed by <a class="el" href="classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue.">Browser::QueueMerger</a> </p>
+
+<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00014">14</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1b0aaa7b2427a608aa01eb70997ea4ce"></a><!-- doxytag: member="Browser::QueueModelColumns::QueueModelColumns" ref="a1b0aaa7b2427a608aa01eb70997ea4ce" args="()" -->
 <div class="memitem">
@@ -168,7 +178,9 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00018">18</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
+<p>Albumstring. </p>
+
+<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00039">39</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
 
 </div>
 </div>
@@ -183,7 +195,9 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00019">19</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
+<p>Artiststring. </p>
+
+<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00043">43</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
 
 </div>
 </div>
@@ -198,7 +212,10 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00015">15</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
+<p>The ID of the Song. </p>
+<p>Needed for some commands </p>
+
+<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00025">25</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
 
 </div>
 </div>
@@ -213,7 +230,10 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00016">16</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
+<p>The Position of the Song in the <a class="el" href="classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist.">Queue</a>. </p>
+<p>Needed for some commands and for merging </p>
+
+<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00031">31</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
 
 </div>
 </div>
@@ -228,7 +248,9 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00017">17</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
+<p>Titlestring. </p>
+
+<p>Definition at line <a class="el" href="QueueModelColumns_8hh_source.html#l00035">35</a> of file <a class="el" href="QueueModelColumns_8hh_source.html">QueueModelColumns.hh</a>.</p>
 
 </div>
 </div>
@@ -253,7 +275,7 @@ Data Fields</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 22 2011 23:27:42 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 16:53:37 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

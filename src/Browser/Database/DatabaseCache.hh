@@ -34,18 +34,24 @@
 
 #include "../../MPD/AbstractClientUser.hh"
 #include "../../MPD/AbstractFilebrowser.hh"
+#include "../../MPD/AbstractFileGenerator.hh"
 
 namespace Browser
 {
     /**
      * @brief Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data 
      *
+     * Note: It is actually a Proxy FOR MPD::Client, but used by Browser::Database.
+     *
      * Once the Database requests a list of files for a certain path, a hashmap is looked up if it's already
      * cached, if not DatabaseCache asks the client for the filelist.
      *
      * As Hashmap a std::map was used, with the Path as key and a vector of values as Hashvalue.
      */
-    class DatabaseCache : public AbstractClientUser, public AbstractFilebrowser
+    class DatabaseCache : 
+        public AbstractClientUser,
+        public AbstractFilebrowser,
+        public AbstractFileGenerator
     {
         public:
 
@@ -58,7 +64,7 @@ namespace Browser
              * @param data_model 
              * @param path
              */
-            void fill_filelist_from_cache(AbstractFilebrowser& data_model, Glib::ustring path);
+            void fill_filelist(AbstractFilebrowser& data_model, const char * path);
 
         private:
    

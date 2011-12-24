@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['_7eabstractsettings',['~AbstractSettings',['../classBrowser_1_1AbstractSettings.html#afa7a01e775483eda445d2608a738819b',1,'Browser::AbstractSettings']]],
   ['_7ebrowser',['~Browser',['../classAvahi_1_1Browser.html#a097c931d753a1cc434fb98e86d656151',1,'Avahi::Browser']]],
   ['_7eclient',['~Client',['../classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2',1,'MPD::Client']]],
   ['_7econnection',['~Connection',['../classMPD_1_1Connection.html#af5af1bae23ac431151fb6f7c7171acf2',1,'MPD::Connection']]],
@@ -23,7 +24,6 @@ var searchData=
   ['_7esettingsnetwork',['~SettingsNetwork',['../classBrowser_1_1SettingsNetwork.html#a478836da3000450f4a5e2d54754e46d0',1,'Browser::SettingsNetwork']]],
   ['_7esettingsoutputs',['~SettingsOutputs',['../classBrowser_1_1SettingsOutputs.html#aba5b31b6fce8713f243e26ade28b3acb',1,'Browser::SettingsOutputs']]],
   ['_7esettingsplayback',['~SettingsPlayback',['../classBrowser_1_1SettingsPlayback.html#a04504a6bb846cd4d0e1eb2ac40426df4',1,'Browser::SettingsPlayback']]],
-  ['_7esettingssub',['~SettingsSub',['../classBrowser_1_1SettingsSub.html#a04e225068552aec4c06eee0f902ccdbf',1,'Browser::SettingsSub']]],
   ['_7esong',['~Song',['../classMPD_1_1Song.html#ab047abbeb824f9eef3523a4d88f1bb5f',1,'MPD::Song']]],
   ['_7estatbrowser',['~StatBrowser',['../classBrowser_1_1StatBrowser.html#a95957442472308755bdc5438a67b6a36',1,'Browser::StatBrowser']]],
   ['_7estatistics',['~Statistics',['../classMPD_1_1Statistics.html#aaec0850cc1c7a5358118077754ee7d34',1,'MPD::Statistics']]],

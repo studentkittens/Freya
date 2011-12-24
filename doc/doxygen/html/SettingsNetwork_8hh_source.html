@@ -116,37 +116,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00034"></a>00034 <span class="preprocessor">#include &lt;gtkmm.h&gt;</span>
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 <span class="preprocessor">#include &quot;../../Config/Handler.hh&quot;</span>
-<a name="l00037"></a>00037 <span class="preprocessor">#include &quot;<a class="code" href="SettingsSub_8hh.html">SettingsSub.hh</a>&quot;</span>
-<a name="l00038"></a>00038 <span class="preprocessor">#include &quot;../../Avahi/Browser.hh&quot;</span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include &quot;../../Avahi/Browser.hh&quot;</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include &quot;<a class="code" href="AbstractSettings_8hh.html">AbstractSettings.hh</a>&quot;</span>
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040 <span class="keyword">namespace </span>Browser
 <a name="l00041"></a>00041 {
 <a name="l00042"></a>00042     <span class="keyword">class </span>Settings;
-<a name="l00043"></a><a class="code" href="classBrowser_1_1SettingsNetwork.html">00043</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1SettingsNetwork.html">SettingsNetwork</a> : <span class="keyword">public</span>  <a class="code" href="classBrowser_1_1SettingsSub.html">SettingsSub</a>
-<a name="l00044"></a>00044     {
-<a name="l00045"></a>00045         <span class="keyword">public</span>:
-<a name="l00046"></a>00046             <a class="code" href="classBrowser_1_1SettingsNetwork.html#af46cd7f0457fe63bd1e79c2629ae89ba">SettingsNetwork</a>(<span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt; &amp;builder,<a class="code" href="classBrowser_1_1Settings.html">Browser::Settings</a> * sett);
-<a name="l00047"></a>00047             <a class="code" href="classBrowser_1_1SettingsNetwork.html#a478836da3000450f4a5e2d54754e46d0">~SettingsNetwork</a>();
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1SettingsNetwork.html#a3ab61a355ba16c4ee8a7bce73a6b8697">accept_new_settings</a>(<span class="keywordtype">void</span>);
-<a name="l00050"></a>00050             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1SettingsNetwork.html#a462474ecae13b9b823bfc6b2c465f021">decline_new_settings</a>(<span class="keywordtype">void</span>);
-<a name="l00051"></a>00051             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1SettingsNetwork.html#a5bb1d10cf7d9e7642d9164d2b8b4e2ef">reset_settings</a>(<span class="keywordtype">void</span>);
+<a name="l00043"></a>00043 
+<a name="l00047"></a><a class="code" href="classBrowser_1_1SettingsNetwork.html">00047</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1SettingsNetwork.html" title="Network Settings Tab.">SettingsNetwork</a> : <span class="keyword">public</span> <a class="code" href="classBrowser_1_1AbstractSettings.html" title="Abstract base class for every Tab in the Settingsbrowser.">AbstractSettings</a> 
+<a name="l00048"></a>00048     {
+<a name="l00049"></a>00049         <span class="keyword">public</span>:
+<a name="l00050"></a>00050             <a class="code" href="classBrowser_1_1SettingsNetwork.html#af46cd7f0457fe63bd1e79c2629ae89ba">SettingsNetwork</a>(<span class="keyword">const</span> Glib::RefPtr&lt;Gtk::Builder&gt; &amp;builder,<a class="code" href="classBrowser_1_1Settings.html" title="The Settingsbrowser shown in the sidebar.">Browser::Settings</a> * sett);
+<a name="l00051"></a>00051             <a class="code" href="classBrowser_1_1SettingsNetwork.html#a478836da3000450f4a5e2d54754e46d0">~SettingsNetwork</a>();
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053         <span class="keyword">private</span>:
-<a name="l00054"></a>00054             <span class="keywordtype">void</span> show_avahi(<span class="keywordtype">void</span>);
-<a name="l00055"></a>00055             <span class="keywordtype">void</span> selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> port);
-<a name="l00056"></a>00056             Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058             <span class="comment">/* Widgets */</span>
-<a name="l00059"></a>00059             <a class="code" href="classAvahi_1_1Browser.html" title="This class offers a simple Zeroconf Serverbrowser.">Avahi::Browser</a> * handle;
-<a name="l00060"></a>00060             Gtk::Entry *ip;
-<a name="l00061"></a>00061             Gtk::SpinButton *port, *recon_timeout;
-<a name="l00062"></a>00062             Gtk::Button *avahi;
-<a name="l00063"></a>00063             Gtk::CheckButton *autoconnect;
-<a name="l00064"></a>00064             Gtk::MessageDialog *avahi_warning;
-<a name="l00065"></a>00065     };
-<a name="l00066"></a>00066 }
-<a name="l00067"></a>00067 <span class="preprocessor">#endif</span>
+<a name="l00053"></a>00053             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1SettingsNetwork.html#a3ab61a355ba16c4ee8a7bce73a6b8697">accept_new_settings</a>(<span class="keywordtype">void</span>);
+<a name="l00054"></a>00054             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1SettingsNetwork.html#a462474ecae13b9b823bfc6b2c465f021">decline_new_settings</a>(<span class="keywordtype">void</span>);
+<a name="l00055"></a>00055             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1SettingsNetwork.html#a5bb1d10cf7d9e7642d9164d2b8b4e2ef">reset_settings</a>(<span class="keywordtype">void</span>);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057         <span class="keyword">private</span>:
+<a name="l00058"></a>00058             <span class="keywordtype">void</span> show_avahi(<span class="keywordtype">void</span>);
+<a name="l00059"></a>00059             <span class="keywordtype">void</span> selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> port);
+<a name="l00060"></a>00060             Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062             <span class="comment">/* Widgets */</span>
+<a name="l00063"></a>00063             <a class="code" href="classAvahi_1_1Browser.html" title="This class offers a simple Zeroconf Serverbrowser.">Avahi::Browser</a> * handle;
+<a name="l00064"></a>00064             Gtk::Entry *ip;
+<a name="l00065"></a>00065             Gtk::SpinButton *port, *recon_timeout;
+<a name="l00066"></a>00066             Gtk::Button *avahi;
+<a name="l00067"></a>00067             Gtk::CheckButton *autoconnect;
+<a name="l00068"></a>00068             Gtk::MessageDialog *avahi_warning;
+<a name="l00069"></a>00069     };
+<a name="l00070"></a>00070 }
+<a name="l00071"></a>00071 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -165,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 17:28:27 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 18:12:52 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -47,6 +47,8 @@ class AbstractItemlist
          * @param item a dynamically allocated item
          */
         virtual void add_item(void * item) = 0; 
+            
+        virtual ~AbstractItemlist() {};
 };
 
 #endif

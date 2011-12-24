@@ -105,21 +105,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Browser::SettingsOutputs Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Browser::SettingsOutputs" --><!-- doxytag: inherits="Browser::SettingsSub,AbstractItemlist,AbstractClientUser" -->
+<!-- doxytag: class="Browser::SettingsOutputs" --><!-- doxytag: inherits="Browser::AbstractSettings,AbstractItemlist,AbstractClientUser" -->
+<p>Outputlist Tab.  
+ <a href="classBrowser_1_1SettingsOutputs.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SettingsOutputs_8hh_source.html">SettingsOutputs.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Browser::SettingsOutputs:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBrowser_1_1SettingsOutputs__inherit__graph.png" border="0" usemap="#Browser_1_1SettingsOutputs_inherit__map" alt="Inheritance graph"/></div>
 <map name="Browser_1_1SettingsOutputs_inherit__map" id="Browser_1_1SettingsOutputs_inherit__map">
-<area shape="rect" id="node2" href="classBrowser_1_1SettingsSub.html" title="{Browser::SettingsSub\n||+ SettingsSub()\l+ ~SettingsSub()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l}" alt="" coords="5,5,171,141"/><area shape="rect" id="node4" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="196,35,311,112"/><area shape="rect" id="node6" href="classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="335,20,509,127"/></map>
+<area shape="rect" id="node2" href="classBrowser_1_1AbstractSettings.html" title="Abstract base class for every Tab in the Settingsbrowser." alt="" coords="5,5,179,141"/><area shape="rect" id="node4" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="204,35,319,112"/><area shape="rect" id="node6" href="classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="343,20,517,127"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Browser::SettingsOutputs:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBrowser_1_1SettingsOutputs__coll__graph.png" border="0" usemap="#Browser_1_1SettingsOutputs_coll__map" alt="Collaboration graph"/></div>
 <map name="Browser_1_1SettingsOutputs_coll__map" id="Browser_1_1SettingsOutputs_coll__map">
-<area shape="rect" id="node2" href="classBrowser_1_1SettingsSub.html" title="{Browser::SettingsSub\n||+ SettingsSub()\l+ ~SettingsSub()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l}" alt="" coords="5,1283,171,1419"/><area shape="rect" id="node4" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="196,1312,311,1389"/><area shape="rect" id="node6" href="classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="335,1297,509,1404"/><area shape="rect" id="node8" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="325,627,520,1218"/><area shape="rect" id="node10" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="325,293,520,576"/><area shape="rect" id="node12" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="183,35,375,200"/><area shape="rect" id="node16" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="471,5,665,229"/></map>
+<area shape="rect" id="node2" href="classBrowser_1_1AbstractSettings.html" title="Abstract base class for every Tab in the Settingsbrowser." alt="" coords="5,1283,179,1419"/><area shape="rect" id="node4" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="204,1312,319,1389"/><area shape="rect" id="node6" href="classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="343,1297,517,1404"/><area shape="rect" id="node8" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="333,627,528,1218"/><area shape="rect" id="node10" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="333,293,528,576"/><area shape="rect" id="node12" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="191,35,383,200"/><area shape="rect" id="node16" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="479,5,673,229"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -141,8 +144,9 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1SettingsOutputs.html#a43ee4d1387e089f4e121bbd8c2d0c26f">on_select</a> (const Glib::RefPtr&lt; Gtk::TreeModel &gt; &amp;model, const Gtk::TreeModel::Path &amp;path, bool)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="SettingsOutputs_8hh_source.html#l00046">46</a> of file <a class="el" href="SettingsOutputs_8hh_source.html">SettingsOutputs.hh</a>.</p>
+<div class="textblock"><p>Outputlist Tab. </p>
+
+<p>Definition at line <a class="el" href="SettingsOutputs_8hh_source.html#l00050">50</a> of file <a class="el" href="SettingsOutputs_8hh_source.html">SettingsOutputs.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="abe833fd95ac2b53a0f277b384dd93597"></a><!-- doxytag: member="Browser::SettingsOutputs::SettingsOutputs" ref="abe833fd95ac2b53a0f277b384dd93597" args="(MPD::Client &amp;client, const Glib::RefPtr&lt; Gtk::Builder &gt; &amp;builder, Browser::Settings *sett)" -->
 <div class="memitem">
@@ -209,7 +213,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classBrowser_1_1SettingsSub.html#adfa1a937b565744163f4bd293e84002c">Browser::SettingsSub</a>.</p>
+<p>Implements <a class="el" href="classBrowser_1_1AbstractSettings.html#a416a696d4995665a3739345afd92c8d5">Browser::AbstractSettings</a>.</p>
 
 </div>
 </div>
@@ -256,7 +260,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classBrowser_1_1SettingsSub.html#a5483f1c4a714ed60b6130917c1ae703a">Browser::SettingsSub</a>.</p>
+<p>Implements <a class="el" href="classBrowser_1_1AbstractSettings.html#a369574b77c62e990d35e53fc73ad1f8a">Browser::AbstractSettings</a>.</p>
 
 </div>
 </div>
@@ -403,7 +407,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classBrowser_1_1SettingsSub.html#adfe2409ad75d506d2f9cac2b03171302">Browser::SettingsSub</a>.</p>
+<p>Implements <a class="el" href="classBrowser_1_1AbstractSettings.html#aaa6337f9db0275b638f7fea4fd6eb068">Browser::AbstractSettings</a>.</p>
 
 </div>
 </div>
@@ -428,7 +432,7 @@ Protected Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 17:28:27 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2011 18:12:52 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

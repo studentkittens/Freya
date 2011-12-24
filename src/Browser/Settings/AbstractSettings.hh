@@ -33,6 +33,9 @@
 
 namespace Browser
 {
+    /**
+     * @brief Abstract base class for every Tab in the Settingsbrowser.
+     */
     class AbstractSettings
     {
         public:

@@ -39,6 +39,9 @@
 
 namespace Config
 {
+    /**
+     * @brief A singleton class to provide Config access, use the macros down instead
+     */
     class Handler
     {
         DEF_SINGLETON( Handler )

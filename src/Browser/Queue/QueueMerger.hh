@@ -123,6 +123,7 @@ namespace Browser
             bool needsRefill;
             bool mergeIterIsValid;
             bool wasReconnected;
+            bool serverChanged;
 
             Gtk::TreeModel::iterator mergeIter;
 

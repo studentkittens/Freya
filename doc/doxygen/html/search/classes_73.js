@@ -5,7 +5,6 @@ var searchData=
   ['settingsnetwork',['SettingsNetwork',['../classBrowser_1_1SettingsNetwork.html',1,'Browser']]],
   ['settingsoutputs',['SettingsOutputs',['../classBrowser_1_1SettingsOutputs.html',1,'Browser']]],
   ['settingsplayback',['SettingsPlayback',['../classBrowser_1_1SettingsPlayback.html',1,'Browser']]],
-  ['settingssub',['SettingsSub',['../classBrowser_1_1SettingsSub.html',1,'Browser']]],
   ['signalhandler',['SignalHandler',['../classInit_1_1SignalHandler.html',1,'Init']]],
   ['song',['Song',['../classMPD_1_1Song.html',1,'MPD']]],
   ['statbrowser',['StatBrowser',['../classBrowser_1_1StatBrowser.html',1,'Browser']]],

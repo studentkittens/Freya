@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="5,6,152,127"/>
-<area shape="rect" id="node4" href="$classAbstractFilebrowser.html" title="{AbstractFilebrowser\n||+ add_song_file()\l+ add_directory()\l}" alt="" coords="176,21,315,113"/>
-</map>

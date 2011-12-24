@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#a20fafb16a3ec6ce84c92a901c39098cb" title="Register for connection changes." alt="" coords="341,5,627,32"/>
-<area shape="rect" id="node5" href="$classAbstractClientUser.html#a348bc71e88c02c2b42d86b2d2eb030c8" title="Pass a MPD::Client ref to register it&#39;s signals and maintain a pointer to it." alt="" coords="675,5,927,32"/>
-</map>

@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$SettingsOutputs_8hh.html" title="src/Browser/SettingsOutputs.hh" alt="" coords="5,80,213,107"/>
-<area shape="rect" id="node7" href="$StatBrowser_8hh.html" title="src/Browser/StatBrowser.hh" alt="" coords="237,80,424,107"/>
-<area shape="rect" id="node9" href="$check__utils_8hh.html" title="src/Utils/check_utils.hh" alt="" coords="449,80,607,107"/>
-<area shape="rect" id="node5" href="$Settings_8hh.html" title="src/Browser/Settings.hh" alt="" coords="28,155,191,181"/>
+<area shape="rect" id="node3" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="5,80,264,107"/>
+<area shape="rect" id="node7" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="289,80,535,107"/>
+<area shape="rect" id="node9" href="$check__utils_8hh.html" title="src/Utils/check_utils.hh" alt="" coords="559,80,717,107"/>
+<area shape="rect" id="node5" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="27,155,241,181"/>
 </map>

@@ -1,5 +1,6 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$classAvahi_1_1View_1_1ModelColumns.html" title="{Avahi::View::ModelColumns\n|+ m_col_ip\l+ m_col_hostname\l+ m_col_name\l+ m_col_port\l|+ ModelColumns()\l}" alt="" coords="5,138,192,259"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1OutputsModelColumns.html" title="{Browser::OutputsModelColumns\n|+ colName\l+ colActive\l+ colOutput\l|+ OutputsModelColumns()\l}" alt="" coords="469,145,679,252"/>
-<area shape="rect" id="node11" href="$classBrowser_1_1QueueModelColumns.html" title="{Browser::QueueModelColumns\n|+ m_col_id\l+ m_col_pos\l+ m_col_title\l+ m_col_album\l+ m_col_artist\l|+ QueueModelColumns()\l}" alt="" coords="995,131,1197,267"/>
+<area shape="rect" id="node5" title="The column definition." alt="" coords="216,138,445,259"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1OutputsModelColumns.html" title="The Column Definition of the Outputlist inside of the Settingsbrowser." alt="" coords="469,145,679,252"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1QueueModelColumns.html" title="The Column Definition of Browser::Queue." alt="" coords="995,131,1197,267"/>
 </map>

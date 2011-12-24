@@ -1,9 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$Client_8hh.html" title="../MPD/Client.hh" alt="" coords="415,80,535,107"/>
-<area shape="rect" id="node46" href="$Utils_8hh.html" title="../Utils/Utils.hh" alt="" coords="813,304,923,331"/>
-<area shape="rect" id="node56" href="$AbstractBrowser_8hh.html" title="AbstractBrowser.hh" alt="" coords="253,80,389,107"/>
-<area shape="rect" id="node7" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="423,155,527,181"/>
-<area shape="rect" id="node38" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="551,155,683,181"/>
+<area shape="rect" id="node5" href="$Client_8hh.html" title="../../MPD/Client.hh" alt="" coords="411,80,543,107"/>
+<area shape="rect" id="node46" href="$Utils_8hh.html" title="../../Utils/Utils.hh" alt="" coords="812,304,935,331"/>
+<area shape="rect" id="node56" href="$AbstractBrowser_8hh.html" title="../AbstractBrowser.hh" alt="" coords="237,80,385,107"/>
+<area shape="rect" id="node7" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="424,155,528,181"/>
+<area shape="rect" id="node38" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="553,155,684,181"/>
 <area shape="rect" id="node40" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="5,304,160,331"/>
 <area shape="rect" id="node9" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="427,229,513,256"/>
 <area shape="rect" id="node24" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="553,379,660,405"/>

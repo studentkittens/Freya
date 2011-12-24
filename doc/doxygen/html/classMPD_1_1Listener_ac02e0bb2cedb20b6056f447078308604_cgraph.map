@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Listener.html#ad433ccebdd1a35631022448a1c5372b4" title="MPD::Listener::is_idling" alt="" coords="274,5,435,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="Returns the underlying C structure." alt="" coords="243,56,466,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104" title="check if an error occured" alt="" coords="515,81,717,108"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="is connected?" alt="" coords="765,31,976,57"/>
-<area shape="rect" id="node11" href="$classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32" title="Clears any occured errors." alt="" coords="773,81,968,108"/>
-</map>

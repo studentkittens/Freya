@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1PlaylistManager.html" title="{Browser::PlaylistManager\n||+ PlaylistManager()\l+ ~PlaylistManager()\l+ get_container()\l}" alt="" coords="5,131,176,237"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1StatBrowser.html" title="{Browser::StatBrowser\n||+ StatBrowser()\l+ ~StatBrowser()\l+ get_container()\l}" alt="" coords="201,131,351,237"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="5,131,176,237"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1StatBrowser.html" title="A simple representation of the current MPD::Statistics." alt="" coords="201,131,351,237"/>
 </map>

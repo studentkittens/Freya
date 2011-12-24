@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="returns absolute path to config file e.g. /home/user/.config/freya/config.xml" alt="" coords="217,5,385,32"/>
-<area shape="rect" id="node7" href="$classConfig_1_1Model.html#a45d4f43a59384e7b63a7149f8087c7ab" title="loads current configuration file from hard disk as fileDoc xmlDocPtr" alt="" coords="234,56,369,83"/>
-<area shape="rect" id="node9" href="$classConfig_1_1Model.html#a975ecd85cb8f15811b186804ecd6ed9a" title="loads default config as defaultDoc xmlDocPtr" alt="" coords="201,107,402,133"/>
-<area shape="rect" id="node5" href="$classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="returns absolute path to config dir e.g. /home/user/.config/freya" alt="" coords="451,5,615,32"/>
-</map>

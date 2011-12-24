@@ -107,6 +107,10 @@ namespace Config
          */
         void save_config_now();
         
+
+        void add_server_output(Glib::ustring, Glib::ustring, bool);
+        int get_server_output(Glib::ustring, Glib::ustring);
+
     private:
         /*internal traversing funcs*/
         xmlNodePtr traverse(const char*, xmlNodePtr);
@@ -129,5 +133,8 @@ namespace Config
 
 #define CONFIG_GET_DEFAULT(x) Config::Handler::instance().get_default_value(x)
 #define CONFIG_GET_DEFAULT_AS_INT(x) Config::Handler::instance().get_default_value_as_int(x)
+
+#define CONFIG_ADD_OUTPUT(x,y,z) Config::Handler::instance().add_server_output(x,y,z)
+#define CONFIG_GET_OUTPUT(x,y) Config::Handler::instance().get_server_output(x,y)
 
 #endif /* end of include guard: Handler_89V106EN */

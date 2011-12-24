@@ -132,7 +132,7 @@ namespace Config
     /*save alternative config*/
     void Model::save(char* altfile,xmlDocPtr doc)
     {
-        xmlSaveFile(altfile,doc);
+        xmlSaveFormatFile(altfile,doc,1);
     }
 
     void Model::setpath(char* path)

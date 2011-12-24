@@ -30,6 +30,7 @@
 **************************************************************/
 #include "SettingsOutputs.hh"
 #include "Settings.hh"
+#include "../Config/Handler.hh"
 #include "../MPD/AudioOutput.hh"
 #include "../Log/Writer.hh"
 namespace Browser
@@ -74,6 +75,19 @@ namespace Browser
         {
             treeModel->clear();
             mp_Client->fill_outputs(*this);
+            running=true;
+            typedef Gtk::TreeModel::Children type_children;
+            type_children children = treeModel->children();
+            for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+            {
+                Gtk::TreeModel::Row row = *iter;
+                if(CONFIG_GET_OUTPUT(CONFIG_GET("settings.connection.host"),(*(row[treeColumns.colOutput])).get_name()))
+                    (*(row[treeColumns.colOutput])).enable();
+                else
+                    (*(row[treeColumns.colOutput])).disable();
+
+            }
+            running=false;
         }
     }
 
@@ -84,7 +98,15 @@ namespace Browser
 
     void SettingsOutputs::decline_new_settings(void)
     {
-        reset_settings();
+        running = true;
+        typedef Gtk::TreeModel::Children type_children;
+        type_children children = treeModel->children();
+        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+        {
+            Gtk::TreeModel::Row row = *iter;
+            row[treeColumns.colActive] = CONFIG_GET_OUTPUT(CONFIG_GET("settings.connection.host"),(*(row[treeColumns.colOutput])).get_name());
+        }
+        running = false;
     }
 
     void SettingsOutputs::accept_new_settings(void)
@@ -99,6 +121,8 @@ namespace Browser
                 (*(row[treeColumns.colOutput])).enable();
             else
                 (*(row[treeColumns.colOutput])).disable();
+
+            CONFIG_ADD_OUTPUT(CONFIG_GET("settings.connection.host"),(*(row[treeColumns.colOutput])).get_name(),row[treeColumns.colActive]);
         }
         treeModel->clear();
         mp_Client->fill_outputs(*this);

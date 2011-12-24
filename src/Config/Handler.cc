@@ -382,7 +382,6 @@ namespace Config
 
         if (tmp == NULL)
         {
-            xmlFreeDoc(doc);
             return 1;
         }
         xmlChar* res =xmlNodeListGetString(doc,tmp->xmlChildrenNode,1);

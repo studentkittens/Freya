@@ -62,7 +62,7 @@ namespace Browser
              *
              * @param pSong a MPD::Song
              */
-            void add_item(void * pSong);
+            void add_item(AbstractComposite * pSong);
 
             /**
              * @brief Disables automatic updating 1x
@@ -108,22 +108,43 @@ namespace Browser
              */
             void set_row_contents(Gtk::TreeModel::Row& row, MPD::Song * pSong);
 
+            /**
+             * @brief Add a row to the Queue
+             *
+             * @param pSong
+             */
             void add_row(MPD::Song * pSong);
 
+            /**
+             * @brief merge (at the moment, just replace the row) a row
+             *
+             * @param pSong
+             */
             void merge(MPD::Song * pSong);
 
+            /**
+             * @brief Remove all rows after this (including starting_with pos)
+             *
+             * @param starting_with
+             */
             void trim(unsigned starting_with);
 
 
+            /**
+             * @brief Get a treemodel iter at position pos
+             *
+             * @param pos
+             *
+             * @return 
+             */
             Gtk::TreeModel::iterator get_iter_at_pos(int pos);
 
             /* -------------------- */
 
             bool mergeDisabled;
-            bool needsRefill;
             bool mergeIterIsValid;
-            bool wasReconnected;
             bool serverChanged;
+            bool isFirstStart;
 
             Gtk::TreeModel::iterator mergeIter;
 

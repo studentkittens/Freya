@@ -35,7 +35,6 @@
 
 /* Songlist interface */
 #include "AbstractItemGenerator.hh"
-#include "AbstractFileGenerator.hh"
 
 namespace MPD
 {
@@ -235,7 +234,7 @@ namespace MPD
              * @param data_model A user defined class, that inherits from AbstractSonglist 
              * @param path A certain path, or NULL which will add /
              */
-            void fill_filelist(AbstractFilebrowser& data_model, const char * path);
+            void fill_filelist(AbstractItemlist& data_model, const char * path);
            
             /**
              * @brief Send a command to the server

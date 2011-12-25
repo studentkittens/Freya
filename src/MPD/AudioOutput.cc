@@ -32,7 +32,8 @@
 namespace MPD
 {
     AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) : 
-        AbstractClientExtension(client)
+        AbstractClientExtension(client),
+        AbstractComposite(true)
     {
         mp_Output = &output;
     }
@@ -43,11 +44,15 @@ namespace MPD
     {
         return mpd_output_get_id(mp_Output); 
     }
+    
+    //-----------------------    
 
     const char * AudioOutput::get_name(void)
     {
         return mpd_output_get_name(mp_Output);
     }
+
+    //-----------------------    
 
     bool AudioOutput::get_enabled(void)
     {
@@ -71,6 +76,8 @@ namespace MPD
 
         return retv;
     }
+    
+    //-----------------------    
 
     bool AudioOutput::disable(void)
     {
@@ -84,5 +91,12 @@ namespace MPD
         EXTERNAL_GET_LAID
 
         return retv;
+    }
+    
+    //-----------------------    
+    
+    const char * AudioOutput::get_path(void)
+    {
+        return get_name();
     }
 }

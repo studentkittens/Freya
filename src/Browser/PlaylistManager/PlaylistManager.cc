@@ -179,10 +179,10 @@ namespace Browser
     
     /* ----------------------- */
 
-    void PlaylistManager::add_item(void * pPlaylist)
+    void PlaylistManager::add_item(AbstractComposite * pPlaylist)
     {
         g_assert(pPlaylist);
-        MPD::Playlist * playlist = (MPD::Playlist*)pPlaylist;
+        MPD::Playlist * playlist = static_cast<MPD::Playlist*>(pPlaylist);
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
 
         row[m_Columns.m_col_plist] = playlist;

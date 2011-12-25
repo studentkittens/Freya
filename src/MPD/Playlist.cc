@@ -32,8 +32,10 @@
 
 namespace MPD
 {
+    /* See Playlist as some sort of file, not as container */
     Playlist::Playlist(MPD::BaseClient& base_client, mpd_playlist& playlist) : 
-        AbstractClientExtension(base_client)
+        AbstractClientExtension(base_client),
+        AbstractComposite(true)
     {
         mpc_playlist = &playlist;
     }
@@ -41,7 +43,8 @@ namespace MPD
     //---------------------------
 
     Playlist::Playlist(const Playlist& copy_this) :
-        AbstractClientExtension(*mp_BaseClient)
+        AbstractClientExtension(*mp_BaseClient),
+        AbstractComposite(true)
     {
         if(copy_this.mpc_playlist != NULL)
         {
@@ -127,7 +130,7 @@ namespace MPD
     
     void Playlist::add_song(MPD::Song& song)
     {
-        add_song(song.get_uri());
+        add_song(song.get_path());
     }
     
     //---------------------------

@@ -33,8 +33,7 @@
 #define FREYA_DATABASE_CACHE
 
 #include "../../MPD/AbstractClientUser.hh"
-#include "../../MPD/AbstractFilebrowser.hh"
-#include "../../MPD/AbstractFileGenerator.hh"
+#include "../../MPD/AbstractItemlist.hh"
 
 namespace Browser
 {
@@ -50,8 +49,8 @@ namespace Browser
      */
     class DatabaseCache : 
         public AbstractClientUser,
-        public AbstractFilebrowser,
-        public AbstractFileGenerator
+        public AbstractItemlist,
+        public AbstractItemGenerator
     {
         public:
 
@@ -64,17 +63,33 @@ namespace Browser
              * @param data_model 
              * @param path
              */
-            void fill_filelist(AbstractFilebrowser& data_model, const char * path);
+            void fill_filelist(AbstractItemlist& data_model, const char * path);
+
+            /**
+             * @brief Implemented from AbstractItemlist 
+             *
+             * You are not supposed to call this yourself.
+             *
+             * @param pItem
+             */
+            void add_item(AbstractComposite * pItem);
+
+            /* Method stubs .. */
+            void fill_queue(AbstractItemlist& data_model) {}
+            void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
+            void fill_playlists(AbstractItemlist& data_model) {}
+            void fill_outputs(AbstractItemlist& data_model) {}
+
 
         private:
-   
+
             /**
              * @brief The actual value
              *
              * First bool is true if it's a file,
              * void* points to the actual data. Cast when necessary.
              */
-            typedef std::pair<bool,void*> CachePairType;
+            typedef AbstractComposite* CachePairType;
             /**
              * @brief The list of actual values
              */
@@ -83,7 +98,7 @@ namespace Browser
              * @brief The Hashmap, The path is used as key value, default comparator is used
              */
             typedef std::map<Glib::ustring,CacheVectorType> CacheMapType;
-    
+
             /* -------------------------------- */ 
 
             /**
@@ -101,24 +116,20 @@ namespace Browser
              */
             void on_connection_change(bool server_changed, bool is_connected);
 
-            /* Implemented from AbstractFilebrowser */
-            void add_song_file(MPD::Song * pSong);
-            void add_directory(MPD::Directory * pDir);
-
             /* Logic */
             void clear_cache(void);
-            void add_to_cache(CachePairType& pair);
 
             /* ------------------------------- */
 
             /* Path is the key, value the song or dir */
             CacheMapType cacheMap;
 
-            /* The last vector used by fill_filelist_from_cache */
+            /* The last vector used by fill_filelist */
             CacheVectorType * lastVec;
 
             /* Do not clear on first start.. */
-            bool is_first_start;
+            bool isFirstStart;
+            bool serverChanged;
     };
 }
 

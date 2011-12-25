@@ -175,30 +175,20 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::add_directory(MPD::Directory * pDir)
+    void Database::add_item(AbstractComposite * pItem)
     {
-        g_assert(pDir);
-        add_item(pDir->get_path(),false);
-    }
-
-    /*------------------------------------------------*/
-
-    void Database::add_song_file(MPD::Song * pSong)
-    {
-        g_assert(pSong);
-        add_item(pSong->get_uri(),true);
-    }
-
-    /*------------------------------------------------*/
-
-    void Database::add_item(const char * path, bool is_file)
-    {
-        g_assert(path);
-        Gtk::TreeModel::Row row = *(m_DirStore->append());
-        row[m_Columns.m_col_path] = path;
-        row[m_Columns.m_col_name] = Glib::path_get_basename(path);
-        row[m_Columns.m_col_icon] = (is_file) ? m_FileIcon : m_DirIcon;
-        row[m_Columns.m_col_is_file] = is_file;
+        g_assert(pItem);
+        bool is_file = pItem->isLeaf();
+        const char * path = pItem->get_path();
+        
+        if(path != NULL)
+        {
+            Gtk::TreeModel::Row row = *(m_DirStore->append());
+            row[m_Columns.m_col_path] = path;
+            row[m_Columns.m_col_name] = Glib::path_get_basename(path);
+            row[m_Columns.m_col_icon] = (is_file) ? m_FileIcon : m_DirIcon;
+            row[m_Columns.m_col_is_file] = is_file;
+        }
     }
 
     /*------------------------------------------------*/
@@ -251,7 +241,7 @@ namespace Browser
     }
 
     /*------------------------------------------------*/
-    
+
     void Database::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
         if(event & MPD_IDLE_DATABASE)
@@ -259,16 +249,16 @@ namespace Browser
             set_current_path(mp_Path.c_str());
         }
     }
-    
+
     /*------------------------------------------------*/
-    
+
     void Database::on_connection_change(bool server_changed, bool is_connected)
     {
         /* Empty for now */
     }
-    
+
     /*------------------------------------------------*/
-    
+
     void Database::focus_item_starting_with(const char * prefix)
     {
         if(prefix == NULL)
@@ -290,21 +280,21 @@ namespace Browser
             cursor++;
         }
     }
-    
+
     /*------------------------------------------------*/
-    
+
     void Database::on_search_entry_activated(void)
     {
         //TODO: Needs a Search API first.
     }
-    
+
     /*------------------------------------------------*/
 
     bool Database::on_key_press_handler(GdkEventKey * event)
     {
         g_assert(event);
         if(event->type   == GDK_KEY_RELEASE &&
-           event->keyval == GDK_KEY_BackSpace)
+                event->keyval == GDK_KEY_BackSpace)
         {
             go_one_up();
             return true;

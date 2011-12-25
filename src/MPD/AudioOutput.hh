@@ -32,6 +32,7 @@
 #define FREYA_AUDIOOUTPUT_GUARD
 
 #include "AbstractClientExtension.hh"
+#include "AbstractComposite.hh"
 
 namespace MPD
 {
@@ -41,7 +42,7 @@ namespace MPD
      * @brief Wrapper for mpd_output, implements also two client commands:
      * enable() and disable()
      */
-    class AudioOutput : AbstractClientExtension 
+    class AudioOutput : public AbstractClientExtension, public AbstractComposite
     {
         public:
             /**
@@ -81,6 +82,13 @@ namespace MPD
              * @return true on success
              */
             bool disable(void);
+
+            /**
+             * @brief Alias for get_name() (Implemented due to Compositum) 
+             *
+             * @return 
+             */
+            const char * get_path(void);
 
         private:
             mpd_output * mp_Output;

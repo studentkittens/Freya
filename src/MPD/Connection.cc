@@ -139,7 +139,10 @@ namespace MPD
     
     void Connection::emit_connection_change(void)
     {
-        m_ConnNotifer.emit(hostChanged,is_connected());
+        if(is_connected())
+            m_ConnNotifer.emit(hostChanged,is_connected());
+        else
+            m_ConnNotifer.emit(false,is_connected());
     }
     
     //--------------------------------------

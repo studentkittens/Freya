@@ -41,10 +41,9 @@ namespace Browser
                              QueueModelColumns& queue_columns) :
         AbstractClientUser(client),
         mergeDisabled(false),
-        needsRefill(true),
         mergeIterIsValid(false),
-        wasReconnected(true),
         serverChanged(true),
+        isFirstStart(true),
         lastPlaylistVersion(0),
         playlistLength(0),
         mergePos(0),
@@ -112,12 +111,12 @@ namespace Browser
 
     /*-------------------*/
 
-    void QueueMerger::add_item(void * pSong)
+    void QueueMerger::add_item(AbstractComposite * pSong)
     {
         g_assert(pSong);
-        MPD::Song * new_song = (MPD::Song*)pSong;
+        MPD::Song * new_song = static_cast<MPD::Song*>(pSong);
 
-        if(needsRefill)
+        if(serverChanged)
         {
             add_row(new_song);
         }
@@ -150,6 +149,7 @@ namespace Browser
     {
         if(event & MPD_IDLE_QUEUE)
         {
+            g_message("Im getting updated.");
             if(!mergeDisabled)
             {
                 MPD::Status& status = data.get_status();
@@ -157,19 +157,16 @@ namespace Browser
                 unsigned qu_l = status.get_queue_length();
 
                 /* Do a full refill if requested (e.g. on startup) */
-                if(serverChanged || (wasReconnected && qu_v > lastPlaylistVersion))
+                if(serverChanged)
                 {
                     Info("Doing full refill of the queue.");
                     mp_QueueModel->clear(); 
-                    needsRefill = true;
                     mp_Client->fill_queue(*this);
-                    needsRefill = false;
-
                     serverChanged = false;
-                    wasReconnected = false;
                 }
                 else
                 {
+                    g_message("Im getting merged");
                     /* Merge in changes */
                     mergeIterIsValid = false;
                     mp_Client->fill_queue_changes(*this,lastPlaylistVersion,mergePos);
@@ -191,8 +188,11 @@ namespace Browser
     void QueueMerger::on_connection_change(bool server_changed, bool is_connected)
     {
         /* This is also true on startup */
-        wasReconnected = is_connected; 
-        server_changed = server_changed;
+        serverChanged = (isFirstStart) ? false :server_changed;
+        if(serverChanged)
+            g_message("Server changed!");
+        
+        isFirstStart = false;
     }
 
     /*-------------------*/

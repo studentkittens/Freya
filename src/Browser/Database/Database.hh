@@ -49,7 +49,10 @@ namespace Browser
      * Since it is a Browser itself it also inherits from AbstractBrowser so it can be added to the Browserlist
      * But instead from filling the data directly from the client DatabaseCache is used (over the Proxy pattern)
      */
-    class Database : public AbstractBrowser, public AbstractFilebrowser, public AbstractClientUser 
+    class Database : 
+        public AbstractBrowser,
+        public AbstractItemlist,
+        public AbstractClientUser 
     {
         public:
             /**
@@ -75,17 +78,9 @@ namespace Browser
              *
              * You are not supposed to call this yourself.
              *
-             * @param pDir A dyn. allocated MPD::Directory instance
-             */
-            void add_directory(MPD::Directory * pDir);
-            /**
-             * @brief Implemented from AbstractFilebrowser
-             *
-             * You are not supposed to call this yourself.
-             *
              * @param pSong A dyn. allocated MPD::Song instance
              */
-            void add_song_file(MPD::Song * pSong);
+            void add_item(AbstractComposite * pItem);
 
         private:
 
@@ -108,9 +103,8 @@ namespace Browser
             void on_connection_change(bool server_changed, bool is_connected);
            
             /* Logic */ 
-            void add_item(const char * path, bool is_file);
-            void set_current_path(const char * path);
             void go_one_up(void);
+            void set_current_path(const char * path);
             void focus_item_starting_with(const char * prefix);
 
             /**
@@ -158,7 +152,7 @@ namespace Browser
             DatabasePopup * mp_Popup;
 
             /* A local memcache of the db files */
-            AbstractFileGenerator * mp_Cache;
+            AbstractItemGenerator * mp_Cache;
 
     };
 }

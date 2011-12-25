@@ -34,13 +34,15 @@ namespace MPD
 {
     char Song::unknown_tag[] = "unknown";
 
-    Song::Song(const mpd_song& song)
+    Song::Song(const mpd_song& song) :
+        AbstractComposite(true)
     {
         mp_Song = (mpd_song*)&song;
     }
 
     /*------------------------------*/
-    Song::Song(const MPD::Song& other)
+    Song::Song(const MPD::Song& other) :
+        AbstractComposite(true)
     {
        mpd_song * other_song = other.mp_Song;
        if(other_song != NULL)
@@ -61,7 +63,7 @@ namespace MPD
 
     /*------------------------------*/
 
-    const char * Song::get_uri(void)
+    const char * Song::get_path(void)
     {
         return mpd_song_get_uri(mp_Song);
     }
@@ -70,7 +72,7 @@ namespace MPD
     const char * Song::get_tag(enum mpd_tag_type type, unsigned idx)
     {
         const char* tag = mpd_song_get_tag(mp_Song,type,idx);
-        return tag!=NULL ? tag : type==MPD_TAG_ARTIST?get_uri():unknown_tag ;
+        return tag!=NULL ? tag : type == MPD_TAG_ARTIST ? get_path() : unknown_tag ;
 
     }
     /*------------------------------*/

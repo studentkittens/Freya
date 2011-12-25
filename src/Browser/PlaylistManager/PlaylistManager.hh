@@ -80,7 +80,7 @@ namespace Browser
             void clear(void);
 
             /* Implemented from AbstractItemlist */
-            void add_item(void * pPlaylist);
+            void add_item(AbstractComposite * pPlaylist);
 
             /* Implemented from AbstractClientUser */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);

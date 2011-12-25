@@ -46,7 +46,6 @@ namespace Browser
         treeViewPtr->set_model(treeModel);
         treeViewPtr->set_headers_visible(false);
 
-
         treeViewPtr->append_column_editable("",treeColumns.colActive);
         treeViewPtr->append_column("",treeColumns.colName);
 
@@ -56,18 +55,33 @@ namespace Browser
         treeViewPtr->get_selection()->set_select_function( sigc::mem_fun(*this,&Browser::SettingsOutputs::on_select));
     }
 
+    /* ------------------------------- */
 
-    SettingsOutputs::~SettingsOutputs(){}
+    SettingsOutputs::~SettingsOutputs()
+    {
+        typedef Gtk::TreeModel::Children type_children;
+        type_children children = treeModel->children();
+        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+        {
+            delete (*iter)[treeColumns.colOutput];
+        }
+    }
+
+    /* ------------------------------- */
 
     void SettingsOutputs::on_toggle(const Glib::ustring& path)
     {
         sett->settings_changed();
     }
 
+    /* ------------------------------- */
+
     bool SettingsOutputs::on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool)
     {
         return false;
     }
+
+    /* ------------------------------- */
 
     void SettingsOutputs::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
     {
@@ -78,15 +92,21 @@ namespace Browser
         }
     }
 
+    /* ------------------------------- */
+
     void SettingsOutputs::on_connection_change(bool server_changed, bool is_connected)
     {
         treeViewPtr->set_sensitive(is_connected);
     }
 
+    /* ------------------------------- */
+
     void SettingsOutputs::decline_new_settings(void)
     {
         reset_settings();
     }
+
+    /* ------------------------------- */
 
     void SettingsOutputs::accept_new_settings(void)
     {
@@ -107,6 +127,8 @@ namespace Browser
         running = false;
     }
 
+    /* ------------------------------- */
+
     void SettingsOutputs::reset_settings(void)
     {
         running = true;
@@ -120,9 +142,11 @@ namespace Browser
         running = false;
     }
 
-    void SettingsOutputs::add_item(void * item)
+    /* ------------------------------- */
+
+    void SettingsOutputs::add_item(AbstractComposite * item)
     {
-        MPD::AudioOutput* a_item = (MPD::AudioOutput*) item;
+        MPD::AudioOutput* a_item = static_cast<MPD::AudioOutput*>(item);
         Gtk::TreeModel::Row row = *(treeModel->append());
         row[treeColumns.colName] = a_item->get_name();
         row[treeColumns.colActive] = a_item->get_enabled();

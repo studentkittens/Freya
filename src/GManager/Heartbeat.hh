@@ -97,6 +97,8 @@ namespace GManager
 
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool server_changed, bool is_connected);
+
+            MPD::NotifyData * mp_LastNotifyData;
     };
 }
 

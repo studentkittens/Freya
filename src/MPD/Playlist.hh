@@ -33,6 +33,7 @@
 
 #include <mpd/client.h>
 #include "AbstractClientExtension.hh"
+#include "AbstractComposite.hh"
 #include "Song.hh"
 
 namespace MPD
@@ -42,7 +43,7 @@ namespace MPD
     /**
      * @brief A Wrapper for mpd_playlist, also implements own client commands
      */
-    class Playlist : public AbstractClientExtension
+    class Playlist : public AbstractClientExtension, public AbstractComposite
     {
         public:
             Playlist(MPD::BaseClient& base_client, mpd_playlist& c_playlist);

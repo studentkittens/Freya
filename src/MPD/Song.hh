@@ -32,6 +32,7 @@
 #define FREYA_SONG_GUARD
 
 #include "mpd/client.h"
+#include "AbstractComposite.hh"
 #include <glibmm.h>
 namespace MPD
 {
@@ -40,7 +41,7 @@ namespace MPD
     /**
      * @brief A wrapper for mpd_song
      */
-    class Song
+    class Song : public AbstractComposite
     {
         public:
             /**
@@ -62,7 +63,7 @@ namespace MPD
              *
              * @return 
              */
-            const char * get_uri(void);
+            const char * get_path(void);
             /**
              * @brief Get a certain tag from the song
              *

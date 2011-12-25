@@ -37,7 +37,7 @@ namespace GManager
 {
     Heartbeat::Heartbeat(MPD::Client& client) :
         AbstractClientUser(client),
-        signal_proxy()
+        mp_LastNotifyData(NULL)
     {
         timer = 0.0;
         count_up = true;
@@ -104,18 +104,23 @@ namespace GManager
     {
         return signal_proxy;
     }
+    
+    // -------------
            
     void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
     {
-        if(is_connected) 
-            play();
+        if(is_connected && mp_LastNotifyData) 
+            signal_proxy.emit(mp_LastNotifyData->get_status().get_elapsed_ms() / 1000.0);
         else
             pause();
     }
     
+    // -------------
+    
     /* Implemented from AbstractClientUser, but empty in this case */    
     void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
+        mp_LastNotifyData = &data;
         if(event & (MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
         {
             MPD::Status& status = data.get_status();

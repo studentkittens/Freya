@@ -31,6 +31,8 @@
 #ifndef FREYA_ABSTRACT_SONGLIST_GUARD
 #define FREYA_ABSTRACT_SONGLIST_GUARD
 
+#include "AbstractComposite.hh"
+
 /**
  * @brief Inhertit from this class to use MPD::Client's fill_* methods.
  */
@@ -38,7 +40,6 @@ class AbstractItemlist
 {
     public:
 
-        
         /**
          * @brief Called after calling (e.g.) fill_queue() 
          *
@@ -46,8 +47,12 @@ class AbstractItemlist
          *
          * @param item a dynamically allocated item
          */
-        virtual void add_item(void * item) = 0; 
+        virtual void add_item(AbstractComposite * item) = 0; 
+        
             
+        /**
+         * @brief Virtual DTor so, derived class call their own DTor
+         */
         virtual ~AbstractItemlist() {};
 };
 

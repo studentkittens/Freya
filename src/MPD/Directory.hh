@@ -32,13 +32,14 @@
 #define DIRECTORY_FY7WZEO9
 
 #include <mpd/client.h>
+#include "AbstractComposite.hh"
 
 namespace MPD
 {
     /**
      * @brief A wrapper for mpd_directory
      */
-    class Directory 
+    class Directory : public AbstractComposite
     {
         public:
             /**

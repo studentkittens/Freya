@@ -56,7 +56,7 @@ namespace Browser
             void accept_new_settings(void);
             void decline_new_settings(void);
             void reset_settings(void);
-            void add_item(void *item);
+            void add_item(AbstractComposite *item);
 
         protected:
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);

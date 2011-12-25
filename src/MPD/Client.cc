@@ -308,7 +308,7 @@ namespace MPD
     
     //-------------------------------
 
-    void Client::fill_filelist(AbstractFilebrowser& data_model, const char * path)
+    void Client::fill_filelist(AbstractItemlist& data_model, const char * path)
     {
         GET_BUSY
         {
@@ -326,7 +326,7 @@ namespace MPD
                                 if(dir != NULL)
                                 {
                                     mpd_directory * dup_dir = mpd_directory_dup(dir);
-                                    data_model.add_directory(new MPD::Directory(*dup_dir));
+                                    data_model.add_item(new MPD::Directory(*dup_dir));
                                 }
                                 break;
                             }
@@ -336,7 +336,7 @@ namespace MPD
                                 if(song != NULL)
                                 {
                                     mpd_song * dup_song = mpd_song_dup(song);
-                                    data_model.add_song_file(new MPD::Song(*dup_song));
+                                    data_model.add_item(new MPD::Song(*dup_song));
                                 }
                                 break;
                             }

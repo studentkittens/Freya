@@ -38,7 +38,8 @@ namespace Browser
     DatabaseCache::DatabaseCache(MPD::Client& client) : 
         AbstractClientUser(client),
         lastVec(NULL),
-        is_first_start(true)
+        isFirstStart(true),
+        serverChanged(false)
     {}
 
     /* ------------------------------ */
@@ -50,17 +51,20 @@ namespace Browser
 
     /* ------------------------------ */
 
-    void DatabaseCache::fill_filelist(AbstractFilebrowser& data_model, const char * Path)
+    void DatabaseCache::fill_filelist(AbstractItemlist& data_model, const char * Path)
     {
         /* Get it from the hashmap */
         Glib::ustring peristentPath = Path;
         const CacheVectorType& v = cacheMap[peristentPath];
            
+        if(serverChanged)
+            clear_cache();
+
         /* Read in data from client, if not cached yet */
         if(v.empty())
         {
             /* Get files from the server */
-            lastVec = (CacheVectorType*)&v;
+            lastVec = const_cast<CacheVectorType*>(&v);
             mp_Client->fill_filelist(*this,Path);
         }
 
@@ -71,12 +75,7 @@ namespace Browser
             for(iter = v.begin(); iter != v.end(); iter++)
             {
                 const CachePairType& m = (*iter);
-
-                /* Is it a file? */
-                if(m.first)
-                    data_model.add_song_file((MPD::Song*)m.second);
-                else
-                    data_model.add_directory((MPD::Directory*)m.second);
+                data_model.add_item(m);
             }
         }
     }
@@ -89,43 +88,29 @@ namespace Browser
     {
         if(event & MPD_IDLE_DATABASE)
         {
-            if(!is_first_start)
+            if(isFirstStart)
             {
                 /* We have no way to check what exactly changed */
                 clear_cache();
             }
-            is_first_start = false;
         }
     }
 
     /* ------------------------------ */
 
     void DatabaseCache::on_connection_change(bool server_changed, bool is_connected)
-    {}
+    {
+        serverChanged = (isFirstStart) ? false : server_changed;
+        isFirstStart = false;
+    }
 
     /* ------------------------------ */
     /*             LOGIC              */
     /* ------------------------------ */
 
-    void DatabaseCache::add_to_cache(CachePairType& pair)
+    void DatabaseCache::add_item(AbstractComposite * pItem)
     {
-        lastVec->push_back(pair);
-    }
-
-    /* ------------------------------ */
-
-    void DatabaseCache::add_song_file(MPD::Song * pSong)
-    {
-        CachePairType m(true,pSong);
-        add_to_cache(m);
-    }
-
-    /* ------------------------------ */
-
-    void DatabaseCache::add_directory(MPD::Directory * pDir)
-    {
-        CachePairType m(false,pDir);
-        add_to_cache(m);
+        lastVec->push_back(pItem);
     }
 
     /* ------------------------------ */
@@ -141,10 +126,7 @@ namespace Browser
             for(vec_iter = v.begin(); vec_iter != v.end(); vec_iter++)
             {
                 const CachePairType& m = (*vec_iter);
-                if(m.first)
-                    delete (MPD::Song*)m.second;
-                else
-                    delete (MPD::Directory*)m.second;
+                delete m;
             }
         }
         lastVec = NULL;

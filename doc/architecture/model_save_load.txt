@@ -1,0 +1,68 @@
+================
+Config::Model
+================
+
+
+Beteiligte Klassen/Libraries:
+-------------------------------    
+    Config::Model,
+    Log::Writer (Singleton),
+    defaultcfg.inl ("Header" welcher die Default Config enthält),
+    Init::Path,
+    cstring (externe lib),
+    glib (externe lib)
+    
+
+Init des Models
+-------------------------
+
+    - Config::Model Instanziert ein Init::Path Objekt und holt sich den Pfad zur Config Datei über path.path_to_config();
+    - Anschließend wird der von Init::Path zurückgegebene Pfad der Membervariable pathtofile zugewiesen
+    - Dann werden die load(pathtofile) Methode der Config::Model Klasse und die this->loadDefaultDoc() Methode aufgerufen
+      
+
+1.) Die load() Methode - zum Laden der config.xml
+-----------------------------------------------------
+
+    - beim Instanzieren ruft das Model seine load() Methode auf mit dem aktuellem pfad (pathtofile) auf
+    - in der load() Methode wird als erstes die libxml Methode xmlParseFile(pathtofile) aufgerufen, diese bekommt den
+      Pfad zur Konfigurationsdatei übergeben und versucht diese über den übergebenen Pfad zu laden, ein xmlNodePtr curNode Objekt wird angelegt
+    - der Rückgabewert der xmlParseFile() Methode ist ein xmlDorPtr (fileDoc in unserem Beispiel) wenn erfolgreich, ansonsten NULL
+    - anschließend wird fileDoc geprüft, ist dieser NULL so wird eine entsprechende Fehlermeldung über den Logwriter in die Logdatei geschreiben.
+      Ende.
+
+    - wurde ein gültiger xmlDocPtr zurückgegeben so geschieht folgendes:
+
+        * der curNode Pointer wird auf das root Element über xmlDocGetRootElement(fileDOc) gesetzt
+        * anschließend wird geprüft ob das curNode Null ist, trifft das zu, so wird ein Error in die Logdatei über den Log::Writer geschrieben,
+          allokierter Speicher vom fileDoc mittels xmlFreeDoc(fileDoc) freigegeben und fileDoc auf NULL gesetzet.
+          Ende.
+
+        * war das curNode gültig, so wird mittels der libxml Methode xmlStrcmp(curNode->name,"freya") geprüft ob das root Element "freya" entspricht
+          ist dies der Fall wird eine Erfolgsmeldung in die Logdatei geschreiben, ansonsten wird eine Fehlermeldung über den Logwriter raus-
+          geschrieben, allokierter Speicher vom fileDoc über xmlFreeDoc(fileDoc) freigegeben und die beiden Pointer fileDoc und curNode werden
+          auf NULL gesetzt. Ende.
+
+
+2.) Die loadDefaultDoc() Methode - zum Laden der default Config
+----------------------------------------------------------------
+
+    - diese Methode "holt" sich die default Konfigurationsdatei als String aus der defaultcfg.inl Datei, welche direkt vom Model inclutiert wurde
+      die "Inline" Datei enthält lediglich einen static const Glib::ustring defaultconfig("ultra langer string weil das die komplette config ist")
+      welcher die komplette Konfiguration mit sinnvoll vorbelegten default Werden speichert.
+    - dieser String wird anschließend mittels der libxml xmlParseMemory() geparst und ein xmlDocPtr wird zurückgegeben der als defaultDoc
+      Membervariable gespeichert wird.
+
+
+
+3.) Die save() Methoden - zum Speichern des aktuellen xmlDocPtr auf die Festplatte
+------------------------------------------------------------------------------------
+
+    - die save() Methode ist eine Wrapper Methode für save(char*, xmlDocPtr). Sie ruft lediglich diese mit dem aktuellen xmlDocPtr
+      und dem Pfad zur config.xml auf.
+
+      * die save(char*, xmlDocPtr) Methode nutzt die libxml xmlSaveFile(char*,xmlDocPtr) Methode zur Sicherung des Dokumenten Baumes als
+        xml Datei auf der Festplatte.
+
+
+

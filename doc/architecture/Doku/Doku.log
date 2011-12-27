@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  22 DEC 2011 13:24
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.10)  27 DEC 2011 13:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -754,38 +754,28 @@ Package pdftex.def Info: Mpd-overview.png used on input line 64.
 ) (./Lastenheft.tex [13 <./Mpd-overview.png>]
 Kapitel 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 7--18
 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--46
 
  []
 
 [14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 41--46
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--46
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 55--60
 
  []
@@ -814,16 +804,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--128
 
 ) (./Pflichtenheft.tex [17]
 Kapitel 6.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 36--42
 
@@ -1314,7 +1294,7 @@ amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Doku.pdf (41 pages, 373412 bytes).
+Output written on Doku.pdf (41 pages, 373470 bytes).
 PDF statistics:
  808 PDF objects out of 1000 (max. 8388607)
  744 compressed objects within 8 object streams

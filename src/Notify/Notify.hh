@@ -43,6 +43,9 @@ namespace Browser
 
 namespace Notify
 {
+    /**
+     * @brief A Singletonclass to provide Access to libnotify, use the macros down preferrably
+     */
     class Notify
     {
         friend class Browser::Settings;
@@ -51,17 +54,12 @@ namespace Notify
         public:
             ~Notify();
 
+            // TODO: Add doxycomments
             void send_big(Glib::ustring hl, Glib::ustring msg);
-            void send_big(const char *hl, const char *msg);
-            void send_big(Glib::ustring hl, const char *msg);
-            void send_big(const char *hl, Glib::ustring msg);
             void send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf);
-            void send_full(const char *hl,const char *msg, GdkPixbuf * pixbuf);
-            void send_full(Glib::ustring hl, const char *msg, GdkPixbuf * pixbuf);
-            void send_full(const char *hl, Glib::ustring msg, GdkPixbuf * pixbuf);
             void set_stock_icon(const char*);
-
             void set_next_extra();
+
         private:
             Glib::ustring * icon;
             NotifyNotification *notification;

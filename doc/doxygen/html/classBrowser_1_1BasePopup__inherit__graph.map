@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1DatabasePopup.html" title="{Browser::DatabasePopup\n||+ DatabasePopup()\l}" alt="" coords="5,235,176,312"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1PlaylistManagerPopup.html" title="{Browser::PlaylistManagerPopup\n||+ PlaylistManagerPopup()\l}" alt="" coords="200,235,408,312"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1QueuePopup.html" title="{Browser::QueuePopup\n||+ QueuePopup()\l}" alt="" coords="433,235,585,312"/>
-<area shape="rect" id="node9" href="$classGManager_1_1Trayicon.html" title="{GManager::Trayicon\n||+ Trayicon()\l}" alt="" coords="610,235,749,312"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1DatabasePopup.html" title="The popup that shows up when rightclickin an icon." alt="" coords="5,219,176,296"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1PlaylistManagerPopup.html" title="The Popup for Browser::PlaylistManager." alt="" coords="200,219,408,296"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1QueuePopup.html" title="The Popup for Browser::Queue." alt="" coords="433,219,585,296"/>
+<area shape="rect" id="node9" href="$classGManager_1_1Trayicon.html" title="Manager for the trayicon." alt="" coords="610,219,749,296"/>
 </map>

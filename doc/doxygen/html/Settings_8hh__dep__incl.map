@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Settings_8cc.html" title="src/Browser/Settings.cc" alt="" coords="5,80,168,107"/>
-<area shape="rect" id="node5" href="$SettingsGeneral_8cc.html" title="src/Browser/SettingsGeneral.cc" alt="" coords="193,80,399,107"/>
-<area shape="rect" id="node7" href="$SettingsNetwork_8cc.html" title="src/Browser/SettingsNetwork.cc" alt="" coords="424,80,633,107"/>
-<area shape="rect" id="node9" href="$SettingsPlayback_8cc.html" title="src/Browser/SettingsPlayback.cc" alt="" coords="659,80,875,107"/>
-<area shape="rect" id="node11" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="899,80,989,107"/>
-</map>

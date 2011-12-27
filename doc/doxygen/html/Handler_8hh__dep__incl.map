@@ -1,14 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$test__avahi_8cc.html" title="src/Avahi/test_avahi.cc" alt="" coords="5,80,163,107"/>
-<area shape="rect" id="node5" href="$includes_8hh.html" title="src/includes.hh" alt="" coords="187,80,297,107"/>
-<area shape="rect" id="node20" href="$Handler_8cc.html" title="src/Config/Handler.cc" alt="" coords="323,80,471,107"/>
-<area shape="rect" id="node22" href="$test__config_8cc.html" title="src/Config/test_config.cc" alt="" coords="496,80,664,107"/>
-<area shape="rect" id="node24" href="$FreyaWindow_8hh.html" title="src/FreyaWindow.hh" alt="" coords="689,80,831,107"/>
-<area shape="rect" id="node7" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="188,155,317,181"/>
-<area shape="rect" id="node9" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="45,229,216,256"/>
-<area shape="rect" id="node13" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="224,304,315,331"/>
-<area shape="rect" id="node16" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="291,229,420,256"/>
-<area shape="rect" id="node18" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="446,229,601,256"/>
-<area shape="rect" id="node11" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="29,304,200,331"/>
-<area shape="rect" id="node26" href="$FreyaWindow_8cc.html" title="src/FreyaWindow.cc" alt="" coords="689,155,831,181"/>
+<area shape="rect" id="node3" href="$SettingsPlayback_8hh.html" title="src/Browser/Settings/SettingsPlayback.hh" alt="" coords="5,80,272,107"/>
+<area shape="rect" id="node5" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="287,155,501,181"/>
+<area shape="rect" id="node7" href="$SettingsNetwork_8hh.html" title="src/Browser/Settings/SettingsNetwork.hh" alt="" coords="349,80,611,107"/>
+<area shape="rect" id="node10" href="$SettingsGeneral_8hh.html" title="src/Browser/Settings/SettingsGeneral.hh" alt="" coords="636,80,893,107"/>
 </map>

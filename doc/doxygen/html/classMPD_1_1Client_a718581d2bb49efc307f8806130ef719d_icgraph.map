@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="MPD::Client::playback_pause" alt="" coords="217,5,413,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="MPD::Client::toggle_random" alt="" coords="221,56,408,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="MPD::Client::toggle_consume" alt="" coords="216,107,413,133"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="MPD::Client::toggle_repeat" alt="" coords="225,157,405,184"/>
-<area shape="rect" id="node11" href="$classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="MPD::Client::toggle_single" alt="" coords="225,208,404,235"/>
-</map>

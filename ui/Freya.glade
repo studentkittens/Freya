@@ -277,40 +277,49 @@
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkBox" id="box3">
-                <property name="height_request">40</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="border_width">2</property>
+                <property name="margin_left">1</property>
+                <property name="margin_right">1</property>
                 <child>
-                  <object class="GtkAlignment" id="alignment4">
+                  <object class="GtkLabel" id="title_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">1</property>
-                    <property name="left_padding">4</property>
-                    <child>
-                      <object class="GtkVolumeButton" id="volume_button">
-                        <property name="use_action_appearance">False</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="has_tooltip">True</property>
-                        <property name="use_action_appearance">False</property>
-                        <property name="relief">none</property>
-                        <property name="focus_on_click">False</property>
-                        <property name="size">button</property>
-                        <property name="icons">audio-volume-muted
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Not connected&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                    <property name="justify">fill</property>
+                    <property name="wrap">True</property>
+                    <property name="ellipsize">end</property>
+                    <property name="width_chars">11</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkVolumeButton" id="volume_button">
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="relief">none</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="icons">audio-volume-muted
 audio-volume-high
 audio-volume-low
 audio-volume-medium</property>
-                        <property name="use_symbolic">True</property>
-                      </object>
-                    </child>
+                    <property name="use_symbolic">True</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="pack_type">end</property>
-                    <property name="position">1</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -403,72 +412,11 @@ audio-volume-medium</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkAlignment" id="alignment3">
-                    <property name="width_request">210</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="yalign">1</property>
-                    <property name="yscale">0.25</property>
-                    <property name="top_padding">3</property>
-                    <property name="bottom_padding">3</property>
-                    <property name="left_padding">5</property>
-                    <property name="right_padding">2</property>
-                    <child>
-                      <object class="GtkBox" id="title_box">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">3</property>
-                        <child>
-                          <object class="GtkLabel" id="title_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">&lt;b&gt;Not connected&lt;/b&gt;</property>
-                            <property name="use_markup">True</property>
-                            <property name="justify">fill</property>
-                            <property name="ellipsize">end</property>
-                            <property name="width_chars">28</property>
-                            <property name="single_line_mode">True</property>
-                            <property name="max_width_chars">10</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="artist_album_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">Please set up your connection settings.</property>
-                            <property name="ellipsize">end</property>
-                            <property name="width_chars">28</property>
-                            <property name="single_line_mode">True</property>
-                            <property name="max_width_chars">10</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkAlignment" id="alignment1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="yscale">0.86000001430511475</property>
+                    <property name="margin_left">3</property>
+                    <property name="yscale">0</property>
                     <child>
                       <object class="GtkScale" id="time_slide">
                         <property name="visible">True</property>
@@ -486,7 +434,7 @@ audio-volume-medium</property>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
-                    <property name="padding">4</property>
+                    <property name="pack_type">end</property>
                     <property name="position">3</property>
                   </packing>
                 </child>
@@ -498,6 +446,26 @@ audio-volume-medium</property>
               </packing>
             </child>
             <child>
+              <object class="GtkLabel" id="artist_album_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_bottom">5</property>
+                <property name="xalign">0</property>
+                <property name="xpad">2</property>
+                <property name="ypad">1</property>
+                <property name="label" translatable="yes">Please set up your connection settings.</property>
+                <property name="ellipsize">end</property>
+                <property name="width_chars">28</property>
+                <property name="single_line_mode">True</property>
+                <property name="max_width_chars">10</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkSeparator" id="separator3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -505,8 +473,7 @@ audio-volume-medium</property>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="padding">1</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -823,26 +790,31 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-indent</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image_random">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-justify-right</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image_repeat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-refresh</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image_single">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-jump-to</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-media-next</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="pause_image">
     <property name="visible">True</property>
@@ -850,15 +822,18 @@ audio-volume-medium</property>
     <property name="xalign">0</property>
     <property name="yalign">0</property>
     <property name="stock">gtk-media-pause</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="prev_image">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-media-previous</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="stop_image">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-media-stop</property>
+    <property name="icon-size">2</property>
   </object>
 </interface>

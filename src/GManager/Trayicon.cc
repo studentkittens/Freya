@@ -127,7 +127,7 @@ namespace GManager
 
     //---------------------------
     
-    void Trayicon::on_connection_change(bool is_connected)
+    void Trayicon::on_connection_change(bool server_changed, bool is_connected)
     {
         m_ActionNext->set_sensitive(is_connected);
         m_ActionPrev->set_sensitive(is_connected);

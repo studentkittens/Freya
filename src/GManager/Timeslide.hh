@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the Timeslide in the topbar
+     *
+     * Updates the time every 500ms according to the Heartbeat.
+     */
     class Timeslide : public AbstractClientUser
     {
         public:
@@ -45,12 +50,14 @@ namespace GManager
         private:
             void tick(double time);
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
             void on_user_action(void);
+            void do_scroll(void);
 
+            unsigned current_song_id;
             bool ignore_signal;
             Gtk::Scale * m_Timeslide;
-            GManager::Heartbeat * mp_Proxy;
+            GManager::Heartbeat * mp_Heartbeat;
 
             Glib::Timer m_Timeguard;
     };

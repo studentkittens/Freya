@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the status icons in the down sidebar
+     *
+     * Toggles/updates random, consume, repeat, single.
+     */
     class Statusicons : public AbstractClientUser
     {
         public:
@@ -44,7 +49,7 @@ namespace GManager
 
         private:
             void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             void on_clicked_random(void);
             void on_clicked_single(void);

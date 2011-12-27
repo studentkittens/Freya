@@ -38,6 +38,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the trayicon
+     *
+     * It is deriving from Gtk::StatusIcon, that's why you may call show()/hide() functions here.
+     */
     class Trayicon : public Gtk::StatusIcon, public Browser::BasePopup, public AbstractClientUser
     {
         public:
@@ -48,7 +53,7 @@ namespace GManager
             void on_activate(void);
             void on_popup_menu (guint button, guint32 activate_time);
 
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
 
             void on_next_clicked(void);

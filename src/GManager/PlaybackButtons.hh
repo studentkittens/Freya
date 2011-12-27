@@ -37,6 +37,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manages the Playbackbuttons
+     *
+     * Does nothing more than catching signals, and changing symbols.
+     */
     class PlaybackButtons : public AbstractClientUser
     {
         public:
@@ -45,7 +50,7 @@ namespace GManager
         private:
             /* Client Signals */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             /* GTK Signals */
             void on_button_stop(void);

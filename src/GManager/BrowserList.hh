@@ -37,6 +37,13 @@
 
 namespace GManager
 {
+    /**
+     * @brief List of Browsers in sidebar
+     *
+     * Manages a list of AbstractBrowser and switches
+     * to the first browser that needs no connection on disconnect.
+     * Also supports hidden Browsers (Browser::Fortune e.g.)
+     */
     class BrowserList : public AbstractClientUser
     {
         public:
@@ -64,7 +71,7 @@ namespace GManager
             void change_browser(AbstractBrowser * browser);
             void on_selection_changed(void);
             void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             /* Tree model columns: */
             class ModelColumns : public Gtk::TreeModel::ColumnRecord

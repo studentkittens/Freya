@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Connection.html#a110c35339c1d9b2cc06d4a3a24660c01" title="MPD::Connection::is_connected" alt="" coords="485,7,696,34"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Connection.html#a887d39cbe5c7c8ae30720598e0e089a9" title="MPD::Connection::get_connection" alt="" coords="213,32,435,59"/>
-<area shape="rect" id="node8" href="$classAbstractFilebrowser.html#afdc29d24e52529b095e519b0f4aa6cb2" title="AbstractFilebrowser::add_directory" alt="" coords="212,83,436,110"/>
-<area shape="rect" id="node10" href="$classAbstractFilebrowser.html#ada8e6286a7aa715b969264bb65d1693a" title="Override this." alt="" coords="211,134,437,160"/>
-</map>

@@ -34,18 +34,23 @@
 #include "Song.hh"
 #include "Directory.hh"
 
+/**
+ * @brief Inherit from this class to use MPD::Client's fill_database method.
+ */
 class AbstractFilebrowser
 {
     public:
-
         /**
-         * @brief Override this
+         * @brief Called when a song shall be added
          *
-         * @param song
-         *
-         * @return 
+         * @param item a instance of MPD::Song, dynamically allocated
          */
         virtual void add_song_file(MPD::Song * item) = 0; 
+        /**
+         * @brief Called when a Directory shall be added
+         *
+         * @param item a instance of MPD::Directory, dynamically allocated
+         */
         virtual void add_directory(MPD::Directory * item) = 0; 
 };
 

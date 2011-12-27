@@ -41,6 +41,12 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manages the Volumebutton
+     *
+     * Updates on the mixer event, only updates every 0.05 seconds to prevent high ressource-usage.
+     * Also schedules an Glib::signal_idle() event instead of executing it directly.
+     */
     class Volumebutton : public AbstractClientUser
     {
         public:
@@ -49,9 +55,10 @@ namespace GManager
         private:
 
             void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
             void on_user_change(double val);
             void volume_notify(int curVol);
+            void do_volume_step(void);
 
             bool ignore_signal;
             Gtk::VolumeButton * mp_VButton;

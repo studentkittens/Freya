@@ -35,14 +35,25 @@
 
 namespace GManager
 {
+    /**
+     * @brief Just manages the close button.
+     */
     class Window 
     {
         public:
             Window(const Glib::RefPtr<Gtk::Builder> &builder);
             ~Window();
+
+            /**
+             * @brief Get the Gtk::Window of Freya
+             *
+             * @return
+             */
             Gtk::Window* get_window(void);
+
         protected:
             bool on_delete_event(GdkEventAny* event);
+
         private:
             Gtk::Window * main_window;
     };

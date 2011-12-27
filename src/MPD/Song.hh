@@ -32,28 +32,115 @@
 #define FREYA_SONG_GUARD
 
 #include "mpd/client.h"
-
+#include <glibmm.h>
 namespace MPD
 {
     typedef struct mpd_song mpd_song;
 
+    /**
+     * @brief A wrapper for mpd_song
+     */
     class Song
     {
         public:
+            /**
+             * @brief You are not supposed to instance this yourself.
+             *
+             * @param song
+             */
             Song(const mpd_song& song);
+            /**
+             * @brief Copy Ctor
+             *
+             * @param other
+             */
             Song(const MPD::Song& other);
             ~Song(void);
 
+            /**
+             * @brief The path of the song in the DB
+             *
+             * @return 
+             */
             const char * get_uri(void);
+            /**
+             * @brief Get a certain tag from the song
+             *
+             * use song_format() if you just want a easy way to convert
+             * a MPD::Song to a nice string.
+             *
+             * @param type The typ of the tag
+             * @param idx some tags might have more than values, use this to index it, starting with 0
+             *
+             * @return a string
+             */
             const char * get_tag(enum mpd_tag_type type, unsigned idx);
+            /**
+             * @brief Formats the data of the song into a string
+             *
+             * You can use the following formatting strings inside format
+             *   - artist
+             *   - title
+             *   - album
+             *   - track
+             *   - name
+             *   - data
+             *   - album_artist
+             *   - genre
+             *   - composer
+             *   - performer
+             *   - comment
+             *   - disc
+             *   
+             * Each of these values should be placed inside ${fill_tagtype_in_here},
+             * If the tagtype is not known, it gets not escaped, if the tag is empty,
+             * it is escaped with "unknown".
+             *
+             * If markup ist set the string gets already markup'd for use in Gtk Widgets.
+             *
+             * @param format The format prototype
+             * @param markup if markup should be done (see Glib::Markup::escape())
+             *
+             * @return the ready formatted string
+             */
+            Glib::ustring song_format(const char* format, bool markup=true);
+            /**
+             * @brief Get duratin of song in seconds
+             *
+             * @return 
+             */
             unsigned get_duration(void);
+            /**
+             * @brief Get seconds since last modifieGet seconds since last modifieff
+             *
+             * @return time_t type (unsigned long)
+             */
             time_t get_last_modified(void);
+            /**
+             * @brief Set the position in the queue
+             *
+             * This is not a client command, 
+             * and it is not used in Freya.
+             *
+             * @param pos the new pos
+             */
             void set_pos(unsigned pos);
+            /**
+             * @brief Get the position of the Song in the Queue
+             *
+             * @return 
+             */
             unsigned get_pos(void);
+            /**
+             * @brief Get Database ID of the Song
+             *
+             * @return 
+             */
             unsigned get_id(void);
 
         private:
             mpd_song * mp_Song;
+            static char unknown_tag[];
     };
 }
 

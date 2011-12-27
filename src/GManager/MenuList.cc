@@ -82,8 +82,6 @@ namespace GManager
         menu_vol_inc->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_vol_inc));
         menu_vol_dec->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_vol_dec));
         menu_about->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_about));
-
-        on_connection_change(mp_Client->is_connected());
     }
 
     //-----------------------------
@@ -133,7 +131,7 @@ namespace GManager
 
     //-----------------------------
 
-    void MenuList::on_connection_change(bool is_connected)
+    void MenuList::on_connection_change(bool server_changed, bool is_connected)
     {
         menu_connect->set_sensitive(!is_connected);
         menu_disconnect->set_sensitive(is_connected);

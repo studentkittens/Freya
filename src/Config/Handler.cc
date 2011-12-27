@@ -150,6 +150,10 @@ namespace Config
             if (cur != NULL)
                 xmlNodeSetContent(cur, (xmlChar*)value.c_str());
         }
+        else
+        {
+            Warning("DocPtr is NULL, cannot write given value %s to %s.", value.c_str(), url.c_str());
+        }
     }
 
 

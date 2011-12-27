@@ -1,10 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Browser_8cc.html" title="src/Avahi/Browser.cc" alt="" coords="5,80,152,107"/>
-<area shape="rect" id="node5" href="$FreyaWindow_8hh.html" title="src/FreyaWindow.hh" alt="" coords="177,80,319,107"/>
-<area shape="rect" id="node9" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="296,155,387,181"/>
-<area shape="rect" id="node11" href="$check__log_8hh.html" title="src/Log/check_log.hh" alt="" coords="395,80,541,107"/>
-<area shape="rect" id="node15" href="$test__log_8cc.html" title="src/Log/test_log.cc" alt="" coords="565,80,699,107"/>
-<area shape="rect" id="node17" href="$Writer_8cc.html" title="src/Log/Writer.cc" alt="" coords="723,80,845,107"/>
-<area shape="rect" id="node7" href="$FreyaWindow_8cc.html" title="src/FreyaWindow.cc" alt="" coords="129,155,271,181"/>
-<area shape="rect" id="node13" href="$check__log_8cc.html" title="src/Log/check_log.cc" alt="" coords="411,155,557,181"/>
+<area shape="rect" id="node3" href="$Utils_8hh.html" title="src/Utils/Utils.hh" alt="" coords="352,80,472,107"/>
+<area shape="rect" id="node13" href="$check__log_8hh.html" title="src/Log/check_log.hh" alt="" coords="496,80,643,107"/>
+<area shape="rect" id="node5" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="5,155,264,181"/>
+<area shape="rect" id="node9" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="289,155,535,181"/>
+<area shape="rect" id="node11" href="$check__utils_8hh.html" title="src/Utils/check_utils.hh" alt="" coords="559,155,717,181"/>
+<area shape="rect" id="node7" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="27,229,241,256"/>
 </map>

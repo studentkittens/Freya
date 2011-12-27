@@ -39,6 +39,9 @@ namespace MPD
 {
     typedef struct mpd_playlist mpd_playlist;
 
+    /**
+     * @brief A Wrapper for mpd_playlist, also implements own client commands
+     */
     class Playlist : public AbstractClientExtension
     {
         public:
@@ -59,30 +62,29 @@ namespace MPD
             time_t get_last_modified(void);
             
             /**
-             * @brief 
+             * @brief Remove this Playlist from MPD
              */
             void remove(void);
 
             /**
-             * @brief 
+             * @brief load this playlist into the queue (add to end)
              */
             void load(void);
 
             /**
-             * @brief 
+             * @brief Rename playlist
              *
-             * @param new_name
+             * @param new_name The new name as string
              */
             void rename(const char * new_name);
 
             /**
-             * @brief 
+             * @brief Add song identified with path uri to this playlist
              *
-             * @param uri
+             * @param uri a path to a song in the DB
              */
             void add_song(const char * uri);
             
-             
             /**
              * @brief Add song to this playlist
              *

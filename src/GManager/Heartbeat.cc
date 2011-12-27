@@ -105,7 +105,7 @@ namespace GManager
         return signal_proxy;
     }
            
-    void Heartbeat::on_connection_change(bool is_connected)
+    void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
     {
         if(is_connected) 
             play();
@@ -116,10 +116,10 @@ namespace GManager
     /* Implemented from AbstractClientUser, but empty in this case */    
     void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        if(event & (MPD_IDLE_DATABASE | MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
+        if(event & (MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
         {
             MPD::Status& status = data.get_status();
-            set(status.get_elapsed_time());
+            set(status.get_elapsed_ms() / 1000.0);
             switch(status.get_state())
             {
                 case MPD_STATE_PLAY:

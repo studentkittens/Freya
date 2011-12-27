@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classBrowser_1_1BasePopup.html" title="{Browser::BasePopup\n|# m_refUIManager\l# m_refActionGroup\l# m_UiDefinition\l# mp_Popup\l|+ BasePopup()\l+ menu_popup()\l+ get_action()\l# menu_add_item()\l# menu_construct()\l}" alt="" coords="18,6,163,186"/>
+<area shape="rect" id="node2" href="$classBrowser_1_1BasePopup.html" title="A Baseclass for Widgets that want to implement easily popup widgets." alt="" coords="18,5,163,171"/>
 </map>

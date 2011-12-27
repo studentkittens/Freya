@@ -37,20 +37,63 @@ namespace MPD
 {
     typedef struct mpd_stats mpd_stats;
 
+    /**
+     * @brief A wrapper for mpd_stats
+     */
     class Statistics
     {
         public:
 
+            /**
+             * @brief You are not supposed to instance this yourself
+             *
+             * @param stats
+             */
             Statistics(mpd_stats& stats);
             ~Statistics(void);
 
+            /**
+             * @brief Number of artists in DB
+             *
+             * @return 
+             */
             unsigned get_number_of_artists(void);
+            /**
+             * @brief Number of albums in DB
+             *
+             * @return 
+             */
             unsigned get_number_of_albums(void);
+            /**
+             * @brief Number of songs in DB 
+             *
+             * @return 
+             */
             unsigned get_number_of_songs(void);
+            /**
+             * @brief Get uptime in seconds
+             *
+             * @return 
+             */
             unsigned long get_uptime(void);
+            /**
+             * @brief get seconds since last update
+             *
+             * @return 
+             */
             unsigned long get_db_update_time(void);
+            /**
+             * @brief Playing since xxx seconds
+             *
+             * @return 
+             */
             unsigned long get_play_time(void);
-            unsigned long get_db_play_time (void);
+            /**
+             * @brief Total time in seconds needed to play the whole DB
+             *
+             * @return 
+             */
+            unsigned long get_db_play_time(void);
 
         private:
 

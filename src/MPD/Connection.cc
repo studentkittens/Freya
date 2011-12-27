@@ -36,7 +36,8 @@ namespace MPD
 {
     //--------------------------------------
 
-    Connection::Connection(void)
+    Connection::Connection(void) : 
+        hostChanged(false)
     {
         conn = NULL;
     }
@@ -74,6 +75,15 @@ namespace MPD
 
         /* Hostname, might be an IP or a hostname like localhost */
         Glib::ustring str_host = CONFIG_GET("settings.connection.host").c_str();
+
+        /* Check if the host changed */
+        if(str_host.compare(lastHost) != 0)
+            hostChanged = true;
+        else
+            hostChanged = false;
+
+        /* Remember last host */
+        lastHost = str_host;
 
         /* Instance underlying C struct */
         mpd_connection * mpd_conn = mpd_connection_new(str_host.c_str(), port, timeout);
@@ -116,6 +126,20 @@ namespace MPD
     ErrorNotify& Connection::signal_error(void)
     {
         return m_ErrorSig;
+    }
+    
+    //--------------------------------------
+    
+    ConnectionNotifier& Connection::signal_connection_change(void)
+    {
+        return m_ConnNotifer;
+    }
+
+    //--------------------------------------
+    
+    void Connection::emit_connection_change(void)
+    {
+        m_ConnNotifer.emit(hostChanged,is_connected());
     }
     
     //--------------------------------------

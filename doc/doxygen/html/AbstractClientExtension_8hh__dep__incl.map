@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Playlist_8hh.html" title="src/MPD/Playlist.hh" alt="" coords="161,80,300,107"/>
+<area shape="rect" id="node7" href="$AudioOutput_8hh.html" title="src/MPD/AudioOutput.hh" alt="" coords="361,80,529,107"/>
+<area shape="rect" id="node5" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="5,155,309,181"/>
+<area shape="rect" id="node9" href="$OutputsModelColumns_8hh.html" title="src/Browser/Settings/OutputsModelColumns.hh" alt="" coords="333,155,631,181"/>
+<area shape="rect" id="node11" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="353,229,612,256"/>
+<area shape="rect" id="node13" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="375,304,589,331"/>
+</map>

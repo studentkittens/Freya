@@ -1,8 +1,26 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="231,80,360,107"/>
-<area shape="rect" id="node5" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="37,155,208,181"/>
-<area shape="rect" id="node9" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="200,229,291,256"/>
-<area shape="rect" id="node12" href="$Client_8cc.html" title="src/MPD/Client.cc" alt="" coords="283,155,412,181"/>
-<area shape="rect" id="node14" href="$test__client_8cc.html" title="src/MPD/test_client.cc" alt="" coords="438,155,593,181"/>
-<area shape="rect" id="node7" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="5,229,176,256"/>
+<area shape="rect" id="node3" href="$Client_8hh.html" title="src/MPD/Client.hh" alt="" coords="2487,80,2616,107"/>
+<area shape="rect" id="node9" href="$DatabaseCache_8hh.html" title="src/Browser/Database/DatabaseCache.hh" alt="" coords="3726,229,3993,256"/>
+<area shape="rect" id="node5" href="$AbstractClientUser_8hh.html" title="src/MPD/AbstractClientUser.hh" alt="" coords="2019,155,2225,181"/>
+<area shape="rect" id="node7" href="$Database_8hh.html" title="src/Browser/Database/Database.hh" alt="" coords="3745,304,3975,331"/>
+<area shape="rect" id="node12" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="3347,229,3651,256"/>
+<area shape="rect" id="node14" href="$PlaylistAddDialog_8hh.html" title="src/Browser/Queue/PlaylistAddDialog.hh" alt="" coords="831,229,1088,256"/>
+<area shape="rect" id="node16" href="$Queue_8hh.html" title="src/Browser/Queue/Queue.hh" alt="" coords="945,304,1140,331"/>
+<area shape="rect" id="node22" href="$SettingsPlayback_8hh.html" title="src/Browser/Settings/SettingsPlayback.hh" alt="" coords="5,229,272,256"/>
+<area shape="rect" id="node26" href="$Trayicon_8hh.html" title="src/GManager/Trayicon.hh" alt="" coords="297,229,473,256"/>
+<area shape="rect" id="node32" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="547,229,807,256"/>
+<area shape="rect" id="node37" href="$Heartbeat_8hh.html" title="src/GManager/Heartbeat.hh" alt="" coords="1165,229,1347,256"/>
+<area shape="rect" id="node39" href="$Statusbar_8hh.html" title="src/GManager/Statusbar.hh" alt="" coords="2057,304,2239,331"/>
+<area shape="rect" id="node43" href="$MenuList_8hh.html" title="src/GManager/MenuList.hh" alt="" coords="2236,229,2415,256"/>
+<area shape="rect" id="node47" href="$PlaybackButtons_8hh.html" title="src/GManager/PlaybackButtons.hh" alt="" coords="2439,229,2664,256"/>
+<area shape="rect" id="node50" href="$StatusIcons_8hh.html" title="src/GManager/StatusIcons.hh" alt="" coords="2689,229,2884,256"/>
+<area shape="rect" id="node53" href="$TitleLabel_8hh.html" title="src/GManager/TitleLabel.hh" alt="" coords="2909,229,3091,256"/>
+<area shape="rect" id="node55" href="$Volumebutton_8hh.html" title="src/GManager/Volumebutton.hh" alt="" coords="3115,229,3321,256"/>
+<area shape="rect" id="node64" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="3637,155,3883,181"/>
+<area shape="rect" id="node19" href="$QueueMerger_8hh.html" title="src/Browser/Queue/QueueMerger.hh" alt="" coords="1607,229,1840,256"/>
+<area shape="rect" id="node35" href="$BrowserList_8hh.html" title="src/GManager/BrowserList.hh" alt="" coords="1865,229,2060,256"/>
+<area shape="rect" id="node41" href="$Timeslide_8hh.html" title="src/GManager/Timeslide.hh" alt="" coords="1507,304,1689,331"/>
+<area shape="rect" id="node45" href="$NotifyManager_8hh.html" title="src/GManager/NotifyManager.hh" alt="" coords="1372,229,1581,256"/>
+<area shape="rect" id="node24" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="225,379,439,405"/>
+<area shape="rect" id="node28" href="$SettingsGeneral_8hh.html" title="src/Browser/Settings/SettingsGeneral.hh" alt="" coords="287,304,544,331"/>
 </map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classAvahi_1_1Browser.html#a1f5ef46e504f2aad4a010f056dcfd07a" title="Avahi::Browser::is_connected" alt="" coords="105,5,301,32"/>
-<area shape="rect" id="node5" href="$classAvahi_1_1Browser.html#ac313e3d6455a6ac1ded29c4f0f9b55a0" title="Avahi::Browser::get_signal" alt="" coords="113,56,292,83"/>
-<area shape="rect" id="node7" href="$test__avahi_8cc.html#a1939902c2ad02c4f1293e367a739307d" title="selected_callback" alt="" coords="139,107,266,133"/>
-<area shape="rect" id="node9" href="$classAvahi_1_1Browser.html#a1d41a134c9f0d3ed232e2c28b81189f3" title="Avahi::Browser::get_window" alt="" coords="109,157,297,184"/>
-</map>

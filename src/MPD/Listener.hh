@@ -45,6 +45,9 @@ typedef sigc::signal<void,enum mpd_idle, MPD::NotifyData&> EventNotifier;
 
 namespace MPD
 {
+    /**
+     * @brief Listener for Server events, Freya's actual core.
+     */
     class Listener
     {
         public:

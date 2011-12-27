@@ -1,7 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1DatabaseBrowser.html" title="{Browser::DatabaseBrowser\n||+ DatabaseBrowser()\l+ ~DatabaseBrowser()\l+ get_container()\l+ add_directory()\l+ add_song_file()\l+ on_menu_db_clicked()\l}" alt="" coords="5,177,187,327"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1PlaylistManager.html" title="{Browser::PlaylistManager\n||+ PlaylistManager()\l+ ~PlaylistManager()\l+ get_container()\l}" alt="" coords="212,199,383,305"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1Queue.html" title="{Browser::Queue\n||+ Queue()\l+ ~Queue()\l+ get_container()\l}" alt="" coords="407,199,527,305"/>
-<area shape="rect" id="node9" href="$classBrowser_1_1Settings.html" title="{Browser::Settings\n||+ Settings()\l+ ~Settings()\l+ get_container()\l+ settings_changed()\l}" alt="" coords="551,191,695,313"/>
-<area shape="rect" id="node11" href="$classBrowser_1_1StatBrowser.html" title="{Browser::StatBrowser\n||+ StatBrowser()\l+ ~StatBrowser()\l+ get_container()\l}" alt="" coords="719,199,869,305"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,205,139,341"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1Fortuna.html" title="A little easteregg browser." alt="" coords="164,227,287,319"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="311,220,481,327"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist." alt="" coords="505,220,625,327"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1Settings.html" title="The Settingsbrowser shown in the sidebar." alt="" coords="649,213,793,334"/>
+<area shape="rect" id="node13" href="$classBrowser_1_1StatBrowser.html" title="A simple representation of the current MPD::Statistics." alt="" coords="818,220,968,327"/>
 </map>

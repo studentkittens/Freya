@@ -1,5 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$Database_8hh.html" title="src/Browser/Database.hh" alt="" coords="83,80,253,107"/>
-<area shape="rect" id="node5" href="$Database_8cc.html" title="src/Browser/Database.cc" alt="" coords="5,155,176,181"/>
-<area shape="rect" id="node7" href="$Main_8cc.html" title="src/Main.cc" alt="" coords="200,155,291,181"/>
+<area shape="rect" id="node3" href="$Database_8hh.html" title="src/Browser/Database/Database.hh" alt="" coords="5,80,235,107"/>
+<area shape="rect" id="node5" href="$Fortuna_8hh.html" title="src/Browser/Fortuna/Fortuna.hh" alt="" coords="259,80,465,107"/>
+<area shape="rect" id="node7" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="491,80,795,107"/>
+<area shape="rect" id="node9" href="$Queue_8hh.html" title="src/Browser/Queue/Queue.hh" alt="" coords="819,80,1013,107"/>
+<area shape="rect" id="node11" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="1038,80,1252,107"/>
+<area shape="rect" id="node13" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="1277,80,1523,107"/>
+<area shape="rect" id="node15" href="$BrowserList_8hh.html" title="src/GManager/BrowserList.hh" alt="" coords="1547,80,1741,107"/>
 </map>

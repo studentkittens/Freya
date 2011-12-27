@@ -34,12 +34,15 @@
 #include  "BaseClient.hh"
 
 /* Songlist interface */
-#include "AbstractItemlist.hh"
-#include "AbstractFilebrowser.hh"
+#include "AbstractItemGenerator.hh"
+#include "AbstractFileGenerator.hh"
 
 namespace MPD
 {
-    class Client : public BaseClient
+    /**
+     * @brief The client implements concrete commands of the MPD Protocol
+     */
+    class Client : public BaseClient, public AbstractItemGenerator
     {
         public:
 
@@ -225,7 +228,7 @@ namespace MPD
              *
              * @param data_model A user defined class, that inherits from AbstractSonglist 
              */
-            void fill_ouputs(AbstractItemlist& data_model);
+            void fill_outputs(AbstractItemlist& data_model);
             /**
              * @brief Fetches a list of files in the database
              *
@@ -234,15 +237,6 @@ namespace MPD
              */
             void fill_filelist(AbstractFilebrowser& data_model, const char * path);
            
-            /**
-             * @brief 
-             *
-             * @param data_model
-             * @param path
-             * @param search_term
-             */
-//            void fill_filelist_filtered(AbstractFilebrowser& data_model, const char * path, const char * search_term);
-
             /**
              * @brief Send a command to the server
              *

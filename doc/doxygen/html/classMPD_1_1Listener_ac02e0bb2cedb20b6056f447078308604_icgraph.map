@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="MPD::Client::connect" alt="" coords="258,56,406,83"/>
-<area shape="rect" id="node11" href="$classMPD_1_1Client.html#adab5a304f4aba2bdf5a9f8d5dab27f91" title="Forces client update." alt="" coords="243,107,421,133"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3" title="MPD::Client::Client" alt="" coords="469,5,605,32"/>
-<area shape="rect" id="node7" href="$test__client_8cc.html#af3e33d04c0ba91d7384b4e635fbd89b6" title="stdin_io_callback" alt="" coords="476,56,599,83"/>
-<area shape="rect" id="node9" href="$test__client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="653,56,704,83"/>
-<area shape="rect" id="node13" href="$Main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="512,107,563,133"/>
-</map>

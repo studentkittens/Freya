@@ -38,24 +38,50 @@
 
 namespace MPD
 {
+    /**
+     * @brief NotifyData is passed as second argument to the on_client_update signal.
+     */
     class NotifyData
     {
         public:
+            /**
+             * @brief You are not supposed to instance this yourself.
+             *
+             * @param conn
+             */
             NotifyData(Connection& conn);
             ~NotifyData(void);
 
+            /**
+             * @brief Get the current MPD::Status
+             *
+             * @return 
+             */
             Status& get_status(void);
+            /**
+             * @brief Get the current MPD::Statistics
+             *
+             * @return 
+             */
             Statistics& get_statistics(void);
 
-            /* These return pointers since they can be NULL!
-             * Check for it therefore. */
+            /**
+             * @brief Get the currently playing MPD::Song
+             *
+             * @return This is NULL when not playing! Check for it!
+             */
             Song * get_song(void);
+            /**
+             * @brief Get the next playing MPD::Song
+             *
+             * @return This might be NULL at end of the queue and when not repeating.
+             */
             Song * get_next_song(void);
 
             /**
              * @brief Update internal client state
              */
-            void update_all(void);
+            void update_all(unsigned event = UINT_MAX);
 
         private:
 

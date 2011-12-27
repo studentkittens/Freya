@@ -43,60 +43,19 @@
 #include "../GManager/NotifyManager.hh"
 #include "../GManager/Trayicon.hh"
 
-#include "../Browser/Queue.hh"
-#include "../Browser/PlaylistManager.hh"
-#include "../Browser/Database.hh"
-#include "../Browser/StatBrowser.hh"
-#include "../Browser/Settings.hh"
-#include "../Browser/Fortuna.hh"
+#include "../Browser/Queue/Queue.hh"
+#include "../Browser/PlaylistManager/PlaylistManager.hh"
+#include "../Browser/Database/Database.hh"
+#include "../Browser/Statistics/StatBrowser.hh"
+#include "../Browser/Settings/Settings.hh"
+#include "../Browser/Fortuna/Fortuna.hh"
 #include "../Log/Writer.hh"
 
 #include "../Utils/Utils.hh"
 
+#include "SignalHandler.hh"
+
 using namespace std;
-
-/* For the signalhandler */
-#include <signal.h>
-
-namespace Init
-{
-    static struct sigaction sa_struct;
-
-    static void signal_handler(int signo)
-    {
-        switch(signo)
-        {
-            case SIGINT:
-                Info("Closing.");
-                break;
-            default: 
-                Fatal("Freya received an unexpted signal (%s)\n"
-                        "                 Please go to https://github.com/studentkittens/Freya/issues\n"
-                        "                 and start to throw bad words like 'backtrace' at us.\n"
-                        "                 This message was emitted from: ",
-                        Glib::strsignal(signo).c_str());
-
-                Info("Will try to save data and exit now.");
-                Config::Handler::instance().save_config_now();
-                exit(-42);
-                break;  
-        }
-        Gtk::Main::quit();
-    }
-
-    static void register_sighandler(void)
-    {
-        sa_struct.sa_handler = signal_handler;
-        sigemptyset(&sa_struct.sa_mask);
-        sa_struct.sa_flags = 0;
-
-        /* Register all relevant signals */
-        sigaction(SIGSEGV,&sa_struct,NULL);
-        sigaction(SIGFPE,&sa_struct,NULL);
-        sigaction(SIGABRT,&sa_struct,NULL);
-        sigaction(SIGINT, &sa_struct,NULL);
-    }
-}
 
 int main(int argc, char *argv[])
 {
@@ -104,10 +63,11 @@ int main(int argc, char *argv[])
 
     try
     {
+        /* Register fatal signals like SIGSEGV */
+        Init::SignalHandler sig_handler;
+
         /* Instance the client */
         MPD::Client client;
-
-        Init::register_sighandler();
 
         /* Get the glade file */
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
@@ -147,7 +107,10 @@ int main(int argc, char *argv[])
         browser_list.set(easter_egg);
 
         /* Send a good morning to all widgets */
-        client.force_update();
+        if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
+        {
+            client.connect();
+        }
 
         main_window.get_window()->show();
 

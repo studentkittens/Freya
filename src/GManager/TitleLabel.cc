@@ -31,6 +31,7 @@
 #include "TitleLabel.hh"
 #include "../Utils/Utils.hh"
 #include "../Notify/Notify.hh"
+
 namespace GManager
 {
     TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
@@ -57,18 +58,10 @@ namespace GManager
         MPD::Song * current_song = data.get_next_song(); 
         if(current_song != NULL)
         {
-            char * title_string = g_markup_printf_escaped("<small>%s</small>",
-                    current_song->get_tag(MPD_TAG_TITLE,0)
-                    );
-            char * artist_string = g_markup_printf_escaped("<small>%s</small>",
-                    current_song->get_tag(MPD_TAG_ARTIST,0)
-                    );
 
-            mp_NextSongArtistLabel->set_markup(artist_string);
-            mp_NextSongTitleLabel->set_markup(title_string);
+            mp_NextSongArtistLabel->set_markup(current_song->song_format("<small>${title}</small>"));
+            mp_NextSongTitleLabel->set_markup(current_song->song_format("<small>${artist}</small>"));
 
-            g_free(title_string);
-            g_free(artist_string);
         }
         else
         {
@@ -78,7 +71,7 @@ namespace GManager
 
     //----------------
 
-    void TitleLabel::on_connection_change(bool is_connected)
+    void TitleLabel::on_connection_change(bool server_changed, bool is_connected)
     {
         if(!is_connected)
         {
@@ -97,21 +90,10 @@ namespace GManager
             MPD::Song * current_song = data.get_song();
             if(current_song != NULL)
             {
-                char * title_string = g_markup_printf_escaped("<b>%s</b> (Track %s)",
-                        current_song->get_tag(MPD_TAG_TITLE,0),
-                        current_song->get_tag(MPD_TAG_TRACK,0)
-                        );
-                char * artist_album = g_markup_printf_escaped("<small>by <b>%s</b> on <b>%s</b> (%s)</small>",
-                        current_song->get_tag(MPD_TAG_ARTIST,0),
-                        current_song->get_tag(MPD_TAG_ALBUM,0),
-                        current_song->get_tag(MPD_TAG_DATE,0)
-                        );
 
-                mp_TitleLabel->set_markup(title_string); 
-                mp_ArtistAlbumLabel->set_markup(artist_album); 
+                mp_TitleLabel->set_markup(current_song->song_format("<b>${title}</b> (Track ${track})")); 
+                mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small><span weight='light'><i>by</i></span> ${artist} <span weight='light'><i>on</i></span> ${album} (${date})</small>")); 
 
-                g_free(artist_album);
-                g_free(title_string);
             }
             else
             {

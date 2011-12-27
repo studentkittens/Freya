@@ -1,3 +1,37 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classMPD_1_1Directory.html" title="MPD::Directory" alt="" coords="6,5,119,32"/>
+<area shape="rect" id="node1" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="34,132,153,159"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="266,259,401,285"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1Fortuna.html" title="A little easteregg browser." alt="" coords="272,56,395,83"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="248,157,419,184"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist." alt="" coords="275,208,391,235"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1Settings.html" title="The Settingsbrowser shown in the sidebar." alt="" coords="270,107,397,133"/>
+<area shape="rect" id="node13" href="$classBrowser_1_1StatBrowser.html" title="A simple representation of the current MPD::Statistics." alt="" coords="258,5,409,32"/>
+<area shape="rect" id="node14" href="$classAbstractClientUser.html" title="AbstractClientUser" alt="" coords="27,613,160,640"/>
+<area shape="rect" id="node17" href="$classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data." alt="" coords="247,309,419,336"/>
+<area shape="rect" id="node19" href="$classBrowser_1_1PlaylistAddDialog.html" title="Shows a simple dialog when a new playlist needs to be saved." alt="" coords="243,461,424,488"/>
+<area shape="rect" id="node23" href="$classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="255,360,411,387"/>
+<area shape="rect" id="node25" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="247,968,419,995"/>
+<area shape="rect" id="node27" href="$classBrowser_1_1SettingsPlayback.html" title="Playback Settings Tab." alt="" coords="243,1019,423,1045"/>
+<area shape="rect" id="node29" href="$classGManager_1_1BrowserList.html" title="List of Browsers in sidebar." alt="" coords="254,512,413,539"/>
+<area shape="rect" id="node31" href="$classGManager_1_1Heartbeat.html" title="A software clock that emits a signal every 500ms." alt="" coords="260,563,407,589"/>
+<area shape="rect" id="node33" href="$classGManager_1_1MenuList.html" title="The Manager for the Topmenus." alt="" coords="262,613,405,640"/>
+<area shape="rect" id="node35" href="$classGManager_1_1NotifyManager.html" title="Manages Notifications that are triggered on player events." alt="" coords="246,664,421,691"/>
+<area shape="rect" id="node37" href="$classGManager_1_1PlaybackButtons.html" title="Manages the Playbackbuttons." alt="" coords="239,715,428,741"/>
+<area shape="rect" id="node39" href="$classGManager_1_1Statusbar.html" title="Manager for the statusbar." alt="" coords="260,765,407,792"/>
+<area shape="rect" id="node41" href="$classGManager_1_1Statusicons.html" title="Manager for the status icons in the down sidebar." alt="" coords="254,816,413,843"/>
+<area shape="rect" id="node43" href="$classGManager_1_1Timeslide.html" title="Manager for the Timeslide in the topbar." alt="" coords="260,867,407,893"/>
+<area shape="rect" id="node45" href="$classGManager_1_1TitleLabel.html" title="Updates the top titlelabel, and the down nextsong label in the sidebar." alt="" coords="260,917,407,944"/>
+<area shape="rect" id="node47" href="$classGManager_1_1Trayicon.html" title="Manager for the trayicon." alt="" coords="263,1171,403,1197"/>
+<area shape="rect" id="node49" href="$classGManager_1_1Volumebutton.html" title="Manages the Volumebutton." alt="" coords="248,411,419,437"/>
+<area shape="rect" id="node50" href="$classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method." alt="" coords="24,284,163,311"/>
+<area shape="rect" id="node53" href="$classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="36,360,151,387"/>
+<area shape="rect" id="node57" href="$classBrowser_1_1AbstractSettings.html" title="Abstract base class for every Tab in the Settingsbrowser." alt="" coords="6,1044,181,1071"/>
+<area shape="rect" id="node59" href="$classBrowser_1_1SettingsGeneral.html" title="General Settings Tab." alt="" coords="248,1069,419,1096"/>
+<area shape="rect" id="node61" href="$classBrowser_1_1SettingsNetwork.html" title="Network Settings Tab." alt="" coords="246,1120,421,1147"/>
+<area shape="rect" id="node64" href="$classBrowser_1_1BasePopup.html" title="A Baseclass for Widgets that want to implement easily popup widgets." alt="" coords="21,1247,166,1273"/>
+<area shape="rect" id="node66" href="$classBrowser_1_1DatabasePopup.html" title="The popup that shows up when rightclickin an icon." alt="" coords="248,1221,419,1248"/>
+<area shape="rect" id="node68" href="$classBrowser_1_1PlaylistManagerPopup.html" title="The Popup for Browser::PlaylistManager." alt="" coords="229,1272,437,1299"/>
+<area shape="rect" id="node70" href="$classBrowser_1_1QueuePopup.html" title="The Popup for Browser::Queue." alt="" coords="257,1323,410,1349"/>
+<area shape="rect" id="node72" href="$classGtk_1_1Frame.html" title="Frame" alt="" coords="64,31,123,57"/>
+<area shape="rect" id="node75" href="$classGtk_1_1StatusIcon.html" title="StatusIcon" alt="" coords="51,1171,136,1197"/>
 </map>

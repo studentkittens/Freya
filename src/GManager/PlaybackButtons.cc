@@ -36,8 +36,8 @@ namespace GManager
 {
     PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(instance), 
-        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_BUTTON), 
-        pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_BUTTON)
+        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_SMALL_TOOLBAR), 
+        pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_SMALL_TOOLBAR)
     {
         BUILDER_GET(builder,"stop_button",stop_button);
         BUILDER_GET(builder,"pause_button",pause_button);
@@ -90,7 +90,7 @@ namespace GManager
     
     //----------------------------
 
-    void PlaybackButtons::on_connection_change(bool is_connected) 
+    void PlaybackButtons::on_connection_change(bool server_changed, bool is_connected) 
     {
        stop_button->set_sensitive(is_connected);
        prev_button->set_sensitive(is_connected);

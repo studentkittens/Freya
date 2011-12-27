@@ -38,22 +38,25 @@ namespace MPD
         m_Conn(),
         mp_Listener(NULL),
         m_ListBegun(false)
-    {}
+    {
+        /* Call handle_errors on any found error */
+        m_Conn.signal_error().connect(
+                sigc::mem_fun(*this,&BaseClient::handle_errors));
+    }
     
     //-------------------------------
 
     bool BaseClient::__connect(void)
     {
-        /* Call handle_errors on any found error */
-        m_Conn.signal_error().connect(
-                sigc::mem_fun(*this,&BaseClient::handle_errors));
-
-        if(m_Conn.connect())
+        if(m_Conn.is_connected() == false)
         {
-            mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
-            go_idle();
-            m_ConnNotifer.emit(true);
-            force_update();
+            if(m_Conn.connect())
+            {
+                mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
+                go_idle();
+                force_update();
+            }
+            m_Conn.emit_connection_change();
         }
 
         return is_connected();
@@ -72,16 +75,15 @@ namespace MPD
                     mp_Listener->leave();
                     delete mp_Listener;
                 }
-
             }
             m_Conn.disconnect();
-            m_ConnNotifer.emit(false);
+            m_Conn.emit_connection_change();
         }
         return is_connected();
     }
 
     //-------------------------------
-    
+
     void BaseClient::go_idle(void)
     {
         m_Conn.check_error();
@@ -101,9 +103,9 @@ namespace MPD
         }
         m_Conn.check_error();
     }
-    
+
     //-------------------------------
-    
+
     Connection& BaseClient::get_connection(void)
     {
         return m_Conn;
@@ -115,7 +117,7 @@ namespace MPD
     {
         return m_Conn.is_connected();
     }
-    
+
     //-------------------------------
 
     void BaseClient::begin(void)
@@ -166,7 +168,7 @@ namespace MPD
 
     ConnectionNotifier& BaseClient::signal_connection_change(void)
     {
-        return m_ConnNotifer;
+        return m_Conn.signal_connection_change();
     }
 
     //--------------------

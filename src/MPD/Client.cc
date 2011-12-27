@@ -55,13 +55,7 @@ namespace MPD
 
     //-------------------------------
 
-    Client::Client() 
-    {
-        if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
-        {
-            connect();
-        }
-    }
+    Client::Client() {}
 
     //-------------------------------
 
@@ -296,7 +290,7 @@ namespace MPD
 
     //-------------------------------
     
-    void Client::fill_ouputs(AbstractItemlist& data_model)
+    void Client::fill_outputs(AbstractItemlist& data_model)
     {
         GET_BUSY
         {

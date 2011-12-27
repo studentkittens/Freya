@@ -61,7 +61,7 @@ namespace GManager
 
     /* ------------------ */
     
-    void Statusbar::on_connection_change(bool is_connected)
+    void Statusbar::on_connection_change(bool server_changed, bool is_connected)
     {
        if(is_connected == false)
           mp_Lastdata = NULL; 

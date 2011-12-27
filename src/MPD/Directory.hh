@@ -35,12 +35,28 @@
 
 namespace MPD
 {
+    /**
+     * @brief A wrapper for mpd_directory
+     */
     class Directory 
     {
         public:
+            /**
+             * @brief You are not supposed to instace this yourself.
+             *
+             * @param dir
+             */
             Directory(mpd_directory& dir);
+            /**
+             * @brief dtor will free underlying mpd_directory
+             */
             virtual ~Directory(void);
 
+            /**
+             * @brief The path of the directory
+             *
+             * @return a string
+             */
             const char * get_path(void);
 
         private:

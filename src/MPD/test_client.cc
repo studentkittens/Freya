@@ -68,6 +68,7 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
                 char cmd[256] = {0};
                 if(fgets(cmd,255,stdin))
                 {
+                    /* Chomp newline */
                     char * nl = strrchr(cmd,'\n');
                     if(nl != NULL) nl[0] = 0;
                     client->send_command(cmd);
@@ -105,7 +106,7 @@ int main(int argc, char *argv[])
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
     g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data); 
 
-    freya.force_update();
+    freya.connect();
 
     Info("Enter your command prepended with a ':'");
     Info("Example: :status or :next");

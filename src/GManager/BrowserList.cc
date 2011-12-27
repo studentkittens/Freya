@@ -70,7 +70,7 @@ namespace GManager
 
     //----------------------------
 
-    void BrowserList::on_connection_change(bool is_connected)
+    void BrowserList::on_connection_change(bool server_changed, bool is_connected)
     {
         /* Jump to Settingstab on disconnect,
          * and make other browser insensitive,
@@ -127,7 +127,6 @@ namespace GManager
         if(browser != NULL)
         {
             Glib::ustring name = browser->get_name();
-            Debug("Adding browser: %s",name.c_str());
 
             /* Get last element of box. Eddy...Duuuude!
              * What did you do earlier here?! */        

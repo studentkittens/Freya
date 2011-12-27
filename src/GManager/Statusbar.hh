@@ -39,6 +39,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manager for the statusbar
+     *
+     * Updates the statusbar every 0.5 seconds
+     */
     class Statusbar : public AbstractClientUser
     {
         public:
@@ -51,7 +56,7 @@ namespace GManager
             void on_heartbeat(double time);
             void format_time(unsigned time, char buffer[]);
             void do_update_message(MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
 
             MPD::NotifyData * mp_Lastdata;
             Gtk::Label * m_Statusbar;

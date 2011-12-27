@@ -29,16 +29,17 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "Song.hh"
-
+#include <iostream>
 namespace MPD
 {
+    char Song::unknown_tag[] = "unknown";
+
     Song::Song(const mpd_song& song)
     {
         mp_Song = (mpd_song*)&song;
     }
-    
+
     /*------------------------------*/
-    
     Song::Song(const MPD::Song& other)
     {
        mpd_song * other_song = other.mp_Song;
@@ -47,9 +48,9 @@ namespace MPD
        else
            mp_Song = NULL;
     }
-    
+
     /*------------------------------*/
-    
+
     Song::~Song(void)
     {
         if(mp_Song != NULL)
@@ -68,7 +69,8 @@ namespace MPD
 
     const char * Song::get_tag(enum mpd_tag_type type, unsigned idx)
     {
-        return mpd_song_get_tag(mp_Song,type,idx);
+        const char* tag = mpd_song_get_tag(mp_Song,type,idx);
+        return tag!=NULL ? tag : type==MPD_TAG_ARTIST?get_uri():unknown_tag ;
 
     }
     /*------------------------------*/
@@ -104,6 +106,73 @@ namespace MPD
     unsigned Song::get_id(void)
     {
         return mpd_song_get_id(mp_Song);
+    }
+    /*------------------------------*/
+
+    Glib::ustring Song::song_format(const char* format, bool markup)
+    {
+
+        Glib::ustring result(format);
+        unsigned n=0, i=0;
+
+        while(n<result.size())
+        {
+            n=result.find("${",n);
+            i=result.find("}",n);
+            if(n>=result.size())
+                continue;
+            Glib::ustring tmp = result.substr(n+2,i-n-2);
+
+            if(tmp=="artist")
+                tmp = get_tag(MPD_TAG_ARTIST,0);
+            else
+            if(tmp=="title")
+                tmp = get_tag(MPD_TAG_TITLE,0);
+            else
+            if(tmp=="album")
+                tmp = get_tag(MPD_TAG_ALBUM,0);
+            else
+            if(tmp=="track")
+                tmp = get_tag(MPD_TAG_TRACK,0);
+            else
+            if(tmp=="name")
+                tmp = get_tag(MPD_TAG_NAME,0);
+            else
+            if(tmp=="date")
+                tmp = get_tag(MPD_TAG_DATE,0);
+            else
+            if(tmp=="album_artist")
+                tmp = get_tag(MPD_TAG_ALBUM_ARTIST,0);
+            else
+            if(tmp=="genre")
+                tmp = get_tag(MPD_TAG_GENRE,0);
+            else
+            if(tmp=="composer")
+                tmp = get_tag(MPD_TAG_COMPOSER,0);
+            else
+            if(tmp=="performer")
+                tmp = get_tag(MPD_TAG_PERFORMER,0);
+            else
+            if(tmp=="comment")
+                tmp = get_tag(MPD_TAG_COMMENT,0);
+            else
+            if(tmp=="disc")
+                tmp = get_tag(MPD_TAG_DISC,0);
+            else
+                tmp=" ";
+
+
+            if(markup)
+            {
+                tmp=Glib::Markup::escape_text(tmp);
+            }
+
+            result.replace(n,i-n+1,tmp);
+            n=n+tmp.size()+1;
+        }
+
+
+        return result;
     }
     /*------------------------------*/
 }

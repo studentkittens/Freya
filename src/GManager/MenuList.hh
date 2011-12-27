@@ -38,6 +38,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief The Manager for the Topmenus
+     *
+     * Also defines quite some keybindings, but no releveant public methods.
+     */
     class MenuList : public AbstractClientUser
     {
         public:
@@ -47,7 +52,7 @@ namespace GManager
 
         private:
 
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
             void on_client_update(enum mpd_idle event, MPD::NotifyData &data);
 
             void on_menu_connect(void);

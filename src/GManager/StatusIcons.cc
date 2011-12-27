@@ -51,7 +51,7 @@ namespace GManager
         mp_Consume->signal_clicked().connect(sigc::mem_fun(*this,&Statusicons::on_clicked_consume));
     }
 
-    void Statusicons::on_connection_change(bool is_connected)
+    void Statusicons::on_connection_change(bool server_changed, bool is_connected)
     {
         mp_Random->set_sensitive(is_connected);
         mp_Single->set_sensitive(is_connected);

@@ -153,7 +153,7 @@ namespace MPD
                 idle_events = UINT_MAX; 
             }
 
-            m_NData.update_all();
+            m_NData.update_all(idle_events);
 
             /* Iterare over the enum (this is weird) */
             for(unsigned mask = 1; /* empty */; mask <<= 1)
@@ -167,7 +167,7 @@ namespace MPD
                 unsigned actual_event = (idle_events & mask);
                 if(actual_event != 0)
                 {
-                   // Debug("  :%s",event_name);
+                    //Debug("  :%s",event_name);
 
                     /* Notify observers */
                     mp_Notifier->emit((mpd_idle)actual_event,m_NData);
@@ -189,6 +189,12 @@ namespace MPD
 
     //--------------------------------
 
+    /*
+     * Parse a respone and add every occured event
+     * to the idle_events bitmask, in case of errors
+     * the parsing is aborted, on success the client
+     * -callback is called.
+     */
     bool Listener::parse_response(char *line)
     {
         mpd_parser_result result;
@@ -234,6 +240,14 @@ namespace MPD
 
     //--------------------------------
 
+    /* Reads respone from server line by line,
+     * till OK comes in, or an error is occured 
+     *    changed: player 
+     *    changed: mixer
+     *    ....
+     *    OK
+     *
+     */
     bool Listener::recv_parseable(void)
     {
         char * line = NULL;

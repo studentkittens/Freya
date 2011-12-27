@@ -36,6 +36,11 @@
 
 namespace GManager
 {
+    /**
+     * @brief Manages Notifications that are triggered on player events
+     *
+     * It does not offer any relevant public methods
+     */
     class NotifyManager : public AbstractClientUser
     {
         public:
@@ -44,7 +49,7 @@ namespace GManager
         private:
 
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool is_connected);
+            void on_connection_change(bool server_changed, bool is_connected);
     };
 }
 

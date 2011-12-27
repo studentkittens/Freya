@@ -1,4 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1PlaylistManager.html" title="{Browser::PlaylistManager\n||+ PlaylistManager()\l+ ~PlaylistManager()\l+ get_container()\l}" alt="" coords="5,131,176,237"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1Queue.html" title="{Browser::Queue\n||+ Queue()\l+ ~Queue()\l+ get_container()\l}" alt="" coords="200,131,320,237"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="5,183,176,289"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="201,175,364,297"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="389,131,563,341"/>
 </map>

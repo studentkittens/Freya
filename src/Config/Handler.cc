@@ -253,4 +253,144 @@ namespace Config
         return _get_value_as_int(url,true);
     }
 
+
+    /* ----------------------------------------- */
+
+    void Handler::add_server_output(Glib::ustring hostname, Glib::ustring outName, bool active)
+    {
+        xmlDocPtr doc;
+        xmlNodePtr cur;
+        xmlNodePtr tmp;
+        doc = cfgmodel.getDocPtr();
+
+        if (doc == NULL)
+        {
+            return;
+        }
+
+        cur = xmlDocGetRootElement(doc);
+
+        if (cur == NULL)
+        {
+            return;
+        }
+
+
+        cur = this->traverse("freya.settings.server",cur);
+
+        tmp = cur->xmlChildrenNode;
+        while (tmp != NULL)
+        {
+            if ((!xmlStrcmp(tmp->name, (xmlChar*)"hostname")))
+            {
+                xmlChar *key = xmlGetProp(tmp, (xmlChar*)"h");
+                if((!xmlStrcmp(key, (xmlChar*)hostname.c_str())))
+                {
+                    break;
+                }
+                xmlFree(key);
+            }
+            tmp = tmp->next;
+        }
+
+        if (tmp == NULL)
+        {
+            tmp = xmlNewChild(cur,NULL,(xmlChar*)"hostname",NULL);
+            xmlNewProp(tmp,(xmlChar*)"h",(xmlChar*)hostname.c_str());
+        }
+        cur=tmp;
+
+        tmp = tmp->xmlChildrenNode;
+        while (tmp != NULL)
+        {
+            {
+                xmlChar *key = xmlGetProp(tmp, (xmlChar*)"n");
+                if((!xmlStrcmp(key, (xmlChar*)outName.c_str())))
+                {
+                    break;
+                }
+                xmlFree(key);
+            }
+            tmp = tmp->next;
+        }
+
+        if (tmp != NULL)
+        {
+            xmlNodeSetContent(tmp, (xmlChar*)(active?"1":"0"));
+        }
+        else
+        {
+            tmp = xmlNewChild(cur,NULL,(xmlChar*)"output",(xmlChar*)(active?"1":"0"));
+            xmlNewProp(tmp,(xmlChar*)"n",(xmlChar*)outName.c_str());
+        }
+    }
+
+    int Handler::get_server_output(Glib::ustring hostname, Glib::ustring outName)
+    {
+        xmlDocPtr doc;
+        xmlNodePtr cur;
+        xmlNodePtr tmp;
+        doc = cfgmodel.getDocPtr();
+
+        if (doc == NULL)
+        {
+
+            return 1;
+        }
+
+        cur = xmlDocGetRootElement(doc);
+
+        if (cur == NULL)
+        {
+            return 1;
+        }
+
+
+        cur = this->traverse("freya.settings.server",cur);
+
+        tmp = cur->xmlChildrenNode;
+        while (tmp != NULL)
+        {
+            if ((!xmlStrcmp(tmp->name, (xmlChar*)"hostname")))
+            {
+                xmlChar *key = xmlGetProp(tmp, (xmlChar*)"h");
+                if((!xmlStrcmp(key, (xmlChar*)hostname.c_str())))
+                {
+                    break;
+                }
+                xmlFree(key);
+            }
+            tmp = tmp->next;
+        }
+
+        if (tmp == NULL)
+        {
+            return 1;
+        }
+        cur=tmp;
+
+        tmp = tmp->xmlChildrenNode;
+        while (tmp != NULL)
+        {
+            {
+                xmlChar *key = xmlGetProp(tmp, (xmlChar*)"n");
+                if((!xmlStrcmp(key, (xmlChar*)outName.c_str())))
+                {
+                    break;
+                }
+                xmlFree(key);
+            }
+            tmp = tmp->next;
+        }
+
+
+        if (tmp == NULL)
+        {
+            return 1;
+        }
+        xmlChar* res =xmlNodeListGetString(doc,tmp->xmlChildrenNode,1);
+        int ret = xmlStrcmp(res, (xmlChar*)"0");
+        xmlFree(res);
+        return ret;
+    }
 }

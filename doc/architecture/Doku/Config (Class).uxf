@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>50</x>
+      <y>70</y>
+      <w>340</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Config::Handler
+{Singleton}
+--
+-cfgModel:Model
+--
++get_value(Glib::ustring):Glib::ustring
++get_value_as_int(Glib::ustring):int
++set_value(Glib::ustring,Glib::ustring)
++set_value_as_int(Glib::ustring,int)
++get_default_value(Glib::ustring):Glib::ustring
++get_default_value_as_int(Glib::ustring):int
++save_config_now():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>480</x>
+      <y>70</y>
+      <w>280</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Config::Model
+--
+_defaultconfig:static const Glib::ustring_
+-fileDoc:xmlDocPtr
+-defaultDoc:xmlDocPtr
+-pathtofile:char*
+--
++load():void
++loadDefaultDoc(void):void
++save(void):void
++save(xmlDocPtr):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>360</x>
+      <y>130</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;120;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>10</x>
+      <y>20</y>
+      <w>840</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>Config</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

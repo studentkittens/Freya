@@ -4,7 +4,7 @@
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>190</x>
+      <x>140</x>
       <y>60</y>
       <w>980</w>
       <h>990</h>
@@ -15,7 +15,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>760</x>
+      <x>710</x>
       <y>0</y>
       <w>130</w>
       <h>30</h>
@@ -26,7 +26,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
+      <x>270</x>
       <y>0</y>
       <w>50</w>
       <h>130</h>
@@ -37,7 +37,7 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>340</x>
+      <x>290</x>
       <y>110</y>
       <w>20</w>
       <h>890</h>
@@ -48,7 +48,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
+      <x>270</x>
       <y>970</y>
       <w>50</w>
       <h>150</h>
@@ -59,7 +59,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>300</x>
+      <x>250</x>
       <y>0</y>
       <w>100</w>
       <h>30</h>
@@ -70,7 +70,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>540</x>
+      <x>490</x>
       <y>0</y>
       <w>150</w>
       <h>30</h>
@@ -81,7 +81,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>580</x>
+      <x>530</x>
       <y>0</y>
       <w>50</w>
       <h>140</h>
@@ -92,7 +92,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>800</x>
+      <x>750</x>
       <y>0</y>
       <w>50</w>
       <h>220</h>
@@ -103,7 +103,7 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
+      <x>280</x>
       <y>70</y>
       <w>290</w>
       <h>70</h>
@@ -115,7 +115,7 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>120</y>
       <w>20</w>
       <h>870</h>
@@ -126,7 +126,7 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>610</x>
+      <x>560</x>
       <y>140</y>
       <w>20</w>
       <h>830</h>
@@ -137,7 +137,7 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>590</x>
+      <x>540</x>
       <y>70</y>
       <w>158</w>
       <h>120</h>
@@ -149,7 +149,7 @@ __connect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>150</y>
       <w>250</w>
       <h>70</h>
@@ -161,7 +161,7 @@ is_connected()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>820</x>
+      <x>770</x>
       <y>200</y>
       <w>20</w>
       <h>60</h>
@@ -172,7 +172,7 @@ is_connected()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>800</x>
+      <x>750</x>
       <y>230</y>
       <w>50</w>
       <h>90</h>
@@ -183,7 +183,7 @@ is_connected()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>200</y>
       <w>240</w>
       <h>70</h>
@@ -195,7 +195,7 @@ bool</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>820</x>
+      <x>770</x>
       <y>300</y>
       <w>20</w>
       <h>630</h>
@@ -206,7 +206,7 @@ bool</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>250</y>
       <w>250</w>
       <h>70</h>
@@ -218,7 +218,7 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>300</y>
       <w>240</w>
       <h>70</h>
@@ -230,7 +230,7 @@ is_connected()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>350</y>
       <w>240</w>
       <h>70</h>
@@ -242,7 +242,7 @@ bool</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>400</y>
       <w>240</w>
       <h>70</h>
@@ -254,7 +254,7 @@ bool</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>380</x>
+      <x>330</x>
       <y>270</y>
       <w>770</w>
       <h>670</h>
@@ -267,7 +267,7 @@ is_connected() == false    </panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>390</x>
+      <x>340</x>
       <y>470</y>
       <w>730</w>
       <h>410</h>
@@ -279,7 +279,7 @@ is_connected() == true     </panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>860</x>
+      <x>810</x>
       <y>490</y>
       <w>200</w>
       <h>30</h>
@@ -290,7 +290,7 @@ is_connected() == true     </panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>950</x>
+      <x>900</x>
       <y>490</y>
       <w>50</w>
       <h>620</h>
@@ -301,7 +301,7 @@ is_connected() == true     </panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>450</y>
       <w>280</w>
       <h>70</h>
@@ -313,7 +313,7 @@ is_connected() == true     </panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>490</y>
       <w>280</w>
       <h>50</h>
@@ -325,7 +325,7 @@ is_connected() == true     </panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>620</x>
+      <x>570</x>
       <y>550</y>
       <w>20</w>
       <h>110</h>
@@ -336,7 +336,7 @@ is_connected() == true     </panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>490</y>
       <w>148</w>
       <h>120</h>
@@ -348,7 +348,7 @@ go_idle()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>610</y>
       <w>90</w>
       <h>80</h>
@@ -360,7 +360,7 @@ go_idle()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>800</y>
       <w>90</w>
       <h>80</h>
@@ -372,7 +372,7 @@ go_idle()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>620</x>
+      <x>570</x>
       <y>710</y>
       <w>20</w>
       <h>140</h>
@@ -383,7 +383,7 @@ go_idle()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>650</y>
       <w>160</w>
       <h>120</h>
@@ -395,7 +395,7 @@ force_update()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>470</x>
+      <x>420</x>
       <y>590</y>
       <w>620</w>
       <h>50</h>
@@ -406,7 +406,7 @@ force_update()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>470</x>
+      <x>420</x>
       <y>780</y>
       <w>620</w>
       <h>50</h>
@@ -417,7 +417,7 @@ force_update()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>860</x>
+      <x>810</x>
       <y>540</y>
       <w>150</w>
       <h>40</h>
@@ -428,7 +428,7 @@ force_update()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
+      <x>550</x>
       <y>860</y>
       <w>242</w>
       <h>70</h>
@@ -440,7 +440,7 @@ emit_connection_change()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>590</x>
+      <x>540</x>
       <y>920</y>
       <w>136</w>
       <h>80</h>
@@ -452,7 +452,7 @@ emit_connection_change()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
+      <x>280</x>
       <y>940</y>
       <w>290</w>
       <h>70</h>
@@ -464,7 +464,7 @@ bool</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>810</x>
+      <x>760</x>
       <y>260</y>
       <w>110</w>
       <h>70</h>
@@ -476,7 +476,7 @@ config</panel_attributes>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>900</x>
+      <x>850</x>
       <y>300</y>
       <w>230</w>
       <h>70</h>

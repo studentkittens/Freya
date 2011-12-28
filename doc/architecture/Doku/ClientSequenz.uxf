@@ -219,7 +219,7 @@ signal_error()</panel_attributes>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>720</x>
+      <x>600</x>
       <y>550</y>
       <w>210</w>
       <h>80</h>
@@ -235,11 +235,11 @@ der Connection.</panel_attributes>
     <coordinates>
       <x>440</x>
       <y>520</y>
-      <w>390</w>
+      <w>270</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>30;30;370;30</additional_attributes>
+    <additional_attributes>30;30;250;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -290,7 +290,7 @@ der Connection.</panel_attributes>
     <coordinates>
       <x>120</x>
       <y>40</y>
-      <w>860</w>
+      <w>710</w>
       <h>630</h>
     </coordinates>
     <panel_attributes>Client Sequenz</panel_attributes>

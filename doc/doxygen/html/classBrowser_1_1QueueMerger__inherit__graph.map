@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="5,20,120,97"/>
-<area shape="rect" id="node4" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="145,5,319,112"/>
+<area shape="rect" id="node2" href="$classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="5,13,147,105"/>
+<area shape="rect" id="node4" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="171,5,345,112"/>
 </map>

@@ -1,3 +1,4 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="5,5,200,288"/>
+<area shape="rect" id="node4" href="$classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="225,71,407,222"/>
 </map>

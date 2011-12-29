@@ -1,19 +1,19 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$AbstractItemlist_8hh.html" title="../../MPD/AbstractItemlist.hh" alt="" coords="5,229,195,256"/>
-<area shape="rect" id="node7" href="$AbstractClientUser_8hh.html" title="../../MPD/AbstractClientUser.hh" alt="" coords="134,80,343,107"/>
-<area shape="rect" id="node9" href="$Client_8hh.html" title="Client.hh" alt="" coords="167,155,240,181"/>
-<area shape="rect" id="node50" href="$Playlist_8hh.html" title="../../MPD/Playlist.hh" alt="" coords="419,80,559,107"/>
-<area shape="rect" id="node57" href="$AbstractBrowser_8hh.html" title="../AbstractBrowser.hh" alt="" coords="811,80,959,107"/>
-<area shape="rect" id="node62" href="$PlaylistManagerPopup_8hh.html" title="PlaylistManagerPopup.hh" alt="" coords="584,80,755,107"/>
-<area shape="rect" id="node11" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="577,229,681,256"/>
-<area shape="rect" id="node43" href="$AbstractFilebrowser_8hh.html" title="AbstractFilebrowser.hh" alt="" coords="218,379,373,405"/>
-<area shape="rect" id="node13" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="622,304,708,331"/>
-<area shape="rect" id="node28" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="783,453,889,480"/>
-<area shape="rect" id="node23" href="$Status_8hh.html" title="Status.hh" alt="" coords="501,453,579,480"/>
-<area shape="rect" id="node26" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="551,379,653,405"/>
-<area shape="rect" id="node32" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="603,453,697,480"/>
-<area shape="rect" id="node36" href="$Song_8hh.html" title="Song.hh" alt="" coords="354,453,424,480"/>
-<area shape="rect" id="node46" href="$Directory_8hh.html" title="Directory.hh" alt="" coords="236,453,329,480"/>
-<area shape="rect" id="node53" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="449,155,631,181"/>
-<area shape="rect" id="node65" href="$BasePopup_8hh.html" title="../BasePopup.hh" alt="" coords="706,155,824,181"/>
+<area shape="rect" id="node5" href="$AbstractItemlist_8hh.html" title="../../MPD/AbstractItemlist.hh" alt="" coords="21,304,211,331"/>
+<area shape="rect" id="node11" href="$AbstractClientUser_8hh.html" title="../../MPD/AbstractClientUser.hh" alt="" coords="72,80,280,107"/>
+<area shape="rect" id="node13" href="$Client_8hh.html" title="Client.hh" alt="" coords="138,155,211,181"/>
+<area shape="rect" id="node51" href="$Playlist_8hh.html" title="../../MPD/Playlist.hh" alt="" coords="356,80,496,107"/>
+<area shape="rect" id="node59" href="$AbstractBrowser_8hh.html" title="../AbstractBrowser.hh" alt="" coords="544,80,692,107"/>
+<area shape="rect" id="node64" href="$PlaylistManagerPopup_8hh.html" title="PlaylistManagerPopup.hh" alt="" coords="718,80,888,107"/>
+<area shape="rect" id="node7" href="$AbstractComposite_8hh.html" title="AbstractComposite.hh" alt="" coords="123,528,275,555"/>
+<area shape="rect" id="node15" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="358,229,462,256"/>
+<area shape="rect" id="node47" href="$AbstractItemGenerator_8hh.html" title="AbstractItemGenerator.hh" alt="" coords="40,229,211,256"/>
+<area shape="rect" id="node17" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="560,304,646,331"/>
+<area shape="rect" id="node32" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="510,453,616,480"/>
+<area shape="rect" id="node27" href="$Status_8hh.html" title="Status.hh" alt="" coords="760,453,838,480"/>
+<area shape="rect" id="node30" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="685,379,787,405"/>
+<area shape="rect" id="node36" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="641,453,735,480"/>
+<area shape="rect" id="node40" href="$Song_8hh.html" title="Song.hh" alt="" coords="358,453,428,480"/>
+<area shape="rect" id="node54" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="338,155,519,181"/>
+<area shape="rect" id="node67" href="$BasePopup_8hh.html" title="../BasePopup.hh" alt="" coords="804,155,922,181"/>
 </map>

@@ -94,27 +94,50 @@ Inheritance diagram for AbstractItemlist:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAbstractItemlist__inherit__graph.png" border="0" usemap="#AbstractItemlist_inherit__map" alt="Inheritance graph"/></div>
 <map name="AbstractItemlist_inherit__map" id="AbstractItemlist_inherit__map">
-<area shape="rect" id="node3" href="classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="5,183,176,289"/><area shape="rect" id="node5" href="classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="201,175,364,297"/><area shape="rect" id="node7" href="classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="389,131,563,341"/></map>
+<area shape="rect" id="node3" href="classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,191,139,313"/><area shape="rect" id="node5" href="classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data." alt="" coords="163,162,335,342"/><area shape="rect" id="node7" href="classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="360,199,531,305"/><area shape="rect" id="node9" href="classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="555,191,719,313"/><area shape="rect" id="node11" href="classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="743,147,917,357"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d">add_item</a> (void *item)=0</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after calling (e.g.) fill_queue()  <a href="#a44e4fafeaf9e8e7247a650afb530bd0d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractItemlist.html#af7c1ddf6e2fb07352891e2134130ceae">add_item</a> (<a class="el" href="classAbstractComposite.html">AbstractComposite</a> *item)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after calling (e.g.) fill_queue()  <a href="#af7c1ddf6e2fb07352891e2134130ceae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractItemlist.html#a43bb98b6f390e3bc259bf47e33a2ccca">~AbstractItemlist</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual DTor so, derived class call their own DTor.  <a href="#a43bb98b6f390e3bc259bf47e33a2ccca"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Inhertit from this class to use <a class="el" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>'s fill_* methods. </p>
 
-<p>Definition at line <a class="el" href="AbstractItemlist_8hh_source.html#l00037">37</a> of file <a class="el" href="AbstractItemlist_8hh_source.html">AbstractItemlist.hh</a>.</p>
-</div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a44e4fafeaf9e8e7247a650afb530bd0d"></a><!-- doxytag: member="AbstractItemlist::add_item" ref="a44e4fafeaf9e8e7247a650afb530bd0d" args="(void *item)=0" -->
+<p>Definition at line <a class="el" href="AbstractItemlist_8hh_source.html#l00039">39</a> of file <a class="el" href="AbstractItemlist_8hh_source.html">AbstractItemlist.hh</a>.</p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a43bb98b6f390e3bc259bf47e33a2ccca"></a><!-- doxytag: member="AbstractItemlist::~AbstractItemlist" ref="a43bb98b6f390e3bc259bf47e33a2ccca" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void <a class="el" href="classAbstractItemlist.html#a44e4fafeaf9e8e7247a650afb530bd0d">AbstractItemlist::add_item</a> </td>
+          <td class="memname">virtual <a class="el" href="classAbstractItemlist.html#a43bb98b6f390e3bc259bf47e33a2ccca">AbstractItemlist::~AbstractItemlist</a> </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Virtual DTor so, derived class call their own DTor. </p>
+
+<p>Definition at line <a class="el" href="AbstractItemlist_8hh_source.html#l00056">56</a> of file <a class="el" href="AbstractItemlist_8hh_source.html">AbstractItemlist.hh</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="af7c1ddf6e2fb07352891e2134130ceae"></a><!-- doxytag: member="AbstractItemlist::add_item" ref="af7c1ddf6e2fb07352891e2134130ceae" args="(AbstractComposite *item)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classAbstractItemlist.html#af7c1ddf6e2fb07352891e2134130ceae">AbstractItemlist::add_item</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAbstractComposite.html">AbstractComposite</a> *&#160;</td>
           <td class="paramname"><em>item</em></td><td>)</td>
           <td><code> [pure virtual]</code></td>
         </tr>
@@ -131,7 +154,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classBrowser_1_1QueueMerger.html#a6b17f050787e556138b4a6e544315083">Browser::QueueMerger</a>, and <a class="el" href="classBrowser_1_1SettingsOutputs.html#ad50b36518e95c93130360566a6f477b7">Browser::SettingsOutputs</a>.</p>
+<p>Implemented in <a class="el" href="classBrowser_1_1Database.html#a328f8516a786c6b1c3591f495d10f98b">Browser::Database</a>, <a class="el" href="classBrowser_1_1DatabaseCache.html#ad518c6ca10f3da98ae3092702d1ea4ee">Browser::DatabaseCache</a>, <a class="el" href="classBrowser_1_1QueueMerger.html#a430eb568fbf117d03cc85db1c9cbc93e">Browser::QueueMerger</a>, and <a class="el" href="classBrowser_1_1SettingsOutputs.html#ab55b20e07c48bff8bb38a685e939c7f8">Browser::SettingsOutputs</a>.</p>
 
 </div>
 </div>
@@ -156,7 +179,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 18:12:52 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

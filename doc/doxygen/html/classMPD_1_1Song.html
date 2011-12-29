@@ -104,11 +104,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MPD::Song Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="MPD::Song" -->
+<!-- doxytag: class="MPD::Song" --><!-- doxytag: inherits="AbstractComposite" -->
 <p>A wrapper for mpd_song.  
  <a href="classMPD_1_1Song.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Song_8hh_source.html">Song.hh</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for MPD::Song:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Song__inherit__graph.png" border="0" usemap="#MPD_1_1Song_inherit__map" alt="Inheritance graph"/></div>
+<map name="MPD_1_1Song_inherit__map" id="MPD_1_1Song_inherit__map">
+<area shape="rect" id="node2" href="classAbstractComposite.html" title="{AbstractComposite\n||+ AbstractComposite()\l+ ~AbstractComposite()\l+ isLeaf()\l+ get_path()\l}" alt="" coords="5,6,168,127"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for MPD::Song:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMPD_1_1Song__coll__graph.png" border="0" usemap="#MPD_1_1Song_coll__map" alt="Collaboration graph"/></div>
+<map name="MPD_1_1Song_coll__map" id="MPD_1_1Song_coll__map">
+<area shape="rect" id="node2" href="classAbstractComposite.html" title="{AbstractComposite\n||+ AbstractComposite()\l+ ~AbstractComposite()\l+ isLeaf()\l+ get_path()\l}" alt="" coords="5,6,168,127"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -117,8 +131,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#a76fbbda47e67d2929d03bab7772f573e">Song</a> (const <a class="el" href="classMPD_1_1Song.html">MPD::Song</a> &amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy Ctor.  <a href="#a76fbbda47e67d2929d03bab7772f573e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#ab047abbeb824f9eef3523a4d88f1bb5f">~Song</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#a954fab1d7813d7d84e126517946ed87c">get_uri</a> (void)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The path of the song in the DB.  <a href="#a954fab1d7813d7d84e126517946ed87c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#a5f0a5286709bb97c3fa6964b878548bc">get_path</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The path of the song in the DB.  <a href="#a5f0a5286709bb97c3fa6964b878548bc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#a79f51b7bf3edbd09a348dc9445c5e971">get_tag</a> (enum mpd_tag_type type, unsigned idx)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a certain tag from the song.  <a href="#a79f51b7bf3edbd09a348dc9445c5e971"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Glib::ustring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Song.html#aac5bbd5d497dbc4af5a9a540a81c0bff">song_format</a> (const char *format, bool markup=true)</td></tr>
@@ -137,7 +151,7 @@ Public Member Functions</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A wrapper for mpd_song. </p>
 
-<p>Definition at line <a class="el" href="Song_8hh_source.html#l00043">43</a> of file <a class="el" href="Song_8hh_source.html">Song.hh</a>.</p>
+<p>Definition at line <a class="el" href="Song_8hh_source.html#l00044">44</a> of file <a class="el" href="Song_8hh_source.html">Song.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afbf68d75056fe014e9cc9bdea5a96ba7"></a><!-- doxytag: member="MPD::Song::Song" ref="afbf68d75056fe014e9cc9bdea5a96ba7" args="(const mpd_song &amp;song)" -->
 <div class="memitem">
@@ -267,6 +281,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5f0a5286709bb97c3fa6964b878548bc"></a><!-- doxytag: member="MPD::Song::get_path" ref="a5f0a5286709bb97c3fa6964b878548bc" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="classMPD_1_1Song.html#a5f0a5286709bb97c3fa6964b878548bc">MPD::Song::get_path</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The path of the song in the DB. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
+
+<p>Implements <a class="el" href="classAbstractComposite.html#ad9fe0cd1d9de0ec7ea07c195a449513e">AbstractComposite</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0f81936a2e3a4af57f32fb77a38e9931"></a><!-- doxytag: member="MPD::Song::get_pos" ref="a0f81936a2e3a4af57f32fb77a38e9931" args="(void)" -->
 <div class="memitem">
 <div class="memproto">
@@ -322,26 +358,6 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>a string </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a954fab1d7813d7d84e126517946ed87c"></a><!-- doxytag: member="MPD::Song::get_uri" ref="a954fab1d7813d7d84e126517946ed87c" args="(void)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* <a class="el" href="classMPD_1_1Song.html#a954fab1d7813d7d84e126517946ed87c">MPD::Song::get_uri</a> </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>The path of the song in the DB. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
 
 </div>
 </div>
@@ -446,7 +462,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 18:12:53 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -104,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MPD::Client Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="MPD::Client" --><!-- doxytag: inherits="MPD::BaseClient" -->
+<!-- doxytag: class="MPD::Client" --><!-- doxytag: inherits="MPD::BaseClient,AbstractItemGenerator" -->
 <p>The client implements concrete commands of the <a class="el" href="namespaceMPD.html" title="Contains everything related to Interaction with the MPD Server.">MPD</a> Protocol.  
  <a href="classMPD_1_1Client.html#details">More...</a></p>
 
@@ -114,14 +114,14 @@ Inheritance diagram for MPD::Client:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client__inherit__graph.png" border="0" usemap="#MPD_1_1Client_inherit__map" alt="Inheritance graph"/></div>
 <map name="MPD_1_1Client_inherit__map" id="MPD_1_1Client_inherit__map">
-<area shape="rect" id="node2" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="5,5,200,288"/></map>
+<area shape="rect" id="node2" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="5,5,200,288"/><area shape="rect" id="node4" href="classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="225,71,407,222"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for MPD::Client:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMPD_1_1Client__coll__graph.png" border="0" usemap="#MPD_1_1Client_coll__map" alt="Collaboration graph"/></div>
 <map name="MPD_1_1Client_coll__map" id="MPD_1_1Client_coll__map">
-<area shape="rect" id="node2" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="148,293,343,576"/><area shape="rect" id="node4" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,197,200"/><area shape="rect" id="node8" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="293,5,488,229"/></map>
+<area shape="rect" id="node2" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="148,293,343,576"/><area shape="rect" id="node4" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,197,200"/><area shape="rect" id="node8" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="293,5,488,229"/><area shape="rect" id="node10" href="classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="367,359,549,510"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -187,15 +187,15 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches all playlists from the server.  <a href="#a42af8b435cf503e84da3008a15ec9209"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a491475fc391a4686acf13cf9324aa0ff">fill_outputs</a> (<a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;data_model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches all available outputs from the server.  <a href="#a491475fc391a4686acf13cf9324aa0ff"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a2ff4623046dd31961f093a8a6f1677c4">fill_filelist</a> (<a class="el" href="classAbstractFilebrowser.html">AbstractFilebrowser</a> &amp;data_model, const char *path)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches a list of files in the database.  <a href="#a2ff4623046dd31961f093a8a6f1677c4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a98eb344ce49c996219ec0aff02fe9781">fill_filelist</a> (<a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;data_model, const char *path)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches a list of files in the database.  <a href="#a98eb344ce49c996219ec0aff02fe9781"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4">send_command</a> (const char *command)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a command to the server.  <a href="#a2174d22da9019a4f5374a689489030b4"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The client implements concrete commands of the <a class="el" href="namespaceMPD.html" title="Contains everything related to Interaction with the MPD Server.">MPD</a> Protocol. </p>
 
-<p>Definition at line <a class="el" href="Client_8hh_source.html#l00045">45</a> of file <a class="el" href="Client_8hh_source.html">Client.hh</a>.</p>
+<p>Definition at line <a class="el" href="Client_8hh_source.html#l00044">44</a> of file <a class="el" href="Client_8hh_source.html">Client.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac804cf198d57cec1c8574e7b20663fa3"></a><!-- doxytag: member="MPD::Client::Client" ref="ac804cf198d57cec1c8574e7b20663fa3" args="()" -->
 <div class="memitem">
@@ -329,14 +329,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2ff4623046dd31961f093a8a6f1677c4"></a><!-- doxytag: member="MPD::Client::fill_filelist" ref="a2ff4623046dd31961f093a8a6f1677c4" args="(AbstractFilebrowser &amp;data_model, const char *path)" -->
+<a class="anchor" id="a98eb344ce49c996219ec0aff02fe9781"></a><!-- doxytag: member="MPD::Client::fill_filelist" ref="a98eb344ce49c996219ec0aff02fe9781" args="(AbstractItemlist &amp;data_model, const char *path)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classMPD_1_1Client.html#a2ff4623046dd31961f093a8a6f1677c4">MPD::Client::fill_filelist</a> </td>
+          <td class="memname">void <a class="el" href="classMPD_1_1Client.html#a98eb344ce49c996219ec0aff02fe9781">MPD::Client::fill_filelist</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classAbstractFilebrowser.html">AbstractFilebrowser</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;&#160;</td>
           <td class="paramname"><em>data_model</em>, </td>
         </tr>
         <tr>
@@ -348,7 +348,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -363,6 +363,8 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p>Implements <a class="el" href="classAbstractItemGenerator.html#ad5c4cb07cd11c9d776eab09771b5e611">AbstractItemGenerator</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a491475fc391a4686acf13cf9324aa0ff"></a><!-- doxytag: member="MPD::Client::fill_outputs" ref="a491475fc391a4686acf13cf9324aa0ff" args="(AbstractItemlist &amp;data_model)" -->
@@ -374,7 +376,7 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;&#160;</td>
           <td class="paramname"><em>data_model</em></td><td>)</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -388,6 +390,8 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p>Implements <a class="el" href="classAbstractItemGenerator.html#a36e939fda8eda035f400cf089b5adbdc">AbstractItemGenerator</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a42af8b435cf503e84da3008a15ec9209"></a><!-- doxytag: member="MPD::Client::fill_playlists" ref="a42af8b435cf503e84da3008a15ec9209" args="(AbstractItemlist &amp;data_model)" -->
@@ -399,7 +403,7 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;&#160;</td>
           <td class="paramname"><em>data_model</em></td><td>)</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -413,6 +417,8 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p>Implements <a class="el" href="classAbstractItemGenerator.html#a5f69518fcecb9376681721c70f3acd87">AbstractItemGenerator</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a1fe0a4841ad62bbcc6f72c8899621e53"></a><!-- doxytag: member="MPD::Client::fill_queue" ref="a1fe0a4841ad62bbcc6f72c8899621e53" args="(AbstractItemlist &amp;data_model)" -->
@@ -424,7 +430,7 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classAbstractItemlist.html">AbstractItemlist</a> &amp;&#160;</td>
           <td class="paramname"><em>data_model</em></td><td>)</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -438,6 +444,8 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the number of filled items. </dd></dl>
+
+<p>Implements <a class="el" href="classAbstractItemGenerator.html#ab32b5be76800971523d188d7aa76b925">AbstractItemGenerator</a>.</p>
 
 </div>
 </div>
@@ -466,7 +474,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -479,6 +487,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Implements <a class="el" href="classAbstractItemGenerator.html#a48cfbaf5999e39d18867a3ad6438560a">AbstractItemGenerator</a>.</p>
 
 </div>
 </div>
@@ -905,7 +915,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 18:12:53 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

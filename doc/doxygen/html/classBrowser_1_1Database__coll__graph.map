@@ -1,9 +1,10 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="5,1283,152,1434"/>
-<area shape="rect" id="node4" href="$classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method." alt="" coords="176,1313,315,1405"/>
-<area shape="rect" id="node6" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="339,1305,513,1412"/>
-<area shape="rect" id="node8" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="329,627,524,1218"/>
-<area shape="rect" id="node10" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="329,293,524,576"/>
-<area shape="rect" id="node12" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="187,35,379,200"/>
-<area shape="rect" id="node16" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="475,5,669,229"/>
+<area shape="rect" id="node4" href="$classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="177,1313,319,1405"/>
+<area shape="rect" id="node6" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="343,1305,517,1412"/>
+<area shape="rect" id="node8" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="333,627,528,1218"/>
+<area shape="rect" id="node10" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="173,293,368,576"/>
+<area shape="rect" id="node12" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="31,35,223,200"/>
+<area shape="rect" id="node16" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="319,5,513,229"/>
+<area shape="rect" id="node18" href="$classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="393,359,575,510"/>
 </map>

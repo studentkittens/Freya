@@ -1,4 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="5,5,179,112"/>
-<area shape="rect" id="node4" href="$classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method." alt="" coords="204,13,343,105"/>
+<area shape="rect" id="node2" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="5,28,179,135"/>
+<area shape="rect" id="node4" href="$classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="203,35,345,127"/>
+<area shape="rect" id="node6" href="$classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="370,6,552,157"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,197,139,333"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data." alt="" coords="163,212,335,319"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,205,139,326"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data." alt="" coords="163,175,335,355"/>
 <area shape="rect" id="node7" href="$classBrowser_1_1PlaylistAddDialog.html" title="Shows a simple dialog when a new playlist needs to be saved." alt="" coords="360,212,541,319"/>
 <area shape="rect" id="node9" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="565,212,736,319"/>
 <area shape="rect" id="node11" href="$classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist." alt="" coords="760,212,880,319"/>

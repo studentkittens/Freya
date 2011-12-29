@@ -115,52 +115,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define FREYA_DATABASE_CACHE</span>
 <a name="l00034"></a>00034 <span class="preprocessor"></span>
 <a name="l00035"></a>00035 <span class="preprocessor">#include &quot;../../MPD/AbstractClientUser.hh&quot;</span>
-<a name="l00036"></a>00036 <span class="preprocessor">#include &quot;../../MPD/AbstractFilebrowser.hh&quot;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &quot;../../MPD/AbstractItemlist.hh&quot;</span>
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 <span class="keyword">namespace </span>Browser
 <a name="l00039"></a>00039 {
-<a name="l00048"></a><a class="code" href="classBrowser_1_1DatabaseCache.html">00048</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data.">DatabaseCache</a> : <span class="keyword">public</span> <a class="code" href="classAbstractClientUser.html">AbstractClientUser</a>, <span class="keyword">public</span> <a class="code" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>
-<a name="l00049"></a>00049     {
-<a name="l00050"></a>00050         <span class="keyword">public</span>:
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052             <a class="code" href="classBrowser_1_1DatabaseCache.html#a9347f07f0976d0a88ac1f70c7823b672">DatabaseCache</a>(<a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>&amp; client);
-<a name="l00053"></a>00053             <span class="keyword">virtual</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#a63e64fc6324bb28f21ced23f6cb23f4c">~DatabaseCache</a>(<span class="keywordtype">void</span>);
-<a name="l00054"></a>00054 
-<a name="l00061"></a>00061             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#a121851c370e90b22772ec661c8fea9ed" title="Same as MPD::Client::fill_filelist(), but gets locally cached data.">fill_filelist_from_cache</a>(<a class="code" href="classAbstractFilebrowser.html" title="Inherit from this class to use MPD::Client&#39;s fill_database method.">AbstractFilebrowser</a>&amp; data_model, Glib::ustring path);
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063         <span class="keyword">private</span>:
-<a name="l00064"></a>00064    
-<a name="l00071"></a>00071             <span class="keyword">typedef</span> std::pair&lt;bool,void*&gt; CachePairType;
-<a name="l00075"></a>00075             <span class="keyword">typedef</span> std::vector&lt;CachePairType&gt; CacheVectorType; 
-<a name="l00079"></a>00079             <span class="keyword">typedef</span> std::map&lt;Glib::ustring,CacheVectorType&gt; CacheMapType;
-<a name="l00080"></a>00080     
-<a name="l00081"></a>00081             <span class="comment">/* -------------------------------- */</span> 
+<a name="l00050"></a><a class="code" href="classBrowser_1_1DatabaseCache.html">00050</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data.">DatabaseCache</a> : 
+<a name="l00051"></a>00051         <span class="keyword">public</span> <a class="code" href="classAbstractClientUser.html">AbstractClientUser</a>,
+<a name="l00052"></a>00052         <span class="keyword">public</span> <a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>,
+<a name="l00053"></a>00053         <span class="keyword">public</span> <a class="code" href="classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)">AbstractItemGenerator</a>
+<a name="l00054"></a>00054     {
+<a name="l00055"></a>00055         <span class="keyword">public</span>:
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057             <a class="code" href="classBrowser_1_1DatabaseCache.html#a9347f07f0976d0a88ac1f70c7823b672">DatabaseCache</a>(<a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>&amp; client);
+<a name="l00058"></a>00058             <span class="keyword">virtual</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#a63e64fc6324bb28f21ced23f6cb23f4c">~DatabaseCache</a>(<span class="keywordtype">void</span>);
+<a name="l00059"></a>00059 
+<a name="l00066"></a>00066             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#a4d26a42b7842583545f8bc6fff03c4b7" title="Same as MPD::Client::fill_filelist(), but gets locally cached data.">fill_filelist</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00067"></a>00067 
+<a name="l00075"></a>00075             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#ad518c6ca10f3da98ae3092702d1ea4ee" title="Implemented from AbstractItemlist.">add_item</a>(<a class="code" href="classAbstractComposite.html">AbstractComposite</a> * pItem);
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077             <span class="comment">/* Method stubs .. */</span>
+<a name="l00078"></a><a class="code" href="classBrowser_1_1DatabaseCache.html#ad3d6c8654917d0135a25e443be1dd379">00078</a>             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#ad3d6c8654917d0135a25e443be1dd379">fill_queue</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model) {}
+<a name="l00079"></a><a class="code" href="classBrowser_1_1DatabaseCache.html#a67b0511a7a2312ce0dd23bf148b56fdd">00079</a>             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#a67b0511a7a2312ce0dd23bf148b56fdd">fill_queue_changes</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model, <span class="keywordtype">unsigned</span> last_version, <span class="keywordtype">unsigned</span>&amp; first_pos) {}
+<a name="l00080"></a><a class="code" href="classBrowser_1_1DatabaseCache.html#a42097ee3ce8556bc1250e42e030c9b92">00080</a>             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#a42097ee3ce8556bc1250e42e030c9b92">fill_playlists</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model) {}
+<a name="l00081"></a><a class="code" href="classBrowser_1_1DatabaseCache.html#af3405a68d3485b67608ca991f9816208">00081</a>             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1DatabaseCache.html#af3405a68d3485b67608ca991f9816208">fill_outputs</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model) {}
 <a name="l00082"></a>00082 
-<a name="l00089"></a>00089             <span class="keywordtype">void</span> on_client_update(mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data);
-<a name="l00096"></a>00096             <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected);
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098             <span class="comment">/* Implemented from AbstractFilebrowser */</span>
-<a name="l00099"></a>00099             <span class="keywordtype">void</span> add_song_file(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
-<a name="l00100"></a>00100             <span class="keywordtype">void</span> add_directory(<a class="code" href="classMPD_1_1Directory.html" title="A wrapper for mpd_directory.">MPD::Directory</a> * pDir);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084         <span class="keyword">private</span>:
+<a name="l00085"></a>00085 
+<a name="l00092"></a>00092             <span class="keyword">typedef</span> <a class="code" href="classAbstractComposite.html">AbstractComposite</a>* CachePairType;
+<a name="l00096"></a>00096             <span class="keyword">typedef</span> std::vector&lt;CachePairType&gt; CacheVectorType; 
+<a name="l00100"></a>00100             <span class="keyword">typedef</span> std::map&lt;Glib::ustring,CacheVectorType&gt; CacheMapType;
 <a name="l00101"></a>00101 
-<a name="l00102"></a>00102             <span class="comment">/* Logic */</span>
-<a name="l00103"></a>00103             <span class="keywordtype">void</span> clear_cache(<span class="keywordtype">void</span>);
-<a name="l00104"></a>00104             <span class="keywordtype">void</span> add_to_cache(CachePairType&amp; pair);
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106             <span class="comment">/* ------------------------------- */</span>
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108             <span class="comment">/* Path is the key, value the song or dir */</span>
-<a name="l00109"></a>00109             CacheMapType cacheMap;
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111             <span class="comment">/* The last vector used by fill_filelist_from_cache */</span>
-<a name="l00112"></a>00112             CacheVectorType * lastVec;
-<a name="l00113"></a>00113 
-<a name="l00114"></a>00114             <span class="comment">/* Do not clear on first start.. */</span>
-<a name="l00115"></a>00115             <span class="keywordtype">bool</span> is_first_start;
-<a name="l00116"></a>00116     };
-<a name="l00117"></a>00117 }
+<a name="l00102"></a>00102             <span class="comment">/* -------------------------------- */</span> 
+<a name="l00103"></a>00103 
+<a name="l00110"></a>00110             <span class="keywordtype">void</span> on_client_update(mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data);
+<a name="l00117"></a>00117             <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected);
 <a name="l00118"></a>00118 
-<a name="l00119"></a>00119 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: FREYA_DATABASE_CACHE */</span>
+<a name="l00119"></a>00119             <span class="comment">/* Logic */</span>
+<a name="l00120"></a>00120             <span class="keywordtype">void</span> clear_cache(<span class="keywordtype">void</span>);
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122             <span class="comment">/* ------------------------------- */</span>
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124             <span class="comment">/* Path is the key, value the song or dir */</span>
+<a name="l00125"></a>00125             CacheMapType cacheMap;
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127             <span class="comment">/* The last vector used by fill_filelist */</span>
+<a name="l00128"></a>00128             CacheVectorType * lastVec;
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130             <span class="comment">/* Do not clear on first start.. */</span>
+<a name="l00131"></a>00131             <span class="keywordtype">bool</span> isFirstStart;
+<a name="l00132"></a>00132             <span class="keywordtype">bool</span> serverChanged;
+<a name="l00133"></a>00133     };
+<a name="l00134"></a>00134 }
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: FREYA_DATABASE_CACHE */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -179,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 23 2011 18:12:52 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['_7eabstractclientextension',['~AbstractClientExtension',['../classMPD_1_1AbstractClientExtension.html#a9eaf448e9daca45fa758eeecb514d4d8',1,'MPD::AbstractClientExtension']]],
+  ['_7eabstractcomposite',['~AbstractComposite',['../classAbstractComposite.html#a85ee0c5cedd4f14ef77fd87c2177fa79',1,'AbstractComposite']]],
+  ['_7eabstractitemgenerator',['~AbstractItemGenerator',['../classAbstractItemGenerator.html#a090650d523ebde4bed51376feafe6a42',1,'AbstractItemGenerator']]],
+  ['_7eabstractitemlist',['~AbstractItemlist',['../classAbstractItemlist.html#a43bb98b6f390e3bc259bf47e33a2ccca',1,'AbstractItemlist']]],
   ['_7eabstractsettings',['~AbstractSettings',['../classBrowser_1_1AbstractSettings.html#afa7a01e775483eda445d2608a738819b',1,'Browser::AbstractSettings']]],
   ['_7ebrowser',['~Browser',['../classAvahi_1_1Browser.html#a097c931d753a1cc434fb98e86d656151',1,'Avahi::Browser']]],
   ['_7eclient',['~Client',['../classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2',1,'MPD::Client']]],

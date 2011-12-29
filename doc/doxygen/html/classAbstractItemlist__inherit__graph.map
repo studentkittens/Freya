@@ -1,5 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="5,183,176,289"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="201,175,364,297"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="389,131,563,341"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,191,139,313"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data." alt="" coords="163,162,335,342"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="360,199,531,305"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue." alt="" coords="555,191,719,313"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="743,147,917,357"/>
 </map>

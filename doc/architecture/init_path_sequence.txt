@@ -1,0 +1,56 @@
+================
+Init:Path
+================
+
+
+Beteiligte Klassen/Libraries:
+-------------------------------    
+    
+    Init::Path,
+    defaultcfg.inl ("Header" welcher die Default Config enthält),
+    glibmm (externe lib),
+    glib/gstdio (externe lib)
+    
+
+Init der Init::Path
+-------------------------
+
+    - bei der Instanzierung werden die private Methoden get_config_dir() und get_config_path() aufgerufen, deren Rückgabewerte werden
+      als Membervariablen (configdir, configfile) der Init::Path gespeichert. Diese nutzen die g_get_user_config_dir() glib Methode
+      welche den User Pfad nach XDG Standard zurückliefert (siehe handler_model_path_etc_uebersicht.txt). Je nach Funktion, wird an den zurückgegebenen
+      Pfad ein "/freya" für das freya Konfigurationsverzeichnis, "config.xml" für die Konfigurationsdatei oder "log.txt" dran gehängt.
+    - anschließend wird die dir_is_avaiable() Methode aufgerufen
+
+
+1.) Die dir_is_avaiable() Methode
+-----------------------------------------------------
+
+    - diese Methode prüft zuerst über die glib Funktione g_file_test() ob ein freya Verzeichnis existiert
+    - ist dies nicht der Fall werden die Methoden privaten Methoden create_dir() und create_config() aufgerufen
+    - ist ein freya Verzeichnis vorhanden, so wird über die glib g_file_test() Funktion geprüft ob die config datei config.xml existiert
+    - existiert diese nicht, so wird die private create_config Methode() aufgerufen
+    - existiert diese, so wird mittels der glib g_access() Methode geschaut ob diese lesbar sowie beschreibar ist, 
+      wenn dies nicht zugrifft, wird über die glib Funktion g_warning eine entsprechende Fehlermeldung auf dem Bildschirm (Konsole) aus-
+      gegeben
+
+
+2.) Die create_config() Methode
+-----------------------------------------------------
+
+    - es wird ein File Pointer (file) angelegt und ein file descriptor mit fopen( "pfadZurConfig", "w") erstellt.
+    - anschließend wird geprüft ob file pointer ne NULL enthält, ist das der Fall, so ist irgednwas schief gelaufen, eine
+      entsprechende Warnung wird mittels glib Funktion g_warning() auf dem Bildschirm ausgegeben
+    - ist der File Pointer gültig, wird mit fwrite(Config::defaultconfig.c_str(),1,Config::defaultconfig.size(),file) die
+      Standard Config über den Config::Handler auf die Festplatte in das ensprechende Verzeichnis geschreiben
+    - fclose(file) der file descriptor wird geschlossen, Speicher freigegeben und eine Erfolgsmessage mit der glib g_message()
+      Funktion auf dem Bildschirm ausgegeben.
+
+
+
+3.) Die create_dir() Methode
+-----------------------------------------------------
+
+    - in dieser Methode wird versucht mittels der glib Funktion g_mkdir_with_parents(configdir,0755) ein Verzeichnis
+      anzulegen mit den rechten 755 (drwxr-r-xr-x). Bei Erfolg wird mit g_message() eine Erfolgsmeldung auf dem Bildschirm (Konsole)
+      ausgegeben, bei Misserfolg mittels g_warning() eine entsprechende Warnung auf dem Bildschirm ausgegeben.
+

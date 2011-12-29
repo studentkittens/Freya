@@ -1,4 +1,8 @@
 \chapter{Lastenheft}
+Bei der Erstellung dieses Lastenheftes wurd sich an folgendem Beispiel orientiert:
+\begin{center}
+http://www.stefan-baur.de/cs.se.lastenheft.beispiel.html?glstyle=2010
+\end{center}
 \section{Zielbestimmungen}
 Welche Ziele sollen durch den Einsatz der Software erreicht werden?\ \\ \\
 Dem einzelnen Benutzer soll das abspielen von Musik über eine Netzwerkverbindung ermöglicht
@@ -106,32 +110,21 @@ Interpreten in der Datenbank vorhanden sind, wie lange man schon mit dem Server 
 lange die gesamte Abspielzeit aller Lieder in der Datenbank dauert.\ \\
 Eine Profilverwaltung muss nicht implementiert werden, dies soll über das Unix-System geregelt werden.\ \\
 Eine lokale Datenbank muss ebenfalls nicht vorhanden sein, dies wird durch den MPD-Server ermöglicht.\ \\
-\section{Produktleistungen}
-Werden für bestimmte Funktionen besondere Ansprüche in Bezug auf Zeit, Datenumfang oder Genauigkeit gestellt?\ \\ \\
-Wenn das System beendet wird, soll der aktuelle Zustand des Systems gespeichert werden.
-\begin{itemize}
-	\item L\_0010 Speicherung des Systemzustandes
-\end{itemize}
-Es soll möglichst wenig Speicher gebraucht werden, die CPU soll möglichst wenig belastet werden und der Netzwerk-Traffic
-soll gering gehalten werden.
-\begin{itemize}
-	\item L\_0020 Möglichst wenig Ressourchen-Verbrauch
-\end{itemize}
-Die Geschwindigkeit der Software ist auch abhänig von der jeweiligen Server-Lokation, der Benutzer wählt den Server
-d.h. somit ist auch der Benutzer teil-verantworltich für die Geschwindigkeit.\ \\ \\
-Der Status eines Liedes (Liedposition) wird alle 500 ms aktualisiert.
-\begin{itemize}
-	\item L\_0030 Lokaler Heartbeat alle 500 ms
-\end{itemize}
 \section{Qualitätsanforderungen}
-Welche qualitativen Anforderungen sind von besonderer Bedeutung?\ \\ \\
-Es soll auf folgende Priorität unter den Qualitätsanforderungen geachtet werden,
-dabei ist das erste Element das wichtigste und das letzte das unwichtigste.\ \\ \\
-Priorität 1: Robustheit\ \\
-Priorität 2: Zuverlässigkeit\ \\
-Priorität 3: Effizienz\ \\
-Priorität 4: Intuitive Benutzung\ \\
-Priorität 5: Design\ \\ \\
+Die Software soll natürlich von hoher Qualität sein. Hierfür sollen folgende
+Anforderungen erfüllt werden:\ \\ \\
+Die Software soll korrekt sein, d. h. keine Fehler enthalten.
+Sie soll aber auch, für den Fall das dennoch Fehler auftreten, robust
+und tollerant auf diese reagieren. Außerdem spielt die Wartbarkeit 
+eine wichtige Rolle, falls sich die Softwareumgebung des MPD-Clients
+ändert, muss dieser leicht angepasst werden können.
+Der Client soll leicht und intuitiv bedienbar sein. Sollte es Funktionen
+geben, die nicht unter den Begriff "Standard" fallen, sollte eine kanppe
+und präzise Beschreibung der Funktion vorhanden sein.
+Nach allem dem muss die Software tortzdem noch Effizient sein, geringe
+Wartezeiten, wenig Hardwareanforderungen, etc.
+Das Design der Software muss zwar ansprechend sein, ist im edeffekt allerdings
+zweitrangig.
 \section{Ergänzungen}
 \subsection{Realisierung}
 Das System muss mit den Programmiersprachen C und/oder C++ realisiert werden. Dabei ist auf

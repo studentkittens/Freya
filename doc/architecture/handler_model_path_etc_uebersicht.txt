@@ -46,7 +46,7 @@ Init::Path (Path.{cc,hh})
   über ein Terminal gestartet wird.
 
 
-
+Beschreibung der load/save Funktionalität siehe model_save_load.txt
 ------------------------------
 Config::Model (Model.{cc,hh})
 ------------------------------
@@ -76,6 +76,8 @@ Config::Model (Model.{cc,hh})
 
 
 
+
+Bescheibung der get/set Funktionalität siehe handler_set_get_values.txt
 ----------------------------------
 Config::Handler (Handler.{cc,hh})
 ----------------------------------

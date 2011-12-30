@@ -254,7 +254,9 @@ namespace Browser
 
     void Database::on_connection_change(bool server_changed, bool is_connected)
     {
-        /* Empty for now */
+        /* Go back to root when server changed */
+        if(server_changed)
+            set_current_path("");
     }
 
     /*------------------------------------------------*/

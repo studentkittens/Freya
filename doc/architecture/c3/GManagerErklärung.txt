@@ -1,0 +1,96 @@
+(Alphabetische Ordnung)
+
+Der GManager Namespace enthält Klassen die der Verwaltung und Kontrolle des Hauptfensters von Freya dienen,
+jedoch nicht für den eigentlichen Inhalt des Hauptfensters (dies wird vom Browser namespace getan)
+Alle Klassen gehören nach dem MVC Paradigma der Controllerschicht an.
+
+BrowserList
+===========
+Zeigt eine Liste von Browsern in der Sidebar. 
+* Bietet eine add() Methode die einen AbstractBrowser& erwartet und fügt in der Sidebar hinzu.
+* set() setzt den Browser temporär, ohne ihn hinzuzufügen.
+
+Benutzt alle Methoden von AbstractBrowser um dise entsprechen anzuzeigen:
+* get_container() -> Der Container der im Hauptbereich beim wechseln angezeigt wird
+* get_name() -> Name in der Sidebar
+* get_icon_stock_id() -> Gtk::Stock::ID (nur eingebaute icons möglich)
+* is_visible() -> Ist sichtbar in der Leiste?
+* needs_connection() -> Dieser browser benötigt eine Verbindung zum funktionieren.
+
+Heartbeat
+=========
+Sendet alle 500ms ein Signal aus, und summiert die bisher vergangene Zeit.
+Dies ist nützlich bei Anzeigen wie der Sekundenanzeige.
+Über signal_client_update() können sich Klienten registrieren:
+  
+  Heartbeat.signal_client_update().connect(<funktionspointer>)
+
+Der angegebene Funktionspointer wird dann aufgerufen und muss folgender Signatur entsprechen:
+  
+  void func(double time)
+  {
+      ...
+  }
+
+Der übergebene Parameter ist die Zeit die seit dem Instanzieren vergangen ist. 
+Sie kann durch folgende Funktionen verändert werden:
+* pause() - Setzt das Zählen aus
+* play() - Fängt damit wieder an
+* reset() - Fängt von 0 wieder an
+* get() - Bekommt die jetzige Zeit
+* set() - Setzt die jetzige Zeit absolut und zählt von dort weiter
+
+Zusätzlich stoppt die Heartbeat klasse das zählen wenn der client das playback pausiert.
+Wird es fortgesetzt, so so wird play() aufgerufen. 
+Zusätzlich wird bei jedem client update der Zähler an der vergangen Zeit im gerade spielenden Song justiert.
+
+MenuList
+========
+Kontrolliert die Anzeige (Sensitivität) und Steuerung der Menüleiste.
+
+NotifyManager
+=============
+Kontrolliert die Anzeige von Notifications, bei entsprechenden events.
+Greift dabei auf die Notifylib zurück.
+
+PlaybackButtons
+===============
+Kontrolliert die Anzeige der oberen rechten Playbackbuttons Stop, Play/Pause, Next, Previous
+Das Icon des Playbuttons wird entsprechend geändert falls das Playback pausiert ist,
+bzw. fortgesetzt wird.
+
+Statusbar
+=========
+Kontrolliert die Anzeige der Statusbar (was den Text miteinfasst). 
+Benutzt die Heartbeatklasse um die Zeitanzeige zu aktualisieren. Ansonsten bekommt es alle Informationen rein vom Client update.
+
+StatusIcons
+===========
+Kontrolliert Anzeige und Handling der Icons unter der Sidebar.
+
+Timeslide
+=========
+Zeigt und Kontrolliert die aktuelle Zeit innerhalb des momentan spielenden Liedes.
+Bei Klicken innerhalb der Timeline wird zur entsprechenden Stelle im Song geseekt.
+
+TitleLabel
+==========
+Kontrolliert Anzeige des Titels / Artist-Albums in der Topleiste und Die "Next Song" Anzeige unter der Sidebar.
+
+Trayicon
+========
+Verwaltet und Kontrolliert Anzeige und Interaktion des Trayicons das optional angezeigt werden kann.
+Dazu gehört auch die Definition und Anzeige des Popupmenüs, weshalb die Klasse von Browser::BasePopup ableitet.
+
+Volumebutton
+============
+Verwaltet und Kontrolliert die Anzeige des Volumebuttons. Aus Performancegründen werden nur alle 0.05 Sekunden Volumeänderungen erlaubt.
+
+Window
+======
+Verwaltet das Mainwindow von Freya.
+Falls das verstecken des Fensters beim Schließen gewünscht ist (settings.trayicon.totrayonclose ist 1), so wird Gtk::Window::hide() aufgerufen.
+Andernfalls wird einfach der Mainloop beendet wodurch die Kontrolle zur main() Methode zurückkehrt.
+Zudem wird eine get_window() Methode bereitgestellt die das darunterliegende Fenster (ein Gtk::Window) zurückgibt.
+Der Mainloop zB. benötigt das als Startargument.
+

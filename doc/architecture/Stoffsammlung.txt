@@ -1,0 +1,15 @@
+- Darstellung der verwendeten Design Patterns
+  * Observer (in rauen Mengen) (Diskutierbar, da wir kein interface für den observer selbst haben) [Client,Heartbeat,...]
+    Alle Klassen die von AbstractClientExtension ableiten registrieren sich beim client und können 
+  * Singleton [Config,Log,Notify]
+  * Composite (Auch diskutierbar, da aus gründen der einfachheit MPD::Directory nicht wirklich was speichert) 
+    [Klassen die von AbstractComposite ableiten, DatabaseCache das nur AbstractComposite benutzt ohne MPD::Song/MPD::Directory zu unterscheiden]
+  * Proxy Pattern: Database <- DatabaseCache -> Client; Client und DatabaseCache leiten von AbstractItemGenerator ab wodurch 
+    'Database' sowohl Client und DatabaseCache benutzen kann ohne genau wissen zu müssen was es eigentlich benutzt.
+
+- Erklärung zu Glade und GtkBuilder
+
+- Glossar (Maaaaaarrrc!)
+  * Browser
+  * Glade
+  

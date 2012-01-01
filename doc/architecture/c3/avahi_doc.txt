@@ -1,0 +1,19 @@
+------------------------------------------------------------
+Avahi::Brower (Browser{cc,hh}) und Avahi:View (View{cc.hh})
+------------------------------------------------------------
+
+    - Die Avahi Klassen Avahi::Browser und Avahi::View gehören nach dem MVC Paradigma zur Controller und View Schicht. Bei
+      dieser Komponente wurde die Trennung zwischen Controller und View manuell durchgeführt. Die Controller Klasse realisiert
+      die technische Implementierung (Footnote auf Zeroconf/Avahi) des "Avahi Browsers" um MPD Server im Netzwerk zu finden.
+      Der View Part ist vom Controller völlig abgetrennt und dient lediglich zur Visualisierung der im Netzwerk gefundenen
+      MPD Server mit der Möglichkeit diese direkt auszuwählen.
+      Nach dem Start des Bowsers über den Show List Button in den Freya Settings bekommt der Benutzer eine Liste mit sich im
+      gleichen Netzwerk befindenden MPD Servern aus welche der Benutzer direkt einen auswählen kann. Wurden keine MPD Server
+      gefunden oder läuft der Avahi Daemon nicht so bekommt der User einen entsprechenden Hinweis.
+
+
+    - Um den Avahi Dienst überhaupt betreiben zu können muss ein Avahi Daemon auf den jeweilgen Systemen installiert sein
+      und in der MPD Konfiguration die beiden Einträge "zeroconf_enabled" und "zeroconf_name" gepflegt sein damit sich 
+      der MPD Server am Avahi Daemon registriert.
+
+

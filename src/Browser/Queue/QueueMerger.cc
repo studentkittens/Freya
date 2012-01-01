@@ -111,7 +111,7 @@ namespace Browser
 
     /*-------------------*/
 
-    void QueueMerger::add_item(AbstractComposite * pSong)
+    void QueueMerger::add_item(MPD::AbstractComposite * pSong)
     {
         g_assert(pSong);
         MPD::Song * new_song = static_cast<MPD::Song*>(pSong);
@@ -149,7 +149,6 @@ namespace Browser
     {
         if(event & MPD_IDLE_QUEUE)
         {
-            g_message("Im getting updated.");
             if(!mergeDisabled)
             {
                 MPD::Status& status = data.get_status();
@@ -166,7 +165,6 @@ namespace Browser
                 }
                 else
                 {
-                    g_message("Im getting merged");
                     /* Merge in changes */
                     mergeIterIsValid = false;
                     mp_Client->fill_queue_changes(*this,lastPlaylistVersion,mergePos);
@@ -189,9 +187,6 @@ namespace Browser
     {
         /* This is also true on startup */
         serverChanged = (isFirstStart) ? false :server_changed;
-        if(serverChanged)
-            g_message("Server changed!");
-        
         isFirstStart = false;
     }
 

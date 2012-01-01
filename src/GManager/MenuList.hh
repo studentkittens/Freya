@@ -43,7 +43,7 @@ namespace GManager
      *
      * Also defines quite some keybindings, but no releveant public methods.
      */
-    class MenuList : public AbstractClientUser
+    class MenuList : public MPD::AbstractClientUser
     {
         public:
 

@@ -51,8 +51,8 @@ namespace Browser
     class PlaylistManager : 
         public Gtk::Frame, 
         public AbstractBrowser, 
-        public AbstractItemlist,
-        public AbstractClientUser
+        public MPD::AbstractItemlist,
+        public MPD::AbstractClientUser
     {
         public:
             PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
@@ -80,7 +80,7 @@ namespace Browser
             void clear(void);
 
             /* Implemented from AbstractItemlist */
-            void add_item(AbstractComposite * pPlaylist);
+            void add_item(MPD::AbstractComposite * pPlaylist);
 
             /* Implemented from AbstractClientUser */
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);

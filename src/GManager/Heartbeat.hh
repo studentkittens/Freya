@@ -47,7 +47,7 @@ namespace GManager
      * It is used for all classes that need to show the current time,
      * Freya does not requery the MPD Status like other clients do.
      */
-    class Heartbeat : public AbstractClientUser
+    class Heartbeat : public MPD::AbstractClientUser
     {
         public:
 

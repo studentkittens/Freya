@@ -122,8 +122,10 @@ Darunter findet sich die Statusbar:
  
  Settings
  - Tabbasiertes Layout
+ - Keine direkte Änderungen, Änderungen nur durch Speichern
  - Falls die verbindung verloren soll zum Settingsbrowser gesprungen werden
  - Muss auch ohne verbindung zum server funktionsfähig sein
+ - Falls Änderungen vorhanden wird vorher ausgegrauter Speicherbutton aktiv
  - Networktab: 
    * Hostname und Proxy
    * Maximaler Zeit die zum reconnect benötigt wird.
@@ -136,6 +138,7 @@ Darunter findet sich die Statusbar:
    * Einstellungen zu libnotify und trayicon
  - Unter Outputliste soll eine Liste von Ausgabegeräten des Servers angezeigt werden
    * innerhalb der Liste soll es togglebutton geben um den output entweder zu en oder disablen
+   * Dies soll nicht verfügbar sein wenn die Verbindung verloren geht.
  - Alle Settingstabs ändern die Werte nicht sofort: 
    * Sie werden erst persistent übernommen wenn der user die Konfiguration abspeichert
    * Der Rückgängig button setzt die Präsentation auf die letzen persistent gesetzten Werte

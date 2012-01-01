@@ -36,7 +36,7 @@ namespace Browser
 {
     SettingsGeneral::SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon * trayptr) :
         notify("settings.libnotify.signal"),
-        tray("settings.trayicon.totray"),
+        tray("settings.trayicon.tray"),
         timeout("settings.libnotify.timeout"),
         to_tray("settings.trayicon.totrayonclose")
     {

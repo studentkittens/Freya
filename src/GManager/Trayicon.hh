@@ -43,7 +43,7 @@ namespace GManager
      *
      * It is deriving from Gtk::StatusIcon, that's why you may call show()/hide() functions here.
      */
-    class Trayicon : public Gtk::StatusIcon, public Browser::BasePopup, public AbstractClientUser
+    class Trayicon : public Gtk::StatusIcon, public Browser::BasePopup, public MPD::AbstractClientUser
     {
         public:
             Trayicon(MPD::Client& client,Gtk::Window& main_window);

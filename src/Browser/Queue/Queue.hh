@@ -50,7 +50,7 @@ namespace Browser
      * It does not offer you any public methods.
      * The fetching and updating is done by QueueMerger.
      */
-    class Queue : public AbstractBrowser, public AbstractClientUser
+    class Queue : public AbstractBrowser, public MPD::AbstractClientUser
     {
         public:
             Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);

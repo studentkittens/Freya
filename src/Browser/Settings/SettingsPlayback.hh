@@ -45,7 +45,7 @@ namespace Browser
     /**
      * @brief Playback Settings Tab
      */
-    class SettingsPlayback : public AbstractSettings, public AbstractClientUser
+    class SettingsPlayback : public AbstractSettings, public MPD::AbstractClientUser
     {
         public:
             SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
@@ -60,7 +60,7 @@ namespace Browser
             void on_client_update(mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool server_changed, bool is_connected);
 
-            Glib::ustring name, crossfade_name, stoponexit_name;
+            Glib::ustring name, stoponexit_name;
         /* Widgets */
             Gtk::SpinButton *crossfade;
             Gtk::CheckButton *stoponexit;

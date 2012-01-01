@@ -48,9 +48,9 @@ namespace Browser
      * As Hashmap a std::map was used, with the Path as key and a vector of values as Hashvalue.
      */
     class DatabaseCache : 
-        public AbstractClientUser,
-        public AbstractItemlist,
-        public AbstractItemGenerator
+        public MPD::AbstractClientUser,
+        public MPD::AbstractItemlist,
+        public MPD::AbstractItemGenerator
     {
         public:
 
@@ -63,7 +63,7 @@ namespace Browser
              * @param data_model 
              * @param path
              */
-            void fill_filelist(AbstractItemlist& data_model, const char * path);
+            void fill_filelist(MPD::AbstractItemlist& data_model, const char * path);
 
             /**
              * @brief Implemented from AbstractItemlist 
@@ -72,13 +72,13 @@ namespace Browser
              *
              * @param pItem
              */
-            void add_item(AbstractComposite * pItem);
+            void add_item(MPD::AbstractComposite * pItem);
 
             /* Method stubs .. */
-            void fill_queue(AbstractItemlist& data_model) {}
-            void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
-            void fill_playlists(AbstractItemlist& data_model) {}
-            void fill_outputs(AbstractItemlist& data_model) {}
+            void fill_queue(MPD::AbstractItemlist& data_model) {}
+            void fill_queue_changes(MPD::AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
+            void fill_playlists(MPD::AbstractItemlist& data_model) {}
+            void fill_outputs(MPD::AbstractItemlist& data_model) {}
 
 
         private:
@@ -89,7 +89,7 @@ namespace Browser
              * First bool is true if it's a file,
              * void* points to the actual data. Cast when necessary.
              */
-            typedef AbstractComposite* CachePairType;
+            typedef MPD::AbstractComposite* CachePairType;
             /**
              * @brief The list of actual values
              */

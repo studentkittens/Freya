@@ -44,7 +44,7 @@ namespace GManager
      * to the first browser that needs no connection on disconnect.
      * Also supports hidden Browsers (Browser::Fortune e.g.)
      */
-    class BrowserList : public AbstractClientUser
+    class BrowserList : public MPD::AbstractClientUser
     {
         public:
 

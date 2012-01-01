@@ -108,7 +108,7 @@ namespace Browser
     /*             LOGIC              */
     /* ------------------------------ */
 
-    void DatabaseCache::add_item(AbstractComposite * pItem)
+    void DatabaseCache::add_item(MPD::AbstractComposite * pItem)
     {
         lastVec->push_back(pItem);
     }

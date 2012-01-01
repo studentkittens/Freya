@@ -4,6 +4,7 @@ Der GManager Namespace enthält Klassen die der Verwaltung und Kontrolle des Hau
 jedoch nicht für den eigentlichen Inhalt des Hauptfensters (dies wird vom Browser namespace getan)
 Alle Klassen gehören nach dem MVC Paradigma der Controllerschicht an.
 
+
 BrowserList
 ===========
 Zeigt eine Liste von Browsern in der Sidebar. 
@@ -16,6 +17,8 @@ Benutzt alle Methoden von AbstractBrowser um dise entsprechen anzuzeigen:
 * get_icon_stock_id() -> Gtk::Stock::ID (nur eingebaute icons möglich)
 * is_visible() -> Ist sichtbar in der Leiste?
 * needs_connection() -> Dieser browser benötigt eine Verbindung zum funktionieren.
+
+Als View wird ein Gtk::TreeView benutzt, die Browserreferenzen werden in einem Gtk::ListStore gespeichert. 
 
 Heartbeat
 =========

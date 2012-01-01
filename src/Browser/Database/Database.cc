@@ -152,7 +152,7 @@ namespace Browser
     
     void Database::on_menu_db_rescan_clicked(void)
     {
-        Info("Updating Database.");
+        Info("Rescanning Database.");
         const char * path = mp_Path.c_str();
         path = (path && path[0]) ? path : NULL;
         mp_Client->database_rescan(path);
@@ -175,10 +175,10 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::add_item(AbstractComposite * pItem)
+    void Database::add_item(MPD::AbstractComposite * pItem)
     {
         g_assert(pItem);
-        bool is_file = pItem->isLeaf();
+        bool is_file = pItem->is_leaf();
         const char * path = pItem->get_path();
         
         if(path != NULL)
@@ -256,7 +256,9 @@ namespace Browser
     {
         /* Go back to root when server changed */
         if(server_changed)
+        {
             set_current_path("");
+        }
     }
 
     /*------------------------------------------------*/

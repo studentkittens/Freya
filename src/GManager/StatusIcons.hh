@@ -42,7 +42,7 @@ namespace GManager
      *
      * Toggles/updates random, consume, repeat, single.
      */
-    class Statusicons : public AbstractClientUser
+    class Statusicons : public MPD::AbstractClientUser
     {
         public:
             Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

@@ -51,8 +51,8 @@ namespace Browser
      */
     class Database : 
         public AbstractBrowser,
-        public AbstractItemlist,
-        public AbstractClientUser 
+        public MPD::AbstractItemlist,
+        public MPD::AbstractClientUser 
     {
         public:
             /**
@@ -80,7 +80,7 @@ namespace Browser
              *
              * @param pSong A dyn. allocated MPD::Song instance
              */
-            void add_item(AbstractComposite * pItem);
+            void add_item(MPD::AbstractComposite * pItem);
 
         private:
 
@@ -152,7 +152,7 @@ namespace Browser
             DatabasePopup * mp_Popup;
 
             /* A local memcache of the db files */
-            AbstractItemGenerator * mp_Cache;
+            MPD::AbstractItemGenerator * mp_Cache;
 
     };
 }

@@ -59,14 +59,22 @@ namespace Browser
 
     SettingsOutputs::~SettingsOutputs()
     {
+        clear();
+    }
+
+    /* ------------------------------- */
+    
+    void SettingsOutputs::clear(void)
+    {
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
         for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
         {
             delete (*iter)[treeColumns.colOutput];
         }
+        treeModel->clear();
     }
-
+    
     /* ------------------------------- */
 
     void SettingsOutputs::on_toggle(const Glib::ustring& path)
@@ -87,7 +95,7 @@ namespace Browser
     {
         if(!running && (event & (MPD_IDLE_OUTPUT)))
         {
-            treeModel->clear();
+            clear();
             mp_Client->fill_outputs(*this);
         }
     }
@@ -116,10 +124,17 @@ namespace Browser
         for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
         {
             Gtk::TreeModel::Row row = *iter;
-            if(row[treeColumns.colActive])
-                (*(row[treeColumns.colOutput])).enable();
-            else
-                (*(row[treeColumns.colOutput])).disable();
+            MPD::AudioOutput * output = row[treeColumns.colOutput];
+            bool is_active = row[treeColumns.colActive];
+            g_assert(output);
+
+            /* Activate previously not enabled output */
+            if(is_active && !output->get_enabled())
+                output->enable();
+            else 
+            /* Deactivate previously enabled output */
+            if(!is_active && output->get_enabled())
+                output->disable();
         }
         treeModel->clear();
         mp_Client->fill_outputs(*this);
@@ -144,7 +159,7 @@ namespace Browser
 
     /* ------------------------------- */
 
-    void SettingsOutputs::add_item(AbstractComposite * item)
+    void SettingsOutputs::add_item(MPD::AbstractComposite * item)
     {
         MPD::AudioOutput* a_item = static_cast<MPD::AudioOutput*>(item);
         Gtk::TreeModel::Row row = *(treeModel->append());

@@ -42,7 +42,7 @@ namespace GManager
      *
      * Does nothing more than catching signals, and changing symbols.
      */
-    class PlaybackButtons : public AbstractClientUser
+    class PlaybackButtons : public MPD::AbstractClientUser
     {
         public:
             PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

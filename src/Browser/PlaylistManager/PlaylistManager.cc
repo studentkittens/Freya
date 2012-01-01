@@ -179,7 +179,7 @@ namespace Browser
     
     /* ----------------------- */
 
-    void PlaylistManager::add_item(AbstractComposite * pPlaylist)
+    void PlaylistManager::add_item(MPD::AbstractComposite * pPlaylist)
     {
         g_assert(pPlaylist);
         MPD::Playlist * playlist = static_cast<MPD::Playlist*>(pPlaylist);

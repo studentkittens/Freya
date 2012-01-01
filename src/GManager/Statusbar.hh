@@ -44,7 +44,7 @@ namespace GManager
      *
      * Updates the statusbar every 0.5 seconds
      */
-    class Statusbar : public AbstractClientUser
+    class Statusbar : public MPD::AbstractClientUser
     {
         public:
 

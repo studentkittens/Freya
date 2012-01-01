@@ -42,7 +42,7 @@ namespace GManager
      *
      * Updates the time every 500ms according to the Heartbeat.
      */
-    class Timeslide : public AbstractClientUser
+    class Timeslide : public MPD::AbstractClientUser
     {
         public:
             Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

@@ -152,8 +152,6 @@ namespace MPD
         {
             return &(mp_Listener->signal_client_update_data().get_status());
         }
-        Warning("get_status() while being disconnected");
-
         return NULL;
     }
 

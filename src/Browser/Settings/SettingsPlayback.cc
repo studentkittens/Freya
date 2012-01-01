@@ -37,7 +37,6 @@ namespace Browser
 {
     SettingsPlayback::SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
         AbstractClientUser(client),
-        crossfade_name("settings.playback.crossfade"),
         stoponexit_name("settings.playback.stoponexit")
     {
         BUILDER_GET(builder,"crossfade_spinbutton",crossfade);
@@ -64,7 +63,10 @@ namespace Browser
 
     void SettingsPlayback::decline_new_settings(void)
     {
-        crossfade->set_value(CONFIG_GET_AS_INT(crossfade_name));
+        MPD::Status * status = mp_Client->get_status();
+        if(status != NULL)
+            crossfade->set_value(status->get_crossfade());
+
         stoponexit->set_active(CONFIG_GET_AS_INT(stoponexit_name)==1);
     }
 
@@ -72,7 +74,7 @@ namespace Browser
 
     void SettingsPlayback::reset_settings(void)
     {
-        crossfade->set_value(CONFIG_GET_DEFAULT_AS_INT(crossfade_name));
+        crossfade->set_value(0);
         stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);
     }
     

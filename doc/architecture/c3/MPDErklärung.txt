@@ -280,19 +280,41 @@ daher leitet MPD::AudioOutput von AbstractClientExtension ab.
 
 Abstrakte Klassen
 ----------------- 
+
 AbstractClientExtension
 - Erlaubt abgeleiteten Klasse ähnlich zum Client eigene Kommandos zu implementieren
 - Wird von MPD::Playlist und MPD::AudioOutput benutzt 
 
+-------------------------------------------
+
 AbstractClientUser
 - Verwaltet einen Pointer auf die MPD::Client Klasse,
   so dass der Anwender der Klasse dies nicht selbst tun muss.
-- Registriert zudem automatisch die on_client_update() und die on_connection_change() 
-  Funktionen. Daher muss der Ableitende beide Methoden implementieren.
+- Leitet man ab so müssen folgenden Methoden implementiert werden:
+  
+      void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        
+      Wird aufgerufen sobald der Listener eine Änderunge feststellt,
+      siehe weiter unten "Interaktion des Clients mit anderen Modulen" für eine genauere Erklärung.
+      
+      ----------------
+
+      void on_connection_change(bool server_changed, bool is_connected);
+
+      Wird aufgerufen sobald sich der verbunden/getrennt hat. Im ersten Fall
+      ist is_connected true, im anderen false. Sollte sich der Client verbunden haben,
+      und der neue Server entspricht nicht mehr dem neuen so ist auch server_changed true.
+      Dies ist automatisch wahr beim ersten Start.
+
+  Diese werden automatisch durch Ableiten von AbstractClientUser registriert.
+  Weiterhin können alle Klassen über den mp_Client Pointer auf den Client zugreifen.
+
+-------------------------------------------
 
 AbstractItemlist
 - Für bestimmte Client funktionen muss eine Nutzerklasse von AbstractItemlist ableiten.
-  Leitet man ab so muss die Methode add_item(void * data) implementiert werden. 
+  Leitet man ab so muss die Methode add_item(AbstractComposite * data) implementiert werden. 
+  Je nach Bedarf kann über dynamic_cast<Zieltyp*>(data) der entsprechende Datentyp rausgecasted werden.
   Beim Aufruf von MPD::Client::fill_queue ruft der Client die add_item methode für jeden 
   song den er vom server bekommt auf. Die ableitende Klasse kann diese dann verarbeiten.
   
@@ -302,6 +324,51 @@ AbstractItemlist
   * fill_playlists
   * fill_ouputs
   * fill_filelist 
+
+<Klassendiagramm, bzw. Klassen die es verwenden von Doxygen nehmen>
+
+-------------------------------------------
+
+AbstractItemGenerator
+- Lässt ableitende Klasse folgende Methoden implementieren:
+  Jede dieser Methoden ruft add_item() von AbstractItemlist auf um ihre Resultate weiterzugeben.
+
+         <Sequenzdiagramm>   
+
+            void fill_queue(AbstractItemlist& data_model);
+
+              Holt alle Songs der aktuellen Queue; Ruft für jeden MPD::Song add_item() auf;
+
+            void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos);
+            
+              Holt alle geänderten Songs in der Queue seit der Version last_version. Die Position des ersten geänderten Songs wird in first_pos gespeichert.
+              Ruft für jeden MPD::Song add_item() auf;
+
+            void fill_playlists(AbstractItemlist& data_model);
+
+              Holt alle gespeicherten Playlisten vom Server; Ruft für jede MPD::Playlist add_item() auf;
+
+            void fill_outputs(AbstractItemlist& data_model);
+
+              Holt alle Audio Outputs vom Server; Ruft für jeden MPD::AudioOutput add_item() auf;
+
+            void fill_filelist(AbstractItemlist& data_model, const char * path);
+
+              Holt alle Songs und Directories aus der Datenbank im Pfad path (nicht rekursiv!); Ruft für jedes MPD::Directory und für jeden MPD::Song add_item auf;
+
+<Klassendiagramm, bzw. Klassen die es verwenden von Doxygen nehmen>
+
+-------------------------------------------
+
+AbstractComposite
+- Vereinheitlicht Zugriff auf Komponenten verschiedenen Types.
+  Die abstrakte Klasse zwingt seine Kinder dazu eine get_path() zu implementieren die die Lage im virtuellen Filesystem des Servers angibt.
+  Der Hauptnutzen dieser Klasse ist es für den Databasebrowser, bzw. den dahinter gelagerten Cache Songs und Verzeichnisse gleich zu behandeln.
+  
+  Die erbende Klasse muss im Konstruktor angeben ob es sich bei der Klasse um ein "File" (true für MPD::Song) oder um einen "Container" (false für MPD::Directory) handelt.
+  Diese "is_leaf" Eigenschaft kann später mit der Funktion is_leaf() abgefragt werden.
+
+  <Klassendiagramm für alle Klassen die von AbstractComposite erben, siehe Doxygen>
 
 =============================================
 

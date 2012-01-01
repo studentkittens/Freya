@@ -13,6 +13,7 @@
   * Browser
   * Glade
 
+- Einbindung von Doxygendoku in Doku?
 - Ein Diagramm für das Zusammenspiel von AbstractItemlist <-> Client <-> AbstractItemGenerator  
 - Bewertung von Wasserfallmodell
 - Testfalldoku? :-(

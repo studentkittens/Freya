@@ -153,7 +153,6 @@ NotifyData
 =============================================
 
 Sequenzdiagramm (evtl. auch Zustandsdiagramme) für:
-!! Machen wir dann gemeinsam !!
 - Connect Vorgang; Beteiligt: BaseClient, Listener, Connection, Client
 - Senden eines Kommandos; Beteiligt: Beliebige Klasse wie GManager::Timeslide, Client, Listener
 - ...
@@ -166,33 +165,118 @@ Weitere Klassen
 Desweiteren gibt es einige weitere Klassen die am Rande eine Rolle spielen,
 und meist Objektorientierte Wrapperklassen für die C-Strukturen von libmpdclient bereitstellen:
 
-Song
-- Wrapper für mpd_song
-- bietet zudem ein funktionen um die metadatan des in einer printf änhlichen Art als String zurückzuliefern
+MPD::Song
+-------------------------------------------------
+Wrapper für mpd_song.
+Soll alle Funktionen von http://www.musicpd.org/doc/libmpdclient/song_8h.html anbieten,
+diese werden hier nur aufgelistet aber nicht erklärt da sie genau wie ihre Vorbilder funktionieren:
+
+            const char * get_path(void);
+            const char * get_tag(enum mpd_tag_type type, unsigned idx);
+            unsigned get_duration(void);
+            time_t get_last_modified(void);
+            void set_pos(unsigned pos);
+            unsigned get_pos(void);
+            unsigned get_id(void);
+
+MPD::Song soll zudem eine Funktion bieten um die Metadaten des Songs in einer printf änhlichen Art als String zurückzuliefern:
+
+            Glib::ustring song_format(const char* format, bool markup=true);
+
+Ein beispielhafter Aufruf:
+
+            SomeSong.song_format("Artist is by ${artist}") 
+
+Die folgenden Tagarten sollen unterstützt werden (sie spiegeln in etwa die mpd_tag_type Enumeration von libmpdclient wieder):
+  * artist
+  * title
+  * album
+  * track
+  * name
+  * data
+  * album_artist
+  * genre
+  * composer
+  * performer
+  * comment
+  * disc
+  
+Ist ein Escapestring nicht bekannt, so wird er nicht escaped. Ist der tag nicht vorhanden soll mit "unknown" escaped werden.
+
+-------------------------------------------------
 
 Directory
-- Wrapper für mpd_directory
+Wrapper für mpd_directory. Wird lediglich als Anzeige für ein Verzeichniss benutzt, nicht als Container für andere Elemente.
+Entsprechend implementiert MPD::Directory nur:
+
+            void get_path(void);
+
+...was von AbstractComposite vorgegeben wird.
+
+-------------------------------------------------
 
 Statistics
-- Wrapper für mpd_stats
+- Wrapper für mpd_stats, implementiert gemäß http://www.musicpd.org/doc/libmpdclient/stats_8h.html folgende Funktionen:
+
+            unsigned get_number_of_artists(void);
+            unsigned get_number_of_albums(void);
+            unsigned get_number_of_songs(void);
+            unsigned long get_uptime(void);
+            unsigned long get_db_update_time(void);
+            unsigned long get_play_time(void);
+            unsigned long get_db_play_time(void);
+
+-------------------------------------------------
   
 Playlist
-- Wrapper für mpd_playlist 
-- Bietet desweiteren funktionen zum.. :
-  * entfernen der playlist
-  * laden der playlist in die warteschlange 
-  * umbennen der playlist
-  * hinzufügen von songs zur playlist
+- Wrapper für mpd_playlist, implementiert von http://www.musicpd.org/doc/libmpdclient/playlist_8h.html folgende Funktionen:
+
+            const char * get_path(void);
+            time_t get_last_modified(void);
+
+- Bietet desweiteren funktionen zum:
+  * Entfernen der Playlist vom Server (Das Playlistobjekt ist danach invalid):
+  
+            void remove(void);
+
+  * Laden der Playlist in die Queue:
+  
+            void load(void);
+
+  * Umbennen der Playlist:
+  
+            void rename(const char * new_name);
+
+  * Hinzufügen von Songs zur Playlist:
+  
+            void add_song(const char * uri);
+            void add_song(MPD::Song& song);
+
 - Die genannten funktionen benötigen müssen den idlemode verlassen können,
-  daher leitet MPD::Playlist von AbstractClientExtension ab. Dazu später mehr.
+  daher leitet MPD::Playlist von AbstractClientExtension ab.
+
+-------------------------------------------------
 
 AudioOutput
-- Wrapper für mpd_output
-- Bietet desweiteren funktionen zum.. :
-  * anschalten des Ausgabegerätes
-  * ausschalten       -""-
+- Wrapper für mpd_output, implementiert von http://www.musicpd.org/doc/libmpdclient/output_8h.html folgende Funktionen:
+
+            unsigned get_id(void);
+            const char * get_name(void);
+            bool get_enabled(void);
+
+- Bietet desweiteren funktionen zum:
+  * Enablen des Ausgabegerätes:
+  
+            bool enable(void);
+    
+  * Disablen des Ausgabegerätes:
+  
+            bool disable(void);
+
 - Die genannten Funktionen benötigen müssen den idlemode verlassen können,
-  daher leitet MPD::AudioOutput von AbstractClientExtension ab. Dazu später mehr.
+daher leitet MPD::AudioOutput von AbstractClientExtension ab. 
+
+-------------------------------------------------
 
 Abstrakte Klassen
 ----------------- 
@@ -212,19 +296,12 @@ AbstractItemlist
   Beim Aufruf von MPD::Client::fill_queue ruft der Client die add_item methode für jeden 
   song den er vom server bekommt auf. Die ableitende Klasse kann diese dann verarbeiten.
   
-  Die dadurch benutzbare Client Methoden:
+  Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die davon ableiten) benutzbar:
   * fill_queue
   * fill_queue_changes
   * fill_playlists
   * fill_ouputs
-
-AbstractFilebrowser
-- Ähnlich zu AbstractItemlist, bloß müssen zwei Methoden implementiert werden:
-  * void add_song_file(MPD::Song* pSong)
-  * void add_directory(MPD::Directory * pDir)
-
-  Die dadurch benutzbare Client Methoden:
-  * fill_filelist
+  * fill_filelist 
 
 =============================================
 

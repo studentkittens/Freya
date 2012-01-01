@@ -178,7 +178,7 @@ namespace Browser
     void Database::add_item(AbstractComposite * pItem)
     {
         g_assert(pItem);
-        bool is_file = pItem->isLeaf();
+        bool is_file = pItem->is_leaf();
         const char * path = pItem->get_path();
         
         if(path != NULL)
@@ -256,7 +256,9 @@ namespace Browser
     {
         /* Go back to root when server changed */
         if(server_changed)
+        {
             set_current_path("");
+        }
     }
 
     /*------------------------------------------------*/

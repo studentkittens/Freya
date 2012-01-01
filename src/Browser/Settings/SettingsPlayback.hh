@@ -60,7 +60,7 @@ namespace Browser
             void on_client_update(mpd_idle event, MPD::NotifyData& data);
             void on_connection_change(bool server_changed, bool is_connected);
 
-            Glib::ustring name, crossfade_name, stoponexit_name;
+            Glib::ustring name, stoponexit_name;
         /* Widgets */
             Gtk::SpinButton *crossfade;
             Gtk::CheckButton *stoponexit;

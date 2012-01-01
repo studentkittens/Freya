@@ -55,7 +55,7 @@ namespace GManager
         mp_Window = &main_window;
 
         set_tooltip_text("Freya Trayicon");
-        set_visible(CONFIG_GET_AS_INT("settings.trayicon.totray"));
+        set_visible(CONFIG_GET_AS_INT("settings.trayicon.tray"));
 
         menu_add_item(m_ActionNext,"next","Next","Play next song",Gtk::Stock::MEDIA_NEXT);
         menu_add_item(m_ActionPrev,"prev","Prev","Play prev song",Gtk::Stock::MEDIA_PREVIOUS);

@@ -7,9 +7,22 @@
   * Proxy Pattern: Database <- DatabaseCache -> Client; Client und DatabaseCache leiten von AbstractItemGenerator ab wodurch 
     'Database' sowohl Client und DatabaseCache benutzen kann ohne genau wissen zu müssen was es eigentlich benutzt.
 
-- Erklärung zu Glade und GtkBuilder
-
+- Erklärung zu Glade und GtkBuilder, warum das View/Controller trennt..
+- Warum browserbasiertes Layout?
 - Glossar (Maaaaaarrrc!)
   * Browser
   * Glade
-  
+
+- Ein Diagramm für das Zusammenspiel von AbstractItemlist <-> Client <-> AbstractItemGenerator  
+- Bewertung von Wasserfallmodell
+- Testfalldoku? :-(
+- Eine Erklärung zur Spezifikation: Nur Spezifizierung der public Methoden, bzw. wichtiger private Methoden.
+- Ein Abbild der Defaultconfig in der Config
+
+Diagramme die wir noch brauchen:
+- Usecasediagramme (Marc, bitte wikiartikel dazu lesen http://de.wikipedia.org/wiki/Anwendungsfalldiagramm - das hat nicht unbedingt was mit der GUI zu tun)
+  * Welche genau muss man sich evtl. mal überlegen.
+- Zustandsdiagramme (Schaible wollte noch welche)
+- Eventuell ein Paketdiagram: http://de.wikipedia.org/wiki/Paketdiagramm
+
+-> Sequenzdiagramme haben wir fast genug - danke Eddy :)

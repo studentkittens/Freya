@@ -111,7 +111,7 @@ namespace Browser
 
     /*-------------------*/
 
-    void QueueMerger::add_item(AbstractComposite * pSong)
+    void QueueMerger::add_item(MPD::AbstractComposite * pSong)
     {
         g_assert(pSong);
         MPD::Song * new_song = static_cast<MPD::Song*>(pSong);

@@ -50,7 +50,7 @@ namespace Browser
      *
      * fill_queue_changes() delivers the correct list since the first position that changed.
      */
-    class QueueMerger : public AbstractItemlist, public AbstractClientUser
+    class QueueMerger : public MPD::AbstractItemlist, public MPD::AbstractClientUser
     {
         public:
             QueueMerger(MPD::Client& client,
@@ -62,7 +62,7 @@ namespace Browser
              *
              * @param pSong a MPD::Song
              */
-            void add_item(AbstractComposite * pSong);
+            void add_item(MPD::AbstractComposite * pSong);
 
             /**
              * @brief Disables automatic updating 1x

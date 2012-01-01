@@ -41,7 +41,7 @@ namespace GManager
      *
      * It does not offer any relevant public methods
      */
-    class NotifyManager : public AbstractClientUser
+    class NotifyManager : public MPD::AbstractClientUser
     {
         public:
             NotifyManager(MPD::Client& client);

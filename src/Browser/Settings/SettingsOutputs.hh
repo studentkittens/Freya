@@ -47,7 +47,7 @@ namespace Browser
     /**
      * @brief Outputlist Tab
      */
-    class SettingsOutputs : public AbstractSettings, public AbstractItemlist, public AbstractClientUser
+    class SettingsOutputs : public AbstractSettings, public MPD::AbstractItemlist, public MPD::AbstractClientUser
     {
         public:
             SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
@@ -56,7 +56,7 @@ namespace Browser
             void accept_new_settings(void);
             void decline_new_settings(void);
             void reset_settings(void);
-            void add_item(AbstractComposite *item);
+            void add_item(MPD::AbstractComposite *item);
 
         protected:
             void on_client_update(enum mpd_idle event, MPD::NotifyData& data);

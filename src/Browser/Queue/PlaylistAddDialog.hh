@@ -43,7 +43,7 @@ namespace Browser
      *
      * This class does the adding itself
      */
-    class PlaylistAddDialog : public AbstractClientUser
+    class PlaylistAddDialog : public MPD::AbstractClientUser
     {
         public:
             PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);

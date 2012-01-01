@@ -33,27 +33,30 @@
 
 #include "AbstractComposite.hh"
 
-/**
- * @brief Inhertit from this class to use MPD::Client's fill_* methods.
- */
-class AbstractItemlist
+namespace MPD
 {
-    public:
+    /**
+     * @brief Inhertit from this class to use MPD::Client's fill_* methods.
+     */
+    class AbstractItemlist
+    {
+        public:
 
-        /**
-         * @brief Called after calling (e.g.) fill_queue() 
-         *
-         * Cast this to the correct type, fill_queue delivers you for example a MPD::Song*
-         *
-         * @param item a dynamically allocated item
-         */
-        virtual void add_item(AbstractComposite * item) = 0; 
-        
-            
-        /**
-         * @brief Virtual DTor so, derived class call their own DTor
-         */
-        virtual ~AbstractItemlist() {};
-};
+            /**
+             * @brief Called after calling (e.g.) fill_queue() 
+             *
+             * Cast this to the correct type, fill_queue delivers you for example a MPD::Song*
+             *
+             * @param item a dynamically allocated item
+             */
+            virtual void add_item(MPD::AbstractComposite * item) = 0; 
+
+
+            /**
+             * @brief Virtual DTor so, derived class call their own DTor
+             */
+            virtual ~AbstractItemlist() {};
+    };
+}
 
 #endif

@@ -159,7 +159,7 @@ namespace Browser
 
     /* ------------------------------- */
 
-    void SettingsOutputs::add_item(AbstractComposite * item)
+    void SettingsOutputs::add_item(MPD::AbstractComposite * item)
     {
         MPD::AudioOutput* a_item = static_cast<MPD::AudioOutput*>(item);
         Gtk::TreeModel::Row row = *(treeModel->append());

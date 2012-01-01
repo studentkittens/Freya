@@ -42,7 +42,7 @@ namespace GManager
      *
      * Formats the song and updates on the Player/Option events.
      */
-    class TitleLabel : public AbstractClientUser
+    class TitleLabel : public MPD::AbstractClientUser
     {
         public:
 

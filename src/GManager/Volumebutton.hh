@@ -47,7 +47,7 @@ namespace GManager
      * Updates on the mixer event, only updates every 0.05 seconds to prevent high ressource-usage.
      * Also schedules an Glib::signal_idle() event instead of executing it directly.
      */
-    class Volumebutton : public AbstractClientUser
+    class Volumebutton : public MPD::AbstractClientUser
     {
         public:
             Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);

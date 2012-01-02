@@ -46,7 +46,6 @@
 \contentsline {subsection}{\numberline {6.2.1}Anwendungsbereiche}{25}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}Zielgruppen}{25}{subsection.6.2.2}
 \contentsline {subsection}{\numberline {6.2.3}Betriebsbedingungen}{25}{subsection.6.2.3}
-<<<<<<< HEAD:doc/architecture/Doku/Doku.toc
 \contentsline {section}{\numberline {6.3}Produktumgebung}{26}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Software}{26}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}Orgware}{26}{subsection.6.3.2}
@@ -95,14 +94,11 @@
 \contentsline {chapter}{\numberline {7}Design-Dokument}{55}{chapter.7}
 \contentsline {section}{\numberline {7.1}Einleitung}{55}{section.7.1}
 \contentsline {section}{\numberline {7.2}Hauptproblem}{56}{section.7.2}
-\contentsline {section}{\numberline {7.3}Softwarearchitektur}{58}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Architekutr\IeC {\"u}bersicht}{58}{subsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.1.1}Namespace-\IeC {\"U}bersicht}{58}{subsubsection.7.3.1.1}
+\contentsline {section}{\numberline {7.3}Softwarearchitektur}{59}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Architekutr\IeC {\"u}bersicht}{59}{subsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.1.1}Namespace-\IeC {\"U}bersicht}{59}{subsubsection.7.3.1.1}
 \contentsline {subsubsection}{\numberline {7.3.1.2}Beschreibung}{59}{subsubsection.7.3.1.2}
 \contentsline {subsection}{\numberline {7.3.2}Funktionen}{59}{subsection.7.3.2}
-\contentsline {subsubsection}{\numberline {7.3.2.1}Beispiel-Abspielfunktionen}{59}{subsubsection.7.3.2.1}
-\contentsline {subsubsection}{\numberline {7.3.2.2}Beispiel-Playlist erstellen}{59}{subsubsection.7.3.2.2}
-\contentsline {subsubsection}{\numberline {7.3.2.3}Beispiel-Dateibrowser}{59}{subsubsection.7.3.2.3}
 \contentsline {subsection}{\numberline {7.3.3}Oberfl\IeC {\"a}che}{59}{subsection.7.3.3}
 \contentsline {subsubsection}{\numberline {7.3.3.1}Titelleiste}{59}{subsubsection.7.3.3.1}
 \contentsline {subsubsection}{\numberline {7.3.3.2}Seitenmen\IeC {\"u}}{59}{subsubsection.7.3.3.2}
@@ -115,76 +111,3 @@
 \contentsline {subsection}{\numberline {7.4.3}Musik im Consume Mode abspielen}{59}{subsection.7.4.3}
 \contentsline {subsection}{\numberline {7.4.4}Playlist erstellen}{59}{subsection.7.4.4}
 \contentsline {section}{\numberline {7.5}Glossar}{59}{section.7.5}
-=======
-\contentsline {section}{\numberline {6.3}Produktumgebung}{25}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Software}{25}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Hardware}{25}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Orgware}{25}{subsection.6.3.3}
-\contentsline {section}{\numberline {6.4}Produktfunktionen}{26}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Starten und Beenden}{26}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Abspielen von Musik (Buttons)}{26}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}Abspielen von Musik (Short-Cuts)}{27}{subsection.6.4.3}
-\contentsline {subsection}{\numberline {6.4.4}Queue (Warteschlange)}{27}{subsection.6.4.4}
-\contentsline {subsection}{\numberline {6.4.5}Playlist}{27}{subsection.6.4.5}
-\contentsline {subsection}{\numberline {6.4.6}Dateibrowser}{27}{subsection.6.4.6}
-\contentsline {subsection}{\numberline {6.4.7}Statistik}{28}{subsection.6.4.7}
-\contentsline {subsection}{\numberline {6.4.8}Einstellungen}{28}{subsection.6.4.8}
-\contentsline {subsection}{\numberline {6.4.9}Lautst\IeC {\"a}rke}{29}{subsection.6.4.9}
-\contentsline {subsection}{\numberline {6.4.10}Suchen}{29}{subsection.6.4.10}
-\contentsline {subsection}{\numberline {6.4.11}Sonstiges}{29}{subsection.6.4.11}
-\contentsline {subsection}{\numberline {6.4.12}Administrator-Funktionen}{29}{subsection.6.4.12}
-\contentsline {section}{\numberline {6.5}Produktdaten}{29}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Anzeige}{29}{subsection.6.5.1}
-\contentsline {subsubsection}{\numberline {6.5.1.1}Titelleiste}{29}{subsubsection.6.5.1.1}
-\contentsline {subsubsection}{\numberline {6.5.1.2}Queue}{30}{subsubsection.6.5.1.2}
-\contentsline {subsubsection}{\numberline {6.5.1.3}Playlist}{30}{subsubsection.6.5.1.3}
-\contentsline {subsubsection}{\numberline {6.5.1.4}Statistik}{30}{subsubsection.6.5.1.4}
-\contentsline {subsubsection}{\numberline {6.5.1.5}Fu\IeC {\ss }leiste}{30}{subsubsection.6.5.1.5}
-\contentsline {subsubsection}{\numberline {6.5.1.6}Sonstiges}{31}{subsubsection.6.5.1.6}
-\contentsline {subsection}{\numberline {6.5.2}Pers\IeC {\"o}nliches Profil}{31}{subsection.6.5.2}
-\contentsline {subsection}{\numberline {6.5.3}Pers\IeC {\"o}nliche Datenbank}{31}{subsection.6.5.3}
-\contentsline {subsection}{\numberline {6.5.4}Pers\IeC {\"o}nliche Einstellungen}{31}{subsection.6.5.4}
-\contentsline {section}{\numberline {6.6}Qualit\IeC {\"a}tsanforderungen}{31}{section.6.6}
-\contentsline {subsection}{\numberline {6.6.1}Q\_0001 Korrektheit}{31}{subsection.6.6.1}
-\contentsline {subsection}{\numberline {6.6.2}Q\_0002 Wartbarkeit}{32}{subsection.6.6.2}
-\contentsline {subsection}{\numberline {6.6.3}Q\_0003 Zuverl\IeC {\"a}ssigkeit}{32}{subsection.6.6.3}
-\contentsline {subsection}{\numberline {6.6.4}Q\_0004 Effizienz}{32}{subsection.6.6.4}
-\contentsline {subsection}{\numberline {6.6.5}Q\_0005 Benutzbarkeit}{32}{subsection.6.6.5}
-\contentsline {subsection}{\numberline {6.6.6}Q\_0006 Design}{32}{subsection.6.6.6}
-\contentsline {section}{\numberline {6.7}Globale Testszenarien und Testf\IeC {\"a}lle}{33}{section.6.7}
-\contentsline {subsection}{\numberline {6.7.1}Cxxtest}{33}{subsection.6.7.1}
-\contentsline {subsubsection}{\numberline {6.7.1.1}Testf\IeC {\"a}lle}{34}{subsubsection.6.7.1.1}
-\contentsline {subsection}{\numberline {6.7.2}Testprotokoll}{34}{subsection.6.7.2}
-\contentsline {subsubsection}{\numberline {6.7.2.1}Abspielfunktionen}{34}{subsubsection.6.7.2.1}
-\contentsline {subsubsection}{\numberline {6.7.2.2}Queue-Funktionen}{40}{subsubsection.6.7.2.2}
-\contentsline {subsubsection}{\numberline {6.7.2.3}Playlist-Funktionen}{41}{subsubsection.6.7.2.3}
-\contentsline {subsubsection}{\numberline {6.7.2.4}Dateibrowser-Funktionen}{43}{subsubsection.6.7.2.4}
-\contentsline {subsubsection}{\numberline {6.7.2.5}Statistik}{46}{subsubsection.6.7.2.5}
-\contentsline {subsubsection}{\numberline {6.7.2.6}Einstellungen}{46}{subsubsection.6.7.2.6}
-\contentsline {subsubsection}{\numberline {6.7.2.7}Lautst\IeC {\"a}rke}{47}{subsubsection.6.7.2.7}
-\contentsline {subsubsection}{\numberline {6.7.2.8}Sonstiges}{47}{subsubsection.6.7.2.8}
-\contentsline {section}{\numberline {6.8}Entwicklungsumgebung}{49}{section.6.8}
-\contentsline {subsection}{\numberline {6.8.1}Software}{49}{subsection.6.8.1}
-\contentsline {subsection}{\numberline {6.8.2}Hardware}{49}{subsection.6.8.2}
-\contentsline {subsection}{\numberline {6.8.3}Orgware}{49}{subsection.6.8.3}
-\contentsline {section}{\numberline {6.9}Glossar}{49}{section.6.9}
-\contentsline {chapter}{\numberline {7}Design-Dokument}{50}{chapter.7}
-\contentsline {section}{\numberline {7.1}Einleitung}{50}{section.7.1}
-\contentsline {section}{\numberline {7.2}Hauptproblem}{51}{section.7.2}
-\contentsline {section}{\numberline {7.3}Softwarearchitektur}{54}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Architekutr\IeC {\"u}bersicht}{54}{subsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.1.1}Namespace-\IeC {\"U}bersicht}{54}{subsubsection.7.3.1.1}
-\contentsline {subsubsection}{\numberline {7.3.1.2}Beschreibung}{54}{subsubsection.7.3.1.2}
-\contentsline {subsection}{\numberline {7.3.2}Funktionen}{54}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Oberfl\IeC {\"a}che}{54}{subsection.7.3.3}
-\contentsline {subsubsection}{\numberline {7.3.3.1}Titelleiste}{54}{subsubsection.7.3.3.1}
-\contentsline {subsubsection}{\numberline {7.3.3.2}Seitenmen\IeC {\"u}}{54}{subsubsection.7.3.3.2}
-\contentsline {subsubsection}{\numberline {7.3.3.3}Fu\IeC {\ss }leiste}{54}{subsubsection.7.3.3.3}
-\contentsline {subsubsection}{\numberline {7.3.3.4}Anzeige}{54}{subsubsection.7.3.3.4}
-\contentsline {subsection}{\numberline {7.3.4}Short-Cuts}{54}{subsection.7.3.4}
-\contentsline {section}{\numberline {7.4}Use-Case-F\IeC {\"a}lle}{54}{section.7.4}
-\contentsline {subsection}{\numberline {7.4.1}Musik abspielen}{54}{subsection.7.4.1}
-\contentsline {subsection}{\numberline {7.4.2}Musik zuf\IeC {\"a}llig abspielen}{54}{subsection.7.4.2}
-\contentsline {subsection}{\numberline {7.4.3}Musik im Consume Mode abspielen}{54}{subsection.7.4.3}
-\contentsline {subsection}{\numberline {7.4.4}Playlist erstellen}{54}{subsection.7.4.4}
->>>>>>> 860a8a41a9771ce89b687bc0539a2cd5fbc7dcfc:doc/architecture/Doku/Dokument/Doku.toc

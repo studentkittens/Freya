@@ -1,4 +1,8 @@
+<<<<<<< HEAD:doc/architecture/Doku/Doku.log
 This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.24)  2 JAN 2012 17:05
+=======
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.27)  2 JAN 2012 16:37
+>>>>>>> 860a8a41a9771ce89b687bc0539a2cd5fbc7dcfc:doc/architecture/Doku/Dokument/Doku.log
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,6 +1249,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--51
 
  []
 
+<<<<<<< HEAD:doc/architecture/Doku/Doku.log
 [56] [57] <Namespace_Uebersicht.png, id=799, 1333.45235pt x 1476.57529pt>
 File: Namespace_Uebersicht.png Graphic file (type png)
 
@@ -1259,6 +1264,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
  [59] [60 <./Namespace_Uebersicht.png>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+=======
+[51] [52])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
+ [53] [54]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
+>>>>>>> 860a8a41a9771ce89b687bc0539a2cd5fbc7dcfc:doc/architecture/Doku/Dokument/Doku.log
  (./Doku.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
@@ -1273,11 +1284,19 @@ Package rerunfilecheck Info: Checksums for `Doku.out':
 (rerunfilecheck)             After:  335C21D866C213BB23FEE01BBC98F361;6430.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD:doc/architecture/Doku/Doku.log
  9341 strings out of 493629
  134741 string characters out of 3148777
  255981 words of memory out of 3000000
  12287 multiletter control sequences out of 15000+200000
  15212 words of font info for 59 fonts, out of 3000000 for 9000
+=======
+ 9215 strings out of 493629
+ 133133 string characters out of 3148777
+ 261110 words of memory out of 3000000
+ 12185 multiletter control sequences out of 15000+200000
+ 14866 words of font info for 58 fonts, out of 3000000 for 9000
+>>>>>>> 860a8a41a9771ce89b687bc0539a2cd5fbc7dcfc:doc/architecture/Doku/Dokument/Doku.log
  831 hyphenation exceptions out of 8191
  36i,10n,40p,255b,538s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
@@ -1286,6 +1305,7 @@ s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
+<<<<<<< HEAD:doc/architecture/Doku/Doku.log
 fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb>
 Output written on Doku.pdf (60 pages, 656648 bytes).
@@ -1294,4 +1314,13 @@ PDF statistics:
  813 compressed objects within 9 object streams
  201 named destinations out of 1000 (max. 500000)
  789 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Doku.pdf (54 pages, 322365 bytes).
+PDF statistics:
+ 866 PDF objects out of 1000 (max. 8388607)
+ 790 compressed objects within 8 object streams
+ 191 named destinations out of 1000 (max. 500000)
+ 803 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> 860a8a41a9771ce89b687bc0539a2cd5fbc7dcfc:doc/architecture/Doku/Dokument/Doku.log
 

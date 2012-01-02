@@ -424,7 +424,541 @@ durchaus hilfreich.
 Das Design soll ansprechend und modern sein, allerdings wenn es Konflikte zwischen technischer Umsetzung 
 und Design oder Effizienz und Design geben sollte, ist stets im Interesse der technischen Umsetzung bzw. 
 der Effizienz zu entscheiden.
+<<<<<<< HEAD:doc/architecture/Doku/Pflichtenheft.tex
 
+=======
+\section{Globale Testszenarien und Testfälle}
+\subsection{Cxxtest}
+\begin{quote}
+CxxTest is a JUnit/CppUnit/xUnit-like framework for C/C++.\ \\ \\
+It is focussed on being a lightweight framework that is well suited for 
+integration into embedded systems development projects.\ \\ \\
+CxxTest's advantages over existing alternatives are that it:\ \\ \\
+\begin{itemize}
+	\item Doesn't require RTTI
+    	\item Doesn't require member template functions
+    	\item Doesn't require exception handling
+	\item Doesn't require any external libraries (including memory management, file/console I/O, graphics libraries)
+	\item Is distributed entirely as a set of header files (and a python script).
+	\item Doesn't require the user to manually register tests and test suites 
+\end{itemize}
+This makes it extremely portable and usable.\ \\ \\
+Currently CxxTest is about to get a major update. The stable version 
+(3.10.1) is available in the documents and files section.\ \\ \\
+For more information you may visit our wiki. If you are interested in 
+helping this project you can start by browsing the code and looking at the 
+currently open issues. 
+\end{quote} \footnote{http://cxxtest.tigris.org/}
+\subsubsection{Testfälle}
+\subsection{Testprotokoll}
+Um Fehler aufzuspühren, die die grafische Oberfläche betreffen, wurde ein Testprotokoll erstellt in dem zunächst
+alle möglichen Funktionen der grafischen Oberfläche aufgelistet werden. Außerdem müssen diese Funktionen mit 
+anderen Funktionen kombiniert und mehrfach ausgeführt werden. Zu jedem dieser Fälle ist ein zu erwartendes Ergebnis
+festzulegen und anschließend zu überprüfen ob das erwartete Ergebnis eingetroffen ist. Das eingetroffene Ergebnis
+ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortcuts geprüft.
+\subsubsection{Abspielfunktionen}
+\textbf{Einfache Ausführung:}\ \\ \\
+\begin{tabular}[c]{|l|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Play & Musik spielt ab.\newline Play wird zu Pause. & Ja\\
+\hline
+Pause & Musik pausiert.\newline Pause wird zu Play. & Ja\\
+\hline
+Next & Nächstes Lied abspielen & Ja\\
+\hline
+Previous & Vorheriges Lied abspielen & Ja\\
+\hline
+Stop & Beende abspielen\newline Pause wird zu Play. & Ja\\
+\hline
+Skipping & An Liedposition springen & Ja\\
+\hline
+Random & Musik der Queue zufällig abspielen & Ja\\
+\hline 
+Repeat & Ein Lied wiederholen & Ja\\
+\hline
+Repeat all & Queue wiederholen & Ja\\
+\hline
+Consume Mode & Ein abgespieltes Lied entfernen & Ja\\
+\hline
+Single Mode & Ein Lied abspielen, dann Stoppen & Ja\\
+\hline
+\end{tabular}
+\newpage
+\textbf{Kombinierte Ausführung:}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Play, Stop, Play(1) & Musik spielt ab.\newline Musik stoppt.\newline Musik spielt ab. & Ja\\
+\hline
+Play, Pause, Play(2) & Musik spiel ab.\newline Musik pausiert.\newline Musik spiel ab. & Ja\\
+\hline
+Next, Next(3) & Skip weiter.\newline Skip weiter. & Ja\\
+\hline
+Previous, Previous(4) & Skip zurück.\newline Skip zurück & Ja\\
+\hline
+Next, Previous(5) & Skip weiter.\newline Skip zurück & Ja\\
+\hline
+Previous, Next(6) & Skip zurück.\newline Skip weiter & Ja\\
+\hline
+Random, Repeat all & Musik der Queue zufällig abspielen\newline Queue wiederholen & Ja\\
+\hline
+Random, Consume Mode & Musik der queue zufällig abspielen\newline Ein abgespieltes Lied entfernen & Ja\\
+\hline
+Random, Single Mode & Musik der Queue zufällig abspielen\newline Ein Lied abspielen, dann stoppen & Ja\\
+\hline
+Consume Mode, Single Mode & Ein abgespieltes Lied entfernen\newline Ein Lied abspielen, dann Stoppen & Ja\\
+\hline
+Consume Mode, Repeat all & Kann nur einmal durchlaufen & Ja\\
+\hline
+Random, 1 & Musik der Queue zufällig abspielen\newline 1 & Ja\\
+\hline
+Random, 2 & Musik der Queue zufällig abspielen\newline 2 & Ja\\
+\hline
+Random, 3 & Musik der Queue zufällig abspielen\newline 3 & Ja\\
+\hline
+Random, 4 & Musik der Queue zufällig abspielen\newline 4 & Ja\\
+\hline
+Random, 5 & Musik der Queue zufällig abspielen\newline 5 & Ja\\
+\hline
+Random, 6 & Musik der Queue zufällig abspielen\newline 6 & Ja\\
+\hline
+Repeat all, 1 & Queue wiederholen\newline 1 & Ja\\
+\hline
+Repeat all, 2 & Queue wiederholen\newline 2 & Ja\\
+\hline
+Repeat all, 3 & Queue wiederholen\newline 3 & Ja\\
+\hline
+Repeat all, 4 & Queue wiederholen\newline 4 & Ja\\
+\hline
+\end{tabular}
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Repeat all, 5 & Queue wiederholen\newline 5 & Ja\\
+\hline
+Repeat all, 6 & Queue wiederholen\newline 6 & Ja\\
+\hline
+Consume Mode, 1 & Ein abgespieltes Lied entfernen\newline 1 & Ja\\
+\hline
+Consume Mode, 2 & Ein abgespieltes Lied entfernen\newline 2 & Ja\\
+\hline
+Consume Mode, 3 & Ein abgespieltes Lied entfernen\newline 3 & Ja\\
+\hline
+Consume Mode, 4 & Ein abgespieltes Lied entfernen\newline 4 & Ja\\
+\hline
+Consume Mode, 5 & Ein abgespieltes Lied entfernen\newline 5 & Ja\\
+\hline
+Consume Mode, 6 & Ein abgespieltes Lied entfernen\newline 6 & Ja\\
+\hline
+Single Mode, 1 & Ein Lied abspielen, dann Stoppen\newline 1 & Ja\\
+\hline
+Single Mode, 2 & Ein Lied abspielen, dann Stoppen\newline 2 & Ja\\
+\hline
+Single Mode, 3 & Ein Lied abspielen, dann Stoppen\newline 3 & Ja\\
+\hline
+Single Mode, 4 & Ein Lied abspielen, dann Stoppen\newline 4 & Ja\\
+\hline
+Single Mode, 5 & Ein Lied abspielen, dann Stoppen\newline 5 & Ja\\
+\hline
+Single Mode, 6 & Ein Lied abspielen, dann Stoppen\newline 6 & Ja\\
+\hline
+\end{tabular}
+\newpage
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung:}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Fall 3 x 10 & Ja\\
+\hline
+Fall 4 x 10 & Fall 4 x 10 & Ja\\
+\hline
+Fall 5 x 10 & Fall 5 x 10 & Ja\\
+\hline
+Fall 6 x 10 & Fall 6 x 10 & Ja\\
+\hline
+Fall 12 x 10 & Fall 12 x 10 & Ja\\
+\hline
+Fall 13 x 10 & Fall 13 x 10 & Ja\\
+\hline
+Fall 14 x 10 & Fall 14 x 10 & Ja\\
+\hline
+Fall 15 x 10 & Fall 15 x 10 & Ja\\
+\hline
+Fall 16 x 10 & Fall 16 x 10 & Ja\\
+\hline
+Fall 17 x 10 & Fall 17 x 10 & Ja\\
+\hline
+Fall 18 x 10 & Fall 18 x 10 & Ja\\
+\hline
+Fall 19 x 10 & Fall 19 x 10 & Ja\\
+\hline
+Fall 20 x 10 & Fall 20 x 10 & Ja\\
+\hline
+Fall 21 x 10 & Fall 21 x 10 & Ja\\
+\hline
+Fall 22 x 10 & Fall 22 x 10 & Ja\\
+\hline
+Fall 23 x 10 & Fall 23 x 10 & Ja\\
+\hline
+Fall 24 x 10 & Fall 24 x 10 & Ja\\
+\hline
+Fall 25 x 10 & Fall 25 x 10 & Ja\\
+\hline
+Fall 26 x 10 & Fall 26 x 10 & Ja\\
+\hline
+Fall 27 x 10 & Fall 27 x 10 & Ja\\
+\hline
+Fall 28 x 10 & Fall 28 x 10 & Ja\\
+\hline 
+Fall 29 x 10 & Fall 29 x 10 & Ja\\
+\hline
+Fall 30 x 10 & Fall 30 x 10 & Ja\\
+\hline
+Fall 31 x 10 & Fall 31 x 10 & Ja\\
+\hline
+Fall 32 x 10 & Fall 32 x 10 & Ja\\
+\hline
+Fall 33 x 10 & Fall 33 x 10 & Ja\\
+\hline
+Fall 34 x 10 & Fall 34 x 10 & Ja\\
+\hline
+Fall 35 x 10 & Fall 35 x 10 & Ja\\
+\hline
+\end{tabular}
+\subsubsection{Queue-Funktionen}
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Remove & Ein Lied aus Queue entfernen & Ja\\
+\hline
+Clear & Alle Lieder aus Queue entfernen & Ja\\
+\hline
+Save as Playlist & Queue als Playlist speichern & Ja\\
+\hline
+Suchen & Nach eingegebenem Wort suchen & Ja\\
+\hline
+\end{tabular}
+\newpage
+\textbf{Kombinierte Ausführung}\ \\ \\
+Kombinierte Ausführung der Funktionen der Queue machen nicht wirklich viel Sinn da z.B.
+die Funktion Clear die Queue löscht. Auch Save as Playlist wird wohl kaum öfter als einmal
+pro Queue angewandt. Die einzige Kombination die Sinn macht getestet zu werden ist die 
+folgende:\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Suchen, Remove & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+Die mehrfache Ausführung ist ähnlich unsinnig wie die der kombinierten Ausführung.
+Mehrmals hintereinander die Queue löschen ist nicht möglich, genauso wie man wohl kaum 
+mehrmals die gleiche Playlist erstellt. So bleibt wieder nur ein Testfall zu prüfen:\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Suchen, Remove x 10 & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen x 10& Ja\\
+\hline
+\end{tabular}
+\subsubsection{Playlist-Funktionen}
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Hinzufügen & Playlist zur Queue hinzufügen & Ja\\
+\hline
+Ersetzen & Queue durch Playlist ersetzen & Ja\\
+\hline
+Playlist entfernen & Playlist löschen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Hinzufügen, Hinzufügen & Playlist zur Queue hinzufügen\newline Playlist zur Queue hinzufügen & Ja\\
+\hline
+Ersetzen, Ersetzen & Queue durch Playlist ersetzen\newline Queue durch Playlist ersetzen & Ja\\
+\hline
+Entfernen, Entfernen & Playlist entfernen\newline Playlist entfernen & Ja\\
+\hline
+Hinzufügen, Entfernen & Playlist zur Queuehinzufügen\newline Playlist löschen & Ja\\
+\hline
+Ersetzen, Entfernen & Queue durch Playlist ersetzen\newline Playlist entfernen & Ja\\
+\hline
+\end{tabular}
+\newpage
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung:}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Fall 3 x 10 & Ja\\
+\hline
+Fall 4 x 10 & Fall 4 x 10 & Ja\\
+\hline
+Fall 5 x 10 & Fall 5 x 10 & Ja\\
+\hline
+\end{tabular}
+\subsubsection{Dateibrowser-Funktionen}
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Hinzufügen & Zur Queue hinzufügen & Ja\\
+\hline
+Alle Hinzufügen & Alle zur Queue hinzufügen & Ja\\
+\hline
+Ersetzen & Queue durch Auswahl ersetzen & Ja\\
+\hline
+Aktualisieren & Dateibrowser aktualisieren & Ja\\
+\hline
+Neu einlesen & Dateibrowser neu einlesen & Ja\\
+\hline
+Suchen & Nach eingegebenem Wort suchen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Hinzufügen\newline Hinzufügen & Zur Queue hinzufügen\newline Zur Queue hinzufügen & Ja\\
+\hline
+Alle Hinzufügen\newline Alle hinzufügen &  Alle zur Queue hinzufügen\newline Alle zur Queue hinzufügen & Ja\\
+\hline
+Ersetzen\newline Ersetzen & Queue durch Auswahl ersetzen\newline Queue durch Auswahl ersetzen & Ja\\
+\hline
+Aktualisieren\newline Aktualisieren & Dateibrowser aktualisieren\newline Dateibrowser aktualisieren & Ja\\
+\hline
+Neu einlesen\newline Neu einlesen & Dateibrowser neu einlesen\newline Dateibrowser neu einlesen & Ja\\
+\hline
+Suchen\newline Suchen & Nach eingegebenem Wort suchen\newline Nach eingegebenem Wort suchen & Ja\\
+\hline
+Hinzufügen\newline Alle Hinzufügen & Zur Queue hinzufügen\newline Alle zur Queue hinzufügen & Ja\\
+\hline
+Hinzufügen\newline Ersetzen & Zur Queue hinzufügen\newline Queue durch Auswahl ersetzen & Ja\\
+\hline
+Hinzufügen\newline Aktualisieren & Zur Queue hinzufügen\newline Dateibrowser aktualisieren & Ja\\
+\hline
+Hinzufügen\newline Neu einlesen & Zur Queue hinzufügen\newline Dateibrowser neu einlesen & Ja\\
+\hline
+\end{tabular}
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Hinzufügen\newline Suchen & Zur Queue hinzufügen\newline Nach eingegebenem Wort suchen & Ja\\
+\hline
+Alle Hinzufügen\newline Ersetzen & Alle zur Queue hinzufügen\newline Queue durch Auswahl ersetzen & Ja\\
+\hline
+Alle Hinzufügen\newline Aktualisieren & Alle zur Queue hinzufügen\newline Dateibrowser aktualisieren & Ja\\
+\hline
+Alle Hinzufügen\newline Neu einlesen & Alle zur Queue hinzufügen\newline Dateibrowser neu einlesen & Ja\\
+\hline
+Alle Hinzufügen\newline Suchen & Alle zur Queue hinzufügen\newline Nach eingegebenem Wort suchen & Ja\\
+\hline
+Ersetzen\newline Aktualisieren & Queue durch Auswahl ersetzen\newline Dateibrowser aktualisieren & Ja\\
+\hline
+Ersetzen\newline Neu einlesen & Queue durach Auswahl ersetzen\newline Dateibrowser neu einlesen & Ja\\
+\hline
+Ersetzen\newline Suchen & Queue durch Auswahl ersetzen\newline Nach eingegebenem Wort suchen & Ja\\
+\hline
+Aktualisieren\newline Neu einlesen & Dateibrowser aktualisieren\newline Dateibrowser neu einlesen & Ja\\
+\hline
+Aktualisieren\newline Suchen & Dateibrowser aktualisieren\newline Nach eingegebenem Wort suchen & Ja\\
+\hline
+Neu einlesen\newline Suchen & Dateibrowser neu einlesen\newline Nach eingegebenem Wort suchen & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Fall 3 x 10 & Ja\\
+\hline
+Fall 4 x 10 & Fall 4 x 10 & Ja\\
+\hline
+Fall 5 x 10 & Fall 5 x 10 & Ja\\
+\hline
+Fall 6 x 10 & Fall 6 x 10 & Ja\\
+\hline
+Fall 7 x 10 & Fall 7 x 10 & Ja\\
+\hline
+Fall 8 x 10 & Fall 8 x 10 & Ja\\
+\hline
+Fall 9 x 10 & Fall 9 x 10 & Ja\\
+\hline
+Fall 10 x 10 & Fall 10 x 10 & Ja\\
+\hline
+\end{tabular}
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 11 x 10 & Fall 11 x 10 & Ja\\
+\hline
+Fall 12 x 10 & Fall 12 x 10 & Ja\\
+\hline
+Fall 13 x 10 & Fall 13 x 10 & Ja\\
+\hline
+Fall 14 x 10 & Fall 14 x 10 & Ja\\
+\hline
+Fall 15 x 10 & Fall 15 x 10 & Ja\\
+\hline
+Fall 16 x 10 & Fall 16 x 10 & Ja\\
+\hline
+Fall 17 x 10 & Fall 17 x 10 & Ja\\
+\hline
+Fall 18 x 10 & Fall 18 x 10 & Ja\\
+\hline
+Fall 19 x 10 & Fall 19 x 10 & Ja\\
+\hline
+Fall 20 x 10 & Fall 20 x 10 & Ja\\
+\hline
+Fall 21 x 10 & Fall 21 x 10 & Ja\\
+\hline
+\end{tabular}
+\subsubsection{Statistik}
+Für die Statistik kann kein Testprotokoll angewandt werden.
+\subsubsection{Einstellungen}
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Zeige Liste & Zeige Avahi Liste & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+Es existieren keine Buttons oder Shortcuts die kombiniert werden könnten.\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+\end{tabular}
+\subsubsection{Lautstärke}
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+Lautstärke erhöhen & Lautstärke erhöhen & Ja\\
+\hline
+Lautstärke verringern & Lautstärke verringern & Ja\\
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+\end{tabular}
+\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Lautstärke erhöhen\newline Lautstärke verringern & Lautstärke erhöhen\newline Lautstärke verringern & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+\end{tabular}
+\subsubsection{Sonstiges}
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Verbinden & Verbindung zum MPD-Server & Ja\\
+\hline
+Trennen & Verbindung zum Server trennen & Ja\\
+\hline
+Beenden & MPD-Client beenden & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+\textbf{Kombinierte Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Verbinden\newline Verbinden & Verbindung zum MPD-Server\newline Verbindung zum MPD-Server & Ja\\
+\hline
+Verbinden\newline Trennen & Verbindung zum MPD-Server\newline Verbindzung zum Server trennen & Ja\\
+\hline
+Verbinden\newline Beenden & Verbindung zum MPD-Server\newline MPD-Client beenden & Ja\\
+\hline
+Trennen\newline Beenden & Verbindung zum Server trennen\newline MPD-Client beenden & Ja\\
+\hline
+\end{tabular}
+\ \\ \\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
+\textbf{Mehrfache Ausführung}\ \\ \\
+\begin{tabular}[c]{|p{6cm}|p{6cm}|c|}
+\hline
+\textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+\hline
+Fall 1 x 10 & Fall 1 x 10 & Ja\\
+\hline
+Fall 2 x 10 & Fall 2 x 10 & Ja\\
+\hline
+Fall 3 x 10 & Nur 1 x ausführbar & Ja\\
+\hline
+Fall 4 x 10 & Nur 1 x ausführbar & Ja\\
+\hline
+\end{tabular}
+\newpage
+\section{Entwicklungsumgebung}
+\subsection{Software}
+\begin{itemize}
+	\item unix System
+	\item MPD-Server	
+	\item Avahi-Browser
+	\item gcc (Compiler)
+	\item libmpdclient
+	\item gtkmm libraries
+\end{itemize}
+>>>>>>> 860a8a41a9771ce89b687bc0539a2cd5fbc7dcfc:doc/architecture/Doku/Dokument/Pflichtenheft.tex
 \subsection{Hardware}
 Minimale Hardwareanforderungen: 500 Mhz, 512MB Ram, Festplattenspeicher < 20MB
 Empfohlene Hardwareanforderungen: 1 Ghz, 512MB Ram, Festplattenspeicher < 20MB

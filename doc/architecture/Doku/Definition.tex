@@ -1,7 +1,8 @@
 \chapter{Definition}
 Der MPD ist eine Client/Server-Architektur, in der die Clients und Server (MPD ist der Server)
-über ein Netzwerk interagieren. MPD ist also nur die Hälfte der Gleichung. Zur Nutzung von 
+über ein Netzwerk interagieren. MPD ist also nur die Hälfte der Gleichung. Zur Nutzung von  
 MPD, muss ein MPD-Client (auch bekannt als MPD-Schnittstelle) installiert werden.
+Als Netzwerkprotokoll wird das MPD eigene Protokoll verwendet. \footnote{http://www.musicpd.org/doc/protocol/index.html}
 \section{Definition des MPD}
 \begin{quote}
     Der Music Player Daemon (kurz MPD) ist ein Unix-Systemdienst, der das Abspielen von Musik auf 
@@ -31,7 +32,7 @@ MPD, muss ein MPD-Client (auch bekannt als MPD-Schnittstelle) installiert werden
     \item Musik abspielen
     \item Musik kontrollieren und in Warteschlangen reihen 
     \item Musik Dateien dekodieren
-    \item HTTP(Hyper Text Transfer Protocol) streamen
+    \item HTTP-Streaming
         \renewcommand{\labelitemi}{--}
         \begin{itemize}
             \item Eine HTTP-URL kann zur Warteschlange hinzugefügt oder direkt abgespielt werden.\\

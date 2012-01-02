@@ -1,32 +1,35 @@
 \chapter{Lastenheft}
-Bei der Erstellung dieses Lastenheftes wurd sich an folgendem Beispiel orientiert:
+Bei der Erstellung dieses Lastenheftes wurde sich an folgendem Beispiel orientiert:
 \begin{center}
 http://www.stefan-baur.de/cs.se.lastenheft.beispiel.html?glstyle=2010
 \end{center}
 \section{Zielbestimmungen}
 Welche Ziele sollen durch den Einsatz der Software erreicht werden?\ \\ \\
 Dem einzelnen Benutzer soll das abspielen von Musik über eine Netzwerkverbindung ermöglicht
-werden, dabei soll die Steuerung von einem lokalen Client übernommen werden. Die Musik soll
-in eine rzentralen Datenbank angelegt und über die Soundkarte eines Servers abgespielt werden.
+werden, dabei soll die Steuerung von einem lokalen Client übernommen werden. 
+Die Musik wird dabei vom MPD Server in einer Datenbank gespeichert, der Rechner auf dem dieser
+Dienst läuft ist auch primär für die Audioausgabe zuständig, desweiteren sind andere Audioausgabequellen
+wie z.B. PulseAudio möglich.
 Die Client-Rechner sollen die Ausgabe steuern und Abspiellisten auf dem Server verwalten
 können. Die Bedienung soll für alle Benutzer sehr einfach und komfortabel über einen lokalen
-Client realisiert werden. Bei jedem Start des Clients, soll die letzte Sitzung wiederhergestellt
-werden, falls keine Daten eine beendeten Sitzung gefunden werden, sollen Standarteinstellungen
-verwendet werden.\ \\ \\
-Standartmäßig sollen den Benutzern folgende Funktionen zuf Verfügung stehen:
+Client realisiert werden. Bei jedem Start des Clients wird der Zustand des MPD-Servers ,,gespiegelt''.
+\\ \\
+Standardmäßig sollen den Benutzern folgende Funktionen zuf Verfügung stehen:
 \renewcommand{\labelitemi}{•}
 \begin{itemize}
         \item Abspielen von Musik
         \item Steuerung von Musik (Play, Stop, Skip, ...)
-        \item Decodieren von Musik
         \item Input-Stream via HTTP
+        \item Erstellung und Verwaltung von Playlisten
+        \item Verwaltung der der Audioausgabegeräte
 \end{itemize}
 Weitere Funktionen müssen modular integrierbar sein, allerdings müssen sie noch nicht implementiert
 werden. Einige Beispiele für weitere Funktionen wären:
 \begin{itemize}
-	\item Finden von Album-Informationen
-	\item Profil-Steuerung
-	\item Visualisierung
+	\item Finden von Album-Informationen \footnote{Unter Verwendung von: https://github.com/sahib/glyr}
+	\item Speichern von Serveradressen
+	\item Visualisierung der Musik
+	\item Dynamische Playlisten
 \end{itemize}
 Die Systemsprache soll auf Englisch festgelegt werden.
 \subsection{Projektbeteiligte}
@@ -40,99 +43,116 @@ Wer soll an dem Projekt teilnehmen?
 \section{Produkteinsatz}
 Für welche Anwendungsbereiche und Zielgruppe ist die Software vorgesehen?\ \\ \\
 Der MPD-Client ist nicht auf bestimmte Gewerbe beschränkt, ein jeder soll diesen
-Client verwenden können. Grundlage für die Verwendung der Software ist die General
+Client verwenden können. 
+\\
+Die Software soll unter folgender Lizenz stehen:
 Public License (GPL) Version 3 vom 29 Juni 2007.\ \\ \\
 Definition der GPL v3:
 \begin{center}
 	http://www.gnu.org/licenses/gpl.html
 \end{center}
+
 \subsection{Anwendungsbereiche}
 Einzelpersonen verwenden dieses System überall da, wo mit
 einem Unix-artigen Betriebssystem Musik abgespielt werden soll.
 Das wären z.B. Personal Computer, Musikanlagen, Laptops und evtl.
-sogar diverse Smartphones
+sogar diverse Smartphones möglich.
+
 \subsection{Zielgruppen}
 Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
 wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern).\ \\ \\
-Es werden Basiskenntnisse zum Aufbau einer Netzwerkverbindung und zur Nutzung des Internets vorausgesetzt.
 Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig.\ \\ \\
 Der Benutzer muss die Systemsprache Englisch beherrschen.
+
 \subsection{Betriebsbedingungen}
 Das System soll sich bezüglich der Betriebsbedingungen nicht sonderlich von vergleichbaren Systemen bzw.
-Anwendungen unterscheiden und dementsprechend folgend Punkte erfüllen:
+Anwendungen unterscheiden und dementsprechend folgende Punkte erfüllen:
 \begin{itemize}
         \item Betriebsdauer: Täglich, 24 Stunden
         \item Keinerlei Wartung soll nötig sein
         \item Sicherungen der Konfiguration müssen vom Benutzer vorgenommen werden
 \end{itemize}
+
 \section{Produktumgebung}
 \subsection{Software}
 Softwareabhängigkeiten sollen durch den Entwickler bestimmt werden.
 Dies gewährleistet, dass der Entwickler diesbezüglich nicht eingeschränkt wird
 und somit mehr Möglichkeiten hat.
+
 \subsection{Hardware}
 Das Produkt soll möglichst wenig Anforderungen and die Hardware stellen, da
 die Software eventuell auch auf sehr Hardwarearmen Geräten (wie z.B. Smartphones)
 verwendet werden soll.
+
 \subsection{Orgware}
 Es soll nach Möglichkeit keine Orgware von nöten sein. Der Nutzer der Software soll sich
-um möglichst wenig nebenläufiges zu kümmern haben.
+um möglichst wenig Nebenläufiges zu kümmern haben.
+
 \section{Produktfunktionen}
 Welche sind die Hauptfunktionen aus Sicht des Auftraggebers?
+
 \subsection{Allgemein}
 Beim ersten Start des Systems soll eine Standard-Konfiguration geladen werden und die Verbindungseinstellungen
 zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
-die vom Benutzer erstellt wurde, falls diese denn lokal gefunden werden kann. Der Benutzer soll sämtliche
-Einstellungen selbstverständlich zu jeder Zeit ändern können.
+die vom Benutzer erstellt wurde, falls keine Konfiguration gefunden wurde, oder diese korrumpiert ist,
+so wird auf eine vom Client bereitgestellte Standardkonfiguration zurückgefallen. Der Benutzer soll sämtliche
+Einstellungen selbstverständlich zu jeder Zeit über die Oberfläche des Clients ändern können.
 Natürlich sollen alle üblichen Musik Abspielfunktionen vorhanden sein, dazu gehört Play, Stop, Previous
 und Next. Aber auch erweiterte Funktionen wie Repeat, Consume und Random sollen einstellbar sein.
-Der Benutzer soll über die Software direkten Zugriff auf sein Dateisystem haben, um nach Musik zu suchen und
+Der Benutzer soll über die Software direkten Zugriff auf das virtuelle Dateisystem des Servers haben, um nach Musik zu suchen und
 diese abspielen zu können. Aus dem Dateisystem heraus soll der Nutzer ebenfalls die Möglichkeit haben, Musik-Dateien
-direkt zu Playlisten und Warteschlangen hinzuzufügen.
+direkt zu Playlisten und zur Warteschlange hinzuzufügen.
 Verbindungseinstellungen müssen auf möglichst einfache Art und Weise vorgenommen werden können, wenn möglich
 sollte dem Nutzer eine Liste von verfügbaren Servern angezeigt werden. 
 Dem Nutzer soll ermöglicht werden, dass er nach bestimmten Titeln, Alben oder Interpreten suchen kann, da 
 es mit dieser Software möglich ist, auch sehr große Musik-Datenbanken zu steuern.
 Administratorfunktionen müssen nicht implementiert werden, das sie vom Unix-System übernommen werden.
+
 \section{Produktdaten}
 Welche Daten sollen persistent gespeichert werden?\ \\ \\
 Die vom Benutzer vorgenommenen Verbindungseinstellungen und Client spezifischen Einstellungen,
 sollen auf dem Rechner lokal und persistent gespeichert werden. Nur so kann ermöglicht werden,
 dass nach jedem Start des Systems diese Einstellungen geladen und übernommen werden können.\ \\
 Außerdem soll eine Log-Datei auf den einzelnen Rechnern angelegt werden, die dieses System
-verwenden. In dieser Log-Datei werden Nachrichten des Systems gespeichert, um eventuelle Fehler
-leicht finden und beheben zu können. Es soll zusätzlich der Zustand des Systems abgespeichert werden,
-wenn das System beendet wird um das System beim nächsten Start in diesen Zustand versetzen zu können.\ \\
+verwenden. Die Speicherung des Logs und der Konfiguration soll dabei dem XDG-Standard\footnote{http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html\#variables} entsprechen. 
+In dieser Log-Datei werden Nachrichten des Systems gespeichert, um eventuelle Fehler
+leicht finden und beheben zu können. Es soll stets der aktuelle Zustand des MPD Servers widergespiegelt werden.
+\\
 Dem Nutzer sollen viele verschiedene Informationen angezeigt werden, nicht nur Standardinformationen
 wie Titel, Album und Interpret, sondern auch Musik-Qualität, -Länge und Lautstärke.
 Es soll außerdem eine primitive Statistik implementiert werden die anzeigt, wie viele Lieder, Alben und
 Interpreten in der Datenbank vorhanden sind, wie lange man schon mit dem Server verbunden ist und wie 
 lange die gesamte Abspielzeit aller Lieder in der Datenbank dauert.\ \\
-Eine Profilverwaltung muss nicht implementiert werden, dies soll über das Unix-System geregelt werden.\ \\
+Eine Profilverwaltung muss nicht implementiert werden, dies wird bereits über die Unix Benutzerverwaltung geregelt.\ \\
 Eine lokale Datenbank muss ebenfalls nicht vorhanden sein, dies wird durch den MPD-Server ermöglicht.\ \\
+
 \section{Qualitätsanforderungen}
 Die Software soll natürlich von hoher Qualität sein. Hierfür sollen folgende
-Anforderungen erfüllt werden:\ \\ \\
-Die Software soll korrekt sein, d. h. keine Fehler enthalten.
+Anforderungen erfüllt werden:\ 
+\\
+\\
+Die Software soll korrekt sein, d. h. möglichst wenige Fehler enthalten.
 Sie soll aber auch, für den Fall das dennoch Fehler auftreten, robust
-und tollerant auf diese reagieren. Außerdem spielt die Wartbarkeit 
+und tolerant auf diese reagieren. Außerdem spielt die Wartbarkeit 
 eine wichtige Rolle, falls sich die Softwareumgebung des MPD-Clients
 ändert, muss dieser leicht angepasst werden können.
-Der Client soll leicht und intuitiv bedienbar sein. Sollte es Funktionen
-geben, die nicht unter den Begriff "Standard" fallen, sollte eine kanppe
+Der Client soll intuitiv und schnell bedienbar sein.
+Der Hauptaugenmerk liegt dabei aber auf Ressourceneffizienz, vor allem soll dabei dabei 
+das Netzwerk nicht stark beansprucht werden um auch bei langsamen Verbindungen den Client
+bedienen zu können. Speicher und Recheneffizienz ist hierbei zwar von Belang, aber dennoch zweitrangig. 
+Sollte es Funktionen geben, die nicht unter den Begriff "Standard" fallen, sollte eine knappe
 und präzise Beschreibung der Funktion vorhanden sein.
-Nach allem dem muss die Software tortzdem noch Effizient sein, geringe
-Wartezeiten, wenig Hardwareanforderungen, etc.
-Das Design der Software muss zwar ansprechend sein, ist im edeffekt allerdings
-zweitrangig.
+Das Design der Software muss zwar ansprechend sein, ist im Endeffekt allerdings drittrangig.
+
 \section{Ergänzungen}
 \subsection{Realisierung}
 Das System muss mit den Programmiersprachen C und/oder C++ realisiert werden. Dabei ist auf
 Objektorientierung zu achten, um Modularität und Wartbarkeit gewährleisten zu können.
-Es können beliebige Entwicklungsumgebungen verwendet werden. Um einfaches und sicheres arbeiten
-ermöglichen zu können, soll die Versionsverwaltungssoftware \"git\" benutzt werden, um die
+Es können beliebige Entwicklungsumgebungen verwendet werden, wobei allerdings auch ein Texteditor mit Syntaxhighlighting vollkommen ausreichend ist.
+Um einfaches und sicheres Arbeiten ermöglichen zu können, soll die Versionsverwaltungssoftware \emph{git} benutzt werden, um die
 Entwicklungsdateien zu speichern und zu bearbeiten. Zu dem Projekt soll eine ausführliche
-Dokumentation erstellt werden, um dauerhafte Wartbarkeit und Anpassung des MPD-Client  gewährleisten
+Dokumentation erstellt werden, um dauerhafte Wartbarkeit und Anpassung des MPD-Clients gewährleisten
 zu können, dazu gehören auch entsprechende Software-Diagramme (wie z.B. UML).
 \subsection{Die nächste Version}
 Aufgrund des modularen Aufbaus kann das System beliebig oft und in verschiedene Richtungen weiterentwickelt werden.
+Weiter oben sind bereits Möglichkeiten für konkrete Erweiterungen aufgelistet.

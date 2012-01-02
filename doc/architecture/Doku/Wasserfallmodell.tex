@@ -19,7 +19,7 @@ um den Fehler auf der nächsthöheren Stufe beheben zu können.
 \centering
 \includegraphics[scale=0.35]{567px-Wasserfallmodell.png}
 \end{figure}
-\footnote{Wasserfallmodell mit Rücksprung, Bild-Quelle: http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Wasserfallmodell.svg/567px-Wasserfallmodell.svg.png}
+\footnote{Wasserfallmodell mit Rücksprung, \\ Bild-Quelle: http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Wasserfallmodell.svg/567px-Wasserfallmodell.svg.png}
 \section{Warum dieses Modell?}
 Wir haben uns für das Wasserfallmodell mit Rücksprung entschieden, weil dieses Modell alle Phasen der 
 Entwicklung klar abgrenzt und sich optimal auf einen professionellen Softwareentwicklungsvorgang
@@ -32,10 +32,13 @@ in der Realität oft nicht umsetzbar. Des weiteren sind wir somit flexibler gege
 Im Laufe der Entwicklung mussten wir feststellen, dass das Wasserfallmodell als Vorgehensweise für unser
 Projekt doch nicht so gut geeignet war wie wir erwarteten. Da das Projekt eine viel zu komplexe Infrastruktur
 besitzt, die wir vorher unmöglich abschätzen konnten, war es unmöglich zu planen, welcher Arbeitsaufwand nötig ist.
-Außerdem konnten somit keine brauchbaren Entwürfe der Software gemacht werden, da man sich manche Funktionen des MPD
-völlig anders vorgestellt hatte, als sie in Wirklichkeit funktionierten. Somit mussten wir, nachdem
+Somit konnten keine brauchbaren Entwürfe der Software gemacht werden, da man sich manche Funktionen des MPD
+völlig anders vorgestellt hatte, als sie in Wirklichkeit funktionierten. Daher mussten wir, nachdem
 das Lasten- und Pflichtenheft fertiggestellt waren (welche unabhängig von der Infrastruktur sind)), auf agile
-Entwicklungsmethoden umschwänken. Die Vorgehensweise die wir dann anwendeten lässt sich am ehesten mit dem Spiralmodell
-vergleichen. Wir setzten fest, was als nächstes implementiert werden sollte und dachten anschließend über den fertigen 
-Programm-Code nach wie er verbessert werden könnte während wir parallel die Software zeichneten. Dies geschah
-in mehreren Zyklen, bis das Programm schließlich fertig war.
+Entwicklungsmethoden umschwänken. Aufgrund der hohen Komplexität der MPD Libraries war es uns nicht möglich
+sich einen Überblick über interne Abläufe zu verschaffen so mussten wir parallel zu den eigentlichen Planungen
+erste Testanwendungen schrieben um sich mit der Materie vertraut zu machen.
+Als Beispiel sei hier der Testclient genannt, der letzlich auch die Grundlage für die heutige
+Architektur darstellt, bzw. die Grundlage aus der sie entstanden ist.
+
+(TODO: Spiralmodell?)

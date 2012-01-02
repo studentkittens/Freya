@@ -15,28 +15,27 @@ Wer soll an dem Projekt teilnehmen?
 \subsection{Muss-Kriterien}
 \renewcommand{\labelitemi}{•}
 \begin{itemize}
-	\item Server-Verbindung
-	\item Client-Einstellungen
+	\item Verbindungsaufbau
+	\item Durchführung benutzerspezifischer Client-Einstellungen
 	\item Musik-Steuerung
+	\item Warteschlangenverwaltung
+	\item Playlistverwaltung
+	\item Datenbankverwaltung
+	\item Frontend für die Settings
+	\item Statistikanzeige
+	\item Verwaltung der Ausgabegeräte
 \end{itemize}
 \subsection{Wunsch-Kriterien}
 \begin{itemize}
-	\item Liedinformationen taggen
-	\item Musikstatistik
-	\item Album Covers
-	\item Liedsuche
+	\item Anzeige von Onlinecontent (Albencover, Lyrics etc.)
 \end{itemize}
-\subsection{Abgrenzungskriterien}
-\begin{itemize}
-	\item Musik-Visualisierung
-	\item Chat
-	\item Social-Network-Schnittstelle
-\end{itemize}
+
 \section{Produkteinsatz}
 Welche Anwendungsbereiche (Zweck), Zielgruppen (Wer mit welchen Qualifikationen), Betriebsbedingungen (Betriebszeit,
 Aufsicht)?\ \\ \\
 Der MPD-Client ist nicht auf bestimmte Gewerbe beschränkt, ein jeder soll diesen Client
-verwenden können. Grundlage für die Verwendung der Software ist die General Public License (GPL)
+verwenden können. 
+Die Software soll unter folgender Lizenz stehen:
 Version 3 vom 29 Juni 2007.\ \\ \\
 Definition der GPL:
 \begin{center}
@@ -46,13 +45,14 @@ http://www.gnu.org/licenses/gpl.html
 Einzelpersonen verwenden dieses System überall da, wo mit 
 einem Unix-artigen Betriebssystem Musik abgespielt werden soll.
 Das wären z.B. Personal Computer, Musikanlagen, Laptops und evtl.
-sogar diverse Smartphones
+sogar diverse Smartphones sind möglich.
+
 \subsection{Zielgruppen}
 Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
 wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern).\ \\ \\
-Es werden Basiskenntnisse zum Aufbau einer Netzwerkverbindung und zur Nutzung des Internets vorausgesetzt.
 Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig.\ \\ \\
 Der Benutzer muss die Systemsprache Englisch beherrschen.
+
 \subsection{Betriebsbedingungen}
 Das System soll sich bezüglich der Betriebsbedingungen nicht sonderlich von vergleichbaren Systemen bzw.
 Anwendungen unterscheiden und dementsprechend folgend Punkte erfüllen:
@@ -102,8 +102,8 @@ Einstellungen selbstverständlich zu jeder Zeit ändern können.
 	\item F\_0022 Der Benutzer kann Musik pausieren (Pause)
 	\item F\_0023 Der Benutzer kann Musik vor und zurück schalten (Skip)
 	\item F\_0024 Der Benutzer kann Musik vor und zurück spuhlen (Seek)
-	\item F\_0025 Der Benutzer kann Musik zufällig abspielen (random)
-	\item F\_0026 Der Benutzer kann Musik wiederholen (repeat)
+	\item F\_0025 Der Benutzer kann Musik zufällig abspielen (Random)
+	\item F\_0026 Der Benutzer kann Musik wiederholen (Repeat)
 	\item F\_0027 Der Benutzer kann Musik im Consume-Mode abspielen
 	\item F\_0028 Der Benutzer kann Musik im Single-Mode abspielen
 \end{itemize}

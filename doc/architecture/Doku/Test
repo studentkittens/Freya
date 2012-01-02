@@ -1,3 +1,31 @@
+Einleitung
+* Übersicht über den Aufbau, Paketdiagramm
+* Überleitung...
+
+MPD Namespace:
+ - Darstellung des Problems
+ - Lösung
+ - Beschreibung des Clients; klasse für Klasse
+ - Sequenzdiagramm für wichtige Stellen
+
+Config
+s.o.
+
+GManager 
+s.o.
+
+Browser
+s.o.
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
 % Kommentare
 
 \Chapter{Das ist ein Kapitel}
@@ -6,7 +34,7 @@
 
 \subsection{das ist ein unterparagraph}
 
-
+\footnote{balabal komm in die fusszeile}
 
 das hier ist ein text, wir machen die \textbf{katze} fett und wir heben sie \emph{vor}.
 

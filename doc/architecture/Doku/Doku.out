@@ -81,17 +81,15 @@
 \BOOKMARK [2][-]{subsection.6.7.1}{Cxxtest}{section.6.7}% 81
 \BOOKMARK [2][-]{subsection.6.7.2}{Testf\344lle}{section.6.7}% 82
 \BOOKMARK [2][-]{subsection.6.7.3}{Testprotokoll}{section.6.7}% 83
-\BOOKMARK [0][-]{chapter.7}{Design-Dokument}{}% 84
-\BOOKMARK [1][-]{section.7.1}{Einleitung}{chapter.7}% 85
-\BOOKMARK [1][-]{section.7.2}{Hauptproblem}{chapter.7}% 86
-\BOOKMARK [1][-]{section.7.3}{Softwarearchitektur}{chapter.7}% 87
-\BOOKMARK [2][-]{subsection.7.3.1}{Architekutr\374bersicht}{section.7.3}% 88
-\BOOKMARK [2][-]{subsection.7.3.2}{Funktionen}{section.7.3}% 89
-\BOOKMARK [2][-]{subsection.7.3.3}{Oberfl\344che}{section.7.3}% 90
-\BOOKMARK [2][-]{subsection.7.3.4}{Short-Cuts}{section.7.3}% 91
-\BOOKMARK [1][-]{section.7.4}{Use-Case-F\344lle}{chapter.7}% 92
-\BOOKMARK [2][-]{subsection.7.4.1}{Musik abspielen}{section.7.4}% 93
-\BOOKMARK [2][-]{subsection.7.4.2}{Musik zuf\344llig abspielen}{section.7.4}% 94
-\BOOKMARK [2][-]{subsection.7.4.3}{Musik im Consume Mode abspielen}{section.7.4}% 95
-\BOOKMARK [2][-]{subsection.7.4.4}{Playlist erstellen}{section.7.4}% 96
-\BOOKMARK [1][-]{section.7.5}{Glossar}{chapter.7}% 97
+\BOOKMARK [0][-]{chapter.7}{Software Design}{}% 84
+\BOOKMARK [1][-]{section.7.1}{Einf\374hrung}{chapter.7}% 85
+\BOOKMARK [1][-]{section.7.2}{,,Das Problem''}{chapter.7}% 86
+\BOOKMARK [1][-]{section.7.3}{Aufbau des Clients}{chapter.7}% 87
+\BOOKMARK [2][-]{subsection.7.3.1}{Hauptklassen}{section.7.3}% 88
+\BOOKMARK [2][-]{subsection.7.3.2}{Weitere Klassen}{section.7.3}% 89
+\BOOKMARK [2][-]{subsection.7.3.3}{Abstrakte Klassen}{section.7.3}% 90
+\BOOKMARK [1][-]{section.7.4}{Interaktion des Clients mit anderen Modulen}{chapter.7}% 91
+\BOOKMARK [1][-]{section.7.5}{Config}{chapter.7}% 92
+\BOOKMARK [1][-]{section.7.6}{GUI Elementklassen}{chapter.7}% 93
+\BOOKMARK [1][-]{section.7.7}{Browserimplementierungen}{chapter.7}% 94
+\BOOKMARK [1][-]{section.7.8}{Glossar}{chapter.7}% 95

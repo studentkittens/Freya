@@ -91,26 +91,31 @@
 \contentsline {subsubsection}{\numberline {6.7.3.6}Einstellungen}{51}{subsubsection.6.7.3.6}
 \contentsline {subsubsection}{\numberline {6.7.3.7}Lautst\IeC {\"a}rke}{52}{subsubsection.6.7.3.7}
 \contentsline {subsubsection}{\numberline {6.7.3.8}Sonstiges}{53}{subsubsection.6.7.3.8}
-\contentsline {chapter}{\numberline {7}Design-Dokument}{55}{chapter.7}
-\contentsline {section}{\numberline {7.1}Einleitung}{55}{section.7.1}
-\contentsline {section}{\numberline {7.2}Hauptproblem}{56}{section.7.2}
-\contentsline {section}{\numberline {7.3}Softwarearchitektur}{58}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Architekutr\IeC {\"u}bersicht}{58}{subsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.1.1}Namespace-\IeC {\"U}bersicht}{58}{subsubsection.7.3.1.1}
-\contentsline {subsubsection}{\numberline {7.3.1.2}Beschreibung}{59}{subsubsection.7.3.1.2}
-\contentsline {subsection}{\numberline {7.3.2}Funktionen}{59}{subsection.7.3.2}
-\contentsline {subsubsection}{\numberline {7.3.2.1}Beispiel-Abspielfunktionen}{59}{subsubsection.7.3.2.1}
-\contentsline {subsubsection}{\numberline {7.3.2.2}Beispiel-Playlist erstellen}{59}{subsubsection.7.3.2.2}
-\contentsline {subsubsection}{\numberline {7.3.2.3}Beispiel-Dateibrowser}{59}{subsubsection.7.3.2.3}
-\contentsline {subsection}{\numberline {7.3.3}Oberfl\IeC {\"a}che}{59}{subsection.7.3.3}
-\contentsline {subsubsection}{\numberline {7.3.3.1}Titelleiste}{59}{subsubsection.7.3.3.1}
-\contentsline {subsubsection}{\numberline {7.3.3.2}Seitenmen\IeC {\"u}}{59}{subsubsection.7.3.3.2}
-\contentsline {subsubsection}{\numberline {7.3.3.3}Fu\IeC {\ss }leiste}{59}{subsubsection.7.3.3.3}
-\contentsline {subsubsection}{\numberline {7.3.3.4}Anzeige}{59}{subsubsection.7.3.3.4}
-\contentsline {subsection}{\numberline {7.3.4}Short-Cuts}{59}{subsection.7.3.4}
-\contentsline {section}{\numberline {7.4}Use-Case-F\IeC {\"a}lle}{59}{section.7.4}
-\contentsline {subsection}{\numberline {7.4.1}Musik abspielen}{59}{subsection.7.4.1}
-\contentsline {subsection}{\numberline {7.4.2}Musik zuf\IeC {\"a}llig abspielen}{59}{subsection.7.4.2}
-\contentsline {subsection}{\numberline {7.4.3}Musik im Consume Mode abspielen}{59}{subsection.7.4.3}
-\contentsline {subsection}{\numberline {7.4.4}Playlist erstellen}{59}{subsection.7.4.4}
-\contentsline {section}{\numberline {7.5}Glossar}{59}{section.7.5}
+\contentsline {chapter}{\numberline {7}Software Design}{55}{chapter.7}
+\contentsline {section}{\numberline {7.1}Einf\IeC {\"u}hrung}{55}{section.7.1}
+\contentsline {subsubsection}{\numberline {7.1.0.9}Namespace-\IeC {\"U}bersicht}{55}{subsubsection.7.1.0.9}
+\contentsline {section}{\numberline {7.2},,Das Problem''}{55}{section.7.2}
+\contentsline {section}{\numberline {7.3}Aufbau des Clients}{58}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Hauptklassen}{58}{subsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.1.1}BaseClient}{58}{subsubsection.7.3.1.1}
+\contentsline {subsubsection}{\numberline {7.3.1.2}Listener}{58}{subsubsection.7.3.1.2}
+\contentsline {subsubsection}{\numberline {7.3.1.3}Connection}{59}{subsubsection.7.3.1.3}
+\contentsline {subsubsection}{\numberline {7.3.1.4}Client}{59}{subsubsection.7.3.1.4}
+\contentsline {subsubsection}{\numberline {7.3.1.5}NotifyData}{59}{subsubsection.7.3.1.5}
+\contentsline {subsection}{\numberline {7.3.2}Weitere Klassen}{60}{subsection.7.3.2}
+\contentsline {subsubsection}{\numberline {7.3.2.1}Song}{60}{subsubsection.7.3.2.1}
+\contentsline {subsubsection}{\numberline {7.3.2.2}Directory}{61}{subsubsection.7.3.2.2}
+\contentsline {subsubsection}{\numberline {7.3.2.3}Statistics}{62}{subsubsection.7.3.2.3}
+\contentsline {subsubsection}{\numberline {7.3.2.4}Playlist}{62}{subsubsection.7.3.2.4}
+\contentsline {subsubsection}{\numberline {7.3.2.5}AudioOutput}{63}{subsubsection.7.3.2.5}
+\contentsline {subsection}{\numberline {7.3.3}Abstrakte Klassen}{63}{subsection.7.3.3}
+\contentsline {subsubsection}{\numberline {7.3.3.1}AbstractClientExtension}{63}{subsubsection.7.3.3.1}
+\contentsline {subsubsection}{\numberline {7.3.3.2}AbstractClientUser}{63}{subsubsection.7.3.3.2}
+\contentsline {subsubsection}{\numberline {7.3.3.3}AbstractItemlist}{64}{subsubsection.7.3.3.3}
+\contentsline {subsubsection}{\numberline {7.3.3.4}AbstractItemGenerator}{64}{subsubsection.7.3.3.4}
+\contentsline {subsubsection}{\numberline {7.3.3.5}AbstractComposite}{65}{subsubsection.7.3.3.5}
+\contentsline {section}{\numberline {7.4}Interaktion des Clients mit anderen Modulen}{65}{section.7.4}
+\contentsline {section}{\numberline {7.5}Config}{66}{section.7.5}
+\contentsline {section}{\numberline {7.6}GUI Elementklassen}{66}{section.7.6}
+\contentsline {section}{\numberline {7.7}Browserimplementierungen}{66}{section.7.7}
+\contentsline {section}{\numberline {7.8}Glossar}{66}{section.7.8}

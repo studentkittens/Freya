@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.27)  2 JAN 2012 15:36
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.27)  2 JAN 2012 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1313,7 +1313,7 @@ amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Doku.pdf (54 pages, 322317 bytes).
+Output written on Doku.pdf (54 pages, 322365 bytes).
 PDF statistics:
  866 PDF objects out of 1000 (max. 8388607)
  790 compressed objects within 8 object streams

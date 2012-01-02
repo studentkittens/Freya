@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -41,10 +41,10 @@ namespace MPD
     {
         /* Call handle_errors on any found error */
         m_Conn.signal_error().connect(
-                sigc::mem_fun(*this,&BaseClient::handle_errors));
+            sigc::mem_fun(*this,&BaseClient::handle_errors));
     }
-    
-    //-------------------------------
+
+//-------------------------------
 
     bool BaseClient::__connect(void)
     {
@@ -62,7 +62,7 @@ namespace MPD
         return is_connected();
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool BaseClient::__disconnect(void)
     {
@@ -82,7 +82,7 @@ namespace MPD
         return is_connected();
     }
 
-    //-------------------------------
+//-------------------------------
 
     void BaseClient::go_idle(void)
     {
@@ -93,7 +93,7 @@ namespace MPD
         }
     }
 
-    //-------------------------------
+//-------------------------------
 
     void BaseClient::go_busy(void)
     {
@@ -104,21 +104,21 @@ namespace MPD
         m_Conn.check_error();
     }
 
-    //-------------------------------
+//-------------------------------
 
     Connection& BaseClient::get_connection(void)
     {
         return m_Conn;
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool BaseClient::is_connected(void)
     {
         return m_Conn.is_connected();
     }
 
-    //-------------------------------
+//-------------------------------
 
     void BaseClient::begin(void)
     {
@@ -130,7 +130,7 @@ namespace MPD
         }
     }
 
-    //-------------------------------
+//-------------------------------
 
     void BaseClient::commit(void)
     {
@@ -144,7 +144,7 @@ namespace MPD
         }
     }
 
-    //--------------------
+//--------------------
 
     Status * BaseClient::get_status(void)
     {
@@ -155,21 +155,21 @@ namespace MPD
         return NULL;
     }
 
-    //--------------------
+//--------------------
 
     EventNotifier& BaseClient::signal_client_update(void)
     {
-        return m_Notifier; 
+        return m_Notifier;
     }
 
-    //--------------------
+//--------------------
 
     ConnectionNotifier& BaseClient::signal_connection_change(void)
     {
         return m_Conn.signal_connection_change();
     }
 
-    //--------------------
+//--------------------
 
     void BaseClient::force_update(void)
     {
@@ -177,7 +177,7 @@ namespace MPD
             mp_Listener->force_update();
     }
 
-    //-------------------------------
+//-------------------------------
 
     gboolean BaseClient::timeout_reconnect(void)
     {
@@ -190,42 +190,42 @@ namespace MPD
         return (retv == false);
     }
 
-    //-------------------------------
+//-------------------------------
 
     void BaseClient::handle_errors(bool is_fatal, mpd_error err)
     {
         switch(err)
         {
-            case MPD_ERROR_SUCCESS:
-                {
-                    break;
-                }
-            case MPD_ERROR_CLOSED:
-                {
-                    /* Make sure to be disconnected first */
-                    __disconnect();
+        case MPD_ERROR_SUCCESS:
+        {
+            break;
+        }
+        case MPD_ERROR_CLOSED:
+        {
+            /* Make sure to be disconnected first */
+            __disconnect();
 
-                    /* Get the reconnectinterval in seconds */
-                    int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval") * 1000;
+            /* Get the reconnectinterval in seconds */
+            int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval") * 1000;
 
-                    /* Schedule reconnect */
-                    Glib::signal_timeout().connect(
-                            sigc::mem_fun(*this, &BaseClient::timeout_reconnect),
-                            interval,G_PRIORITY_DEFAULT_IDLE);
+            /* Schedule reconnect */
+            Glib::signal_timeout().connect(
+                sigc::mem_fun(*this, &BaseClient::timeout_reconnect),
+                interval,G_PRIORITY_DEFAULT_IDLE);
 
-                    Info("Starting reconnect campaign. Will try again every %d seconds.",interval);
-                    break;
-                }
-            case MPD_ERROR_SERVER:
-            case MPD_ERROR_OOM:
-            case MPD_ERROR_ARGUMENT:
-            case MPD_ERROR_STATE:
-            case MPD_ERROR_TIMEOUT:
-            case MPD_ERROR_SYSTEM:
-            case MPD_ERROR_RESOLVER:
-            case MPD_ERROR_MALFORMED:
-            default:
-                break;
+            Info("Starting reconnect campaign. Will try again every %d seconds.",interval);
+            break;
+        }
+        case MPD_ERROR_SERVER:
+        case MPD_ERROR_OOM:
+        case MPD_ERROR_ARGUMENT:
+        case MPD_ERROR_STATE:
+        case MPD_ERROR_TIMEOUT:
+        case MPD_ERROR_SYSTEM:
+        case MPD_ERROR_RESOLVER:
+        case MPD_ERROR_MALFORMED:
+        default:
+            break;
         }
     }
 }

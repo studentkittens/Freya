@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -48,16 +48,16 @@ namespace Config
 
     public:
         ~Handler ();
-        
+
         /**
          * @brief value getter for config option, use CONFIG_GET(x) macro instead
          *
          * @param Glib::ustring, config option url as ustring, e.g. settings.connection.host
          *
-         * @return value as ustring if exists, if not, empty ustring is returned 
+         * @return value as ustring if exists, if not, empty ustring is returned
          */
         Glib::ustring get_value(Glib::ustring);
-        
+
         /**
          * @brief int value getter for config option, use CONFIG_GET_AS_INT(x) macro instead
          *
@@ -94,7 +94,7 @@ namespace Config
          */
         Glib::ustring get_default_value(Glib::ustring);
 
-        
+
         /**
          * @brief int value getter for _default_ config value, use CONFIG_GET_DEFAULT_AS_INT(x) macro instead
          *
@@ -104,12 +104,12 @@ namespace Config
          */
         int get_default_value_as_int(Glib::ustring);
 
-        
+
         /**
          * @brief writes _current_ configuration as config.xml file to hard disk, use CONFIG_SAVE_NOW() macro instead
          */
         void save_config_now();
-        
+
     private:
         /*internal traversing funcs*/
         xmlNodePtr traverse(const char*, xmlNodePtr);

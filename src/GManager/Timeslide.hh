@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,22 +44,22 @@ namespace GManager
      */
     class Timeslide : public MPD::AbstractClientUser
     {
-        public:
-            Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+    public:
+        Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
-            void tick(double time);
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
-            void on_user_action(void);
-            void do_scroll(void);
+    private:
+        void tick(double time);
+        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
+        void on_user_action(void);
+        void do_scroll(void);
 
-            unsigned current_song_id;
-            bool ignore_signal;
-            Gtk::Scale * m_Timeslide;
-            GManager::Heartbeat * mp_Heartbeat;
+        unsigned current_song_id;
+        bool ignore_signal;
+        Gtk::Scale * m_Timeslide;
+        GManager::Heartbeat * mp_Heartbeat;
 
-            Glib::Timer m_Timeguard;
+        Glib::Timer m_Timeguard;
     };
 }
 #endif

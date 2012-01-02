@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -33,14 +33,14 @@
 namespace MPD
 {
     /* See Playlist as some sort of file, not as container */
-    Playlist::Playlist(MPD::BaseClient& base_client, mpd_playlist& playlist) : 
+    Playlist::Playlist(MPD::BaseClient& base_client, mpd_playlist& playlist) :
         AbstractClientExtension(base_client),
         AbstractComposite(true)
     {
         mpc_playlist = &playlist;
     }
 
-    //---------------------------
+//---------------------------
 
     Playlist::Playlist(const Playlist& copy_this) :
         AbstractClientExtension(*mp_BaseClient),
@@ -52,7 +52,7 @@ namespace MPD
         }
     }
 
-    //---------------------------
+//---------------------------
 
     Playlist::~Playlist(void)
     {
@@ -60,24 +60,24 @@ namespace MPD
             mpd_playlist_free(mpc_playlist);
     }
 
-    //---------------------------
+//---------------------------
 
     const char * Playlist::get_path(void)
     {
         return mpd_playlist_get_path(mpc_playlist);
     }
 
-    //---------------------------
+//---------------------------
 
     time_t Playlist::get_last_modified(void)
     {
         return mpd_playlist_get_last_modified(mpc_playlist);
     }
-    
-    //---------------------------
-    // CLIENT EXTENSIONS 
-    //---------------------------
-    
+
+//---------------------------
+// CLIENT EXTENSIONS
+//---------------------------
+
     void Playlist::remove(void)
     {
         EXTERNAL_GET_BUSY
@@ -87,18 +87,18 @@ namespace MPD
         EXTERNAL_GET_LAID
     }
 
-    //---------------------------
+//---------------------------
 
     void Playlist::load(void)
     {
         EXTERNAL_GET_BUSY
         {
             mpd_run_load(conn,get_path());
-        } 
+        }
         EXTERNAL_GET_LAID
     }
 
-    //---------------------------
+//---------------------------
 
     void Playlist::rename(const char * new_name)
     {
@@ -107,13 +107,13 @@ namespace MPD
             EXTERNAL_GET_BUSY
             {
                 mpd_run_rename(conn,get_path(),new_name);
-            } 
+            }
             EXTERNAL_GET_LAID
         }
     }
 
-    //---------------------------
-    
+//---------------------------
+
     void Playlist::add_song(const char * uri)
     {
         if(uri != NULL)
@@ -121,17 +121,17 @@ namespace MPD
             EXTERNAL_GET_BUSY
             {
                 mpd_run_playlist_add(conn,get_path(),uri);
-            } 
+            }
             EXTERNAL_GET_LAID
         }
     }
-    
-    //---------------------------
-    
+
+//---------------------------
+
     void Playlist::add_song(MPD::Song& song)
     {
         add_song(song.get_path());
     }
-    
-    //---------------------------
+
+//---------------------------
 }

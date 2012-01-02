@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -60,19 +60,19 @@ namespace Browser
         cancel_button->set_sensitive(false);
 
     }
-    //---------------------------
+//---------------------------
 
     Settings::~Settings(void)
     {
-        for(unsigned int i=0;i<sub_sections.size();i++)
+        for(unsigned int i=0; i<sub_sections.size(); i++)
             delete sub_sections[i];
     }
 
-    //---------------------------
+//---------------------------
 
     void Settings::on_button_ok(void)
     {
-        for(unsigned int i=0;i< sub_sections.size();i++)
+        for(unsigned int i=0; i< sub_sections.size(); i++)
         {
             sub_sections[i]->accept_new_settings();
         }
@@ -81,30 +81,30 @@ namespace Browser
         cancel_button->set_sensitive(false);
         Notify::Notify::instance().re_init();
     }
-    //---------------------------
+//---------------------------
     void Settings::on_button_cancel(void)
     {
-        for(unsigned int i=0;i< sub_sections.size();i++)
+        for(unsigned int i=0; i< sub_sections.size(); i++)
         {
             sub_sections[i]->decline_new_settings();
         }
         ok_button->set_sensitive(false);
         cancel_button->set_sensitive(false);
     }
-    //---------------------------
+//---------------------------
     Gtk::Widget* Settings::get_container(void)
     {
         return settings_main;
     }
-    //---------------------------
+//---------------------------
     void Settings::on_button_reset(void)
     {
-        for(unsigned int i=0;i< sub_sections.size();i++)
+        for(unsigned int i=0; i< sub_sections.size(); i++)
         {
             sub_sections[i]->reset_settings();
         }
     }
-    //--------------------------
+//--------------------------
     void Settings::settings_changed(void)
     {
         ok_button->set_sensitive(true);

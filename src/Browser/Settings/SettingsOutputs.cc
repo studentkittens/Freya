@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ namespace Browser
 {
 
     SettingsOutputs::SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett)
-    : AbstractClientUser(client), running(false)
+        : AbstractClientUser(client), running(false)
     {
         this->sett = sett;
         BUILDER_GET(builder,"output_treeView",treeViewPtr);
@@ -63,18 +63,18 @@ namespace Browser
     }
 
     /* ------------------------------- */
-    
+
     void SettingsOutputs::clear(void)
     {
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+        for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
         {
             delete (*iter)[treeColumns.colOutput];
         }
         treeModel->clear();
     }
-    
+
     /* ------------------------------- */
 
     void SettingsOutputs::on_toggle(const Glib::ustring& path)
@@ -121,7 +121,7 @@ namespace Browser
         running = true;
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+        for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
         {
             Gtk::TreeModel::Row row = *iter;
             MPD::AudioOutput * output = row[treeColumns.colOutput];
@@ -131,10 +131,10 @@ namespace Browser
             /* Activate previously not enabled output */
             if(is_active && !output->get_enabled())
                 output->enable();
-            else 
-            /* Deactivate previously enabled output */
-            if(!is_active && output->get_enabled())
-                output->disable();
+            else
+                /* Deactivate previously enabled output */
+                if(!is_active && output->get_enabled())
+                    output->disable();
         }
         treeModel->clear();
         mp_Client->fill_outputs(*this);
@@ -149,7 +149,7 @@ namespace Browser
         running = true;
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin();iter != children.end(); ++iter)
+        for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
         {
             Gtk::TreeModel::Row row = *iter;
             row[treeColumns.colActive] = (*(row[treeColumns.colOutput])).get_enabled();

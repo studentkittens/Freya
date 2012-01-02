@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -49,20 +49,20 @@ namespace GManager
      */
     class Volumebutton : public MPD::AbstractClientUser
     {
-        public:
-            Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+    public:
+        Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
+    private:
 
-            void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
-            void on_user_change(double val);
-            void volume_notify(int curVol);
-            void do_volume_step(void);
+        void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
+        void on_user_change(double val);
+        void volume_notify(int curVol);
+        void do_volume_step(void);
 
-            bool ignore_signal;
-            Gtk::VolumeButton * mp_VButton;
-            Glib::Timer m_Timerguard;
+        bool ignore_signal;
+        Gtk::VolumeButton * mp_VButton;
+        Glib::Timer m_Timerguard;
     };
 }
 

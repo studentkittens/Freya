@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -74,25 +74,25 @@ namespace Browser
 
         /* Called once editing is done by the user */
         m_PlaylistCellRender.signal_edited().connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_cell_edited));
+            sigc::mem_fun(*this,&PlaylistManager::on_cell_edited));
 
         /* Cpnnect popups and row actions */
         mp_Popup = new PlaylistManagerPopup(*mp_TreeView);
         mp_Popup->get_action("pl_append").connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_menu_append_clicked));
+            sigc::mem_fun(*this,&PlaylistManager::on_menu_append_clicked));
         mp_Popup->get_action("pl_replace").connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_menu_replace_clicked));
+            sigc::mem_fun(*this,&PlaylistManager::on_menu_replace_clicked));
         mp_Popup->get_action("pl_delete").connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
+            sigc::mem_fun(*this,&PlaylistManager::on_menu_del_clicked));
         mp_TreeView->signal_button_press_event().connect(
-                sigc::mem_fun(*this,&PlaylistManager::on_row_double_click));
+            sigc::mem_fun(*this,&PlaylistManager::on_row_double_click));
 
         /* Fill the actual content to the list */
         mp_Client->fill_playlists(*this);
         show_all();
     }
-    
-    //-----------------------------------
+
+//-----------------------------------
 
     /* Called when a name-cell is finished edited
      * Validates the input, and renames the mpd playlist */
@@ -137,7 +137,7 @@ namespace Browser
         }
     }
 
-    //-----------------------------------
+//-----------------------------------
 
     void PlaylistManager::on_cell_get_data(Gtk::CellRenderer*, const Gtk::TreeModel::iterator& iter)
     {
@@ -166,7 +166,7 @@ namespace Browser
     }
 
     /* ----------------------- */
-    
+
     void PlaylistManager::clear(void)
     {
         for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
@@ -176,7 +176,7 @@ namespace Browser
         }
         m_refTreeModel->clear();
     }
-    
+
     /* ----------------------- */
 
     void PlaylistManager::add_item(MPD::AbstractComposite * pPlaylist)
@@ -194,7 +194,7 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistManager::selection_helper(bool load_or_remove) 
+    void PlaylistManager::selection_helper(bool load_or_remove)
     {
         std::vector<Gtk::TreeModel::Path> selection = m_Selection->get_selected_rows();
 

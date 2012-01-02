@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -50,24 +50,24 @@ namespace Notify
     {
         friend class Browser::Settings;
 
-            DEF_SINGLETON( Notify )
-        public:
-            ~Notify();
+        DEF_SINGLETON( Notify )
+    public:
+        ~Notify();
 
-            // TODO: Add doxycomments
-            void send_big(Glib::ustring hl, Glib::ustring msg);
-            void send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf);
-            void set_stock_icon(const char*);
-            void set_next_extra();
+        // TODO: Add doxycomments
+        void send_big(Glib::ustring hl, Glib::ustring msg);
+        void send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf);
+        void set_stock_icon(const char*);
+        void set_next_extra();
 
-        private:
-            Glib::ustring * icon;
-            NotifyNotification *notification;
-            bool extra,working;
-            void re_init(void);
-            void clear_icon(void);
-            int timeout,use_notify;
-            void _send(const char *hl, const char *msg, GdkPixbuf * pixbuf);
+    private:
+        Glib::ustring * icon;
+        NotifyNotification *notification;
+        bool extra,working;
+        void re_init(void);
+        void clear_icon(void);
+        int timeout,use_notify;
+        void _send(const char *hl, const char *msg, GdkPixbuf * pixbuf);
     };
 }
 
@@ -78,7 +78,7 @@ namespace Notify
 /* Sets the icon for the next and ONLY the next notification.
  * 'x' must be a char* to one of the stock-icon names
  * you can find on 'http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html'
- *  DO NOT FORGET TO ACTUALLY SHOW THE NOTIFICATION!!!!!!!!!! Otherwise the next notification will have your icon if it's not re-setted. 
+ *  DO NOT FORGET TO ACTUALLY SHOW THE NOTIFICATION!!!!!!!!!! Otherwise the next notification will have your icon if it's not re-setted.
  * Nothing serious though :)
  */
 #define NOTIFY_STOCK_ICON(x) Notify::Notify::instance().set_stock_icon(x)

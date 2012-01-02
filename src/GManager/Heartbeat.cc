@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -41,83 +41,83 @@ namespace GManager
     {
         timer = 0.0;
         count_up = true;
-    
-        /* Timeout signal */    
+
+        /* Timeout signal */
         Glib::signal_timeout().connect(sigc::mem_fun(*this,&Heartbeat::on_interval),INTERVAL);
     }
 
-    // -------------
-    
+// -------------
+
     Heartbeat::~Heartbeat(void)
     {}
 
-    // -------------
-    
+// -------------
+
     gboolean Heartbeat::on_interval(void)
     {
         if(count_up)
         {
-            timer += STEPSIZE; 
+            timer += STEPSIZE;
             signal_proxy.emit(timer);
         }
         return TRUE;
     }
 
-    // -------------
-    
+// -------------
+
     void Heartbeat::reset(void)
     {
         timer = 0.0;
     }
 
-    // -------------
+// -------------
 
     void Heartbeat::pause(void)
     {
         count_up = false;
     }
 
-    // -------------
-    
+// -------------
+
     void Heartbeat::play(void)
     {
         count_up = true;
     }
 
-    // -------------
-    
+// -------------
+
     void Heartbeat::set(double val)
     {
         timer = val;
     }
-     
-    // -------------
-    
+
+// -------------
+
     double Heartbeat::get(void)
     {
         return timer;
     }
 
-    // -------------
+// -------------
 
     TimerNotifier& Heartbeat::signal_client_update(void)
     {
         return signal_proxy;
     }
-    
-    // -------------
-           
+
+// -------------
+
     void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
     {
-        if(is_connected && mp_LastNotifyData) 
+        if(is_connected && mp_LastNotifyData)
             signal_proxy.emit(mp_LastNotifyData->get_status().get_elapsed_ms() / 1000.0);
         else
             pause();
     }
-    
-    // -------------
-    
-    /* Implemented from AbstractClientUser, but empty in this case */    
+
+// -------------
+
+    /* Implemented from AbstractClientUser, but empty in this case */
     void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
         mp_LastNotifyData = &data;
@@ -127,16 +127,16 @@ namespace GManager
             set(status.get_elapsed_ms() / 1000.0);
             switch(status.get_state())
             {
-                case MPD_STATE_PLAY:
-                    play();
-                    break;
-                case MPD_STATE_STOP:
-                case MPD_STATE_PAUSE:
-                    pause();
-                    break;
-                case MPD_STATE_UNKNOWN:
-                default:
-                    break;
+            case MPD_STATE_PLAY:
+                play();
+                break;
+            case MPD_STATE_STOP:
+            case MPD_STATE_PAUSE:
+                pause();
+                break;
+            case MPD_STATE_UNKNOWN:
+            default:
+                break;
             }
         }
     }

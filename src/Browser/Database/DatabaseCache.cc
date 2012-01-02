@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@ namespace Browser
 {
     /* ----------------------------- */
 
-    DatabaseCache::DatabaseCache(MPD::Client& client) : 
+    DatabaseCache::DatabaseCache(MPD::Client& client) :
         AbstractClientUser(client),
         lastVec(NULL),
         isFirstStart(true),
@@ -56,7 +56,7 @@ namespace Browser
         /* Get it from the hashmap */
         Glib::ustring peristentPath = Path;
         const CacheVectorType& v = cacheMap[peristentPath];
-           
+
         if(serverChanged)
             clear_cache();
 
@@ -130,7 +130,7 @@ namespace Browser
             }
         }
         lastVec = NULL;
-        cacheMap.clear(); 
+        cacheMap.clear();
     }
 
     /* ------------------------------ */

@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -34,22 +34,22 @@
 
 namespace MPD
 {
-    //--------------------------------------
+//--------------------------------------
 
-    Connection::Connection(void) : 
+    Connection::Connection(void) :
         hostChanged(false)
     {
         conn = NULL;
     }
 
-    //--------------------------------------
+//--------------------------------------
 
     Connection::~Connection(void)
     {
         disconnect();
     }
 
-    //--------------------------------------
+//--------------------------------------
 
     mpd_connection * Connection::get_connection(void)
     {
@@ -60,7 +60,7 @@ namespace MPD
             return NULL;
     }
 
-    //--------------------------------------
+//--------------------------------------
 
     bool Connection::connect(void)
     {
@@ -68,10 +68,10 @@ namespace MPD
             return false;
 
         /* Timeout in seconds */
-        int timeout = CONFIG_GET_AS_INT("settings.connection.timeout") * 1000; 
+        int timeout = CONFIG_GET_AS_INT("settings.connection.timeout") * 1000;
 
         /* Port as integer */
-        int port = CONFIG_GET_AS_INT("settings.connection.port"); 
+        int port = CONFIG_GET_AS_INT("settings.connection.port");
 
         /* Hostname, might be an IP or a hostname like localhost */
         Glib::ustring str_host = CONFIG_GET("settings.connection.host").c_str();
@@ -100,7 +100,7 @@ namespace MPD
         return is_connected();
     }
 
-    //--------------------------------------
+//--------------------------------------
 
     bool Connection::disconnect(void)
     {
@@ -114,29 +114,29 @@ namespace MPD
         return false;
     }
 
-    //--------------------------------------
+//--------------------------------------
 
     bool Connection::is_connected(void)
     {
         return !(conn == NULL);
     }
 
-    //--------------------------------------
-    
+//--------------------------------------
+
     ErrorNotify& Connection::signal_error(void)
     {
         return m_ErrorSig;
     }
-    
-    //--------------------------------------
-    
+
+//--------------------------------------
+
     ConnectionNotifier& Connection::signal_connection_change(void)
     {
         return m_ConnNotifer;
     }
 
-    //--------------------------------------
-    
+//--------------------------------------
+
     void Connection::emit_connection_change(void)
     {
         if(is_connected())
@@ -144,13 +144,13 @@ namespace MPD
         else
             m_ConnNotifer.emit(false,is_connected());
     }
-    
-    //--------------------------------------
-    
+
+//--------------------------------------
+
     bool Connection::clear_error(void)
     {
         bool retv = false;
-        if(conn != NULL) 
+        if(conn != NULL)
         {
             enum mpd_error err_code = mpd_connection_get_error(conn);
             if(err_code != MPD_ERROR_SUCCESS)
@@ -165,8 +165,8 @@ namespace MPD
         return retv;
     }
 
-    //--------------------------------------
-    
+//--------------------------------------
+
     bool Connection::check_error(void)
     {
         bool result = false;
@@ -186,12 +186,12 @@ namespace MPD
                 /* Build string */
                 if(err_code == MPD_ERROR_SERVER)
                     g_snprintf(error_buf,buf_size,"(server) #%d: %s",
-                            mpd_connection_get_server_error(conn),
-                            mpd_connection_get_error_message(conn));
+                               mpd_connection_get_server_error(conn),
+                               mpd_connection_get_error_message(conn));
                 else
                     g_snprintf(error_buf,buf_size,"(client) #%d: %s: ",
-                            err_code,
-                            mpd_connection_get_error_message(conn));
+                               err_code,
+                               mpd_connection_get_error_message(conn));
 
                 /* Clear non fatal errors */
                 is_fatal = clear_error();
@@ -210,6 +210,6 @@ namespace MPD
         }
         return result;
     }
-    
-    //--------------------------------------
+
+//--------------------------------------
 }

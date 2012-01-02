@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -53,30 +53,30 @@ namespace Browser
      */
     class Settings : public AbstractBrowser
     {
-        public:
-            Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
-            ~Settings();
+    public:
+        Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
+        ~Settings();
 
-            /**
-             * @brief Implemented from AbstractBrowser
-             *
-             * @return 
-             */
-            Gtk::Widget* get_container(void);
-            /**
-             * @brief Called when saving the Config (makes ok/cancel insensitive)
-             */
-            void settings_changed(void);
+        /**
+         * @brief Implemented from AbstractBrowser
+         *
+         * @return
+         */
+        Gtk::Widget* get_container(void);
+        /**
+         * @brief Called when saving the Config (makes ok/cancel insensitive)
+         */
+        void settings_changed(void);
 
-        private:
-            void on_button_ok(void);
-            void on_button_cancel(void);
-            void on_button_reset(void);
-            vector<AbstractSettings*> sub_sections;
+    private:
+        void on_button_ok(void);
+        void on_button_cancel(void);
+        void on_button_reset(void);
+        vector<AbstractSettings*> sub_sections;
 
-            /* Widgets */
-            Gtk::Button *ok_button, *cancel_button, *reset_button;
-            Gtk::Box *settings_main;
+        /* Widgets */
+        Gtk::Button *ok_button, *cancel_button, *reset_button;
+        Gtk::Box *settings_main;
 
     };
 }

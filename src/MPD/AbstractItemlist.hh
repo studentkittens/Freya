@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -40,22 +40,22 @@ namespace MPD
      */
     class AbstractItemlist
     {
-        public:
+    public:
 
-            /**
-             * @brief Called after calling (e.g.) fill_queue() 
-             *
-             * Cast this to the correct type, fill_queue delivers you for example a MPD::Song*
-             *
-             * @param item a dynamically allocated item
-             */
-            virtual void add_item(MPD::AbstractComposite * item) = 0; 
+        /**
+         * @brief Called after calling (e.g.) fill_queue()
+         *
+         * Cast this to the correct type, fill_queue delivers you for example a MPD::Song*
+         *
+         * @param item a dynamically allocated item
+         */
+        virtual void add_item(MPD::AbstractComposite * item) = 0;
 
 
-            /**
-             * @brief Virtual DTor so, derived class call their own DTor
-             */
-            virtual ~AbstractItemlist() {};
+        /**
+         * @brief Virtual DTor so, derived class call their own DTor
+         */
+        virtual ~AbstractItemlist() {};
     };
 }
 

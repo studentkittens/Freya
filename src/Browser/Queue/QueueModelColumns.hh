@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,34 +44,34 @@ namespace Browser
      */
     class QueueModelColumns : public Gtk::TreeModel::ColumnRecord
     {
-        public:
+    public:
 
-            QueueModelColumns();
+        QueueModelColumns();
 
-            /**
-             * @brief The ID of the Song 
-             *
-             * Needed for some commands
-             */
-            Gtk::TreeModelColumn<unsigned>      m_col_id;
-            /**
-             * @brief The Position of the Song in the Queue
-             *
-             * Needed for some commands and for merging
-             */
-            Gtk::TreeModelColumn<unsigned>      m_col_pos;
-            /**
-             * @brief Titlestring
-             */
-            Gtk::TreeModelColumn<Glib::ustring> m_col_title;
-            /**
-             * @brief Albumstring
-             */
-            Gtk::TreeModelColumn<Glib::ustring> m_col_album;
-            /**
-             * @brief Artiststring
-             */
-            Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
+        /**
+         * @brief The ID of the Song
+         *
+         * Needed for some commands
+         */
+        Gtk::TreeModelColumn<unsigned>      m_col_id;
+        /**
+         * @brief The Position of the Song in the Queue
+         *
+         * Needed for some commands and for merging
+         */
+        Gtk::TreeModelColumn<unsigned>      m_col_pos;
+        /**
+         * @brief Titlestring
+         */
+        Gtk::TreeModelColumn<Glib::ustring> m_col_title;
+        /**
+         * @brief Albumstring
+         */
+        Gtk::TreeModelColumn<Glib::ustring> m_col_album;
+        /**
+         * @brief Artiststring
+         */
+        Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
     };
 }
 

@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -41,15 +41,15 @@ namespace Browser
      *
      * See Browser::BasePopup for a more detailed description.
      */
-    class PlaylistManagerPopup : public BasePopup 
+    class PlaylistManagerPopup : public BasePopup
     {
-        public:
-            PlaylistManagerPopup(Gtk::Widget& to_register);
+    public:
+        PlaylistManagerPopup(Gtk::Widget& to_register);
 
-        private:
-            Glib::RefPtr<Gtk::Action> m_ActionAdd;
-            Glib::RefPtr<Gtk::Action> m_ActionDel;
-            Glib::RefPtr<Gtk::Action> m_ActionRepl;
+    private:
+        Glib::RefPtr<Gtk::Action> m_ActionAdd;
+        Glib::RefPtr<Gtk::Action> m_ActionDel;
+        Glib::RefPtr<Gtk::Action> m_ActionRepl;
     };
 }
-#endif 
+#endif

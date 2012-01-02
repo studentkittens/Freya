@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -47,40 +47,40 @@ namespace Browser
         BUILDER_GET(builder,"playlist_name_entry",mp_PlaylistEntry);
 
         mp_CancelButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&PlaylistAddDialog::on_cancel_clicked));
+            sigc::mem_fun(*this,&PlaylistAddDialog::on_cancel_clicked));
         mp_ApplyButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&PlaylistAddDialog::on_add_clicked));
+            sigc::mem_fun(*this,&PlaylistAddDialog::on_add_clicked));
         mp_PlaylistEntry->signal_changed().connect(
-                sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_change));
+            sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_change));
         mp_PlaylistEntry->signal_activate().connect(
-                sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_activate));
+            sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_activate));
 
     }
 
     /* ----------------------- */
-    
+
     PlaylistAddDialog::~PlaylistAddDialog(void)
     {
         delete mp_Dialog;
     }
-    
+
     /* ----------------------- */
 
     void PlaylistAddDialog::on_add_clicked(void)
     {
         Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
-        mp_Client->playlist_save(new_pl_name.c_str()); 
+        mp_Client->playlist_save(new_pl_name.c_str());
         on_cancel_clicked();
     }
 
     /* ----------------------- */
-    
+
     void PlaylistAddDialog::on_cancel_clicked(void)
     {
         mp_Dialog->hide();
         is_running = false;
     }
-    
+
     /* ----------------------- */
 
     void PlaylistAddDialog::run(void)
@@ -91,7 +91,7 @@ namespace Browser
             mp_Dialog->show();
         }
     }
-    
+
     /* ----------------------- */
 
     void PlaylistAddDialog::on_entry_change(void)
@@ -99,19 +99,19 @@ namespace Browser
         /* Get length of Text */
         mp_ApplyButton->set_sensitive(mp_PlaylistEntry->get_text_length() > 0);
     }
-    
+
     /* ----------------------- */
 
     void PlaylistAddDialog::on_entry_activate(void)
     {
         on_add_clicked();
     }
-    
+
     /* ----------------------- */
-            
+
     void PlaylistAddDialog::on_client_update(mpd_idle event, MPD::NotifyData& data)
     {}
-    
+
     /* ----------------------- */
 
     void PlaylistAddDialog::on_connection_change(bool server_changed, bool is_connected)

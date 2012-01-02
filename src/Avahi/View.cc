@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@
 
 namespace Avahi
 {
-    View::View(void) : 
+    View::View(void) :
         Gtk::Window(Gtk::WINDOW_TOPLEVEL),
         m_VBox(Gtk::ORIENTATION_HORIZONTAL,2),
         m_Button_Cancel("Cancel"),
@@ -82,7 +82,7 @@ namespace Avahi
         show_all_children();
     }
 
-    /// Event Callbacks ////
+/// Event Callbacks ////
 
     void View::on_button_cancel(void)
     {
@@ -93,19 +93,19 @@ namespace Avahi
     {
         Glib::RefPtr<Gtk::TreeSelection> refTreeSelection = m_TreeView.get_selection();
         Gtk::TreeModel::iterator iter = refTreeSelection->get_selected();
-        if(iter) 
+        if(iter)
         {
             Gtk::TreeModel::Row row = *iter;
             signal_select.emit(
-                    row[m_Columns.m_col_ip],
-                    row[m_Columns.m_col_hostname],
-                    row[m_Columns.m_col_name],
-                    row[m_Columns.m_col_port]);
+                row[m_Columns.m_col_ip],
+                row[m_Columns.m_col_hostname],
+                row[m_Columns.m_col_name],
+                row[m_Columns.m_col_port]);
         }
         hide();
     }
 
-    /// User functions ///
+/// User functions ///
 
     /* Delete a certain IP */
     void View::server_append(const char * ip, const char * hostname, const char * name, unsigned int port)

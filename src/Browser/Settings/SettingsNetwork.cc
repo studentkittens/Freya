@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -59,7 +59,7 @@ namespace Browser
         autoconnect->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
     }
 
-    //----------------------------
+//----------------------------
 
     SettingsNetwork::~SettingsNetwork(void)
     {
@@ -75,7 +75,7 @@ namespace Browser
         }
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsNetwork::accept_new_settings(void)
     {
@@ -88,8 +88,8 @@ namespace Browser
         if(ip_value.size() == 0)
         {
             Info("Empty Server-IP entered. Falling back to previous IP");
-                ip->set_text(CONFIG_GET(ip_name));
-                ip_value = CONFIG_GET(ip_name);
+            ip->set_text(CONFIG_GET(ip_name));
+            ip_value = CONFIG_GET(ip_name);
         }
         port_value = port->get_value_as_int();
         timeout_value = recon_timeout->get_value_as_int();
@@ -101,7 +101,7 @@ namespace Browser
         CONFIG_SET_AS_INT(autoconnect_name,autoconnect_value ? 1 : 0);
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsNetwork::decline_new_settings(void)
     {
@@ -111,7 +111,7 @@ namespace Browser
         autoconnect->set_active(CONFIG_GET_AS_INT(autoconnect_name));
     }
 
-    //----------------------------
+//----------------------------
     void SettingsNetwork::show_avahi(void)
     {
         delete handle;
@@ -127,14 +127,14 @@ namespace Browser
             avahi_warning->hide();
         }
     }
-    //----------------------------
+//----------------------------
 
     void SettingsNetwork::selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port)
     {
         this->ip->set_text(ip);
         this->port->set_value((double)port);
     }
-    //----------------------------
+//----------------------------
     void SettingsNetwork::reset_settings(void)
     {
         ip->set_text(CONFIG_GET_DEFAULT(ip_name));

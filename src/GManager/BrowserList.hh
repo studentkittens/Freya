@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -46,60 +46,65 @@ namespace GManager
      */
     class BrowserList : public MPD::AbstractClientUser
     {
+    public:
+
+        BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+
+        /**
+         * @brief Add the browser to the list and manage it
+         *
+         * @param browser A user class that inherits from AbstractBrowser
+         */
+        void add(AbstractBrowser& browser);
+
+        /**
+         * @brief Set a specfici browser
+         *
+         * Note: The browser should be already added with add()
+         *
+         * @param browser
+         */
+        void set(AbstractBrowser& browser);
+
+    private:
+
+        void change_browser(AbstractBrowser * browser);
+        void on_selection_changed(void);
+        void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
+
+        /* Tree model columns: */
+        class ModelColumns : public Gtk::TreeModel::ColumnRecord
+        {
         public:
-
-            BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-
-            /**
-             * @brief Add the browser to the list and manage it
-             *
-             * @param browser A user class that inherits from AbstractBrowser
-             */
-            void add(AbstractBrowser& browser);
-
-            /**
-             * @brief Set a specfici browser
-             *
-             * Note: The browser should be already added with add()
-             *
-             * @param browser
-             */
-            void set(AbstractBrowser& browser);
-
-        private:
-
-            void change_browser(AbstractBrowser * browser);
-            void on_selection_changed(void);
-            void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
-
-            /* Tree model columns: */
-            class ModelColumns : public Gtk::TreeModel::ColumnRecord
+            ModelColumns()
             {
-                public:
-                    ModelColumns() { add(m_col_name); add(m_col_icon); add(m_col_browser); }
-                    Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-                    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
-                    Gtk::TreeModelColumn<AbstractBrowser*> m_col_browser;
-            };
+                add(m_col_name);
+                add(m_col_icon);
+                add(m_col_browser);
+            }
+            Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+            Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
+            Gtk::TreeModelColumn<AbstractBrowser*> m_col_browser;
+        };
 
-            /* View */
-            Gtk::TreeView * mp_PluginListview;
+        /* View */
+        Gtk::TreeView * mp_PluginListview;
 
-            /* Actual model */
-            Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+        /* Actual model */
+        Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
 
-            /* Model layout */
-            ModelColumns m_Columns;
+        /* Model layout */
+        ModelColumns m_Columns;
 
-            /* Selected data of model */
-            Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
+        /* Selected data of model */
+        Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
-            /* Browserlist widget, where all browser stuff is happening in */
-            Gtk::Box * mp_List;
-            
-            /* fortune label on startup */
-            Gtk::Label m_NoBrowsers;
+        /* Browserlist widget, where all browser stuff is happening in */
+        Gtk::Box * mp_List;
+
+        /* fortune label on startup */
+        Gtk::Label m_NoBrowsers;
     };
 }
 

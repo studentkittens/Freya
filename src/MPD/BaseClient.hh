@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ namespace MPD
      * BaseClient does not offer any special command it can send to the server,
      * but is able to set up everything related to connections, i.e setting up
      * the Listener and the connection or reconnection once connection is lost
-     * connect() is not a public method, since you are not supposed to instanciate 
+     * connect() is not a public method, since you are not supposed to instanciate
      * this class, MPD::Client offers the connect() you want to use.
      *
      * The splitting between BaseClient and Client was done to allow Client Extensions,
@@ -50,134 +50,134 @@ namespace MPD
      */
     class BaseClient
     {
-        public:
-            /**
-             * @brief Go into idle mode, you are not allowed to send commands while idling!
-             */
-            void go_idle(void);
-            /**
-             * @brief Leave idle mode, so you can send commands to the server
-             */
-            void go_busy(void);
+    public:
+        /**
+         * @brief Go into idle mode, you are not allowed to send commands while idling!
+         */
+        void go_idle(void);
+        /**
+         * @brief Leave idle mode, so you can send commands to the server
+         */
+        void go_busy(void);
 
-            /**
-             * @brief Returns the underlying connection
-             *
-             * You are not supposed to call this as user of the client,
-             * it's use is intended as client extension that need to 
-             * send it's own commands to MPD.
-             *
-             * @return A ref to a MPD::Connection
-             */
-            Connection& get_connection(void);
-    
-            /**
-             * @brief true if connected
-             *
-             * @return 
-             */
-            bool is_connected(void);
+        /**
+         * @brief Returns the underlying connection
+         *
+         * You are not supposed to call this as user of the client,
+         * it's use is intended as client extension that need to
+         * send it's own commands to MPD.
+         *
+         * @return A ref to a MPD::Connection
+         */
+        Connection& get_connection(void);
 
-            /**
-             * @brief Start a commandlist
-             */
-            void begin(void);
-            /**
-             * @brief Commit the commandlist
-             */
-            void commit(void);
-            
-            /**
-             * @brief Get the current MPD::Status
-             *
-             * @return A reference to it. Do not modify.
-             */
-            Status * get_status(void);
-            
-            /**
-             * @brief Get the notify sigc::signal
-             *
-             * Use connect() on it. This is called always once a ne, ...w event
-             * happens. See the typedef in Listener.hh for the exact signature
-             *
-             * @return the sigc::signal
-             */
-            EventNotifier& signal_client_update(void);
+        /**
+         * @brief true if connected
+         *
+         * @return
+         */
+        bool is_connected(void);
 
-            /**
-             * @brief Register for connection changes
-             *
-             * @return a sigc::signal, you can call connect() on
-             */
-            ConnectionNotifier& signal_connection_change(void);
+        /**
+         * @brief Start a commandlist
+         */
+        void begin(void);
+        /**
+         * @brief Commit the commandlist
+         */
+        void commit(void);
 
-            /**
-             * @brief Forces client update
-             *
-             * Updates status, stats, current song 
-             * and sends all possible events to all connected listeners
-             *
-             */
-            void force_update(void);
+        /**
+         * @brief Get the current MPD::Status
+         *
+         * @return A reference to it. Do not modify.
+         */
+        Status * get_status(void);
 
-        protected:
-            
-            /**
-             * @brief Do not allow to instantiate BaseClient
-             */
-            BaseClient(void);
-           
-            /**
-             * @brief This is called internally by MPD::Client and does the actual connect work
-             *
-             * @return is_connected()
-             */
-            bool __connect(void);
-            /**
-             * @brief Same as __connect()
-             *
-             * @return is_connected()
-             */
-            bool __disconnect(void);
+        /**
+         * @brief Get the notify sigc::signal
+         *
+         * Use connect() on it. This is called always once a ne, ...w event
+         * happens. See the typedef in Listener.hh for the exact signature
+         *
+         * @return the sigc::signal
+         */
+        EventNotifier& signal_client_update(void);
 
-            /**
-             * @brief The connection to the MPD server
-             */
-            MPD::Connection m_Conn;
-            /**
-             * @brief Event Listener
-             */
-            MPD::Listener * mp_Listener;
-            
-            /**
-             * @brief BaseClient::begin() was called but not yet BaseClient::commit()
-             */
-            bool m_ListBegun;
-       
-        private:
+        /**
+         * @brief Register for connection changes
+         *
+         * @return a sigc::signal, you can call connect() on
+         */
+        ConnectionNotifier& signal_connection_change(void);
 
-            /**
-             * @brief Called periodically when mpd disconnects us
-             *
-             * This usually happens when mpd server was killed.
-             * Then this function tries to reconnect you
-             *
-             * @return It returns false once reconnected (which means: Remove mainloopsource)
-             */
-            gboolean timeout_reconnect(void);
+        /**
+         * @brief Forces client update
+         *
+         * Updates status, stats, current song
+         * and sends all possible events to all connected listeners
+         *
+         */
+        void force_update(void);
 
-            /**
-             * @brief Called when MPD::Connection notices an connection error
-             *
-             * @param is_fatal the error is fatal 
-             * @param err the error code
-             */
-            void handle_errors(bool is_fatal, mpd_error err);
+    protected:
 
-            /**
-             * @brief Listener calls emit() on this once events happen.
-             */
-            EventNotifier m_Notifier;
+        /**
+         * @brief Do not allow to instantiate BaseClient
+         */
+        BaseClient(void);
+
+        /**
+         * @brief This is called internally by MPD::Client and does the actual connect work
+         *
+         * @return is_connected()
+         */
+        bool __connect(void);
+        /**
+         * @brief Same as __connect()
+         *
+         * @return is_connected()
+         */
+        bool __disconnect(void);
+
+        /**
+         * @brief The connection to the MPD server
+         */
+        MPD::Connection m_Conn;
+        /**
+         * @brief Event Listener
+         */
+        MPD::Listener * mp_Listener;
+
+        /**
+         * @brief BaseClient::begin() was called but not yet BaseClient::commit()
+         */
+        bool m_ListBegun;
+
+    private:
+
+        /**
+         * @brief Called periodically when mpd disconnects us
+         *
+         * This usually happens when mpd server was killed.
+         * Then this function tries to reconnect you
+         *
+         * @return It returns false once reconnected (which means: Remove mainloopsource)
+         */
+        gboolean timeout_reconnect(void);
+
+        /**
+         * @brief Called when MPD::Connection notices an connection error
+         *
+         * @param is_fatal the error is fatal
+         * @param err the error code
+         */
+        void handle_errors(bool is_fatal, mpd_error err);
+
+        /**
+         * @brief Listener calls emit() on this once events happen.
+         */
+        EventNotifier m_Notifier;
     };
 }
 

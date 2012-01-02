@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -43,73 +43,73 @@ namespace MPD
      */
     class NotifyData
     {
-        public:
-            /**
-             * @brief You are not supposed to instance this yourself.
-             *
-             * @param conn
-             */
-            NotifyData(Connection& conn);
-            ~NotifyData(void);
+    public:
+        /**
+         * @brief You are not supposed to instance this yourself.
+         *
+         * @param conn
+         */
+        NotifyData(Connection& conn);
+        ~NotifyData(void);
 
-            /**
-             * @brief Get the current MPD::Status
-             *
-             * @return 
-             */
-            Status& get_status(void);
-            /**
-             * @brief Get the current MPD::Statistics
-             *
-             * @return 
-             */
-            Statistics& get_statistics(void);
+        /**
+         * @brief Get the current MPD::Status
+         *
+         * @return
+         */
+        Status& get_status(void);
+        /**
+         * @brief Get the current MPD::Statistics
+         *
+         * @return
+         */
+        Statistics& get_statistics(void);
 
-            /**
-             * @brief Get the currently playing MPD::Song
-             *
-             * @return This is NULL when not playing! Check for it!
-             */
-            Song * get_song(void);
-            /**
-             * @brief Get the next playing MPD::Song
-             *
-             * @return This might be NULL at end of the queue and when not repeating.
-             */
-            Song * get_next_song(void);
+        /**
+         * @brief Get the currently playing MPD::Song
+         *
+         * @return This is NULL when not playing! Check for it!
+         */
+        Song * get_song(void);
+        /**
+         * @brief Get the next playing MPD::Song
+         *
+         * @return This might be NULL at end of the queue and when not repeating.
+         */
+        Song * get_next_song(void);
 
-            /**
-             * @brief Update internal client state
-             */
-            void update_all(unsigned event = UINT_MAX);
+        /**
+         * @brief Update internal client state
+         */
+        void update_all(unsigned event = UINT_MAX);
 
-        private:
+    private:
 
-            /**
-             * @brief Custom implementation of mpd_run_status()
-             *
-             * @return same as mpd_run_status(), but sets m_NextSongID
-             */
-            Status * recv_status_own(void);
-            
-            /**
-             * @brief Current valid connection.
-             */
-            Connection * mp_Conn;
+        /**
+         * @brief Custom implementation of mpd_run_status()
+         *
+         * @return same as mpd_run_status(), but sets m_NextSongID
+         */
+        Status * recv_status_own(void);
 
-            /**
-             * @brief The mpd status (wrapped to C++ object)
-             */
-            Status * mp_Status;
-            /**
-             * @brief MPD statistics (wrapped to C++ object)
-             */
-            Statistics * mp_Statistics;
-            /**
-             * @brief Currently playing song (wrapped to C++ object)
-             */
-            Song * mp_Song;
-            Song * mp_NextSong;
+        /**
+         * @brief Current valid connection.
+         */
+        Connection * mp_Conn;
+
+        /**
+         * @brief The mpd status (wrapped to C++ object)
+         */
+        Status * mp_Status;
+        /**
+         * @brief MPD statistics (wrapped to C++ object)
+         */
+        Statistics * mp_Statistics;
+        /**
+         * @brief Currently playing song (wrapped to C++ object)
+         */
+        Song * mp_Song;
+        Song * mp_NextSong;
     };
 }
 

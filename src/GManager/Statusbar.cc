@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -60,15 +60,15 @@ namespace GManager
     }
 
     /* ------------------ */
-    
+
     void Statusbar::on_connection_change(bool server_changed, bool is_connected)
     {
-       if(is_connected == false)
-          mp_Lastdata = NULL; 
+        if(is_connected == false)
+            mp_Lastdata = NULL;
 
         m_Statusbar->set_text("Not connected");
     }
-    
+
     /* ------------------ */
 
     void Statusbar::format_time(unsigned time, char buffer[])
@@ -98,8 +98,8 @@ namespace GManager
 
     void Statusbar::do_update_message(MPD::NotifyData& data)
     {
-        MPD::Status& status = data.get_status(); 
-        MPD::Statistics& stats = data.get_statistics(); 
+        MPD::Status& status = data.get_status();
+        MPD::Statistics& stats = data.get_statistics();
 
         char elapsed[MAX_TIME_BUF] = {0};
         char totaltm[MAX_TIME_BUF] = {0};
@@ -112,16 +112,16 @@ namespace GManager
 
         Glib::ustring db_play_time = Utils::seconds_to_duration(stats.get_db_play_time());
         mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s total playtime | %u%% volume",
-                status.get_audio_sample_rate(),
-                status.get_audio_bits(),
-                status.get_kbit_rate(),
-                status.get_audio_channels() == 1 ? "Mono" : "Stereo",
-                elapsed,
-                totaltm,
-                stats.get_number_of_songs(),
-                db_play_time.c_str(),
-                CLAMP(status.get_volume(),0,100)
-                );
+                                     status.get_audio_sample_rate(),
+                                     status.get_audio_bits(),
+                                     status.get_kbit_rate(),
+                                     status.get_audio_channels() == 1 ? "Mono" : "Stereo",
+                                     elapsed,
+                                     totaltm,
+                                     stats.get_number_of_songs(),
+                                     db_play_time.c_str(),
+                                     CLAMP(status.get_volume(),0,100)
+                                    );
 
         m_Statusbar->set_text(mp_Message);
     }

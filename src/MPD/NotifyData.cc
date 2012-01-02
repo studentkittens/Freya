@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -35,16 +35,16 @@ namespace MPD
 {
     NotifyData::NotifyData(MPD::Connection& p_conn)
     {
-        mp_Conn = &p_conn; 
+        mp_Conn = &p_conn;
         mp_Status = NULL;
         mp_Statistics = NULL;
         mp_Song = NULL;
         mp_NextSong = NULL;
     }
 
-    //------------------
+//------------------
 
-    NotifyData::~NotifyData(void) 
+    NotifyData::~NotifyData(void)
     {
         delete mp_Statistics;
         delete mp_Status;
@@ -52,10 +52,10 @@ namespace MPD
         delete mp_NextSong;
     }
 
-    //------------------
+//------------------
 
     /* Since libmpdclient does not support the next-song-id,
-     * we habe to improvise a little bit. 
+     * we habe to improvise a little bit.
      */
     Status * NotifyData::recv_status_own(void)
     {
@@ -69,9 +69,9 @@ namespace MPD
         {
             conn = mp_Conn->get_connection();
             status = mpd_status_begin();
-            if(status != NULL) 
+            if(status != NULL)
             {
-                while ((pair = mpd_recv_pair(conn)) != NULL) 
+                while ((pair = mpd_recv_pair(conn)) != NULL)
                 {
                     if(!g_ascii_strcasecmp(pair->name,"nextsongid"))
                     {
@@ -89,8 +89,9 @@ namespace MPD
             {
                 retv_status = new Status(*status,NextSongID);
             }
-                
-            if(mp_NextSong != NULL) {
+
+            if(mp_NextSong != NULL)
+            {
                 delete mp_NextSong;
                 mp_NextSong = NULL;
             }
@@ -108,49 +109,50 @@ namespace MPD
         return retv_status;
     }
 
-    //------------------
+//------------------
 
     Status& NotifyData::get_status(void)
     {
         /* This should never be NULL. */
         g_assert(mp_Status);
         return *(mp_Status);
-    } 
+    }
 
-    //------------------
+//------------------
 
     Statistics& NotifyData::get_statistics(void)
     {
         /* This should never be NULL. */
         g_assert(mp_Statistics);
         return *(mp_Statistics);
-    } 
+    }
 
-    //------------------
+//------------------
 
     Song * NotifyData::get_song(void)
     {
         return mp_Song;
-    } 
+    }
 
-    //------------------
+//------------------
 
     Song * NotifyData::get_next_song(void)
     {
         return mp_NextSong;
-    } 
+    }
 
-    //------------------
+//------------------
 
     void NotifyData::update_all(unsigned event)
     {
         if(mp_Conn->is_connected())
         {
             mpd_connection * mpd_conn = mp_Conn->get_connection();
-            
+
             /*-------------------------------*/
 
-            if(event & MPD_IDLE_PLAYER) {
+            if(event & MPD_IDLE_PLAYER)
+            {
                 delete mp_Song;
                 mp_Song = NULL;
 
@@ -161,7 +163,8 @@ namespace MPD
 
             /*-------------------------------*/
 
-            if(event & (MPD_IDLE_DATABASE|MPD_IDLE_UPDATE)) {
+            if(event & (MPD_IDLE_DATABASE|MPD_IDLE_UPDATE))
+            {
                 delete mp_Statistics;
                 mp_Statistics = NULL;
 
@@ -172,7 +175,8 @@ namespace MPD
 
             /*-------------------------------*/
 
-            if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS|MPD_IDLE_MIXER|MPD_IDLE_OUTPUT|MPD_IDLE_QUEUE)) {
+            if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS|MPD_IDLE_MIXER|MPD_IDLE_OUTPUT|MPD_IDLE_QUEUE))
+            {
                 delete mp_Status;
                 mp_Status = NULL;
 

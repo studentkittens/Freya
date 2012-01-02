@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -142,7 +142,7 @@ namespace MPD
         const mpd_audio_format * fmt = mpd_status_get_audio_format(m_Status);
         uint32_t sample_rate = (fmt == NULL) ? -1 : fmt->sample_rate;
 
-        /* This is a poor fix for the obviously wrong return values from mpd 
+        /* This is a poor fix for the obviously wrong return values from mpd
          * Returns INT_MAX (1 << 32) sometimes for some reason. */
         return (sample_rate > (uint32_t)(1 << 31)) ? 44100 : sample_rate;
     }

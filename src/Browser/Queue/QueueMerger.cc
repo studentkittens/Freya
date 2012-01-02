@@ -1,7 +1,7 @@
 /***********************************************************
-* This file is part of Freya 
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@
 
 namespace Browser
 {
-    QueueMerger::QueueMerger(MPD::Client& client, 
+    QueueMerger::QueueMerger(MPD::Client& client,
                              Glib::RefPtr<Gtk::ListStore>& queue_model,
                              QueueModelColumns& queue_columns) :
         AbstractClientUser(client),
@@ -47,19 +47,19 @@ namespace Browser
         lastPlaylistVersion(0),
         playlistLength(0),
         mergePos(0),
-        mp_QueueModel(queue_model), 
+        mp_QueueModel(queue_model),
         mp_QueueColumns(&queue_columns)
     {}
 
     /*-------------------*/
-    
+
     void QueueMerger::disable_merge_once(void)
     {
         mergeDisabled = true;
     }
-    
+
     /*-------------------*/
-    
+
     Gtk::TreeModel::iterator QueueMerger::get_iter_at_pos(int pos)
     {
         return mp_QueueModel->get_iter(Utils::int_to_string(pos));
@@ -72,11 +72,14 @@ namespace Browser
         row[mp_QueueColumns->m_col_id]  = pSong->get_id();
         row[mp_QueueColumns->m_col_pos] = pSong->get_pos();
 
-        try {
+        try
+        {
             row[mp_QueueColumns->m_col_title]  = pSong->get_tag(MPD_TAG_TITLE,0);
             row[mp_QueueColumns->m_col_album]  = pSong->get_tag(MPD_TAG_ALBUM,0);
             row[mp_QueueColumns->m_col_artist] = pSong->get_tag(MPD_TAG_ARTIST,0);
-        } catch(const std::logic_error& e) {
+        }
+        catch(const std::logic_error& e)
+        {
             Warning("Empty column: %s",e.what());
         }
     }
@@ -122,10 +125,10 @@ namespace Browser
         }
         else if(mergePos < playlistLength)
         {
-            if(!mergeIterIsValid) 
+            if(!mergeIterIsValid)
             {
                 mergeIter = get_iter_at_pos(mergePos);
-                mergeIterIsValid = (mergeIter); 
+                mergeIterIsValid = (mergeIter);
             }
 
             if(mergeIterIsValid)
@@ -159,7 +162,7 @@ namespace Browser
                 if(serverChanged)
                 {
                     Info("Doing full refill of the queue.");
-                    mp_QueueModel->clear(); 
+                    mp_QueueModel->clear();
                     mp_Client->fill_queue(*this);
                     serverChanged = false;
                 }
@@ -175,7 +178,7 @@ namespace Browser
                 }
 
                 lastPlaylistVersion = qu_v;
-                playlistLength = qu_l; 
+                playlistLength = qu_l;
             }
             mergeDisabled = false;
         }
@@ -198,7 +201,7 @@ namespace Browser
         {
             (*iter)[mp_QueueColumns->m_col_pos] = pos++;
         }
-    }   
+    }
 
     /*-------------------*/
 }

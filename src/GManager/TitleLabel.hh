@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,22 +44,22 @@ namespace GManager
      */
     class TitleLabel : public MPD::AbstractClientUser
     {
-        public:
+    public:
 
-            TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+        TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
+    private:
 
-            void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
-            void update_next_song_widget(MPD::NotifyData& data);
-            void stash_next_title(void);
+        void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
+        void update_next_song_widget(MPD::NotifyData& data);
+        void stash_next_title(void);
 
-            /* Widgets */
-            Gtk::Label * mp_TitleLabel, * mp_ArtistAlbumLabel, 
-                       * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
+        /* Widgets */
+        Gtk::Label * mp_TitleLabel, * mp_ArtistAlbumLabel,
+            * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
 
-            MPD::Client * mp_Client;
+        MPD::Client * mp_Client;
     };
 }
 

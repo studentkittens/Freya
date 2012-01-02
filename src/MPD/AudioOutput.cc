@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@
 #include "AudioOutput.hh"
 namespace MPD
 {
-    AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) : 
+    AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) :
         AbstractClientExtension(client),
         AbstractComposite(true)
     {
@@ -39,36 +39,36 @@ namespace MPD
     }
 
     /* ----------------- */
-    
+
     unsigned AudioOutput::get_id(void)
     {
-        return mpd_output_get_id(mp_Output); 
+        return mpd_output_get_id(mp_Output);
     }
-    
-    //-----------------------    
+
+//-----------------------
 
     const char * AudioOutput::get_name(void)
     {
         return mpd_output_get_name(mp_Output);
     }
 
-    //-----------------------    
+//-----------------------
 
     bool AudioOutput::get_enabled(void)
     {
         return mpd_output_get_enabled(mp_Output);
     }
 
-    //-----------------------
-    // CLIENT EXTENSIONS
-    //-----------------------    
+//-----------------------
+// CLIENT EXTENSIONS
+//-----------------------
 
     bool AudioOutput::enable(void)
     {
         bool retv = false;
         unsigned id = get_id();
 
-        EXTERNAL_GET_BUSY 
+        EXTERNAL_GET_BUSY
         {
             retv = mpd_run_enable_output(conn,id);
         }
@@ -76,15 +76,15 @@ namespace MPD
 
         return retv;
     }
-    
-    //-----------------------    
+
+//-----------------------
 
     bool AudioOutput::disable(void)
     {
         bool retv = false;
         unsigned id = get_id();
 
-        EXTERNAL_GET_BUSY 
+        EXTERNAL_GET_BUSY
         {
             retv = mpd_run_disable_output(conn,id);
         }
@@ -92,9 +92,9 @@ namespace MPD
 
         return retv;
     }
-    
-    //-----------------------    
-    
+
+//-----------------------
+
     const char * AudioOutput::get_path(void)
     {
         return get_name();

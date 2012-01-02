@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@
 namespace Browser
 {
     /**
-     * @brief Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data 
+     * @brief Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data
      *
      * Note: It is actually a Proxy FOR MPD::Client, but used by Browser::Database.
      *
@@ -47,89 +47,89 @@ namespace Browser
      *
      * As Hashmap a std::map was used, with the Path as key and a vector of values as Hashvalue.
      */
-    class DatabaseCache : 
+    class DatabaseCache :
         public MPD::AbstractClientUser,
         public MPD::AbstractItemlist,
         public MPD::AbstractItemGenerator
     {
-        public:
+    public:
 
-            DatabaseCache(MPD::Client& client);
-            virtual ~DatabaseCache(void);
+        DatabaseCache(MPD::Client& client);
+        virtual ~DatabaseCache(void);
 
-            /**
-             * @brief Same as MPD::Client::fill_filelist(), but gets locally cached data
-             *
-             * @param data_model 
-             * @param path
-             */
-            void fill_filelist(MPD::AbstractItemlist& data_model, const char * path);
+        /**
+         * @brief Same as MPD::Client::fill_filelist(), but gets locally cached data
+         *
+         * @param data_model
+         * @param path
+         */
+        void fill_filelist(MPD::AbstractItemlist& data_model, const char * path);
 
-            /**
-             * @brief Implemented from AbstractItemlist 
-             *
-             * You are not supposed to call this yourself.
-             *
-             * @param pItem
-             */
-            void add_item(MPD::AbstractComposite * pItem);
+        /**
+         * @brief Implemented from AbstractItemlist
+         *
+         * You are not supposed to call this yourself.
+         *
+         * @param pItem
+         */
+        void add_item(MPD::AbstractComposite * pItem);
 
-            /* Method stubs .. */
-            void fill_queue(MPD::AbstractItemlist& data_model) {}
-            void fill_queue_changes(MPD::AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
-            void fill_playlists(MPD::AbstractItemlist& data_model) {}
-            void fill_outputs(MPD::AbstractItemlist& data_model) {}
+        /* Method stubs .. */
+        void fill_queue(MPD::AbstractItemlist& data_model) {}
+        void fill_queue_changes(MPD::AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
+        void fill_playlists(MPD::AbstractItemlist& data_model) {}
+        void fill_outputs(MPD::AbstractItemlist& data_model) {}
 
 
-        private:
+    private:
 
-            /**
-             * @brief The actual value
-             *
-             * First bool is true if it's a file,
-             * void* points to the actual data. Cast when necessary.
-             */
-            typedef MPD::AbstractComposite* CachePairType;
-            /**
-             * @brief The list of actual values
-             */
-            typedef std::vector<CachePairType> CacheVectorType; 
-            /**
-             * @brief The Hashmap, The path is used as key value, default comparator is used
-             */
-            typedef std::map<Glib::ustring,CacheVectorType> CacheMapType;
+        /**
+         * @brief The actual value
+         *
+         * First bool is true if it's a file,
+         * void* points to the actual data. Cast when necessary.
+         */
+        typedef MPD::AbstractComposite* CachePairType;
+        /**
+         * @brief The list of actual values
+         */
+        typedef std::vector<CachePairType> CacheVectorType;
+        /**
+         * @brief The Hashmap, The path is used as key value, default comparator is used
+         */
+        typedef std::map<Glib::ustring,CacheVectorType> CacheMapType;
 
-            /* -------------------------------- */ 
+        /* -------------------------------- */
 
-            /**
-             * @brief Implemented from AbstractClientUser 
-             *
-             * @param event
-             * @param data
-             */
-            void on_client_update(mpd_idle event, MPD::NotifyData& data);
-            /**
-             * @brief Implemented from AbstractClientUser 
-             *
-             * @param server_changed 
-             * @param is_connected 
-             */
-            void on_connection_change(bool server_changed, bool is_connected);
+        /**
+         * @brief Implemented from AbstractClientUser
+         *
+         * @param event
+         * @param data
+         */
+        void on_client_update(mpd_idle event, MPD::NotifyData& data);
+        /**
+         * @brief Implemented from AbstractClientUser
+         *
+         * @param server_changed
+         * @param is_connected
+         */
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            /* Logic */
-            void clear_cache(void);
+        /* Logic */
+        void clear_cache(void);
 
-            /* ------------------------------- */
+        /* ------------------------------- */
 
-            /* Path is the key, value the song or dir */
-            CacheMapType cacheMap;
+        /* Path is the key, value the song or dir */
+        CacheMapType cacheMap;
 
-            /* The last vector used by fill_filelist */
-            CacheVectorType * lastVec;
+        /* The last vector used by fill_filelist */
+        CacheVectorType * lastVec;
 
-            /* Do not clear on first start.. */
-            bool isFirstStart;
-            bool serverChanged;
+        /* Do not clear on first start.. */
+        bool isFirstStart;
+        bool serverChanged;
     };
 }
 

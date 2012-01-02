@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -32,31 +32,32 @@
 #include <cxxtest/TestSuite.h>
 #include "Notify.hh"
 
-class NotifyTestSuite : public CxxTest::TestSuite {
+class NotifyTestSuite : public CxxTest::TestSuite
+{
 
-    public:
+public:
 
-        void testsend_big( void )
-        {
-            TS_ASSERT(0==0);
-        }
+    void testsend_big( void )
+    {
+        TS_ASSERT(0==0);
+    }
 
-        void testsend_full( void )
-        {
-            TS_ASSERT(0==0);
-        }
+    void testsend_full( void )
+    {
+        TS_ASSERT(0==0);
+    }
 
-        void testset_stock_icon( void )
-        {
-            TS_ASSERT(0==0);
-        }
+    void testset_stock_icon( void )
+    {
+        TS_ASSERT(0==0);
+    }
 
-        void testset_next_extra( void )
-        {
-            TS_ASSERT(0==0);
-        }
+    void testset_next_extra( void )
+    {
+        TS_ASSERT(0==0);
+    }
 
-        
-    private:
-        /* data */
+
+private:
+    /* data */
 };

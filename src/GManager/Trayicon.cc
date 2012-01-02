@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
 
-namespace GManager 
+namespace GManager
 {
     Glib::ustring ui_info =
         "<ui>"
@@ -76,57 +76,57 @@ namespace GManager
         set(mp_Window->render_icon_pixbuf(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_LARGE_TOOLBAR));
     }
 
-    //-------------------------
-    
+//-------------------------
+
     void Trayicon::on_popup_menu(guint button, guint32 activate_time)
     {
         mp_Popup->popup(button,activate_time);
     }
-    
-    //---------------------------
+
+//---------------------------
 
     void Trayicon::on_activate(void)
     {
         mp_Window->set_visible(!mp_Window->get_visible());
     }
 
-    //---------------------------
+//---------------------------
 
     void Trayicon::on_next_clicked(void)
     {
         mp_Client->playback_next();
     }
-    
-    //---------------------------
-    
+
+//---------------------------
+
     void Trayicon::on_prev_clicked(void)
     {
         mp_Client->playback_prev();
     }
-    
-    //---------------------------
-    
+
+//---------------------------
+
     void Trayicon::on_stop_clicked(void)
     {
         mp_Client->playback_stop();
     }
-    
-    //---------------------------
-    
+
+//---------------------------
+
     void Trayicon::on_pause_clicked(void)
     {
         mp_Client->playback_pause();
     }
-    
-    //---------------------------
-    
+
+//---------------------------
+
     void Trayicon::on_quit_clicked(void)
     {
         Gtk::Main::quit();
     }
 
-    //---------------------------
-    
+//---------------------------
+
     void Trayicon::on_connection_change(bool server_changed, bool is_connected)
     {
         m_ActionNext->set_sensitive(is_connected);
@@ -134,9 +134,9 @@ namespace GManager
         m_ActionStop->set_sensitive(is_connected);
         m_ActionPause->set_sensitive(is_connected);
     }
-    
-    //---------------------------
-            
+
+//---------------------------
+
     void Trayicon::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
         MPD::Status& status = data.get_status();
@@ -152,5 +152,5 @@ namespace GManager
         }
     }
 
-    //---------------------------
+//---------------------------
 }

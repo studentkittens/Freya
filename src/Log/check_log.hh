@@ -1,7 +1,7 @@
 /***********************************************************
- * This file is part of Freya 
+ * This file is part of Freya
  * - A free MPD Gtk3 MPD Client -
- * 
+ *
  * Authors: Christopher Pahl, Christoph Piechula,
  *          Eduard Schneider, Marc Tigges
  *
@@ -12,7 +12,7 @@
  *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
  *   ///_.-' _..--.'_                        `( ) ) // //
  *   / (_..-' // (< _     ;_..__               ; `' / ///
- *    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
  *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
  *
  * Freya is free software: you can redistribute it and/or modify
@@ -40,50 +40,50 @@
 /* The whole suite. One suit for each module. */
 class LogTestSuite : public CxxTest::TestSuite
 {
-    public:
-        /* some blackbox testing of log::writer */
-        void testLogWriter( void )
+public:
+    /* some blackbox testing of log::writer */
+    void testLogWriter( void )
+    {
+        Init::Path path;
+        int aval = 0;
+        long fsize_a,fsize_b = 0;
+        GStatBuf statbuf;
+        memset(&statbuf,0,sizeof(GStatBuf));
+
+        /* gets a logwriter instance, should create a log if not avaiable */
+        Log::Writer::instance();
+        aval = g_stat(path.path_to_log().c_str(),&statbuf);
+
+        if(aval != -1)
         {
-            Init::Path path;
-            int aval = 0;
-            long fsize_a,fsize_b = 0;
-            GStatBuf statbuf;
-            memset(&statbuf,0,sizeof(GStatBuf));
+            fsize_a = statbuf.st_size;
+            printf("filesize var_a: %ld bytes. \n",fsize_a);
 
-            /* gets a logwriter instance, should create a log if not avaiable */
-            Log::Writer::instance(); 
-            aval = g_stat(path.path_to_log().c_str(),&statbuf); 
-           
-            if(aval != -1)
-            {
-                fsize_a = statbuf.st_size;
-                printf("filesize var_a: %ld bytes. \n",fsize_a);
-               
-                fsize_b = statbuf.st_size;
-                printf("filesize var_b: %ld bytes. \n",fsize_b);
-                
-                /* log size equal? */
-                TS_ASSERT_EQUALS(fsize_a,fsize_b);
+            fsize_b = statbuf.st_size;
+            printf("filesize var_b: %ld bytes. \n",fsize_b);
 
-                /* writing a message to log, messeage should grow by 12 bytes + 64 bytes date/log footprint */
-                Info("test message");
-                printf("writing message to log.\n");
+            /* log size equal? */
+            TS_ASSERT_EQUALS(fsize_a,fsize_b);
 
-                /*reinit stat struct and get new filesize */
-                g_stat(path.path_to_log().c_str(),&statbuf); 
-                fsize_b = statbuf.st_size;
-                printf("new filesize var_b: %ld bytes. \n",fsize_b);
-                
-                /* file_b bigger after writing to log? */
-                TS_ASSERT(fsize_a < fsize_b);
+            /* writing a message to log, messeage should grow by 12 bytes + 64 bytes date/log footprint */
+            Info("test message");
+            printf("writing message to log.\n");
 
-                /* file_b size increased properly? file_a + written bytes? */
-                TS_ASSERT(fsize_a+12+64 == fsize_b);
-            }
-            else
-            {
-                TS_FAIL("error occured, logfile possibly not avaiable.");
-            }
+            /*reinit stat struct and get new filesize */
+            g_stat(path.path_to_log().c_str(),&statbuf);
+            fsize_b = statbuf.st_size;
+            printf("new filesize var_b: %ld bytes. \n",fsize_b);
+
+            /* file_b bigger after writing to log? */
+            TS_ASSERT(fsize_a < fsize_b);
+
+            /* file_b size increased properly? file_a + written bytes? */
+            TS_ASSERT(fsize_a+12+64 == fsize_b);
         }
+        else
+        {
+            TS_FAIL("error occured, logfile possibly not avaiable.");
+        }
+    }
 
 };

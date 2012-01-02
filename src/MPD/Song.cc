@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,11 +44,11 @@ namespace MPD
     Song::Song(const MPD::Song& other) :
         AbstractComposite(true)
     {
-       mpd_song * other_song = other.mp_Song;
-       if(other_song != NULL)
-           mp_Song = mpd_song_dup(other_song);
-       else
-           mp_Song = NULL;
+        mpd_song * other_song = other.mp_Song;
+        if(other_song != NULL)
+            mp_Song = mpd_song_dup(other_song);
+        else
+            mp_Song = NULL;
     }
 
     /*------------------------------*/
@@ -127,38 +127,27 @@ namespace MPD
 
             if(tmp=="artist")
                 tmp = get_tag(MPD_TAG_ARTIST,0);
-            else
-            if(tmp=="title")
+            else if(tmp=="title")
                 tmp = get_tag(MPD_TAG_TITLE,0);
-            else
-            if(tmp=="album")
+            else if(tmp=="album")
                 tmp = get_tag(MPD_TAG_ALBUM,0);
-            else
-            if(tmp=="track")
+            else if(tmp=="track")
                 tmp = get_tag(MPD_TAG_TRACK,0);
-            else
-            if(tmp=="name")
+            else if(tmp=="name")
                 tmp = get_tag(MPD_TAG_NAME,0);
-            else
-            if(tmp=="date")
+            else if(tmp=="date")
                 tmp = get_tag(MPD_TAG_DATE,0);
-            else
-            if(tmp=="album_artist")
+            else if(tmp=="album_artist")
                 tmp = get_tag(MPD_TAG_ALBUM_ARTIST,0);
-            else
-            if(tmp=="genre")
+            else if(tmp=="genre")
                 tmp = get_tag(MPD_TAG_GENRE,0);
-            else
-            if(tmp=="composer")
+            else if(tmp=="composer")
                 tmp = get_tag(MPD_TAG_COMPOSER,0);
-            else
-            if(tmp=="performer")
+            else if(tmp=="performer")
                 tmp = get_tag(MPD_TAG_PERFORMER,0);
-            else
-            if(tmp=="comment")
+            else if(tmp=="comment")
                 tmp = get_tag(MPD_TAG_COMMENT,0);
-            else
-            if(tmp=="disc")
+            else if(tmp=="disc")
                 tmp = get_tag(MPD_TAG_DISC,0);
             else
                 tmp=" ";

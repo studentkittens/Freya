@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -43,19 +43,19 @@ namespace GManager
         BUILDER_GET(builder,"next_song_title",mp_NextSongTitleLabel);
     }
 
-    //----------------
-    
+//----------------
+
     void TitleLabel::stash_next_title(void)
     {
         mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
         mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
     }
 
-    //----------------
+//----------------
 
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
-        MPD::Song * current_song = data.get_next_song(); 
+        MPD::Song * current_song = data.get_next_song();
         if(current_song != NULL)
         {
 
@@ -69,7 +69,7 @@ namespace GManager
         }
     }
 
-    //----------------
+//----------------
 
     void TitleLabel::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -81,7 +81,7 @@ namespace GManager
         }
     }
 
-    //----------------
+//----------------
 
     void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
@@ -91,14 +91,14 @@ namespace GManager
             if(current_song != NULL)
             {
 
-                mp_TitleLabel->set_markup(current_song->song_format("<b>${title}</b> (Track ${track})")); 
-                mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small><span weight='light'><i>by</i></span> ${artist} <span weight='light'><i>on</i></span> ${album} (${date})</small>")); 
+                mp_TitleLabel->set_markup(current_song->song_format("<b>${title}</b> (Track ${track})"));
+                mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small><span weight='light'><i>by</i></span> ${artist} <span weight='light'><i>on</i></span> ${album} (${date})</small>"));
 
             }
             else
             {
-                mp_TitleLabel->set_markup("<b>Not Playing</b>"); 
-                mp_ArtistAlbumLabel->set_markup("<small>Select a new Song</small>"); 
+                mp_TitleLabel->set_markup("<b>Not Playing</b>");
+                mp_ArtistAlbumLabel->set_markup("<small>Select a new Song</small>");
             }
         }
 

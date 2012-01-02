@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -55,36 +55,36 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
     int c = getchar();
     switch(c)
     {
-        case 'q': 
-            {
-                /* Quit mainloop */
-                g_main_loop_ref(main_loop);
-                g_main_loop_quit(main_loop);
-                retv = false;
-                break;
-            }
-        case ':':
-            {
-                char cmd[256] = {0};
-                if(fgets(cmd,255,stdin))
-                {
-                    /* Chomp newline */
-                    char * nl = strrchr(cmd,'\n');
-                    if(nl != NULL) nl[0] = 0;
-                    client->send_command(cmd);
-                }
+    case 'q':
+    {
+        /* Quit mainloop */
+        g_main_loop_ref(main_loop);
+        g_main_loop_quit(main_loop);
+        retv = false;
+        break;
+    }
+    case ':':
+    {
+        char cmd[256] = {0};
+        if(fgets(cmd,255,stdin))
+        {
+            /* Chomp newline */
+            char * nl = strrchr(cmd,'\n');
+            if(nl != NULL) nl[0] = 0;
+            client->send_command(cmd);
+        }
 
-                /* Do not unread newline */
-                return true;
-            }
-        default:
-            {
-                break;
-            }
+        /* Do not unread newline */
+        return true;
+    }
+    default:
+    {
+        break;
+    }
     }
 
     /* Unread characters left on the stream (if any) */
-    while ((c = getchar()) != EOF && c != '\n'); 
+    while ((c = getchar()) != EOF && c != '\n');
 
     return retv;
 }
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
     data.loop   = app_loop->gobj();
 
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
-    g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data); 
+    g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data);
 
     freya.connect();
 

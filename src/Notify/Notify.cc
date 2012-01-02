@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@ namespace Notify
     {
         re_init();
     }
-    //---------------------------
+//---------------------------
     Notify::~Notify()
     {
         if(notify_is_initted())
@@ -50,38 +50,38 @@ namespace Notify
         clear_icon();
     }
 
-    //---------------------------
-    //---------------------------
-    //---------------------------
+//---------------------------
+//---------------------------
+//---------------------------
     void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
     {
         _send(hl.c_str(),msg.c_str(),NULL);
     }
-    //---------------------------
+//---------------------------
     void Notify::send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf )
     {
         _send(hl.c_str(),msg.c_str(),pixbuf);
     }
-    //---------------------------
-    //---------------------------
+//---------------------------
+//---------------------------
     /**/
-    //---------------------------
+//---------------------------
     void Notify::_send(const char * hl, const char  * msg, GdkPixbuf * pixbuf )
     {
 
         while(working);
 
-         if(use_notify && !working && notify_is_initted())
+        if(use_notify && !working && notify_is_initted())
         {
             working=true;
             NotifyNotification *notification_ptr;
             if(extra)
             {
                 notification_ptr=notify_notification_new(
-                    hl!=NULL?hl:"",
-                    msg!=NULL?msg:"",
-                    icon!=NULL?icon->c_str():NULL
-                );
+                                     hl!=NULL?hl:"",
+                                     msg!=NULL?msg:"",
+                                     icon!=NULL?icon->c_str():NULL
+                                 );
 
             }
             else
@@ -118,7 +118,7 @@ namespace Notify
 
 
     }
-    //------------------------
+//------------------------
     void Notify::re_init(void)
     {
         while(working);
@@ -151,14 +151,14 @@ namespace Notify
 
     }
 
-    //------------------------
+//------------------------
 
     void Notify::set_stock_icon(const char* name)
     {
         clear_icon();
         icon = new Glib::ustring(name);
     }
-    //------------------------
+//------------------------
 
     void Notify::clear_icon(void)
     {
@@ -168,11 +168,11 @@ namespace Notify
             icon=NULL;
         }
     }
-    //------------------------
+//------------------------
 
     void Notify::set_next_extra(void)
     {
         extra=true;
     }
-    //------------------------
+//------------------------
 }

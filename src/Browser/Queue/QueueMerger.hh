@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -39,12 +39,12 @@
 
 #include <gtkmm.h>
 
-namespace Browser 
+namespace Browser
 {
     /**
      * @brief This class manages the updating and merging of the Queue.
      *
-     * When an update needs to be done, and it's not the first start, or 
+     * When an update needs to be done, and it's not the first start, or
      * a serverchange, then fill_queue_changes() of MPD::Client is called,
      * and the changes are merged in.
      *
@@ -52,108 +52,108 @@ namespace Browser
      */
     class QueueMerger : public MPD::AbstractItemlist, public MPD::AbstractClientUser
     {
-        public:
-            QueueMerger(MPD::Client& client,
-                        Glib::RefPtr<Gtk::ListStore>& queue_model,
-                        QueueModelColumns& queue_columns);
+    public:
+        QueueMerger(MPD::Client& client,
+                    Glib::RefPtr<Gtk::ListStore>& queue_model,
+                    QueueModelColumns& queue_columns);
 
-            /**
-             * @brief Implemented from AbstractItemlist
-             *
-             * @param pSong a MPD::Song
-             */
-            void add_item(MPD::AbstractComposite * pSong);
+        /**
+         * @brief Implemented from AbstractItemlist
+         *
+         * @param pSong a MPD::Song
+         */
+        void add_item(MPD::AbstractComposite * pSong);
 
-            /**
-             * @brief Disables automatic updating 1x
-             *
-             * This is useful when for example some rows need to be deleted from the Queue.
-             * Then, the rows are deleted from the model and the view, MPD is notified,
-             * but the next update is disabled with this method. 
-             * Also positions in the row are calculated manually via recalculate_positions()
-             */
-            void disable_merge_once(void);
-            /**
-             * @brief Recalculate the position row of the Queue
-             *
-             * In order for merging to work all rows need to be in subsequent order.
-             * This method rearranges the rows starting by pos or 0 if not given
-             *
-             * @param pos Where to start or 0 if not given
-             */
-            void recalculate_positions(unsigned pos = 0);
+        /**
+         * @brief Disables automatic updating 1x
+         *
+         * This is useful when for example some rows need to be deleted from the Queue.
+         * Then, the rows are deleted from the model and the view, MPD is notified,
+         * but the next update is disabled with this method.
+         * Also positions in the row are calculated manually via recalculate_positions()
+         */
+        void disable_merge_once(void);
+        /**
+         * @brief Recalculate the position row of the Queue
+         *
+         * In order for merging to work all rows need to be in subsequent order.
+         * This method rearranges the rows starting by pos or 0 if not given
+         *
+         * @param pos Where to start or 0 if not given
+         */
+        void recalculate_positions(unsigned pos = 0);
 
-        private:
-            
-            /**
-             * @brief Implemented from AbstractClientUser
-             *
-             * @param event
-             * @param data
-             */
-            void on_client_update(mpd_idle event, MPD::NotifyData& data);
+    private:
 
-            /**
-             * @brief Implemented from AbstractClientUser
-             *
-             * @param is_connected
-             */
-            void on_connection_change(bool server_changed, bool is_connected);
+        /**
+         * @brief Implemented from AbstractClientUser
+         *
+         * @param event
+         * @param data
+         */
+        void on_client_update(mpd_idle event, MPD::NotifyData& data);
 
-            /**
-             * @brief Set the contents of a single row
-             *
-             * @param row
-             * @param pSong
-             */
-            void set_row_contents(Gtk::TreeModel::Row& row, MPD::Song * pSong);
+        /**
+         * @brief Implemented from AbstractClientUser
+         *
+         * @param is_connected
+         */
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            /**
-             * @brief Add a row to the Queue
-             *
-             * @param pSong
-             */
-            void add_row(MPD::Song * pSong);
+        /**
+         * @brief Set the contents of a single row
+         *
+         * @param row
+         * @param pSong
+         */
+        void set_row_contents(Gtk::TreeModel::Row& row, MPD::Song * pSong);
 
-            /**
-             * @brief merge (at the moment, just replace the row) a row
-             *
-             * @param pSong
-             */
-            void merge(MPD::Song * pSong);
+        /**
+         * @brief Add a row to the Queue
+         *
+         * @param pSong
+         */
+        void add_row(MPD::Song * pSong);
 
-            /**
-             * @brief Remove all rows after this (including starting_with pos)
-             *
-             * @param starting_with
-             */
-            void trim(unsigned starting_with);
+        /**
+         * @brief merge (at the moment, just replace the row) a row
+         *
+         * @param pSong
+         */
+        void merge(MPD::Song * pSong);
+
+        /**
+         * @brief Remove all rows after this (including starting_with pos)
+         *
+         * @param starting_with
+         */
+        void trim(unsigned starting_with);
 
 
-            /**
-             * @brief Get a treemodel iter at position pos
-             *
-             * @param pos
-             *
-             * @return 
-             */
-            Gtk::TreeModel::iterator get_iter_at_pos(int pos);
+        /**
+         * @brief Get a treemodel iter at position pos
+         *
+         * @param pos
+         *
+         * @return
+         */
+        Gtk::TreeModel::iterator get_iter_at_pos(int pos);
 
-            /* -------------------- */
+        /* -------------------- */
 
-            bool mergeDisabled;
-            bool mergeIterIsValid;
-            bool serverChanged;
-            bool isFirstStart;
+        bool mergeDisabled;
+        bool mergeIterIsValid;
+        bool serverChanged;
+        bool isFirstStart;
 
-            Gtk::TreeModel::iterator mergeIter;
+        Gtk::TreeModel::iterator mergeIter;
 
-            unsigned lastPlaylistVersion;
-            unsigned playlistLength;
-            unsigned mergePos;
+        unsigned lastPlaylistVersion;
+        unsigned playlistLength;
+        unsigned mergePos;
 
-            Glib::RefPtr<Gtk::ListStore> mp_QueueModel;
-            QueueModelColumns * mp_QueueColumns;
+        Glib::RefPtr<Gtk::ListStore> mp_QueueModel;
+        QueueModelColumns * mp_QueueColumns;
     };
 }
 

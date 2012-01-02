@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -38,10 +38,10 @@ namespace GManager
         /* Everything by AbstractClientUser already */
     }
 
-    // ------------------------------------
+// ------------------------------------
 
     void NotifyManager::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
-    { 
+    {
         if(event & MPD_IDLE_PLAYER)
         {
             MPD::Song * current_song = data.get_song();
@@ -62,7 +62,7 @@ namespace GManager
         }
     }
 
-    // ------------------------------------
+// ------------------------------------
 
     void NotifyManager::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -79,6 +79,6 @@ namespace GManager
         }
     }
 
-    // ------------------------------------
+// ------------------------------------
 
 }

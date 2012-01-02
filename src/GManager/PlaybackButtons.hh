@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,23 +44,23 @@ namespace GManager
      */
     class PlaybackButtons : public MPD::AbstractClientUser
     {
-        public:
-            PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+    public:
+        PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
-            /* Client Signals */
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+    private:
+        /* Client Signals */
+        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            /* GTK Signals */
-            void on_button_stop(void);
-            void on_button_pause(void);
-            void on_button_next(void);
-            void on_button_prev(void);
+        /* GTK Signals */
+        void on_button_stop(void);
+        void on_button_pause(void);
+        void on_button_next(void);
+        void on_button_prev(void);
 
-            /* Widgets */
-            Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
-            Gtk::Image play_icon, pause_icon;
+        /* Widgets */
+        Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
+        Gtk::Image play_icon, pause_icon;
     };
 }
 

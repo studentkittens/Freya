@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,28 +44,28 @@ namespace Browser
     /**
      * @brief Network Settings Tab.
      */
-    class SettingsNetwork : public AbstractSettings 
+    class SettingsNetwork : public AbstractSettings
     {
-        public:
-            SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
-            ~SettingsNetwork();
+    public:
+        SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
+        ~SettingsNetwork();
 
-            void accept_new_settings(void);
-            void decline_new_settings(void);
-            void reset_settings(void);
+        void accept_new_settings(void);
+        void decline_new_settings(void);
+        void reset_settings(void);
 
-        private:
-            void show_avahi(void);
-            void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port);
-            Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
+    private:
+        void show_avahi(void);
+        void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port);
+        Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
 
-            /* Widgets */
-            Avahi::Browser * handle;
-            Gtk::Entry *ip;
-            Gtk::SpinButton *port, *recon_timeout;
-            Gtk::Button *avahi;
-            Gtk::CheckButton *autoconnect;
-            Gtk::MessageDialog *avahi_warning;
+        /* Widgets */
+        Avahi::Browser * handle;
+        Gtk::Entry *ip;
+        Gtk::SpinButton *port, *recon_timeout;
+        Gtk::Button *avahi;
+        Gtk::CheckButton *autoconnect;
+        Gtk::MessageDialog *avahi_warning;
     };
 }
 #endif

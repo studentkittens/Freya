@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -48,18 +48,18 @@ namespace Browser
 
     SettingsPlayback::~SettingsPlayback(void) {}
 
-    //----------------------------
+//----------------------------
 
     void SettingsPlayback::accept_new_settings(void)
     {
         unsigned crossfade_value = crossfade->get_value_as_int();
         bool stoponexit_value =  stoponexit->get_active();
-        
+
         mp_Client->playback_crossfade(crossfade_value);
         CONFIG_SET_AS_INT(stoponexit_name,stoponexit_value?1:0);
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsPlayback::decline_new_settings(void)
     {
@@ -70,16 +70,16 @@ namespace Browser
         stoponexit->set_active(CONFIG_GET_AS_INT(stoponexit_name)==1);
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsPlayback::reset_settings(void)
     {
         crossfade->set_value(0);
         stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);
     }
-    
-    //----------------------------
-    
+
+//----------------------------
+
     void SettingsPlayback::on_client_update(mpd_idle event, MPD::NotifyData& data)
     {
         if(event & MPD_IDLE_OPTIONS)
@@ -87,13 +87,13 @@ namespace Browser
             crossfade->set_value(data.get_status().get_crossfade());
         }
     }
-    
-    //----------------------------
-    
+
+//----------------------------
+
     void SettingsPlayback::on_connection_change(bool server_changed, bool is_connected)
     {
         crossfade->set_sensitive(is_connected);
     }
-    
-    //----------------------------
+
+//----------------------------
 }

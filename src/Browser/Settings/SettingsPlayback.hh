@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -47,23 +47,23 @@ namespace Browser
      */
     class SettingsPlayback : public AbstractSettings, public MPD::AbstractClientUser
     {
-        public:
-            SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
-            ~SettingsPlayback();
+    public:
+        SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+        ~SettingsPlayback();
 
-            void accept_new_settings(void);
-            void decline_new_settings(void);
-            void reset_settings(void);
+        void accept_new_settings(void);
+        void decline_new_settings(void);
+        void reset_settings(void);
 
-        private:
+    private:
 
-            void on_client_update(mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+        void on_client_update(mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            Glib::ustring name, stoponexit_name;
+        Glib::ustring name, stoponexit_name;
         /* Widgets */
-            Gtk::SpinButton *crossfade;
-            Gtk::CheckButton *stoponexit;
+        Gtk::SpinButton *crossfade;
+        Gtk::CheckButton *stoponexit;
     };
 }
 #endif

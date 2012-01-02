@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -35,8 +35,8 @@
 namespace GManager
 {
     PlaybackButtons::PlaybackButtons(MPD::Client& instance, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractClientUser(instance), 
-        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_SMALL_TOOLBAR), 
+        AbstractClientUser(instance),
+        play_icon(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_SMALL_TOOLBAR),
         pause_icon(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_SMALL_TOOLBAR)
     {
         BUILDER_GET(builder,"stop_button",stop_button);
@@ -50,35 +50,35 @@ namespace GManager
         next_button->signal_clicked().connect(sigc::mem_fun(*this,&PlaybackButtons::on_button_next));
     }
 
-    //----------------------------
+//----------------------------
 
     void PlaybackButtons::on_button_stop(void)
     {
         mp_Client->playback_stop();
     }
 
-    //----------------------------
+//----------------------------
 
     void PlaybackButtons::on_button_pause(void)
     {
         mp_Client->playback_pause();
     }
 
-    //----------------------------
+//----------------------------
 
     void PlaybackButtons::on_button_prev(void)
     {
         mp_Client->playback_prev();
     }
 
-    //----------------------------
+//----------------------------
 
     void PlaybackButtons::on_button_next(void)
     {
         mp_Client->playback_next();
     }
 
-    //----------------------------
+//----------------------------
 
     void PlaybackButtons::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
@@ -87,14 +87,14 @@ namespace GManager
             pause_button->set_image((data.get_status().get_state() == MPD_STATE_PLAY) ? pause_icon : play_icon);
         }
     }
-    
-    //----------------------------
 
-    void PlaybackButtons::on_connection_change(bool server_changed, bool is_connected) 
+//----------------------------
+
+    void PlaybackButtons::on_connection_change(bool server_changed, bool is_connected)
     {
-       stop_button->set_sensitive(is_connected);
-       prev_button->set_sensitive(is_connected);
-       next_button->set_sensitive(is_connected);
-       pause_button->set_sensitive(is_connected);
+        stop_button->set_sensitive(is_connected);
+        prev_button->set_sensitive(is_connected);
+        next_button->set_sensitive(is_connected);
+        pause_button->set_sensitive(is_connected);
     }
 }

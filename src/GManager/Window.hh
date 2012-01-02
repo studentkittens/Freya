@@ -1,7 +1,7 @@
 /***********************************************************
- * This file is part of Freya 
+ * This file is part of Freya
  * - A free MPD Gtk3 MPD Client -
- * 
+ *
  * Authors: Christopher Pahl, Christoph Piechula,
  *          Eduard Schneider, Marc Tigges
  *
@@ -12,7 +12,7 @@
  *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
  *   ///_.-' _..--.'_                        `( ) ) // //
  *   / (_..-' // (< _     ;_..__               ; `' / ///
- *    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
  *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
  *
  * Freya is free software: you can redistribute it and/or modify
@@ -38,24 +38,24 @@ namespace GManager
     /**
      * @brief Just manages the close button.
      */
-    class Window 
+    class Window
     {
-        public:
-            Window(const Glib::RefPtr<Gtk::Builder> &builder);
-            ~Window();
+    public:
+        Window(const Glib::RefPtr<Gtk::Builder> &builder);
+        ~Window();
 
-            /**
-             * @brief Get the Gtk::Window of Freya
-             *
-             * @return
-             */
-            Gtk::Window* get_window(void);
+        /**
+         * @brief Get the Gtk::Window of Freya
+         *
+         * @return
+         */
+        Gtk::Window* get_window(void);
 
-        protected:
-            bool on_delete_event(GdkEventAny* event);
+    protected:
+        bool on_delete_event(GdkEventAny* event);
 
-        private:
-            Gtk::Window * main_window;
+    private:
+        Gtk::Window * main_window;
     };
 }
 

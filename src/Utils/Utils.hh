@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -39,13 +39,13 @@
 /* Gtk::Builder macros */
 #define BUILDER_GET(builder_refp, widget_name, widget_ptr) \
     BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \
-    Gtk::manage(widget_ptr);                               
+    Gtk::manage(widget_ptr);
 
 #define BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \
     widget_ptr = NULL;                                     \
     builder_refp->get_widget(widget_name,widget_ptr);      \
     g_assert(widget_ptr);                                  \
-
+ 
 
 #define BUILDER_ADD(builder_ref, filename)   \
     g_assert(filename);                      \
@@ -56,7 +56,7 @@
            "definitions to builder. => %s"   \
            "| Is '%s' there and okay?",      \
            e.what().c_str(),filename);       \
-    }  
+    }
 namespace Utils
 {
 
@@ -69,7 +69,7 @@ namespace Utils
      */
     Glib::ustring seconds_to_duration(unsigned long);
 
-    
+
     /**
      * @brief converts a given time in seconds to a "timestamp"
      *
@@ -78,8 +78,8 @@ namespace Utils
      * @return date as ustring, e.g. 2011-04-02
      */
     Glib::ustring seconds_to_timestamp(const long);
-    
-    
+
+
     /**
      * @brief Simply converts any integer to a std::string
      *
@@ -89,4 +89,4 @@ namespace Utils
      */
     std::string int_to_string(int num);
 }
-#endif       
+#endif

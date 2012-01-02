@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -49,9 +49,10 @@
 namespace Log
 {
     /**
-     * @brief Log severity, influencing the color. 
+     * @brief Log severity, influencing the color.
      */
-    enum LOGLEVEL {
+    enum LOGLEVEL
+    {
         LOG_OK,
         LOG_ERROR,
         LOG_FATAL_ERROR,
@@ -60,7 +61,7 @@ namespace Log
         LOG_DEBUG
     };
 
-    class Writer 
+    class Writer
     {
         /* Make this class a singleton,
          * this implicitely defines a ctor,
@@ -68,7 +69,7 @@ namespace Log
          */
         DEF_SINGLETON(Writer);
 
-        public:
+    public:
 
         /**
          * @brief Closes the Log also properly. It is not fatal when not being called.
@@ -76,7 +77,7 @@ namespace Log
         ~Writer();
 
         /**
-         * @brief Actual instance method called. Do not use directly! 
+         * @brief Actual instance method called. Do not use directly!
          *
          * @param file Passed by the macro.
          * @param line Passed by the macro.
@@ -84,21 +85,21 @@ namespace Log
          * @param msg Actual message
          * @param ... a va_list to allow printf style logging
          */
-        void message(const char *file, int line, LOGLEVEL level, const char *msg, ...); 		
+        void message(const char *file, int line, LOGLEVEL level, const char *msg, ...);
 
         /**
          * @brief Clear the logfile (but keep it open)
          */
         void clear(void);
 
-        private:
+    private:
 
 
         Glib::ustring m_Logpath;
-        FILE * m_Logfile;                                                              	
+        FILE * m_Logfile;
 
-        const char * convert_enum_to_str(LOGLEVEL level, bool& append_location); 
-        void get_current_time(char buffer[]);									
+        const char * convert_enum_to_str(LOGLEVEL level, bool& append_location);
+        void get_current_time(char buffer[]);
     };
 }
 

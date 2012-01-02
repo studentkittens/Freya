@@ -1,7 +1,7 @@
 /***********************************************************
-* This file is part of Freya 
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -40,20 +40,21 @@
  * Instead of talking directly with the client in order to request data some classes want to
  * do implement something own, like for example a caching of the data.
  *
- * An example would be the DatabaseCache that implements this class. It caches all data, 
+ * An example would be the DatabaseCache that implements this class. It caches all data,
  * and requests data only if not cached yet.
  */
 namespace MPD
 {
-    class AbstractItemGenerator {
-        public:
-            virtual void fill_queue(AbstractItemlist& data_model) = 0;
-            virtual void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) = 0;
-            virtual void fill_playlists(AbstractItemlist& data_model) = 0;
-            virtual void fill_outputs(AbstractItemlist& data_model) = 0;
-            virtual void fill_filelist(AbstractItemlist& data_model, const char * path) = 0;
+    class AbstractItemGenerator
+    {
+    public:
+        virtual void fill_queue(AbstractItemlist& data_model) = 0;
+        virtual void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) = 0;
+        virtual void fill_playlists(AbstractItemlist& data_model) = 0;
+        virtual void fill_outputs(AbstractItemlist& data_model) = 0;
+        virtual void fill_filelist(AbstractItemlist& data_model, const char * path) = 0;
 
-            virtual ~AbstractItemGenerator() {};
+        virtual ~AbstractItemGenerator() {};
     };
 }
 

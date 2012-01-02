@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -39,9 +39,9 @@ namespace MPD
     typedef struct mpd_entity mpd_entity;
 
     /* Map appropiate Glib::IO events to MPD Async events,
-     * and other way round. 
+     * and other way round.
      */
-    static const int map_IOCondtion_MPDASync[][2] = 
+    static const int map_IOCondtion_MPDASync[][2] =
     {
         {G_IO_IN,  MPD_ASYNC_EVENT_READ},
         {G_IO_OUT, MPD_ASYNC_EVENT_WRITE},
@@ -53,13 +53,13 @@ namespace MPD
     /* Number of rows in above table */
     static const unsigned map_IOAsync_size = (sizeof(map_IOCondtion_MPDASync)/sizeof(unsigned));
 
-    //--------------------------------
+//--------------------------------
 
     Listener::Listener(EventNotifier * notifier, Connection& sync_conn) : m_NData(sync_conn)
     {
 
         /* No idle events, nor io events on startup,
-         * call force_update() if you want to init 
+         * call force_update() if you want to init
          * your registered classes */
         idle_events  = 0;
         io_eventmask = (mpd_async_event)0;
@@ -83,7 +83,7 @@ namespace MPD
         m_NData.update_all();
 
         /* Save a pointer so we can send sync commands
-         * like "noidle" */ 
+         * like "noidle" */
         mp_Conn = &sync_conn;
 
         /* Parser is used to parse the incoming events:
@@ -96,10 +96,10 @@ namespace MPD
 
         /* We need a non-blocking connection. */
         async_conn = mpd_connection_get_async(sync_conn.get_connection());
-        async_socket_fd = mpd_async_get_fd(async_conn); 
+        async_socket_fd = mpd_async_get_fd(async_conn);
     }
 
-    //--------------------------------
+//--------------------------------
 
     Listener::~Listener()
     {
@@ -109,16 +109,16 @@ namespace MPD
             mpd_parser_free(mp_Parser);
     }
 
-    //--------------------------------
+//--------------------------------
 
     bool Listener::is_idling(void)
     {
         return is_idle;
     }
 
-    //--------------------------------
-    //--------------------------------
-    //--------------------------------
+//--------------------------------
+//--------------------------------
+//--------------------------------
 
     /* Check if a error occured */
     bool Listener::check_async_error(void)
@@ -135,7 +135,7 @@ namespace MPD
         return result;
     }
 
-    //--------------------------------
+//--------------------------------
 
     void Listener::invoke_user_callback(void)
     {
@@ -150,7 +150,7 @@ namespace MPD
             if(is_forced)
             {
                 /* Trigger all events (0xFFFFFF) */
-                idle_events = UINT_MAX; 
+                idle_events = UINT_MAX;
             }
 
             m_NData.update_all(idle_events);
@@ -177,7 +177,7 @@ namespace MPD
             /* Delete old events */
             idle_events = 0;
 
-            /* Callback finished, needs 
+            /* Callback finished, needs
              * to be set to false to re-enter
              */
             is_working = false;
@@ -187,7 +187,7 @@ namespace MPD
         }
     }
 
-    //--------------------------------
+//--------------------------------
 
     /*
      * Parse a respone and add every occured event
@@ -200,49 +200,49 @@ namespace MPD
         mpd_parser_result result;
         result = mpd_parser_feed(mp_Parser, line);
 
-        switch (result) 
+        switch (result)
         {
-            case MPD_PARSER_ERROR:
-            {
-                io_eventmask = (mpd_async_event)0;
-                check_async_error();
-                Error("ParserError: %d - %s",
-                        mpd_parser_get_server_error(mp_Parser),
-                        mpd_parser_get_message(mp_Parser));
+        case MPD_PARSER_ERROR:
+        {
+            io_eventmask = (mpd_async_event)0;
+            check_async_error();
+            Error("ParserError: %d - %s",
+                  mpd_parser_get_server_error(mp_Parser),
+                  mpd_parser_get_message(mp_Parser));
 
-                return false;
-            }
-            case MPD_PARSER_PAIR:
+            return false;
+        }
+        case MPD_PARSER_PAIR:
+        {
+            const char * name = NULL;
+            if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
             {
-                const char * name = NULL;
-                if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
-                {
-                    const char * value = mpd_parser_get_value(mp_Parser);
-                    idle_events |= mpd_idle_name_parse(value);
-                }
-                break;
+                const char * value = mpd_parser_get_value(mp_Parser);
+                idle_events |= mpd_idle_name_parse(value);
             }
-            case MPD_PARSER_MALFORMED:
-            {
-                io_eventmask = (mpd_async_event)0;
-                check_async_error();
-                return false;
-            }
-            case MPD_PARSER_SUCCESS:
-            {
-                io_eventmask = (mpd_async_event)0;
-                invoke_user_callback();
-                return true;
-            }
+            break;
+        }
+        case MPD_PARSER_MALFORMED:
+        {
+            io_eventmask = (mpd_async_event)0;
+            check_async_error();
+            return false;
+        }
+        case MPD_PARSER_SUCCESS:
+        {
+            io_eventmask = (mpd_async_event)0;
+            invoke_user_callback();
+            return true;
+        }
         }
         return true;
     }
 
-    //--------------------------------
+//--------------------------------
 
     /* Reads respone from server line by line,
-     * till OK comes in, or an error is occured 
-     *    changed: player 
+     * till OK comes in, or an error is occured
+     *    changed: player
      *    changed: mixer
      *    ....
      *    OK
@@ -266,7 +266,7 @@ namespace MPD
         return retval;
     }
 
-    //--------------------------------
+//--------------------------------
 
     /* Create the watchdog on the socket */
     void Listener::create_watch(mpd_async_event events)
@@ -284,7 +284,7 @@ namespace MPD
         io_functor = Glib::signal_io().connect(sigc::mem_fun(this,&Listener::io_callback), async_socket_fd,condition, Glib::PRIORITY_HIGH);
     }
 
-    //--------------------------------
+//--------------------------------
 
     /* Called once data comes into the socket */
     gboolean Listener::io_callback(Glib::IOCondition condition)
@@ -300,9 +300,9 @@ namespace MPD
         }
 
         /* There is incoming data - receive them */
-        if(condition & G_IO_IN) 
+        if(condition & G_IO_IN)
         {
-            if(recv_parseable() == false) 
+            if(recv_parseable() == false)
             {
                 Error("Could not parse response.");
                 return false;
@@ -311,7 +311,7 @@ namespace MPD
 
         /* Returning false disconnects watchdog */
         mpd_async_event events = mpd_async_events(async_conn);
-        if(events == 0) 
+        if(events == 0)
         {
             Debug("no events -> removing watch");
 
@@ -319,7 +319,7 @@ namespace MPD
             io_eventmask = (mpd_async_event)0;
             return false;
         }
-        else if(events != io_eventmask) 
+        else if(events != io_eventmask)
         {
             /* different event mask: make new watch */
             create_watch(events);
@@ -329,7 +329,7 @@ namespace MPD
         return true;
     }
 
-    //--------------------------------
+//--------------------------------
 
     bool Listener::enter(void)
     {
@@ -362,13 +362,13 @@ namespace MPD
         }
     }
 
-    //--------------------------------
+//--------------------------------
 
     void Listener::leave(void)
     {
         if(is_idling() && mp_Conn->is_connected())
         {
-            if(io_functor.connected()) 
+            if(io_functor.connected())
             {
                 bool is_fatal = false;
                 is_idle = false;
@@ -386,14 +386,14 @@ namespace MPD
 
                 is_leaving = true;
 
-                /* Check for errors that may happened shortly */            
+                /* Check for errors that may happened shortly */
                 mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
                 if(err != MPD_ERROR_SUCCESS)
                 {
-                        Warning("Error#%d while leaving idle mode: %s",err,
-                                mpd_connection_get_error_message(mp_Conn->get_connection()));
+                    Warning("Error#%d while leaving idle mode: %s",err,
+                            mpd_connection_get_error_message(mp_Conn->get_connection()));
 
-                        is_fatal = mp_Conn->clear_error();
+                    is_fatal = mp_Conn->clear_error();
                 }
 
                 /* Finish up */
@@ -415,14 +415,14 @@ namespace MPD
         }
     }
 
-    //--------------------------------
+//--------------------------------
 
     NotifyData& Listener::signal_client_update_data(void)
     {
         return m_NData;
     }
 
-    //--------------------------------
+//--------------------------------
 
     void Listener::force_update(void)
     {
@@ -439,8 +439,8 @@ namespace MPD
         is_forced = false;
     }
 
-    //--------------------------------
-    //--------------------------------
+//--------------------------------
+//--------------------------------
 
     mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
     {
@@ -452,7 +452,7 @@ namespace MPD
         return (mpd_async_event)events;
     }
 
-    //--------------------------------
+//--------------------------------
 
     /* Convert MPD's Async event to Glib's IO Socket events by a table */
     Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(mpd_async_event events)

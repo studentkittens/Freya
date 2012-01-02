@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -40,58 +40,58 @@ namespace MPD
      */
     class AbstractClientExtension
     {
-        public:
+    public:
 
-            /**
-             * @brief ClientExtensions need a reference to the Client.
-             *
-             * @param base_client a reference to the MPD::Client
-             */
-            AbstractClientExtension(MPD::BaseClient& base_client)
+        /**
+         * @brief ClientExtensions need a reference to the Client.
+         *
+         * @param base_client a reference to the MPD::Client
+         */
+        AbstractClientExtension(MPD::BaseClient& base_client)
+        {
+            mp_BaseClient = &base_client;
+        }
+
+        virtual ~AbstractClientExtension() {};
+
+    protected:
+
+        MPD::BaseClient * mp_BaseClient;
+
+        /**
+         * @brief Get the underlying C struct
+         *
+         * @return a pointer to a valid mpd_connection
+         */
+        mpd_connection * get_c_connection()
+        {
+            g_assert(mp_BaseClient);
+            if(mp_BaseClient->is_connected())
             {
-                mp_BaseClient = &base_client;
+                MPD::Connection& conn = mp_BaseClient->get_connection();
+                return conn.get_connection();
             }
-        
-            virtual ~AbstractClientExtension() {};
-
-        protected:
-
-            MPD::BaseClient * mp_BaseClient;
-
-            /**
-             * @brief Get the underlying C struct
-             *
-             * @return a pointer to a valid mpd_connection
-             */
-            mpd_connection * get_c_connection()
+            else
             {
-                g_assert(mp_BaseClient);
-                if(mp_BaseClient->is_connected())
-                {
-                    MPD::Connection& conn = mp_BaseClient->get_connection();
-                    return conn.get_connection();
-                }
-                else
-                {
-                    return NULL;
-                }
+                return NULL;
             }
+        }
     };
 
     /* Go into active mode */
-    #define EXTERNAL_GET_BUSY                   \
+#define EXTERNAL_GET_BUSY                   \
             if(mp_BaseClient->is_connected())   \
             {                                   \
                 mp_BaseClient->go_busy();       \
                 mpd_connection * conn =         \
                 get_c_connection();             \
-                if(conn != NULL) {              
+                if(conn != NULL) {
 
-    /* Go back idling, *never* forget this */                
-    #define EXTERNAL_GET_LAID             \
+    /* Go back idling, *never* forget this */
+#define EXTERNAL_GET_LAID             \
                 }                         \
                 mp_BaseClient->go_idle(); \
-            }                             
+            }
 
 }
 

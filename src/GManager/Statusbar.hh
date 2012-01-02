@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -46,22 +46,22 @@ namespace GManager
      */
     class Statusbar : public MPD::AbstractClientUser
     {
-        public:
+    public:
 
-            Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-            ~Statusbar();
+        Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+        ~Statusbar();
 
-        private:
-            void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-            void on_heartbeat(double time);
-            void format_time(unsigned time, char buffer[]);
-            void do_update_message(MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+    private:
+        void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+        void on_heartbeat(double time);
+        void format_time(unsigned time, char buffer[]);
+        void do_update_message(MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            MPD::NotifyData * mp_Lastdata;
-            Gtk::Label * m_Statusbar;
-            Heartbeat * mp_Heartbeat;
-            gchar * mp_Message; 
+        MPD::NotifyData * mp_Lastdata;
+        Gtk::Label * m_Statusbar;
+        Heartbeat * mp_Heartbeat;
+        gchar * mp_Message;
     };
 }
 #endif

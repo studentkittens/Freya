@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -41,39 +41,39 @@ namespace Init
      */
     class Path
     {
-        public:
-            Path ();
-            ~Path ();
+    public:
+        Path ();
+        ~Path ();
 
-            /**
-             * @brief returns absolute path to config dir e.g. /home/user/.config/freya
-             *
-             * @return config dir path as ustring
-             */
-            Glib::ustring get_config_dir();
-
-
-            /**
-             * @brief returns absolute path to config file e.g. /home/user/.config/freya/config.xml
-             *
-             * @return config file path as ustring
-             */
-            Glib::ustring path_to_config();
+        /**
+         * @brief returns absolute path to config dir e.g. /home/user/.config/freya
+         *
+         * @return config dir path as ustring
+         */
+        Glib::ustring get_config_dir();
 
 
-            /**
-             * @brief returns absolute path log file e.g. ~/.config/freya/log.txt
-             *
-             * @return log file path as ustring
-             */
-            Glib::ustring path_to_log();
+        /**
+         * @brief returns absolute path to config file e.g. /home/user/.config/freya/config.xml
+         *
+         * @return config file path as ustring
+         */
+        Glib::ustring path_to_config();
 
-        private:
-            void create_config();
-            void create_dir();
-            void dir_is_avaiable();
-            char* configfile;
-            char* configdir;
+
+        /**
+         * @brief returns absolute path log file e.g. ~/.config/freya/log.txt
+         *
+         * @return log file path as ustring
+         */
+        Glib::ustring path_to_log();
+
+    private:
+        void create_config();
+        void create_dir();
+        void dir_is_avaiable();
+        char* configfile;
+        char* configdir;
     };
 }
 #endif /* end of include guard: INIT_SP0811FS */

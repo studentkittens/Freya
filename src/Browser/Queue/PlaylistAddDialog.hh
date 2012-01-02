@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -45,32 +45,32 @@ namespace Browser
      */
     class PlaylistAddDialog : public MPD::AbstractClientUser
     {
-        public:
-            PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
-            ~PlaylistAddDialog(void);
+    public:
+        PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
+        ~PlaylistAddDialog(void);
 
-            /**
-             * @brief Show the dialog (closes itself)
-             *
-             * This functions blocks, other items in Freya may not be accessed anymore
-             */
-            void run(void);
+        /**
+         * @brief Show the dialog (closes itself)
+         *
+         * This functions blocks, other items in Freya may not be accessed anymore
+         */
+        void run(void);
 
-        private:
+    private:
 
-            void on_cancel_clicked(void);
-            void on_add_clicked(void);
-            void on_entry_change(void);
-            void on_entry_activate(void);
+        void on_cancel_clicked(void);
+        void on_add_clicked(void);
+        void on_entry_change(void);
+        void on_entry_activate(void);
 
-            /* From AbstractClientUser */
-            void on_client_update(mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+        /* From AbstractClientUser */
+        void on_client_update(mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            bool is_running;
-            Gtk::Dialog * mp_Dialog;
-            Gtk::Entry * mp_PlaylistEntry;
-            Gtk::Button * mp_ApplyButton, * mp_CancelButton; 
+        bool is_running;
+        Gtk::Dialog * mp_Dialog;
+        Gtk::Entry * mp_PlaylistEntry;
+        Gtk::Button * mp_ApplyButton, * mp_CancelButton;
     };
 }
 

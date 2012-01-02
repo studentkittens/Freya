@@ -8,16 +8,16 @@ namespace Init
     /**
      * @brief By Instancing this class Signalhandlers are registered
      *
-     * SIGSEGV and other crash signals are catched, so that log and 
+     * SIGSEGV and other crash signals are catched, so that log and
      * config can be closed properly.
      */
     class SignalHandler
     {
-        public:
-            SignalHandler(void);
+    public:
+        SignalHandler(void);
 
-        private:
-            struct sigaction sa_struct;
+    private:
+        struct sigaction sa_struct;
     };
 }
 

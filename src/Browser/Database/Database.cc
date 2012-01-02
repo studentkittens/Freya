@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -65,42 +65,42 @@ namespace Browser
 
         /* Set up it's signals */
         mp_HomeButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&Database::on_home_button_clicked));
+            sigc::mem_fun(*this,&Database::on_home_button_clicked));
         mp_DirUpButton->signal_clicked().connect(
-                sigc::mem_fun(*this,&Database::go_one_up));
+            sigc::mem_fun(*this,&Database::go_one_up));
         mp_IView->signal_item_activated().connect(
-                sigc::mem_fun(*this,&Database::on_item_activated));
+            sigc::mem_fun(*this,&Database::on_item_activated));
         mp_SearchEntry->signal_activate().connect(
-                sigc::mem_fun(*this,&Database::on_search_entry_activated));
-        
+            sigc::mem_fun(*this,&Database::on_search_entry_activated));
+
 
         /* Connect popup menu */
-        mp_Popup = new DatabasePopup(*mp_IView); 
+        mp_Popup = new DatabasePopup(*mp_IView);
         mp_Popup->get_action("db_add").connect(
-                sigc::mem_fun(*this,&Database::on_menu_db_add_clicked));
+            sigc::mem_fun(*this,&Database::on_menu_db_add_clicked));
         mp_Popup->get_action("db_add_all").connect(
-                sigc::mem_fun(*this,&Database::on_menu_db_add_all_clicked));
+            sigc::mem_fun(*this,&Database::on_menu_db_add_all_clicked));
         mp_Popup->get_action("db_replace").connect(
-                sigc::mem_fun(*this,&Database::on_menu_db_replace_clicked));
+            sigc::mem_fun(*this,&Database::on_menu_db_replace_clicked));
         mp_Popup->get_action("db_update").connect(
-                sigc::mem_fun(*this,&Database::on_menu_db_update_clicked));
+            sigc::mem_fun(*this,&Database::on_menu_db_update_clicked));
         mp_Popup->get_action("db_rescan").connect(
-                sigc::mem_fun(*this,&Database::on_menu_db_rescan_clicked));
-       
+            sigc::mem_fun(*this,&Database::on_menu_db_rescan_clicked));
+
         /* Key events */
         mp_IView->signal_key_press_event().connect(
-                sigc::mem_fun(*this,&Database::on_key_press_handler));
+            sigc::mem_fun(*this,&Database::on_key_press_handler));
 
         mp_IView->signal_key_release_event().connect(
-                sigc::mem_fun(*this,&Database::on_key_press_handler));
+            sigc::mem_fun(*this,&Database::on_key_press_handler));
 
         /* Make icon view react on key events */
         mp_IView->add_events(Gdk::KEY_PRESS_MASK | Gdk::KEY_RELEASE_MASK);
     }
-    
+
     /*------------------------------------------------*/
 
-    Database::~Database(void) 
+    Database::~Database(void)
     {
         delete mp_Popup;
         delete mp_Cache;
@@ -130,7 +130,7 @@ namespace Browser
     }
 
     /*------------------------------------------------*/
-    
+
     void Database::on_menu_db_add_all_clicked(void)
     {
         /* Add root dir */
@@ -138,8 +138,8 @@ namespace Browser
     }
 
     /*------------------------------------------------*/
-    
-    
+
+
     void Database::on_menu_db_update_clicked(void)
     {
         Info("Updating Database.");
@@ -147,9 +147,9 @@ namespace Browser
         path = (path && path[0]) ? path : NULL;
         mp_Client->database_update(path);
     }
-    
+
     /*------------------------------------------------*/
-    
+
     void Database::on_menu_db_rescan_clicked(void)
     {
         Info("Rescanning Database.");
@@ -157,15 +157,15 @@ namespace Browser
         path = (path && path[0]) ? path : NULL;
         mp_Client->database_rescan(path);
     }
-    
+
     /*------------------------------------------------*/
-    
+
     void Database::on_menu_db_replace_clicked(void)
     {
         mp_Client->queue_clear();
         on_menu_db_add_clicked();
     }
-    
+
     /*------------------------------------------------*/
 
     Gtk::Widget * Database::get_container(void)
@@ -180,7 +180,7 @@ namespace Browser
         g_assert(pItem);
         bool is_file = pItem->is_leaf();
         const char * path = pItem->get_path();
-        
+
         if(path != NULL)
         {
             Gtk::TreeModel::Row row = *(m_DirStore->append());
@@ -269,7 +269,7 @@ namespace Browser
             return;
 
         gsize prefix_len = strlen(prefix);
-        unsigned cursor  = 0;    
+        unsigned cursor  = 0;
 
         for(Gtk::TreeModel::iterator iter = m_DirStore->get_iter("0"); iter; iter++)
         {

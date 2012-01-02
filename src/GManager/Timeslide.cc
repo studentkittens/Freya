@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -47,10 +47,10 @@ namespace GManager
         m_Timeslide->set_range(0.0,100.0);
 
         m_Timeslide->signal_value_changed().connect(
-                sigc::mem_fun(*this,&Timeslide::on_user_action));
+            sigc::mem_fun(*this,&Timeslide::on_user_action));
 
         tproxy.signal_client_update().connect(
-                sigc::mem_fun(*this,&Timeslide::tick));
+            sigc::mem_fun(*this,&Timeslide::tick));
     }
 
     /* ------------------ */
@@ -61,14 +61,14 @@ namespace GManager
         m_Timeslide->set_value(time);
         ignore_signal = false;
     }
-    
+
     /* ------------------ */
 
     void Timeslide::do_scroll(void)
     {
         mp_Client->playback_seek(current_song_id,m_Timeslide->get_value());
     }
-    
+
     /* ------------------ */
 
     void Timeslide::on_user_action(void)
@@ -79,7 +79,7 @@ namespace GManager
             if(mp_Client->is_connected())
             {
                 Glib::signal_idle().connect_once(
-                        sigc::mem_fun(*this,&Timeslide::do_scroll),Glib::PRIORITY_LOW);
+                    sigc::mem_fun(*this,&Timeslide::do_scroll),Glib::PRIORITY_LOW);
             }
             mp_Heartbeat->set(m_Timeslide->get_value());
             m_Timeguard.reset();

@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -49,56 +49,56 @@ namespace GManager
      */
     class Heartbeat : public MPD::AbstractClientUser
     {
-        public:
+    public:
 
-            Heartbeat(MPD::Client& client);
-            ~Heartbeat(void);
-            /**
-             * @brief Register to the hearbeat signal
-             *
-             * The prototype is void on_heartbeat(double time)
-             *
-             * @return A sigc::connection, call connect() on it 
-             */
-            TimerNotifier& signal_client_update(void); 
-           
-            /**
-             * @brief Start incrementing
-             */
-            void play(void); 
-            /**
-             * @brief Pause incrementing
-             */
-            void pause(void);
-            /**
-             * @brief Reset value to 0
-             */
-            void reset(void);
-            /**
-             * @brief Set the current value
-             *
-             * @param val
-             */
-            void set(double val);
-            /**
-             * @brief Get the current value
-             *
-             * @return 
-             */
-            double get(void);
+        Heartbeat(MPD::Client& client);
+        ~Heartbeat(void);
+        /**
+         * @brief Register to the hearbeat signal
+         *
+         * The prototype is void on_heartbeat(double time)
+         *
+         * @return A sigc::connection, call connect() on it
+         */
+        TimerNotifier& signal_client_update(void);
 
-        private:
+        /**
+         * @brief Start incrementing
+         */
+        void play(void);
+        /**
+         * @brief Pause incrementing
+         */
+        void pause(void);
+        /**
+         * @brief Reset value to 0
+         */
+        void reset(void);
+        /**
+         * @brief Set the current value
+         *
+         * @param val
+         */
+        void set(double val);
+        /**
+         * @brief Get the current value
+         *
+         * @return
+         */
+        double get(void);
 
-            double timer;
-            bool count_up;
+    private:
 
-            gboolean on_interval(void);
-            TimerNotifier signal_proxy;
+        double timer;
+        bool count_up;
 
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+        gboolean on_interval(void);
+        TimerNotifier signal_proxy;
 
-            MPD::NotifyData * mp_LastNotifyData;
+        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
+
+        MPD::NotifyData * mp_LastNotifyData;
     };
 }
 

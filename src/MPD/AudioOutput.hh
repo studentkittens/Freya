@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,54 +44,54 @@ namespace MPD
      */
     class AudioOutput : public AbstractClientExtension, public AbstractComposite
     {
-        public:
-            /**
-             * @brief You cannot instance this class yourself.
-             *
-             * @param client 
-             * @param output
-             */
-            AudioOutput(MPD::BaseClient& client, mpd_output& output);
-            /**
-             * @brief Output ID - this is usually not needed
-             *
-             * @return an unsigned integer, starting from 0
-             */
-            unsigned get_id(void);
-            /**
-             * @brief Get the name of this putput
-             *
-             * @return a nullterminated string
-             */
-            const char * get_name(void);
-            /**
-             * @brief Obvious.
-             *
-             * @return 
-             */
-            bool get_enabled(void);
-            /**
-             * @brief Enable this output
-             *
-             * @return true on success
-             */
-            bool enable(void);
-            /**
-             * @brief Disable this output
-             *
-             * @return true on success
-             */
-            bool disable(void);
+    public:
+        /**
+         * @brief You cannot instance this class yourself.
+         *
+         * @param client
+         * @param output
+         */
+        AudioOutput(MPD::BaseClient& client, mpd_output& output);
+        /**
+         * @brief Output ID - this is usually not needed
+         *
+         * @return an unsigned integer, starting from 0
+         */
+        unsigned get_id(void);
+        /**
+         * @brief Get the name of this putput
+         *
+         * @return a nullterminated string
+         */
+        const char * get_name(void);
+        /**
+         * @brief Obvious.
+         *
+         * @return
+         */
+        bool get_enabled(void);
+        /**
+         * @brief Enable this output
+         *
+         * @return true on success
+         */
+        bool enable(void);
+        /**
+         * @brief Disable this output
+         *
+         * @return true on success
+         */
+        bool disable(void);
 
-            /**
-             * @brief Alias for get_name() (Implemented due to Compositum) 
-             *
-             * @return 
-             */
-            const char * get_path(void);
+        /**
+         * @brief Alias for get_name() (Implemented due to Compositum)
+         *
+         * @return
+         */
+        const char * get_path(void);
 
-        private:
-            mpd_output * mp_Output;
+    private:
+        mpd_output * mp_Output;
     };
 }
 

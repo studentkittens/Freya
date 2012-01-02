@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -51,7 +51,7 @@ namespace GManager
         m_TreeSelection = mp_PluginListview->get_selection();
         m_TreeSelection->set_mode(Gtk::SELECTION_SINGLE);
         m_TreeSelection->signal_changed().connect(
-                sigc::mem_fun(*this,&BrowserList::on_selection_changed));
+            sigc::mem_fun(*this,&BrowserList::on_selection_changed));
 
         /* Entitle it with "Browsers" */
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
@@ -63,12 +63,12 @@ namespace GManager
         mp_List->show_all();
     }
 
-    //----------------------------
+//----------------------------
 
     void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
     {}
 
-    //----------------------------
+//----------------------------
 
     void BrowserList::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -99,7 +99,7 @@ namespace GManager
         mp_PluginListview->set_sensitive(is_connected);
     }
 
-    //----------------------------
+//----------------------------
 
     void BrowserList::add(AbstractBrowser& browser)
     {
@@ -109,18 +109,18 @@ namespace GManager
 
         /* Render the correct icon */
         row[m_Columns.m_col_icon] = mp_PluginListview->render_icon_pixbuf(
-                browser.get_icon_stock_id(),
-                Gtk::ICON_SIZE_DND); 
+                                        browser.get_icon_stock_id(),
+                                        Gtk::ICON_SIZE_DND);
     }
 
-    //----------------------------
-    
+//----------------------------
+
     void BrowserList::set(AbstractBrowser& browser)
     {
         change_browser(&browser);
     }
-    
-    //----------------------------
+
+//----------------------------
 
     void BrowserList::change_browser(AbstractBrowser * browser)
     {
@@ -129,7 +129,7 @@ namespace GManager
             Glib::ustring name = browser->get_name();
 
             /* Get last element of box. Eddy...Duuuude!
-             * What did you do earlier here?! */        
+             * What did you do earlier here?! */
             Gtk::Widget* element = mp_List->get_children().back();
             if(element != NULL)
             {
@@ -146,12 +146,12 @@ namespace GManager
         }
     }
 
-    //----------------------------
+//----------------------------
 
     void BrowserList::on_selection_changed(void)
     {
         Gtk::TreeModel::iterator iter = m_TreeSelection->get_selected();
-        if(iter) 
+        if(iter)
         {
             Gtk::TreeModel::Row row = *iter;
             change_browser(row[m_Columns.m_col_browser]);

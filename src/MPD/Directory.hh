@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -41,28 +41,28 @@ namespace MPD
      */
     class Directory : public AbstractComposite
     {
-        public:
-            /**
-             * @brief You are not supposed to instace this yourself.
-             *
-             * @param dir
-             */
-            Directory(mpd_directory& dir);
-            /**
-             * @brief dtor will free underlying mpd_directory
-             */
-            virtual ~Directory(void);
+    public:
+        /**
+         * @brief You are not supposed to instace this yourself.
+         *
+         * @param dir
+         */
+        Directory(mpd_directory& dir);
+        /**
+         * @brief dtor will free underlying mpd_directory
+         */
+        virtual ~Directory(void);
 
-            /**
-             * @brief The path of the directory
-             *
-             * @return a string
-             */
-            const char * get_path(void);
+        /**
+         * @brief The path of the directory
+         *
+         * @return a string
+         */
+        const char * get_path(void);
 
-        private:
+    private:
 
-            mpd_directory * mp_Dir;
+        mpd_directory * mp_Dir;
     };
 }
 

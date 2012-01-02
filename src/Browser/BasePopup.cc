@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -58,7 +58,7 @@ namespace Browser
         }
         return false;
     }
-    
+
     /*-------------------------------*/
 
     Glib::SignalProxy0<void> BasePopup::get_action(const char * name)
@@ -74,15 +74,15 @@ namespace Browser
      *
      * @param action A refpointer to a Gtk::Action
      * @param item_name item name in the definiton
-     * @param item_label 
+     * @param item_label
      * @param item_tooltip
      * @param icon
      */
     void BasePopup::menu_add_item(Glib::RefPtr<Gtk::Action>& action,
-            Glib::ustring item_name,
-            Glib::ustring item_label,
-            Glib::ustring item_tooltip,
-            Gtk::StockID icon)
+                                  Glib::ustring item_name,
+                                  Glib::ustring item_label,
+                                  Glib::ustring item_tooltip,
+                                  Gtk::StockID icon)
     {
         action = Gtk::Action::create(item_name,icon,item_label,item_tooltip);
         m_refActionGroup->add(action);

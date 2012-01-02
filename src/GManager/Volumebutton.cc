@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ namespace GManager
         mp_VButton->signal_value_changed().connect(sigc::mem_fun(*this,&GManager::Volumebutton::on_user_change));
     }
 
-    // -------------------
+// -------------------
 
     void Volumebutton::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
@@ -58,29 +58,29 @@ namespace GManager
         }
     }
 
-    // -------------------
-    
+// -------------------
+
     void Volumebutton::on_connection_change(bool server_changed, bool is_connected)
     {
         mp_VButton->set_sensitive(is_connected);
     }
 
-    // -------------------
-    
+// -------------------
+
     void Volumebutton::do_volume_step(void)
     {
         mp_Client->set_volume(mp_VButton->get_value() * 100);
     }
 
-    // -------------------
+// -------------------
 
     void Volumebutton::on_user_change(double val)
     {
-        if(!ignore_signal && m_Timerguard.elapsed() > UPDATE_TIMEOUT) 
+        if(!ignore_signal && m_Timerguard.elapsed() > UPDATE_TIMEOUT)
         {
             Glib::signal_idle().connect_once(
-                    sigc::mem_fun(*this,&Volumebutton::do_volume_step),
-                    Glib::PRIORITY_LOW);
+                sigc::mem_fun(*this,&Volumebutton::do_volume_step),
+                Glib::PRIORITY_LOW);
 
             m_Timerguard.reset();
         }

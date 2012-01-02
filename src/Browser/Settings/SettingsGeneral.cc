@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -65,7 +65,7 @@ namespace Browser
 
     SettingsGeneral::~SettingsGeneral(void) {}
 
-    //----------------------------
+//----------------------------
 
     void SettingsGeneral::accept_new_settings(void)
     {
@@ -86,7 +86,7 @@ namespace Browser
         CONFIG_SET_AS_INT(timeout,timeout_value?timeout_value*1000:-1);
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsGeneral::decline_new_settings(void)
     {
@@ -105,7 +105,7 @@ namespace Browser
         trayicon->set_active(trayic==1);
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsGeneral::reset_settings(void)
     {
@@ -124,13 +124,13 @@ namespace Browser
         notify_timeout->set_value((double)(timeout_value==-1?0:((double)timeout_value)/1000) );
     }
 
-    //----------------------------
+//----------------------------
 
     void SettingsGeneral::on_notify_toggled(void)
     {
         notify_box->set_visible(libnotify->get_active());
     }
-    //----------------------------
+//----------------------------
     void SettingsGeneral::on_tray_toggled(void)
     {
         tray_box->set_visible(trayicon->get_active());

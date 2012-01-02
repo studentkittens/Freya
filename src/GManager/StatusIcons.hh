@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,25 +44,25 @@ namespace GManager
      */
     class Statusicons : public MPD::AbstractClientUser
     {
-        public:
-            Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+    public:
+        Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
-            void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+    private:
+        void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            void on_clicked_random(void);
-            void on_clicked_single(void);
-            void on_clicked_consume(void);
-            void on_clicked_repeat(void);
-            void on_conn_change(bool is_connected);
+        void on_clicked_random(void);
+        void on_clicked_single(void);
+        void on_clicked_consume(void);
+        void on_clicked_repeat(void);
+        void on_conn_change(bool is_connected);
 
-            /* Widgets */
-            Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
+        /* Widgets */
+        Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
 
-            /* set_active() emits a signal, this would cause infinite loops of updating,
-             * ignore signals while recv. updates from client therefore. */
-            bool ignore_updates;
+        /* set_active() emits a signal, this would cause infinite loops of updating,
+         * ignore signals while recv. updates from client therefore. */
+        bool ignore_updates;
     };
 }
 

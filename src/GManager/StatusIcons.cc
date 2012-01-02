@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -65,31 +65,31 @@ namespace GManager
         {
             ignore_updates = true;
             MPD::Status& status = data.get_status();
-            mp_Consume->set_active(status.get_consume()); 
-            mp_Random->set_active(status.get_random()); 
-            mp_Repeat->set_active(status.get_repeat()); 
-            mp_Single->set_active(status.get_single()); 
+            mp_Consume->set_active(status.get_consume());
+            mp_Random->set_active(status.get_random());
+            mp_Repeat->set_active(status.get_repeat());
+            mp_Single->set_active(status.get_single());
             ignore_updates = false;
         }
     }
 
     void Statusicons::on_clicked_random(void)
     {
-        if(!ignore_updates) mp_Client->toggle_random(); 
+        if(!ignore_updates) mp_Client->toggle_random();
     }
 
     void Statusicons::on_clicked_single(void)
     {
-        if(!ignore_updates) mp_Client->toggle_single(); 
+        if(!ignore_updates) mp_Client->toggle_single();
     }
 
     void Statusicons::on_clicked_consume(void)
     {
-        if(!ignore_updates) mp_Client->toggle_consume(); 
+        if(!ignore_updates) mp_Client->toggle_consume();
     }
 
     void Statusicons::on_clicked_repeat(void)
     {
-        if(!ignore_updates) mp_Client->toggle_repeat(); 
+        if(!ignore_updates) mp_Client->toggle_repeat();
     }
 }

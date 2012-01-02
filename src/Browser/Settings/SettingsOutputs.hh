@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -49,29 +49,29 @@ namespace Browser
      */
     class SettingsOutputs : public AbstractSettings, public MPD::AbstractItemlist, public MPD::AbstractClientUser
     {
-        public:
-            SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
-            ~SettingsOutputs();
+    public:
+        SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+        ~SettingsOutputs();
 
-            void accept_new_settings(void);
-            void decline_new_settings(void);
-            void reset_settings(void);
-            void add_item(MPD::AbstractComposite *item);
+        void accept_new_settings(void);
+        void decline_new_settings(void);
+        void reset_settings(void);
+        void add_item(MPD::AbstractComposite *item);
 
-        protected:
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool,bool);
-            void on_toggle(const Glib::ustring& path);
-            bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
-            void clear(void);
+    protected:
+        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool,bool);
+        void on_toggle(const Glib::ustring& path);
+        bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
+        void clear(void);
 
-        private:
-            Glib::RefPtr<Gtk::ListStore> treeModel;
-            Gtk::TreeView * treeViewPtr;
-            OutputsModelColumns treeColumns;
-            MPD::Client* client;
-            Settings *sett;
-            bool running;
+    private:
+        Glib::RefPtr<Gtk::ListStore> treeModel;
+        Gtk::TreeView * treeViewPtr;
+        OutputsModelColumns treeColumns;
+        MPD::Client* client;
+        Settings *sett;
+        bool running;
     };
 
 

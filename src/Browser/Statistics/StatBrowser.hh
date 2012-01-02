@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -37,38 +37,40 @@
 #include "../../Utils/Utils.hh"
 #include "../AbstractBrowser.hh"
 
-namespace Browser {
+namespace Browser
+{
 
     /**
      * @brief A simple representation of the current MPD::Statistics
      *
      * No more, no less :)
      */
-    class StatBrowser : public Gtk::Frame, public AbstractBrowser {
-        public:
-            StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&);
-            ~StatBrowser ();
-            
-            /**
-             * @brief implemented from AbstractBrowser
-             *
-             * @return topcontainer of this browser
-             */
-            Gtk::Widget * get_container(void);
+    class StatBrowser : public Gtk::Frame, public AbstractBrowser
+    {
+    public:
+        StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&);
+        ~StatBrowser ();
 
-        private:
+        /**
+         * @brief implemented from AbstractBrowser
+         *
+         * @return topcontainer of this browser
+         */
+        Gtk::Widget * get_container(void);
 
-            /* label members for statistics*/
-            Gtk::Label *noofartist,
-                       *noofalbums,
-                       *noofsongs,
-                       *dbplaytime,
-                       *playtime,
-                       *dbupdate,
-                       *uptime;
+    private:
 
-            /* Will be updated on every database update  (MPD_IDLE_DATABASE) */
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        /* label members for statistics*/
+        Gtk::Label *noofartist,
+            *noofalbums,
+            *noofsongs,
+            *dbplaytime,
+            *playtime,
+            *dbupdate,
+            *uptime;
+
+        /* Will be updated on every database update  (MPD_IDLE_DATABASE) */
+        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
     };
 }
 #endif /* end of include guard: STATBROWSER_H0M8CVQP */

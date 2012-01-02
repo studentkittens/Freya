@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@
 #include "PlaylistAddDialog.hh"
 #include "../AbstractBrowser.hh"
 
-namespace Browser 
+namespace Browser
 {
     /**
      * @brief Shows a list of songs in the current playlist
@@ -52,79 +52,79 @@ namespace Browser
      */
     class Queue : public AbstractBrowser, public MPD::AbstractClientUser
     {
-        public:
-            Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
-            virtual ~Queue();
+    public:
+        Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
+        virtual ~Queue();
 
-            /**
-             * @brief Inherited from AbstractBrowser
-             *
-             * @return a pointer to the widget containing the playlist
-             */
-            Gtk::Widget * get_container(void);
+        /**
+         * @brief Inherited from AbstractBrowser
+         *
+         * @return a pointer to the widget containing the playlist
+         */
+        Gtk::Widget * get_container(void);
 
-        private:
+    private:
 
-            /* Init */
-            void configure_columns(void);
-            void configure_signals(void);
+        /* Init */
+        void configure_columns(void);
+        void configure_signals(void);
 
-            /* Implemtend from AbstractItemlist */
-            void add_item(void * pSong);
+        /* Implemtend from AbstractItemlist */
+        void add_item(void * pSong);
 
-            /* Util */
-            void merge_changes(MPD::Song * pSong);
+        /* Util */
+        void merge_changes(MPD::Song * pSong);
 
-            /* Implemented from AbstractClientUser */
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
+        /* Implemented from AbstractClientUser */
+        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+        void on_connection_change(bool server_changed, bool is_connected);
 
-            /* Menuhandling */
-            void on_menu_clear_clicked(void);
-            void on_menu_remove_clicked(void);
-            void on_menu_add_as_pl_clicked(void);
+        /* Menuhandling */
+        void on_menu_clear_clicked(void);
+        void on_menu_remove_clicked(void);
+        void on_menu_add_as_pl_clicked(void);
 
-            /* Other */
-            void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
-            bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
-            void on_entry_activate(void);
-            void on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
-            bool on_key_press_handler(GdkEventKey * event);
+        /* Other */
+        void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
+        bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
+        void on_entry_activate(void);
+        void on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
+        bool on_key_press_handler(GdkEventKey * event);
 
-            /*----------------------*/
-            /*----------------------*/
-            /*----------------------*/
+        /*----------------------*/
+        /*----------------------*/
+        /*----------------------*/
 
-            Glib::ustring m_FilterText;
+        Glib::ustring m_FilterText;
 
-            /* Treeview related */
-            QueueModelColumns m_Columns;
+        /* Treeview related */
+        QueueModelColumns m_Columns;
 
-            /* View of the list */
-            Gtk::TreeView * mp_TreeView;
+        /* View of the list */
+        Gtk::TreeView * mp_TreeView;
 
-            /* Actual data */
-            Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+        /* Actual data */
+        Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
 
-            /* Filtered data */
-            Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
+        /* Filtered data */
+        Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
 
-            /* Selected data */
-            Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
+        /* Selected data */
+        Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
-            /* Popup */
-            QueuePopup * mp_Popup;
-            
-            /* other widgets */
-            Gtk::Entry * mp_Entry;
-            Gtk::Box * mp_QueueBox;
-            PlaylistAddDialog * mp_AddDialog;
+        /* Popup */
+        QueuePopup * mp_Popup;
 
-            /* Current Song */
-            MPD::Song * mp_CurrentSong;
+        /* other widgets */
+        Gtk::Entry * mp_Entry;
+        Gtk::Box * mp_QueueBox;
+        PlaylistAddDialog * mp_AddDialog;
 
-            /* Handles updating the queue */
-            QueueMerger * mp_Merger;
+        /* Current Song */
+        MPD::Song * mp_CurrentSong;
+
+        /* Handles updating the queue */
+        QueueMerger * mp_Merger;
     };
 }
 #endif //FREYA_QUEUE_H

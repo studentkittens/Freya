@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@
 #include "../../Utils/Utils.hh"
 
 #include <vector>
-#include <gdk/gdkkeysyms.h> 
+#include <gdk/gdkkeysyms.h>
 
 using namespace std;
 
@@ -54,9 +54,9 @@ namespace Browser
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_refTreeModelFilter = Gtk::TreeModelFilter::create(m_refTreeModel);
         mp_TreeView->set_model(m_refTreeModelFilter);
-        
+
         /* Create the merger, it handles the updating of the queue */
-        mp_Merger = new QueueMerger(client,m_refTreeModel,m_Columns); 
+        mp_Merger = new QueueMerger(client,m_refTreeModel,m_Columns);
 
         configure_signals();
         configure_columns();
@@ -73,7 +73,7 @@ namespace Browser
     }
 
     /*-------------------------------*/
-    
+
     Queue::~Queue(void)
     {
         delete mp_Popup;
@@ -81,43 +81,43 @@ namespace Browser
         delete mp_CurrentSong;
         delete mp_Merger;
     }
-    
+
     /*-------------------------------*/
-    
+
     void Queue::configure_signals(void)
     {
         /* Start searching */
         mp_Entry->signal_activate().connect(
-                sigc::mem_fun(*this,&Queue::on_entry_activate));
+            sigc::mem_fun(*this,&Queue::on_entry_activate));
         mp_Entry->signal_icon_press().connect(
-                sigc::mem_fun(*this, &Queue::on_entry_clear_icon));
+            sigc::mem_fun(*this, &Queue::on_entry_clear_icon));
 
         m_refTreeModelFilter->set_visible_func(
-                sigc::mem_fun(*this,&Queue::on_filter_row_visible));
+            sigc::mem_fun(*this,&Queue::on_filter_row_visible));
 
         /* Double click on a row */
         mp_TreeView->signal_row_activated().connect(
-                sigc::mem_fun(*this,&Queue::on_row_activated));
+            sigc::mem_fun(*this,&Queue::on_row_activated));
 
         /* Set up Popupmenu */
         mp_Popup = new QueuePopup(*mp_TreeView);
         mp_Popup->get_action("q_remove").connect(
-                sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
+            sigc::mem_fun(*this,&Queue::on_menu_remove_clicked));
         mp_Popup->get_action("q_add_as_pl").connect(
-                sigc::mem_fun(*this,&Queue::on_menu_add_as_pl_clicked));
+            sigc::mem_fun(*this,&Queue::on_menu_add_as_pl_clicked));
         mp_Popup->get_action("q_clear").connect(
-                sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
+            sigc::mem_fun(*this,&Queue::on_menu_clear_clicked));
 
         /* Key events */
         mp_TreeView->signal_key_press_event().connect(
-                sigc::mem_fun(*this,&Queue::on_key_press_handler));
+            sigc::mem_fun(*this,&Queue::on_key_press_handler));
 
         mp_TreeView->signal_key_release_event().connect(
-                sigc::mem_fun(*this,&Queue::on_key_press_handler));
+            sigc::mem_fun(*this,&Queue::on_key_press_handler));
     }
-    
+
     /*-------------------------------*/
-    
+
     void Queue::configure_columns(void)
     {
         /* Add the TreeView's view columns: */
@@ -148,7 +148,7 @@ namespace Browser
         /* Misc settings to tree view */
         mp_TreeView->set_headers_clickable(true);
     }
-    
+
     /*-------------------------------*/
 
     void Queue::on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column)
@@ -171,11 +171,14 @@ namespace Browser
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_id] = new_song->get_id();
 
-        try { /* Check for NULLs just to be sure */
+        try   /* Check for NULLs just to be sure */
+        {
             row[m_Columns.m_col_title] =  new_song->get_tag(MPD_TAG_TITLE,0);
             row[m_Columns.m_col_album] =  new_song->get_tag(MPD_TAG_ALBUM,0);
             row[m_Columns.m_col_artist] = new_song->get_tag(MPD_TAG_ARTIST,0);
-        } catch(const std::logic_error& e) {
+        }
+        catch(const std::logic_error& e)
+        {
             Warning("Empty column: %s",e.what());
         }
         delete new_song;
@@ -315,10 +318,10 @@ namespace Browser
     {
         g_assert(event);
         if(event->type   == GDK_KEY_RELEASE &&
-           event->keyval == GDK_KEY_space   &&
-           mp_CurrentSong != NULL)
+                event->keyval == GDK_KEY_space   &&
+                mp_CurrentSong != NULL)
         {
-            Gtk::TreePath path(Utils::int_to_string(mp_CurrentSong->get_pos()));  
+            Gtk::TreePath path(Utils::int_to_string(mp_CurrentSong->get_pos()));
             mp_TreeView->scroll_to_row(path);
             return false;
         }

@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@
 #include <time.h>
 
 /* for: g_strdup_printf() */
-#include <glib.h> 
+#include <glib.h>
 
 /* for: g_vasprintf() */
 #include <glib/gprintf.h>
@@ -46,7 +46,7 @@
 /* Clear after 2MB logsize */
 #define MAX_LOG_SIZE (2 * 1024 * 1024)
 
-/* Those work sadly only on Unix 
+/* Those work sadly only on Unix
  * win32 will just print out the actual escapes
  * */
 #define COL_RED "\x1b[31;01m"
@@ -59,10 +59,10 @@ namespace Log
 {
     /*-----------------------------------------------*/
 
-    // constructor
+// constructor
     Writer::Writer()
     {
-        Init::Path path_getter;        
+        Init::Path path_getter;
         m_Logpath = path_getter.path_to_log();
 
         m_Logfile = fopen(m_Logpath.c_str(),"a");
@@ -87,18 +87,19 @@ namespace Log
 
     /*-----------------------------------------------*/
 
-    // destructor
+// destructor
     Writer::~Writer()
     {
-        if(this->m_Logfile != NULL) {
+        if(this->m_Logfile != NULL)
+        {
             fclose(m_Logfile);
         }
     }
 
     /*-----------------------------------------------*/
 
-    // message method to print a message into the logfile with LOGLEVEL
-    void Writer::message(const char * File, int Line, LOGLEVEL level, const char * fmt, ...) 
+// message method to print a message into the logfile with LOGLEVEL
+    void Writer::message(const char * File, int Line, LOGLEVEL level, const char * fmt, ...)
     {
         if(this->m_Logfile != NULL)
         {
@@ -113,7 +114,7 @@ namespace Log
             /* Write current time in the buffer */
             char buffer[TIME_BUF_SIZE] = {0};
             get_current_time(buffer);
-            
+
             /* Convert enum to an approp. string */
             bool append_location = false;
             const char * title = convert_enum_to_str(level,append_location);
@@ -128,7 +129,7 @@ namespace Log
 
             /* Do the suffix */
             if(append_location)
-                bufstream << " (" << Glib::path_get_basename(File) << ":" << Line << ")"; 
+                bufstream << " (" << Glib::path_get_basename(File) << ":" << Line << ")";
 
             bufstream << std::endl;
 
@@ -144,31 +145,32 @@ namespace Log
     }
 
     /*-----------------------------------------------*/
-    
-    const char* Writer::convert_enum_to_str(LOGLEVEL level, bool& append_location) 
+
+    const char* Writer::convert_enum_to_str(LOGLEVEL level, bool& append_location)
     {
-        switch(level) {
-            case LOG_OK: 
-                append_location = false;
-                return COL_GRE"DONE "COL_NCO;
-            case LOG_ERROR:
-                append_location = true;
-                return COL_RED"ERROR"COL_NCO;
-            case LOG_FATAL_ERROR:
-                append_location = true;
-                return COL_RED"FATAL"COL_NCO;
-            case LOG_INFO:
-                append_location = false;
-                return COL_NCO"INFO "COL_NCO;
-            case LOG_WARN:
-                append_location = true;
-                return COL_YEL"WARN "COL_NCO;
-            case LOG_DEBUG: 
-                append_location = true;
-                return COL_BLU"DEBUG"COL_NCO;
-            default:
-                append_location = false;
-                return COL_NCO"INFO "COL_NCO;
+        switch(level)
+        {
+        case LOG_OK:
+            append_location = false;
+            return COL_GRE"DONE "COL_NCO;
+        case LOG_ERROR:
+            append_location = true;
+            return COL_RED"ERROR"COL_NCO;
+        case LOG_FATAL_ERROR:
+            append_location = true;
+            return COL_RED"FATAL"COL_NCO;
+        case LOG_INFO:
+            append_location = false;
+            return COL_NCO"INFO "COL_NCO;
+        case LOG_WARN:
+            append_location = true;
+            return COL_YEL"WARN "COL_NCO;
+        case LOG_DEBUG:
+            append_location = true;
+            return COL_BLU"DEBUG"COL_NCO;
+        default:
+            append_location = false;
+            return COL_NCO"INFO "COL_NCO;
         }
     }
 
@@ -185,7 +187,7 @@ namespace Log
 
     /*-----------------------------------------------*/
 
-    void Writer::get_current_time(char buffer[]) 
+    void Writer::get_current_time(char buffer[])
     {
         struct tm * timeinfo = NULL;
         time_t rawtime = time(NULL);

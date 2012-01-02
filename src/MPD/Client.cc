@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -39,47 +39,47 @@
 namespace MPD
 {
     /* Go into active mode */
-    #define GET_BUSY                     \
+#define GET_BUSY                     \
             if(m_Conn.is_connected())    \
             {                            \
                 go_busy();               \
                 mpd_connection * conn =  \
                 m_Conn.get_connection(); \
                 if(conn != NULL) {       \
-
-    /* Go back idling, *never* forget this. */                
-    #define GET_LAID                  \
+ 
+    /* Go back idling, *never* forget this. */
+#define GET_LAID                  \
                 }                     \
                 go_idle();            \
             }                         \
-
-    //-------------------------------
+ 
+//-------------------------------
 
     Client::Client() {}
 
-    //-------------------------------
+//-------------------------------
 
     Client::~Client()
     {
         disconnect();
     }
 
-    //-------------------------------
+//-------------------------------
 
     void Client::connect(void)
     {
         __connect();
     }
 
-    //-------------------------------
+//-------------------------------
 
     void Client::disconnect(void)
     {
         __disconnect();
     }
 
-    //-------------------------------
-    //-------------------------------
+//-------------------------------
+//-------------------------------
 
     bool Client::send_command(const char * command)
     {
@@ -100,35 +100,35 @@ namespace MPD
         return result;
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool Client::playback_play(void)
     {
         return this->send_command("play");
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool Client::playback_stop(void)
     {
         return this->send_command("stop");
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool Client::playback_next(void)
     {
         return this->send_command("next");
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool Client::playback_prev(void)
     {
         return this->send_command("previous");
     }
 
-    //-------------------------------
+//-------------------------------
 
     bool Client::playback_pause(void)
     {
@@ -141,9 +141,9 @@ namespace MPD
         }
         return false;
     }
-    
-    //-------------------------------
-    
+
+//-------------------------------
+
     void Client::queue_add(const char * path)
     {
         if(path != NULL)
@@ -164,7 +164,7 @@ namespace MPD
         }
     }
 
-    //-------------------------------
+//-------------------------------
 
     void Client::queue_delete(unsigned id)
     {
@@ -183,7 +183,7 @@ namespace MPD
         }
     }
 
-    //-------------------------------
+//-------------------------------
 
     void Client::queue_clear(void)
     {
@@ -194,7 +194,7 @@ namespace MPD
         GET_LAID
     }
 
-    //-------------------------------
+//-------------------------------
 
     unsigned Client::database_update(const char * path)
     {
@@ -208,21 +208,21 @@ namespace MPD
         return id;
     }
 
-    //-------------------------------
+//-------------------------------
 
     unsigned Client::database_rescan(const char * path)
     {
         unsigned id = 0;
         GET_BUSY
         {
-             id = mpd_run_rescan(conn,path);
+            id = mpd_run_rescan(conn,path);
         }
         GET_LAID
 
         return id;
     }
 
-    //-------------------------------
+//-------------------------------
 
     void Client::fill_queue(AbstractItemlist& data_model)
     {
@@ -240,8 +240,8 @@ namespace MPD
         GET_LAID
     }
 
-    //-------------------------------
-    
+//-------------------------------
+
     void Client::fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos)
     {
         bool is_first = true;
@@ -269,8 +269,8 @@ namespace MPD
         }
         GET_LAID
     }
-    
-    //-------------------------------
+
+//-------------------------------
 
     void Client::fill_playlists(AbstractItemlist& data_model)
     {
@@ -288,13 +288,13 @@ namespace MPD
         GET_LAID
     }
 
-    //-------------------------------
-    
+//-------------------------------
+
     void Client::fill_outputs(AbstractItemlist& data_model)
     {
         GET_BUSY
         {
-            if(mpd_send_outputs(conn) != FALSE) 
+            if(mpd_send_outputs(conn) != FALSE)
             {
                 mpd_output * ent = NULL;
                 while((ent = mpd_recv_output(conn)))
@@ -305,8 +305,8 @@ namespace MPD
         }
         GET_LAID
     }
-    
-    //-------------------------------
+
+//-------------------------------
 
     void Client::fill_filelist(AbstractItemlist& data_model, const char * path)
     {
@@ -320,30 +320,30 @@ namespace MPD
                     switch(mpd_entity_get_type(ent))
                     {
                         /* Making duplicates is silly, but that's how mpd_entity_get_song/dir works */
-                        case MPD_ENTITY_TYPE_DIRECTORY:
-                            {
-                                mpd_directory * dir = (mpd_directory*)mpd_entity_get_directory(ent);
-                                if(dir != NULL)
-                                {
-                                    mpd_directory * dup_dir = mpd_directory_dup(dir);
-                                    data_model.add_item(new MPD::Directory(*dup_dir));
-                                }
-                                break;
-                            }
-                        case MPD_ENTITY_TYPE_SONG:
-                            {
-                                mpd_song * song = (mpd_song*)mpd_entity_get_song(ent);
-                                if(song != NULL)
-                                {
-                                    mpd_song * dup_song = mpd_song_dup(song);
-                                    data_model.add_item(new MPD::Song(*dup_song));
-                                }
-                                break;
-                            }
-                        case MPD_ENTITY_TYPE_PLAYLIST:
-                        case MPD_ENTITY_TYPE_UNKNOWN:
-                        default:
-                            break;
+                    case MPD_ENTITY_TYPE_DIRECTORY:
+                    {
+                        mpd_directory * dir = (mpd_directory*)mpd_entity_get_directory(ent);
+                        if(dir != NULL)
+                        {
+                            mpd_directory * dup_dir = mpd_directory_dup(dir);
+                            data_model.add_item(new MPD::Directory(*dup_dir));
+                        }
+                        break;
+                    }
+                    case MPD_ENTITY_TYPE_SONG:
+                    {
+                        mpd_song * song = (mpd_song*)mpd_entity_get_song(ent);
+                        if(song != NULL)
+                        {
+                            mpd_song * dup_song = mpd_song_dup(song);
+                            data_model.add_item(new MPD::Song(*dup_song));
+                        }
+                        break;
+                    }
+                    case MPD_ENTITY_TYPE_PLAYLIST:
+                    case MPD_ENTITY_TYPE_UNKNOWN:
+                    default:
+                        break;
                     }
                     mpd_entity_free(ent);
                 }
@@ -352,64 +352,64 @@ namespace MPD
         GET_LAID
     }
 
-    //--------------------
-    
-    //--------------------
+//--------------------
+
+//--------------------
 
     void Client::toggle_random(void)
     {
         GET_BUSY
         {
-             mpd_run_random(conn,!(get_status()->get_random()));
+            mpd_run_random(conn,!(get_status()->get_random()));
         }
         GET_LAID
     }
 
-    //--------------------
+//--------------------
 
     void Client::toggle_consume(void)
     {
         GET_BUSY
         {
-             mpd_run_consume(conn,!(get_status()->get_consume()));
+            mpd_run_consume(conn,!(get_status()->get_consume()));
         }
         GET_LAID
     }
 
-    //--------------------
+//--------------------
 
     void Client::toggle_repeat(void)
     {
         GET_BUSY
         {
-             mpd_run_repeat(conn,!(get_status()->get_repeat()));
+            mpd_run_repeat(conn,!(get_status()->get_repeat()));
         }
         GET_LAID
     }
 
-    //--------------------
+//--------------------
 
     void Client::toggle_single(void)
     {
         GET_BUSY
         {
-             mpd_run_single(conn,!(get_status()->get_single()));
+            mpd_run_single(conn,!(get_status()->get_single()));
         }
         GET_LAID
     }
-    
-    //--------------------
+
+//--------------------
 
     void Client::play_song_at_id(unsigned song_id)
     {
         GET_BUSY
         {
-             mpd_run_play_id(conn,song_id);
+            mpd_run_play_id(conn,song_id);
         }
         GET_LAID
     }
 
-    //--------------------
+//--------------------
 
     void Client::playback_seek(unsigned song_id, unsigned abs_time)
     {
@@ -420,8 +420,8 @@ namespace MPD
         GET_LAID
     }
 
-    //--------------------
-    
+//--------------------
+
     void Client::playback_crossfade(unsigned seconds)
     {
         GET_BUSY
@@ -430,21 +430,21 @@ namespace MPD
         }
         GET_LAID
     }
-    
-    //--------------------
+
+//--------------------
 
     void Client::set_volume(unsigned vol)
     {
         GET_BUSY
         {
-             mpd_run_set_volume(conn,vol);
+            mpd_run_set_volume(conn,vol);
         }
         GET_LAID
     }
 
-    //--------------------
+//--------------------
 
-    void Client::playlist_save(const char * name) 
+    void Client::playlist_save(const char * name)
     {
         GET_BUSY
         {
@@ -453,4 +453,4 @@ namespace MPD
         GET_LAID
     }
 
-} // END NAMESPACE 
+} // END NAMESPACE

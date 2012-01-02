@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -38,13 +38,13 @@ namespace Browser
      */
     class AbstractSettings
     {
-        public:
-            AbstractSettings(){};
-            virtual ~AbstractSettings(){};
+    public:
+        AbstractSettings() {};
+        virtual ~AbstractSettings() {};
 
-            virtual void accept_new_settings(void)=0;
-            virtual void decline_new_settings(void)=0;
-            virtual void reset_settings(void)=0;
+        virtual void accept_new_settings(void)=0;
+        virtual void decline_new_settings(void)=0;
+        virtual void reset_settings(void)=0;
     };
 
 }

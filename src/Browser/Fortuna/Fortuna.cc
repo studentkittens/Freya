@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -44,11 +44,11 @@ namespace Browser
         BUILDER_GET(builder,"fortune_scrolledwindow",mp_FortuneScroll);
         BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
         BUILDER_GET(builder,"fortune_refresh",mp_FortuneRefresh);
-        
-        mp_FortuneRefresh->signal_clicked().connect(
-                sigc::mem_fun(*this,&Fortuna::on_refresh_fortune));
 
-        on_refresh_fortune();        
+        mp_FortuneRefresh->signal_clicked().connect(
+            sigc::mem_fun(*this,&Fortuna::on_refresh_fortune));
+
+        on_refresh_fortune();
     }
 
     /*-----------------------*/
@@ -57,9 +57,9 @@ namespace Browser
     {
         return mp_FortuneScroll;
     }
-    
+
     /*-----------------------*/
-    
+
     void Fortuna::on_refresh_fortune(void)
     {
         Glib::ustring fortune = get_fortune();
@@ -69,7 +69,7 @@ namespace Browser
         }
     }
 
-    //----------------------------
+//----------------------------
 
     Glib::ustring Fortuna::get_fortune(void)
     {

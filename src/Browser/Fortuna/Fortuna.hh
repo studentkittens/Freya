@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -47,32 +47,32 @@ namespace Browser
      */
     class Fortuna : public AbstractBrowser
     {
-        public:
-       
-            /**
-             * @brief Builds itself once being passed a builder reference
-             *
-             * @param builder
-             */
-            Fortuna(Glib::RefPtr<Gtk::Builder>& builder);
+    public:
 
-            /**
-             * @brief Implemented by AbstractBrowser
-             *
-             * @return 
-             */
-            Gtk::Widget * get_container(void);
+        /**
+         * @brief Builds itself once being passed a builder reference
+         *
+         * @param builder
+         */
+        Fortuna(Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
+        /**
+         * @brief Implemented by AbstractBrowser
+         *
+         * @return
+         */
+        Gtk::Widget * get_container(void);
 
-            /* Workers */
-            Glib::ustring get_fortune(void);
-            void on_refresh_fortune(void);
+    private:
 
-            /* Widgets */
-            Gtk::ScrolledWindow * mp_FortuneScroll;
-            Gtk::Label * mp_FortuneLabel;
-            Gtk::Button * mp_FortuneRefresh;
+        /* Workers */
+        Glib::ustring get_fortune(void);
+        void on_refresh_fortune(void);
+
+        /* Widgets */
+        Gtk::ScrolledWindow * mp_FortuneScroll;
+        Gtk::Label * mp_FortuneLabel;
+        Gtk::Button * mp_FortuneRefresh;
     };
 }
 

@@ -1,7 +1,7 @@
- /***********************************************************
-* This file is part of Freya 
+/***********************************************************
+* This file is part of Freya
 * - A free MPD Gtk3 MPD Client -
-* 
+*
 * Authors: Christopher Pahl, Christoph Piechula,
 *          Eduard Schneider, Marc Tigges
 *
@@ -12,7 +12,7 @@
 *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
 *   ///_.-' _..--.'_                        `( ) ) // //
 *   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //  
+*    / // // //  `-._,_)' // / ``--...____..-' /// / //
 *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
 *
 * Freya is free software: you can redistribute it and/or modify
@@ -41,17 +41,17 @@ namespace Browser
      *
      * See Browser::BasePopup for more detailed description.
      */
-    class DatabasePopup : public BasePopup 
+    class DatabasePopup : public BasePopup
     {
-        public:
-            DatabasePopup(Gtk::Widget& to_register);
+    public:
+        DatabasePopup(Gtk::Widget& to_register);
 
-        private:
-            Glib::RefPtr<Gtk::Action> m_ActionAdd;
-            Glib::RefPtr<Gtk::Action> m_ActionAddAll;
-            Glib::RefPtr<Gtk::Action> m_ActionReplace;
-            Glib::RefPtr<Gtk::Action> m_ActionUpdate;
-            Glib::RefPtr<Gtk::Action> m_ActionRescan;
+    private:
+        Glib::RefPtr<Gtk::Action> m_ActionAdd;
+        Glib::RefPtr<Gtk::Action> m_ActionAddAll;
+        Glib::RefPtr<Gtk::Action> m_ActionReplace;
+        Glib::RefPtr<Gtk::Action> m_ActionUpdate;
+        Glib::RefPtr<Gtk::Action> m_ActionRescan;
     };
 }
 #endif /* end of include guard: FREYA_DATABASE_POPUP_GUARD */

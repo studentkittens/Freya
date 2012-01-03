@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.24)  2 JAN 2012 17:32
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.24)  3 JAN 2012 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -380,6 +380,161 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@cols=\count90
 \TX@ftn=\toks19
 )
+(/usr/share/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/share/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+))
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
+)
 (/usr/share/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count91
 \lst@gtempboxa=\box27
@@ -407,9 +562,6 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
 (/usr/share/texmf-dist/tex/latex/psnfss/courier.sty
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
-)
-(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
@@ -591,20 +743,27 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 ) (./Doku.aux)
 \openout1 = `Doku.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 53.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -636,7 +795,7 @@ e
 ))
 \c@lstlisting=\count127
 \AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 53.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -646,19 +805,19 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count128
 )
-LaTeX Info: Redefining \ref on input line 48.
-LaTeX Info: Redefining \pageref on input line 48.
-LaTeX Info: Redefining \nameref on input line 48.
+LaTeX Info: Redefining \ref on input line 53.
+LaTeX Info: Redefining \pageref on input line 53.
+LaTeX Info: Redefining \nameref on input line 53.
  (./Doku.out)
 (./Doku.out)
 \@outlinefile=\write4
 \openout4 = `Doku.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -668,11 +827,12 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Doku.toc [2
 
-] [3] [4])
+] [3] [4] [5] [6])
 \tf@toc=\write5
 \openout5 = `Doku.toc'.
 
- (./Einleitung.tex [5]
+ (./Einleitung.tex
+[7]
 Kapitel 1.
 
 Class scrreprt Warning: \float@addtolists detected!
@@ -681,16 +841,9 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              Support for \float@addtolists may be removed from
 (scrreprt)              `scrreprt' soon .
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
-(/usr/share/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
- [6
+[8
 
-]) (./Wasserfallmodell.tex
-[7]
+]) (./Wasserfallmodell.tex [9]
 Kapitel 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 4--17
@@ -713,7 +866,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--17
 
  []
 
-<567px-Wasserfallmodell.png, id=529, 569.12625pt x 362.35374pt>
+<567px-Wasserfallmodell.png, id=910, 569.12625pt x 362.35374pt>
 File: 567px-Wasserfallmodell.png Graphic file (type png)
 
 <use 567px-Wasserfallmodell.png>
@@ -729,13 +882,13 @@ Overfull \hbox (18.94841pt too wide) in paragraph at lines 22--22
 /e/e5/Wasserfallmodell.svg/567px-
  []
 
-[8
+[10
 
-]) (./Richtlinien.tex [9 <./567px-Wasserfallmodell.png>] [10]
+]) (./Richtlinien.tex [11 <./567px-Wasserfallmodell.png>] [12]
 Kapitel 3.
-[11
+[13
 
-] [12]) (./Definition.tex [13]
+] [14]) (./Definition.tex [15]
 Kapitel 4.
 
 Overfull \hbox (0.4304pt too wide) in paragraph at lines 8--27
@@ -770,14 +923,14 @@ Overfull \hbox (3.83704pt too wide) in paragraph at lines 8--27
 p-less Play-back, Cross-
  []
 
-[14
+[16
 
-] [15]
+] [17]
 Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
-[16] <Mpd-overview.png, id=588, 741.84846pt x 734.43616pt>
+[18] <Mpd-overview.png, id=970, 741.84846pt x 734.43616pt>
 File: Mpd-overview.png Graphic file (type png)
 
 <use Mpd-overview.png>
@@ -788,7 +941,7 @@ Overfull \hbox (26.85696pt too wide) in paragraph at lines 65--66
  [][] 
  []
 
-) (./Lastenheft.tex [17 <./Mpd-overview.png>]
+) (./Lastenheft.tex [19 <./Mpd-overview.png>]
 Kapitel 5.
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--19
@@ -800,7 +953,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--19
 
  []
 
-[18
+[20
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 44--51
@@ -822,7 +975,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--66
 
  []
 
-[19] [20]
+[21] [22]
 Underfull \hbox (badness 10000) in paragraph at lines 112--128
 
  []
@@ -832,16 +985,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--128
 
  []
 
-[21]
+[23]
 ngerman: "ff is now obsolete, please use fff instead on input line 143.
 
 Underfull \hbox (badness 10000) in paragraph at lines 130--146
 
  []
 
-[22]) (./Pflichtenheft.tex [23]
+[24]) (./Pflichtenheft.tex [25]
 Kapitel 6.
-[24
+[26
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 32--39
@@ -853,7 +1006,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--39
 
  []
 
-[25] [26] <./final_mockup.png, id=644, 870.25125pt x 578.16pt>
+[27] [28] <./final_mockup.png, id=1025, 870.25125pt x 578.16pt>
 File: ./final_mockup.png Graphic file (type png)
 
 <use ./final_mockup.png>
@@ -864,43 +1017,43 @@ Overfull \hbox (10.44998pt too wide) in paragraph at lines 103--104
 [][] 
  []
 
-[27 <./final_mockup.png>] [28] [29] [30]
+[29 <./final_mockup.png>] [30] [31] [32]
 ngerman: "ll is now obsolete, please use lll instead on input line 264.
-[31] [32] [33] [34]
+[33] [34] [35] [36]
 Overfull \hbox (10.0725pt too wide) in paragraph at lines 377--380
 \OT1/cmr/m/n/10.95 sam-ten Be-triebs-sys-tems de-fi-niert und dif-fe-ren-ziert.
  F[]ur sp[]ate-re Ver-sio-nen k[]onn-te erg[]anzend
  []
 
-[35] [36] [37]) (./testfaelle.tex
+[37] [38] [39]) (./testfaelle.tex
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
-
- []
-
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 29--57
-
- []
-
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 58--140
 
  []
 
 [40]
+Underfull \hbox (badness 10000) in paragraph at lines 29--57
+
+ []
+
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 58--140
+
+ []
+
+[42]
 Overfull \vbox (393.8996pt too high) has occurred while \output is active []
 
 
-[41]
+[43]
 Overfull \vbox (102.09964pt too high) has occurred while \output is active []
 
 
-[42]
+[44]
 Underfull \hbox (badness 10000) in paragraph at lines 141--208
 
  []
@@ -910,7 +1063,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--208
 
  []
 
-[43]
+[45]
 Underfull \hbox (badness 2626) in paragraph at lines 222--222
 []|\OT1/cmr/m/n/10.95 Queue als Play-list spei-
  []
@@ -920,57 +1073,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--223
 
  []
 
-[44] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 224--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--278
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--278
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--278
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--278
-
- []
-
 [46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 224--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--278
+
+ []
+
+[48] [49]
 Underfull \hbox (badness 10000) in paragraph at lines 279--296
 
  []
@@ -1000,7 +1153,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 297--316
 
  []
 
-[48]
+[50]
 Underfull \hbox (badness 10000) in paragraph at lines 318--426
 
  []
@@ -1025,7 +1178,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--426
 
  []
 
-[49] [50]
+[51] [52]
 Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
@@ -1050,7 +1203,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
 
-[51]
+[53]
 Underfull \hbox (badness 10000) in paragraph at lines 440--441
 
  []
@@ -1190,101 +1343,305 @@ Underfull \hbox (badness 10000) in paragraph at lines 480--1
 
  []
 
-[52] [53] [54]
+[54] [55] [56]
 Kapitel 7.
-ngerman: "FF is now obsolete, please use FFF instead on input line 3.
-[55
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 6.
+
+
+LaTeX Warning: File `Namespace_Uebersicht.png' not found on input line 10.
+
+
+! Package pdftex.def Error: File `Namespace_Uebersicht.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ...hics[scale=0.21]{Namespace_Uebersicht.png}
+                                                  
+? 
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 10.
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 17--27
+
+ []
+
+[57
+
+] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) (./state.txt) [58]
+(./telnet.txt
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 1.
+ (/usr/share/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 4.
+ [59]
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 33.
+)
+(./ClientImplementierung.tex
+Overfull \hbox (5.96623pt too wide) in paragraph at lines 39--41
+[]\OT1/cmr/m/n/10.95 Die fol-gen-den Funk-ti-on ru-fen ein-fach die ent-spre-ch
+en-den Funk-tio-nen von MPD::Listener
+ []
+
+[60]
+Overfull \hbox (6.2096pt too wide) in paragraph at lines 54--58
+[]\OT1/cmr/m/n/10.95 Verf[]ugt []uber ein ,,Event-No-ti-fer'' (ein sigc::signal
+) Mo-du-le k[]onnen sich []uber connect()
+ []
+
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
+Underfull \hbox (badness 10000) in paragraph at lines 95--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
-
+Overfull \hbox (35.0739pt too wide) in paragraph at lines 113--113
+[]    \OT1/pcr/m/n/10.95 void conn_change_handler(bool server_changed, bool is_
+connected);[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
+Overfull \hbox (51.34799pt too wide) in paragraph at lines 128--129
+[]\OT1/cmr/m/n/10.95 Der Cli-ent erbt von Ba-se-Cli-ent und im-ple-men-tiert ko
+n-kre-te Com-man-dos wie ,,play'',,,random''
+ []
 
+[62] [63]
+Overfull \hbox (54.78387pt too wide) in paragraph at lines 187--187
+[]    \OT1/pcr/m/n/10.95 void fill_filelist(AbstractItemlist& data_model, const
+ char * path);[] 
+ []
+
+[64]
+Overfull \hbox (28.5039pt too wide) in paragraph at lines 240--240
+[]    \OT1/pcr/m/n/10.95 Glib::ustring song_format(const char* format, bool mar
+kup=true);[] 
+ []
+
+[65] [66]
+Overfull \hbox (247.8764pt too wide) in paragraph at lines 280--281
+\OT1/cmr/m/n/10.95 Die Play-list Klas-se ist Wrap-per f[]ur die mpd[]playlist S
+truk-tur, im-ple-men-tiert von http://www.musicpd.org/doc/libmpdclient/playlist
+[]8h.html
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
+Overfull \hbox (227.40599pt too wide) in paragraph at lines 312--313
+\OT1/cmr/m/n/10.95 Die Au-dioOut-put Klas-se ist ein Wrap-per f[]ur mpd[]output
+, im-ple-men-tiert von http://www.musicpd.org/doc/libmpdclient/output[]8h.html
+ []
 
+[67]
+Overfull \hbox (121.57889pt too wide) in paragraph at lines 349--349
+ []            \OT1/pcr/m/n/10.95 void on_client_update(enum mpd_idle event, MP
+D::NotifyData& data);[] 
+ []
+
+ngerman: "ff is now obsolete, please use fff instead on input line 352.
+
+Overfull \hbox (121.57889pt too wide) in paragraph at lines 355--355
+ []            \OT1/pcr/m/n/10.95 void on_connection_change(bool server_changed
+, bool is_connected);[] 
+ []
+
+[68]
+Overfull \hbox (18.2424pt too wide) in paragraph at lines 357--363
+[]\OT1/cmr/m/n/10.95 Wird auf-ge-ru-fen so-bald sich der ver-bun-den/-ge-trennt
+ hat. Im ers-ten Fall ist is[]connected
+ []
+
+[69]
+Overfull \hbox (251.88364pt too wide) in paragraph at lines 397--397
+[]    \OT1/pcr/m/n/10.95 void fill_queue_changes(AbstractItemlist& data_model, 
+unsigned last_version, unsigned& first_pos);[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
-
+Overfull \hbox (54.78387pt too wide) in paragraph at lines 412--412
+[]    \OT1/pcr/m/n/10.95 void fill_filelist(AbstractItemlist& data_model, const
+ char * path);[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
-
+Overfull \hbox (23.029pt too wide) in paragraph at lines 440--440
+ []   \OT1/pcr/m/n/10.95 void on_client_update(mpd_idle event, MPD::NotifyData&
+ data)[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
-
+Overfull \hbox (55.87897pt too wide) in paragraph at lines 440--440
+ []   \OT1/pcr/m/n/10.95 void on_connection_change(bool server_changed, bool is
+_connected)[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
+Overfull \hbox (546.83441pt too wide) in paragraph at lines 442--447
+\OT1/cmr/m/n/10.95 m[]ogli-chen Events, die von libmpd-cli-ent vor-ge-ge-ben we
+r-den. []\OT1/pcr/m/n/10.95 (Siehe auch http://www.musicpd.org/doc/libmpdclient
+/idle\_8h.html#a3378f7a24c714d7cb1058232330d7a1c)
+ []
+
+[70]) (./Config.tex
+Underfull \hbox (badness 10000) in paragraph at lines 37--46
 
  []
 
+[71]
+Overfull \hbox (134.71887pt too wide) in paragraph at lines 58--58
+ []\OT1/pcr/m/n/10.95 http://standards.freedesktop.org/basedir-spec/basedir-spe
+c-latest.html#variables[] 
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--51
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+) (./config.xml)
+
+LaTeX Warning: Float too large for page by 13.29979pt on input line 69.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[72] <init.pdf, id=1274, 542.025pt x 722.7pt>
+File: init.pdf Graphic file (type pdf)
+ <use init.pdf>
+Package pdftex.def Info: init.pdf used on input line 87.
+(pdftex.def)             Requested size: 325.2175pt x 433.62334pt.
+
+Overfull \hbox (31.91776pt too wide) in paragraph at lines 94--99
+[]\OT1/cmr/m/n/10.95 Uber die In-it::Path Klas-se holt sich das Mo-del bei sei-
+ner In-stan-zi-ie-rung []uber die path[]to[]config()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--99
 
  []
 
-[56] [57]) (./glossar.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
- [58] [59]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+[73 <./init.pdf>]
+Overfull \hbox (18.39148pt too wide) in paragraph at lines 120--121
+[]\OT1/cmr/m/n/10.95 Der cur-No-de Poin-ter wird auf das root Ele-ment []uber x
+ml-Doc-Ge-tRoot-Ele-ment(fileDOc)
+ []
+
+
+Overfull \hbox (16.79466pt too wide) in paragraph at lines 123--127
+[]\OT1/cmr/m/n/10.95 Ist das cur-No-de g[]ultig, so wird mit-tels der libxml2 M
+e-tho-de xml-Strcmp(curNodeName,
+ []
+
+
+Overfull \hbox (1.67752pt too wide) in paragraph at lines 131--134
+\OT1/cmr/m/n/10.95 Diese Me-tho-de holt sich die default Kon-fi-gu-ra-ti-ons-da
+-tei aus ei-nem ein-kom-pi-lier-ten String.
+ []
+
+[74] [75] <configset.pdf, id=1294, 652.4375pt x 843.15pt>
+File: configset.pdf Graphic file (type pdf)
+ <use configset.pdf>
+Package pdftex.def Info: configset.pdf used on input line 174.
+(pdftex.def)             Requested size: 326.21794pt x 421.57396pt.
+
+Overfull \hbox (10.71045pt too wide) in paragraph at lines 184--185
+[]\OT1/cmr/m/n/10.95 Aufruf des []\OT1/pcr/m/n/10.95 CONFIG_SET_AS_INT("setting
+s.connection.port",6667) \OT1/cmr/m/n/10.95 Ma-
+ []
+
+
+Overfull \hbox (111.5115pt too wide) in paragraph at lines 185--186
+[][]\OT1/cmr/m/n/10.95 Uber das Ma-kro wird die Wrap-per Me-tho-de []\OT1/pcr/m
+/n/10.95 set_value_as_int(Glib::ustring url,int value)
+ []
+
+[76 <./configset.pdf>] <configget.pdf, id=1303, 772.8875pt x 1023.825pt>
+File: configget.pdf Graphic file (type pdf)
+
+<use configget.pdf>
+Package pdftex.def Info: configget.pdf used on input line 206.
+(pdftex.def)             Requested size: 386.4428pt x 511.91124pt.
+ [77]
+Overfull \hbox (78.66174pt too wide) in paragraph at lines 217--221
+\OT1/cmr/m/n/10.95 set-zen auf-ge-ru-fen, die-ses ruft die ent-spre-chen-de Wra
+p-per Me-tho-de []\OT1/pcr/m/n/10.95 get_value(Glib::ustring)
+ []
+
+
+Overfull \hbox (6.9692pt too wide) in paragraph at lines 217--221
+\OT1/cmr/m/n/10.95 wel-che die ei-gent-li-che []\OT1/pcr/m/n/10.95 _get_value(G
+lib::ustring url,bool getdefault)
+ []
+
+[78 <./configget.pdf>]) (./GUIElements.tex [79]
+Overfull \hbox (81.06384pt too wide) in paragraph at lines 64--64
+[]\OT1/pcr/m/n/10.95 void set(void)    - Setzt die jetzige Zeit absolut und z[]
+ahlt von dort weiter[] 
+ []
+
+[80] [81]) (./BrowserImplementierungen.tex [82]
+Overfull \hbox (67.92386pt too wide) in paragraph at lines 55--55
+[]    \OT1/pcr/m/n/10.95 /* mp_Popup ist die Instanz einer von BasePopup abgele
+iteten Klasse */[] 
+ []
+
+
+Overfull \hbox (8.79393pt too wide) in paragraph at lines 55--55
+[]    \OT1/pcr/m/n/10.95 mp_Popup->get_action("add_item").connect(<funktionspoi
+nter>);[] 
+ []
+
+[83] [84] [85] [86] [87])) (./glossar.tex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
+ [88] [89]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
  (./Doku.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
-
-
-Package rerunfilecheck Warning: File `Doku.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Doku.out':
-(rerunfilecheck)             Before: 95A14D0A55AC322BDCF61A60B1965075;6376
-(rerunfilecheck)             After:  335C21D866C213BB23FEE01BBC98F361;6430.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
+Package rerunfilecheck Info: File `Doku.out' has not changed.
+(rerunfilecheck)             Checksum: 032CDD89C8D64F32903C276C46D4598E;12159.
  ) 
 Here is how much of TeX's memory you used:
- 9332 strings out of 493629
- 134537 string characters out of 3148777
- 255981 words of memory out of 3000000
- 12283 multiletter control sequences out of 15000+200000
- 15212 words of font info for 59 fonts, out of 3000000 for 9000
+ 10651 strings out of 493629
+ 152047 string characters out of 3148777
+ 312578 words of memory out of 3000000
+ 13383 multiletter control sequences out of 15000+200000
+ 17493 words of font info for 67 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 36i,10n,40p,255b,538s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb>
-Output written on Doku.pdf (59 pages, 599496 bytes).
+ 36i,10n,52p,272b,1812s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fon
+ts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/tex
+mf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/u
+rw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrro8a.pf
+b>
+Output written on Doku.pdf (89 pages, 716944 bytes).
 PDF statistics:
- 890 PDF objects out of 1000 (max. 8388607)
- 806 compressed objects within 9 object streams
- 197 named destinations out of 1000 (max. 500000)
- 784 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1522 PDF objects out of 1728 (max. 8388607)
+ 1397 compressed objects within 14 object streams
+ 361 named destinations out of 1000 (max. 500000)
+ 1391 words of extra memory for PDF output out of 10000 (max. 10000000)
 

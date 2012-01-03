@@ -1,0 +1,109 @@
+\section{GUI Elementklassen}
+
+\subsection{Hauptklassen}
+Der GManager Namespace enthält Klassen die der Verwaltung und Kontrolle des Hauptfensters von Freya dienen,
+jedoch nicht für den eigentlichen Inhalt des Hauptfensters (dies wird vom Browser namespace getan)
+Alle Klassen gehören nach dem MVC Paradigma der Controllerschicht an.
+
+
+\subsubsection{BrowserList}
+Zeigt eine Liste von Browsern in der Sidebar.
+\begin{itemize} 
+\item Bietet eine add() Methode die eine Referenz auf AbstractBrowser erwartet und fügt in der Sidebar hinzu.
+\item set() setzt den Browser temporär, ohne ihn hinzuzufügen.
+\end{itemize}
+Benutzt alle Methoden von AbstractBrowser um dise entsprechen anzuzeigen:
+\\
+Der Container der im Hauptbereich beim wechseln angezeigt wird
+\begin{verbatim}
+  Gtk::Widget * get_container();
+\end{verbatim}
+Welcher Name soll in der Sidebar angezeigt werden?
+\begin{verbatim}
+  Glib::ustring get_name();
+\end{verbatim}
+Welche Gtk::Stock::ID soll in der Liste angezeigt werden?
+\begin{verbatim}
+  Gtk::Stock::ID get_icon_stock_id();
+\end{verbatim} 
+Ist sichtbar in der Leiste?
+\begin{verbatim}
+  bool is_visible(); 
+\end{verbatim}
+Benötigt dieser Browser eine Verbindung zum funktionieren?
+\begin{verbatim}
+  bool needs_connection(); 
+\end{verbatim}
+
+Als View wird ein Gtk::TreeView benutzt, die Browserreferenzen werden in einem Gtk::ListStore gespeichert,
+was damit das Model darstellt. 
+
+\subsubsection{Heartbeat}
+Sendet alle 500ms ein Signal aus, und summiert die bisher vergangene Zeit.
+Dies ist nützlich bei Anzeigen wie der Sekundenanzeige.
+Über signal\_client\_update() können sich Klienten registrieren:
+\begin{verbatim}
+  Heartbeat.signal_client_update().connect(<funktionspointer>)
+\end{verbatim}
+Der angegebene Funktionspointer wird dann aufgerufen und muss folgender Signatur entsprechen:
+\begin{verbatim}
+  void func(double time)
+  {
+      ...
+  }
+\end{verbatim}
+
+Der übergebene Parameter ist die Zeit die seit dem Instanzieren vergangen ist. 
+Sie kann durch folgende Funktionen verändert werden:
+\begin{verbatim}
+void pause(void)  - Setzt das Zählen aus
+void play(void)   - Fängt damit wieder an
+void reset(void)  - Fängt von 0 wieder an
+void get(void)    - Bekommt die jetzige Zeit
+void set(void)    - Setzt die jetzige Zeit absolut und zählt von dort weiter
+\end{verbatim}
+
+Zusätzlich stoppt die Heartbeat klasse das zählen wenn der client das playback pausiert.
+Wird es fortgesetzt, so so wird play() aufgerufen. 
+Zusätzlich wird bei jedem client update der Zähler an der vergangen Zeit im gerade spielenden Song justiert.
+
+\subsubsection{MenuList}
+Kontrolliert die Anzeige (Sensitivität) und Steuerung der Menüleiste.
+
+\subsubsection{NotifyManager}
+Kontrolliert die Anzeige von Notifications, bei entsprechenden events.
+Greift dabei auf die Notifylib zurück.
+
+\subsubsection{PlaybackButtons}
+Kontrolliert die Anzeige der oberen rechten Playbackbuttons Stop, Play/Pause, Next, Previous
+Das Icon des Playbuttons wird entsprechend geändert falls das Playback pausiert ist,
+bzw. fortgesetzt wird.
+
+\subsubsection{Statusbar}
+Kontrolliert die Anzeige der Statusbar (was den Text miteinfasst). 
+Benutzt die Heartbeatklasse um die Zeitanzeige zu aktualisieren. Ansonsten bekommt es alle Informationen rein vom Client update.
+
+\subsubsection{StatusIcons}
+Kontrolliert Anzeige und Handling der Icons unter der Sidebar.
+
+\subsubsection{Timeslide}
+Zeigt und Kontrolliert die aktuelle Zeit innerhalb des momentan spielenden Liedes.
+Bei Klicken innerhalb der Timeline wird zur entsprechenden Stelle im Song gesprungen.
+
+\subsubsection{TitleLabel}
+Verwaltet und kontrolliert Anzeige des Titels bzw. Artist und Albums in der Titelleiste und Die ,,Next Song'' Anzeige unter der Sidebar.
+
+\subsubsection{Trayicon}
+Verwaltet und kontrolliert Anzeige und Interaktion des Trayicons das optional angezeigt werden kann.
+Dazu gehört auch die Definition und Anzeige des Popupmenüs, weshalb die Klasse von Browser::BasePopup ableitet.
+
+\subsubsection{Volumebutton}
+Verwaltet und Kontrolliert die Anzeige des Volumebuttons. Aus Performancegründen sollen nur alle 0.05 Sekunden Volumeänderungen erlaubt.
+
+\subsubsection{Window}
+Verwaltet das Hauptfenster von Freya.
+Falls das verstecken des Fensters beim Schließen gewünscht ist (\emph{,,settings.trayicon.totrayonclose''} ist 1), so wird Gtk::Window::hide() aufgerufen.
+Andernfalls wird einfach der Mainloop beendet wodurch die Kontrolle zur main() Methode zurückkehrt.
+Zudem wird eine get\_window() Methode bereitgestellt die das darunterliegende Fenster (ein Gtk::Window) zurückgibt.
+Der Mainloop zB. benötigt das als Startargument.
+

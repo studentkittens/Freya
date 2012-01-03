@@ -94,16 +94,16 @@
 \contentsline {chapter}{\numberline {7}Software Design}{57}{chapter.7}
 \contentsline {section}{\numberline {7.1}Einf\IeC {\"u}hrung}{57}{section.7.1}
 \contentsline {subsubsection}{\numberline {7.1.0.9}Namespace-\IeC {\"U}bersicht}{57}{subsubsection.7.1.0.9}
-\contentsline {section}{\numberline {7.2},,Das Problem''}{57}{section.7.2}
+\contentsline {section}{\numberline {7.2},,Das Problem''}{58}{section.7.2}
 \contentsline {section}{\numberline {7.3}Aufbau des Clients}{60}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Hauptklassen}{60}{subsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.1.1}BaseClient}{60}{subsubsection.7.3.1.1}
+\contentsline {subsection}{\numberline {7.3.1}Hauptklassen}{61}{subsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.1.1}BaseClient}{61}{subsubsection.7.3.1.1}
 \contentsline {subsubsection}{\numberline {7.3.1.2}Listener}{61}{subsubsection.7.3.1.2}
-\contentsline {subsubsection}{\numberline {7.3.1.3}Connection}{61}{subsubsection.7.3.1.3}
+\contentsline {subsubsection}{\numberline {7.3.1.3}Connection}{62}{subsubsection.7.3.1.3}
 \contentsline {subsubsection}{\numberline {7.3.1.4}Client}{63}{subsubsection.7.3.1.4}
-\contentsline {subsubsection}{\numberline {7.3.1.5}NotifyData}{64}{subsubsection.7.3.1.5}
+\contentsline {subsubsection}{\numberline {7.3.1.5}NotifyData}{65}{subsubsection.7.3.1.5}
 \contentsline {subsection}{\numberline {7.3.2}Weitere Klassen}{65}{subsection.7.3.2}
-\contentsline {subsubsection}{\numberline {7.3.2.1}Song}{65}{subsubsection.7.3.2.1}
+\contentsline {subsubsection}{\numberline {7.3.2.1}Song}{66}{subsubsection.7.3.2.1}
 \contentsline {subsubsection}{\numberline {7.3.2.2}Directory}{66}{subsubsection.7.3.2.2}
 \contentsline {subsubsection}{\numberline {7.3.2.3}Statistics}{67}{subsubsection.7.3.2.3}
 \contentsline {subsubsection}{\numberline {7.3.2.4}Playlist}{67}{subsubsection.7.3.2.4}

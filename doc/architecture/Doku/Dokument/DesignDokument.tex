@@ -78,8 +78,38 @@ Die Idee zu dieser Implementierung (speziell das Benutzen einer asynchronen Verb
 der inoffiziellen offiziellen Referenzimplementierung des MPD Mit-Authors \emph{Max Kellermann}.
 Vergleiche \href{http://mpd.wikia.com/wiki/Client:Ncmpc}{ncmpc quellcode}: src/gidle.c und src/mpdclient.c
 
-
 \input{ClientImplementierung}
+
+%% Übergang zu GUI Zeugs..
+
+\section{Interaktion des Clients mit anderen Modulen}
+\begin{itemize}
+\item Die meisten GUI Klassen leiten von AbstractClientUser ab und speichern daher eine Referenz auf eine Instanz von MPD::Client
+        Sie können daher Funktionen wie queue\_add() direkt aufrufen.
+\item AbstractClientUser zwingt die abgeleitenden Klassen folgende Funktionen zu implementieren: 
+\begin{verbatim} 
+   void on_client_update(mpd_idle event, MPD::NotifyData& data)
+   void on_connection_change(bool server_changed, bool is_connected)
+\end{verbatim}
+
+1) wird aufgerufen sobald der Listener ein Event festgestellt hat. Für jedes eingetretene Event wird 1)
+   einmal aufgerufen. 'event' ist dabei eine Enumeration aller möglichen Events, die von libmpdclient 
+   vorgegeben werden. \verb+(Siehe auch http://www.musicpd.org/doc/libmpdclient/idle\_8h.html#a3378f7a24c714d7cb1058232330d7a1c)+
+   ,,data'' ist eine Referenz auf eine Instanz von MPD::NotifyData. Die benutzenden Klassen können folgenden Funktionen so
+   bei Events sofort die aktuellen Änderungen auslesen. 
+   \begin{itemize} 
+     \item get\_status() gibt den aktuellen MPD::Status
+     \item get\_song() gibt den aktuellen MPD::Song
+     \item get\_statistics() gibt die aktuellen MPD::Statistics
+   \end{itemize} 
+
+2) on\_connection\_change wird vom Client aufgerufen sobald die Verbindung verloren geht.
+   Dabei zeigt der übergebene boolean Wert ,,is\_connected'' an ob man connected wurde, oder disconnected wurde.
+   ,,server\_changed'' soll dann anzeigen ob der Server derselbe ist beim zuvor geschehenen Connectvorgang.
+   Dies ist beim ersten Start stets wahr. ,,server+\_changed'' kann nicht wahr sein wenn ,,is\_connected'' falsch ist.
+\item Ableitung von den oben beschriebenen abstrakten Klassen AbstractItemlist und AbstractFilebrowser, um alle Funktionen von AbstractItemGenerator nutzen zu können  
+\end{itemize}
+
 \input{Config}
 \input{GUIElements}
 \input{BrowserImplementierungen}

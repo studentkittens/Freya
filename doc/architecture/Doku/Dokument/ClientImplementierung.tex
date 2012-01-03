@@ -15,7 +15,7 @@ Aus den oben genannten Anforderungen kann eine grobe Architektur abgeleitet werd
 \begin{figure}[htb!]
 	\centering
         \includegraphics[scale=0.55]{BaseClientCollab.png}
-	\caption{Kollaborationsdiagramm zu BaseClient}
+	\caption{Klassendiagramm zu BaseClient}
 	\label{collab_base_client}
 \end{figure}
 
@@ -23,18 +23,16 @@ Aus den oben genannten Anforderungen kann eine grobe Architektur abgeleitet werd
 Diese Klasse bildet die Basis zur eigentlichen Clientklasse. Sie kann nicht direkt instanziert werden,
 und verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau \ref{seq_client_connect} an sich. 
 Desweiteren bietet er einfache Funktionen zum eintreten und verlassen des ,,Idlemodes'' an.
-\\
-Geht die verbindung verloren (ohne dass \emph{disconnect()} explizit aufgerufen wurde), so versucht sich der BaseClient periodisch sich zu reconnecten.
+Geht die verbindung verloren (ohne dass \emph{\_\_disconnect()} explizit aufgerufen wurde), so versucht sich der BaseClient periodisch sich zu reconnecten.
 Das Intervall in dem diese Versuche geschehen soll von ,,settings.connection.reconnectinterval'' gelesen werden.
 \\
 Er soll mindestens folgende public Methoden bieten:
-
+\\
 Gibt eine Referenz auf das zugrunde liegende MPD::Connection Objekt zurück. 
 AbstractClientExtension benötigt dies.
 \begin{verbatim}
         Connection& get_connection(void);
 \end{verbatim}
-
 Prüft ob eine Verbindung besteht.
 \begin{verbatim}
         bool is_connected(void);
@@ -140,14 +138,11 @@ mit signal\_error() registriert haben benachrichtigt.
 
 
 \subsubsection{Client}
-\begin{itemize}
-    \item Der Client erbt von BaseClient und implementiert konkrete Commandos wie ,,play'',,,random'' etc.
-    \item Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des Playlistmanagers
-    \item Er bietet die Methoden connect() und disconnect() 
-    \item Ist in der config ,,settings.connection.autoconnect'' gesetzt so connected er sich automatisch.
-    \item Er bietet zudem eine schnittstelle um sich beim listener zu registrieren und im falle von 
-        änderungen des connection zustands benachrichtigt zu werden.
-\end{itemize}
+Der Client erbt von BaseClient und implementiert konkrete Commandos wie ,,play'',,,random'' etc.
+Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des Playlistmanagers, indem 
+er die abstrakte Klasse AbstractClientExtension ausimplementiert.
+Er bietet die Methoden connect() und disconnect() die letzendlich von Anwendern der Clientklasse zum verbinden und trennen genutzt werden. 
+Ist in der config ,,settings.connection.autoconnect'' gesetzt so connected er sich automatisch.
 
 connect() und disconnect() stellen die öffentliche Schnittstelle zum Verbinden dar.
 Sie rufen intern lediglich \_\_connect() bzw. \_\_disconnect() von MPD::BaseClient auf.
@@ -187,7 +182,10 @@ Todo...
     void playlist_save(const char * name);
 \end{verbatim}   
 
-Funktionen zum Bearbeiten der Queue. 
+Funktionen zum Bearbeiten der Queue. queue_add() nimmt dabei ein Pfad zu einem Song oder einem Verzeichniss in der Datenbank 
+und fügt ihm rekursiv der Queue hinzu. Das Wurzelverzeichniss ist dabei '/'.
+queue_clear() teilt dem Server mit die Queue zu leeren.
+queue_delete() löscht den Song der an der Stelle 'pos' steht. 
 \begin{verbatim}
     void queue_add(const char * url);
     void queue_clear(void);
@@ -219,36 +217,39 @@ Folgende Funktionen sollen von AbstractItemGenerator voll implementiert werden.
 \end{verbatim}
 
 \subsubsection{NotifyData}
-\begin{itemize}
-    \item Speichert den Status, den aktuellen Song und die aktuelle Datenbankstatistik
-    \item Der Listener...
-        \begin{itemize}
-            \item instanziert NotifyData im Konstruktor
-            \item sagt NotifyData wann er sich updaten soll (update\_all())
-            \item gibt bei einem Event eine Referenz auf NotifyData an alle registrierten Module weiter,
-                damit diese konkrete Informationen beziehen können.
-        \end{itemize}
-\end{itemize}
-
+Speichert den Status, den aktuellen Song und die aktuelle Datenbankstatistik.
+Bietet zudem eine Funktion um entsprechende Daten bei Aufruf zu updaten.
+Die Klasse gehört nach dem MVC Pattern somit der Modelebene an.
+Der Listener instanziert NotifyData im Konstruktor und gibt an wann sich dieser updaten soll (über update\_all()).
+\\        
+Hauptsächlich wird diese Klasse durch bei einem Event an periphere Klasse weitergegeben.
+      
+Die folgenden 2 Funktionen haben stets einen validen Rückgabewert:
 \begin{verbatim}
-        Status& get_status(void);
-        Statistics& get_statistics(void);
-        Song * get_song(void);
-        Song * get_next_song(void);
+    Status& get_status(void);
+    Statistics& get_statistics(void);
 \end{verbatim}
 
-Test
+Anmerkung: Die folgenden 2 Funktionen können NULL zurückgeben, falls 
+nichts wiedergegeben wird, oder man im ,,Singlemode'' ist.
+get\_song() liefert den aktuell spielenden MPD::Song, oder NULL.
+get\_next\_song() liefert den als nächstes spielenden MPD::Song oder NULL.
+\begin{verbatim} 
+    Song * get_song(void);
+    Song * get_next_song(void);
+\end{verbatim}
+
+Diese Funktion sollte nur vom Listener aufgerufen werden. Sie aktualisiert den internen Zustand
+von NotifyData.
 \begin{verbatim}
-        /**
-         * @brief Update internal client state
-         */
-        void update_all(unsigned event = UINT_MAX);
+        void update_all(unsigned event);
 \end{verbatim}
 
 
 \subsection{Weitere Klassen}
 Desweiteren gibt es einige weitere Klassen die am Rande eine Rolle spielen,
-und meist Objektorientierte Wrapperklassen für die C-Strukturen von libmpdclient bereitstellen.
+und meist Objektorientierte Wrapperklassen für die C-Strukturen von libmpdclient bereitstellen,
+oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos implementieren.
 
 \subsubsection{Song}
 
@@ -308,7 +309,7 @@ folgende Funktionen:
 
 
 \subsubsection{Playlist}
-Die Playlist Klasse ist Wrapper für die mpd\_playlist Struktur, implementiert von http://www.musicpd.org/doc/libmpdclient/playlist\_8h.html folgende Funktionen:
+Die Playlist Klasse ist Wrapper für die mpd\_playlist Struktur, implementiert von \url{http://www.musicpd.org/doc/libmpdclient/playlist\_8h.html} folgende Funktionen:
 \begin{verbatim}
     const char * get_path(void);
     time_t get_last_modified(void);
@@ -362,12 +363,18 @@ Bietet desweiteren funktionen zum:
 
 Die genannten Funktionen benötigen müssen den idlemode verlassen können,
 daher leitet MPD::AudioOutput von AbstractClientExtension ab. 
-
+\newpage
 \subsection{Abstrakte Klassen}
 \subsubsection{AbstractClientExtension}
 Diese abstrakte Klasse erlaubt abgeleiteten Klasse ähnlich zum BaseClient eigene Kommandos zu implementieren.
-Wird von MPD::Playlist und MPD::AudioOutput benutzt
-%TODO 
+Wird von MPD::Playlist und MPD::AudioOutput benutzt 
+
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.6]{AbstractClientExtension.png}
+	\caption{Klassendiagramm zu AbstractClientExtension}
+	\label{c_abstract_client_extension}
+\end{figure}
 
 
 \subsubsection{AbstractClientUser}
@@ -401,15 +408,7 @@ Je nach Bedarf kann über \verb+static_cast<Zieltyp*>(data)+ der entsprechende D
 Beim Aufruf von MPD::Client::fill\_queue ruft der Client die add\_item methode für jeden 
 song den er vom server bekommt auf. Die ableitende Klasse kann diese dann verarbeiten.
 
-Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die davon ableiten) benutzbar:
-\begin{itemize}
-    \item fill\_queue
-    \item fill\_queue\_changes
-    \item fill\_playlists
-    \item fill\_ouputs
-    \item fill\_filelist
-\end{itemize} 
-
+Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die davon ableiten) benutzbar.
 %<Klassendiagramm, bzw. Klassen die es verwenden von Doxygen nehmen>
 
 \subsubsection{AbstractItemGenerator}
@@ -457,14 +456,5 @@ Diese ,,is\_leaf'' Eigenschaft kann später mit der Funktion \emph{is\_leaf()} a
 % <Klassendiagramm für alle Klassen die von AbstractComposite erben, siehe Doxygen>
 
 %-------------------------------------------
-
-\subsubsection{AbstractClientExtension}
-\begin{figure}[htb!]
-	\centering
-        \includegraphics[scale=0.6]{AbstractClientExtension.png}
-	\caption{Klassendiagramm zu AbstractClientExtension}
-	\label{c_abstract_client_extension}
-\end{figure}
-TODO
 
 %=============================================

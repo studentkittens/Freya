@@ -278,16 +278,13 @@ Grober Ablauf beim setzen einer Integer Wertes:
 \item Die set\_value(url, wert) Methode holt sich über cfgmodel.getDocPtr() einen aktuellen Dokument Pointer über die Model
 \item Ist der Dokument Pointer NULL, so kann kein Wert geschrieben werden, also wird über den Log:Writer
           eine entsprechende Warnung in die Logdatei geschreiben.
-\item Bei einem gültigem Dokument Pointer wird  xmlNodePtr cur = xmlDocGetRootElement(doc) aufgeruden,
-         diese liefert einen xmlNodePtr (xml node pointer) auf das root Element zurück.
-\item Mittels cur->xmlChildrenNode wird der Pointer auf den folgenden Kinderknoden gesetzt und die traverse() Methode aufgerufen
-\item Nun werden diverse Vorbereitungen getätigt und anschließend rekursiv im Baum nach der übergebenen Url gesucht. Hier wird rekursiv
-     der jeweilige Teilstring (teilstring1.teilstring2.teilstring2) gemäß dem Url Aufbau untersucht
+\item Bei einem gültigem Dokument Pointer wird  mittels xmlDocGetRootElement() auf das root Element zugegriffen
+\item Anschließend wird mit xmlChildrenNode der Pointer auf den folgenden Kinderknoden gesetzt und die traverse() Methode aufgerufen
+\item Nun werden diverse Vorbereitungen getätigt und anschließend rekursiv im Baum nach der übergebenen
+Url gesucht. Hierbei wird jeweils der rekursive Teilstring (teilstring1.teilstring2.teilstring3) gemäß dem Url Aufbau untersucht
            
-\item Wird die Url nicht gefunden oder sind andere Fehler aufgetreten wird ein \emph{NULL Pointer} zurückgegeben
-                  und eine entsprechende Fehlermeldung in die Logdatei geschrieben
-\item Wird die die entsprechende Url gefunden, so wird der Optionswert über die Aufruferkette an die set\_value() Methode \emph{returned}.
-     Hier wird dann der Wert an die entsprechende Stelle gesetzt.  
+\item Wird die Url nicht gefunden oder sind andere Fehler aufgetreten wird ein \emph{NULL Pointer} zurückgegeben und eine entsprechende Fehlermeldung in die Logdatei geschrieben
+\item Wird die Url gefunden, so wird ein NodePointer auf den Optionswert über die Aufruferkette an die set\_value() Methode \emph{returned}. In dieser wird dann der Wert an der entsprechende Stelle gesetzt.  
 \end{itemize}
 
 
@@ -305,16 +302,15 @@ Grober Ablauf beim Lesen eines Wertes:
 \begin{itemize}
 
 
-   \item Das Makro \verb+CONFIG_GET("settings.connection.host")+ wird analog dem setzen aufgerufen, dieses ruft die entsprechende Wrapper
-   Methode \verb+get_value(Glib::ustring)+ welche die eigentliche \verb+_get_value(Glib::ustring url,bool getdefault)+ Methode aufruft.
-   Der zweite Parameter dient dazu der \verb+_get_value()+ Methode mitzuteilen ob der entsprechende Default Wert aus der einkompilierten 
+   \item Das Makro \verb+CONFIG_GET("settings.connection.host")+ wird analog dem Setzen aufgerufen, dieses ruft die entsprechende Wrapper
+   Methode get\_value() welche die eigentliche private \_get\_value() Methode aufruft.
+   Der zweite Parameter dieser Methode ist ein \emph{boolean flag}, dieser dient dazu der \_get\_value()
+   Methode mitzuteilen ob der entsprechende Default Wert aus der einkompilierten 
    Konfigurationsdatei oder der Custom User Wert gelanden werden soll.
-   \item Die \verb+_get_value()+ Methode entsprechend dem flag, den ,,richtigen'' Dokument Pointer über das Model (analog Setzen eines Integer Wertes)
-   \item Bei einen gültigen Pointer wird analog zum Setzen der Dokument Pointer auf das erste Element gesetzt und traverse
+   \item Die \_get\_value() Methode holt entsprechend dem flag, den ,,richtigen'' Dokument Pointer über das Model (analog Setzen eines Integer Wertes)
+   \item Bei einen gültigen Pointer wird analog zum Setzen der Node Pointer auf das erste Element gesetzt und traverse
       aufgerufen (siehe Setzen eines Wertes).
-   \item Kann kein Node ermittelt werden (d.h. cur Pointer zeigte auf NULL nach dem traversieren), so wird eine entsprechende Warnung über den
-         Logwriter in die Logdatei geschreiben und anschließend wird die \verb+_get_value(url,true)+ Methode rekursiv mit einem true Flag aufgerufen.
-         Aufgrund des true flags wird nun der Dokument Pointer mit den Default Werten über das Model geladen.
+   \item Kann kein Node ermittelt werden (d.h. cur Pointer zeigte auf NULL nach dem traversieren), so wird eine entsprechende Warnung in die Logdatei geschreiben und anschließend wird die \_get\_value(url,true) Methode rekursiv mit einem true Flag aufgerufen. Aufgrund des true flags wird nun der Dokument Pointer mit den Default Werten über das Model geladen.
     \item Analog zum bisherigen Verlauf beim ,,Lesen eines Wertes'' erfolgt die Suche des Default Wertes. Kann am Ende kein
     Default Wert ermittelt werden so wird an den Aufrufer eine leerer ustring "" zurückgegeben.
 \end{itemize}

@@ -25,3 +25,9 @@ check_*.cc
 # logs
 valg.log
 logfile.txt
+
+#tex files
+*.toc
+*.aux
+*.log
+

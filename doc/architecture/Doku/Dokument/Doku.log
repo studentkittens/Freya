@@ -1,8 +1,4 @@
-<<<<<<< HEAD:doc/architecture/Doku/Dokument/Doku.log
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.24)  2 JAN 2012 17:32
-=======
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.24)  3 JAN 2012 16:58
->>>>>>> katze:doc/architecture/Doku/Doku.log
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.12.24)  3 JAN 2012 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1353,30 +1349,34 @@ Kapitel 7.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 6.
 
-<Namespace_Uebersicht.png, id=1152, 1333.45235pt x 1476.57529pt>
-File: Namespace_Uebersicht.png Graphic file (type png)
 
-<use Namespace_Uebersicht.png>
-Package pdftex.def Info: Namespace_Uebersicht.png used on input line 10.
-(pdftex.def)             Requested size: 280.03326pt x 310.08997pt.
+LaTeX Warning: File `Namespace_Uebersicht.png' not found on input line 10.
 
+
+! Package pdftex.def Error: File `Namespace_Uebersicht.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ...hics[scale=0.21]{Namespace_Uebersicht.png}
+                                                  
+? 
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 10.
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 Underfull \hbox (badness 10000) in paragraph at lines 17--27
 
  []
 
 [57
 
- <./Namespace_Uebersicht.png>]
-(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 41.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) (./state.txt) [58]
 (./telnet.txt
 LaTeX Font Info:    Try loading font information for TS1+pcr on input line 1.
@@ -1389,13 +1389,13 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/pcr/b/n' tried instead on input line 33.
 )
-(./ClientImplementierung.tex [60]
+(./ClientImplementierung.tex
 Overfull \hbox (5.96623pt too wide) in paragraph at lines 39--41
 []\OT1/cmr/m/n/10.95 Die fol-gen-den Funk-ti-on ru-fen ein-fach die ent-spre-ch
 en-den Funk-tio-nen von MPD::Listener
  []
 
-
+[60]
 Overfull \hbox (6.2096pt too wide) in paragraph at lines 54--58
 []\OT1/cmr/m/n/10.95 Verf[]ugt []uber ein ,,Event-No-ti-fer'' (ein sigc::signal
 ) Mo-du-le k[]onnen sich []uber connect()
@@ -1411,7 +1411,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--99
 
  []
 
-[62]
+
 Overfull \hbox (35.0739pt too wide) in paragraph at lines 113--113
 []    \OT1/pcr/m/n/10.95 void conn_change_handler(bool server_changed, bool is_
 connected);[] 
@@ -1423,19 +1423,19 @@ Overfull \hbox (51.34799pt too wide) in paragraph at lines 128--129
 n-kre-te Com-man-dos wie ,,play'',,,random''
  []
 
-[63] [64]
+[62] [63]
 Overfull \hbox (54.78387pt too wide) in paragraph at lines 187--187
 []    \OT1/pcr/m/n/10.95 void fill_filelist(AbstractItemlist& data_model, const
  char * path);[] 
  []
 
-[65]
+[64]
 Overfull \hbox (28.5039pt too wide) in paragraph at lines 240--240
 []    \OT1/pcr/m/n/10.95 Glib::ustring song_format(const char* format, bool mar
 kup=true);[] 
  []
 
-[66]
+[65] [66]
 Overfull \hbox (247.8764pt too wide) in paragraph at lines 280--281
 \OT1/cmr/m/n/10.95 Die Play-list Klas-se ist Wrap-per f[]ur die mpd[]playlist S
 truk-tur, im-ple-men-tiert von http://www.musicpd.org/doc/libmpdclient/playlist
@@ -1503,15 +1503,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--46
 
  []
 
-<<<<<<< HEAD:doc/architecture/Doku/Dokument/Doku.log
-[56] [57]) (./glossar.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
- [58] [59]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
- (./Doku.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
-=======
 [71]
 Overfull \hbox (134.71887pt too wide) in paragraph at lines 58--58
  []\OT1/pcr/m/n/10.95 http://standards.freedesktop.org/basedir-spec/basedir-spe
@@ -1529,9 +1520,8 @@ LaTeX Warning: Float too large for page by 13.29979pt on input line 69.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
->>>>>>> katze:doc/architecture/Doku/Doku.log
 
-[72] <init.pdf, id=1275, 542.025pt x 722.7pt>
+[72] <init.pdf, id=1274, 542.025pt x 722.7pt>
 File: init.pdf Graphic file (type pdf)
  <use init.pdf>
 Package pdftex.def Info: init.pdf used on input line 87.
@@ -1553,37 +1543,6 @@ Overfull \hbox (18.39148pt too wide) in paragraph at lines 120--121
 ml-Doc-Ge-tRoot-Ele-ment(fileDOc)
  []
 
-<<<<<<< HEAD:doc/architecture/Doku/Dokument/Doku.log
-Package rerunfilecheck Info: Checksums for `Doku.out':
-(rerunfilecheck)             Before: 95A14D0A55AC322BDCF61A60B1965075;6376
-(rerunfilecheck)             After:  335C21D866C213BB23FEE01BBC98F361;6430.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
-Here is how much of TeX's memory you used:
- 9332 strings out of 493629
- 134537 string characters out of 3148777
- 255981 words of memory out of 3000000
- 12283 multiletter control sequences out of 15000+200000
- 15212 words of font info for 59 fonts, out of 3000000 for 9000
- 831 hyphenation exceptions out of 8191
- 36i,10n,40p,255b,538s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb>
-Output written on Doku.pdf (59 pages, 599496 bytes).
-PDF statistics:
- 890 PDF objects out of 1000 (max. 8388607)
- 806 compressed objects within 9 object streams
- 197 named destinations out of 1000 (max. 500000)
- 784 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
 
 Overfull \hbox (16.79466pt too wide) in paragraph at lines 123--127
 []\OT1/cmr/m/n/10.95 Ist das cur-No-de g[]ultig, so wird mit-tels der libxml2 M
@@ -1596,7 +1555,7 @@ Overfull \hbox (1.67752pt too wide) in paragraph at lines 131--134
 -tei aus ei-nem ein-kom-pi-lier-ten String.
  []
 
-[74] [75] <configset.pdf, id=1295, 652.4375pt x 843.15pt>
+[74] [75] <configset.pdf, id=1294, 652.4375pt x 843.15pt>
 File: configset.pdf Graphic file (type pdf)
  <use configset.pdf>
 Package pdftex.def Info: configset.pdf used on input line 174.
@@ -1613,7 +1572,7 @@ Overfull \hbox (111.5115pt too wide) in paragraph at lines 185--186
 /n/10.95 set_value_as_int(Glib::ustring url,int value)
  []
 
-[76 <./configset.pdf>] <configget.pdf, id=1304, 772.8875pt x 1023.825pt>
+[76 <./configset.pdf>] <configget.pdf, id=1303, 772.8875pt x 1023.825pt>
 File: configget.pdf Graphic file (type pdf)
 
 <use configget.pdf>
@@ -1660,10 +1619,10 @@ Package rerunfilecheck Info: File `Doku.out' has not changed.
 (rerunfilecheck)             Checksum: 032CDD89C8D64F32903C276C46D4598E;12159.
  ) 
 Here is how much of TeX's memory you used:
- 10655 strings out of 493629
- 152166 string characters out of 3148777
- 305638 words of memory out of 3000000
- 13387 multiletter control sequences out of 15000+200000
+ 10651 strings out of 493629
+ 152047 string characters out of 3148777
+ 312578 words of memory out of 3000000
+ 13383 multiletter control sequences out of 15000+200000
  17493 words of font info for 67 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  36i,10n,52p,272b,1812s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1679,11 +1638,10 @@ blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
 mf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/u
 rw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrro8a.pf
 b>
-Output written on Doku.pdf (89 pages, 773354 bytes).
+Output written on Doku.pdf (89 pages, 716944 bytes).
 PDF statistics:
- 1523 PDF objects out of 1728 (max. 8388607)
+ 1522 PDF objects out of 1728 (max. 8388607)
  1397 compressed objects within 14 object streams
  361 named destinations out of 1000 (max. 500000)
- 1396 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> katze:doc/architecture/Doku/Doku.log
+ 1391 words of extra memory for PDF output out of 10000 (max. 10000000)
 

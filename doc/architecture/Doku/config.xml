@@ -1,0 +1,34 @@
+<?xml version=\1.0\ encoding=\utf-8\?>
+<freya>
+    <settings>
+        <connection>
+            <port>6600</port>
+            <musicroot>~/chris/Musik</musicroot>
+            <host>localhost</host>
+            <!-- Connect on startup? -->
+            <autoconnect>1</autoconnect>
+            <!-- In seconds -->
+            <timeout>20</timeout>
+             <!-- Autoreconnect interval in seconds -->
+            <reconnectinterval>2</reconnectinterval>
+        </connection>
+        <libnotify>
+           <!-- Show notifications? -->
+            <signal>0</signal>
+           <!-- How long? -->
+            <timeout>-1</timeout>
+        </libnotify>
+        <trayicon>
+            <!-- Show trayicon? -->
+            <tray>0</tray>
+            <!-- To tray when closing? -->
+            <totrayonclose>0</totrayonclose>
+        </trayicon>
+        <playback>
+            <!-- Stop music when closing Freya? -->
+            <stoponexit>0</stoponexit>
+        </playback>
+    </settings>
+    <plugins>
+    </plugins>
+</freya>

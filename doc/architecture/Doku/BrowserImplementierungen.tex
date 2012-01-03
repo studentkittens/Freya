@@ -1,0 +1,235 @@
+\section{Browserimplementierungen}
+
+Der Browser Namespace implementiert die einzelnen Browser die in der Sidebar angezeigt werden.
+Alle Klassen in diesem namespace gehören der Controllerebene an.
+Wie die meisten anderen peripheren Klassen erben diese von AbstractClientUser um Änderungen von diesem empfangen zu können. Dies wird im Folgenden nicht mehr erwähnt.
+
+\subsection{Abstrakte Klassen}
+\subsubsection{AbstractBrowser}
+Eine abstrakte Basisklasse durch die...
+\begin{verbatim}
+  Gtk::Widget * get_container(void) 
+\end{verbatim}
+..implementiert werden muss. Diese sollte den umliegenden Container des Browser als Pointer zurückgeben,
+so dass GManager::BrowserList diesen (und damit seine Kinder) im Hauptbereich anzeigen kann.
+Siehe auch GManager::BrowserList für die nähere Erklärung zu den anderen nicht-abstrakten Methoden dieser Klasse.
+
+\paragraph{AbstractSettings}
+Eine abstrakte Klasse die einen Reiter im Settingsbrowser darstellt. 
+Sie soll die folgenden pure virtual Methoden definieren:
+
+Weist Reiter an alle Werte in die Config zu speichern
+\begin{verbatim}
+    virtual void accept_new_settings(void)
+\end{verbatim}
+     
+Weist Reitern die letzten validen Werte aus der Config zu laden
+\begin{verbatim}
+    virtual void decline_new_settings(void)
+\end{verbatim}     
+
+Weist Reiter an die Defaultwerte aus der einkompilierten Config zu laden.
+\begin{verbatim}
+    virtual void reset_settings(void)
+\end{verbatim}
+
+\subsection{Hauptklassen}
+\subsubsection{BasePopup}
+Alle Klassen die ein Rechtsklickmenü anzeigen wollen leiten von dieser Klasse ab.
+Sie erwartet in ihrem Konstruktor eine von Gtk vorgegebene UI Definition die von der abgeleitenden Klasse vorgegeben werden muss.
+
+Ansonsten bietet die Klasse eine get\_action() Methode um die eigentliche Implementierung der Aktionen nicht in die abgeleitete Klasse machen zu müssen.
+%<Klassendiagramm>
+
+Im Code könnte das so aussehen:
+\begin{verbatim}
+    /* mp_Popup ist die Instanz einer von BasePopup abgeleiteten Klasse */
+    mp_Popup->get_action("add_item").connect(<funktionspointer>);
+
+    ...
+
+    void Queue::add_item_action(void)
+    {
+        ...
+    }
+\end{verbatim}
+
+
+\subsubsection{Database}
+\paragraph{Database}
+Diese Klasse kontrolliert die Anzeige des Datenbankbrowsers. Sie leitet sich daher von AbstractBrowser ab um sich bei der Browserliste registrieren zu können.
+Um die Methoden des AbstractItemGenerator Interface zu benutzen leitet es zudem von AbstractItemlist ab und implementiert daher eine add\_item() Methode. 
+Diese fügt letzlich die gewonnen Items seinem Model (einem Gtk::ListStore) hinzu.
+
+\paragraph{DatabasePopup}
+Eine Klasse die von BasePopup ableitet und das Popup definiert das auftaucht wenn man im Databasebrowser rechtsklickt.
+Sie bietet die Folgenden Aktionen an die man über die Methode get\_action() abfragen kann und dadurch auf diese Aktionen reagieren kann:
+\begin{itemize}
+\item db\_add (Fügt Auswahl zum Ende der Queue hinzu)
+\item db\_add\_all (Fügt alles zum Ende der Queue hinzu)
+\item db\_replace (Dasselbe wie db\_add, leert aber Queue vorher)
+\item db\_update (Sendet Server einen Updatehinweis)
+\item db\_rescan (Sendet Server einen Rescanhinweis)
+\end{itemize}
+
+\paragraph{DatabaseCache}
+Ein Zwischenspeicher für die im Databasebrowser angezeigten Ordner und Files. 
+Sie fungiert als Proxy für MPD::Client und erbt daher von der AbstractItemGenerator um sich als Client ausgeben zu können.
+Sie implementiert daher die fill\_filelist() Methode vor, lässt aber die anderen Methoden ohne Implementierung.
+Da sie auch selbst Daten dem Cache hinzufügen muss leitet sich auch von AbstractItemlist ab und implementiert daher auch eine add\_item() Methode. 
+\\
+Das zugrunde liegende Model ist dabei eine std::map (also eine Art Hashmap) die als Key den Pfad der zu ladenden Seite benutzt,
+und als Wert ein Vektor von AbstractComposites speichert. Wird eine Seite vom cache über die fill\_filelist() Methode verlangt,
+so wird nachgeschaut ob im angegeben Pfad bereits eine Seite gespeichert ist, falls nicht wird sie vom Server geholt und gespeichert. 
+Anschließend wird über die Elemente iteriert und an die add\_item() Methode des Aufrufers weitergegeben.
+Sollte sich der Server wechseln bzw. sich die Datenbank geupdated so wird der cache geleert damit die Anzeige stets aktuell ist.
+
+
+\subsubsection{PlaylistManager}
+\paragraph{PlaylistManager}
+Diese Klasse kontrolliert die Anzeige des ,,Playlists'' Browsers. Er verwaltet eine Liste der auf dem Server gespeicherten Playlisten.
+Zudem werden die Aktionen des Popupmenüs implementiert.
+
+\paragraph{PlaylistManagerPopup}
+Eine Klasse die von BasePopup ableitet und das Popup definiert das auftaucht wenn man im PlaylistManager rechtsklickt.
+Sie bietet die Folgenden Aktionen an die man über die Methode get\_action() abfragen kann und dadurch auf diese Aktionen reagieren kann:
+\begin{itemize}
+\item pl\_append (Fügt Inhalt der ausgewählten Playlists zum Ende der Queue hinzu)
+\item pl\_replace (Dasselbe wie pl\_append, aber leert vorher Queue)
+\item pl\_delete (Löscht Playliste aus der Liste und vom Server)
+\end{itemize}
+
+\subsubsection{Queue}
+\paragraph{Queue}
+Diese Klasse kontrolliert die Anzeige der Queue (der aktuellen Playlist also) und auch die Verwaltung des darunter liegenden Suchfelds. 
+Bei Aktivierung des Suchfelds muss die Auswahl entsprechend einer Volltextsuche gefiltert werden. 
+Durch Aktivieren der Tastenkombination soll zudem der Fokus auf das Suchfeld gelegt werden.
+Zudem werden die Aktionen des Popupmenüs implementiert:
+\begin{itemize}
+\item Remove - Entfernt ausgewählte Elemente aus der Queue und benachrichtigt Server.
+\item Clear - leert alle Daten aus dem Model, und benachrichtigt dem Server entsprechend
+\item Save as Playlist - Speichert aktuellen Inhalt als Playliste; Namensabfrage durch PlaylistAddDialog
+\end{itemize}
+
+Das zugrundeliegende Model ist ein Gtk::ListStore dessen Spaltenlayout durch QueueModelColumns festgelegt wird.
+Als View wird ein Gtk::TreeView verwendet.
+
+\paragraph{QueueMerger}
+Diese Klasse verwaltet die eigentlichen Daten die die Queue anzeigt.
+Da sie letzendlich die Daten vom Client bekommt erbt sie von AbstractItemlist
+und implementiert daher eine add\_item() Methode. Da sie die Änderungen auch in die Queue einpflegen muss, erwartet die Merger Klasse eine Referenz auf
+das der Queue zugrunde liegende Gtk::ListStore Model, sowie deren Spaltendefinition die als drittes Argument übergeben werden muss:
+\begin{verbatim}         
+      QueueMerger(MPD::Client& client,
+                  Glib::RefPtr<Gtk::ListStore>& queue_model,
+                  QueueModelColumns& queue_columns);
+\end{verbatim}
+
+Die Übergabe des Clients ist dadurch bedingt dass so gut wie alle peripheren Klassen von AbstractClientUser ableiten und benötigt daher eine Referenz auf den Client.
+Zudem soll QueueMerger die folgenden public Funktionen bieten:
+\\
+Lässt das ,,Zusammenführen'' einmal ausfallen. Dies ist nützlich bei der Implementierung der remove funktionalität,
+da man weiß wo ein Element gelöscht wurde, und es so aus Performancegründen explizit aus View und Model entfernen kann.
+\begin{verbatim}  
+    void disable_merge_once(void);
+\end{verbatim}
+Diese Funktion kann nützlich im Zusammenhang mit disable\_merge\_once() sein. Löscht man etwas explizit so
+\begin{verbatim}        
+    void recalculate_positions(unsigned pos = 0);
+\end{verbatim}    
+
+Bei einem Clientupdate das eine Änderungen in der Queue angezeigt wird, so werden über das Clientcommand fill\_queue\_changes() die Änderungen vom Server reingeholt.
+%<Zustandsdiagramm mit weiterer Auarbeitung hier>
+
+\paragraph{QueueModelColumns}
+Definiert die Spalten für die Queue, und erbt daher von Gtk::TreeModel::ColumnRecord, sodass ein Gtk::ListStore etwas damit anfangen kann.
+Die Definition ist nicht wie bei anderen Klassen als ,,Nested Class'' realisiert, da sowohl Queue als auch QueueMerger darauf zugreifen müssen. 
+Sie definiert die folgenden Spalten:
+\begin{itemize}
+\item m\_col\_id: Speichert die Songid eines Songs (nicht sichtbar)
+\item m\_col\_pos: Speichert die Position eines Songs (beginnend bei 0) (nicht sichtbar)
+\item m\_col\_title: Der Songtitel
+\item m\_col\_album: Der Albumtitel
+\item m\_col\_artist: Der Artisttitel
+\end{itemize}
+
+\paragraph{QueuePopup}
+Eine Klasse die von BasePopup ableitet und das Popup definiert das auftaucht wenn man in der Queue rechtsklickt.
+Sie bietet die Folgenden Aktionen an die man über die Methode get\_action() abfragen kann und dadurch auf diese Aktionen reagieren kann:
+\begin{itemize}
+\item q\_remove (Entfernt ausgewählte Elemente aus der Queue)
+\item q\_clear (Leert Queue völlig)
+\item q\_add\_as\_pl (Zeigt den PlaylistAddDialog)
+\end{itemize}
+
+\paragraph{PlaylistAddDialog}
+Zeigt einem Dialog zum Speichern der aktuellen Queue als Playlist mit einem bestimmten Namen. Der Name wird durch den Dialog abgefragt.
+Es wird keine Validierung durchgeführt, außer dass der Name länger als ein 0 Zeichen sein muss. Der eingegebene Name wird zurückgegeben.
+
+
+\subsubsection{Settings}
+\paragraph{Settings}
+Repräsentiert den Settingsbrowser. Wie jeder andere Browser implementiert diese Klasse AbstractBrowser, und eine get\_container() Methode.
+Es sollen keine Änderungen direkt geändert werden, sobald sie in der GUI geändert werden, dies soll erst durch den Speichernbutton geschehen.
+Sie kontrolliert die Buttons rund um die Reiter und implementiert dementsprechend deren Funktionalität:
+\begin{itemize}
+\item Zurücksetzen - Setzt alle Einstellungen auf Fabrikstandards zurück
+\item Rückgängig - Setzt Änderungen auf letzten Stand zurück
+\item Speichern - Speichert aktuelle Änderungen
+\end{itemize}
+
+Die Klasse soll zudem eine Methode bieten um anzuzeigen dass die Settings geändert wurden (Sprich: ausgrauen des Speicherbuttons zB.):
+\begin{verbatim}
+    void settings_changed(void)
+\end{verbatim}
+Um in jeden Tab die Settings zurückzusetzen (auf letzten validen Wert oder Standardwert) sein speichert die Settingsklasse eine Liste von AbstractSettings* 
+um darüber iterieren zu können. 
+
+%<Zustandsdiagramm>
+
+\paragraph{SettingsGeneral}
+Die konkrete Klasse die den ,,General'' Tab implementiert.
+Folgende Einstellungen sollen geändert werden können:
+\begin{itemize}
+\item ,,settings.libnotify.signal'' (checkbox)
+\item ,,settings.libnotify.timeout'' (numberslider) (ausgegraut wenn 'signal' nicht aktiviert)
+\item ,,settings.trayicon.tray'' (checkbox)
+\item ,,settings.trayicon.totrayonclose'' (checkbox) (ausgegraut wenn 'tray' nicht aktiviert)
+\end{itemize}
+
+\paragraph{SettingsNetwork}
+Die konkrete Klasse die den ,,Network'' Tab implementiert.
+Folgende Einstellungen sollen geändert werden können:
+\begin{itemize}
+\item ,,settings.connection.port'' (numberslider)
+\item ,settings.connection.host'' (stringentry)
+\item ,,settings.connection.autoconnect'' (checkbox)
+\item ,,settings.connection.timeout'' (numberslider)
+\item ,,settings.connection.reconnectinterval'' (numberslider)
+\end{itemize}
+
+\paragraph{SettingsPlayback}
+Die konkrete Klasse die den ,,Playback'' Tab implementiert.
+Folgende Einstellungen sollen geändert werden können:
+\begin{itemize}
+\item Eine Einstellung zum Crossfade (Überblendzeit) - diese wird vom Server gespeichert.
+\item ,,settings.playback.stoponexit'' (checkbox)
+\end{itemize}
+
+\paragraph{SettingsOutputs}
+Zeigt und verwaltet eine Liste von Outputs. Die Klasse benutzt die Funktion fill\_outputs() von AbstractItemGenerator
+und muss daher von AbstractItemlist erben.
+
+Wenn Änderungen übernommen werden, so wird über die Liste iteriert und für jeden Output entsprechend enable() oder disable() aufgerufen, 
+falls der Output vorher disabled, respektive enabled war.
+
+\paragraph{OutputsModelColumns}
+Die Spaltendefinition für die Outputliste.
+Die Liste besteht aus dem Outputnamen (einem String), einer Anzeige ob der Aktiv ist (boolean),
+und einen Pointer auf die AudioOutput Instanz um den entsprechenden Output en/disablen zu können.
+
+\subsubsection{Statistics}
+\paragraph{Statistics}
+Eine Browserklasse die lediglich eine Reihe von Labels verwaltet und sie bei einem Clientupdate mit den aktuellen Server Statistiken.
+
+

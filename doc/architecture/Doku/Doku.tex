@@ -14,12 +14,13 @@
 \usepackage{enumerate} %für geschachtelte Aufzählungen
 \usepackage{tabularx}
 \usepackage{textcomp}
+
+
 % *** java listings
 \usepackage{listings} 
 \usepackage{courier} % courier schrift
-\lstset{numbers=left, numberstyle=\tiny, basicstyle=\ttfamily  ,numbersep=2pt, tabsize=1}
-\lstset{language=Bash}
-\lstset{frame=single, framesep=1pt,framerule=0.5pt,xleftmargin=1.8pt}
+\lstset{numbers=left, numberstyle=\tiny, basicstyle=\ttfamily  ,numbersep=1pt, tabsize=1}
+\lstset{frame=single, framesep=1pt,framerule=0.5pt,xleftmargin=1.0pt,showstringspaces=false}
     
 
 % ***
@@ -28,7 +29,8 @@
 \usepackage{amssymb} %mathfrak
 
 \usepackage[bookmarks=true]{hyperref} % hyperrefs aktivieren
-\setcounter{secnumdepth}{3} %Numerierung bis Tiefe 3, also ab \paragraph ohne
+\setcounter{secnumdepth}{4} %Numerierung bis Tiefe 3, also ab \paragraph ohne
+\setcounter{tocdepth}{4}
 
 %kitteh stuff
 \linespread{1.25}
@@ -43,8 +45,8 @@ Christoph Piechula,\\
 Eduard Schneider,\\
 und Marc Tigges}
 \date{\today}
-%***
 
+%***
 %newcommands
 %\newcommand{\neuesKommando}{Was zu tun ist}
 

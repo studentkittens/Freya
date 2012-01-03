@@ -5,21 +5,21 @@
 Im \emph{Utils Namespace} sollen sollen sich folgende Hilfsfunktionen zur Zeit/Datumsumrechnung befinden:
 
 \begin{itemize}
-\item Umrechnung von Sekunden in einen ;;Dauer-String Bsp'' : ,,4 hours 2 minutes 0 seconds''
+    \item Umrechnung von Sekunden in einen ;;Dauer-String Bsp'' : ,,4 hours 2 minutes 0 seconds''
 
-\begin{verbatim}
-Glib::ustring seconds_to_duration(unsigned long);
-\end{verbatim}
+        \begin{verbatim}
+        Glib::ustring seconds_to_duration(unsigned long);
+        \end{verbatim}
 
-\item Umrechnung Sekunden in einen Timestamp, Bsp: ,,2011-04-02''
-\begin{verbatim}
-Glib::ustring seconds_to_timestamp(const long);
-\end{verbatim}
+    \item Umrechnung Sekunden in einen Timestamp, Bsp: ,,2011-04-02''
+        \begin{verbatim}
+        Glib::ustring seconds_to_timestamp(const long);
+        \end{verbatim}
 
-\item Umwandlung eines Integer Wertes in einen String
-\begin{verbatim}
-std::string int_to_string(int num); \end{itemize}
-\end{verbatim}
+    \item Umwandlung eines Integer Wertes in einen String
+        \begin{verbatim}
+        std::string int_to_string(int num); \end{itemize}
+        \end{verbatim}
 \end{itemize}
 
 
@@ -34,29 +34,28 @@ zu müssen ,,leicht von überall'' aus erreichbar ist ohne dass vorher eine Inst
 Die Logklasse dient zur Protokollierung von Fehlern und besonderen Ereignissen.  
 
 \begin{figure}[htb!]
-Folgende selbsterklärende Makros werden von der Log::Writer Klasse zur Protokollierung bereitgestellt:
+    Folgende selbsterklärende Makros werden von der Log::Writer Klasse zur Protokollierung bereitgestellt:
 
-\begin{verbatim}
-Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
-Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)
-Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)
-Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)
-Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
-Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
-\end{verbatim}
+    \begin{verbatim}
+    Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
+    Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)
+    Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)
+    Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)
+    Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
+    Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
+    \end{verbatim}
 \end{figure}
 
-\section{Config}
+\section{Config Hauptklassen}
 %Beschreibung der load/save Funktionalität siehe model_save_load.txt
-\subsection{Hauptklassen}
 
 %----------------------------------------------------------------------------------------------
 
-\subsubsection{Path}
+\subsection{Path}
 Die \emph{Init::Path} Klasse soll für die Initialisierung und das Management der Freya Config Pfade zuständig sein.
 Bei der Initialisierung soll überprüft werden ob das Konfigurationsverzeichnis vorhanden ist, wenn nicht wird ein Neues
 angelegt und anschließend wird eine default config.xml geschrieben. Eine default config ist im Quellcode als 
- konstanter globaler String einkompiliert. (Config::defaultcfg.inl)
+konstanter globaler String einkompiliert. (Config::defaultcfg.inl)
 \\
 \\
 Schlägt das Erstellen der Konfigurationsdatei fehl, so soll versucht werden eine entsprechende Fehlermeldung in die Log Datei zu schreiben 
@@ -106,7 +105,7 @@ ausgegeben, andernfalls eine warnung mit g\_warning().
 
 %----------------------------------------------------------------------------------------------
 
-\subsubsection{Model und Konfigurationsdatei}
+\subsection{Konfigurationsdatei}
 
 Die Freya Konfigurationsdatei soll im simplen XML Format realisiert werden, XML wird gewählt um das Parsen zu vereinfachen und um
 ein standardisiertes Format nach außen bereitzustellen. 
@@ -115,7 +114,7 @@ Die Konfigurations- und Logdatei soll nach XDG Standard \verb+($XDG_CONFIG_HOME)
 
 \begin{itemize}
 
-	\item \url{http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables}
+    \item \url{http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables}
 
 \end{itemize}
 
@@ -123,48 +122,46 @@ Die Optionen in der Konfigurationsdatei sind baumartig nach ,,Domainprinzip'' au
 zeigt exemplarisch einen möglichen Aufbau.
 
 \begin{figure}[htb!]
-\lstinputlisting[language=XML]{config.xml}
-\caption{Config.xml Konfigurationsdatei im Überblick}
-\label{c_config}
+    \lstinputlisting[language=XML]{config.xml}
+    \caption{Config.xml Konfigurationsdatei im Überblick}
+    \label{c_config}
 \end{figure}
 
 
+\subsection{Model}
 Die \emph{Config::Model} Klasse gehört nach dem MVC Paradigma zur Model Schicht. Diese Klasse soll die nötigen Daten (Konfigurationsdatei)
 die zum Betrieb von Freya nötig sind im Speicher vorhalten und Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte 
 bereit stellen (siehe \ref{c_confmod}).
 
 \begin{figure}[htb!]
-	\centering
-  	\includegraphics[scale=0.6]{configClass.pdf}
-	\caption{Config-Model Beziechung}
-	\label{c_confmod}
+    \centering
+    \includegraphics[scale=0.6]{configClass.pdf}
+    \caption{Config-Model Beziechung}
+    \label{c_confmod}
 \end{figure}
 
 
 Zum Parsen der XML Datei soll hier die C Programmbibliothek libxml2 verwendet werden. Diese Library wurde gewählt, weil sie alle benötigten Funktionen enthält, nach dem ANSI-C Standard implementiert ist
 und bereits seit über einem Jahrzehnt Quasi-Standard im C Umfeld ist.
-\\
+
 Informationen zur zu verwendenden Libaray:
-\begin{itemize}
-    \item \url{http://xmlsoft.org/}
-    \item \url{http://en.wikipedia.org/wiki/Libxml2}
-\end{itemize}
 
-%Hier das Sequenzdiagramm vom Model
-
-
+    \begin{itemize}
+        \item \url{http://xmlsoft.org/}
+        \item \url{http://en.wikipedia.org/wiki/Libxml2}
+    \end{itemize}
 
 \begin{figure}[htb!]
-	\centering
-  	\includegraphics[scale=0.6]{init.pdf}
-	\caption{Initialisierung des Models}
-	\label{c_modelinit}
+    \centering
+    \includegraphics[scale=0.6]{init.pdf}
+    \caption{Initialisierung des Models}
+    \label{c_modelinit}
 \end{figure}
 
 
-\subsection{Instanzierung des Models}
+\subsubsection{Instanzierung des Models}
 
- 
+
 Über die \emph{Init::Path} Klasse holt sich das Model bei seiner Instanziierung über die path\_to\_config() Methode
 den Pfad zur Konfigurationsdatei, parst diese sowie die einkompilierte default Config und 
 initialisiert zwei XML Document Pointer die auf ein DOM Objekt, welches einen Dokumentenbaum enthält, zeigen.
@@ -179,7 +176,7 @@ Wie andere Objekte auch, nutzt das Model die Log-Klasse um zu Informationen und 
 
 
 
-\subsection{Prinzipieller Ablauf der load() Methode}
+\subsubsection{Prinzipieller Ablauf der load() Methode}
 
 Beim Instanzieren ruft das Model seine load() Methode mit dem aktuellem Pfad auf.
 In dieser wird als Erstes die libxml2 Methode xmlParseFile(pathtofile) aufgerufen. Diese bekommt den
@@ -192,34 +189,33 @@ Anschließend wird das geladene Dokument auf Gültigkeit geprüft, ist dieses \e
 
 \begin{itemize}
 
-\item Der Dokument Pointer wird auf das root Element über xmlDocGetRootElement() gesetzt
-\item Überprüfung ob Dokument Pointer Null ist, trifft das zu, so wird ein Error in die Logdatei geschrieben
-      allokierter Speicher vom Dokument Pointer mittels xmlFreeDoc() freigegeben und dieser auf NULL gesetzet
-\item Ist der Dokument Pointer gültig, so wird mittels der libxml2 Methode xmlStrcmp(DocPtr, ,,freya'') geprüft ob es dem
-      root Element ,,freya'' entspricht. Ist dies der Fall wird eine Erfolgsmeldung in die Logdatei geschreiben. Im Fehlerfall wird eine Fehlermeldung rausgeschreiben, allokierter Speicher freigegeben
-und die Dokument Pointer und Node auf \emph{NULL} gesetzt. 
+    \item Ein Node Pointer wird auf das root Element über xmlDocGetRootElement() gesetzt
+    \item Überprüfung ob Node Pointer Null ist, trifft das zu, so wird ein Error in die Logdatei geschrieben
+        allokierter Speicher vom Dokument Pointer mittels xmlFreeDoc() freigegeben und dieser auf NULL gesetzet
+    \item Ist der Node Pointer gültig, so wird mittels der libxml2 Methode xmlStrcmp(DocPtr, ,,freya'') geprüft ob das
+        root Element ,,freya'' entspricht. Ist dies der Fall wird eine Erfolgsmeldung in die Logdatei geschreiben. Im Fehlerfall wird eine Fehlermeldung rausgeschreiben, allokierter Speicher freigegeben
+        und der Dokument sowie der Node Pointer auf \emph{NULL} gesetzt. 
 \end{itemize}
 %sequenzdiagramm
 
-\subsection{loadDefaultDoc() Methode}
+\subsubsection{loadDefaultDoc() Methode}
 Diese Methode holt sich die default Konfigurationsdatei aus einem einkompilierten String.
 Dieser String wird anschließend mittels der libxml2 xmlParseMemory() geparst und ein xmlDocPtr zurückgegeben welcher als defaultDoc Membervariable gespeichert wird.
 
-\subsection{Ablauf der save() Methode}
+\subsubsection{Ablauf der save() Methode}
 Die save() Methode ist eine Wrapper Methode für save(char*, xmlDocPtr). Sie ruft lediglich diese mit dem aktuellen Dokument Pointer und dem Pfad zur config.xml auf.
-\\
-Quellen zur Implementierung:
-\begin{itemize}
-    \item \url{http://xmlsoft.org/tutorial/index.html}
-    \item \url{http://student.santarosa.edu/~dturover/?node=libxml2}
-\end{itemize}
 
-%
-%-------------------------------
-%
+\begin{figure}[htb!]
+    Quellen zur Implementierung:
+    \begin{itemize}
+        \item \url{http://xmlsoft.org/tutorial/index.html}
+        \item \url{http://student.santarosa.edu/~dturover/?node=libxml2}
+    \end{itemize}
+\end{figure}
 
+%###########################################################################################################
 
-\subsubsection{Controller}
+\subsection{Handler}
 %Bescheibung der get/set Funktionalität siehe handler_set_get_values.txt
 Die Config::Handler Klasse gehört nach dem MVC Paradigma zur Controller Schicht. Diese Klasse soll für das Management bzw für den
 Zugriff auf das Model und somit die Konfigurationsdatei zuständig sein. Sie enthält Methoden zum Lesen und Setzen der einzelnen Optionen.
@@ -230,9 +226,9 @@ Der Config::Handler wird als Singleton implementiert um einen zentralen Zugriff 
 \\
 Der Handler soll einen Pointer als Membervariable auf das aktuelle Model Objekt bekommen um direkten Zugriff auf die Dokument Pointer
 zu haben. Desweiteren sollen Wrapper um die get und set value Methoden geschrieben werden um verschiedene Datentypen lesen und setzen zu können, so kann gleich eine ,,Teilvalidierung'' erfolgen.
-\\
-\\
-Der Config::Handler stellt folgende Makros bereit:
+
+\begin{figure}[htb!]
+    Der Config::Handler stellt folgende Makros bereit:
     \begin{verbatim}
     CONFIG_SET(x,y) 
     CONFIG_GET(x)   
@@ -242,77 +238,73 @@ Der Config::Handler stellt folgende Makros bereit:
     CONFIG_GET_DEFAULT(x)
     CONFIG_GET_DEFAULT_AS_INT(x)
     \end{verbatim}
-
-\begin{figure}[htb!]
-	\centering
-  	\includegraphics[width=\textwidth]{configSave.pdf}
-	\caption{Ablauf der Config Save Methode}
-	\label{c_configsave}
 \end{figure}
 
-
-Über die \emph{save\_now()} \ref{c_configsave} Methode soll die aktuelle Konfiguration direkt über das Model gespeichert werden können.
-\\
+\begin{figure}[htb!]
+Über die \emph{save\_now()} Abb. \ref{c_configsave} Methode soll die aktuelle Konfiguration direkt über das Model gespeichert werden können.
 Alle Methoden nutzen nach Möglichkeit die Log-Klasse um Informationen und Fehler in der Logdatei zu protokollieren.
 
-\newpage
 
-\begin{figure}[htb!]
-	\centering
-  	\includegraphics[scale=0.5]{configset.pdf}
-	\caption{Config get vlaue() Ablauf}
-	\label{c_configget}
+    \centering
+    \includegraphics[width=\textwidth]{configSave.pdf}
+    \caption{Ablauf der Config Save Methode}
+    \label{c_configsave}
 \end{figure}
 
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[scale=0.5]{configset.pdf}
+    \caption{Config get vlaue() Ablauf}
+    \label{c_configget}
+\end{figure}
 
-
-Grober Ablauf beim setzen einer Integer Wertes:
-
-
+\newpage
+\paragraph{Grober Ablauf beim setzen einer Integer Wertes:}
 
 \begin{itemize}
 
-\item Aufruf des \verb+CONFIG_SET_AS_INT("settings.connection.port",6667)+ Makros
-\item Über das Makro wird die Wrapper Methode \verb+set_value_as_int()+ aufgerufen
-\item Diese Methode wandelt den Integer Wert in einen String (char*) um und ruft die eigentliche set Methode set\_value(url, wert) auf
-\item Die set\_value(url, wert) Methode holt sich über cfgmodel.getDocPtr() einen aktuellen Dokument Pointer über die Model
-\item Ist der Dokument Pointer NULL, so kann kein Wert geschrieben werden, also wird über den Log:Writer
-          eine entsprechende Warnung in die Logdatei geschreiben.
-\item Bei einem gültigem Dokument Pointer wird  mittels xmlDocGetRootElement() auf das root Element zugegriffen
-\item Anschließend wird mit xmlChildrenNode der Pointer auf den folgenden Kinderknoden gesetzt und die traverse() Methode aufgerufen
-\item Nun werden diverse Vorbereitungen getätigt und anschließend rekursiv im Baum nach der übergebenen
-Url gesucht. Hierbei wird jeweils der rekursive Teilstring (teilstring1.teilstring2.teilstring3) gemäß dem Url Aufbau untersucht
-           
-\item Wird die Url nicht gefunden oder sind andere Fehler aufgetreten wird ein \emph{NULL Pointer} zurückgegeben und eine entsprechende Fehlermeldung in die Logdatei geschrieben
-\item Wird die Url gefunden, so wird ein NodePointer auf den Optionswert über die Aufruferkette an die set\_value() Methode \emph{returned}. In dieser wird dann der Wert an der entsprechende Stelle gesetzt.  
+    \item Aufruf des \verb+CONFIG_SET_AS_INT("settings.connection.port",6667)+ Makros
+    \item Über das Makro wird die Wrapper Methode \verb+set_value_as_int()+ aufgerufen
+    \item Diese Methode wandelt den Integer Wert in einen String um und ruft die eigentliche set Methode set\_value(url, wert) auf
+    \item Die set\_value(url, wert) Methode holt sich mit cfgmodel.getDocPtr() einen aktuellen Dokument Pointer über die Model
+    \item Ist der Dokument Pointer NULL, so kann kein Wert geschrieben werden, also wird über den Log:Writer
+        eine entsprechende Warnung in die Logdatei geschreiben.
+    \item Bei einem gültigem Dokument Pointer wird  mittels xmlDocGetRootElement() auf das root Element zugegriffen
+    \item Anschließend wird mit xmlChildrenNode der Node Pointer auf den folgenden Kinderknoden gesetzt und die traverse() Methode aufgerufen
+    \item Nun werden diverse Vorbereitungen getätigt und anschließend rekursiv im Baum nach der übergebenen
+        Url gesucht. Hierbei wird jeweils der rekursive Teilstring (eins.zwei.drei) gemäß dem Url Aufbau untersucht
+
+    \item Wird die Url nicht gefunden oder sind andere Fehler aufgetreten wird ein \emph{NULL Pointer} zurückgegeben und eine entsprechende Fehlermeldung in die Logdatei geschrieben
+    \item Wird die Url gefunden, so wird ein NodePointer auf den Optionswert über die Aufruferkette an die set\_value() Methode \emph{returned}. In dieser wird dann der Wert an der entsprechende Stelle gesetzt.  
 \end{itemize}
 
 
 \begin{figure}[htb!]
-	\centering
-\includegraphics[scale=0.5]{configget.pdf}
-\caption{Config get\_value() Ablauf}
-\label{c_configget}
+    \centering
+    \includegraphics[scale=0.5]{configget.pdf}
+    \caption{Config get\_value() Ablauf}
+    \label{c_configget}
 \end{figure}
 
 %-------------------------------------------
 
 
-Grober Ablauf beim Lesen eines Wertes:
+\paragraph{Grober Ablauf beim Lesen eines Wertes:}
+
 \begin{itemize}
-
-
-   \item Das Makro \verb+CONFIG_GET("settings.connection.host")+ wird analog dem Setzen aufgerufen, dieses ruft die entsprechende Wrapper
-   Methode get\_value() welche die eigentliche private \_get\_value() Methode aufruft.
-   Der zweite Parameter dieser Methode ist ein \emph{boolean flag}, dieser dient dazu der \_get\_value()
-   Methode mitzuteilen ob der entsprechende Default Wert aus der einkompilierten 
-   Konfigurationsdatei oder der Custom User Wert gelanden werden soll.
-   \item Die \_get\_value() Methode holt entsprechend dem flag, den ,,richtigen'' Dokument Pointer über das Model (analog Setzen eines Integer Wertes)
-   \item Bei einen gültigen Pointer wird analog zum Setzen der Node Pointer auf das erste Element gesetzt und traverse
-      aufgerufen (siehe Setzen eines Wertes).
-   \item Kann kein Node ermittelt werden (d.h. cur Pointer zeigte auf NULL nach dem traversieren), so wird eine entsprechende Warnung in die Logdatei geschreiben und anschließend wird die \_get\_value(url,true) Methode rekursiv mit einem true Flag aufgerufen. Aufgrund des true flags wird nun der Dokument Pointer mit den Default Werten über das Model geladen.
+    \item Das Makro \verb+CONFIG_GET("settings.connection.host")+ wird analog dem Setzen aufgerufen, dieses ruft die entsprechende Wrapper
+        Methode get\_value() welche die eigentliche private \_get\_value() Methode aufruft.
+        \\
+        Der zweite Parameter dieser Methode ist ein \emph{boolean flag}, dieser dient dazu der \_get\_value()
+        Methode mitzuteilen ob der entsprechende Default Wert Pointer, welcher auf die einkompilierte
+        Konfigurationsdatei zeigt, oder der Custom User Config Pointer gelanden werden soll.
+    \item Die \_get\_value() Methode holt entsprechend dem flag, den ,,richtigen'' Dokument Pointer über das Model (analog Setzen eines Integer Wertes)
+    \item Bei einen gültigen Pointer wird analog zum Setzen der Node Pointer auf das erste Element gesetzt und traverse()
+        aufgerufen (siehe Setzen eines Wertes).
+    \item Kann kein Node ermittelt werden (d.h. cur Pointer zeigte auf NULL nach dem traversieren), so wird eine entsprechende Warnung in die Logdatei geschreiben.
+    \item Anschließend wird die \_get\_value(url,true) Methode rekursiv mit einem \emph{true flag} aufgerufen. Aufgrund des true flags wird nun der Dokument Pointer mit den Default Werten geladen.
     \item Analog zum bisherigen Verlauf beim ,,Lesen eines Wertes'' erfolgt die Suche des Default Wertes. Kann am Ende kein
-    Default Wert ermittelt werden so wird an den Aufrufer eine leerer ustring "" zurückgegeben.
+        Default Wert ermittelt werden so wird an den Aufrufer eine leerer String zurückgegeben.
 \end{itemize}
 
 

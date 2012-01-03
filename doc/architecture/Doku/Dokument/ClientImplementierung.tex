@@ -182,10 +182,10 @@ Todo...
     void playlist_save(const char * name);
 \end{verbatim}   
 
-Funktionen zum Bearbeiten der Queue. queue_add() nimmt dabei ein Pfad zu einem Song oder einem Verzeichniss in der Datenbank 
+Funktionen zum Bearbeiten der Queue. queue\_add() nimmt dabei ein Pfad zu einem Song oder einem Verzeichniss in der Datenbank 
 und fügt ihm rekursiv der Queue hinzu. Das Wurzelverzeichniss ist dabei '/'.
-queue_clear() teilt dem Server mit die Queue zu leeren.
-queue_delete() löscht den Song der an der Stelle 'pos' steht. 
+queue\_clear() teilt dem Server mit die Queue zu leeren.
+queue\_delete() löscht den Song der an der Stelle 'pos' steht. 
 \begin{verbatim}
     void queue_add(const char * url);
     void queue_clear(void);

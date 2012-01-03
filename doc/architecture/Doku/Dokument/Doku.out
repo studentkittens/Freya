@@ -99,15 +99,15 @@
 \BOOKMARK [1][-]{section.7.3}{Utils und Writer}{chapter.7}% 99
 \BOOKMARK [2][-]{subsection.7.3.1}{Utils}{section.7.3}% 100
 \BOOKMARK [2][-]{subsection.7.3.2}{Writer}{section.7.3}% 101
-\BOOKMARK [1][-]{section.7.4}{Config}{chapter.7}% 102
-\BOOKMARK [2][-]{subsection.7.4.1}{Hauptklassen}{section.7.4}% 103
-\BOOKMARK [3][-]{subsubsection.7.4.1.1}{Path}{subsection.7.4.1}% 104
-\BOOKMARK [3][-]{subsubsection.7.4.1.2}{Model und Konfigurationsdatei}{subsection.7.4.1}% 105
-\BOOKMARK [2][-]{subsection.7.4.2}{Instanzierung des Models}{section.7.4}% 106
-\BOOKMARK [2][-]{subsection.7.4.3}{Prinzipieller Ablauf der load\(\) Methode}{section.7.4}% 107
-\BOOKMARK [2][-]{subsection.7.4.4}{loadDefaultDoc\(\) Methode}{section.7.4}% 108
-\BOOKMARK [2][-]{subsection.7.4.5}{Ablauf der save\(\) Methode}{section.7.4}% 109
-\BOOKMARK [3][-]{subsubsection.7.4.5.1}{Controller}{subsection.7.4.5}% 110
+\BOOKMARK [1][-]{section.7.4}{Config Hauptklassen}{chapter.7}% 102
+\BOOKMARK [2][-]{subsection.7.4.1}{Path}{section.7.4}% 103
+\BOOKMARK [2][-]{subsection.7.4.2}{Konfigurationsdatei}{section.7.4}% 104
+\BOOKMARK [2][-]{subsection.7.4.3}{Model}{section.7.4}% 105
+\BOOKMARK [3][-]{subsubsection.7.4.3.1}{Instanzierung des Models}{subsection.7.4.3}% 106
+\BOOKMARK [3][-]{subsubsection.7.4.3.2}{Prinzipieller Ablauf der load\(\) Methode}{subsection.7.4.3}% 107
+\BOOKMARK [3][-]{subsubsection.7.4.3.3}{loadDefaultDoc\(\) Methode}{subsection.7.4.3}% 108
+\BOOKMARK [3][-]{subsubsection.7.4.3.4}{Ablauf der save\(\) Methode}{subsection.7.4.3}% 109
+\BOOKMARK [2][-]{subsection.7.4.4}{Handler}{section.7.4}% 110
 \BOOKMARK [1][-]{section.7.5}{Aufbau des Clients}{chapter.7}% 111
 \BOOKMARK [2][-]{subsection.7.5.1}{Hauptklassen}{section.7.5}% 112
 \BOOKMARK [3][-]{subsubsection.7.5.1.1}{BaseClient}{subsection.7.5.1}% 113
@@ -127,30 +127,30 @@
 \BOOKMARK [3][-]{subsubsection.7.5.3.3}{AbstractItemlist}{subsection.7.5.3}% 127
 \BOOKMARK [3][-]{subsubsection.7.5.3.4}{AbstractItemGenerator}{subsection.7.5.3}% 128
 \BOOKMARK [3][-]{subsubsection.7.5.3.5}{AbstractComposite}{subsection.7.5.3}% 129
-\BOOKMARK [3][-]{subsubsection.7.5.3.6}{AbstractClientExtension}{subsection.7.5.3}% 130
-\BOOKMARK [1][-]{section.7.6}{GUI Elementklassen}{chapter.7}% 131
-\BOOKMARK [2][-]{subsection.7.6.1}{Interaktion des Clients mit anderen Modulen}{section.7.6}% 132
-\BOOKMARK [2][-]{subsection.7.6.2}{Hauptklassen}{section.7.6}% 133
-\BOOKMARK [3][-]{subsubsection.7.6.2.1}{BrowserList}{subsection.7.6.2}% 134
-\BOOKMARK [3][-]{subsubsection.7.6.2.2}{Heartbeat}{subsection.7.6.2}% 135
-\BOOKMARK [3][-]{subsubsection.7.6.2.3}{MenuList}{subsection.7.6.2}% 136
-\BOOKMARK [3][-]{subsubsection.7.6.2.4}{NotifyManager}{subsection.7.6.2}% 137
-\BOOKMARK [3][-]{subsubsection.7.6.2.5}{PlaybackButtons}{subsection.7.6.2}% 138
-\BOOKMARK [3][-]{subsubsection.7.6.2.6}{Statusbar}{subsection.7.6.2}% 139
-\BOOKMARK [3][-]{subsubsection.7.6.2.7}{StatusIcons}{subsection.7.6.2}% 140
-\BOOKMARK [3][-]{subsubsection.7.6.2.8}{Timeslide}{subsection.7.6.2}% 141
-\BOOKMARK [3][-]{subsubsection.7.6.2.9}{TitleLabel}{subsection.7.6.2}% 142
-\BOOKMARK [3][-]{subsubsection.7.6.2.10}{Trayicon}{subsection.7.6.2}% 143
-\BOOKMARK [3][-]{subsubsection.7.6.2.11}{Volumebutton}{subsection.7.6.2}% 144
-\BOOKMARK [3][-]{subsubsection.7.6.2.12}{Window}{subsection.7.6.2}% 145
-\BOOKMARK [1][-]{section.7.7}{Browserimplementierungen}{chapter.7}% 146
-\BOOKMARK [2][-]{subsection.7.7.1}{Abstrakte Klassen}{section.7.7}% 147
-\BOOKMARK [3][-]{subsubsection.7.7.1.1}{AbstractBrowser}{subsection.7.7.1}% 148
-\BOOKMARK [2][-]{subsection.7.7.2}{Hauptklassen}{section.7.7}% 149
-\BOOKMARK [3][-]{subsubsection.7.7.2.1}{BasePopup}{subsection.7.7.2}% 150
-\BOOKMARK [3][-]{subsubsection.7.7.2.2}{Database}{subsection.7.7.2}% 151
-\BOOKMARK [3][-]{subsubsection.7.7.2.3}{PlaylistManager}{subsection.7.7.2}% 152
-\BOOKMARK [3][-]{subsubsection.7.7.2.4}{Queue}{subsection.7.7.2}% 153
-\BOOKMARK [3][-]{subsubsection.7.7.2.5}{Settings}{subsection.7.7.2}% 154
-\BOOKMARK [3][-]{subsubsection.7.7.2.6}{Statistics}{subsection.7.7.2}% 155
-\BOOKMARK [1][-]{section.7.8}{Glossar}{chapter.7}% 156
+\BOOKMARK [1][-]{section.7.6}{GUI Elementklassen}{chapter.7}% 130
+\BOOKMARK [2][-]{subsection.7.6.1}{Interaktion des Clients mit anderen Modulen}{section.7.6}% 131
+\BOOKMARK [2][-]{subsection.7.6.2}{Hauptklassen}{section.7.6}% 132
+\BOOKMARK [3][-]{subsubsection.7.6.2.1}{BrowserList}{subsection.7.6.2}% 133
+\BOOKMARK [3][-]{subsubsection.7.6.2.2}{Heartbeat}{subsection.7.6.2}% 134
+\BOOKMARK [3][-]{subsubsection.7.6.2.3}{MenuList}{subsection.7.6.2}% 135
+\BOOKMARK [3][-]{subsubsection.7.6.2.4}{NotifyManager}{subsection.7.6.2}% 136
+\BOOKMARK [3][-]{subsubsection.7.6.2.5}{PlaybackButtons}{subsection.7.6.2}% 137
+\BOOKMARK [3][-]{subsubsection.7.6.2.6}{Statusbar}{subsection.7.6.2}% 138
+\BOOKMARK [3][-]{subsubsection.7.6.2.7}{StatusIcons}{subsection.7.6.2}% 139
+\BOOKMARK [3][-]{subsubsection.7.6.2.8}{Timeslide}{subsection.7.6.2}% 140
+\BOOKMARK [3][-]{subsubsection.7.6.2.9}{TitleLabel}{subsection.7.6.2}% 141
+\BOOKMARK [3][-]{subsubsection.7.6.2.10}{Trayicon}{subsection.7.6.2}% 142
+\BOOKMARK [3][-]{subsubsection.7.6.2.11}{Volumebutton}{subsection.7.6.2}% 143
+\BOOKMARK [3][-]{subsubsection.7.6.2.12}{Window}{subsection.7.6.2}% 144
+\BOOKMARK [1][-]{section.7.7}{Browserimplementierungen}{chapter.7}% 145
+\BOOKMARK [2][-]{subsection.7.7.1}{Abstrakte Klassen}{section.7.7}% 146
+\BOOKMARK [3][-]{subsubsection.7.7.1.1}{AbstractBrowser}{subsection.7.7.1}% 147
+\BOOKMARK [2][-]{subsection.7.7.2}{Hauptklassen}{section.7.7}% 148
+\BOOKMARK [3][-]{subsubsection.7.7.2.1}{BasePopup}{subsection.7.7.2}% 149
+\BOOKMARK [3][-]{subsubsection.7.7.2.2}{Database}{subsection.7.7.2}% 150
+\BOOKMARK [3][-]{subsubsection.7.7.2.3}{PlaylistManager}{subsection.7.7.2}% 151
+\BOOKMARK [3][-]{subsubsection.7.7.2.4}{Queue}{subsection.7.7.2}% 152
+\BOOKMARK [3][-]{subsubsection.7.7.2.5}{Settings}{subsection.7.7.2}% 153
+\BOOKMARK [3][-]{subsubsection.7.7.2.6}{Statistics}{subsection.7.7.2}% 154
+\BOOKMARK [1][-]{section.7.8}{Glossar}{chapter.7}% 155
+\BOOKMARK [2][-]{subsection.7.8.1}{Mainloop}{section.7.8}% 156

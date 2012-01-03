@@ -12,6 +12,13 @@ Aus den oben genannten Anforderungen kann eine grobe Architektur abgeleitet werd
 
 \subsection{Hauptklassen}
 
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.6]{BaseClientCollab.png}
+	\caption{Kollaborationsdiagramm zu BaseClient}
+	\label{collab_base_client}
+\end{figure}
+
 \subsubsection{BaseClient}
 \begin{itemize}
     \item Kann nicht selbst instanziert werden.
@@ -140,43 +147,59 @@ Sie rufen intern lediglich \_\_connect() bzw. \_\_disconnect() von MPD::BaseClie
     void disconnect(void);
 \end{verbatim}
 
-Test
-
+Die ersten 4 Funktionen sollten offensichtlich sein.
+playback\_crossfade() weist den MPD Server an zwischen 2 Songs weich zu überblenden. Die Überblendzeit wird
+dabei in Sekunden übergeben, wobei 0 das Crossfade komplett ausschaltet.
+playback\_pause() hält die aktuelle Wiedergabe an, oder setzt sie fort wenn bereits angehalten.
+playback\_seek() springt in den Song mit der ID song\_id an die Stelle abs\_time in Sekunden.
+Die ID des momentan spielenden Songs kann durch get\_status() gefunden werden.
+Alle Funktionen (mit Ausnahme von playback\_crossfade) im nächsten Block lösen ein "player" Event aus.
 \begin{verbatim}
-    // 
-    bool playback_next(void);
-    bool playback_prev(void);
-    bool playback_stop(void);
-    bool playback_play(void);
-    void playback_crossfade(unsigned seconds);
-    
-    bool playback_pause(void);
+    void playback_next(void);
+    void playback_prev(void);
+    void playback_stop(void);
+    void playback_play(void);
+    void playback_crossfade(unsigned seconds);    
+    void playback_pause(void);
     void playback_seek(unsigned song_id, unsigned abs_time);
-    
-    // 4 Funktionen um jeweils random, consume, repeat 
-    // und single-modi umzuschalten
+\end{verbatim}
+
+4 Funktionen um jeweils \it random, consume, repeat\rm und \textit{single}-modi umzuschalten.
+\begin{verbatim}
     void toggle_random(void);
     void toggle_consume(void);
     void toggle_repeat(void);
     void toggle_single(void);
+\end{verbatim}
 
+Todo...
+\begin{verbatim}
     void play_song_at_id(unsigned song_id);
     void playlist_save(const char * name);
+\end{verbatim}   
+
+Funktionen zum Bearbeiten der Queue. 
+\begin{verbatim}
     void queue_add(const char * url);
     void queue_clear(void);
     void queue_delete(unsigned pos);
+\end{verbatim}
 
-    // Sendet MPD Server Hinweis um DB zu aktualisieren
-    unsigned database_update(const char * path);
+database\_update() sendet MPD Server Hinweis um DB zu aktualisieren.
+database\_rescan() sendet MPD Server Hinweis um DB neu einzulesen (teuer).
+\begin{verbatim}
+    void database_update(const char * path);
+    void database_rescan(const char * path);
+\end{verbatim}
 
-    // Sendet MPD Server Hinweis um DB neu einzulesen (teuer)
-    unsigned database_rescan(const char * path);
-
-    // Volume von 0-100
+Setzen des volumes von 0-100; Abfrage des Volumes sollte über get\_status() erfolgen.
+\begin{verbatim}
     void set_volume(unsigned vol);
-    
-    // Folgende Funktionen sollen von AbstractItemGenerator
-    // voll implementiert werden.
+\end{verbatim}
+
+Folgende Funktionen sollen von AbstractItemGenerator voll implementiert werden.    
+\begin{verbatim}
+
     void fill_queue(AbstractItemlist& data_model);
     void fill_queue_changes(AbstractItemlist& data_model,
                             unsigned last_version,
@@ -425,5 +448,15 @@ Diese ,,is\_leaf'' Eigenschaft kann später mit der Funktion \emph{is\_leaf()} a
 
 % <Klassendiagramm für alle Klassen die von AbstractComposite erben, siehe Doxygen>
 
-%=============================================
+%-------------------------------------------
 
+\subsubsection{AbstractClientExtension}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.6]{AbstractClientExtension.png}
+	\caption{Klassendiagramm zu AbstractClientExtension}
+	\label{c_abstract_client_extension}
+\end{figure}
+TODO
+
+%=============================================

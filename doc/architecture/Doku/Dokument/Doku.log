@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.11.27)  3 JAN 2012 17:19
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2012/dev/Arch Linux) (format=pdflatex 2011.11.27)  3 JAN 2012 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -325,6 +325,10 @@ Package: ngerman 1998/07/08 v2.5e Support for writing german texts (br)
 \grmnU@D=\dimen103
 ngerman -- \language number for naustrian undefined, default 29 used.
 )
+(/usr/share/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip47
+)
 (/usr/share/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write3
 
@@ -369,8 +373,8 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen106
 \extrarowheight=\dimen107
 \NC@list=\toks18
-\extratabsurround=\skip47
-\backup@length=\skip48
+\extratabsurround=\skip48
+\backup@length=\skip49
 )
 \TX@col@width=\dimen108
 \TX@old@table=\dimen109
@@ -551,7 +555,7 @@ Package: courier 2005/04/12 PSNFSS-v9.2a (WaS)
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
-\@mathmargin=\skip49
+\@mathmargin=\skip50
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -601,8 +605,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \totwidth@=\dimen124
 \lineht@=\dimen125
 \@envbody=\toks24
-\multlinegap=\skip50
-\multlinetaggap=\skip51
+\multlinegap=\skip51
+\multlinetaggap=\skip52
 \mathdisplay@stack=\toks25
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
@@ -725,7 +729,7 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip52
+\Hy@SectionHShift=\skip53
 ) (./Doku.aux)
 \openout1 = `Doku.aux'.
 
@@ -837,12 +841,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--17
  []
 
 
-Overfull \hbox (0.88666pt too wide) in paragraph at lines 4--17
-\OT1/cmr/m/n/10.95 ein-deu-tig de-fi-nier-ten Er-geb-nis-sen. In Mei-len-stein-
-sit-zun-gen am je-wei-li-gen Pha-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 4--17
 
  []
@@ -852,7 +850,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--17
 
  []
 
-<567px-Wasserfallmodell.png, id=907, 569.12625pt x 362.35374pt>
+<567px-Wasserfallmodell.png, id=937, 569.12625pt x 362.35374pt>
 File: 567px-Wasserfallmodell.png Graphic file (type png)
 
 <use 567px-Wasserfallmodell.png>
@@ -863,26 +861,20 @@ Package pdftex.def Info: 567px-Wasserfallmodell.png used on input line 20.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (18.94841pt too wide) in paragraph at lines 22--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
 \OT1/cmr/m/n/9 Bild-Quelle: http://upload.wikimedia.org/wikipedia/commons/thumb
 /e/e5/Wasserfallmodell.svg/567px-
  []
 
 [10
 
-]) (./Richtlinien.tex [11 <./567px-Wasserfallmodell.png>] [12]
+]) (./Richtlinien.tex [11 <./567px-Wasserfallmodell.png>]
 Kapitel 3.
-[13
+[12
 
-] [14]) (./Definition.tex [15]
+]) (./Definition.tex [13] [14]
 Kapitel 4.
 
-Overfull \hbox (0.4304pt too wide) in paragraph at lines 8--27
-\OT1/cmr/m/n/10.95 von gew[]ohn-li-chen Musik-Abspielprogrammen da-durch, dass 
-ei-ne strik-te Tren-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 8--27
 
  []
@@ -897,37 +889,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--27
 
  []
 
+[15
 
-Overfull \hbox (4.99294pt too wide) in paragraph at lines 8--27
-\OT1/cmr/m/n/10.95 Schnitt-stel-le kann auch oh-ne ma-nu-el-le Kon-fi-grua-ti-o
-n mit der Zeroconf-Technik
- []
-
-
-Overfull \hbox (3.83704pt too wide) in paragraph at lines 8--27
-\OT1/cmr/m/n/10.95 an-ge-steu-ert wer-den. Des Wei-te-ren wird Re-play Gain, Ga
-p-less Play-back, Cross-
- []
-
-[16
-
-] [17]
+] [16]
 Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
-[18] <Mpd-overview.png, id=947, 741.84846pt x 734.43616pt>
+[17] <Mpd-overview.png, id=974, 741.84846pt x 734.43616pt>
 File: Mpd-overview.png Graphic file (type png)
 
 <use Mpd-overview.png>
 Package pdftex.def Info: Mpd-overview.png used on input line 65.
 (pdftex.def)             Requested size: 445.11252pt x 440.6651pt.
-
-Overfull \hbox (26.85696pt too wide) in paragraph at lines 65--66
- [][] 
- []
-
-) (./Lastenheft.tex [19 <./Mpd-overview.png>]
+) (./Lastenheft.tex [18 <./Mpd-overview.png>]
 Kapitel 5.
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--19
@@ -939,7 +914,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--19
 
  []
 
-[20
+[19
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 44--51
@@ -961,7 +936,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--66
 
  []
 
-[21] [22]
+[20] [21]
 Underfull \hbox (badness 10000) in paragraph at lines 112--128
 
  []
@@ -971,16 +946,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--128
 
  []
 
-[23]
+[22]
 ngerman: "ff is now obsolete, please use fff instead on input line 143.
 
 Underfull \hbox (badness 10000) in paragraph at lines 130--146
 
  []
 
-[24]) (./Pflichtenheft.tex [25]
+[23]) (./Pflichtenheft.tex [24]
 Kapitel 6.
-[26
+[25
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 32--39
@@ -992,26 +967,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--39
 
  []
 
-[27] [28] <./final_mockup.png, id=993, 870.25125pt x 578.16pt>
+[26] <./final_mockup.png, id=1015, 870.25125pt x 578.16pt>
 File: ./final_mockup.png Graphic file (type png)
 
 <use ./final_mockup.png>
 Package pdftex.def Info: ./final_mockup.png used on input line 103.
-(pdftex.def)             Requested size: 418.25555pt x 277.87535pt.
+(pdftex.def)             Requested size: 452.96796pt x 300.93605pt.
 
 Overfull \hbox (10.44998pt too wide) in paragraph at lines 103--104
 [][] 
  []
 
-[29 <./final_mockup.png>] [30] [31] [32]
+[27] [28 <./final_mockup.png>] [29] [30] [31]
 ngerman: "ll is now obsolete, please use lll instead on input line 264.
-[33] [34] [35] [36]
-Overfull \hbox (10.0725pt too wide) in paragraph at lines 377--380
-\OT1/cmr/m/n/10.95 sam-ten Be-triebs-sys-tems de-fi-niert und dif-fe-ren-ziert.
- F[]ur sp[]ate-re Ver-sio-nen k[]onn-te erg[]anzend
- []
-
-[37] [38] [39]) (./testfaelle.tex
+[32] [33] [34] [35] [36] [37]) (./testfaelle.tex
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
@@ -1021,25 +990,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-[40]
+[38]
 Underfull \hbox (badness 10000) in paragraph at lines 29--57
 
  []
 
-[41]
+[39]
 Underfull \hbox (badness 10000) in paragraph at lines 58--140
 
  []
 
-[42]
-Overfull \vbox (393.8996pt too high) has occurred while \output is active []
+[40]
+Overfull \vbox (345.63412pt too high) has occurred while \output is active []
 
 
-[43]
-Overfull \vbox (102.09964pt too high) has occurred while \output is active []
-
-
-[44]
+[41] [42]
 Underfull \hbox (badness 10000) in paragraph at lines 141--208
 
  []
@@ -1047,11 +1012,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--208
 
 Underfull \hbox (badness 10000) in paragraph at lines 141--208
 
- []
-
-[45]
-Underfull \hbox (badness 2626) in paragraph at lines 222--222
-[]|\OT1/cmr/m/n/10.95 Queue als Play-list spei-
  []
 
 
@@ -1059,7 +1019,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--223
 
  []
 
-[46] [47]
+[43] [44]
 Underfull \hbox (badness 10000) in paragraph at lines 224--248
 
  []
@@ -1106,90 +1066,90 @@ Underfull \hbox (badness 10000) in paragraph at lines 249--278
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 249--278
+
+ []
+
+[45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 279--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--316
+
+ []
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 318--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--426
 
  []
 
 [48] [49]
-Underfull \hbox (badness 10000) in paragraph at lines 279--296
+Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--296
+Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--316
+Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--316
+Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--316
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--316
+Underfull \hbox (badness 10000) in paragraph at lines 429--439
 
  []
 
 [50]
-Underfull \hbox (badness 10000) in paragraph at lines 318--426
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--426
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--426
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--426
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--426
-
- []
-
-[51] [52]
-Underfull \hbox (badness 10000) in paragraph at lines 429--439
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 429--439
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 429--439
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 429--439
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 429--439
-
- []
-
-[53]
 Underfull \hbox (badness 10000) in paragraph at lines 440--441
 
  []
@@ -1244,46 +1204,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 450--479
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 491--491
-[]|\OT1/cmr/m/n/10.95 Verbindung zum MPD-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 491--491
-[]|\OT1/cmr/m/n/10.95 Verbindung zum Ser-ver
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--506
-[]|\OT1/cmr/m/n/10.95 Verbindung zum MPD-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--506
-\OT1/cmr/m/n/10.95 Verbindung zum MPD-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--506
-[]|\OT1/cmr/m/n/10.95 Verbindung zum MPD-
- []
-
-
-Underfull \hbox (badness 3000) in paragraph at lines 506--506
-\OT1/cmr/m/n/10.95 Verbindzung zum Ser-ver
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--506
-[]|\OT1/cmr/m/n/10.95 Verbindung zum MPD-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--506
-[]|\OT1/cmr/m/n/10.95 Verbindung zum Ser-ver
- []
-
 ) (./DesignDokument.tex
 Underfull \hbox (badness 10000) in paragraph at lines 480--1
 
@@ -1329,24 +1249,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 480--1
 
  []
 
-[54] [55] [56]
+[51] [52]
 Kapitel 7.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 6.
 
-<Namespace_Uebersicht.png, id=1113, 1333.45235pt x 1476.57529pt>
+<Namespace_Uebersicht.png, id=1126, 1333.45235pt x 1476.57529pt>
 File: Namespace_Uebersicht.png Graphic file (type png)
 
 <use Namespace_Uebersicht.png>
 Package pdftex.def Info: Namespace_Uebersicht.png used on input line 10.
-(pdftex.def)             Requested size: 280.03326pt x 310.08997pt.
+(pdftex.def)             Requested size: 360.03696pt x 398.68066pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 17--27
 
  []
 
-[57
+[53
 
  <./Namespace_Uebersicht.png>]
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1359,7 +1279,7 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 41.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) (./state.txt) [58]
+) (./state.txt) [54]
 (./telnet.txt
 LaTeX Font Info:    Try loading font information for TS1+pcr on input line 1.
  (/usr/share/texmf-dist/tex/latex/psnfss/ts1pcr.fd
@@ -1367,126 +1287,149 @@ File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 4.
- [59]
+ [55]
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/pcr/b/n' tried instead on input line 33.
 )
-(./ClientImplementierung.tex [60]
-Overfull \hbox (5.96623pt too wide) in paragraph at lines 39--41
-[]\OT1/cmr/m/n/10.95 Die fol-gen-den Funk-ti-on ru-fen ein-fach die ent-spre-ch
-en-den Funk-tio-nen von MPD::Listener
+Overfull \hbox (0.33098pt too wide) in paragraph at lines 74--77
+\OT1/cmr/m/n/10.95 kommt von ,,ncmpc'', der in-of-fi-zi-el-len of-fi-zi-el-len 
+Re-fe-renz-im-ple-men-tie-rung des MPD Mit-Authors
+ []
+
+[56] <ConnectSequence.pdf, id=1190, 1023.825pt x 1164.35pt>
+File: ConnectSequence.pdf Graphic file (type pdf)
+
+<use ConnectSequence.pdf>
+Package pdftex.def Info: ConnectSequence.pdf used on input line 83.
+(pdftex.def)             Requested size: 511.91124pt x 582.17358pt.
+
+Overfull \hbox (58.94328pt too wide) in paragraph at lines 83--84
+ [][] 
  []
 
 
-Overfull \hbox (6.2096pt too wide) in paragraph at lines 54--58
-[]\OT1/cmr/m/n/10.95 Verf[]ugt []uber ein ,,Event-No-ti-fer'' (ein sigc::signal
-) Mo-du-le k[]onnen sich []uber connect()
- []
-
-[61]
-Underfull \hbox (badness 10000) in paragraph at lines 85--88
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
 
  []
 
+[57 <./ConnectSequence.pdf>] (./ClientImplementierung.tex
+<BaseClientCollab.png, id=1200, 494.84875pt x 583.17876pt>
+File: BaseClientCollab.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
+<use BaseClientCollab.png>
+Package pdftex.def Info: BaseClientCollab.png used on input line 17.
+(pdftex.def)             Requested size: 296.91154pt x 349.90996pt.
+ [58 <./BaseClientCollab.png>] [59]
+Underfull \hbox (badness 10000) in paragraph at lines 92--95
 
  []
 
-[62]
-Overfull \hbox (35.0739pt too wide) in paragraph at lines 113--113
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--106
+
+ []
+
+
+Overfull \hbox (0.3615pt too wide) in paragraph at lines 120--120
 []    \OT1/pcr/m/n/10.95 void conn_change_handler(bool server_changed, bool is_
 connected);[] 
  []
 
-
-Overfull \hbox (51.34799pt too wide) in paragraph at lines 128--129
+[60]
+Overfull \hbox (16.63559pt too wide) in paragraph at lines 135--136
 []\OT1/cmr/m/n/10.95 Der Cli-ent erbt von Ba-se-Cli-ent und im-ple-men-tiert ko
 n-kre-te Com-man-dos wie ,,play'',,,random''
  []
 
-[63] [64]
-Overfull \hbox (54.78387pt too wide) in paragraph at lines 187--187
+ngerman: "pp is now obsolete, please use ppp instead on input line 156.
+[61]
+Overfull \hbox (20.07147pt too wide) in paragraph at lines 210--210
 []    \OT1/pcr/m/n/10.95 void fill_filelist(AbstractItemlist& data_model, const
  char * path);[] 
  []
 
-[65]
-Overfull \hbox (28.5039pt too wide) in paragraph at lines 240--240
-[]    \OT1/pcr/m/n/10.95 Glib::ustring song_format(const char* format, bool mar
-kup=true);[] 
- []
-
-[66]
-Overfull \hbox (247.8764pt too wide) in paragraph at lines 280--281
+[62] [63] [64]
+Overfull \hbox (213.164pt too wide) in paragraph at lines 303--304
 \OT1/cmr/m/n/10.95 Die Play-list Klas-se ist Wrap-per f[]ur die mpd[]playlist S
 truk-tur, im-ple-men-tiert von http://www.musicpd.org/doc/libmpdclient/playlist
 []8h.html
  []
 
 
-Overfull \hbox (227.40599pt too wide) in paragraph at lines 312--313
+Overfull \hbox (192.69359pt too wide) in paragraph at lines 335--336
 \OT1/cmr/m/n/10.95 Die Au-dioOut-put Klas-se ist ein Wrap-per f[]ur mpd[]output
 , im-ple-men-tiert von http://www.musicpd.org/doc/libmpdclient/output[]8h.html
  []
 
-[67]
-Overfull \hbox (121.57889pt too wide) in paragraph at lines 349--349
+[65]
+Overfull \hbox (86.86649pt too wide) in paragraph at lines 372--372
  []            \OT1/pcr/m/n/10.95 void on_client_update(enum mpd_idle event, MP
 D::NotifyData& data);[] 
  []
 
-ngerman: "ff is now obsolete, please use fff instead on input line 352.
+ngerman: "ff is now obsolete, please use fff instead on input line 375.
 
-Overfull \hbox (121.57889pt too wide) in paragraph at lines 355--355
+Overfull \hbox (86.86649pt too wide) in paragraph at lines 378--378
  []            \OT1/pcr/m/n/10.95 void on_connection_change(bool server_changed
 , bool is_connected);[] 
  []
 
-[68]
-Overfull \hbox (18.2424pt too wide) in paragraph at lines 357--363
-[]\OT1/cmr/m/n/10.95 Wird auf-ge-ru-fen so-bald sich der ver-bun-den/-ge-trennt
- hat. Im ers-ten Fall ist is[]connected
+[66]
+Overfull \hbox (22.44518pt too wide) in paragraph at lines 408--410
+\OT1/cmr/m/n/10.95 L[]asst ab-lei-ten-de Klas-se fol-gen-de Me-tho-den im-ple-m
+en-tie-ren: Je-de die-ser Me-tho-den ruft MPD::Playlist
  []
 
-[69]
-Overfull \hbox (251.88364pt too wide) in paragraph at lines 397--397
+
+Overfull \hbox (217.17123pt too wide) in paragraph at lines 420--420
 []    \OT1/pcr/m/n/10.95 void fill_queue_changes(AbstractItemlist& data_model, 
 unsigned last_version, unsigned& first_pos);[] 
  []
 
-
-Overfull \hbox (54.78387pt too wide) in paragraph at lines 412--412
+[67]
+Overfull \hbox (20.07147pt too wide) in paragraph at lines 435--435
 []    \OT1/pcr/m/n/10.95 void fill_filelist(AbstractItemlist& data_model, const
  char * path);[] 
  []
 
-)
-Overfull \hbox (23.029pt too wide) in paragraph at lines 93--93
- []   \OT1/pcr/m/n/10.95 void on_client_update(mpd_idle event, MPD::NotifyData&
- data)[] 
- []
+<AbstractClientExtension.png, id=1244, 312.16624pt x 377.41pt>
+File: AbstractClientExtension.png Graphic file (type png)
 
-
-Overfull \hbox (55.87897pt too wide) in paragraph at lines 93--93
+<use AbstractClientExtension.png>
+Package pdftex.def Info: AbstractClientExtension.png used on input line 456.
+(pdftex.def)             Requested size: 187.3012pt x 226.44774pt.
+) [68 <./AbstractClientExtension.png>]
+Overfull \hbox (21.16656pt too wide) in paragraph at lines 102--102
  []   \OT1/pcr/m/n/10.95 void on_connection_change(bool server_changed, bool is
 _connected)[] 
  []
 
 
-Overfull \hbox (546.83441pt too wide) in paragraph at lines 95--100
-\OT1/cmr/m/n/10.95 m[]ogli-chen Events, die von libmpd-cli-ent vor-ge-ge-ben we
-r-den. []\OT1/pcr/m/n/10.95 (Siehe auch http://www.musicpd.org/doc/libmpdclient
-/idle\_8h.html#a3378f7a24c714d7cb1058232330d7a1c)
+Overfull \hbox (461.93446pt too wide) in paragraph at lines 104--109
+\OT1/cmr/m/n/10.95 Events, die von libmpd-cli-ent vor-ge-ge-ben wer-den. []\OT1
+/pcr/m/n/10.95 (Siehe auch http://www.musicpd.org/doc/libmpdclient/idle\_8h.htm
+l#a3378f7a24c714d7cb1058232330d7a1c)
  []
 
-[70] (./Config.tex
+(./Config.tex [69]
 Underfull \hbox (badness 10000) in paragraph at lines 37--46
 
  []
 
-[71]
-Overfull \hbox (134.71887pt too wide) in paragraph at lines 58--58
+
+Overfull \hbox (7.00558pt too wide) in paragraph at lines 48--56
+\OT1/cmr/m/n/10.95 als Mem-ber-va-ria-blen der In-it::Path ge-spei-chert. Die-s
+e Me-tho-den nut-zen die g[]get[]user[]config[]dir()
+ []
+
+[70]
+Overfull \hbox (177.59956pt too wide) in paragraph at lines 69--76
+\OT1/cmr/m/n/10.95 der Fi-le Poin-ter g[]ultig, wird mit []\OT1/pcr/m/n/10.95 f
+write(Config::defaultconfig.c_str(),1,Config::defaultconfig.size(),file)
+ []
+
+
+Overfull \hbox (100.00647pt too wide) in paragraph at lines 94--94
  []\OT1/pcr/m/n/10.95 http://standards.freedesktop.org/basedir-spec/basedir-spe
 c-latest.html#variables[] 
  []
@@ -1496,119 +1439,95 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-) (./config.xml)
-
-LaTeX Warning: Float too large for page by 13.29979pt on input line 69.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[72] <init.pdf, id=1230, 542.025pt x 722.7pt>
+) (./config.xml [71])
+[72] <init.pdf, id=1305, 542.025pt x 722.7pt>
 File: init.pdf Graphic file (type pdf)
  <use init.pdf>
-Package pdftex.def Info: init.pdf used on input line 87.
+Package pdftex.def Info: init.pdf used on input line 129.
 (pdftex.def)             Requested size: 325.2175pt x 433.62334pt.
 
-Overfull \hbox (31.91776pt too wide) in paragraph at lines 94--99
-[]\OT1/cmr/m/n/10.95 Uber die In-it::Path Klas-se holt sich das Mo-del bei sei-
-ner In-stan-zi-ie-rung []uber die path[]to[]config()
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--99
+Underfull \hbox (badness 10000) in paragraph at lines 138--143
 
  []
 
-[73 <./init.pdf>]
-Overfull \hbox (18.39148pt too wide) in paragraph at lines 120--121
-[]\OT1/cmr/m/n/10.95 Der cur-No-de Poin-ter wird auf das root Ele-ment []uber x
-ml-Doc-Ge-tRoot-Ele-ment(fileDOc)
- []
-
-
-Overfull \hbox (16.79466pt too wide) in paragraph at lines 123--127
-[]\OT1/cmr/m/n/10.95 Ist das cur-No-de g[]ultig, so wird mit-tels der libxml2 M
-e-tho-de xml-Strcmp(curNodeName,
- []
-
-
-Overfull \hbox (1.67752pt too wide) in paragraph at lines 131--134
-\OT1/cmr/m/n/10.95 Diese Me-tho-de holt sich die default Kon-fi-gu-ra-ti-ons-da
--tei aus ei-nem ein-kom-pi-lier-ten String.
- []
-
-[74] [75] <configset.pdf, id=1251, 652.4375pt x 843.15pt>
+[73 <./init.pdf>] [74] [75] <configset.pdf, id=1326, 652.4375pt x 843.15pt>
 File: configset.pdf Graphic file (type pdf)
- <use configset.pdf>
-Package pdftex.def Info: configset.pdf used on input line 174.
+
+<use configset.pdf>
+Package pdftex.def Info: configset.pdf used on input line 218.
 (pdftex.def)             Requested size: 326.21794pt x 421.57396pt.
 
-Overfull \hbox (10.71045pt too wide) in paragraph at lines 184--185
-[]\OT1/cmr/m/n/10.95 Aufruf des []\OT1/pcr/m/n/10.95 CONFIG_SET_AS_INT("setting
-s.connection.port",6667) \OT1/cmr/m/n/10.95 Ma-
- []
-
-
-Overfull \hbox (111.5115pt too wide) in paragraph at lines 185--186
+Overfull \hbox (76.7991pt too wide) in paragraph at lines 229--230
 [][]\OT1/cmr/m/n/10.95 Uber das Ma-kro wird die Wrap-per Me-tho-de []\OT1/pcr/m
 /n/10.95 set_value_as_int(Glib::ustring url,int value)
  []
 
-[76 <./configset.pdf>] <configget.pdf, id=1260, 772.8875pt x 1023.825pt>
-File: configget.pdf Graphic file (type pdf)
-
-<use configget.pdf>
-Package pdftex.def Info: configget.pdf used on input line 206.
-(pdftex.def)             Requested size: 386.4428pt x 511.91124pt.
- [77]
-Overfull \hbox (78.66174pt too wide) in paragraph at lines 217--221
-\OT1/cmr/m/n/10.95 set-zen auf-ge-ru-fen, die-ses ruft die ent-spre-chen-de Wra
-p-per Me-tho-de []\OT1/pcr/m/n/10.95 get_value(Glib::ustring)
+[76 <./configset.pdf>]
+Overfull \hbox (12.7575pt too wide) in paragraph at lines 235--237
+[]\OT1/cmr/m/n/10.95 Bei ei-nem g[]ulti-gem Do-ku-ment Poin-ter wird xml-No-deP
+-tr cur = xml-Doc-Ge-tRoot-Ele-ment(doc)
  []
 
 
-Overfull \hbox (6.9692pt too wide) in paragraph at lines 217--221
-\OT1/cmr/m/n/10.95 wel-che die ei-gent-li-che []\OT1/pcr/m/n/10.95 _get_value(G
-lib::ustring url,bool getdefault)
+Overfull \hbox (50.51979pt too wide) in paragraph at lines 238--240
+[]\OT1/cmr/m/n/10.95 uber-ge-be-nen Url ge-sucht. Hier wird re-kur-siv der je-w
+ei-li-ge Teil-string (teil-string1.teilstring2.teilstring2)
+ []
+
+<configget.pdf, id=1335, 772.8875pt x 1023.825pt>
+File: configget.pdf Graphic file (type pdf)
+ <use configget.pdf>
+Package pdftex.def Info: configget.pdf used on input line 250.
+(pdftex.def)             Requested size: 386.4428pt x 511.91124pt.
+ [77]
+Overfull \hbox (12.25514pt too wide) in paragraph at lines 261--265
+\OT1/cmr/m/n/10.95 auf-ge-ru-fen, die-ses ruft die ent-spre-chen-de Wrap-per Me
+-tho-de []\OT1/pcr/m/n/10.95 get_value(Glib::ustring)
  []
 
 [78 <./configget.pdf>]) (./GUIElements.tex [79]
-Overfull \hbox (81.06384pt too wide) in paragraph at lines 64--64
+Overfull \hbox (9.03137pt too wide) in paragraph at lines 38--40
+[]\OT1/cmr/m/n/10.95 Als View wird ein Gtk::TreeView be-nutzt, die Brow-ser-re-
+fe-ren-zen wer-den in ei-nem Gtk::ListStore
+ []
+
+
+Overfull \hbox (46.35144pt too wide) in paragraph at lines 64--64
 []\OT1/pcr/m/n/10.95 void set(void)    - Setzt die jetzige Zeit absolut und z[]
 ahlt von dort weiter[] 
  []
 
-[80] [81]) (./BrowserImplementierungen.tex [82]
-Overfull \hbox (67.92386pt too wide) in paragraph at lines 55--55
+[80] [81]
+Overfull \hbox (5.04663pt too wide) in paragraph at lines 104--109
+\OT1/cmr/m/n/10.95 Verwaltet das Haupt-fens-ter von Fre-ya. Falls das ver-ste-c
+ken des Fens-ters beim Schlie-^^Yen gew[]unscht
+ []
+
+) (./BrowserImplementierungen.tex [82]
+Overfull \hbox (33.21146pt too wide) in paragraph at lines 55--55
 []    \OT1/pcr/m/n/10.95 /* mp_Popup ist die Instanz einer von BasePopup abgele
 iteten Klasse */[] 
  []
 
-
-Overfull \hbox (8.79393pt too wide) in paragraph at lines 55--55
-[]    \OT1/pcr/m/n/10.95 mp_Popup->get_action("add_item").connect(<funktionspoi
-nter>);[] 
- []
-
 [83] [84] [85] [86] [87])) (./glossar.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
- [88] [89]
+ [88]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
  (./Doku.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
 Package rerunfilecheck Info: File `Doku.out' has not changed.
-(rerunfilecheck)             Checksum: 032CDD89C8D64F32903C276C46D4598E;12159.
+(rerunfilecheck)             Checksum: 7963B8C26728397F1E5F2970EC51AE9F;12785.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 68.
  ) 
 Here is how much of TeX's memory you used:
- 10618 strings out of 493633
- 151999 string characters out of 3148831
- 305624 words of memory out of 3000000
- 13368 multiletter control sequences out of 15000+200000
+ 10676 strings out of 493633
+ 153154 string characters out of 3148831
+ 299444 words of memory out of 3000000
+ 13411 multiletter control sequences out of 15000+200000
  17493 words of font info for 67 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 36i,10n,52p,272b,1812s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,10n,52p,272b,1873s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fon
 ts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -1621,10 +1540,10 @@ blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
 mf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/u
 rw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrro8a.pf
 b>
-Output written on Doku.pdf (89 pages, 772093 bytes).
+Output written on Doku.pdf (88 pages, 818399 bytes).
 PDF statistics:
- 1474 PDF objects out of 1728 (max. 8388607)
- 1348 compressed objects within 14 object streams
- 339 named destinations out of 1000 (max. 500000)
- 1396 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1511 PDF objects out of 1728 (max. 8388607)
+ 1383 compressed objects within 14 object streams
+ 347 named destinations out of 1000 (max. 500000)
+ 1459 words of extra memory for PDF output out of 10000 (max. 10000000)
 

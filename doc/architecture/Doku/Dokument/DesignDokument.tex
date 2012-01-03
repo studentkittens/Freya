@@ -7,7 +7,7 @@
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.21]{Namespace_Uebersicht.png}
+    \includegraphics[scale=0.27]{Namespace_Uebersicht.png}
     \caption{Die MPD Namespaces im Überblick}
     \label{dd_namespaces}
 \end{figure}
@@ -15,14 +15,15 @@
 \section{,,Das Problem''}
 
 Da die grundlegende Funktionsweise des MPD Server auf einer Client Server Architektur beruht, muss der MPD Client
-verschiedene Kommandos wie zum Beispiel play, pause, listplaylists etc. an den Server schicken
+verschiedene Kommandos wie zum Beispiel \it play, pause, listplaylists \rm etc. an den Server schicken können
 und zur gleichen Zeit aber auch auf Änderungen reagieren können, d.h. zum Beispiel wenn sich die Lautstärke ändert,
 da jederzeit auch andere Clients oder Server den MPD internen Zustand ändern können.
-Diese Änderungen müssen auch anderen Programmteilen bekannt gemacht werden. (Observer Pattern)
+Diese Änderungen müssen auch anderen Programmteilen bekannt gemacht werden.
+Für die Realisierung eignet sich hier das Observer Pattern gut. \footnote{http://de.wikipedia.org/wiki/Observer\_(Entwurfsmuster)}.
 \\
 Der Client sollte im ,,idle''-Mode möglichst keine Ressourcen verschwenden und auch beim 
-disconnecten und conntecten die entprechenden Änderungen anderen Teilen des Programms mitteilen
-können(Observer Pattern)\footnote{http://de.wikipedia.org/wiki/Observer\_(Entwurfsmuster)}. 
+trennen und verbinden die entprechenden Änderungen anderen Teilen des Programms mitteilen
+können. 
 \\
 
 Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} bietet folgende Möglichkeiten das zu realisieren
@@ -32,7 +33,8 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
         \\
         \emph{Problem:} Bei langsamen Netzwerkverbindungen erzeugt dies unnötige Netzwerklast 
         Prinzipiell würde sich auf diese Art jedoch die z. B. Musik Bitrate anzeigen lassen, es ist jedoch ein
-        wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste.
+        wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste, denn man müsste manuell rausfinden 
+        was genau sich eigentlich geändert hat.
     \item [Nutzung der ,,idle'' und ,,noidle'' commands:]
         ,,idle'' versetzt die Verbindung zum Server in einen Schlafzustand, sobald ,,events'' wie 'player' (also z. B. pause oder play) 
         eintreten, wacht die Verbindung aus diesem Zustand auf und sendet an den Client eine Liste der Events die aufgetreten sind:
@@ -68,15 +70,24 @@ Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
         Lösung: Man kann das ,,noidle'' Kommando zum verlassen senden, und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
 \end{itemize}
 
-%* MainLoop: Vergleiche Event Dispatcher auf wikipedia. Gtk+ benutzt intern einen MainLoop um auf die user ergebnisse reagieren zu können.
-%            Desweiteren kann man eigene events in den Loop einhängen, wie beispielsweise ein Timeoutevent das alle 500ms ausgeführ
-
+% Insert telnet session
 \lstinputlisting[language=bash]{telnet.txt}
-
 
 Die Idee zu dieser Implementierung (speziell das Benutzen einer asynchronen Verbindung), kommt von ,,ncmpc'',
 der inoffiziellen offiziellen Referenzimplementierung des MPD Mit-Authors \emph{Max Kellermann}.
 Vergleiche \href{http://mpd.wikia.com/wiki/Client:Ncmpc}{ncmpc quellcode}: src/gidle.c und src/mpdclient.c
+
+\newpage
+
+\subsection{Verbindungsaufbau}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.5]{ConnectSequence.pdf}
+	\caption{Sequenzdiagramm zum Verbindungsaufbau}
+	\label{seq_client_connect}
+\end{figure}
+Das Sequenzdiagramm stellt den Aufbau der Verbindung beim Start von Freya dar.
+\\
 
 \input{ClientImplementierung}
 

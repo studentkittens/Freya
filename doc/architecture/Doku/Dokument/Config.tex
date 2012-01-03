@@ -1,6 +1,7 @@
 
-\section{Utils} 
+\section{Utils und Writer} 
 
+\subsection{Utils}
 Im Utils namespace sollen sollen sich folgende Hilfsfunktionen zur Zeit/Datumsumrechnung befinden.
 
 \begin{itemize}
@@ -26,6 +27,25 @@ std::string int_to_string(int num); \end{itemize}
 Diese grundlegenden Funktionen sollen ausgelagert werden damit sie von mehreren Klassen verwendet werden können und um Redundanzen im 
 Code zu vermeiden.
 
+\subsection{Writer}
+
+Im Log Namespace befindet sich ebenso die Writer Klasse, welche auch als sog. ,,Utils-Klasse'' Funktionen für alle anderen
+Klassen in Namespace bereitstellt. Bei dieser Klasse wurde das Singleton Pattern gewählt, damit diese ohne instanziert werden
+zu müssen ,,leicht von überall'' aus erreichbar ist ohne dass vorher eine Instanzierung statt finden muss.
+Die Logklasse dient zur Protokollierung von Fehlern und besonderen Ereignissen.  
+
+\begin{figure}[htb!]
+Folgende selbsterklärende Makros werden von der Log::Writer Klasse zur Protokollierung bereitgestellt:
+
+\begin{verbatim}
+Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
+Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)
+Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)
+Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)
+Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
+Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
+\end{verbatim}
+\end{figure}
 
 \section{Config}
 %Beschreibung der load/save Funktionalität siehe model_save_load.txt
@@ -44,7 +64,43 @@ Schlägt das Erstellen der Konfigurationsdatei fehl, so soll versucht werden ein
 falls diese zuvor erfolgreich angelegt wurde. Zusätzlich sollen DEBUG Ausgaben auf dem Bildschirm angezeigt werden wenn das Programm
 über ein Terminal gestartet wird.
 
-    %----------------------------------------------------------------------------------------------
+\paragraph{Instanzierung der Path Klasse kurz erläutert}
+Bei der Instanzierung werden die private Methoden get\_config\_dir() und get\_config\_path() aufgerufen, deren Rückgabewerte werden
+als Membervariablen der Init::Path gespeichert. Diese Methoden nutzen die g\_get\_user\_config\_dir() glib Methode
+welche den User Pfad nach XDG Standard zurückliefert.
+Je nach Funktion, wird an den zurückgegebenen Pfad ein ,,/freya'' für das freya Konfigurationsverzeichnis, ,,config.xml''
+für die Konfigurationsdatei oder ,,log.txt'' Logdatei dran gehängt. Bei der Initialisierung wird die dir\_is\_avaiable()
+Methode aufgerufen. Diese prüft ob die nötigen Verzeichnisse und Dateien existieren, wenn nicht wird versucht diese
+anzulegen. Diese Klasse schreibt DEBUG und ERROR ausgaben auf die Konsole raus, da zum Zeitpunkt der Initialisierung
+nicht gewährleistet werden kann dass eine Logdatei angelegt werden konnte.
+
+
+\paragraph{Die ,,dir is avaiable()'' Methode kurz erläutert}
+Diese Methode prüft zuerst über die glib Funktione g\_file\_test() ob ein freya Verzeichnis existiert,
+ist dies nicht der Fall werden die privaten Methoden create\_dir() und create\_config() aufgerufen.
+Ist ein freya Verzeichnis vorhanden, so wird über die glib g\_file\_test() Funktion geprüft ob die Konfigurationsdatei
+config.xml existiert. Existiert diese nicht, so wird die private create\_config Methode() aufgerufen.
+Existiert diese, so wird mittels der glib g\_access() Methode geschaut ob und lesbar sowie beschreibar ist, 
+wenn dies nicht zugrifft, wird über die glib Funktion g\_warning eine entsprechende Fehlermeldung auf
+dem Bildschirm (Konsole) ausgegeben.
+
+
+\paragraph{Die ,,create config()'' Methode kurz erläutert}
+Diese Methode legt einen File Pointer an und erstellt einen file descriptor mit fopen( ,,pfadZurConfig'', ,,w'').
+Anschließend wird geprüft ob file pointer ne NULL enthält, ist das der Fall, so ist irgednwas schief gelaufen, eine
+entsprechende Warnung wird mittels glib Funktion g\_warning() auf dem Bildschirm ausgegeben.
+Ist der File Pointer gültig, wird mit \verb+fwrite(Config::defaultconfig.c_str(),1,Config::defaultconfig.size(),file)+ die
+Standard Konfigurationsdatei über den Config::Handler auf die Festplatte in das ensprechende Verzeichnis geschreiben,
+der file descriptor mit fclose(file) geschlossen, Speicher freigegeben und eine Erfolgsmessage mit der glib g\_message()
+Funktion auf dem Bildschirm ausgegeben.
+
+\paragraph{Die ,,create dir()'' Methode erläutert}
+In dieser Methode versucht über die glib Funktion g\_mkdir\_with\_parents(configdir,0755) ein Verzeichnis
+mit den rechten 755 (drwxr-r-xr-x) anzulegen. Bei Erfolg wird mit g\_message() eine Erfolgsmeldung auf dem Bildschirm (Konsole)
+ausgegeben, andererenfalls eine warnung mit g\_warning().
+
+
+%----------------------------------------------------------------------------------------------
 
 \subsubsection{Model und Konfigurationsdatei}
 
@@ -62,11 +118,9 @@ Die Optionen in der Konfigurationsdatei sind baumartig nach ,,Domainprinzip'' au
 zeigt exemplarisch einen möglichen Aufbau.
 
 
-\begin{figure}[h!]
-\lstinputlisting[language=XML]{config.xml}
-\caption{Die Konfigurationsdatei im XML Format}
-\label{c_config}
-\end{figure}
+	\lstinputlisting[language=XML]{config.xml}
+
+
 
 Die \emph{Config::Model} Klasse gehört nach dem MVC Paradigma zur Model Schicht. Diese Klasse soll die nötigen Daten (Konfigurationsdatei)
 die zum Betrieb von Freya nötig sind im Speicher vorhalten und Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte 
@@ -84,9 +138,14 @@ Zu verwendende Libraries:
 %Hier das Sequenzdiagramm vom Model
 
 
-\includegraphics[scale=0.6]{init.pdf}
-%\caption{Initialisierung des Models}
-\label{c_modelinit}
+
+\begin{figure}[htb!]
+	\centering
+  	\includegraphics[scale=0.6]{init.pdf}
+	\caption{Initialisierung des Models}
+	\label{c_modelinit}
+\end{figure}
+
 
 \subsection{Initialisierung des Models}
 
@@ -171,9 +230,14 @@ Der Config::Handler stellt folgende Makros bereit:
 Alle Methoden nutzen nach Möglichkeit die Log-Klasse um Informationen und Fehler in der Logdatei zu protokollieren.
 
 
-\includegraphics[scale=0.5]{configset.pdf}
-%\caption{Config get\_value() Ablauf}
-\label{c_configset}
+\begin{figure}[htb!]
+	\centering
+  	\includegraphics[scale=0.5]{configset.pdf}
+	\caption{Config get vlaue() Ablauf}
+	\label{c_configget}
+\end{figure}
+
+
 
 Grober Ablauf beim setzen einer Integer Wertes:
 
@@ -201,11 +265,12 @@ Grober Ablauf beim setzen einer Integer Wertes:
 \end{itemize}
 
 
-
-
+\begin{figure}[htb!]
+	\centering
 \includegraphics[scale=0.5]{configget.pdf}
-%\caption{Config get\_value() Ablauf}
+\caption{Config get\_value() Ablauf}
 \label{c_configget}
+\end{figure}
 
 %-------------------------------------------
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:doc/architecture/Doku/Dokument/Doku.toc
 \contentsline {chapter}{\numberline {1}Einleitung}{6}{chapter.1}
 \contentsline {section}{\numberline {1.1}Rahmenbedingungen}{6}{section.1.1}
 \contentsline {section}{\numberline {1.2}Prozess-Anforderungen}{6}{section.1.2}
@@ -111,3 +112,175 @@
 \contentsline {subsection}{\numberline {7.4.3}Musik im Consume Mode abspielen}{59}{subsection.7.4.3}
 \contentsline {subsection}{\numberline {7.4.4}Playlist erstellen}{59}{subsection.7.4.4}
 \contentsline {section}{\numberline {7.5}Glossar}{59}{section.7.5}
+=======
+\contentsline {chapter}{\numberline {1}Einleitung}{8}{chapter.1}
+\contentsline {section}{\numberline {1.1}Rahmenbedingungen}{8}{section.1.1}
+\contentsline {section}{\numberline {1.2}Prozess-Anforderungen}{8}{section.1.2}
+\contentsline {section}{\numberline {1.3}M\IeC {\"o}gliche Themen}{9}{section.1.3}
+\contentsline {chapter}{\numberline {2}Wasserfallmodell mit R\IeC {\"u}cksprung}{10}{chapter.2}
+\contentsline {section}{\numberline {2.1}Definition}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Warum dieses Modell?}{11}{section.2.2}
+\contentsline {section}{\numberline {2.3}Tats\IeC {\"a}chliche Umsetzung}{11}{section.2.3}
+\contentsline {chapter}{\numberline {3}Richtlinien}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Programmierrichtlinien}{13}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Begr\IeC {\"u}ndung}{13}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Toolauswahl}{14}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Begr\IeC {\"u}ndung}{14}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Bibliotheken}{14}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Begr\IeC {\"u}ndung}{15}{subsection.3.3.1}
+\contentsline {chapter}{\numberline {4}Definition}{16}{chapter.4}
+\contentsline {section}{\numberline {4.1}Definition des MPD}{16}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Der MPD kann:}{18}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Der MPD kann nicht:}{18}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Definiton des MPD-Client}{18}{section.4.2}
+\contentsline {section}{\numberline {4.3}Grafische \IeC {\"U}bersicht}{19}{section.4.3}
+\contentsline {chapter}{\numberline {5}Lastenheft}{20}{chapter.5}
+\contentsline {section}{\numberline {5.1}Zielbestimmungen}{20}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Projektbeteiligte}{21}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}Produkteinsatz}{21}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Anwendungsbereiche}{21}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Zielgruppen}{22}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Betriebsbedingungen}{22}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Produktumgebung}{22}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Software}{22}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Hardware}{22}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Orgware}{23}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Produktfunktionen}{23}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Allgemein}{23}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.5}Produktdaten}{23}{section.5.5}
+\contentsline {section}{\numberline {5.6}Qualit\IeC {\"a}tsanforderungen}{24}{section.5.6}
+\contentsline {section}{\numberline {5.7}Erg\IeC {\"a}nzungen}{25}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Realisierung}{25}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Die n\IeC {\"a}chste Version}{25}{subsection.5.7.2}
+\contentsline {chapter}{\numberline {6}Pflichtenheft}{26}{chapter.6}
+\contentsline {section}{\numberline {6.1}Zielbestimmungen}{26}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Projektbeteiligte}{26}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Muss-Kriterien}{26}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Wunsch-Kriterien}{27}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Produkteinsatz}{27}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Anwendungsbereiche}{27}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Zielgruppen}{27}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Betriebsbedingungen}{27}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Produktumgebung}{28}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Software}{28}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Orgware}{28}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Produktfunktionen}{29}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Men\IeC {\"u}}{30}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Titelbar}{30}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}Sidebar}{31}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}Playlistmanager}{31}{subsection.6.4.4}
+\contentsline {subsection}{\numberline {6.4.5}Databasebrowser}{32}{subsection.6.4.5}
+\contentsline {subsection}{\numberline {6.4.6}Queue}{33}{subsection.6.4.6}
+\contentsline {subsection}{\numberline {6.4.7}Settingsbrowser}{33}{subsection.6.4.7}
+\contentsline {subsubsection}{\numberline {6.4.7.1}Fu\IeC {\ss }leiste}{34}{subsubsection.6.4.7.1}
+\contentsline {subsubsection}{\numberline {6.4.7.2}Sonstiges}{35}{subsubsection.6.4.7.2}
+\contentsline {section}{\numberline {6.5}Produktdaten}{35}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Starten und Beenden}{35}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Abspielen von Musik (Buttons)}{35}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}Abspielen von Musik (Shortcuts)}{36}{subsection.6.5.3}
+\contentsline {subsection}{\numberline {6.5.4}Administrator-Funktionen}{36}{subsection.6.5.4}
+\contentsline {subsection}{\numberline {6.5.5}Suchen in der Queue}{36}{subsection.6.5.5}
+\contentsline {subsection}{\numberline {6.5.6}Statistik}{37}{subsection.6.5.6}
+\contentsline {subsection}{\numberline {6.5.7}Pers\IeC {\"o}nliches Profil}{37}{subsection.6.5.7}
+\contentsline {subsection}{\numberline {6.5.8}Mehrfachstart des Clients}{37}{subsection.6.5.8}
+\contentsline {subsection}{\numberline {6.5.9}Pers\IeC {\"o}nliche Datenbank}{37}{subsection.6.5.9}
+\contentsline {subsection}{\numberline {6.5.10}Pers\IeC {\"o}nliche Einstellungen}{37}{subsection.6.5.10}
+\contentsline {section}{\numberline {6.6}Qualit\IeC {\"a}tsanforderungen}{38}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Korrektheit}{38}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Wartbarkeit}{38}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}Zuverl\IeC {\"a}ssigkeit}{38}{subsection.6.6.3}
+\contentsline {subsection}{\numberline {6.6.4}Effizienz}{39}{subsection.6.6.4}
+\contentsline {subsection}{\numberline {6.6.5}Benutzbarkeit}{39}{subsection.6.6.5}
+\contentsline {subsection}{\numberline {6.6.6}Design}{39}{subsection.6.6.6}
+\contentsline {subsection}{\numberline {6.6.7}Hardware}{39}{subsection.6.6.7}
+\contentsline {subsection}{\numberline {6.6.8}Orgware und Entwicklungsumgebung}{39}{subsection.6.6.8}
+\contentsline {section}{\numberline {6.7}Globale Testszenarien und Testf\IeC {\"a}lle}{40}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Cxxtest}{40}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}Testf\IeC {\"a}lle}{41}{subsection.6.7.2}
+\contentsline {subsection}{\numberline {6.7.3}Testprotokoll}{41}{subsection.6.7.3}
+\contentsline {subsubsection}{\numberline {6.7.3.1}Abspielfunktionen}{41}{subsubsection.6.7.3.1}
+\contentsline {subsubsection}{\numberline {6.7.3.2}Queue-Funktionen}{47}{subsubsection.6.7.3.2}
+\contentsline {subsubsection}{\numberline {6.7.3.3}Playlist-Funktionen}{48}{subsubsection.6.7.3.3}
+\contentsline {subsubsection}{\numberline {6.7.3.4}Dateibrowser-Funktionen}{50}{subsubsection.6.7.3.4}
+\contentsline {subsubsection}{\numberline {6.7.3.5}Statistik}{53}{subsubsection.6.7.3.5}
+\contentsline {subsubsection}{\numberline {6.7.3.6}Einstellungen}{53}{subsubsection.6.7.3.6}
+\contentsline {subsubsection}{\numberline {6.7.3.7}Lautst\IeC {\"a}rke}{54}{subsubsection.6.7.3.7}
+\contentsline {subsubsection}{\numberline {6.7.3.8}Sonstiges}{55}{subsubsection.6.7.3.8}
+\contentsline {chapter}{\numberline {7}Software Design}{57}{chapter.7}
+\contentsline {section}{\numberline {7.1}Einf\IeC {\"u}hrung}{57}{section.7.1}
+\contentsline {subsubsection}{\numberline {7.1.0.9}Namespace-\IeC {\"U}bersicht}{57}{subsubsection.7.1.0.9}
+\contentsline {section}{\numberline {7.2},,Das Problem''}{58}{section.7.2}
+\contentsline {section}{\numberline {7.3}Aufbau des Clients}{60}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Hauptklassen}{61}{subsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.1.1}BaseClient}{61}{subsubsection.7.3.1.1}
+\contentsline {subsubsection}{\numberline {7.3.1.2}Listener}{61}{subsubsection.7.3.1.2}
+\contentsline {subsubsection}{\numberline {7.3.1.3}Connection}{62}{subsubsection.7.3.1.3}
+\contentsline {subsubsection}{\numberline {7.3.1.4}Client}{63}{subsubsection.7.3.1.4}
+\contentsline {subsubsection}{\numberline {7.3.1.5}NotifyData}{65}{subsubsection.7.3.1.5}
+\contentsline {subsection}{\numberline {7.3.2}Weitere Klassen}{65}{subsection.7.3.2}
+\contentsline {subsubsection}{\numberline {7.3.2.1}Song}{66}{subsubsection.7.3.2.1}
+\contentsline {subsubsection}{\numberline {7.3.2.2}Directory}{66}{subsubsection.7.3.2.2}
+\contentsline {subsubsection}{\numberline {7.3.2.3}Statistics}{67}{subsubsection.7.3.2.3}
+\contentsline {subsubsection}{\numberline {7.3.2.4}Playlist}{67}{subsubsection.7.3.2.4}
+\contentsline {subsubsection}{\numberline {7.3.2.5}AudioOutput}{68}{subsubsection.7.3.2.5}
+\contentsline {subsection}{\numberline {7.3.3}Abstrakte Klassen}{68}{subsection.7.3.3}
+\contentsline {subsubsection}{\numberline {7.3.3.1}AbstractClientExtension}{68}{subsubsection.7.3.3.1}
+\contentsline {subsubsection}{\numberline {7.3.3.2}AbstractClientUser}{68}{subsubsection.7.3.3.2}
+\contentsline {subsubsection}{\numberline {7.3.3.3}AbstractItemlist}{69}{subsubsection.7.3.3.3}
+\contentsline {subsubsection}{\numberline {7.3.3.4}AbstractItemGenerator}{69}{subsubsection.7.3.3.4}
+\contentsline {subsubsection}{\numberline {7.3.3.5}AbstractComposite}{70}{subsubsection.7.3.3.5}
+\contentsline {section}{\numberline {7.4}Interaktion des Clients mit anderen Modulen}{70}{section.7.4}
+\contentsline {section}{\numberline {7.5}Utils}{71}{section.7.5}
+\contentsline {section}{\numberline {7.6}Config}{72}{section.7.6}
+\contentsline {subsection}{\numberline {7.6.1}Hauptklassen}{72}{subsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.1.1}Path}{72}{subsubsection.7.6.1.1}
+\contentsline {subsubsection}{\numberline {7.6.1.2}Model und Konfigurationsdatei}{72}{subsubsection.7.6.1.2}
+\contentsline {subsection}{\numberline {7.6.2}Initialisierung des Models}{73}{subsection.7.6.2}
+\contentsline {subsection}{\numberline {7.6.3}Prinzipieller Ablauf der load() Methode}{74}{subsection.7.6.3}
+\contentsline {subsection}{\numberline {7.6.4}loadDefaultDoc() Methode}{75}{subsection.7.6.4}
+\contentsline {subsection}{\numberline {7.6.5}Ablauf der save() Methoden zum Speichern des aktuellen xmlDocPtr auf die Festplatte}{75}{subsection.7.6.5}
+\contentsline {subsubsection}{\numberline {7.6.5.1}Controller}{75}{subsubsection.7.6.5.1}
+\contentsline {section}{\numberline {7.7}GUI Elementklassen}{79}{section.7.7}
+\contentsline {subsection}{\numberline {7.7.1}Hauptklassen}{79}{subsection.7.7.1}
+\contentsline {subsubsection}{\numberline {7.7.1.1}BrowserList}{79}{subsubsection.7.7.1.1}
+\contentsline {subsubsection}{\numberline {7.7.1.2}Heartbeat}{80}{subsubsection.7.7.1.2}
+\contentsline {subsubsection}{\numberline {7.7.1.3}MenuList}{81}{subsubsection.7.7.1.3}
+\contentsline {subsubsection}{\numberline {7.7.1.4}NotifyManager}{81}{subsubsection.7.7.1.4}
+\contentsline {subsubsection}{\numberline {7.7.1.5}PlaybackButtons}{81}{subsubsection.7.7.1.5}
+\contentsline {subsubsection}{\numberline {7.7.1.6}Statusbar}{81}{subsubsection.7.7.1.6}
+\contentsline {subsubsection}{\numberline {7.7.1.7}StatusIcons}{81}{subsubsection.7.7.1.7}
+\contentsline {subsubsection}{\numberline {7.7.1.8}Timeslide}{81}{subsubsection.7.7.1.8}
+\contentsline {subsubsection}{\numberline {7.7.1.9}TitleLabel}{81}{subsubsection.7.7.1.9}
+\contentsline {subsubsection}{\numberline {7.7.1.10}Trayicon}{82}{subsubsection.7.7.1.10}
+\contentsline {subsubsection}{\numberline {7.7.1.11}Volumebutton}{82}{subsubsection.7.7.1.11}
+\contentsline {subsubsection}{\numberline {7.7.1.12}Window}{82}{subsubsection.7.7.1.12}
+\contentsline {section}{\numberline {7.8}Browserimplementierungen}{82}{section.7.8}
+\contentsline {subsection}{\numberline {7.8.1}Abstrakte Klassen}{82}{subsection.7.8.1}
+\contentsline {subsubsection}{\numberline {7.8.1.1}AbstractBrowser}{82}{subsubsection.7.8.1.1}
+\contentsline {paragraph}{\numberline {7.8.1.1.1}AbstractSettings}{83}{paragraph.7.8.1.1.1}
+\contentsline {subsection}{\numberline {7.8.2}Hauptklassen}{83}{subsection.7.8.2}
+\contentsline {subsubsection}{\numberline {7.8.2.1}BasePopup}{83}{subsubsection.7.8.2.1}
+\contentsline {subsubsection}{\numberline {7.8.2.2}Database}{83}{subsubsection.7.8.2.2}
+\contentsline {paragraph}{\numberline {7.8.2.2.1}Database}{83}{paragraph.7.8.2.2.1}
+\contentsline {paragraph}{\numberline {7.8.2.2.2}DatabasePopup}{84}{paragraph.7.8.2.2.2}
+\contentsline {paragraph}{\numberline {7.8.2.2.3}DatabaseCache}{84}{paragraph.7.8.2.2.3}
+\contentsline {subsubsection}{\numberline {7.8.2.3}PlaylistManager}{84}{subsubsection.7.8.2.3}
+\contentsline {paragraph}{\numberline {7.8.2.3.1}PlaylistManager}{84}{paragraph.7.8.2.3.1}
+\contentsline {paragraph}{\numberline {7.8.2.3.2}PlaylistManagerPopup}{84}{paragraph.7.8.2.3.2}
+\contentsline {subsubsection}{\numberline {7.8.2.4}Queue}{85}{subsubsection.7.8.2.4}
+\contentsline {paragraph}{\numberline {7.8.2.4.1}Queue}{85}{paragraph.7.8.2.4.1}
+\contentsline {paragraph}{\numberline {7.8.2.4.2}QueueMerger}{85}{paragraph.7.8.2.4.2}
+\contentsline {paragraph}{\numberline {7.8.2.4.3}QueueModelColumns}{86}{paragraph.7.8.2.4.3}
+\contentsline {paragraph}{\numberline {7.8.2.4.4}QueuePopup}{86}{paragraph.7.8.2.4.4}
+\contentsline {paragraph}{\numberline {7.8.2.4.5}PlaylistAddDialog}{87}{paragraph.7.8.2.4.5}
+\contentsline {subsubsection}{\numberline {7.8.2.5}Settings}{87}{subsubsection.7.8.2.5}
+\contentsline {paragraph}{\numberline {7.8.2.5.1}Settings}{87}{paragraph.7.8.2.5.1}
+\contentsline {paragraph}{\numberline {7.8.2.5.2}SettingsGeneral}{87}{paragraph.7.8.2.5.2}
+\contentsline {paragraph}{\numberline {7.8.2.5.3}SettingsNetwork}{88}{paragraph.7.8.2.5.3}
+\contentsline {paragraph}{\numberline {7.8.2.5.4}SettingsPlayback}{88}{paragraph.7.8.2.5.4}
+\contentsline {paragraph}{\numberline {7.8.2.5.5}SettingsOutputs}{88}{paragraph.7.8.2.5.5}
+\contentsline {paragraph}{\numberline {7.8.2.5.6}OutputsModelColumns}{88}{paragraph.7.8.2.5.6}
+\contentsline {subsubsection}{\numberline {7.8.2.6}Statistics}{88}{subsubsection.7.8.2.6}
+\contentsline {paragraph}{\numberline {7.8.2.6.1}Statistics}{88}{paragraph.7.8.2.6.1}
+\contentsline {section}{\numberline {7.9}Glossar}{88}{section.7.9}
+>>>>>>> katze:doc/architecture/Doku/Doku.toc

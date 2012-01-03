@@ -57,41 +57,114 @@
 \BOOKMARK [2][-]{subsection.6.4.5}{Databasebrowser}{section.6.4}% 57
 \BOOKMARK [2][-]{subsection.6.4.6}{Queue}{section.6.4}% 58
 \BOOKMARK [2][-]{subsection.6.4.7}{Settingsbrowser}{section.6.4}% 59
-\BOOKMARK [1][-]{section.6.5}{Produktdaten}{chapter.6}% 60
-\BOOKMARK [2][-]{subsection.6.5.1}{Starten und Beenden}{section.6.5}% 61
-\BOOKMARK [2][-]{subsection.6.5.2}{Abspielen von Musik \(Buttons\)}{section.6.5}% 62
-\BOOKMARK [2][-]{subsection.6.5.3}{Abspielen von Musik \(Shortcuts\)}{section.6.5}% 63
-\BOOKMARK [2][-]{subsection.6.5.4}{Administrator-Funktionen}{section.6.5}% 64
-\BOOKMARK [2][-]{subsection.6.5.5}{Suchen in der Queue}{section.6.5}% 65
-\BOOKMARK [2][-]{subsection.6.5.6}{Statistik}{section.6.5}% 66
-\BOOKMARK [2][-]{subsection.6.5.7}{Pers\366nliches Profil}{section.6.5}% 67
-\BOOKMARK [2][-]{subsection.6.5.8}{Mehrfachstart des Clients}{section.6.5}% 68
-\BOOKMARK [2][-]{subsection.6.5.9}{Pers\366nliche Datenbank}{section.6.5}% 69
-\BOOKMARK [2][-]{subsection.6.5.10}{Pers\366nliche Einstellungen}{section.6.5}% 70
-\BOOKMARK [1][-]{section.6.6}{Qualit\344tsanforderungen}{chapter.6}% 71
-\BOOKMARK [2][-]{subsection.6.6.1}{Korrektheit}{section.6.6}% 72
-\BOOKMARK [2][-]{subsection.6.6.2}{Wartbarkeit}{section.6.6}% 73
-\BOOKMARK [2][-]{subsection.6.6.3}{Zuverl\344ssigkeit}{section.6.6}% 74
-\BOOKMARK [2][-]{subsection.6.6.4}{Effizienz}{section.6.6}% 75
-\BOOKMARK [2][-]{subsection.6.6.5}{Benutzbarkeit}{section.6.6}% 76
-\BOOKMARK [2][-]{subsection.6.6.6}{Design}{section.6.6}% 77
-\BOOKMARK [2][-]{subsection.6.6.7}{Hardware}{section.6.6}% 78
-\BOOKMARK [2][-]{subsection.6.6.8}{Orgware und Entwicklungsumgebung}{section.6.6}% 79
-\BOOKMARK [1][-]{section.6.7}{Globale Testszenarien und Testf\344lle}{chapter.6}% 80
-\BOOKMARK [2][-]{subsection.6.7.1}{Cxxtest}{section.6.7}% 81
-\BOOKMARK [2][-]{subsection.6.7.2}{Testf\344lle}{section.6.7}% 82
-\BOOKMARK [2][-]{subsection.6.7.3}{Testprotokoll}{section.6.7}% 83
-\BOOKMARK [0][-]{chapter.7}{Design-Dokument}{}% 84
-\BOOKMARK [1][-]{section.7.1}{Einleitung}{chapter.7}% 85
-\BOOKMARK [1][-]{section.7.2}{Hauptproblem}{chapter.7}% 86
-\BOOKMARK [1][-]{section.7.3}{Softwarearchitektur}{chapter.7}% 87
-\BOOKMARK [2][-]{subsection.7.3.1}{Architekutr\374bersicht}{section.7.3}% 88
-\BOOKMARK [2][-]{subsection.7.3.2}{Funktionen}{section.7.3}% 89
-\BOOKMARK [2][-]{subsection.7.3.3}{Oberfl\344che}{section.7.3}% 90
-\BOOKMARK [2][-]{subsection.7.3.4}{Short-Cuts}{section.7.3}% 91
-\BOOKMARK [1][-]{section.7.4}{Use-Case-F\344lle}{chapter.7}% 92
-\BOOKMARK [2][-]{subsection.7.4.1}{Musik abspielen}{section.7.4}% 93
-\BOOKMARK [2][-]{subsection.7.4.2}{Musik zuf\344llig abspielen}{section.7.4}% 94
-\BOOKMARK [2][-]{subsection.7.4.3}{Musik im Consume Mode abspielen}{section.7.4}% 95
-\BOOKMARK [2][-]{subsection.7.4.4}{Playlist erstellen}{section.7.4}% 96
-\BOOKMARK [1][-]{section.7.5}{Glossar}{chapter.7}% 97
+\BOOKMARK [3][-]{subsubsection.6.4.7.1}{Fu\337leiste}{subsection.6.4.7}% 60
+\BOOKMARK [3][-]{subsubsection.6.4.7.2}{Sonstiges}{subsection.6.4.7}% 61
+\BOOKMARK [1][-]{section.6.5}{Produktdaten}{chapter.6}% 62
+\BOOKMARK [2][-]{subsection.6.5.1}{Starten und Beenden}{section.6.5}% 63
+\BOOKMARK [2][-]{subsection.6.5.2}{Abspielen von Musik \(Buttons\)}{section.6.5}% 64
+\BOOKMARK [2][-]{subsection.6.5.3}{Abspielen von Musik \(Shortcuts\)}{section.6.5}% 65
+\BOOKMARK [2][-]{subsection.6.5.4}{Administrator-Funktionen}{section.6.5}% 66
+\BOOKMARK [2][-]{subsection.6.5.5}{Suchen in der Queue}{section.6.5}% 67
+\BOOKMARK [2][-]{subsection.6.5.6}{Statistik}{section.6.5}% 68
+\BOOKMARK [2][-]{subsection.6.5.7}{Pers\366nliches Profil}{section.6.5}% 69
+\BOOKMARK [2][-]{subsection.6.5.8}{Mehrfachstart des Clients}{section.6.5}% 70
+\BOOKMARK [2][-]{subsection.6.5.9}{Pers\366nliche Datenbank}{section.6.5}% 71
+\BOOKMARK [2][-]{subsection.6.5.10}{Pers\366nliche Einstellungen}{section.6.5}% 72
+\BOOKMARK [1][-]{section.6.6}{Qualit\344tsanforderungen}{chapter.6}% 73
+\BOOKMARK [2][-]{subsection.6.6.1}{Korrektheit}{section.6.6}% 74
+\BOOKMARK [2][-]{subsection.6.6.2}{Wartbarkeit}{section.6.6}% 75
+\BOOKMARK [2][-]{subsection.6.6.3}{Zuverl\344ssigkeit}{section.6.6}% 76
+\BOOKMARK [2][-]{subsection.6.6.4}{Effizienz}{section.6.6}% 77
+\BOOKMARK [2][-]{subsection.6.6.5}{Benutzbarkeit}{section.6.6}% 78
+\BOOKMARK [2][-]{subsection.6.6.6}{Design}{section.6.6}% 79
+\BOOKMARK [2][-]{subsection.6.6.7}{Hardware}{section.6.6}% 80
+\BOOKMARK [2][-]{subsection.6.6.8}{Orgware und Entwicklungsumgebung}{section.6.6}% 81
+\BOOKMARK [1][-]{section.6.7}{Globale Testszenarien und Testf\344lle}{chapter.6}% 82
+\BOOKMARK [2][-]{subsection.6.7.1}{Cxxtest}{section.6.7}% 83
+\BOOKMARK [2][-]{subsection.6.7.2}{Testf\344lle}{section.6.7}% 84
+\BOOKMARK [2][-]{subsection.6.7.3}{Testprotokoll}{section.6.7}% 85
+\BOOKMARK [3][-]{subsubsection.6.7.3.1}{Abspielfunktionen}{subsection.6.7.3}% 86
+\BOOKMARK [3][-]{subsubsection.6.7.3.2}{Queue-Funktionen}{subsection.6.7.3}% 87
+\BOOKMARK [3][-]{subsubsection.6.7.3.3}{Playlist-Funktionen}{subsection.6.7.3}% 88
+\BOOKMARK [3][-]{subsubsection.6.7.3.4}{Dateibrowser-Funktionen}{subsection.6.7.3}% 89
+\BOOKMARK [3][-]{subsubsection.6.7.3.5}{Statistik}{subsection.6.7.3}% 90
+\BOOKMARK [3][-]{subsubsection.6.7.3.6}{Einstellungen}{subsection.6.7.3}% 91
+\BOOKMARK [3][-]{subsubsection.6.7.3.7}{Lautst\344rke}{subsection.6.7.3}% 92
+\BOOKMARK [3][-]{subsubsection.6.7.3.8}{Sonstiges}{subsection.6.7.3}% 93
+\BOOKMARK [0][-]{chapter.7}{Software Design}{}% 94
+\BOOKMARK [1][-]{section.7.1}{Einf\374hrung}{chapter.7}% 95
+\BOOKMARK [2][-]{subsubsection.7.1.0.9}{Namespace-\334bersicht}{section.7.1}% 96
+\BOOKMARK [1][-]{section.7.2}{,,Das Problem''}{chapter.7}% 97
+\BOOKMARK [1][-]{section.7.3}{Aufbau des Clients}{chapter.7}% 98
+\BOOKMARK [2][-]{subsection.7.3.1}{Hauptklassen}{section.7.3}% 99
+\BOOKMARK [3][-]{subsubsection.7.3.1.1}{BaseClient}{subsection.7.3.1}% 100
+\BOOKMARK [3][-]{subsubsection.7.3.1.2}{Listener}{subsection.7.3.1}% 101
+\BOOKMARK [3][-]{subsubsection.7.3.1.3}{Connection}{subsection.7.3.1}% 102
+\BOOKMARK [3][-]{subsubsection.7.3.1.4}{Client}{subsection.7.3.1}% 103
+\BOOKMARK [3][-]{subsubsection.7.3.1.5}{NotifyData}{subsection.7.3.1}% 104
+\BOOKMARK [2][-]{subsection.7.3.2}{Weitere Klassen}{section.7.3}% 105
+\BOOKMARK [3][-]{subsubsection.7.3.2.1}{Song}{subsection.7.3.2}% 106
+\BOOKMARK [3][-]{subsubsection.7.3.2.2}{Directory}{subsection.7.3.2}% 107
+\BOOKMARK [3][-]{subsubsection.7.3.2.3}{Statistics}{subsection.7.3.2}% 108
+\BOOKMARK [3][-]{subsubsection.7.3.2.4}{Playlist}{subsection.7.3.2}% 109
+\BOOKMARK [3][-]{subsubsection.7.3.2.5}{AudioOutput}{subsection.7.3.2}% 110
+\BOOKMARK [2][-]{subsection.7.3.3}{Abstrakte Klassen}{section.7.3}% 111
+\BOOKMARK [3][-]{subsubsection.7.3.3.1}{AbstractClientExtension}{subsection.7.3.3}% 112
+\BOOKMARK [3][-]{subsubsection.7.3.3.2}{AbstractClientUser}{subsection.7.3.3}% 113
+\BOOKMARK [3][-]{subsubsection.7.3.3.3}{AbstractItemlist}{subsection.7.3.3}% 114
+\BOOKMARK [3][-]{subsubsection.7.3.3.4}{AbstractItemGenerator}{subsection.7.3.3}% 115
+\BOOKMARK [3][-]{subsubsection.7.3.3.5}{AbstractComposite}{subsection.7.3.3}% 116
+\BOOKMARK [1][-]{section.7.4}{Interaktion des Clients mit anderen Modulen}{chapter.7}% 117
+\BOOKMARK [1][-]{section.7.5}{Utils}{chapter.7}% 118
+\BOOKMARK [1][-]{section.7.6}{Config}{chapter.7}% 119
+\BOOKMARK [2][-]{subsection.7.6.1}{Hauptklassen}{section.7.6}% 120
+\BOOKMARK [3][-]{subsubsection.7.6.1.1}{Path}{subsection.7.6.1}% 121
+\BOOKMARK [3][-]{subsubsection.7.6.1.2}{Model und Konfigurationsdatei}{subsection.7.6.1}% 122
+\BOOKMARK [2][-]{subsection.7.6.2}{Initialisierung des Models}{section.7.6}% 123
+\BOOKMARK [2][-]{subsection.7.6.3}{Prinzipieller Ablauf der load\(\) Methode}{section.7.6}% 124
+\BOOKMARK [2][-]{subsection.7.6.4}{loadDefaultDoc\(\) Methode}{section.7.6}% 125
+\BOOKMARK [2][-]{subsection.7.6.5}{Ablauf der save\(\) Methoden zum Speichern des aktuellen xmlDocPtr auf die Festplatte}{section.7.6}% 126
+\BOOKMARK [3][-]{subsubsection.7.6.5.1}{Controller}{subsection.7.6.5}% 127
+\BOOKMARK [1][-]{section.7.7}{GUI Elementklassen}{chapter.7}% 128
+\BOOKMARK [2][-]{subsection.7.7.1}{Hauptklassen}{section.7.7}% 129
+\BOOKMARK [3][-]{subsubsection.7.7.1.1}{BrowserList}{subsection.7.7.1}% 130
+\BOOKMARK [3][-]{subsubsection.7.7.1.2}{Heartbeat}{subsection.7.7.1}% 131
+\BOOKMARK [3][-]{subsubsection.7.7.1.3}{MenuList}{subsection.7.7.1}% 132
+\BOOKMARK [3][-]{subsubsection.7.7.1.4}{NotifyManager}{subsection.7.7.1}% 133
+\BOOKMARK [3][-]{subsubsection.7.7.1.5}{PlaybackButtons}{subsection.7.7.1}% 134
+\BOOKMARK [3][-]{subsubsection.7.7.1.6}{Statusbar}{subsection.7.7.1}% 135
+\BOOKMARK [3][-]{subsubsection.7.7.1.7}{StatusIcons}{subsection.7.7.1}% 136
+\BOOKMARK [3][-]{subsubsection.7.7.1.8}{Timeslide}{subsection.7.7.1}% 137
+\BOOKMARK [3][-]{subsubsection.7.7.1.9}{TitleLabel}{subsection.7.7.1}% 138
+\BOOKMARK [3][-]{subsubsection.7.7.1.10}{Trayicon}{subsection.7.7.1}% 139
+\BOOKMARK [3][-]{subsubsection.7.7.1.11}{Volumebutton}{subsection.7.7.1}% 140
+\BOOKMARK [3][-]{subsubsection.7.7.1.12}{Window}{subsection.7.7.1}% 141
+\BOOKMARK [1][-]{section.7.8}{Browserimplementierungen}{chapter.7}% 142
+\BOOKMARK [2][-]{subsection.7.8.1}{Abstrakte Klassen}{section.7.8}% 143
+\BOOKMARK [3][-]{subsubsection.7.8.1.1}{AbstractBrowser}{subsection.7.8.1}% 144
+\BOOKMARK [4][-]{paragraph.7.8.1.1.1}{AbstractSettings}{subsubsection.7.8.1.1}% 145
+\BOOKMARK [2][-]{subsection.7.8.2}{Hauptklassen}{section.7.8}% 146
+\BOOKMARK [3][-]{subsubsection.7.8.2.1}{BasePopup}{subsection.7.8.2}% 147
+\BOOKMARK [3][-]{subsubsection.7.8.2.2}{Database}{subsection.7.8.2}% 148
+\BOOKMARK [4][-]{paragraph.7.8.2.2.1}{Database}{subsubsection.7.8.2.2}% 149
+\BOOKMARK [4][-]{paragraph.7.8.2.2.2}{DatabasePopup}{subsubsection.7.8.2.2}% 150
+\BOOKMARK [4][-]{paragraph.7.8.2.2.3}{DatabaseCache}{subsubsection.7.8.2.2}% 151
+\BOOKMARK [3][-]{subsubsection.7.8.2.3}{PlaylistManager}{subsection.7.8.2}% 152
+\BOOKMARK [4][-]{paragraph.7.8.2.3.1}{PlaylistManager}{subsubsection.7.8.2.3}% 153
+\BOOKMARK [4][-]{paragraph.7.8.2.3.2}{PlaylistManagerPopup}{subsubsection.7.8.2.3}% 154
+\BOOKMARK [3][-]{subsubsection.7.8.2.4}{Queue}{subsection.7.8.2}% 155
+\BOOKMARK [4][-]{paragraph.7.8.2.4.1}{Queue}{subsubsection.7.8.2.4}% 156
+\BOOKMARK [4][-]{paragraph.7.8.2.4.2}{QueueMerger}{subsubsection.7.8.2.4}% 157
+\BOOKMARK [4][-]{paragraph.7.8.2.4.3}{QueueModelColumns}{subsubsection.7.8.2.4}% 158
+\BOOKMARK [4][-]{paragraph.7.8.2.4.4}{QueuePopup}{subsubsection.7.8.2.4}% 159
+\BOOKMARK [4][-]{paragraph.7.8.2.4.5}{PlaylistAddDialog}{subsubsection.7.8.2.4}% 160
+\BOOKMARK [3][-]{subsubsection.7.8.2.5}{Settings}{subsection.7.8.2}% 161
+\BOOKMARK [4][-]{paragraph.7.8.2.5.1}{Settings}{subsubsection.7.8.2.5}% 162
+\BOOKMARK [4][-]{paragraph.7.8.2.5.2}{SettingsGeneral}{subsubsection.7.8.2.5}% 163
+\BOOKMARK [4][-]{paragraph.7.8.2.5.3}{SettingsNetwork}{subsubsection.7.8.2.5}% 164
+\BOOKMARK [4][-]{paragraph.7.8.2.5.4}{SettingsPlayback}{subsubsection.7.8.2.5}% 165
+\BOOKMARK [4][-]{paragraph.7.8.2.5.5}{SettingsOutputs}{subsubsection.7.8.2.5}% 166
+\BOOKMARK [4][-]{paragraph.7.8.2.5.6}{OutputsModelColumns}{subsubsection.7.8.2.5}% 167
+\BOOKMARK [3][-]{subsubsection.7.8.2.6}{Statistics}{subsection.7.8.2}% 168
+\BOOKMARK [4][-]{paragraph.7.8.2.6.1}{Statistics}{subsubsection.7.8.2.6}% 169
+\BOOKMARK [1][-]{section.7.9}{Glossar}{chapter.7}% 170

@@ -30,4 +30,4 @@ logfile.txt
 *.toc
 *.aux
 *.log
-
+*.out

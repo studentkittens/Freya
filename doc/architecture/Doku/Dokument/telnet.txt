@@ -1,10 +1,10 @@
 (master) $ telnet localhost 6600
 Trying ::1...
 Connected to localhost.
-OK MPD 0.16.0      # Der Server antwortet bei verbindungsaufbau
+OK MPD 0.16.0      # Der Server antwortet bei verbindungsau
                    # stets mit einem OK und der Versionsnummer
 pause              # Wir senden das 'pause' kommando zum
-                   #pausieren des aktuellen liedes
+                   # pausieren des aktuellen liedes
 OK                 # Der Server fuehrt es aus und antwortet
                    # mit einem OK
 play               # Wir tun dasselbe mit dem 'play' command.

@@ -14,26 +14,28 @@ Aus den oben genannten Anforderungen kann eine grobe Architektur abgeleitet werd
 
 \begin{figure}[htb!]
 	\centering
-        \includegraphics[scale=0.6]{BaseClientCollab.png}
+        \includegraphics[scale=0.55]{BaseClientCollab.png}
 	\caption{Kollaborationsdiagramm zu BaseClient}
 	\label{collab_base_client}
 \end{figure}
 
 \subsubsection{BaseClient}
-\begin{itemize}
-    \item Kann nicht selbst instanziert werden.
-    \item Verwaltet connect / disconnect und reconnect vorgänge
-    \item Bietet Funktionen zum einfachen verlassen und eintreten des idlemodes an 
-    \item Implementiert keine konkreten Kommandos die er an den server schicken kann
-    \item Geht die verbindung verloren (ohne dass \emph{disconnect()} explizit aufgerufen wurde),
-        so versucht er periodisch sich zu reconnecten.
-\end{itemize}
+Diese Klasse bildet die Basis zur eigentlichen Clientklasse. Sie kann nicht direkt instanziert werden,
+und verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau \ref{seq_client_connect} an sich. 
+Desweiteren bietet er einfache Funktionen zum eintreten und verlassen des ,,Idlemodes'' an.
+\\
+Geht die verbindung verloren (ohne dass \emph{disconnect()} explizit aufgerufen wurde), so versucht sich der BaseClient periodisch sich zu reconnecten.
+Das Intervall in dem diese Versuche geschehen soll von ,,settings.connection.reconnectinterval'' gelesen werden.
+\\
 Er soll mindestens folgende public Methoden bieten:
 
+Gibt eine Referenz auf das zugrunde liegende MPD::Connection Objekt zurück. 
+AbstractClientExtension benötigt dies.
 \begin{verbatim}
         Connection& get_connection(void);
 \end{verbatim}
 
+Prüft ob eine Verbindung besteht.
 \begin{verbatim}
         bool is_connected(void);
 \end{verbatim}
@@ -55,18 +57,19 @@ prüfen aber zusätzlich noch ob eine Verbindung besteht:
 \end{verbatim}
 
 \subsubsection{Listener}
-\begin{itemize}
-    \item Verwaltet das ein-(enter()) und austreten (leave()) aus dem Idlemode
-    \item Parst die Responseliste (also changed: player)
-    \item Verfügt über ein ,,EventNotifer'' (ein sigc::signal)
-        Module können sich über connect() registrieren,
-        bemerkt der Listener events so ruft er emit() auf dem signal auf
-        und teilt allen anderen Modulen so mit welche events geschehen sind.
-\end{itemize}
-
+Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes''
+zutun hat. Er setzt den eingangs beschriebenen Watchdog auf die asynchrone Verbindung an,
+und parst die entsprechenden Antworten des Servers von Hand. 
+\\
+Er verfügt zudem über ein ,,EventNotifer'' (ein sigc::signal)
+Periphere Klasse können sich so über connect() registrieren.
+Bemerkt der Listener Events so ruft er emit() auf dem sigc::signal auf
+und teilt allen anderen Modulen so mit welche events geschehen sind.
+\\
 Es folgt eine Liste von Funktionen die der Listener mindestens haben soll.
 \\
-enter(), leave() wurden oben bereits erwähnt. 
+enter() tritt in den ,,Idlemode'' ein. Es ist ab diesem Punkt nicht mehr erlaubt Kommandoes zu senden.
+leave() ist das genaue Gegenteil von enter() und verlässt den ,,Idlemode'' sodass Kommandoes gesendet werden können.  
 is\_idling() sollte selbsterklärend sein.
 \begin{verbatim}
        bool enter(void);
@@ -75,35 +78,43 @@ is\_idling() sollte selbsterklärend sein.
 \end{verbatim}
 
 Es soll zudem eine force\_update() Funktion geben die ,,künstlich'' alle Events auslöst.
+Dies ist nützlich bei der Initialisierung.
 \begin{verbatim}
        void force_update(void);
 \end{verbatim}
 
 \subsubsection{Connection}
-\begin{itemize}
-    \item Ein Wrapper um die mpd\_connection Struktur von libmpdclient
-    \item Ruft beim Verbindungsvorgang letzendlich mpd\_connection\_new() auf 
-    \item Bietet eine Schnittstelle um sich über Fehler informieren zu lassen (signal\_error())
-    \item Bietet eine get\_connection() methode die bei jedem aufruf prüft ob fehler passiert sind
-        In diesem Falle versucht MPD::Connection den Fehler zu bereinigen (falls ein nicht fataler Fehler war).
-        Anschließend benachrichtigt MPD::Connection alle module die sich vorher über signal\_error() 
-        registriert haben (wie der BaseClient es beispielsweise mit handle\_error() tut)
-\end{itemize}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.5]{ConnectSequence.pdf}
+	\caption{Sequenzdiagramm zum Verbindungsaufbau}
+	\label{seq_client_connect}
+\end{figure}
+Diese Klasse stellt eine Art Wrapper um die mpd\_connection Struktur von libmpdclient da.
+Neben den eigentlichen connect() und disconnect() Methoden.
+Sie hält zudem den letzten Host als Membervariable um feststellen zu können ob sich dieser zwischen 
+zwei Verbindungsvorgängen geändert hat. Desweiteren bietet sie eine Schnittstelle um sich über Fehler informieren zu lassen (signal\_error())
+\\
 Es folgt eine Liste von Funktionen die mindestens vorhanden sein sollten.
 Ein boolean-Rückgabewert von true zeigt stets Erfolg an.
 \\
+connect() soll die eigentliche Verbindung herstellen, disconnect() löscht die Verbindung wieder.
+get\_connection() liefert einen Pointer auf die darunter liegende C-Struktur. Alle 4 Funktionen prüfen 
+zudem intern bereits auf Fehler.
 \begin{verbatim}
     bool is_connected(void);
     bool connect(void);
     bool disconnect(void);
+\end{verbatim}
+
+Zur Implementierung konkreter Kommandoes wird die darunterliegende C-Struktur benötigt.
+\begin{verbatim}
     mpd_connection * get_connection(void);
 \end{verbatim}
 
-connect() soll die eigentliche Verbindung herstellen, disconnect() löscht die Verbindung wieder.
-get\_connection() liefert einen Pointer auf die darunter liegende C-Struktur. Alle 4 Funktionen prüfen 
-zudem intern bereits auf Fehler.
-\\
-
+Auf den Rückgabewert dieser Funktionen kann sigc::signal::connect() aufgerufen werden, 
+um einen Funktionspointer zu registrieren der aufgerufen wird sobald ein Fehler eintritt,
+bzw. sich die Verbindung ändert. Die Prototypen sollen jeweils sein:
 \begin{verbatim}
     typedef sigc::signal<void, bool,mpd_error> ErrorNotify;
     typedef sigc::signal<void,bool,bool> ConnectionNotifier;
@@ -111,23 +122,21 @@ zudem intern bereits auf Fehler.
     ErrorNotify& signal_error(void);
     ConnectionNotifier& signal_connection_change(void)
 \end{verbatim}
-Auf den Rückgabewert dieser Funktionen kann sigc::signal::connect() aufgerufen werden, 
-um einen Funktionspointer zu registrieren der aufgerufen wird sobald ein Fehler eintritt,
-bzw. sich die Verbindung ändert. Die Prototypen sollen jeweils sein:
+
+Die Prototypen entsprechen den Templateargumenten in den typedefs:
 \begin{verbatim}
     void error_handler(bool is_fatal, mpd_error err_code);
     void conn_change_handler(bool server_changed, bool is_connected); 
 \end{verbatim} 
-Die Prototypen entsprechen den Templateargumenten in den typedefs.
 
-\begin{verbatim}
-    bool check_error(void);
-\end{verbatim}
 libmpdclient verbietet es weitere Kommandos an den Server zu senden wenn vorher ein Fehler passiert ist.
 Fehler müssen zuerst mit \emph{mpd\_connection\_clear\_error()} ,,bereinigt'' werden. 
 Dies tut check\_error(). Die Funktion wird normal nicht selbst aufgerufen, da sie von allen anderen Funktionen der Klasse
 implizit aufgerufen wird. Ist ein Fehler passiert so werden alle Klienten die sich zuvor
 mit signal\_error() registriert haben benachrichtigt. 
+\begin{verbatim}
+    bool check_error(void);
+\end{verbatim}
 
 
 \subsubsection{Client}
@@ -285,8 +294,7 @@ Dies ist von der AbstractComposite vorgegeben.
 
 \newpage
 \subsubsection{Statistics}
-Die Statistics Klasse ist Wrapper für mpd\_stats, implementiert gemäß
-\\http://www.musicpd.org/doc/libmpdclient/stats\_8h.html
+Die Statistics Klasse ist Wrapper für mpd\_stats, implementiert gemäß \url{\\http://www.musicpd.org/doc/libmpdclient/stats\_8h.html}
 folgende Funktionen:
 \begin{verbatim}
     unsigned get_number_of_artists(void);

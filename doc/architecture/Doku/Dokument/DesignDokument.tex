@@ -36,14 +36,14 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
         wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste, denn man müsste manuell rausfinden 
         was genau sich eigentlich geändert hat.
     \item [Nutzung der ,,idle'' und ,,noidle'' commands:]
-        ,,idle'' versetzt die Verbindung zum Server in einen Schlafzustand, sobald ,,events'' wie 'player' (also z. B. pause oder play) 
+        ,,idle'' versetzt die Verbindung zum Server in einen Schlafzustand, sobald Events wie 'player' (also z. B. pause oder play) 
         eintreten, wacht die Verbindung aus diesem Zustand auf und sendet an den Client eine Liste der Events die aufgetreten sind:
 
-\begin{figure}[h!]
-    \lstinputlisting[language=bash]{state.txt}
-\caption{Eine Beispielantwort des MPD Servers}
-\label{dd_state}
-\end{figure}
+	\begin{figure}[h!]
+	  \lstinputlisting[language=bash]{state.txt}
+	  \caption{Eine Beispielantwort des MPD Servers}
+	  \label{dd_state}
+	\end{figure}
 
         Einschränkung: Während die Verbindung im idle mode ist kann kein reguläres Kommando wie ,,play'' gesendet werden!
         Sollte man es doch tun wird man vom Server augenblicklich mit einem Disconnect belohnt.
@@ -56,16 +56,17 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
 Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
 \begin{itemize}
     \item Man hält zwei Verbindungen zum Server, eine die Kommandos sendet, eine die stets im ,,idle'' mode liegt,
-        Für die Realisierung müssten Threads herangezogen werden. Ein Thread würde dann im Hintergrund auf events lauschen,
+        Für die Realisierung müssten Threads herangezogen werden. Ein Thread würde dann im Hintergrund auf Events lauschen,
         der andere würde zum Abschicken der Kommandos benutzt werden.
         Problem: Es müssen 2 Verbindungen gehandelt werden, was wiederum ein Mehraufwand an Code bedeutet.
         Desweiteren werden Threads benötigt die auch in anderen Bereichen des Programms Lockingmechanismen bedeuten würden.
-    \item Man hält eine asynchrone verbindung zu dem server.
+    \item Man hält eine asynchrone Verbindung zu dem server.
         Diese kann das 'idle' command zum server schicken, returned aber sofort. Um nun eine Liste der events zu bekommen setzt man 
-        einen ,,Watchdog''auf die asynchrone verbindung an (Vergleiche dazu den Systemaufrug 'man 3 poll'). Da poll() ebenfalls den
+        einen ,,Watchdog''auf die asynchrone verbindung an (Vergleiche dazu den Systemaufruf 'man 3 poll'). Da poll() ebenfalls den
         aufrufenden Prozess blockiert, wird Glib::signal\_io() benutzt, das sich in den laufenden MainLoop (*) einhängt und eine 
-        Callbackfunktion aufruft sobald auf der verbindung etwas interessantes passiert. Da während des Wartens der MainLoop weiterarbeitet,
+        Callbackfunktion aufruft sobald auf der Verbindung etwas interessantes passiert. Da während des Wartens der MainLoop weiterarbeitet,
         bleibt die GUI (und andere Module) aktiv und benutzbar.
+        \\
         Problem: Vor dem Senden eines Kommandos wie ,,play'' muss der idle mode verlassen werden.
         Lösung: Man kann das ,,noidle'' Kommando zum verlassen senden, und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
 \end{itemize}
@@ -74,53 +75,19 @@ Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
 \lstinputlisting[language=bash]{telnet.txt}
 
 Die Idee zu dieser Implementierung (speziell das Benutzen einer asynchronen Verbindung), kommt von ,,ncmpc'',
-der inoffiziellen offiziellen Referenzimplementierung des MPD Mit-Authors \emph{Max Kellermann}.
-Vergleiche \href{http://mpd.wikia.com/wiki/Client:Ncmpc}{ncmpc quellcode}: src/gidle.c und src/mpdclient.c
+der mehr oder minder offiziellen Referenzimplementierung des MPD Mit-Authors \emph{Max Kellermann}.
+Vergleiche \href{http://mpd.wikia.com/wiki/Client:Ncmpc}{ncmpc quellcode}: \textit{src/gidle.c} und \textit{src/mpdclient.c}
 
-\newpage
-
-\subsection{Verbindungsaufbau}
+\subsection{Aufbau der Anwendung}
 \begin{figure}[htb!]
 	\centering
-        \includegraphics[scale=0.5]{ConnectSequence.pdf}
-	\caption{Sequenzdiagramm zum Verbindungsaufbau}
-	\label{seq_client_connect}
+        \includegraphics[scale=0.5]{MainSequenz.pdf}
+	\caption{Die Initialisierungsphase}
+	\label{seq_main_init}
 \end{figure}
-Das Sequenzdiagramm stellt den Aufbau der Verbindung beim Start von Freya dar.
-\\
 
-\input{ClientImplementierung}
-
-%% Übergang zu GUI Zeugs..
-
-\section{Interaktion des Clients mit anderen Modulen}
-\begin{itemize}
-\item Die meisten GUI Klassen leiten von AbstractClientUser ab und speichern daher eine Referenz auf eine Instanz von MPD::Client
-        Sie können daher Funktionen wie queue\_add() direkt aufrufen.
-\item AbstractClientUser zwingt die abgeleitenden Klassen folgende Funktionen zu implementieren: 
-\begin{verbatim} 
-   void on_client_update(mpd_idle event, MPD::NotifyData& data)
-   void on_connection_change(bool server_changed, bool is_connected)
-\end{verbatim}
-
-1) wird aufgerufen sobald der Listener ein Event festgestellt hat. Für jedes eingetretene Event wird 1)
-   einmal aufgerufen. 'event' ist dabei eine Enumeration aller möglichen Events, die von libmpdclient 
-   vorgegeben werden. \verb+(Siehe auch http://www.musicpd.org/doc/libmpdclient/idle\_8h.html#a3378f7a24c714d7cb1058232330d7a1c)+
-   ,,data'' ist eine Referenz auf eine Instanz von MPD::NotifyData. Die benutzenden Klassen können folgenden Funktionen so
-   bei Events sofort die aktuellen Änderungen auslesen. 
-   \begin{itemize} 
-     \item get\_status() gibt den aktuellen MPD::Status
-     \item get\_song() gibt den aktuellen MPD::Song
-     \item get\_statistics() gibt die aktuellen MPD::Statistics
-   \end{itemize} 
-
-2) on\_connection\_change wird vom Client aufgerufen sobald die Verbindung verloren geht.
-   Dabei zeigt der übergebene boolean Wert ,,is\_connected'' an ob man connected wurde, oder disconnected wurde.
-   ,,server\_changed'' soll dann anzeigen ob der Server derselbe ist beim zuvor geschehenen Connectvorgang.
-   Dies ist beim ersten Start stets wahr. ,,server+\_changed'' kann nicht wahr sein wenn ,,is\_connected'' falsch ist.
-\item Ableitung von den oben beschriebenen abstrakten Klassen AbstractItemlist und AbstractFilebrowser, um alle Funktionen von AbstractItemGenerator nutzen zu können  
-\end{itemize}
-
+% Reihenfolge in der aufgebaut wird 
 \input{Config}
+\input{ClientImplementierung}
 \input{GUIElements}
 \input{BrowserImplementierungen}

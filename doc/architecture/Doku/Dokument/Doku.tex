@@ -14,13 +14,36 @@
 \usepackage{enumerate} %für geschachtelte Aufzählungen
 \usepackage{tabularx}
 \usepackage{textcomp}
-
+\usepackage{color}
 
 % *** java listings
 \usepackage{listings} 
 \usepackage{courier} % courier schrift
-\lstset{numbers=left, numberstyle=\tiny, basicstyle=\ttfamily  ,numbersep=1pt, tabsize=1}
-\lstset{frame=single, framesep=1pt,framerule=0.5pt,xleftmargin=1.0pt,showstringspaces=false}
+%\lstset{numbers=left, numberstyle=\tiny, basicstyle=\ttfamily  ,numbersep=1pt, tabsize=1}
+%\lstset{frame=single, framesep=1pt,framerule=0.5pt,xleftmargin=1.0pt,showstringspaces=false}
+\PassOptionsToPackage{hyphens}{url} %Umbrüche nach '-' erlauben 
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstset{
+   language=XML,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
     
 
 % ***
@@ -29,22 +52,26 @@
 \usepackage{amssymb} %mathfrak
 
 \usepackage[bookmarks=true]{hyperref} % hyperrefs aktivieren
-\setcounter{secnumdepth}{4} %Numerierung bis Tiefe 3, also ab \paragraph ohne
-\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3} %Numerierung bis Tiefe 3, also ab \paragraph ohne
+\setcounter{tocdepth}{3}
 
 %kitteh stuff
 \linespread{1.33}
 
 
 %*** title usw.
+
 \title{MPD-Client}
 \subtitle{Teil der Software Engineering II Studienarbeit WS 2011/2012, Inf 3}
+%\includegraphics{freya.pdf}
 \author{
 Christopher Pahl,\\
 Christoph Piechula,\\
 Eduard Schneider,\\
 und Marc Tigges}
 \date{\today}
+
+
 
 %***
 %newcommands

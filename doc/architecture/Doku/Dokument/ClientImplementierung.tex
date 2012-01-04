@@ -23,16 +23,31 @@ Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes'
 zu tun hat. Er setzt den eingangs beschriebenen ,,Watchdog'' auf die asynchrone Verbindung an,
 und ,,parst'' die entsprechenden Antworten des Servers von Hand. 
 \\
-Bei der Instanzierung des Listener soll das \textit{sigc::signal} welches das Clientupdate darstellt übergeben wird.
+\\
+Es folgt eine Liste aller möglichen Events die von libmpdclient definiert werden.
+Die Aktionen die passieren müssen damit diese eintreten stehen in Klammern.
+\begin{itemize}
+    \item \small MPD\_IDLE\_DATABASE \it(Datenbank hat sich geändert)\rm
+    \item \small MPD\_IDLE\_STORED\_PLAYLIST \it(Änderung an den Playlisten)\rm
+    \item \small MPD\_IDLE\_QUEUE \it(Änderung an der Queue: Clear, Add, Remove)\rm
+    \item \small MPD\_IDLE\_PLAYER \it(Pause,Stop,Play,Next,Stop,Previous,Seek)\rm
+    \item \small MPD\_IDLE\_MIXER \it(Änderung an der Lautstärke)\rm
+    \item \small MPD\_IDLE\_OUTPUT \it(An/Ausschalten eines Outputs)\rm
+    \item \small MPD\_IDLE\_OPTIONS \it(Random,Repeat,Single,Consume)\rm
+    \item \small MPD\_IDLE\_UPDATE \it(Datenbankupdate/rescan wurde gestartet)\rm
+\end{itemize}
+\normalsize
+Bei der Instanzierung des Listeners soll das \textit{sigc::signal} welches das Clientupdate darstellt übergeben werden.
 Zudem benötigt der Listener eine Referenz auf MPD::Connection um an die darunter liegende asynchrone Verbindung zu kommen.  
 \begin{verbatim}
   Listener(EventNotifier& Notifier, Connection& sync_conn);
 \end{verbatim}
 
+Eine weitere Aufgabe des Listeners ist es das Model MPD::NotifyData aktuell zu halten, sprich bei jedem Clientupdate soll
 Bemerkt der Listener Events so ruft er emit() auf dem übergebenen \textit{sigc::signal} auf,
 und übergibt als Parameter das aufgetretene Event, sowie eine Instanz von MPD::NotifyData.
-Eine weitere Aufgabe ist es das Model MPD::NotifyData aktuell zu halten, sprich bei jedem Clientupdate soll
 der aktuelle Status/Song vom Server geholt werden.
+\footnote{Als spätere Optimierung könnte das aufgetretene Event übergeben werden um selektiv Daten upzudaten; Sprich bei einer Lautstärkeänderung muss kein neues Statistikobjekt geholt werden.}
 \\
 Es folgt eine Liste von Funktionen die der Listener mindestens haben soll.
 \\
@@ -59,8 +74,9 @@ soll sich zu updaten.
 	\caption{Sequenzdiagramm zum Verbindungsaufbau}
 	\label{seq_client_connect}
 \end{figure}
-Diese Klasse stellt eine Art Wrapper um die \textit{mpd\_connection} Struktur von libmpdclient da.
-Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connection\_free()} aufrufen. Siehe \ref{seq_client_connect} für den detaillierten Verbindungsablauf. Die benötigten Verbindungsdaten (Host, Port, Timeout in Sekunden) holt sich MPD::Connection aus der Config.
+Diese Klasse stellt eine Art Wrapper um die \textit{mpd\_connection}
+\footnote{http://www.musicpd.org/doc/libmpdclient/connection\_8h.html} Struktur von libmpdclient da.
+Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connectio\_free()} aufrufen. Siehe \ref{seq_client_connect} für den detaillierten Verbindungsablauf. Die benötigten Verbindungsdaten (Host, Port, Timeout in Sekunden) holt sich MPD::Connection aus der Config.
 \\
 Sie hält zudem den letzten Host als Membervariable um feststellen zu können ob sich dieser zwischen 
 zwei Verbindungsvorgängen geändert hat. Desweiteren bietet sie eine Schnittstelle um andere Klassen über Fehler in der Verbindung informieren zu lassen (signal\_error()), bzw. um sie zu ,,reparieren'' (clear\_error()).
@@ -70,14 +86,15 @@ Ein boolean-Rückgabewert von true zeigt stets Erfolg an.
 \\
 connect() soll die eigentliche Verbindung herstellen, disconnect() löscht die Verbindung wieder.
 get\_connection() liefert einen Pointer auf die darunter liegende C-Struktur. Alle 4 Funktionen prüfen 
-zudem intern bereits auf Fehler.
+zudem intern bereits auf Fehler. 
 \begin{verbatim}
     bool is_connected(void);
     bool connect(void);
     bool disconnect(void);
 \end{verbatim}
 
-Zur Implementierung konkreter Kommandoes wird die darunterliegende C-Struktur benötigt.
+Zur Implementierung konkreter Kommandos wird die darunterliegende C-Struktur benötigt.
+\textbf{Siehe auch:} AbstractClientExtension
 \begin{verbatim}
     mpd_connection * get_connection(void);
 \end{verbatim}
@@ -86,18 +103,20 @@ Auf den Rückgabewert dieser Funktionen kann sigc::signal::connect() aufgerufen 
 um einen Funktionspointer zu registrieren der aufgerufen wird sobald ein Fehler eintritt,
 bzw. sich die Verbindung ändert. Die Prototypen sollen jeweils sein:
 \begin{verbatim}
-    typedef sigc::signal<void, bool,mpd_error> ErrorNotify;
-    typedef sigc::signal<void,bool,bool> ConnectionNotifier;
+  typedef sigc::signal<void, bool,mpd_error> ErrorNotify;
+  typedef sigc::signal<void,bool,bool> ConnectionNotifier;
     
-    ErrorNotify& signal_error(void);
-    ConnectionNotifier& signal_connection_change(void)
+  ErrorNotify& signal_error(void);
+  ConnectionNotifier& signal_connection_change(void)
 \end{verbatim}
 
-Die Prototypen entsprechen den Templateargumenten in den typedefs:
+Die Prototypen entsprechen stets den Templateargumenten in den typedefs:
 \begin{verbatim}
-    void error_handler(bool is_fatal, mpd_error err_code);
-    void conn_change_handler(bool server_changed, bool is_connected); 
+  void error_handler(bool is_fatal, mpd_error err_code);
+  void conn_change_handler(bool server_changed, bool is_connected); 
 \end{verbatim} 
+
+Siehe MPD::BaseClient weiter unten für ein Beispiel wie man eine Callbackfunktion registriert.
 
 libmpdclient verbietet es weitere Kommandos an den Server zu senden wenn vorher ein Fehler passiert ist.
 Fehler müssen zuerst mit \emph{mpd\_connection\_clear\_error()} ,,bereinigt'' werden. 
@@ -105,7 +124,7 @@ Dies tut check\_error(). Die Funktion wird normal nicht selbst aufgerufen, da si
 implizit aufgerufen wird. Ist ein Fehler passiert so werden alle Klienten die sich zuvor
 mit signal\_error() registriert haben benachrichtigt. 
 \begin{verbatim}
-    bool check_error(void);
+  bool check_error(void);
 \end{verbatim}
 
 \begin{figure}[htb!]
@@ -116,60 +135,69 @@ mit signal\_error() registriert haben benachrichtigt.
 \end{figure}
 
 \subsubsection{BaseClient}
-Diese Klasse bildet die Basis zur eigentlichen Clientklasse. Sie kann nicht direkt instanziert werden, da
+Diese Klasse bildet die Basis zum eigentlichen Client. Sie kann nicht direkt instanziert werden, da
 der Konstruktor protected sein soll.
 Sie verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau \ref{seq_client_connect} an sich. 
-Desweiteren bietet die Klasse einfache Funktionen zum eintreten und verlassen des ,,Idlemodes'' an.
+Desweiteren bietet die Klasse einfache Methoden zum eintreten (go\_idle()) und Verlassen (go\_busy()) des ,,Idlemodes'' an.
 Geht die Verbindung verloren, ohne dass \emph{\_\_disconnect()} explizit aufgerufen wurde, so wird versucht sich periodisch zu reconnecten.
 Das Intervall in dem diese Versuche geschehen sollen, soll von ,,settings.connection.reconnectinterval'' gelesen werden.
-\\
-Er soll mindestens folgende public Methoden bieten:
-\\
 \\
 Gibt eine Referenz auf das zugrunde liegende MPD::Connection Objekt zurück. 
 Andere Klassen die Clientkommandos implementieren wollen benötigen dies.
 \\
 \textbf{Siehe auch:} AbstractClientExtension
+\\
+Er soll mindestens folgende public Methoden bieten:
+\\
 \begin{verbatim}
-        Connection& get_connection(void);
+  Connection& get_connection(void);
 \end{verbatim}
 
 Gibt \textit{true} zurück wenn eine Verbindung besteht.
 \begin{verbatim}
-        bool is_connected(void);
+   bool is_connected(void);
 \end{verbatim}
 
 Die get\_status() Funktion soll den letzten aktuellen MPD::Status zurückliefern,
 oder \emph{NULL} falls nicht verbunden. Es soll garantiert sein dass stets ein MPD::Status vorliegt,
 wenn is\_connected() wahr ergibt.
 \begin{verbatim}        
-        Status * get_status(void);
+   Status * get_status(void);
 \end{verbatim}
 
 Die folgenden Methoden bieten eine Möglichkeit für Clientevents, bzw. für Verbindungsänderungen zu registrieren.
 \begin{verbatim}
-	typedef sigc::signal<void,mpd_idle,MPD::NotifyData&> EventNotifier;
-        EventNotifier& signal_client_update(void);
+  typedef sigc::signal<void,mpd_idle,MPD::NotifyData&> EventNotifier;
+  EventNotifier& signal_client_update(void);
         
-        typedef sigc::signal<void,bool,bool> ConnectionNotifier;
-        ConnectionNotifier& signal_connection_change(void);
+  typedef sigc::signal<void,bool,bool> ConnectionNotifier;
+  ConnectionNotifier& signal_connection_change(void);
 \end{verbatim}
 
 Registrieren kann man sich über die sigc::signal::connect() Methode:
 \begin{verbatim}
- // Callback Funktion
- void on_client_update(
+ // Callback Funktion wird bei jedem eingetretenen Event aufgerufen
+ void on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+ {
+    // Tue etwas bei einem 'player' event
+    if(event == MPD_IDLE_PLAYER)
+    {
+        // Gib den Namen des aktuellen Songs aus
+        cerr << data.get_song().get_path() << endl;
+    }
+ }
 
- // Registrieren dieser
- m_Client.signal_client_update().connect(sigc::ptr_fun())
+ // Registrieren der Callbackfunktion
+ // - Ableiten von AbstractClientUser macht dies automatisch
+ m_Client.signal_client_update().connect(sigc::ptr_fun(on_client_update));
 \end{verbatim}
 
 Folgende 3 Funktionen funktionieren genau wie enter(), leave() und force\_update() des Listeners.
 Allerdings prüfen sie mit Connection::check\_error() vorher stets auf Fehler.
 \begin{verbatim}
-        void go_idle(void);
-        void go_busy(void);
-        void force_update(void);
+  void go_idle(void);
+  void go_busy(void);
+  void force_update(void);
 \end{verbatim}
 
 \subsubsection{Client}
@@ -265,7 +293,7 @@ Die folgenden 2 Funktionen haben stets einen validen Rückgabewert:
     Statistics& get_statistics(void);
 \end{verbatim}
 
-Anmerkung: Die folgenden 2 Funktionen können NULL zurückgeben, falls 
+Anmerkung: Die folgenden 2 Funktionen sollen NULL zurückgeben können, falls beispielsweise
 nichts wiedergegeben wird, oder man im ,,Singlemode'' ist.
 get\_song() liefert den aktuell spielenden MPD::Song, oder NULL.
 get\_next\_song() liefert den als nächstes spielenden MPD::Song oder NULL.

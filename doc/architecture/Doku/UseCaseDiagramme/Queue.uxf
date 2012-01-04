@@ -4,9 +4,9 @@
   <element>
     <type>com.umlet.element.custom.Systemborder</type>
     <coordinates>
-      <x>370</x>
+      <x>110</x>
       <y>40</y>
-      <w>310</w>
+      <w>570</w>
       <h>490</h>
     </coordinates>
     <panel_attributes>Queue</panel_attributes>

@@ -1,11 +1,20 @@
 
+\newpage
+\begin{figure}[thb!]
+\subsubsection{Namespace-Übersicht}
+    \centering
+    \includegraphics[scale=0.20]{Namespace_Uebersicht.png}
+    \caption{Die MPD Namespaces im Überblick}
+    \label{dd_namespaces}
+\end{figure}
+
 \section{Utils und Writer} 
 
 \subsection{Utils}
 Im \emph{Utils Namespace} sollen sollen sich folgende Hilfsfunktionen zur Zeit/Datumsumrechnung befinden:
 
 \begin{itemize}
-    \item Umrechnung von Sekunden in einen ;;Dauer-String Bsp'' : ,,4 hours 2 minutes 0 seconds''
+    \item Umrechnung von Sekunden in einen ,,Dauer-String Bsp'' : ,,4 hours 2 minutes 0 seconds''
 
         \begin{verbatim}
         Glib::ustring seconds_to_duration(unsigned long);
@@ -18,7 +27,7 @@ Im \emph{Utils Namespace} sollen sollen sich folgende Hilfsfunktionen zur Zeit/D
 
     \item Umwandlung eines Integer Wertes in einen String
         \begin{verbatim}
-        std::string int_to_string(int num); \end{itemize}
+        std::string int_to_string(int num);
         \end{verbatim}
 \end{itemize}
 
@@ -26,15 +35,15 @@ Im \emph{Utils Namespace} sollen sollen sich folgende Hilfsfunktionen zur Zeit/D
 Diese grundlegenden Funktionen sollen ausgelagert werden damit sie von mehreren Klassen verwendet werden können und um Redundanzen im 
 Code zu vermeiden.
 
-\subsection{Writer}
+\subsection{Logging}
 
-Im \emph{Log Namespace} befindet sich die Writer Klasse, welche auch als sog. ,,Utils-Klasse'' Funktionen für alle anderen
-Klassen in Namespace bereitstellt. Bei dieser Klasse wurde das Singleton Pattern gewählt, damit diese ohne instanziert werden
-zu müssen ,,leicht von überall'' aus erreichbar ist ohne dass vorher eine Instanzierung statt finden muss.
+Im \emph{Log Namespace} befindet sich die Writer Klasse, welche auch als sog. ,,\textit{Utils-Klasse}'' Funktionen für alle anderen
+Klassen in Namespace bereitstellt. Bei dieser Klasse wurde das Singleton Pattern gewählt, damit sie ,,leicht von überall'' aus erreichbar ist, ohne dass vorher explizit eine Instanzierung statt finden muss. Die Logdatei wird im Konfigurationsverzeichnis von Freya als log.txt
+abgespeichert, im folgenden Dokument gibts dazu mehr Informationen. 
 Die Logklasse dient zur Protokollierung von Fehlern und besonderen Ereignissen.  
 
 \begin{figure}[htb!]
-    Folgende selbsterklärende Makros werden von der Log::Writer Klasse zur Protokollierung bereitgestellt:
+    Folgende selbsterklärende Makros werden von der \emph{Log::Writer} Klasse zur Protokollierung bereitgestellt:
 
     \begin{verbatim}
     Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
@@ -46,20 +55,19 @@ Die Logklasse dient zur Protokollierung von Fehlern und besonderen Ereignissen.
     \end{verbatim}
 \end{figure}
 
-\section{Config Hauptklassen}
-%Beschreibung der load/save Funktionalität siehe model_save_load.txt
-
 %----------------------------------------------------------------------------------------------
+
+\section{Config Hauptklassen}
 
 \subsection{Path}
 Die \emph{Init::Path} Klasse soll für die Initialisierung und das Management der Freya Config Pfade zuständig sein.
 Bei der Initialisierung soll überprüft werden ob das Konfigurationsverzeichnis vorhanden ist, wenn nicht wird ein Neues
-angelegt und anschließend wird eine default config.xml geschrieben. Eine default config ist im Quellcode als 
-konstanter globaler String einkompiliert. (Config::defaultcfg.inl)
+angelegt und anschließend wird eine default config.xml geschrieben. Eine Standardkonfiguration ist im Quellcode als 
+konstanter globaler String einkompiliert.
 \\
 \\
-Schlägt das Erstellen der Konfigurationsdatei fehl, so soll versucht werden eine entsprechende Fehlermeldung in die Log Datei zu schreiben 
-falls diese zuvor erfolgreich angelegt wurde. Zusätzlich sollen DEBUG Ausgaben auf dem Bildschirm angezeigt werden wenn das Programm
+Schlägt das Erstellen der Konfigurationsdatei fehl, so soll versucht werden eine entsprechende Fehlermeldung in die Log Datei zu schreiben, 
+falls diese zuvor erfolgreich angelegt wurde. Zusätzlich sollen DEBUG Ausgaben auf dem Bildschirm angezeigt werden, wenn das Programm
 über ein Terminal gestartet wird.
 
 \paragraph{Instanzierung der Path Klasse kurz erläutert:}
@@ -68,7 +76,7 @@ als Membervariablen der Init::Path gespeichert. Diese Methoden nutzen die g\_get
 welche den User Pfad nach XDG Standard zurückliefert.\footnote{http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html}
 \\
 \\
-Je nach Funktion, wird an den Pfad ein ,,/freya'' für das freya Konfigurationsverzeichnis, ,,config.xml''
+Je nach Funktion, wird an den Pfad ein ,,/freya'' für das Freya Konfigurationsverzeichnis, ,,config.xml''
 für die Konfigurationsdatei oder ,,log.txt'' für die Logdatei dran gehängt.
 \\
 \\
@@ -78,25 +86,19 @@ anzulegen. Diese Klasse schreibt DEBUG und ERROR Ausgaben auf die Konsole raus, 
 nicht gewährleistet werden kann dass eine Logdatei existiert.
 
 
-\paragraph{Die ,,dir is avaiable()'' Methode kurz erläutert:}
-Diese Methode prüft zuerst über die glib Funktione g\_file\_test() ob ein freya Verzeichnis existiert,
+\paragraph{Die ,,dir is available()'' Methode kurz erläutert:}
+Diese Methode prüft zuerst über die glib Funktione g\_file\_test() ob ein ,,freya'' Verzeichnis existiert,
 ist dies nicht der Fall werden die privaten Methoden create\_dir() und create\_config() aufgerufen.
-Ist ein freya Verzeichnis vorhanden, so wird über die glib g\_file\_test() Funktion geprüft ob die Konfigurationsdatei
+Ist ein ,,freya'' Verzeichnis vorhanden, so wird über die glib g\_file\_test() Funktion geprüft ob die Konfigurationsdatei
 config.xml existiert. Existiert diese nicht, so wird die private create\_config Methode() aufgerufen.
 Existiert diese, so wird mittels der glib g\_access() Methode geschaut ob diese lesbar und beschreibar ist. 
 Bei Misserfolg wird über die glib Funktion g\_warning eine entsprechende Fehlermeldung auf
-dem Bildschirm (Konsole) ausgegeben.
+dem Bildschirm (Konsole) ausgegeben, da die Logklasse zu diesem Zeitpunkt noch nicht aufgebaut worden ist.
 
 
 \paragraph{Die ,,create config()'' Methode kurz erläutert:}
-Diese Methode legt einen File Pointer an und erstellt einen file descriptor mit fopen( ,,pfadZurConfig'', ,,w'').
-Anschließend wird geprüft ob der file pointer gültig ist.
+Die Mothode soll zum Anlegen eines Konfigurationsverzeichnisses verwendet werden.
 Im Fehlerfall wird eine entsprechende Warnung über glib Funktion g\_warning() auf dem Bildschirm ausgegeben.
-\\
-Ist der File Pointer gültig, wird mit fwrite() die
-Standard Konfigurationsdatei über den Config::Handler auf die Festplatte in das ensprechende Verzeichnis geschreiben,
-der file descriptor mit fclose() geschlossen, Speicher freigegeben und eine Erfolgsmessage mit der glib g\_message()
-Funktion auf dem Bildschirm geschreiben.
 
 \paragraph{Die ,,create dir()'' Methode erläutert:}
 Diese Methode bietet die Funktionalität über die glib Funktion g\_mkdir\_with\_parents(configdir,0755) ein Verzeichnis mit den rechten 755 (drwxr-r-xr-x) anzulegen. Bei Erfolg wird mit g\_message() eine Erfolgsmeldung auf dem Bildschirm (Konsole)
@@ -113,13 +115,11 @@ ein standardisiertes Format nach außen bereitzustellen.
 Die Konfigurations- und Logdatei soll nach XDG Standard \verb+($XDG_CONFIG_HOME)+ unter \verb+$HOME/.config/freya/<config.xml,log.txt>+ gespeichert werden.
 
 \begin{itemize}
-
     \item \url{http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables}
-
 \end{itemize}
 
 Die Optionen in der Konfigurationsdatei sind baumartig nach ,,Domainprinzip'' aufgebaut. Die Konfigurationsdatei unter \ref{c_config}
-zeigt exemplarisch einen möglichen Aufbau.
+zeigt exemplarisch den gewünschten Aufbau.
 
 \begin{figure}[htb!]
     \lstinputlisting[language=XML]{config.xml}
@@ -130,8 +130,7 @@ zeigt exemplarisch einen möglichen Aufbau.
 
 \subsection{Model}
 Die \emph{Config::Model} Klasse gehört nach dem MVC Paradigma zur Model Schicht. Diese Klasse soll die nötigen Daten (Konfigurationsdatei)
-die zum Betrieb von Freya nötig sind im Speicher vorhalten und Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte 
-bereit stellen (siehe \ref{c_confmod}).
+die zum Betrieb von Freya nötig sind im Speicher vorhalten und Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte bereit stellen (siehe \ref{c_confmod}).
 
 \begin{figure}[htb!]
     \centering
@@ -185,10 +184,9 @@ Pfad zur Konfigurationsdatei übergeben und versucht über den übergebenen Pfad
 Wenn die Operation erfolgareich war, wird ein Dokument Pointer von der xmlParseFile() 
 zurückgegben, im Fehlerfall wird \emph{NULL} zurückgegeben.
 \\
-Anschließend wird das geladene Dokument auf Gültigkeit geprüft, ist dieses \emph{NULL} so wird eine entsprechende Fehlermeldung über den Logwriter in die Logdatei geschreiben. Wurde ein gültiger xmlDocPtr zurückgegeben so soll folgendes passieren:
+Anschließend wird das geladene Dokument auf Gültigkeit geprüft, zeigt dieses auf \emph{NULL} so wird eine entsprechende Fehlermeldung über den Log::Writer in die Logdatei geschreiben. Wurde ein gültiger xmlDocPtr zurückgegeben so soll folgendes passieren:
 
 \begin{itemize}
-
     \item Ein Node Pointer wird auf das root Element über xmlDocGetRootElement() gesetzt
     \item Überprüfung ob Node Pointer Null ist, trifft das zu, so wird ein Error in die Logdatei geschrieben
         allokierter Speicher vom Dokument Pointer mittels xmlFreeDoc() freigegeben und dieser auf NULL gesetzet
@@ -196,7 +194,7 @@ Anschließend wird das geladene Dokument auf Gültigkeit geprüft, ist dieses \e
         root Element ,,freya'' entspricht. Ist dies der Fall wird eine Erfolgsmeldung in die Logdatei geschreiben. Im Fehlerfall wird eine Fehlermeldung rausgeschreiben, allokierter Speicher freigegeben
         und der Dokument sowie der Node Pointer auf \emph{NULL} gesetzt. 
 \end{itemize}
-%sequenzdiagramm
+
 
 \subsubsection{loadDefaultDoc() Methode}
 Diese Methode holt sich die default Konfigurationsdatei aus einem einkompilierten String.
@@ -213,10 +211,9 @@ Die save() Methode ist eine Wrapper Methode für save(char*, xmlDocPtr). Sie ruf
     \end{itemize}
 \end{figure}
 
-%###########################################################################################################
+
 
 \subsection{Handler}
-%Bescheibung der get/set Funktionalität siehe handler_set_get_values.txt
 Die Config::Handler Klasse gehört nach dem MVC Paradigma zur Controller Schicht. Diese Klasse soll für das Management bzw für den
 Zugriff auf das Model und somit die Konfigurationsdatei zuständig sein. Sie enthält Methoden zum Lesen und Setzen der einzelnen Optionen.
 \\
@@ -242,7 +239,7 @@ zu haben. Desweiteren sollen Wrapper um die get und set value Methoden geschrieb
 
 \begin{figure}[htb!]
 Über die \emph{save\_now()} Abb. \ref{c_configsave} Methode soll die aktuelle Konfiguration direkt über das Model gespeichert werden können.
-Alle Methoden nutzen nach Möglichkeit die Log-Klasse um Informationen und Fehler in der Logdatei zu protokollieren.
+Alle Methoden nutzen nach Möglichkeit Log::Writer um Informationen und Fehler in der Logdatei zu protokollieren.
 
 
     \centering
@@ -266,8 +263,8 @@ Alle Methoden nutzen nach Möglichkeit die Log-Klasse um Informationen und Fehle
     \item Aufruf des \verb+CONFIG_SET_AS_INT("settings.connection.port",6667)+ Makros
     \item Über das Makro wird die Wrapper Methode \verb+set_value_as_int()+ aufgerufen
     \item Diese Methode wandelt den Integer Wert in einen String um und ruft die eigentliche set Methode set\_value(url, wert) auf
-    \item Die set\_value(url, wert) Methode holt sich mit cfgmodel.getDocPtr() einen aktuellen Dokument Pointer über die Model
-    \item Ist der Dokument Pointer NULL, so kann kein Wert geschrieben werden, also wird über den Log:Writer
+    \item Die set\_value(url, wert) Methode holt sich mit cfgmodel.getDocPtr() einen aktuellen Dokument Pointer über das Model
+    \item Ist der Dokument Pointer \emph{NULL}, so kann kein Wert geschrieben werden, also wird über den Log:Writer
         eine entsprechende Warnung in die Logdatei geschreiben.
     \item Bei einem gültigem Dokument Pointer wird  mittels xmlDocGetRootElement() auf das root Element zugegriffen
     \item Anschließend wird mit xmlChildrenNode der Node Pointer auf den folgenden Kinderknoden gesetzt und die traverse() Methode aufgerufen
@@ -297,9 +294,9 @@ Alle Methoden nutzen nach Möglichkeit die Log-Klasse um Informationen und Fehle
         \\
         Der zweite Parameter dieser Methode ist ein \emph{boolean flag}, dieser dient dazu der \_get\_value()
         Methode mitzuteilen ob der entsprechende Default Wert Pointer, welcher auf die einkompilierte
-        Konfigurationsdatei zeigt, oder der Custom User Config Pointer gelanden werden soll.
+        Konfigurationsdatei zeigt, oder der Custom User Config Pointer geladen werden soll.
     \item Die \_get\_value() Methode holt entsprechend dem flag, den ,,richtigen'' Dokument Pointer über das Model (analog Setzen eines Integer Wertes)
-    \item Bei einen gültigen Pointer wird analog zum Setzen der Node Pointer auf das erste Element gesetzt und traverse()
+    \item Bei einen gültigen Pointer wird analog zum Setzen der Node Pointer auf das erste Element gesetzt und \textit{traverse()}
         aufgerufen (siehe Setzen eines Wertes).
     \item Kann kein Node ermittelt werden (d.h. cur Pointer zeigte auf NULL nach dem traversieren), so wird eine entsprechende Warnung in die Logdatei geschreiben.
     \item Anschließend wird die \_get\_value(url,true) Methode rekursiv mit einem \emph{true flag} aufgerufen. Aufgrund des true flags wird nun der Dokument Pointer mit den Default Werten geladen.

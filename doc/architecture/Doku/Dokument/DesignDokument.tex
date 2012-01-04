@@ -3,15 +3,6 @@
 
 \section{Einführung}
 
-\subsubsection{Namespace-Übersicht}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.27]{Namespace_Uebersicht.png}
-    \caption{Die MPD Namespaces im Überblick}
-    \label{dd_namespaces}
-\end{figure}
-
 \section{,,Das Problem''}
 
 Da die grundlegende Funktionsweise des MPD Server auf einer Client Server Architektur beruht, muss der MPD Client
@@ -19,7 +10,7 @@ verschiedene Kommandos wie zum Beispiel \it play, pause, listplaylists \rm etc. 
 und zur gleichen Zeit aber auch auf Änderungen reagieren können, d.h. zum Beispiel wenn sich die Lautstärke ändert,
 da jederzeit auch andere Clients oder Server den MPD internen Zustand ändern können.
 Diese Änderungen müssen auch anderen Programmteilen bekannt gemacht werden.
-Für die Realisierung eignet sich hier das Observer Pattern gut. \footnote{http://de.wikipedia.org/wiki/Observer\_(Entwurfsmuster)}.
+Für die Realisierung eignet sich hier das Observer Pattern gut. \footnote{http://de.wikipedia.org/wiki/Observer\_(Entwurfsmuster)}
 \\
 Der Client sollte im ,,idle''-Mode möglichst keine Ressourcen verschwenden und auch beim 
 trennen und verbinden die entprechenden Änderungen anderen Teilen des Programms mitteilen
@@ -28,15 +19,15 @@ können.
 
 Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} bietet folgende Möglichkeiten das zu realisieren
 \begin{description}
-    \item [Periodisch] (zB. alle 500ms) das ,,status'' command absetzen und nach Bedarf auch commands wie ,,currentsong''
-        senden
+    \item [Periodisch] (zB. alle 500ms) das ,,\textit{status}'' Kommando absetzen und nach Bedarf auch Kommandos wie ,,\textit{currentsong}''
+        senden.
         \\
-        \emph{Problem:} Bei langsamen Netzwerkverbindungen erzeugt dies unnötige Netzwerklast 
-        Prinzipiell würde sich auf diese Art jedoch die z. B. Musik Bitrate anzeigen lassen, es ist jedoch ein
+        \emph{Problem:} Bei langsamen Netzwerkverbindungen erzeugt dies unnötige Netzwerklast. 
+        Prinzipiell würde sich auf diese Art jedoch z.B. die Musik Bitrate anzeigen lassen. Es ist jedoch ein
         wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste, denn man müsste manuell rausfinden 
         was genau sich eigentlich geändert hat.
-    \item [Nutzung der ,,idle'' und ,,noidle'' commands:]
-        ,,idle'' versetzt die Verbindung zum Server in einen Schlafzustand, sobald Events wie 'player' (also z. B. pause oder play) 
+    \item [Nutzung der ,,\textit{idle}'' und ,,\textit{noidle}'' commands:]
+        ,,\textit{idle}'' versetzt die Verbindung zum Server in einen Schlafzustand. Sobald Events wie ,,\textit{player}'' (wird beispielsweise durch pausieren getriggert) 
         eintreten, wacht die Verbindung aus diesem Zustand auf und sendet an den Client eine Liste der Events die aufgetreten sind:
 
 	\begin{figure}[h!]
@@ -45,49 +36,48 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
 	  \label{dd_state}
 	\end{figure}
 
-        Einschränkung: Während die Verbindung im idle mode ist kann kein reguläres Kommando wie ,,play'' gesendet werden!
-        Sollte man es doch tun wird man vom Server augenblicklich mit einem Disconnect belohnt.
-        Die einzige Möglichkeit aus dem idle mode aufzuwachen ist das 'noidle' command das gesendet werden
-        kann während die verbindung schlafen gelegt wurde.
-        Jedoch gibt es auch hier ein Problem, denn das ,,idle'' command blockiert, sprich es sendet kein ,,OK'' zurück zum Sender.
-        Ein Warten auf dieses ,,OK'' würde mit den Wunsch eine bedienbare Oberfläche zu haben kollidieren.
+        Allerdings gibt es hier eine weitere Einschränkung: Während die Verbindung im idle mode ist kann kein reguläres Kommando wie ,,\textit{play}'' gesendet werden!
+        Sollte man es doch tun wird man augenblicklich vom Server getrennt.
+        Die einzige Möglichkeit aus dem idle mode aufzuwachen ist das ,,\textit{noidle}'' Kommando, das gesendet werden
+        kann während die Verbindung schlafen gelegt wurde.
+        Jedoch gibt es auch hier ein Problem, denn das ,,\textit{idle}'' Kommando blockiert, sprich es sendet kein ,,OK'' an den  Sender zurück.
+        Ein Warten auf dieses ,,OK'' würde mit den Wunsch eine in der Zwischenzeit bedienbare Oberfläche zu haben kollidieren.
 \end{description}
 
 Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
 \begin{itemize}
-    \item Man hält zwei Verbindungen zum Server, eine die Kommandos sendet, eine die stets im ,,idle'' mode liegt,
+    \item Man hält zwei Verbindungen zum Server, eine die Kommandos sendet, eine die stets im ,,\textit{idle}'' mode liegt,
         Für die Realisierung müssten Threads herangezogen werden. Ein Thread würde dann im Hintergrund auf Events lauschen,
         der andere würde zum Abschicken der Kommandos benutzt werden.
-        Problem: Es müssen 2 Verbindungen gehandelt werden, was wiederum ein Mehraufwand an Code bedeutet.
+        \emph{Problem:} Es müssen 2 Verbindungen gehandelt werden, was wiederum ein Mehraufwand an Code bedeutet.
         Desweiteren werden Threads benötigt die auch in anderen Bereichen des Programms Lockingmechanismen bedeuten würden.
-    \item Man hält eine asynchrone Verbindung zu dem server.
-        Diese kann das 'idle' command zum server schicken, returned aber sofort. Um nun eine Liste der events zu bekommen setzt man 
-        einen ,,Watchdog''auf die asynchrone verbindung an (Vergleiche dazu den Systemaufruf 'man 3 poll'). Da poll() ebenfalls den
-        aufrufenden Prozess blockiert, wird Glib::signal\_io() benutzt, das sich in den laufenden MainLoop (*) einhängt und eine 
-        Callbackfunktion aufruft sobald auf der Verbindung etwas interessantes passiert. Da während des Wartens der MainLoop weiterarbeitet,
-        bleibt die GUI (und andere Module) aktiv und benutzbar.
+    \item Man hält eine asynchrone Verbindung zu dem Server.
+        Diese kann das ,,\textit{idle}'' Kommando zum Server schicken, gibt aber sofort die Kontrolle dem Aufrufer zurück. Um nun eine Liste der events zu bekommen setzt man 
+        einen ,,\textit{Watchdog}''auf die asynchrone Verbindung an (Vergleiche dazu den Systemaufruf ,,man 3 poll'').
+        Da poll() ebenfalls den aufrufenden Prozess blockiert, wird die Glibfunktion\footnote{GLib ist eine Utility Bibliothek für C die von Gtk+ genutzt wird} Glib::signal\_io() benutzt, das sich in den laufenden MainLoop\footnote{Siehe MainLoop im Glossar} einhängt und eine 
+        Callbackfunktion aufruft sobald auf der Verbindung etwas Interessantes passiert. Da während des Wartens der MainLoop
+        weiterarbeitet, bleibt die GUI (und andere Module) aktiv und benutzbar.
         \\
-        Problem: Vor dem Senden eines Kommandos wie ,,play'' muss der idle mode verlassen werden.
-        Lösung: Man kann das ,,noidle'' Kommando zum verlassen senden, und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
+        \emph{Problem:} Vor dem Senden eines Kommandos wie ,,\textit{play}'' muss der idle mode verlassen werden.
+        \emph{Lösung:} Man kann das ,,\textit{noidle}'' Kommando zum Verlassen senden, und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
 \end{itemize}
 
+Zum Verständniss der Problematik wird hier eine telnetsession gezeigt. 
+Über telnet kann man das MPD Protokoll ,,interaktiv'' benutzen und ausprobieren: 
 % Insert telnet session
 \lstinputlisting[language=bash]{telnet.txt}
 
-Die Idee zu dieser Implementierung (speziell das Benutzen einer asynchronen Verbindung), kommt von ,,ncmpc'',
+Die Idee zu dieser Implementierung (speziell das Benutzen einer asynchronen Verbindung), kommt von ,,\textit{ncmpc}'',
 der mehr oder minder offiziellen Referenzimplementierung des MPD Mit-Authors \emph{Max Kellermann}.
 Vergleiche \href{http://mpd.wikia.com/wiki/Client:Ncmpc}{ncmpc quellcode}: \textit{src/gidle.c} und \textit{src/mpdclient.c}
-
-\subsection{Aufbau der Anwendung}
 \begin{figure}[htb!]
+\subsection{Aufbau der Anwendung}
 	\centering
-        \includegraphics[scale=0.5]{MainSequenz.pdf}
+        \includegraphics[scale=0.3]{MainSequenz.pdf}
 	\caption{Die Initialisierungsphase}
 	\label{seq_main_init}
 \end{figure}
 
 % Reihenfolge in der aufgebaut wird 
-\input{Config}
-\input{ClientImplementierung}
-\input{GUIElements}
-\input{BrowserImplementierungen}
+\newpage
+

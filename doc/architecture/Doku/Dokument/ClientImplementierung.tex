@@ -206,7 +206,8 @@ Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des P
 er die abstrakte Klasse AbstractClientExtension ausimplementiert.
 Er bietet die Methoden connect() und disconnect() die letzendlich von Anwendern der Clientklasse zum verbinden und trennen genutzt werden. 
 Ist in der config ,,settings.connection.autoconnect'' gesetzt so connected er sich automatisch.
-
+\\
+\\
 connect() und disconnect() stellen die öffentliche Schnittstelle zum Verbinden dar.
 Sie rufen intern lediglich \_\_connect() bzw. \_\_disconnect() von MPD::BaseClient auf.
 \begin{verbatim}
@@ -214,13 +215,13 @@ Sie rufen intern lediglich \_\_connect() bzw. \_\_disconnect() von MPD::BaseClie
     void disconnect(void);
 \end{verbatim}
 
-Die ersten 4 Funktionen sollten offensichtlich sein.
-playback\_crossfade() weist den MPD Server an zwischen 2 Songs weich zu überblenden. Die Überblendzeit wird
-dabei in Sekunden übergeben, wobei 0 das Crossfade komplett ausschaltet.
-playback\_pause() hält die aktuelle Wiedergabe an, oder setzt sie fort wenn bereits angehalten.
+Der Client soll eine Reihe von Kommandos bereitstellen um das Playback zu kontrollieren.
+Die ersten 5 der folgenden Funktionen sollten relativ klar sein. 
+Zu playback\_pause() sei angemerkt dass es bei Wiedergabe anhält und bei keiner Wiedergabe wie playback\_play() funktioniert.
 playback\_seek() springt in den Song mit der ID song\_id an die Stelle abs\_time in Sekunden.
 Die ID des momentan spielenden Songs kann durch get\_status() gefunden werden.
-Alle Funktionen (mit Ausnahme von playback\_crossfade) im nächsten Block lösen ein "player" Event aus.
+Alle Funktionen, mit Ausnahme von playback\_crossfade), lösen ein ,,player'' Event aus. 
+playback\_crossfade löst hingegen ein ,,options'' Event aus.
 \begin{verbatim}
     void playback_next(void);
     void playback_prev(void);
@@ -229,9 +230,11 @@ Alle Funktionen (mit Ausnahme von playback\_crossfade) im nächsten Block lösen
     void playback_crossfade(unsigned seconds);    
     void playback_pause(void);
     void playback_seek(unsigned song_id, unsigned abs_time);
+    void playback_song_at_id(unsigned song_id);
 \end{verbatim}
 
 4 Funktionen um jeweils \it random, consume, repeat\rm und \textit{single}-modi umzuschalten.
+Alle Methoden im nächsten Block lösen ein ,,options'' Event aus.
 \begin{verbatim}
     void toggle_random(void);
     void toggle_consume(void);
@@ -239,20 +242,18 @@ Alle Funktionen (mit Ausnahme von playback\_crossfade) im nächsten Block lösen
     void toggle_single(void);
 \end{verbatim}
 
-Todo...
-\begin{verbatim}
-    void play_song_at_id(unsigned song_id);
-    void playlist_save(const char * name);
-\end{verbatim}   
-
-Funktionen zum Bearbeiten der Queue. queue\_add() nimmt dabei ein Pfad zu einem Song oder einem Verzeichniss in der Datenbank 
-und fügt ihm rekursiv der Queue hinzu. Das Wurzelverzeichniss ist dabei '/'.
-queue\_clear() teilt dem Server mit die Queue zu leeren.
-queue\_delete() löscht den Song der an der Stelle 'pos' steht. 
+Desweiteren sollten Methoden zum Bearbeiten der Queue vorhanden sein.
+\begin{itemize}
+    \item \textbf{queue\_add():} Fügt rekursiv den Pfad in der Datenbank hinzu. queue\_add(``/'') entspricht der ganzen Datenbank.
+    \item \textbf{queue\_clear():} Leert die gesamte Queue.
+    \item \textbf{queue\_delete():} Leert den Song ander Position 'pos'
+    \item \textbf{queue\_save\_as\_playlist():} Speichert die aktuelle Queue als Playlist mit dem Namen 'name'
+\end{itemize}
 \begin{verbatim}
     void queue_add(const char * url);
     void queue_clear(void);
     void queue_delete(unsigned pos);
+    void queue_save_as_playlist(const char * name);
 \end{verbatim}
 
 database\_update() sendet MPD Server Hinweis um DB zu aktualisieren.
@@ -262,12 +263,14 @@ database\_rescan() sendet MPD Server Hinweis um DB neu einzulesen (teuer).
     void database_rescan(const char * path);
 \end{verbatim}
 
-Setzen des volumes von 0-100; Abfrage des Volumes sollte über get\_status() erfolgen.
+Setzen des volumes von 0 bis 100\%.
+Die Abfrage des Volumes kann über get\_status() erfolgen.
 \begin{verbatim}
     void set_volume(unsigned vol);
 \end{verbatim}
 
-Folgende Funktionen sollen von AbstractItemGenerator voll implementiert werden.    
+Folgende Funktionen sollen von AbstractItemGenerator voll implementiert werden.
+Siehe daher AbstractItemGenerator für eine genaue Erklärung.
 \begin{verbatim}
 
     void fill_queue(AbstractItemlist& data_model);
@@ -280,7 +283,7 @@ Folgende Funktionen sollen von AbstractItemGenerator voll implementiert werden.
 \end{verbatim}
 
 \subsubsection{NotifyData}
-Speichert den Status, den aktuellen Song und die aktuelle Datenbankstatistik.
+Speichert den aktuellen Status, den aktuellen Song und die aktuelle Datenbankstatistik.
 Bietet zudem eine Funktion um entsprechende Daten bei Aufruf zu updaten.
 Die Klasse gehört nach dem MVC Pattern somit der Modelebene an.
 Der Listener instanziert NotifyData im Konstruktor und gibt an wann sich dieser updaten soll (über update\_all()).
@@ -293,8 +296,8 @@ Die folgenden 2 Funktionen haben stets einen validen Rückgabewert:
     Statistics& get_statistics(void);
 \end{verbatim}
 
-Anmerkung: Die folgenden 2 Funktionen sollen NULL zurückgeben können, falls beispielsweise
-nichts wiedergegeben wird, oder man im ,,Singlemode'' ist.
+\textbf{Anmerkung:} Die folgenden 2 Funktionen sollen NULL zurückgeben können, falls beispielsweise
+nichts wiedergegeben wird, oder man im ,,\textit{Singlemode}'' ist.
 get\_song() liefert den aktuell spielenden MPD::Song, oder NULL.
 get\_next\_song() liefert den als nächstes spielenden MPD::Song oder NULL.
 \begin{verbatim} 
@@ -302,10 +305,10 @@ get\_next\_song() liefert den als nächstes spielenden MPD::Song oder NULL.
     Song * get_next_song(void);
 \end{verbatim}
 
-Diese Funktion sollte nur vom Listener aufgerufen werden. Sie aktualisiert den internen Zustand
+Die update\_all() sollte nur vom Listener aufgerufen werden. Sie aktualisiert den internen Zustand
 von NotifyData.
 \begin{verbatim}
-        void update_all(unsigned event);
+    void update_all(unsigned event);
 \end{verbatim}
 
 
@@ -344,21 +347,24 @@ Die folgenden Tagarten sollen dabei unterstützt werden (sie spiegeln in etwa di
 Foldende Tags sollen daher unterstützt werden: \it artist, title, album, track, name, data, album\_artist, genre, composer, performer, comment, disc\rm.
 Ist ein Escapestring nicht bekannt, so wird er nicht escaped. Ist der tag nicht vorhanden soll mit "unknown" escaped werden.
 
+Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 
 \subsubsection{Directory}
 Die Directory Klasse ist Wrapper für mpd\_directory C-Strukutr. Diese wird als Anzeige für ein Verzeichniss benutzt,
 jedoch nicht als Container für andere Elemente.
 
-Entsprechend implementiert bietet MPD::Directory nur:
+Da MPD::Directory die abstrakte Klasse AbstractComposite erweitert muss als
+einzige öffentliche Funktion get\_path() implementiert werden:
 \begin{verbatim}
     void get_path(void);
 \end{verbatim}
 
-Dies ist von der AbstractComposite vorgegeben.
+Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 
 \newpage
 \subsubsection{Statistics}
-Die Statistics Klasse ist Wrapper für mpd\_stats, implementiert gemäß \url{\\http://www.musicpd.org/doc/libmpdclient/stats\_8h.html}
+Die Statistics Klasse ist Wrapper für mpd\_stats,
+implementiert gemäß \url{http://www.musicpd.org/doc/libmpdclient/stats\_8h.html}
 folgende Funktionen:
 \begin{verbatim}
     unsigned get_number_of_artists(void);
@@ -370,9 +376,11 @@ folgende Funktionen:
     unsigned long get_db_play_time(void);
 \end{verbatim}
 
+Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 
 \subsubsection{Playlist}
-Die Playlist Klasse ist Wrapper für die mpd\_playlist Struktur, implementiert von \url{http://www.musicpd.org/doc/libmpdclient/playlist\_8h.html} folgende Funktionen:
+Die Playlist Klasse ist Wrapper für die mpd\_playlist Struktur,
+implementiert von \url{http://www.musicpd.org/doc/libmpdclient/playlist\_8h.html} folgende Funktionen:
 \begin{verbatim}
     const char * get_path(void);
     time_t get_last_modified(void);
@@ -404,7 +412,8 @@ Die genannten Funktionen benötigen müssen den idlemode verlassen können,
 daher leitet MPD::Playlist von AbstractClientExtension ab.
 
 \subsubsection{AudioOutput}
-Die AudioOutput Klasse ist ein Wrapper für mpd\_output, implementiert von http://www.musicpd.org/doc/libmpdclient/output\_8h.html folgende Funktionen:
+Die AudioOutput Klasse ist ein Wrapper für mpd\_output, 
+implementiert von \url{http://www.musicpd.org/doc/libmpdclient/output\_8h.html} folgende Funktionen:
 \begin{verbatim}
     unsigned get_id(void);
     const char * get_name(void);
@@ -426,41 +435,32 @@ Bietet desweiteren funktionen zum:
 
 Die genannten Funktionen benötigen müssen den idlemode verlassen können,
 daher leitet MPD::AudioOutput von AbstractClientExtension ab. 
+
+Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
+
 \newpage
 \subsection{Abstrakte Klassen}
-\subsubsection{AbstractClientExtension}
-Diese abstrakte Klasse erlaubt abgeleiteten Klasse ähnlich zum BaseClient eigene Kommandos zu implementieren.
-Wird von MPD::Playlist und MPD::AudioOutput benutzt 
-
-\begin{figure}[htb!]
-	\centering
-        \includegraphics[scale=0.6]{AbstractClientExtension.png}
-	\caption{Klassendiagramm zu AbstractClientExtension}
-	\label{c_abstract_client_extension}
-\end{figure}
-
-
 \subsubsection{AbstractClientUser}
 \begin{itemize}
-    \item Verwaltet einen Pointer auf die MPD::Client Klasse,
-        so dass der Anwender der Klasse dies nicht selbst tun muss.
-    \item Leitet man ab so müssen folgenden Methoden implementiert werden:
-        \begin{verbatim}
-            void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        \end{verbatim}  
+\item Verwaltet einen Pointer auf die MPD::Client Klasse,
+      so dass der Anwender der Klasse dies nicht selbst tun muss.
+\item Leitet man ab so müssen folgenden Methoden implementiert werden:
+\begin{verbatim}
+   void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+\end{verbatim}  
 
-        Wird aufgerufen sobald der Listener eine Änderunge feststellt,
-        siehe weiter unten "Interaktion des Clients mit anderen Modulen" für eine genauere Erklärung.
-        \begin{verbatim}
-            void on_connection_change(bool server_changed, bool is_connected);
-        \end{verbatim}
+     Wird aufgerufen sobald der Listener eine Änderunge feststellt,
+     siehe weiter unten "Interaktion des Clients mit anderen Modulen" für eine genauere Erklärung.
+\begin{verbatim}
+   void on_connection_change(bool server_changed, bool is_connected);
+\end{verbatim}
 
-        Wird aufgerufen sobald sich der verbunden/getrennt hat. Im ersten Fall
-        ist is\_connected true, im anderen false. Sollte sich der Client verbunden haben,
-        und der neue Server entspricht nicht mehr dem neuen so ist auch server\_changed true.
-        Dies ist automatisch wahr beim ersten Start.
-        Diese werden automatisch durch Ableiten von AbstractClientUser registriert.
-        Weiterhin können alle Klassen über den mp\_Client Pointer auf den Client zugreifen.
+     Wird aufgerufen sobald sich der verbunden/getrennt hat. Im ersten Fall
+     ist is\_connected true, im anderen false. Sollte sich der Client verbunden haben,
+     und der neue Server entspricht nicht mehr dem neuen so ist auch server\_changed true.
+     Dies ist automatisch wahr beim ersten Start.
+     Diese werden automatisch durch Ableiten von AbstractClientUser registriert.
+     Weiterhin können alle Klassen über den mp\_Client Pointer auf den Client zugreifen.
 \end{itemize}
 
 
@@ -477,7 +477,9 @@ Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die dav
 \subsubsection{AbstractItemGenerator}
 Lässt ableitende Klasse folgende Methoden implementieren:
 Jede dieser Methoden ruft MPD::Playlist add\_item() von AbstractItemlist auf um ihre Resultate weiterzugeben.
-
+Sie erlaubt den Einsatz des Proxy-Patterns. Andere Klassen können sich so als Client ,,ausgeben''.
+Dies fand Anwendung bei der Klasse ,,DatabaseCache'' weiter unten.
+\\
 %<Sequenzdiagramm>   
 Holt alle Songs der aktuellen Queue.
 \begin{verbatim}            
@@ -511,7 +513,7 @@ Holt alle Songs und Directories aus der Datenbank im Pfad path (nicht rekursiv!)
 \subsubsection{AbstractComposite}
 Vereinheitlicht Zugriff auf Komponenten verschiedenen Types.
 Die abstrakte Klasse zwingt seine Kinder dazu eine \emph{get\_path()} zu implementieren die die Lage im virtuellen Filesystem des Servers angibt.
-Der Hauptnutznieser dieser Klasse ist der Databasebrowser, bzw. den dahinter gelagerten Cache Songs und Verzeichnisse gleich zu behandeln.
+Der Hauptnutznieser dieser Klasse ist der Databasebrowser, bzw. den dahinter gelagerten Cache Songs und Verzeichnisse gleich zu behandeln (vgl. Composite Pattern).
 
 Die erbende Klasse muss im Konstruktor angeben ob es sich bei der Klasse um ein ,,File'' (\emph{true} für MPD::Song) oder um einen ,,Container'' (\emph{false} für MPD::Directory) handelt.
 Diese ,,is\_leaf'' Eigenschaft kann später mit der Funktion \emph{is\_leaf()} abgefragt werden.
@@ -519,5 +521,30 @@ Diese ,,is\_leaf'' Eigenschaft kann später mit der Funktion \emph{is\_leaf()} a
 % <Klassendiagramm für alle Klassen die von AbstractComposite erben, siehe Doxygen>
 
 %-------------------------------------------
+
+\subsubsection{AbstractClientExtension}
+
+% Klassen diagramm aus Doxygen hierhin.
+
+Diese abstrakte Klasse erlaubt abgeleiteten Klasse ähnlich zum BaseClient eigene Kommandos zu implementieren.
+Dies geschieht indem die abstrakte Klasse einen Referenz auf den BaseClient im Konstruktor erwartet und speichert.
+Ableitende Klassen können die \textit{protected} get\_c\_connection() Methode benutzen um eigene Kommandos zu implementieren.
+
+\begin{verbatim}
+   AbstractClientExtension(MPD::BaseClient& base_client)
+\end{verbatim}
+
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.6]{AbstractClientExtension.png}
+	\caption{Klassendiagramm zu AbstractClientExtension}
+	\label{c_abstract_client_extension}
+\end{figure}
+
+AbstractClientExtension wird in diesem Entwurf von MPD::Playlist und MPD::AudioOutput benutzt.
+Man kann allerdings darüber diskutieren dass dieses Interface dem Model zuviel Logik mitgibt. 
+Da die Logik meist darin besteht einfache Kommandos an den Server zu schicken, wurde dieser Weg gewählt um 
+das Design zu vereinfachen.
+
 
 %=============================================

@@ -72,7 +72,7 @@ Dadurch kann auf folgende Aktionen reagieren kann:
 
 \paragraph{DatabaseCache}
 Ein Zwischenspeicher für die im Databasebrowser angezeigten Ordner und Dateien. 
-Sie fungiert als Proxy für MPD::Client und erbt daher von der \emph{AbstractItemGenerator} um sich als Client ausgeben zu können.
+Sie setzt das Proxy-Pattern für MPD::Client um und erbt daher von der \emph{AbstractItemGenerator} um sich als Client ausgeben zu können.
 Sie implementiert daher die fill\_filelist() Methode vor, lässt aber die anderen Methoden ohne Implementierung.
 Da sie auch selbst Daten dem Cache hinzufügen muss leitet sich auch von \emph{AbstractItemlist} ab und implementiert daher auch eine add\_item() Methode. 
 \\
@@ -81,7 +81,8 @@ und als Wert ein Vektor von \emph{AbstractComposites} speichert. Wird eine Seite
 so wird nachgeschaut ob im angegeben Pfad bereits eine Seite gespeichert ist, falls nicht wird sie vom Server geholt und gespeichert. 
 Anschließend wird über die Elemente iteriert welche durch die add\_item() Methode des Aufrufers weitergegeben werden. 
 Sollte sich der Server wechseln bzw. sich die Datenbank aktualisieren, so wird der Cache geleert damit die Anzeige stets aktuell ist. Das MPD Protokoll bietet hier leider keine Möglichkeit rauszufinden was genau sich geändert hat.
-
+\\
+\textbf{Anmerkung:} Alle anderen Funktionen von AbstractItemGenerator werden nicht ausimplementiert.
 
 \subsubsection{PlaylistManager}
 \paragraph{PlaylistManager}

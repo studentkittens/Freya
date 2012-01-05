@@ -31,15 +31,15 @@ ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortc
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
-    Play & Musik spielt ab.\newline Play wird zu Pause. & Ja\\
+    Play & Musik spielt ab. Play wird zu Pause. & Ja\\
     \hline
-    Pause & Musik pausiert.\newline Pause wird zu Play. & Ja\\
+    Pause & Musik pausiert. Pause wird zu Play. & Ja\\
     \hline
     Next & Nächstes Lied abspielen & Ja\\
     \hline
     Previous & Vorheriges Lied abspielen & Ja\\
     \hline
-    Stop & Beende abspielen\newline Pause wird zu Play. & Ja\\
+    Stop & Beende abspielen Pause wird zu Play. & Ja\\
     \hline
     Skipping & An Liedposition springen & Ja\\
     \hline
@@ -56,85 +56,85 @@ ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortc
 \end{tabularx}
 \newpage
 \textbf{Kombinierte Ausführung:}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\begin{tabularx}{\textwidth}{|X|X|X|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
-    Play, Stop, Play(1) & Musik spielt ab.\newline Musik stoppt.\newline Musik spielt ab. & Ja\\
+    Play, Stop, Play(1) & Musik spielt ab. Musik stoppt. Musik spielt ab. & Ja\\
     \hline
-    Play, Pause, Play(2) & Musik spiel ab.\newline Musik pausiert.\newline Musik spiel ab. & Ja\\
+    Play, Pause, Play(2) & Musik spiel ab. Musik pausiert. Musik spiel ab. & Ja\\
     \hline
-    Next, Next(3) & Skip weiter.\newline Skip weiter. & Ja\\
+    Next, Next(3) & Skip weiter. Skip weiter. & Ja\\
     \hline
-    Previous, Previous(4) & Skip zurück.\newline Skip zurück & Ja\\
+    Previous, Previous(4) & Skip zurück. Skip zurück & Ja\\
     \hline
-    Next, Previous(5) & Skip weiter.\newline Skip zurück & Ja\\
+    Next, Previous(5) & Skip weiter. Skip zurück & Ja\\
     \hline
-    Previous, Next(6) & Skip zurück.\newline Skip weiter & Ja\\
+    Previous, Next(6) & Skip zurück. Skip weiter & Ja\\
     \hline
-    Random, Repeat all & Musik der Queue zufällig abspielen\newline Queue wiederholen & Ja\\
+    Random, Repeat all & Musik der Queue zufällig abspielen Queue wiederholen & Ja\\
     \hline
-    Random, Consume Mode & Musik der queue zufällig abspielen\newline Ein abgespieltes Lied entfernen & Ja\\
+    Random, Consume Mode & Musik der queue zufällig abspielen Ein abgespieltes Lied entfernen & Ja\\
     \hline
-    Random, Single Mode & Musik der Queue zufällig abspielen\newline Ein Lied abspielen, dann stoppen & Ja\\
+    Random, Single Mode & Musik der Queue zufällig abspielen Ein Lied abspielen, dann stoppen & Ja\\
     \hline
-    Consume Mode, Single Mode & Ein abgespieltes Lied entfernen\newline Ein Lied abspielen, dann Stoppen & Ja\\
+    Consume Mode, Single Mode & Ein abgespieltes Lied entfernen Ein Lied abspielen, dann Stoppen & Ja\\
     \hline
     Consume Mode, Repeat all & Kann nur einmal durchlaufen & Ja\\
     \hline
-    Random, 1 & Musik der Queue zufällig abspielen\newline 1 & Ja\\
+    Random, 1 & Musik der Queue zufällig abspielen 1 & Ja\\
     \hline
-    Random, 2 & Musik der Queue zufällig abspielen\newline 2 & Ja\\
+    Random, 2 & Musik der Queue zufällig abspielen 2 & Ja\\
     \hline
-    Random, 3 & Musik der Queue zufällig abspielen\newline 3 & Ja\\
+    Random, 3 & Musik der Queue zufällig abspielen 3 & Ja\\
     \hline
-    Random, 4 & Musik der Queue zufällig abspielen\newline 4 & Ja\\
+    Random, 4 & Musik der Queue zufällig abspielen 4 & Ja\\
     \hline
-    Random, 5 & Musik der Queue zufällig abspielen\newline 5 & Ja\\
+    Random, 5 & Musik der Queue zufällig abspielen 5 & Ja\\
     \hline
-    Random, 6 & Musik der Queue zufällig abspielen\newline 6 & Ja\\
+    Random, 6 & Musik der Queue zufällig abspielen 6 & Ja\\
     \hline
-    Repeat all, 1 & Queue wiederholen\newline 1 & Ja\\
+    Repeat all, 1 & Queue wiederholen 1 & Ja\\
     \hline
-    Repeat all, 2 & Queue wiederholen\newline 2 & Ja\\
+    Repeat all, 2 & Queue wiederholen 2 & Ja\\
     \hline
-    Repeat all, 3 & Queue wiederholen\newline 3 & Ja\\
+    Repeat all, 3 & Queue wiederholen 3 & Ja\\
     \hline
-    Repeat all, 4 & Queue wiederholen\newline 4 & Ja\\
+    Repeat all, 4 & Queue wiederholen 4 & Ja\\
     \hline
 \end{tabularx}
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\begin{tabularx}{\textwidth}{|X|l|X|}
     %\begin{tabularx}[c]{|p{6cm}|p{6cm}|c|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
-    Repeat all, 5 & Queue wiederholen\newline 5 & Ja\\
+    Repeat all, 5 & Queue wiederholen 5 & Ja\\
     \hline
-    Repeat all, 6 & Queue wiederholen\newline 6 & Ja\\
+    Repeat all, 6 & Queue wiederholen 6 & Ja\\
     \hline
-    Consume Mode, 1 & Ein abgespieltes Lied entfernen\newline 1 & Ja\\
+    Consume Mode, 1 & Ein abgespieltes Lied entfernen 1 & Ja\\
     \hline
-    Consume Mode, 2 & Ein abgespieltes Lied entfernen\newline 2 & Ja\\
+    Consume Mode, 2 & Ein abgespieltes Lied entfernen 2 & Ja\\
     \hline
-    Consume Mode, 3 & Ein abgespieltes Lied entfernen\newline 3 & Ja\\
+    Consume Mode, 3 & Ein abgespieltes Lied entfernen 3 & Ja\\
     \hline
-    Consume Mode, 4 & Ein abgespieltes Lied entfernen\newline 4 & Ja\\
+    Consume Mode, 4 & Ein abgespieltes Lied entfernen 4 & Ja\\
     \hline
-    Consume Mode, 5 & Ein abgespieltes Lied entfernen\newline 5 & Ja\\
+    Consume Mode, 5 & Ein abgespieltes Lied entfernen 5 & Ja\\
     \hline
-    Consume Mode, 6 & Ein abgespieltes Lied entfernen\newline 6 & Ja\\
+    Consume Mode, 6 & Ein abgespieltes Lied entfernen 6 & Ja\\    
+    \hline   
+    Single Mode, 1 & Ein Lied abspielen, dann Stoppen 1 & Ja\\
     \hline
-    Single Mode, 1 & Ein Lied abspielen, dann Stoppen\newline 1 & Ja\\
+    Single Mode, 2 & Ein Lied abspielen, dann Stoppen 2 & Ja\\
     \hline
-    Single Mode, 2 & Ein Lied abspielen, dann Stoppen\newline 2 & Ja\\
+    Single Mode, 3 & Ein Lied abspielen, dann Stoppen 3 & Ja\\
     \hline
-    Single Mode, 3 & Ein Lied abspielen, dann Stoppen\newline 3 & Ja\\
+    Single Mode, 4 & Ein Lied abspielen, dann Stoppen 4 & Ja\\
     \hline
-    Single Mode, 4 & Ein Lied abspielen, dann Stoppen\newline 4 & Ja\\
+    Single Mode, 5 & Ein Lied abspielen, dann Stoppen 5 & Ja\\
     \hline
-    Single Mode, 5 & Ein Lied abspielen, dann Stoppen\newline 5 & Ja\\
-    \hline
-    Single Mode, 6 & Ein Lied abspielen, dann Stoppen\newline 6 & Ja\\
+    Single Mode, 6 & Ein Lied abspielen, dann Stoppen 6 & Ja\\
     \hline
 \end{tabularx}
 \newpage
@@ -207,7 +207,7 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
 \end{tabularx}
 \subsubsection{Queue-Funktionen}
 \textbf{Einfache Ausführung}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\begin{tabularx}{\textwidth}{|X|l|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline

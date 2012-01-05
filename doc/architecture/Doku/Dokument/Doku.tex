@@ -79,15 +79,28 @@ und Marc Tigges}
 
 \begin{document}
 \maketitle
+\part{Prolog}
+\begin{abstract}
+Ziel dieser Studienarbeit ist die vollständige Bearbeitung einer vorgegebenen Aufgabenstellung
+nach einem selbst gewählten Vorgehensmodell. Die Aufgabenstellung schreibt vor, sich in einer
+Gruppe zusammen zu finden und gemeinsam ein Software-Projekt zu bearbeiten und dabei strukturiert
+und professionell vorzugehen.
+\end{abstract}
+
 \tableofcontents
 %\part{welcher Teil}
+
+\part{Definition des Projekts}
 \input{Einleitung}
 \input{Wasserfallmodell}
 \input{Richtlinien}
 \input{Definition}
+\part{Lastenheft}
 \input{Lastenheft}
+\part{Pflichtenheft}
 \input{Pflichtenheft}
 \input{testfaelle}
+\part{Designdokument}
 \input{DesignDokument}
 \input{Config}
 \input{ClientImplementierung}
@@ -95,6 +108,47 @@ und Marc Tigges}
 \input{BrowserImplementierungen}
 \input{weiteres}
 \input{glossar}
+\part{Epilog}
+\chapter{Probleme bei der Entwicklung}
+\section{Probleme durch das Wasserfallmodell}
+Im Laufe der Entwicklung mussten wir leider feststellen, dass das Wasserfallmodell mit Rücksprung als Vorgehensweise für unser Projekt bei weitem nicht so gut geeignet war wie erwartet.
+\\
+\\
+Aufgrund der hohen Komplexität der MPD Libraries konnten keine brauchbaren Entwürfe der 
+Software gemacht werden, da man sich viele Funktionen des MPD völlig anders vorgestellt hatte, als sie in 
+Wirklichkeit funktionierten. 
+\\
+\\
+Aufgrund dieser Tatsachen mussten wir parallel zu den eigentlichen Planungen auf agile Entwicklungsmethoden zurückgreifen\footnote{zu diesem Zeitpunkt war das Lasten und Pflichtenheft bereits fertiggestellt} und erste Testanwendungen schrieben um sich mit der Materie vertraut zu machen.
+Als Beispiel sei hier der Testclient (bin/test\_client) genannt, der letzlich auch die Grundlage für die heutige
+Architektur darstellt, bzw. die Grundlage aus der sie entstanden ist.
+\\
+\\
+Die Entscheidung auf agile Entwicklungsmethoden umzuschwänken war unabdingbar, da ansonsten das Projekt 
+höchster Wahrscheinlichkeit nach gescheitert wäre. Da die Dokumentation allerdings bereits den Regeln des Wasserfallmodells nach entworden wurde,
+wurde die strategische Entscheidung getroffen diese Form beizubehalten.
+\\
+\\
+Desweiteren gab es auch diesbezüglich Probleme innerhalb des Gruppe, was gegen Ende des Projektzeitraums
+zu zeitlichen Problemen führte und aufgrund dieser nur wenige Cxxtest Testfällen exemplarisch implementiert werden konnten.
+Es war uns wichtig diese Punkte am Ende nochmal zu erwähnen, da Sie den Projektverlauf nicht unwesentlich beeinflusst haben.
+\\
+\\
+Nichtsdestotrotz ist es gelungen das Projekt auch mit wenig Erfahrung \emph{erfolgreich} über die Bühne zu bringen. 
+
+\paragraph{Projektbeteiligte:}
+\begin{itemize}
+\item \textbf{Lasten und Pflichtenheft:}, Marc Tigges
+\item \textbf{Diagramme:} Eduard Schneider, Marc Tigges
+\item \textbf{Dokumentation (Designdokument etc.):} Christopher Pahl, Christoph Piechula, Eduard Schneider
+\item \textbf{Entwicklung und Softwaredesign:} Christopher Pahl, Christoph Piechula, Eduard Schneider
+\item \textbf{Entwicklungsumgebung:} (CMake, git): Christopher Pahl, Christoph Piechula 
+\end{itemize}
+
+\chapter{Softwarerepository}
+Die Freya Quelltexte finden sich online auf Github:
+\\
+\url{https://github.com/studentkittens/Freya}
 
 
 \end{document}

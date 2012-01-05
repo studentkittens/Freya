@@ -1,0 +1,90 @@
+\section{Testfälle}
+
+\subsection{Testen der GUI}
+Zum Testen der GUI des Freya Clients wurde ein Protokoll erstellt werden, welches den
+jeweiligen Testfall, das erwartete Ereignis sowie das Resultat auflistet. Hierzu wird
+eine Liste aller möglichen GUI Testfälle erstellt, diese soll während der Implementierung 
+und nach ,,Fertigstellung'' der Anwendung durchgangen werden.
+\\
+\\
+Die Testfälle sollen desweiteren in einer ,,einfachen-'', ,,kombinierten-'', einer ,,mehrfach-''
+Ausführung durchlaufen werden.
+Durch dieses Verfahren können Programm-und Anwenderfehler erkannt und beseitigt werden.
+\\
+\\ 
+Das Testen der GUI über ein Testframework wäre prinzipiell auch möglich, ist jedoch aus zeitlichen
+Gründen, die man für die Einarbeitung und Konfiguration für so ein Framework benötigt, nicht realisierbar.
+\\
+\\
+\textbf{Beispielauszug Testprotokoll ,,Einfache Ausführung'':}
+
+\textbf{Einfache Ausführung}\ \\ \\
+\begin{tabularx}{\textwidth}{|X|X|l|}
+    \hline
+    \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+    \hline
+    Remove & Ein Lied aus Queue entfernen & Ja/Nein?\\
+    \hline
+    Clear & Alle Lieder aus Queue entfernen & Ja/Nein?\\
+    \hline
+    Save as Playlist & Queue als Playlist speichern & Ja/Nein?\\
+    \hline
+    Suchen & Nach eingegebenem Wort suchen & Ja/Nein?\\
+    \hline
+\end{tabularx}
+
+
+\subsection{Testen des ,,Backends''}
+
+Um die eigentliche Anwendung zu Testen soll das ,,Cxxtest Testframework''
+verwendet werden. Durch den Einsatz eines Frameworks soll eine möglichst effiziente Methode des Testens bereitgestellt
+und das Fehlerrisiko beim Testen auf ein Minimum reduziert werden. Jedes Modul soll eine eigene ,,Testsuite'' bekommen und die
+Ausführung soll über CMake automatisiert werden. Abarbeitung durch ein ,,test'' Target, sodass einfach 'make test' gestartet werden kann.
+Die TestSuite Dateien bestehen aus einem Header der sich nach folgenden Konventionen richten soll: 
+
+\begin{itemize}
+	\item File- bzw Headername der jeweiligen TestSuite soll nach dem Muster \verb+check_<modulname>.hh+ aufgebaut werden
+	\item Klassenname der jeweiligen Testsuite \verb+ <Klassenname>TestSuite+
+	\item Die TestSuite muss die TestSuite Cxxtest sowie das zu testende Modul einbinden
+	\item Die TestSuite muss von CxxTest::TestSuite abgeleitet werden 
+	\item Der Name der zu testenden Funktion soll nach dem Muster \verb+void test<func_name(void)+ aufgebaut werden
+\end{itemize}  
+
+
+Eine TestSuite soll wie folgt aussehen:
+
+
+\begin{lstlisting}[caption={TestSuite Template check\_notify.hh Beispielcodefragment für die Klasse ,,Notify''},label={lst:cxxtemp}]
+ #include <cxxtest/TestSuite.h>
+ #include "Notify.hh"
+ 
+ class NotifyTestSuite : public CxxTest::TestSuite
+ {
+  
+ public:
+  
+      void testsend_big( void )
+      {
+          /* insert testcode here */
+ 	  
+ 	  ...
+ 	   
+          /* check if result is valid */    
+          TS_ASSERT( ... );
+      }
+   
+ private:
+      /* data */
+ };
+\end{lstlisting}
+
+
+\section{Doxygen}
+
+Als interne Entwicklerdokumentation soll das Tool Doxygen\footnote{http://www.stack.nl/~dimitri/doxygen/} verwendet werden.
+Durch den Einsatz eines Dokumentationstools wird für die Entwicklern innerhalb des Teams eine zentrale interne Dokumentation geschaffen,
+auf die jederzeit zugegriffen werden kann. 
+\\
+\emph{Literate programming}\footnote{http://en.wikipedia.org/wiki/Literate\_programming} dient laut Prof. Donald E. Knuth\footnote{http://de.wikipedia.org/wiki/Donald\_Ervin\_Knuth} 
+es erstklassige Dokumentation weil sie den Entwickler dazu zwingt genau über sein Software Design nachzudenken, wodurch
+Fehlentscheidungen automatisch minimiert und die Code Qualität verbessert werden.

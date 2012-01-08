@@ -50,6 +50,10 @@ so dass \textit{GManager::BrowserList} diesen (und damit seine Kinder) im Hauptb
 Siehe auch GManager::BrowserList für die nähere Erklärung zu den anderen nicht-abstrakten Methoden dieser Klasse.
 
 \subsubsection{BrowserList}
+%
+%
+% Ein Klassen (oder heiß das jetzt Kollab? :P) - diagramm zum hinzufügen eines Browsers
+%
 Zeigt eine Liste von Browsern in der Sidebar.
 \begin{itemize} 
 \item Bietet eine add() Methode die eine Referenz auf AbstractBrowser erwartet und fügt diesen Browser in der Sidebar hinzu.
@@ -82,6 +86,10 @@ Als \emph{View} wird ein Gtk::TreeView benutzt, die Browserreferenzen werden in 
 was damit das Model darstellt. 
 
 \subsubsection{Heartbeat}
+%
+% Falls Zeit ist hier noch ein simples Sequenzdiagramm
+%
+%
 Diese Klasse soll alle 500ms ein Signal aussenden, die bisher vergangene Zeit summieren, und sich regelmäßig mit dem 
 Client synchronisieren, so dass die summierte Zeit der aktuellen Zeit innerhalb des aktuellen Songs entspricht.
 Über signal\_client\_update() können sich andere Klassen als Klienten registrieren:

@@ -14,12 +14,12 @@ Die ersten Einsätze werden auch noch tiefer erklärt.
 %     * Connection 
 %     * Listener
 %     * NotifyData
-%bzw. deren Verbindung
+%bzw. deren Verbindung zueinander
 
 \subsection{Hauptklassen}
 
 \subsubsection{Listener}
-Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes''
+Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes'' und den damit verbundenen Events
 zu tun hat. Er setzt den eingangs beschriebenen ,,Watchdog'' auf die asynchrone Verbindung an,
 und ,,parst'' die entsprechenden Antworten des Servers von Hand. 
 \\
@@ -65,6 +65,10 @@ soll sich zu updaten.
 \begin{verbatim}
        void force_update(void);
 \end{verbatim}
+
+%
+% Hier dann imho die Sequenzdiagramme für Connect/disconnect
+%
 
 \subsubsection{Connection}
 \begin{figure}[htb!]
@@ -130,7 +134,7 @@ mit signal\_error() registriert haben benachrichtigt.
 
 \begin{figure}[htb!]
 	\centering
-        \includegraphics[scale=0.55]{BaseClientCollab.png}
+        \includegraphics[scale=0.55]{BaseClientCollab.pdf}
 	\caption{Klassendiagramm zu BaseClient}
 	\label{collab_base_client}
 \end{figure}
@@ -203,6 +207,12 @@ allerdings prüfen sie mit Connection::check\_error() vorher stets auf Fehler.
   void force_update(void);
 \end{verbatim}
 
+%
+%
+%
+% Zustands oder Sequenzdiagram zum Ausfürehn eines beliebigen Kommandos
+% Sprich: go_busy( ) -> send command -> go_idle( )
+%
 \subsubsection{Client}
 Der Client erbt von BaseClient und implementiert konkrete Kommandos wie ,,play'',,,random'' etc.
 Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des Playlistmanagers indem 
@@ -314,6 +324,11 @@ von NotifyData.
 
 
 \subsection{Weitere Klassen}
+%
+%
+% Noch ein Klassendiagramm zur Übersicht.
+%
+
 Desweiteren gibt es einige weitere Klassen die am Rande eine Rolle spielen,
 und meist objektorientierte Wrapperklassen für die C-Strukturen von libmpdclient bereitstellen,
 oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos implementieren.
@@ -441,6 +456,10 @@ Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 
 \newpage
 \subsection{Abstrakte Klassen}
+% 
+% bei einigen Klassen Klassendiagramme aus Doxygen nehmen
+% Einfach damit man sieht wer von diesen Klassen so ableitet
+%
 \subsubsection{AbstractClientUser}
 \begin{itemize}
 \item Verwaltet einen Pointer auf die MPD::Client Klasse,
@@ -481,6 +500,12 @@ Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die dav
 %<Klassendiagramm, bzw. Klassen die es verwenden von Doxygen nehmen>
 
 \subsubsection{AbstractItemGenerator}
+%
+%
+%
+% Hier wäre noch ein Sequenzdiagramm nötig,
+% zB. für die Funktion fill_outputs( ) - beim Aufruf.
+
 Lässt ableitende Klasse folgende Methoden implementieren:
 Jede dieser Methoden ruft MPD::Playlist add\_item() von \emph{AbstractItemlist} auf um ihre Resultate weiterzugeben.
 Sie erlaubt den Einsatz des \emph{Proxy-Patterns}.\footnote{http://en.wikipedia.org/wiki/Proxy\_pattern}
@@ -534,6 +559,8 @@ Diese ,,is\_leaf'' Eigenschaft kann später mit der Funktion \emph{is\_leaf()} a
 \subsubsection{AbstractClientExtension}
 
 % Klassen diagramm aus Doxygen hierhin.
+%
+%
 
 Diese abstrakte Klasse erlaubt abgeleiteten Klassen ähnlich zum BaseClient eigene Kommandos zu implementieren.
 Dies geschieht indem die abstrakte Klasse eine Referenz auf den BaseClient im Konstruktor erwartet und speichert.

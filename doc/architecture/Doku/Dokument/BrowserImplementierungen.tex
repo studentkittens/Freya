@@ -6,11 +6,11 @@ Wie die meisten anderen peripheren Klassen erben diese von \emph{AbstractClientU
 
 \subsection{Hauptklassen}
 \subsubsection{BasePopup}
-%Klassendiagramm...
+%Klassendiagramm zu Nutzern von BasePopup
 
 Alle Klassen die ein ,,Kontextmenü'' anzeigen wollen leiten von dieser Klasse ab.
 Die ableitende Klasse muss den Konstruktor von BasePopup das Widget übergeben welches das Kontextmenü anzeigen soll, 
-und sie erwartet eine von UI Definition des Menüs.
+und sie erwartet eine von UI Definition des Menüs, dessen Struktur von Gtk+ vorgegeben wird.
 Eine beispielhafte UI Definition sieht folgendermaßen aus:
 \begin{verbatim}
    <ui>
@@ -203,7 +203,7 @@ Die Klasse soll zudem eine Methode bieten um anzuzeigen, dass die ,,Settings'' g
 \end{verbatim}
 Um in jeden Tab die Settings zurückzusetzen (auf letzten validen Wert oder Standardwert) speichert die Settingsklasse für jeden Reiter eine AbstractSettings Instanz in eine Liste. Sie kann so später darüber iterieren um die werte zu speichern, rückgängig zu machen oder zurück zu setzen. 
 
-%<Zustandsdiagramm>
+%<Zustandsdiagramm zum Settings akzeptieren, sprich buttons in/sens machen>
 
 \paragraph{SettingsGeneral}
 Die konkrete Klasse die den ,,General'' Tab implementiert.

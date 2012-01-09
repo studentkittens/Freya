@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/MPD/Client.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Client_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="Client_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -120,50 +120,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00038"></a>00038 
 <a name="l00039"></a>00039 <span class="keyword">namespace </span>MPD
 <a name="l00040"></a>00040 {
-<a name="l00044"></a><a class="code" href="classMPD_1_1Client.html">00044</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">Client</a> : <span class="keyword">public</span> <a class="code" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client.">BaseClient</a>, <span class="keyword">public</span> <a class="code" href="classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)">AbstractItemGenerator</a>
+<a name="l00044"></a><a class="code" href="classMPD_1_1Client.html">00044</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">Client</a> : <span class="keyword">public</span> <a class="code" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client.">BaseClient</a>, <span class="keyword">public</span> <a class="code" href="classMPD_1_1AbstractItemGenerator.html">AbstractItemGenerator</a>
 <a name="l00045"></a>00045     {
-<a name="l00046"></a>00046         <span class="keyword">public</span>:
+<a name="l00046"></a>00046     <span class="keyword">public</span>:
 <a name="l00047"></a>00047 
-<a name="l00055"></a>00055             <a class="code" href="classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3" title="Instance the client.">Client</a>();
+<a name="l00055"></a>00055         <a class="code" href="classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3" title="Instance the client.">Client</a>();
 <a name="l00056"></a>00056 
-<a name="l00060"></a>00060             <a class="code" href="classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2" title="Disconnects also.">~Client</a>();
+<a name="l00060"></a>00060         <a class="code" href="classMPD_1_1Client.html#ac71b56542084d2b85214709df27965f2" title="Disconnects also.">~Client</a>();
 <a name="l00061"></a>00061 
-<a name="l00067"></a>00067             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config.">connect</a>(<span class="keywordtype">void</span>);
-<a name="l00075"></a>00075             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server.">disconnect</a>(<span class="keywordtype">void</span>);
+<a name="l00067"></a>00067         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config.">connect</a>(<span class="keywordtype">void</span>);
+<a name="l00075"></a>00075         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server.">disconnect</a>(<span class="keywordtype">void</span>);
 <a name="l00076"></a>00076 
-<a name="l00082"></a>00082             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4" title="Go to next song.">playback_next</a>(<span class="keywordtype">void</span>);
-<a name="l00088"></a>00088             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca" title="Go the prev song.">playback_prev</a>(<span class="keywordtype">void</span>);
-<a name="l00097"></a>00097             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31" title="Stop playback.">playback_stop</a>(<span class="keywordtype">void</span>);
-<a name="l00103"></a>00103             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3" title="Resume from stopmode.">playback_play</a>(<span class="keywordtype">void</span>);
-<a name="l00112"></a>00112             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="Toggle pause-state.">playback_pause</a>(<span class="keywordtype">void</span>);
-<a name="l00113"></a>00113             
-<a name="l00120"></a>00120             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523" title="Seek forward in song song_id, to abs_time from start.">playback_seek</a>(<span class="keywordtype">unsigned</span> song_id, <span class="keywordtype">unsigned</span> abs_time);
-<a name="l00126"></a>00126             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aeefac47bc1e30337b5160d8ade31b615" title="Set blending between songs in seconds.">playback_crossfade</a>(<span class="keywordtype">unsigned</span> seconds);
+<a name="l00082"></a>00082         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#ad6980d06020b908b1474cab497e61fc4" title="Go to next song.">playback_next</a>(<span class="keywordtype">void</span>);
+<a name="l00088"></a>00088         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#af0e9efae479a8600f0e324fca70b2dca" title="Go the prev song.">playback_prev</a>(<span class="keywordtype">void</span>);
+<a name="l00097"></a>00097         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#aba520bcb25ca90d28a5a8554ef61cd31" title="Stop playback.">playback_stop</a>(<span class="keywordtype">void</span>);
+<a name="l00103"></a>00103         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a5e74d0e41e5e4abe732523f0b6bd5ac3" title="Resume from stopmode.">playback_play</a>(<span class="keywordtype">void</span>);
+<a name="l00112"></a>00112         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a8171e726f499a70604d33e75b5416988" title="Toggle pause-state.">playback_pause</a>(<span class="keywordtype">void</span>);
+<a name="l00113"></a>00113 
+<a name="l00120"></a>00120         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2feb68edd437b5716514d6ee273a7523" title="Seek forward in song song_id, to abs_time from start.">playback_seek</a>(<span class="keywordtype">unsigned</span> song_id, <span class="keywordtype">unsigned</span> abs_time);
+<a name="l00126"></a>00126         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aeefac47bc1e30337b5160d8ade31b615" title="Set blending between songs in seconds.">playback_crossfade</a>(<span class="keywordtype">unsigned</span> seconds);
 <a name="l00127"></a>00127 
-<a name="l00131"></a>00131             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="Toggle randome mode.">toggle_random</a>(<span class="keywordtype">void</span>);
-<a name="l00135"></a>00135             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="Toggle consume mode (song gets deleted from playlist after playing)">toggle_consume</a>(<span class="keywordtype">void</span>);
-<a name="l00139"></a>00139             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="Toggle repeat mode (repeat playlist)">toggle_repeat</a>(<span class="keywordtype">void</span>);
-<a name="l00143"></a>00143             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="Toggle single mode (stops playing after one song)">toggle_single</a>(<span class="keywordtype">void</span>);
+<a name="l00131"></a>00131         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="Toggle randome mode.">toggle_random</a>(<span class="keywordtype">void</span>);
+<a name="l00135"></a>00135         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="Toggle consume mode (song gets deleted from playlist after playing)">toggle_consume</a>(<span class="keywordtype">void</span>);
+<a name="l00139"></a>00139         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="Toggle repeat mode (repeat playlist)">toggle_repeat</a>(<span class="keywordtype">void</span>);
+<a name="l00143"></a>00143         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="Toggle single mode (stops playing after one song)">toggle_single</a>(<span class="keywordtype">void</span>);
 <a name="l00144"></a>00144 
-<a name="l00150"></a>00150             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2cf834d27006584829883044ec67bde4" title="Play song at ID (not the Pos in the Queue!)">play_song_at_id</a>(<span class="keywordtype">unsigned</span> song_id);           
-<a name="l00156"></a>00156             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aeab0c4b01e00456a90dad66925b96fa2">playlist_save</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00150"></a>00150         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a2cf834d27006584829883044ec67bde4" title="Play song at ID (not the Pos in the Queue!)">play_song_at_id</a>(<span class="keywordtype">unsigned</span> song_id);
+<a name="l00156"></a>00156         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#aeab0c4b01e00456a90dad66925b96fa2">playlist_save</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
 <a name="l00157"></a>00157 
-<a name="l00163"></a>00163             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a45b90a72613c9f13a1a85d033dae1307" title="Add song from the database to the queue.">queue_add</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * url);
-<a name="l00167"></a>00167             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a011a1ca2735e313e9034972b96e130cc" title="Clears entire queue.">queue_clear</a>(<span class="keywordtype">void</span>);
-<a name="l00173"></a>00173             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a436bca992eb75b753667b40c74698147" title="Deletes song in the queue.">queue_delete</a>(<span class="keywordtype">unsigned</span> pos);
+<a name="l00163"></a>00163         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a45b90a72613c9f13a1a85d033dae1307" title="Add song from the database to the queue.">queue_add</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * url);
+<a name="l00167"></a>00167         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a011a1ca2735e313e9034972b96e130cc" title="Clears entire queue.">queue_clear</a>(<span class="keywordtype">void</span>);
+<a name="l00173"></a>00173         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a436bca992eb75b753667b40c74698147" title="Deletes song in the queue.">queue_delete</a>(<span class="keywordtype">unsigned</span> pos);
 <a name="l00174"></a>00174 
-<a name="l00184"></a>00184             <span class="keywordtype">unsigned</span> <a class="code" href="classMPD_1_1Client.html#a58dbd5f95f2a1d3f443fa0e0b94a4efb" title="Update the database.">database_update</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path);
-<a name="l00194"></a>00194             <span class="keywordtype">unsigned</span> <a class="code" href="classMPD_1_1Client.html#ada3ca40342ab3adc7473eebfa05f0a24" title="Full rescan of the database.">database_rescan</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path);
-<a name="l00195"></a>00195             
-<a name="l00201"></a>00201             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886" title="set the volume">set_volume</a>(<span class="keywordtype">unsigned</span> vol);
+<a name="l00184"></a>00184         <span class="keywordtype">unsigned</span> <a class="code" href="classMPD_1_1Client.html#a58dbd5f95f2a1d3f443fa0e0b94a4efb" title="Update the database.">database_update</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00194"></a>00194         <span class="keywordtype">unsigned</span> <a class="code" href="classMPD_1_1Client.html#ada3ca40342ab3adc7473eebfa05f0a24" title="Full rescan of the database.">database_rescan</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00195"></a>00195 
+<a name="l00201"></a>00201         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886" title="set the volume">set_volume</a>(<span class="keywordtype">unsigned</span> vol);
 <a name="l00202"></a>00202 
-<a name="l00210"></a>00210             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53" title="Fetches the playlist from the mpd server.">fill_queue</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model);
-<a name="l00218"></a>00218             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#ac1c2016a6740bf6762aacbeccd68874b">fill_queue_changes</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model, <span class="keywordtype">unsigned</span> last_version, <span class="keywordtype">unsigned</span>&amp; first_pos);
-<a name="l00224"></a>00224             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209" title="Fetches all playlists from the server.">fill_playlists</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model);
-<a name="l00230"></a>00230             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a491475fc391a4686acf13cf9324aa0ff" title="Fetches all available outputs from the server.">fill_outputs</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model);
-<a name="l00237"></a>00237             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a98eb344ce49c996219ec0aff02fe9781" title="Fetches a list of files in the database.">fill_filelist</a>(<a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
-<a name="l00238"></a>00238            
-<a name="l00249"></a>00249             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="Send a command to the server.">send_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * command);
+<a name="l00210"></a>00210         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a1fe0a4841ad62bbcc6f72c8899621e53" title="Fetches the playlist from the mpd server.">fill_queue</a>(<a class="code" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model);
+<a name="l00218"></a>00218         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#ac1c2016a6740bf6762aacbeccd68874b">fill_queue_changes</a>(<a class="code" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model, <span class="keywordtype">unsigned</span> last_version, <span class="keywordtype">unsigned</span>&amp; first_pos);
+<a name="l00224"></a>00224         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a42af8b435cf503e84da3008a15ec9209" title="Fetches all playlists from the server.">fill_playlists</a>(<a class="code" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model);
+<a name="l00230"></a>00230         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a491475fc391a4686acf13cf9324aa0ff" title="Fetches all available outputs from the server.">fill_outputs</a>(<a class="code" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model);
+<a name="l00237"></a>00237         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Client.html#a98eb344ce49c996219ec0aff02fe9781" title="Fetches a list of files in the database.">fill_filelist</a>(<a class="code" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>&amp; data_model, <span class="keyword">const</span> <span class="keywordtype">char</span> * path);
+<a name="l00238"></a>00238 
+<a name="l00249"></a>00249         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1Client.html#a2174d22da9019a4f5374a689489030b4" title="Send a command to the server.">send_command</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * command);
 <a name="l00250"></a>00250     };
 <a name="l00251"></a>00251 
 <a name="l00252"></a>00252 }
@@ -187,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

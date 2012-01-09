@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Browser/Queue/QueueMerger.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="QueueMerger_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="QueueMerger_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -121,52 +121,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040 <span class="preprocessor">#include &lt;gtkmm.h&gt;</span>
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="keyword">namespace </span>Browser 
+<a name="l00042"></a>00042 <span class="keyword">namespace </span>Browser
 <a name="l00043"></a>00043 {
-<a name="l00053"></a><a class="code" href="classBrowser_1_1QueueMerger.html">00053</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue.">QueueMerger</a> : <span class="keyword">public</span> <a class="code" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>, <span class="keyword">public</span> <a class="code" href="classAbstractClientUser.html">AbstractClientUser</a>
+<a name="l00053"></a><a class="code" href="classBrowser_1_1QueueMerger.html">00053</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1QueueMerger.html" title="This class manages the updating and merging of the Queue.">QueueMerger</a> : <span class="keyword">public</span> MPD::AbstractItemlist, <span class="keyword">public</span> MPD::AbstractClientUser
 <a name="l00054"></a>00054     {
-<a name="l00055"></a>00055         <span class="keyword">public</span>:
-<a name="l00056"></a>00056             <a class="code" href="classBrowser_1_1QueueMerger.html#a2a3e04a72ff15244b44a76cc16fe2ca5">QueueMerger</a>(<a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>&amp; client,
-<a name="l00057"></a>00057                         Glib::RefPtr&lt;Gtk::ListStore&gt;&amp; queue_model,
-<a name="l00058"></a>00058                         <a class="code" href="classBrowser_1_1QueueModelColumns.html" title="The Column Definition of Browser::Queue.">QueueModelColumns</a>&amp; queue_columns);
+<a name="l00055"></a>00055     <span class="keyword">public</span>:
+<a name="l00056"></a>00056         <a class="code" href="classBrowser_1_1QueueMerger.html#a2a3e04a72ff15244b44a76cc16fe2ca5">QueueMerger</a>(<a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>&amp; client,
+<a name="l00057"></a>00057                     Glib::RefPtr&lt;Gtk::ListStore&gt;&amp; queue_model,
+<a name="l00058"></a>00058                     <a class="code" href="classBrowser_1_1QueueModelColumns.html" title="The Column Definition of Browser::Queue.">QueueModelColumns</a>&amp; queue_columns);
 <a name="l00059"></a>00059 
-<a name="l00065"></a>00065             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1QueueMerger.html#a430eb568fbf117d03cc85db1c9cbc93e" title="Implemented from AbstractItemlist.">add_item</a>(<a class="code" href="classAbstractComposite.html">AbstractComposite</a> * pSong);
+<a name="l00065"></a>00065         <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1QueueMerger.html#a20f2a5b5e32e3f41b1fc23a4304ca493" title="Implemented from AbstractItemlist.">add_item</a>(<a class="code" href="classMPD_1_1AbstractComposite.html">MPD::AbstractComposite</a> * pSong);
 <a name="l00066"></a>00066 
-<a name="l00075"></a>00075             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1QueueMerger.html#a879bbd69d3e66edf9c0e81b3a1c9f4c1" title="Disables automatic updating 1x.">disable_merge_once</a>(<span class="keywordtype">void</span>);
-<a name="l00084"></a>00084             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1QueueMerger.html#aaf0794297f66531da5cbee9afd2c5b3e" title="Recalculate the position row of the Queue.">recalculate_positions</a>(<span class="keywordtype">unsigned</span> pos = 0);
+<a name="l00075"></a>00075         <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1QueueMerger.html#a879bbd69d3e66edf9c0e81b3a1c9f4c1" title="Disables automatic updating 1x.">disable_merge_once</a>(<span class="keywordtype">void</span>);
+<a name="l00084"></a>00084         <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1QueueMerger.html#aaf0794297f66531da5cbee9afd2c5b3e" title="Recalculate the position row of the Queue.">recalculate_positions</a>(<span class="keywordtype">unsigned</span> pos = 0);
 <a name="l00085"></a>00085 
-<a name="l00086"></a>00086         <span class="keyword">private</span>:
-<a name="l00087"></a>00087             
-<a name="l00094"></a>00094             <span class="keywordtype">void</span> on_client_update(mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data);
+<a name="l00086"></a>00086     <span class="keyword">private</span>:
+<a name="l00087"></a>00087 
+<a name="l00094"></a>00094         <span class="keywordtype">void</span> on_client_update(mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data);
 <a name="l00095"></a>00095 
-<a name="l00101"></a>00101             <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected);
+<a name="l00101"></a>00101         <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected);
 <a name="l00102"></a>00102 
-<a name="l00109"></a>00109             <span class="keywordtype">void</span> set_row_contents(Gtk::TreeModel::Row&amp; row, <a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
+<a name="l00109"></a>00109         <span class="keywordtype">void</span> set_row_contents(Gtk::TreeModel::Row&amp; row, <a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
 <a name="l00110"></a>00110 
-<a name="l00116"></a>00116             <span class="keywordtype">void</span> add_row(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
+<a name="l00116"></a>00116         <span class="keywordtype">void</span> add_row(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
 <a name="l00117"></a>00117 
-<a name="l00123"></a>00123             <span class="keywordtype">void</span> merge(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
+<a name="l00123"></a>00123         <span class="keywordtype">void</span> merge(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> * pSong);
 <a name="l00124"></a>00124 
-<a name="l00130"></a>00130             <span class="keywordtype">void</span> trim(<span class="keywordtype">unsigned</span> starting_with);
+<a name="l00130"></a>00130         <span class="keywordtype">void</span> trim(<span class="keywordtype">unsigned</span> starting_with);
 <a name="l00131"></a>00131 
 <a name="l00132"></a>00132 
-<a name="l00140"></a>00140             Gtk::TreeModel::iterator get_iter_at_pos(<span class="keywordtype">int</span> pos);
+<a name="l00140"></a>00140         Gtk::TreeModel::iterator get_iter_at_pos(<span class="keywordtype">int</span> pos);
 <a name="l00141"></a>00141 
-<a name="l00142"></a>00142             <span class="comment">/* -------------------- */</span>
+<a name="l00142"></a>00142         <span class="comment">/* -------------------- */</span>
 <a name="l00143"></a>00143 
-<a name="l00144"></a>00144             <span class="keywordtype">bool</span> mergeDisabled;
-<a name="l00145"></a>00145             <span class="keywordtype">bool</span> mergeIterIsValid;
-<a name="l00146"></a>00146             <span class="keywordtype">bool</span> serverChanged;
-<a name="l00147"></a>00147             <span class="keywordtype">bool</span> isFirstStart;
+<a name="l00144"></a>00144         <span class="keywordtype">bool</span> mergeDisabled;
+<a name="l00145"></a>00145         <span class="keywordtype">bool</span> mergeIterIsValid;
+<a name="l00146"></a>00146         <span class="keywordtype">bool</span> serverChanged;
+<a name="l00147"></a>00147         <span class="keywordtype">bool</span> isFirstStart;
 <a name="l00148"></a>00148 
-<a name="l00149"></a>00149             Gtk::TreeModel::iterator mergeIter;
+<a name="l00149"></a>00149         Gtk::TreeModel::iterator mergeIter;
 <a name="l00150"></a>00150 
-<a name="l00151"></a>00151             <span class="keywordtype">unsigned</span> lastPlaylistVersion;
-<a name="l00152"></a>00152             <span class="keywordtype">unsigned</span> playlistLength;
-<a name="l00153"></a>00153             <span class="keywordtype">unsigned</span> mergePos;
+<a name="l00151"></a>00151         <span class="keywordtype">unsigned</span> lastPlaylistVersion;
+<a name="l00152"></a>00152         <span class="keywordtype">unsigned</span> playlistLength;
+<a name="l00153"></a>00153         <span class="keywordtype">unsigned</span> mergePos;
 <a name="l00154"></a>00154 
-<a name="l00155"></a>00155             Glib::RefPtr&lt;Gtk::ListStore&gt; mp_QueueModel;
-<a name="l00156"></a>00156             <a class="code" href="classBrowser_1_1QueueModelColumns.html" title="The Column Definition of Browser::Queue.">QueueModelColumns</a> * mp_QueueColumns;
+<a name="l00155"></a>00155         Glib::RefPtr&lt;Gtk::ListStore&gt; mp_QueueModel;
+<a name="l00156"></a>00156         <a class="code" href="classBrowser_1_1QueueModelColumns.html" title="The Column Definition of Browser::Queue.">QueueModelColumns</a> * mp_QueueColumns;
 <a name="l00157"></a>00157     };
 <a name="l00158"></a>00158 }
 <a name="l00159"></a>00159 
@@ -189,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

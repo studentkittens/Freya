@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/MPD/BaseClient.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="BaseClient_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="BaseClient_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -120,44 +120,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00038"></a>00038 {
 <a name="l00051"></a><a class="code" href="classMPD_1_1BaseClient.html">00051</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client.">BaseClient</a>
 <a name="l00052"></a>00052     {
-<a name="l00053"></a>00053         <span class="keyword">public</span>:
-<a name="l00057"></a>00057             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#a1ae401e7cb615434e54c83e12a813154" title="Go into idle mode, you are not allowed to send commands while idling!">go_idle</a>(<span class="keywordtype">void</span>);
-<a name="l00061"></a>00061             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#aa4d2de679da027f3caec92192d5356e0" title="Leave idle mode, so you can send commands to the server.">go_busy</a>(<span class="keywordtype">void</span>);
+<a name="l00053"></a>00053     <span class="keyword">public</span>:
+<a name="l00057"></a>00057         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#a1ae401e7cb615434e54c83e12a813154" title="Go into idle mode, you are not allowed to send commands while idling!">go_idle</a>(<span class="keywordtype">void</span>);
+<a name="l00061"></a>00061         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#aa4d2de679da027f3caec92192d5356e0" title="Leave idle mode, so you can send commands to the server.">go_busy</a>(<span class="keywordtype">void</span>);
 <a name="l00062"></a>00062 
-<a name="l00072"></a>00072             <a class="code" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*.">Connection</a>&amp; <a class="code" href="classMPD_1_1BaseClient.html#a73be7dfed2693bea6deb4cd53d3aab7c" title="Returns the underlying connection.">get_connection</a>(<span class="keywordtype">void</span>);
-<a name="l00073"></a>00073     
-<a name="l00079"></a>00079             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected">is_connected</a>(<span class="keywordtype">void</span>);
+<a name="l00072"></a>00072         <a class="code" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*.">Connection</a>&amp; <a class="code" href="classMPD_1_1BaseClient.html#a73be7dfed2693bea6deb4cd53d3aab7c" title="Returns the underlying connection.">get_connection</a>(<span class="keywordtype">void</span>);
+<a name="l00073"></a>00073 
+<a name="l00079"></a>00079         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected">is_connected</a>(<span class="keywordtype">void</span>);
 <a name="l00080"></a>00080 
-<a name="l00084"></a>00084             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#af2f9a83095b554f470639f2f9633113c" title="Start a commandlist.">begin</a>(<span class="keywordtype">void</span>);
-<a name="l00088"></a>00088             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#ad62d3555a2641c06a8b8342f1a4c5e2c" title="Commit the commandlist.">commit</a>(<span class="keywordtype">void</span>);
-<a name="l00089"></a>00089             
-<a name="l00095"></a>00095             <a class="code" href="classMPD_1_1Status.html" title="A Wrapper for mpd_status.">Status</a> * <a class="code" href="classMPD_1_1BaseClient.html#a6797f70cd2cdc6807ca7da8d62302352" title="Get the current MPD::Status.">get_status</a>(<span class="keywordtype">void</span>);
-<a name="l00096"></a>00096             
-<a name="l00105"></a>00105             <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a>&amp; <a class="code" href="classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e" title="Get the notify sigc::signal.">signal_client_update</a>(<span class="keywordtype">void</span>);
+<a name="l00084"></a>00084         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#af2f9a83095b554f470639f2f9633113c" title="Start a commandlist.">begin</a>(<span class="keywordtype">void</span>);
+<a name="l00088"></a>00088         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#ad62d3555a2641c06a8b8342f1a4c5e2c" title="Commit the commandlist.">commit</a>(<span class="keywordtype">void</span>);
+<a name="l00089"></a>00089 
+<a name="l00095"></a>00095         <a class="code" href="classMPD_1_1Status.html" title="A Wrapper for mpd_status.">Status</a> * <a class="code" href="classMPD_1_1BaseClient.html#a6797f70cd2cdc6807ca7da8d62302352" title="Get the current MPD::Status.">get_status</a>(<span class="keywordtype">void</span>);
+<a name="l00096"></a>00096 
+<a name="l00105"></a>00105         <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a>&amp; <a class="code" href="classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e" title="Get the notify sigc::signal.">signal_client_update</a>(<span class="keywordtype">void</span>);
 <a name="l00106"></a>00106 
-<a name="l00112"></a>00112             <a class="code" href="namespaceMPD.html#ad3d56bae39a923ba52f905c21afc9e55" title="You can call sigc::signal::connect() on this.">ConnectionNotifier</a>&amp; <a class="code" href="classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c" title="Register for connection changes.">signal_connection_change</a>(<span class="keywordtype">void</span>);
+<a name="l00112"></a>00112         <a class="code" href="namespaceMPD.html#ad3d56bae39a923ba52f905c21afc9e55" title="You can call sigc::signal::connect() on this.">ConnectionNotifier</a>&amp; <a class="code" href="classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c" title="Register for connection changes.">signal_connection_change</a>(<span class="keywordtype">void</span>);
 <a name="l00113"></a>00113 
-<a name="l00121"></a>00121             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#a820d4c8e20e112335ffd3136abb65704" title="Forces client update.">force_update</a>(<span class="keywordtype">void</span>);
+<a name="l00121"></a>00121         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1BaseClient.html#a820d4c8e20e112335ffd3136abb65704" title="Forces client update.">force_update</a>(<span class="keywordtype">void</span>);
 <a name="l00122"></a>00122 
-<a name="l00123"></a>00123         <span class="keyword">protected</span>:
-<a name="l00124"></a>00124             
-<a name="l00128"></a>00128             <a class="code" href="classMPD_1_1BaseClient.html#a33c0bf97f004df08033890db728123d0" title="Do not allow to instantiate BaseClient.">BaseClient</a>(<span class="keywordtype">void</span>);
-<a name="l00129"></a>00129            
-<a name="l00135"></a>00135             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#ae9d8effd942ee9224718cefffa359298" title="This is called internally by MPD::Client and does the actual connect work.">__connect</a>(<span class="keywordtype">void</span>);
-<a name="l00141"></a>00141             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#ab52d2ea1627dee76befa9cd1e87b81ce" title="Same as __connect()">__disconnect</a>(<span class="keywordtype">void</span>);
+<a name="l00123"></a>00123     <span class="keyword">protected</span>:
+<a name="l00124"></a>00124 
+<a name="l00128"></a>00128         <a class="code" href="classMPD_1_1BaseClient.html#a33c0bf97f004df08033890db728123d0" title="Do not allow to instantiate BaseClient.">BaseClient</a>(<span class="keywordtype">void</span>);
+<a name="l00129"></a>00129 
+<a name="l00135"></a>00135         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#ae9d8effd942ee9224718cefffa359298" title="This is called internally by MPD::Client and does the actual connect work.">__connect</a>(<span class="keywordtype">void</span>);
+<a name="l00141"></a>00141         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#ab52d2ea1627dee76befa9cd1e87b81ce" title="Same as __connect()">__disconnect</a>(<span class="keywordtype">void</span>);
 <a name="l00142"></a>00142 
-<a name="l00146"></a><a class="code" href="classMPD_1_1BaseClient.html#a1c957165a235cbe2493632565f7a6344">00146</a>             <a class="code" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*.">MPD::Connection</a> <a class="code" href="classMPD_1_1BaseClient.html#a1c957165a235cbe2493632565f7a6344" title="The connection to the MPD server.">m_Conn</a>;
-<a name="l00150"></a><a class="code" href="classMPD_1_1BaseClient.html#a6fa80d2e7c817983c0533aaf08bf36a4">00150</a>             <a class="code" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core.">MPD::Listener</a> * <a class="code" href="classMPD_1_1BaseClient.html#a6fa80d2e7c817983c0533aaf08bf36a4" title="Event Listener.">mp_Listener</a>;
-<a name="l00151"></a>00151             
-<a name="l00155"></a><a class="code" href="classMPD_1_1BaseClient.html#a6cf44896da6b9486db14a6cefa8aadd2">00155</a>             <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#a6cf44896da6b9486db14a6cefa8aadd2" title="BaseClient::begin() was called but not yet BaseClient::commit()">m_ListBegun</a>;
-<a name="l00156"></a>00156        
-<a name="l00157"></a>00157         <span class="keyword">private</span>:
+<a name="l00146"></a><a class="code" href="classMPD_1_1BaseClient.html#a1c957165a235cbe2493632565f7a6344">00146</a>         <a class="code" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*.">MPD::Connection</a> <a class="code" href="classMPD_1_1BaseClient.html#a1c957165a235cbe2493632565f7a6344" title="The connection to the MPD server.">m_Conn</a>;
+<a name="l00150"></a><a class="code" href="classMPD_1_1BaseClient.html#a6fa80d2e7c817983c0533aaf08bf36a4">00150</a>         <a class="code" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core.">MPD::Listener</a> * <a class="code" href="classMPD_1_1BaseClient.html#a6fa80d2e7c817983c0533aaf08bf36a4" title="Event Listener.">mp_Listener</a>;
+<a name="l00151"></a>00151 
+<a name="l00155"></a><a class="code" href="classMPD_1_1BaseClient.html#a6cf44896da6b9486db14a6cefa8aadd2">00155</a>         <span class="keywordtype">bool</span> <a class="code" href="classMPD_1_1BaseClient.html#a6cf44896da6b9486db14a6cefa8aadd2" title="BaseClient::begin() was called but not yet BaseClient::commit()">m_ListBegun</a>;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     <span class="keyword">private</span>:
 <a name="l00158"></a>00158 
-<a name="l00167"></a>00167             gboolean timeout_reconnect(<span class="keywordtype">void</span>);
+<a name="l00167"></a>00167         gboolean timeout_reconnect(<span class="keywordtype">void</span>);
 <a name="l00168"></a>00168 
-<a name="l00175"></a>00175             <span class="keywordtype">void</span> handle_errors(<span class="keywordtype">bool</span> is_fatal, mpd_error err);
+<a name="l00175"></a>00175         <span class="keywordtype">void</span> handle_errors(<span class="keywordtype">bool</span> is_fatal, mpd_error err);
 <a name="l00176"></a>00176 
-<a name="l00180"></a>00180             <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a> m_Notifier;
+<a name="l00180"></a>00180         <a class="code" href="Listener_8hh.html#afc6e5fadd7a773a9cf4fb6d1126fc7c1">EventNotifier</a> m_Notifier;
 <a name="l00181"></a>00181     };
 <a name="l00182"></a>00182 }
 <a name="l00183"></a>00183 
@@ -180,7 +180,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

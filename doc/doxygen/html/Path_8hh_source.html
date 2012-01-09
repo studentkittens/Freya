@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Init/Path.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Path_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="Path_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -120,24 +120,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00038"></a>00038 
 <a name="l00042"></a><a class="code" href="classInit_1_1Path.html">00042</a>     <span class="keyword">class </span><a class="code" href="classInit_1_1Path.html" title="Get the path to files Freya will write to (Config/Log)">Path</a>
 <a name="l00043"></a>00043     {
-<a name="l00044"></a>00044         <span class="keyword">public</span>:
-<a name="l00045"></a>00045             <a class="code" href="classInit_1_1Path.html#ab35fcd7b7fb68b49b2715a800875537b">Path</a> ();
-<a name="l00046"></a>00046             <a class="code" href="classInit_1_1Path.html#af21619398ed322971f084eee40349741">~Path</a> ();
+<a name="l00044"></a>00044     <span class="keyword">public</span>:
+<a name="l00045"></a>00045         <a class="code" href="classInit_1_1Path.html#ab35fcd7b7fb68b49b2715a800875537b">Path</a> ();
+<a name="l00046"></a>00046         <a class="code" href="classInit_1_1Path.html#af21619398ed322971f084eee40349741">~Path</a> ();
 <a name="l00047"></a>00047 
-<a name="l00053"></a>00053             Glib::ustring <a class="code" href="classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="returns absolute path to config dir e.g. /home/user/.config/freya">get_config_dir</a>();
+<a name="l00053"></a>00053         Glib::ustring <a class="code" href="classInit_1_1Path.html#a3709ae8524052c397c04b2bd5df90ffb" title="returns absolute path to config dir e.g. /home/user/.config/freya">get_config_dir</a>();
 <a name="l00054"></a>00054 
 <a name="l00055"></a>00055 
-<a name="l00061"></a>00061             Glib::ustring <a class="code" href="classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="returns absolute path to config file e.g. /home/user/.config/freya/config.xml">path_to_config</a>();
+<a name="l00061"></a>00061         Glib::ustring <a class="code" href="classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e" title="returns absolute path to config file e.g. /home/user/.config/freya/config.xml">path_to_config</a>();
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063 
-<a name="l00069"></a>00069             Glib::ustring <a class="code" href="classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt">path_to_log</a>();
+<a name="l00069"></a>00069         Glib::ustring <a class="code" href="classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt">path_to_log</a>();
 <a name="l00070"></a>00070 
-<a name="l00071"></a>00071         <span class="keyword">private</span>:
-<a name="l00072"></a>00072             <span class="keywordtype">void</span> create_config();
-<a name="l00073"></a>00073             <span class="keywordtype">void</span> create_dir();
-<a name="l00074"></a>00074             <span class="keywordtype">void</span> dir_is_avaiable();
-<a name="l00075"></a>00075             <span class="keywordtype">char</span>* configfile;
-<a name="l00076"></a>00076             <span class="keywordtype">char</span>* configdir;
+<a name="l00071"></a>00071     <span class="keyword">private</span>:
+<a name="l00072"></a>00072         <span class="keywordtype">void</span> create_config();
+<a name="l00073"></a>00073         <span class="keywordtype">void</span> create_dir();
+<a name="l00074"></a>00074         <span class="keywordtype">void</span> dir_is_avaiable();
+<a name="l00075"></a>00075         <span class="keywordtype">char</span>* configfile;
+<a name="l00076"></a>00076         <span class="keywordtype">char</span>* configdir;
 <a name="l00077"></a>00077     };
 <a name="l00078"></a>00078 }
 <a name="l00079"></a>00079 <span class="preprocessor">#endif </span><span class="comment">/* end of include guard: INIT_SP0811FS */</span>
@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

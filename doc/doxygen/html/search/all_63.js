@@ -4,7 +4,7 @@ var searchData=
   ['check_5flog_2ehh',['check_log.hh',['../check__log_8hh.html',1,'']]],
   ['check_5fnotify_2ehh',['check_notify.hh',['../check__notify_8hh.html',1,'']]],
   ['check_5futils_2ehh',['check_utils.hh',['../check__utils_8hh.html',1,'']]],
-  ['clear',['clear',['../classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395',1,'Log::Writer']]],
+  ['clear',['clear',['../classBrowser_1_1SettingsOutputs.html#a441ca9896888ef8c604de5c57b9a4972',1,'Browser::SettingsOutputs::clear()'],['../classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395',1,'Log::Writer::clear()']]],
   ['clear_5ferror',['clear_error',['../classMPD_1_1Connection.html#a1ffa2a51c52796cbd2dac76737747f32',1,'MPD::Connection']]],
   ['client',['Client',['../classMPD_1_1Client.html',1,'MPD']]],
   ['client',['Client',['../classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3',1,'MPD::Client']]],

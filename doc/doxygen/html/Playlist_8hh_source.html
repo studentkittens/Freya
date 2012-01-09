@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/MPD/Playlist.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Playlist_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="Playlist_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -122,29 +122,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040 {
 <a name="l00041"></a><a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">00041</a>     <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a> <a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a>;
 <a name="l00042"></a>00042 
-<a name="l00046"></a><a class="code" href="classMPD_1_1Playlist.html">00046</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands.">Playlist</a> : <span class="keyword">public</span> <a class="code" href="classMPD_1_1AbstractClientExtension.html" title="Abstract base class for classes that want to implement spefic MPD Commands.">AbstractClientExtension</a>, <span class="keyword">public</span> <a class="code" href="classAbstractComposite.html">AbstractComposite</a>
+<a name="l00046"></a><a class="code" href="classMPD_1_1Playlist.html">00046</a>     <span class="keyword">class </span><a class="code" href="classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands.">Playlist</a> : <span class="keyword">public</span> <a class="code" href="classMPD_1_1AbstractClientExtension.html" title="Abstract base class for classes that want to implement spefic MPD Commands.">AbstractClientExtension</a>, <span class="keyword">public</span> <a class="code" href="classMPD_1_1AbstractComposite.html">AbstractComposite</a>
 <a name="l00047"></a>00047     {
-<a name="l00048"></a>00048         <span class="keyword">public</span>:
-<a name="l00049"></a>00049             <a class="code" href="classMPD_1_1Playlist.html#a73995e8e2bcf8854c7b27b9d61578b03">Playlist</a>(<a class="code" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client.">MPD::BaseClient</a>&amp; base_client, <a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a>&amp; c_playlist);
-<a name="l00050"></a>00050             <a class="code" href="classMPD_1_1Playlist.html#a73995e8e2bcf8854c7b27b9d61578b03">Playlist</a>(<span class="keyword">const</span> <a class="code" href="classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands.">Playlist</a>&amp; copy_this);
-<a name="l00051"></a>00051             <span class="keyword">virtual</span> <a class="code" href="classMPD_1_1Playlist.html#af2e119eccd485bd93c148b39b5fe9568">~Playlist</a>(<span class="keywordtype">void</span>);
+<a name="l00048"></a>00048     <span class="keyword">public</span>:
+<a name="l00049"></a>00049         <a class="code" href="classMPD_1_1Playlist.html#a73995e8e2bcf8854c7b27b9d61578b03">Playlist</a>(<a class="code" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client.">MPD::BaseClient</a>&amp; base_client, <a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a>&amp; c_playlist);
+<a name="l00050"></a>00050         <a class="code" href="classMPD_1_1Playlist.html#a73995e8e2bcf8854c7b27b9d61578b03">Playlist</a>(<span class="keyword">const</span> <a class="code" href="classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands.">Playlist</a>&amp; copy_this);
+<a name="l00051"></a>00051         <span class="keyword">virtual</span> <a class="code" href="classMPD_1_1Playlist.html#af2e119eccd485bd93c148b39b5fe9568">~Playlist</a>(<span class="keywordtype">void</span>);
 <a name="l00052"></a>00052 
-<a name="l00057"></a>00057             <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="classMPD_1_1Playlist.html#a0bc66b88c49b7d20fc1a877b0b355157">get_path</a>(<span class="keywordtype">void</span>);
+<a name="l00057"></a>00057         <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="classMPD_1_1Playlist.html#a0bc66b88c49b7d20fc1a877b0b355157">get_path</a>(<span class="keywordtype">void</span>);
 <a name="l00058"></a>00058 
-<a name="l00063"></a>00063             time_t <a class="code" href="classMPD_1_1Playlist.html#ac349d484fb4cd053e2d04af4931ef0b4">get_last_modified</a>(<span class="keywordtype">void</span>);
-<a name="l00064"></a>00064             
-<a name="l00068"></a>00068             <span class="keywordtype">void</span> <span class="keyword">remove</span>(void);
+<a name="l00063"></a>00063         time_t <a class="code" href="classMPD_1_1Playlist.html#ac349d484fb4cd053e2d04af4931ef0b4">get_last_modified</a>(<span class="keywordtype">void</span>);
+<a name="l00064"></a>00064 
+<a name="l00068"></a>00068         <span class="keywordtype">void</span> <span class="keyword">remove</span>(void);
 <a name="l00069"></a>00069 
-<a name="l00073"></a>00073             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a3eb55e207271cd7a8359fe53c3527f09" title="load this playlist into the queue (add to end)">load</a>(<span class="keywordtype">void</span>);
+<a name="l00073"></a>00073         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a3eb55e207271cd7a8359fe53c3527f09" title="load this playlist into the queue (add to end)">load</a>(<span class="keywordtype">void</span>);
 <a name="l00074"></a>00074 
-<a name="l00080"></a>00080             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a8bdbe85a78f14f88e1c3a7403869155d" title="Rename playlist.">rename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * new_name);
+<a name="l00080"></a>00080         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a8bdbe85a78f14f88e1c3a7403869155d" title="Rename playlist.">rename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * new_name);
 <a name="l00081"></a>00081 
-<a name="l00087"></a>00087             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a73f105968f5199d5e7706e916bc7843c" title="Add song identified with path uri to this playlist.">add_song</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * uri);
-<a name="l00088"></a>00088             
-<a name="l00094"></a>00094             <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a73f105968f5199d5e7706e916bc7843c" title="Add song identified with path uri to this playlist.">add_song</a>(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a>&amp; song);
+<a name="l00087"></a>00087         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a73f105968f5199d5e7706e916bc7843c" title="Add song identified with path uri to this playlist.">add_song</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * uri);
+<a name="l00088"></a>00088 
+<a name="l00094"></a>00094         <span class="keywordtype">void</span> <a class="code" href="classMPD_1_1Playlist.html#a73f105968f5199d5e7706e916bc7843c" title="Add song identified with path uri to this playlist.">add_song</a>(<a class="code" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a>&amp; song);
 <a name="l00095"></a>00095 
-<a name="l00096"></a>00096         <span class="keyword">private</span>:
-<a name="l00097"></a>00097             <a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a> * mpc_playlist;
+<a name="l00096"></a>00096     <span class="keyword">private</span>:
+<a name="l00097"></a>00097         <a class="code" href="namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2">mpd_playlist</a> * mpc_playlist;
 <a name="l00098"></a>00098 
 <a name="l00099"></a>00099     };
 <a name="l00100"></a>00100 }
@@ -168,7 +168,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -8,15 +8,14 @@ Es wird empfohlen die Einführung bis einschließlich Kapitel 2 zu lesen:
 \end{itemize}
 Die ersten Einsätze werden auch noch tiefer erklärt.
 
-%Hier ein erstes Klassendiagramm zu  
-%     * BaseClient
-%     * Client 
-%     * Connection 
-%     * Listener
-%     * NotifyData
-%bzw. deren Verbindung zueinander
 
 \subsection{Hauptklassen}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.5]{ClientCollab.pdf}
+	\caption{Übersichtsklassendiagramm zur Clientstruktur}
+	\label{class_client_all}
+\end{figure}
 
 \subsubsection{Listener}
 Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes'' und den damit verbundenen Events
@@ -65,10 +64,6 @@ soll sich zu updaten.
 \begin{verbatim}
        void force_update(void);
 \end{verbatim}
-
-%
-% Hier dann imho die Sequenzdiagramme für Connect/disconnect
-%
 
 \subsubsection{Connection}
 \begin{figure}[htb!]

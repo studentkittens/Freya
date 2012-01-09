@@ -1,4 +1,4 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classMPD_1_1AbstractClientExtension.html" title="Abstract base class for classes that want to implement spefic MPD Commands." alt="" coords="5,13,205,120"/>
-<area shape="rect" id="node4" href="$classAbstractComposite.html" title="{AbstractComposite\n||+ AbstractComposite()\l+ ~AbstractComposite()\l+ isLeaf()\l+ get_path()\l}" alt="" coords="231,6,393,127"/>
+<area shape="rect" id="node4" href="$classMPD_1_1AbstractComposite.html" title="{MPD::AbstractComposite\n||+ AbstractComposite()\l+ ~AbstractComposite()\l+ is_leaf()\l+ get_path()\l}" alt="" coords="230,6,401,127"/>
 </map>

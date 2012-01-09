@@ -104,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Browser::QueueMerger Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Browser::QueueMerger" --><!-- doxytag: inherits="AbstractItemlist,AbstractClientUser" -->
+<!-- doxytag: class="Browser::QueueMerger" --><!-- doxytag: inherits="MPD::AbstractItemlist,MPD::AbstractClientUser" -->
 <p>This class manages the updating and merging of the <a class="el" href="classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist.">Queue</a>.  
  <a href="classBrowser_1_1QueueMerger.html#details">More...</a></p>
 
@@ -114,21 +114,21 @@ Inheritance diagram for Browser::QueueMerger:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBrowser_1_1QueueMerger__inherit__graph.png" border="0" usemap="#Browser_1_1QueueMerger_inherit__map" alt="Inheritance graph"/></div>
 <map name="Browser_1_1QueueMerger_inherit__map" id="Browser_1_1QueueMerger_inherit__map">
-<area shape="rect" id="node2" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="5,13,147,105"/><area shape="rect" id="node4" href="classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="171,5,345,112"/></map>
+<area shape="rect" id="node2" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="5,13,157,105"/><area shape="rect" id="node4" href="classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="182,5,356,112"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Browser::QueueMerger:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBrowser_1_1QueueMerger__coll__graph.png" border="0" usemap="#Browser_1_1QueueMerger_coll__map" alt="Collaboration graph"/></div>
 <map name="Browser_1_1QueueMerger_coll__map" id="Browser_1_1QueueMerger_coll__map">
-<area shape="rect" id="node2" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="151,1290,293,1382"/><area shape="rect" id="node4" href="classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="318,1283,492,1389"/><area shape="rect" id="node6" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="308,627,503,1218"/><area shape="rect" id="node8" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="148,293,343,576"/><area shape="rect" id="node10" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,197,200"/><area shape="rect" id="node14" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="293,5,488,229"/><area shape="rect" id="node16" href="classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="367,359,549,510"/></map>
+<area shape="rect" id="node2" href="classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="144,1290,296,1382"/><area shape="rect" id="node4" href="classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="321,1283,495,1389"/><area shape="rect" id="node6" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="311,627,505,1218"/><area shape="rect" id="node8" href="classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="148,293,343,576"/><area shape="rect" id="node10" href="classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,197,200"/><area shape="rect" id="node14" href="classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="293,5,488,229"/><area shape="rect" id="node16" href="classMPD_1_1AbstractItemGenerator.html" title="{MPD::AbstractItemGenerator\n||+ fill_queue()\l+ fill_queue_changes()\l+ fill_playlists()\l+ fill_outputs()\l+ fill_filelist()\l+ ~AbstractItemGenerator()\l}" alt="" coords="367,359,559,510"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueMerger.html#a2a3e04a72ff15244b44a76cc16fe2ca5">QueueMerger</a> (<a class="el" href="classMPD_1_1Client.html">MPD::Client</a> &amp;client, Glib::RefPtr&lt; Gtk::ListStore &gt; &amp;queue_model, <a class="el" href="classBrowser_1_1QueueModelColumns.html">QueueModelColumns</a> &amp;queue_columns)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueMerger.html#a430eb568fbf117d03cc85db1c9cbc93e">add_item</a> (<a class="el" href="classAbstractComposite.html">AbstractComposite</a> *pSong)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented from <a class="el" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>.  <a href="#a430eb568fbf117d03cc85db1c9cbc93e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueMerger.html#a20f2a5b5e32e3f41b1fc23a4304ca493">add_item</a> (<a class="el" href="classMPD_1_1AbstractComposite.html">MPD::AbstractComposite</a> *pSong)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented from AbstractItemlist.  <a href="#a20f2a5b5e32e3f41b1fc23a4304ca493"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueMerger.html#a879bbd69d3e66edf9c0e81b3a1c9f4c1">disable_merge_once</a> (void)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables automatic updating 1x.  <a href="#a879bbd69d3e66edf9c0e81b3a1c9f4c1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBrowser_1_1QueueMerger.html#aaf0794297f66531da5cbee9afd2c5b3e">recalculate_positions</a> (unsigned pos=0)</td></tr>
@@ -175,14 +175,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a430eb568fbf117d03cc85db1c9cbc93e"></a><!-- doxytag: member="Browser::QueueMerger::add_item" ref="a430eb568fbf117d03cc85db1c9cbc93e" args="(AbstractComposite *pSong)" -->
+<a class="anchor" id="a20f2a5b5e32e3f41b1fc23a4304ca493"></a><!-- doxytag: member="Browser::QueueMerger::add_item" ref="a20f2a5b5e32e3f41b1fc23a4304ca493" args="(MPD::AbstractComposite *pSong)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classBrowser_1_1QueueMerger.html#a430eb568fbf117d03cc85db1c9cbc93e">Browser::QueueMerger::add_item</a> </td>
+          <td class="memname">void <a class="el" href="classBrowser_1_1QueueMerger.html#a20f2a5b5e32e3f41b1fc23a4304ca493">Browser::QueueMerger::add_item</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classAbstractComposite.html">AbstractComposite</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classMPD_1_1AbstractComposite.html">MPD::AbstractComposite</a> *&#160;</td>
           <td class="paramname"><em>pSong</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
@@ -190,7 +190,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Implemented from <a class="el" href="classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods.">AbstractItemlist</a>. </p>
+<p>Implemented from AbstractItemlist. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">pSong</td><td>a <a class="el" href="classMPD_1_1Song.html" title="A wrapper for mpd_song.">MPD::Song</a> </td></tr>
@@ -198,7 +198,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classAbstractItemlist.html#af7c1ddf6e2fb07352891e2134130ceae">AbstractItemlist</a>.</p>
+<p>Implements <a class="el" href="classMPD_1_1AbstractItemlist.html#a6996d651a330d8b3e4b5cc7473836972">MPD::AbstractItemlist</a>.</p>
 
 </div>
 </div>
@@ -269,7 +269,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

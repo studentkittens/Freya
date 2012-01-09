@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Browser/BasePopup.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="BasePopup_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="BasePopup_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -119,29 +119,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a>00037 {
 <a name="l00044"></a><a class="code" href="classBrowser_1_1BasePopup.html">00044</a>     <span class="keyword">class </span><a class="code" href="classBrowser_1_1BasePopup.html" title="A Baseclass for Widgets that want to implement easily popup widgets.">BasePopup</a>
 <a name="l00045"></a>00045     {
-<a name="l00046"></a>00046         <span class="keyword">public</span>:
+<a name="l00046"></a>00046     <span class="keyword">public</span>:
 <a name="l00047"></a>00047 
-<a name="l00054"></a>00054             <a class="code" href="classBrowser_1_1BasePopup.html#a0d78897b01fa9ca67f96a8e5cda57d4b">BasePopup</a>(Gtk::Widget * to_register, Glib::ustring&amp; ui_definition);
+<a name="l00054"></a>00054         <a class="code" href="classBrowser_1_1BasePopup.html#a0d78897b01fa9ca67f96a8e5cda57d4b">BasePopup</a>(Gtk::Widget * to_register, Glib::ustring&amp; ui_definition);
 <a name="l00055"></a>00055 
-<a name="l00063"></a>00063             Glib::SignalProxy0&lt;void&gt; <a class="code" href="classBrowser_1_1BasePopup.html#aefb430f370f4e7eaf4b1d3d779312070" title="Get a signal proxy of a certain Gtk::Action in the menu.">get_action</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00063"></a>00063         Glib::SignalProxy0&lt;void&gt; <a class="code" href="classBrowser_1_1BasePopup.html#aefb430f370f4e7eaf4b1d3d779312070" title="Get a signal proxy of a certain Gtk::Action in the menu.">get_action</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
 <a name="l00064"></a>00064 
-<a name="l00065"></a>00065         <span class="keyword">protected</span>:
+<a name="l00065"></a>00065     <span class="keyword">protected</span>:
 <a name="l00066"></a>00066 
-<a name="l00070"></a><a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">00070</a>             Glib::RefPtr&lt;Gtk::UIManager&gt; <a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8" title="This object stores the parsed UI Definition.">m_refUIManager</a>;
-<a name="l00074"></a><a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">00074</a>             Glib::RefPtr&lt;Gtk::ActionGroup&gt; <a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad" title="All actions are added to this object.">m_refActionGroup</a>; 
-<a name="l00078"></a><a class="code" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda">00078</a>             Glib::ustring * <a class="code" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda" title="The actual definition.">m_UiDefinition</a>;
-<a name="l00082"></a><a class="code" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e">00082</a>             Gtk::Menu * <a class="code" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e" title="The visible popup.">mp_Popup</a>;
+<a name="l00070"></a><a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8">00070</a>         Glib::RefPtr&lt;Gtk::UIManager&gt; <a class="code" href="classBrowser_1_1BasePopup.html#ab0a4588eb5b33b273c7d89050ce5d4e8" title="This object stores the parsed UI Definition.">m_refUIManager</a>;
+<a name="l00074"></a><a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad">00074</a>         Glib::RefPtr&lt;Gtk::ActionGroup&gt; <a class="code" href="classBrowser_1_1BasePopup.html#a3c973ebad14569817861ebc1bc7555ad" title="All actions are added to this object.">m_refActionGroup</a>;
+<a name="l00078"></a><a class="code" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda">00078</a>         Glib::ustring * <a class="code" href="classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda" title="The actual definition.">m_UiDefinition</a>;
+<a name="l00082"></a><a class="code" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e">00082</a>         Gtk::Menu * <a class="code" href="classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e" title="The visible popup.">mp_Popup</a>;
 <a name="l00083"></a>00083 
-<a name="l00093"></a>00093             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac" title="Add an item to the Menu Popup.">menu_add_item</a>(Glib::RefPtr&lt;Gtk::Action&gt;&amp; action,
-<a name="l00094"></a>00094                     Glib::ustring item_name,
-<a name="l00095"></a>00095                     Glib::ustring item_label,
-<a name="l00096"></a>00096                     Glib::ustring item_tooltip,
-<a name="l00097"></a>00097                     Gtk::StockID icon);
+<a name="l00093"></a>00093         <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac" title="Add an item to the Menu Popup.">menu_add_item</a>(Glib::RefPtr&lt;Gtk::Action&gt;&amp; action,
+<a name="l00094"></a>00094                            Glib::ustring item_name,
+<a name="l00095"></a>00095                            Glib::ustring item_label,
+<a name="l00096"></a>00096                            Glib::ustring item_tooltip,
+<a name="l00097"></a>00097                            Gtk::StockID icon);
 <a name="l00098"></a>00098 
-<a name="l00102"></a>00102             <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05" title="Call this when done with adding actions.">menu_construct</a>(Glib::ustring menu_name);
+<a name="l00102"></a>00102         <span class="keywordtype">void</span> <a class="code" href="classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05" title="Call this when done with adding actions.">menu_construct</a>(Glib::ustring menu_name);
 <a name="l00103"></a>00103 
-<a name="l00104"></a>00104         <span class="keyword">private</span>:
-<a name="l00112"></a>00112             <span class="keywordtype">bool</span> menu_popup(GdkEventButton * event);
+<a name="l00104"></a>00104     <span class="keyword">private</span>:
+<a name="l00112"></a>00112         <span class="keywordtype">bool</span> menu_popup(GdkEventButton * event);
 <a name="l00113"></a>00113     };
 <a name="l00114"></a>00114 }
 <a name="l00115"></a>00115 
@@ -164,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

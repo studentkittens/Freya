@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Browser/AbstractBrowser.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="AbstractBrowser_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="AbstractBrowser_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -118,37 +118,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036 
 <a name="l00040"></a><a class="code" href="classAbstractBrowser.html">00040</a> <span class="keyword">class </span><a class="code" href="classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist.">AbstractBrowser</a>
 <a name="l00041"></a>00041 {
-<a name="l00042"></a>00042     <span class="keyword">public</span>:
+<a name="l00042"></a>00042 <span class="keyword">public</span>:
 <a name="l00043"></a>00043 
-<a name="l00052"></a><a class="code" href="classAbstractBrowser.html#a5d3a88f66e449c87e9c0a553804d9d39">00052</a>         <a class="code" href="classAbstractBrowser.html#a5d3a88f66e449c87e9c0a553804d9d39" title="Inherit from this class to be able to add this browser to the browserlist.">AbstractBrowser</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name,
-<a name="l00053"></a>00053                         <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#ae1239f35c6438ab56f97ef54319c64e0" title="Tells if browser is visible in browserlist.">is_visible</a>, 
-<a name="l00054"></a>00054                         <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826" title="If this browser works without a connection (if false)">needs_connection</a>,
-<a name="l00055"></a>00055                         Gtk::StockID icon) 
-<a name="l00056"></a>00056             : m_Name(name),
-<a name="l00057"></a>00057               m_IconId(icon),
-<a name="l00058"></a>00058               m_NeedsConnection(needs_connection),
-<a name="l00059"></a>00059               m_IsVisible(is_visible)
-<a name="l00060"></a>00060         {} 
+<a name="l00052"></a><a class="code" href="classAbstractBrowser.html#a5d3a88f66e449c87e9c0a553804d9d39">00052</a>     <a class="code" href="classAbstractBrowser.html#a5d3a88f66e449c87e9c0a553804d9d39" title="Inherit from this class to be able to add this browser to the browserlist.">AbstractBrowser</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name,
+<a name="l00053"></a>00053                     <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#ae1239f35c6438ab56f97ef54319c64e0" title="Tells if browser is visible in browserlist.">is_visible</a>,
+<a name="l00054"></a>00054                     <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826" title="If this browser works without a connection (if false)">needs_connection</a>,
+<a name="l00055"></a>00055                     Gtk::StockID icon)
+<a name="l00056"></a>00056         : m_Name(name),
+<a name="l00057"></a>00057           m_IconId(icon),
+<a name="l00058"></a>00058           m_NeedsConnection(needs_connection),
+<a name="l00059"></a>00059           m_IsVisible(is_visible)
+<a name="l00060"></a>00060     {}
 <a name="l00061"></a>00061 
-<a name="l00069"></a>00069         <span class="keyword">virtual</span> Gtk::Widget * <a class="code" href="classAbstractBrowser.html#aeb2a146bb6f19235ceff15aa314e1c07" title="Tell BrowserList which element to manage.">get_container</a>(<span class="keywordtype">void</span>) = 0; <span class="comment">/* No Impl. */</span> 
-<a name="l00070"></a>00070         
-<a name="l00078"></a><a class="code" href="classAbstractBrowser.html#a507606b53c6076585fad1dde0f4806b7">00078</a>         Glib::ustring&amp; <a class="code" href="classAbstractBrowser.html#a507606b53c6076585fad1dde0f4806b7" title="Get the name of the browser (shown in the browserlist)">get_name</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> m_Name; }
-<a name="l00079"></a>00079 
-<a name="l00085"></a><a class="code" href="classAbstractBrowser.html#a7700c8a1252d5a79ce81a197bab66463">00085</a>         Gtk::StockID <a class="code" href="classAbstractBrowser.html#a7700c8a1252d5a79ce81a197bab66463" title="Returns the set icon for this browser.">get_icon_stock_id</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> m_IconId; } 
-<a name="l00086"></a>00086 
-<a name="l00092"></a><a class="code" href="classAbstractBrowser.html#ae1239f35c6438ab56f97ef54319c64e0">00092</a>         <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#ae1239f35c6438ab56f97ef54319c64e0" title="Tells if browser is visible in browserlist.">is_visible</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> m_IsVisible; }
-<a name="l00093"></a>00093 
-<a name="l00099"></a><a class="code" href="classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826">00099</a>         <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826" title="If this browser works without a connection (if false)">needs_connection</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> m_NeedsConnection; }  
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101     <span class="keyword">private</span>:
+<a name="l00069"></a>00069     <span class="keyword">virtual</span> Gtk::Widget * <a class="code" href="classAbstractBrowser.html#aeb2a146bb6f19235ceff15aa314e1c07" title="Tell BrowserList which element to manage.">get_container</a>(<span class="keywordtype">void</span>) = 0; <span class="comment">/* No Impl. */</span>
+<a name="l00070"></a>00070 
+<a name="l00078"></a><a class="code" href="classAbstractBrowser.html#a507606b53c6076585fad1dde0f4806b7">00078</a>     Glib::ustring&amp; <a class="code" href="classAbstractBrowser.html#a507606b53c6076585fad1dde0f4806b7" title="Get the name of the browser (shown in the browserlist)">get_name</a>(<span class="keywordtype">void</span>)
+<a name="l00079"></a>00079     {
+<a name="l00080"></a>00080         <span class="keywordflow">return</span> m_Name;
+<a name="l00081"></a>00081     }
+<a name="l00082"></a>00082 
+<a name="l00088"></a><a class="code" href="classAbstractBrowser.html#a7700c8a1252d5a79ce81a197bab66463">00088</a>     Gtk::StockID <a class="code" href="classAbstractBrowser.html#a7700c8a1252d5a79ce81a197bab66463" title="Returns the set icon for this browser.">get_icon_stock_id</a>(<span class="keywordtype">void</span>)
+<a name="l00089"></a>00089     {
+<a name="l00090"></a>00090         <span class="keywordflow">return</span> m_IconId;
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092 
+<a name="l00098"></a><a class="code" href="classAbstractBrowser.html#ae1239f35c6438ab56f97ef54319c64e0">00098</a>     <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#ae1239f35c6438ab56f97ef54319c64e0" title="Tells if browser is visible in browserlist.">is_visible</a>(<span class="keywordtype">void</span>)
+<a name="l00099"></a>00099     {
+<a name="l00100"></a>00100         <span class="keywordflow">return</span> m_IsVisible;
+<a name="l00101"></a>00101     }
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103         Glib::ustring m_Name;
-<a name="l00104"></a>00104         Gtk::StockID m_IconId;
-<a name="l00105"></a>00105         <span class="keywordtype">bool</span> m_NeedsConnection;
-<a name="l00106"></a>00106         <span class="keywordtype">bool</span> m_IsVisible;
-<a name="l00107"></a>00107 };
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109 <span class="preprocessor">#endif</span>
+<a name="l00108"></a><a class="code" href="classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826">00108</a>     <span class="keywordtype">bool</span> <a class="code" href="classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826" title="If this browser works without a connection (if false)">needs_connection</a>(<span class="keywordtype">void</span>)
+<a name="l00109"></a>00109     {
+<a name="l00110"></a>00110         <span class="keywordflow">return</span> m_NeedsConnection;
+<a name="l00111"></a>00111     }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 <span class="keyword">private</span>:
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     Glib::ustring m_Name;
+<a name="l00116"></a>00116     Gtk::StockID m_IconId;
+<a name="l00117"></a>00117     <span class="keywordtype">bool</span> m_NeedsConnection;
+<a name="l00118"></a>00118     <span class="keywordtype">bool</span> m_IsVisible;
+<a name="l00119"></a>00119 };
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -167,7 +179,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

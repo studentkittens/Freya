@@ -81,9 +81,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="check__log_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment"> * This file is part of Freya </span>
+<a name="l00002"></a>00002 <span class="comment"> * This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment"> * - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment"> * </span>
+<a name="l00004"></a>00004 <span class="comment"> *</span>
 <a name="l00005"></a>00005 <span class="comment"> * Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment"> *          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment"> *</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment"> *    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment"> *   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment"> *   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment"> *    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment"> *    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment"> *  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment"> *</span>
 <a name="l00018"></a>00018 <span class="comment"> * Freya is free software: you can redistribute it and/or modify</span>
@@ -122,51 +122,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040 <span class="comment">/* The whole suite. One suit for each module. */</span>
 <a name="l00041"></a><a class="code" href="classLogTestSuite.html">00041</a> <span class="keyword">class </span><a class="code" href="classLogTestSuite.html">LogTestSuite</a> : <span class="keyword">public</span> CxxTest::<a class="code" href="classCxxTest_1_1TestSuite.html">TestSuite</a>
 <a name="l00042"></a>00042 {
-<a name="l00043"></a>00043     <span class="keyword">public</span>:
-<a name="l00044"></a>00044         <span class="comment">/* some blackbox testing of log::writer */</span>
-<a name="l00045"></a><a class="code" href="classLogTestSuite.html#a1bd9ded59feb684cc45833ae1df80bc4">00045</a>         <span class="keywordtype">void</span> <a class="code" href="classLogTestSuite.html#a1bd9ded59feb684cc45833ae1df80bc4">testLogWriter</a>( <span class="keywordtype">void</span> )
-<a name="l00046"></a>00046         {
-<a name="l00047"></a>00047             <a class="code" href="classInit_1_1Path.html" title="Get the path to files Freya will write to (Config/Log)">Init::Path</a> path;
-<a name="l00048"></a>00048             <span class="keywordtype">int</span> aval = 0;
-<a name="l00049"></a>00049             <span class="keywordtype">long</span> fsize_a,fsize_b = 0;
-<a name="l00050"></a>00050             GStatBuf statbuf;
-<a name="l00051"></a>00051             memset(&amp;statbuf,0,<span class="keyword">sizeof</span>(GStatBuf));
+<a name="l00043"></a>00043 <span class="keyword">public</span>:
+<a name="l00044"></a>00044     <span class="comment">/* some blackbox testing of log::writer */</span>
+<a name="l00045"></a><a class="code" href="classLogTestSuite.html#a1bd9ded59feb684cc45833ae1df80bc4">00045</a>     <span class="keywordtype">void</span> <a class="code" href="classLogTestSuite.html#a1bd9ded59feb684cc45833ae1df80bc4">testLogWriter</a>( <span class="keywordtype">void</span> )
+<a name="l00046"></a>00046     {
+<a name="l00047"></a>00047         <a class="code" href="classInit_1_1Path.html" title="Get the path to files Freya will write to (Config/Log)">Init::Path</a> path;
+<a name="l00048"></a>00048         <span class="keywordtype">int</span> aval = 0;
+<a name="l00049"></a>00049         <span class="keywordtype">long</span> fsize_a,fsize_b = 0;
+<a name="l00050"></a>00050         GStatBuf statbuf;
+<a name="l00051"></a>00051         memset(&amp;statbuf,0,<span class="keyword">sizeof</span>(GStatBuf));
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053             <span class="comment">/* gets a logwriter instance, should create a log if not avaiable */</span>
-<a name="l00054"></a>00054             Log::Writer::instance(); 
-<a name="l00055"></a>00055             aval = g_stat(path.<a class="code" href="classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt">path_to_log</a>().c_str(),&amp;statbuf); 
-<a name="l00056"></a>00056            
-<a name="l00057"></a>00057             <span class="keywordflow">if</span>(aval != -1)
-<a name="l00058"></a>00058             {
-<a name="l00059"></a>00059                 fsize_a = statbuf.st_size;
-<a name="l00060"></a>00060                 printf(<span class="stringliteral">&quot;filesize var_a: %ld bytes. \n&quot;</span>,fsize_a);
-<a name="l00061"></a>00061                
-<a name="l00062"></a>00062                 fsize_b = statbuf.st_size;
-<a name="l00063"></a>00063                 printf(<span class="stringliteral">&quot;filesize var_b: %ld bytes. \n&quot;</span>,fsize_b);
-<a name="l00064"></a>00064                 
-<a name="l00065"></a>00065                 <span class="comment">/* log size equal? */</span>
-<a name="l00066"></a>00066                 TS_ASSERT_EQUALS(fsize_a,fsize_b);
+<a name="l00053"></a>00053         <span class="comment">/* gets a logwriter instance, should create a log if not avaiable */</span>
+<a name="l00054"></a>00054         Log::Writer::instance();
+<a name="l00055"></a>00055         aval = g_stat(path.<a class="code" href="classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt">path_to_log</a>().c_str(),&amp;statbuf);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057         <span class="keywordflow">if</span>(aval != -1)
+<a name="l00058"></a>00058         {
+<a name="l00059"></a>00059             fsize_a = statbuf.st_size;
+<a name="l00060"></a>00060             printf(<span class="stringliteral">&quot;filesize var_a: %ld bytes. \n&quot;</span>,fsize_a);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062             fsize_b = statbuf.st_size;
+<a name="l00063"></a>00063             printf(<span class="stringliteral">&quot;filesize var_b: %ld bytes. \n&quot;</span>,fsize_b);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065             <span class="comment">/* log size equal? */</span>
+<a name="l00066"></a>00066             TS_ASSERT_EQUALS(fsize_a,fsize_b);
 <a name="l00067"></a>00067 
-<a name="l00068"></a>00068                 <span class="comment">/* writing a message to log, messeage should grow by 12 bytes + 64 bytes date/log footprint */</span>
-<a name="l00069"></a>00069                 <a class="code" href="Writer_8hh.html#ad33695a1806e13f4e48454c9541af99c">Info</a>(<span class="stringliteral">&quot;test message&quot;</span>);
-<a name="l00070"></a>00070                 printf(<span class="stringliteral">&quot;writing message to log.\n&quot;</span>);
+<a name="l00068"></a>00068             <span class="comment">/* writing a message to log, messeage should grow by 12 bytes + 64 bytes date/log footprint */</span>
+<a name="l00069"></a>00069             <a class="code" href="Writer_8hh.html#ad33695a1806e13f4e48454c9541af99c">Info</a>(<span class="stringliteral">&quot;test message&quot;</span>);
+<a name="l00070"></a>00070             printf(<span class="stringliteral">&quot;writing message to log.\n&quot;</span>);
 <a name="l00071"></a>00071 
-<a name="l00072"></a>00072                 <span class="comment">/*reinit stat struct and get new filesize */</span>
-<a name="l00073"></a>00073                 g_stat(path.<a class="code" href="classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt">path_to_log</a>().c_str(),&amp;statbuf); 
-<a name="l00074"></a>00074                 fsize_b = statbuf.st_size;
-<a name="l00075"></a>00075                 printf(<span class="stringliteral">&quot;new filesize var_b: %ld bytes. \n&quot;</span>,fsize_b);
-<a name="l00076"></a>00076                 
-<a name="l00077"></a>00077                 <span class="comment">/* file_b bigger after writing to log? */</span>
-<a name="l00078"></a>00078                 TS_ASSERT(fsize_a &lt; fsize_b);
+<a name="l00072"></a>00072             <span class="comment">/*reinit stat struct and get new filesize */</span>
+<a name="l00073"></a>00073             g_stat(path.<a class="code" href="classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9" title="returns absolute path log file e.g. ~/.config/freya/log.txt">path_to_log</a>().c_str(),&amp;statbuf);
+<a name="l00074"></a>00074             fsize_b = statbuf.st_size;
+<a name="l00075"></a>00075             printf(<span class="stringliteral">&quot;new filesize var_b: %ld bytes. \n&quot;</span>,fsize_b);
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077             <span class="comment">/* file_b bigger after writing to log? */</span>
+<a name="l00078"></a>00078             TS_ASSERT(fsize_a &lt; fsize_b);
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080                 <span class="comment">/* file_b size increased properly? file_a + written bytes? */</span>
-<a name="l00081"></a>00081                 TS_ASSERT(fsize_a+12+64 == fsize_b);
-<a name="l00082"></a>00082             }
-<a name="l00083"></a>00083             <span class="keywordflow">else</span>
-<a name="l00084"></a>00084             {
-<a name="l00085"></a>00085                 TS_FAIL(<span class="stringliteral">&quot;error occured, logfile possibly not avaiable.&quot;</span>);
-<a name="l00086"></a>00086             }
-<a name="l00087"></a>00087         }
+<a name="l00080"></a>00080             <span class="comment">/* file_b size increased properly? file_a + written bytes? */</span>
+<a name="l00081"></a>00081             TS_ASSERT(fsize_a+12+64 == fsize_b);
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083         <span class="keywordflow">else</span>
+<a name="l00084"></a>00084         {
+<a name="l00085"></a>00085             TS_FAIL(<span class="stringliteral">&quot;error occured, logfile possibly not avaiable.&quot;</span>);
+<a name="l00086"></a>00086         }
+<a name="l00087"></a>00087     }
 <a name="l00088"></a>00088 
 <a name="l00089"></a>00089 };
 </pre></div></div><!-- contents -->
@@ -187,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

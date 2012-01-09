@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/GManager/NotifyManager.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="NotifyManager_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="NotifyManager_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -118,15 +118,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037 <span class="keyword">namespace </span>GManager
 <a name="l00038"></a>00038 {
-<a name="l00044"></a><a class="code" href="classGManager_1_1NotifyManager.html">00044</a>     <span class="keyword">class </span><a class="code" href="classGManager_1_1NotifyManager.html" title="Manages Notifications that are triggered on player events.">NotifyManager</a> : <span class="keyword">public</span> <a class="code" href="classAbstractClientUser.html">AbstractClientUser</a>
+<a name="l00044"></a><a class="code" href="classGManager_1_1NotifyManager.html">00044</a>     <span class="keyword">class </span><a class="code" href="classGManager_1_1NotifyManager.html" title="Manages Notifications that are triggered on player events.">NotifyManager</a> : <span class="keyword">public</span> MPD::AbstractClientUser
 <a name="l00045"></a>00045     {
-<a name="l00046"></a>00046         <span class="keyword">public</span>:
-<a name="l00047"></a>00047             <a class="code" href="classGManager_1_1NotifyManager.html#a20515a2671a8dab24b54cdaaa58b6f00">NotifyManager</a>(<a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>&amp; client);
+<a name="l00046"></a>00046     <span class="keyword">public</span>:
+<a name="l00047"></a>00047         <a class="code" href="classGManager_1_1NotifyManager.html#a20515a2671a8dab24b54cdaaa58b6f00">NotifyManager</a>(<a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>&amp; client);
 <a name="l00048"></a>00048 
-<a name="l00049"></a>00049         <span class="keyword">private</span>:
+<a name="l00049"></a>00049     <span class="keyword">private</span>:
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051             <span class="keywordtype">void</span> on_client_update(<span class="keyword">enum</span> mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data);
-<a name="l00052"></a>00052             <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected);
+<a name="l00051"></a>00051         <span class="keywordtype">void</span> on_client_update(<span class="keyword">enum</span> mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data);
+<a name="l00052"></a>00052         <span class="keywordtype">void</span> on_connection_change(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected);
 <a name="l00053"></a>00053     };
 <a name="l00054"></a>00054 }
 <a name="l00055"></a>00055 
@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

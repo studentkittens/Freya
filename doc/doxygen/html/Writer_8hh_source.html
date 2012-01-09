@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Log/Writer.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Writer_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="Writer_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -130,43 +130,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00048"></a>00048 <span class="preprocessor"></span>
 <a name="l00049"></a>00049 <span class="keyword">namespace </span>Log
 <a name="l00050"></a>00050 {
-<a name="l00054"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">00054</a>     <span class="keyword">enum</span> <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> {
-<a name="l00055"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">00055</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">LOG_OK</a>,
-<a name="l00056"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">00056</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">LOG_ERROR</a>,
-<a name="l00057"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">00057</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">LOG_FATAL_ERROR</a>,
-<a name="l00058"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">00058</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">LOG_INFO</a>,
-<a name="l00059"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">00059</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">LOG_WARN</a>,
-<a name="l00060"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">00060</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">LOG_DEBUG</a>
-<a name="l00061"></a>00061     };
-<a name="l00062"></a>00062 
-<a name="l00063"></a><a class="code" href="classLog_1_1Writer.html">00063</a>     <span class="keyword">class </span><a class="code" href="classLog_1_1Writer.html">Writer</a> 
-<a name="l00064"></a>00064     {
-<a name="l00065"></a>00065         <span class="comment">/* Make this class a singleton,</span>
-<a name="l00066"></a>00066 <span class="comment">         * this implicitely defines a ctor,</span>
-<a name="l00067"></a>00067 <span class="comment">         * Just the dtor is defined expl. below.</span>
-<a name="l00068"></a>00068 <span class="comment">         */</span>
-<a name="l00069"></a>00069         DEF_SINGLETON(<a class="code" href="classLog_1_1Writer.html">Writer</a>);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071         <span class="keyword">public</span>:
-<a name="l00072"></a>00072 
-<a name="l00076"></a>00076         <a class="code" href="classLog_1_1Writer.html#a269d50952bc092a39202bb0bba99c345" title="Closes the Log also properly. It is not fatal when not being called.">~Writer</a>();
-<a name="l00077"></a>00077 
-<a name="l00087"></a>00087         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0" title="Actual instance method called. Do not use directly!">message</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">int</span> line, <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, ...);                 
-<a name="l00088"></a>00088 
-<a name="l00092"></a>00092         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395" title="Clear the logfile (but keep it open)">clear</a>(<span class="keywordtype">void</span>);
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094         <span class="keyword">private</span>:
-<a name="l00095"></a>00095 
+<a name="l00054"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">00054</a>     <span class="keyword">enum</span> <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a>
+<a name="l00055"></a>00055     {
+<a name="l00056"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">00056</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">LOG_OK</a>,
+<a name="l00057"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">00057</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">LOG_ERROR</a>,
+<a name="l00058"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">00058</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">LOG_FATAL_ERROR</a>,
+<a name="l00059"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">00059</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">LOG_INFO</a>,
+<a name="l00060"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">00060</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">LOG_WARN</a>,
+<a name="l00061"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">00061</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">LOG_DEBUG</a>
+<a name="l00062"></a>00062     };
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="classLog_1_1Writer.html">00064</a>     <span class="keyword">class </span><a class="code" href="classLog_1_1Writer.html">Writer</a>
+<a name="l00065"></a>00065     {
+<a name="l00066"></a>00066         <span class="comment">/* Make this class a singleton,</span>
+<a name="l00067"></a>00067 <span class="comment">         * this implicitely defines a ctor,</span>
+<a name="l00068"></a>00068 <span class="comment">         * Just the dtor is defined expl. below.</span>
+<a name="l00069"></a>00069 <span class="comment">         */</span>
+<a name="l00070"></a>00070         DEF_SINGLETON(<a class="code" href="classLog_1_1Writer.html">Writer</a>);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072     <span class="keyword">public</span>:
+<a name="l00073"></a>00073 
+<a name="l00077"></a>00077         <a class="code" href="classLog_1_1Writer.html#a269d50952bc092a39202bb0bba99c345" title="Closes the Log also properly. It is not fatal when not being called.">~Writer</a>();
+<a name="l00078"></a>00078 
+<a name="l00088"></a>00088         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0" title="Actual instance method called. Do not use directly!">message</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">int</span> line, <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, ...);
+<a name="l00089"></a>00089 
+<a name="l00093"></a>00093         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395" title="Clear the logfile (but keep it open)">clear</a>(<span class="keywordtype">void</span>);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095     <span class="keyword">private</span>:
 <a name="l00096"></a>00096 
-<a name="l00097"></a>00097         Glib::ustring m_Logpath;
-<a name="l00098"></a>00098         FILE * m_Logfile;                                                               
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100         <span class="keyword">const</span> <span class="keywordtype">char</span> * convert_enum_to_str(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keywordtype">bool</span>&amp; append_location); 
-<a name="l00101"></a>00101         <span class="keywordtype">void</span> get_current_time(<span class="keywordtype">char</span> buffer[]);                                                                   
-<a name="l00102"></a>00102     };
-<a name="l00103"></a>00103 }
-<a name="l00104"></a>00104 
-<a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098         Glib::ustring m_Logpath;
+<a name="l00099"></a>00099         FILE * m_Logfile;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="keyword">const</span> <span class="keywordtype">char</span> * convert_enum_to_str(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keywordtype">bool</span>&amp; append_location);
+<a name="l00102"></a>00102         <span class="keywordtype">void</span> get_current_time(<span class="keywordtype">char</span> buffer[]);
+<a name="l00103"></a>00103     };
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -185,7 +186,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 18:38:11 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

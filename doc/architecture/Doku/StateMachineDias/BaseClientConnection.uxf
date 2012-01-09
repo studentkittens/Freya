@@ -4,10 +4,10 @@
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>30</x>
-      <y>10</y>
-      <w>780</w>
-      <h>550</h>
+      <x>20</x>
+      <y>20</y>
+      <w>590</w>
+      <h>370</h>
     </coordinates>
     <panel_attributes>*state machine*
 BaseClient</panel_attributes>
@@ -16,8 +16,8 @@ BaseClient</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InitialState</type>
     <coordinates>
-      <x>160</x>
-      <y>160</y>
+      <x>40</x>
+      <y>90</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -27,8 +27,8 @@ BaseClient</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>240</x>
-      <y>150</y>
+      <x>120</x>
+      <y>80</y>
       <w>130</w>
       <h>60</h>
     </coordinates>
@@ -40,8 +40,8 @@ Listener=NULL</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>150</x>
-      <y>120</y>
+      <x>30</x>
+      <y>50</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -52,8 +52,8 @@ start</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>340</x>
-      <y>130</y>
+      <x>220</x>
+      <y>60</y>
       <w>200</w>
       <h>70</h>
     </coordinates>
@@ -64,8 +64,8 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.Decision</type>
     <coordinates>
-      <x>520</x>
-      <y>160</y>
+      <x>400</x>
+      <y>90</y>
       <w>40</w>
       <h>40</h>
     </coordinates>
@@ -75,8 +75,8 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>290</x>
-      <y>70</y>
+      <x>170</x>
+      <y>0</y>
       <w>270</w>
       <h>110</h>
     </coordinates>
@@ -87,8 +87,8 @@ connect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>480</x>
-      <y>350</y>
+      <x>360</x>
+      <y>280</y>
       <w>140</w>
       <h>50</h>
     </coordinates>
@@ -102,8 +102,8 @@ Listener.go_idle()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>340</x>
-      <y>170</y>
+      <x>220</x>
+      <y>100</y>
       <w>392</w>
       <h>110</h>
     </coordinates>
@@ -114,8 +114,8 @@ Listener.go_idle()
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>200</x>
-      <y>230</y>
+      <x>80</x>
+      <y>160</y>
       <w>160</w>
       <h>50</h>
     </coordinates>
@@ -127,8 +127,8 @@ Listener.leave_idle()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>330</y>
+      <x>200</x>
+      <y>260</y>
       <w>180</w>
       <h>70</h>
     </coordinates>
@@ -139,8 +139,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>540</x>
-      <y>230</y>
+      <x>420</x>
+      <y>160</y>
       <w>50</w>
       <h>140</h>
     </coordinates>
@@ -150,8 +150,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SendSignal</type>
     <coordinates>
-      <x>300</x>
-      <y>300</y>
+      <x>180</x>
+      <y>230</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
@@ -161,8 +161,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SynchBarHorizontal</type>
     <coordinates>
-      <x>510</x>
-      <y>250</y>
+      <x>390</x>
+      <y>180</y>
       <w>70</w>
       <h>20</h>
     </coordinates>
@@ -172,8 +172,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>410</x>
-      <y>230</y>
+      <x>290</x>
+      <y>160</y>
       <w>130</w>
       <h>90</h>
     </coordinates>
@@ -183,8 +183,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SynchBarVertical</type>
     <coordinates>
-      <x>340</x>
-      <y>350</y>
+      <x>220</x>
+      <y>280</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -194,8 +194,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>230</x>
-      <y>250</y>
+      <x>110</x>
+      <y>180</y>
       <w>140</w>
       <h>170</h>
     </coordinates>
@@ -205,8 +205,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>300</x>
-      <y>310</y>
+      <x>180</x>
+      <y>240</y>
       <w>70</w>
       <h>70</h>
     </coordinates>
@@ -216,8 +216,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>280</x>
-      <y>180</y>
+      <x>160</x>
+      <y>110</y>
       <w>50</w>
       <h>70</h>
     </coordinates>
@@ -227,8 +227,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.FinalState</type>
     <coordinates>
-      <x>160</x>
-      <y>180</y>
+      <x>40</x>
+      <y>110</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -238,8 +238,8 @@ disconnect()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>150</x>
-      <y>160</y>
+      <x>30</x>
+      <y>90</y>
       <w>110</w>
       <h>50</h>
     </coordinates>

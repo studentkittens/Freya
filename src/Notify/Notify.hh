@@ -54,10 +54,39 @@ namespace Notify
     public:
         ~Notify();
 
-        // TODO: Add doxycomments
+        /**
+        * @brief Calls libnotifys notify-send indirectly.
+        *
+        * @param hl The headline of the Notification-Popup.
+        * @param msg Actual text to display.
+        */
         void send_big(Glib::ustring hl, Glib::ustring msg);
+
+        /**
+        * @brief Equivalent to send_big() but with an Imageicon
+        *
+        * @param hl The headline of the Notification-Popup.
+        * @param msg Actual text to display.
+        * @param pixbuf GdkPixbuf-Pointer to the Image in Memory
+        */
         void send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf);
-        void set_stock_icon(const char*);
+
+        /**
+        * @brief Sets the Image to be displayed in the next Notification to a Stock-Icon
+        *
+        * This method is not threadsafe. If you need a threadsafe version see set_next_extra() on how to create a thread safe version
+        *
+        * @param stock Stock icon name. <a href="http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html">Examples</a>
+        */
+        void set_stock_icon(const char* stock);
+
+        /**
+        * @brief Detaches the next Notifcation, causing it to be displayed seperately rather than replacing the default Notification.
+        *
+        * The next Notification can't be altered in anyway from within the calling application for now. Also this method is NOT threadsafe.
+        * If you need a threadsafe version, just write yourself a wrapper method that first aquires a mutex and then calls set_next_extra() AND a send-method.
+        * Then ONLY use your thread safe wrapper to call this method.
+        */
         void set_next_extra();
 
     private:
@@ -84,7 +113,7 @@ namespace Notify
 #define NOTIFY_STOCK_ICON(x) Notify::Notify::instance().set_stock_icon(x)
 
 
-/* Next and ONLY NEXT notification will be seperate to all others and cant be closed manually */
+/* Next and ONLY NEXT notification will be seperate to all others and closes after notify-timeout set in config */
 #define NOTIFY_EXTRA() Notify::Notify::instance().set_next_extra()
 
 

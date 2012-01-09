@@ -1,4 +1,4 @@
-\section{GUI Elementklassen}
+/section{GUI Elementklassen}
 \subsection{Interaktion des Clients mit anderen Modulen}
 \begin{itemize}
 \item Die meisten GUI Klassen leiten von \emph{AbstractClientUser} ab und speichern daher eine Referenz auf eine Instanz von \emph{MPD::Client}
@@ -39,9 +39,17 @@ Beispiele dafür sind ,,Queue'', ,,Database'' und ,,Settings''.
 Viele Klassen sind nur stichpunktartig erklärt da sie oft einander ähnlich sind, und ein gewisser Freiraum bei der Implementierung der
 GUI gelassen werden soll.
 
-
+\newpage
+\begin{figure}[htb!]
 \subsubsection{AbstractBrowser}
-Eine abstrakte Basisklasse durch die...
+	\centering
+        \includegraphics[width=\textwidth]{classAbstractBrowser.png}
+	\caption{Klassendiagramm zu AbstractBrowser}
+	\label{g_abstract_browser}
+\end{figure}
+
+
+Eine abstrakte Basisklasse \ref{g_abstract_browser} durch die...
 \begin{verbatim}
   Gtk::Widget * get_container(void) 
 \end{verbatim}

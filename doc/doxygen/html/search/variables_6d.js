@@ -25,7 +25,7 @@ var searchData=
   ['m_5fuidefinition',['m_UiDefinition',['../classBrowser_1_1BasePopup.html#ad79adeca7fca372b1fe4e65c375a3eda',1,'Browser::BasePopup']]],
   ['m_5fvbox',['m_VBox',['../classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920',1,'Avahi::View']]],
   ['mp_5fbaseclient',['mp_BaseClient',['../classMPD_1_1AbstractClientExtension.html#af908b548cd84e599d5dbd9c3dea70ac7',1,'MPD::AbstractClientExtension']]],
-  ['mp_5fclient',['mp_Client',['../classAbstractClientUser.html#a1c818d267b0f57dff066bd1b1d885efe',1,'AbstractClientUser']]],
+  ['mp_5fclient',['mp_Client',['../classMPD_1_1AbstractClientUser.html#ac1060b60143aae1493e6f59a9c67cb4e',1,'MPD::AbstractClientUser']]],
   ['mp_5flistener',['mp_Listener',['../classMPD_1_1BaseClient.html#a6fa80d2e7c817983c0533aaf08bf36a4',1,'MPD::BaseClient']]],
   ['mp_5fpopup',['mp_Popup',['../classBrowser_1_1BasePopup.html#a56add1e6c06f1b400dd664a74adb672e',1,'Browser::BasePopup']]]
 ];

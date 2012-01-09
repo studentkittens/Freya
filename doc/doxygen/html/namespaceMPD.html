@@ -91,6 +91,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1AbstractClientExtension.html">AbstractClientExtension</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for classes that want to implement spefic <a class="el" href="namespaceMPD.html" title="Contains everything related to Interaction with the MPD Server.">MPD</a> Commands.  <a href="classMPD_1_1AbstractClientExtension.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1AbstractClientUser.html">AbstractClientUser</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1AbstractComposite.html">AbstractComposite</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1AbstractItemGenerator.html">AbstractItemGenerator</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1AbstractItemlist.html">AbstractItemlist</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inhertit from this class to use <a class="el" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>'s fill_* methods.  <a href="classMPD_1_1AbstractItemlist.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1AudioOutput.html">AudioOutput</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for mpd_output, implements also two client commands: <a class="el" href="classMPD_1_1AudioOutput.html#aede8d6b45c7e37ed848c4f340f09c940" title="Enable this output.">enable()</a> and <a class="el" href="classMPD_1_1AudioOutput.html#a8e89a5b526193acd51811ec985bcee04" title="Disable this output.">disable()</a>  <a href="classMPD_1_1AudioOutput.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMPD_1_1BaseClient.html">BaseClient</a></td></tr>
@@ -129,6 +134,9 @@ bool, mpd_error &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Contains everything related to Interaction with the <a class="el" href="namespaceMPD.html" title="Contains everything related to Interaction with the MPD Server.">MPD</a> Server. </p>
+<p>This class exists to allow use of the Proxy Pattern (i.e. a Proxy for <a class="el" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a>)</p>
+<p>Instead of talking directly with the client in order to request data some classes want to do implement something own, like for example a caching of the data.</p>
+<p>An example would be the DatabaseCache that implements this class. It caches all data, and requests data only if not cached yet. </p>
 </div><hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="ad3d56bae39a923ba52f905c21afc9e55"></a><!-- doxytag: member="MPD::ConnectionNotifier" ref="ad3d56bae39a923ba52f905c21afc9e55" args="" -->
 <div class="memitem">
@@ -258,7 +266,7 @@ bool, mpd_error &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 19:02:31 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

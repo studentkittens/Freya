@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1SettingsGeneral.html" title="General Settings Tab." alt="" coords="5,227,176,363"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1SettingsNetwork.html" title="Network Settings Tab." alt="" coords="201,227,375,363"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="399,190,573,399"/>
-<area shape="rect" id="node9" href="$classBrowser_1_1SettingsPlayback.html" title="Playback Settings Tab." alt="" coords="598,227,777,363"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1SettingsGeneral.html" title="General Settings Tab." alt="" coords="5,233,176,369"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1SettingsNetwork.html" title="Network Settings Tab." alt="" coords="201,233,375,369"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="Outputlist Tab." alt="" coords="399,189,573,413"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1SettingsPlayback.html" title="Playback Settings Tab." alt="" coords="598,233,777,369"/>
 </map>

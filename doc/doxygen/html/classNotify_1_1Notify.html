@@ -115,9 +115,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#a9a9b2f1c592352df1c26424a5695f0f1">~Notify</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#a7cfa493bc98420ecd55e389038ac28d5">send_big</a> (Glib::ustring hl, Glib::ustring msg)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls libnotifys notify-send indirectly.  <a href="#a7cfa493bc98420ecd55e389038ac28d5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#ae890e3a532e1d8668d02707e55d8ef6e">send_full</a> (Glib::ustring hl, Glib::ustring msg, GdkPixbuf *pixbuf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292">set_stock_icon</a> (const char *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Equivalent to <a class="el" href="classNotify_1_1Notify.html#a7cfa493bc98420ecd55e389038ac28d5" title="Calls libnotifys notify-send indirectly.">send_big()</a> but with an Imageicon.  <a href="#ae890e3a532e1d8668d02707e55d8ef6e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#ae204349963d84fbbc240557a1ff38a9d">set_stock_icon</a> (const char *stock)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Image to be displayed in the next Notification to a Stock-Icon.  <a href="#ae204349963d84fbbc240557a1ff38a9d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c">set_next_extra</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Detaches the next Notifcation, causing it to be displayed seperately rather than replacing the default Notification.  <a href="#aa9fa91fbd91d2d6aea59b895e77bde4c"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
 Friends</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotify_1_1Notify.html#a9a9b3735f18e8133f777b6a5e3fd5f56">Browser::Settings</a></td></tr>
@@ -169,6 +173,15 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Calls libnotifys notify-send indirectly. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hl</td><td>The headline of the Notification-Popup. </td></tr>
+    <tr><td class="paramname">msg</td><td>Actual text to display. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ae890e3a532e1d8668d02707e55d8ef6e"></a><!-- doxytag: member="Notify::Notify::send_full" ref="ae890e3a532e1d8668d02707e55d8ef6e" args="(Glib::ustring hl, Glib::ustring msg, GdkPixbuf *pixbuf)" -->
@@ -202,6 +215,16 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Equivalent to <a class="el" href="classNotify_1_1Notify.html#a7cfa493bc98420ecd55e389038ac28d5" title="Calls libnotifys notify-send indirectly.">send_big()</a> but with an Imageicon. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hl</td><td>The headline of the Notification-Popup. </td></tr>
+    <tr><td class="paramname">msg</td><td>Actual text to display. </td></tr>
+    <tr><td class="paramname">pixbuf</td><td>GdkPixbuf-Pointer to the Image in Memory </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="aa9fa91fbd91d2d6aea59b895e77bde4c"></a><!-- doxytag: member="Notify::Notify::set_next_extra" ref="aa9fa91fbd91d2d6aea59b895e77bde4c" args="()" -->
@@ -218,22 +241,34 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Detaches the next Notifcation, causing it to be displayed seperately rather than replacing the default Notification. </p>
+<p>The next Notification can't be altered in anyway from within the calling application for now. Also this method is NOT threadsafe. If you need a threadsafe version, just write yourself a wrapper method that first aquires a mutex and then calls <a class="el" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c" title="Detaches the next Notifcation, causing it to be displayed seperately rather than replacing the defaul...">set_next_extra()</a> AND a send-method. Then ONLY use your thread safe wrapper to call this method. </p>
+
 </div>
 </div>
-<a class="anchor" id="a44a0c9a95c2bc0530a7cd735af083292"></a><!-- doxytag: member="Notify::Notify::set_stock_icon" ref="a44a0c9a95c2bc0530a7cd735af083292" args="(const char *)" -->
+<a class="anchor" id="ae204349963d84fbbc240557a1ff38a9d"></a><!-- doxytag: member="Notify::Notify::set_stock_icon" ref="ae204349963d84fbbc240557a1ff38a9d" args="(const char *stock)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292">Notify::Notify::set_stock_icon</a> </td>
+          <td class="memname">void <a class="el" href="classNotify_1_1Notify.html#ae204349963d84fbbc240557a1ff38a9d">Notify::Notify::set_stock_icon</a> </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>stock</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Sets the Image to be displayed in the next Notification to a Stock-Icon. </p>
+<p>This method is not threadsafe. If you need a threadsafe version see <a class="el" href="classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c" title="Detaches the next Notifcation, causing it to be displayed seperately rather than replacing the defaul...">set_next_extra()</a> on how to create a thread safe version</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stock</td><td>Stock icon name. <a href="http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html">Examples</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -274,7 +309,7 @@ Friends</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 19:02:31 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

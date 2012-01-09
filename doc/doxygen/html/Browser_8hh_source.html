@@ -80,10 +80,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/Avahi/Browser.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Browser_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001  <span class="comment">/***********************************************************</span>
-<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya </span>
+<a href="Browser_8hh.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***********************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">* This file is part of Freya</span>
 <a name="l00003"></a>00003 <span class="comment">* - A free MPD Gtk3 MPD Client -</span>
-<a name="l00004"></a>00004 <span class="comment">* </span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
 <a name="l00005"></a>00005 <span class="comment">* Authors: Christopher Pahl, Christoph Piechula,</span>
 <a name="l00006"></a>00006 <span class="comment">*          Eduard Schneider, Marc Tigges</span>
 <a name="l00007"></a>00007 <span class="comment">*</span>
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="comment">*    /// //_.-&#39;    .-/&quot;;  `        ``&lt;._  ``.&#39;&#39;_ `. / // /</span>
 <a name="l00013"></a>00013 <span class="comment">*   ///_.-&#39; _..--.&#39;_                        `( ) ) // //</span>
 <a name="l00014"></a>00014 <span class="comment">*   / (_..-&#39; // (&lt; _     ;_..__               ; `&#39; / ///</span>
-<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //  </span>
+<a name="l00015"></a>00015 <span class="comment">*    / // // //  `-._,_)&#39; // / ``--...____..-&#39; /// / //</span>
 <a name="l00016"></a>00016 <span class="comment">*  Ascii-Art by Felix Lee &lt;flee@cse.psu.edu&gt;</span>
 <a name="l00017"></a>00017 <span class="comment">*</span>
 <a name="l00018"></a>00018 <span class="comment">* Freya is free software: you can redistribute it and/or modify</span>
@@ -128,90 +128,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00049"></a>00049 
 <a name="l00056"></a><a class="code" href="classAvahi_1_1Browser.html">00056</a>     <span class="keyword">class </span><a class="code" href="classAvahi_1_1Browser.html" title="This class offers a simple Zeroconf Serverbrowser.">Browser</a>
 <a name="l00057"></a>00057     {
-<a name="l00058"></a>00058         <span class="keyword">public</span>:
+<a name="l00058"></a>00058     <span class="keyword">public</span>:
 <a name="l00059"></a>00059 
-<a name="l00063"></a>00063             <a class="code" href="classAvahi_1_1Browser.html#a185d7f8182bab21283559664117b3884" title="Instance the underlying browser and already start querying.">Browser</a>();
+<a name="l00063"></a>00063         <a class="code" href="classAvahi_1_1Browser.html#a185d7f8182bab21283559664117b3884" title="Instance the underlying browser and already start querying.">Browser</a>();
 <a name="l00064"></a>00064 
-<a name="l00068"></a>00068             <a class="code" href="classAvahi_1_1Browser.html#a097c931d753a1cc434fb98e86d656151" title="Clean up before you can instance another one.">~Browser</a>();
+<a name="l00068"></a>00068         <a class="code" href="classAvahi_1_1Browser.html#a097c931d753a1cc434fb98e86d656151" title="Clean up before you can instance another one.">~Browser</a>();
 <a name="l00069"></a>00069 
-<a name="l00075"></a>00075             Gtk::Window&amp; <a class="code" href="classAvahi_1_1Browser.html#a7f125f15c32bb87cf46a0bec14e96351" title="Get the Gtk::Window of the view.">get_window</a>(<span class="keywordtype">void</span>);
+<a name="l00075"></a>00075         Gtk::Window&amp; <a class="code" href="classAvahi_1_1Browser.html#a7f125f15c32bb87cf46a0bec14e96351" title="Get the Gtk::Window of the view.">get_window</a>(<span class="keywordtype">void</span>);
 <a name="l00076"></a>00076 
-<a name="l00082"></a>00082             <span class="keywordtype">bool</span> <a class="code" href="classAvahi_1_1Browser.html#a1f5ef46e504f2aad4a010f056dcfd07a" title="Check if Browser is ready for use.">is_connected</a>(<span class="keywordtype">void</span>);
+<a name="l00082"></a>00082         <span class="keywordtype">bool</span> <a class="code" href="classAvahi_1_1Browser.html#a1f5ef46e504f2aad4a010f056dcfd07a" title="Check if Browser is ready for use.">is_connected</a>(<span class="keywordtype">void</span>);
 <a name="l00083"></a>00083 
-<a name="l00091"></a>00091             <a class="code" href="namespaceAvahi.html#a2459947c284eb15430ba6fb39f6ec906" title="Called when the user selectes a server from the list.">SelectNotify</a>&amp; <a class="code" href="classAvahi_1_1Browser.html#a9100a1b58f16eb0b346a850b8fc2ee99" title="Call connect on.">signal_selection_done</a>(<span class="keywordtype">void</span>);
+<a name="l00091"></a>00091         <a class="code" href="namespaceAvahi.html#a2459947c284eb15430ba6fb39f6ec906" title="Called when the user selectes a server from the list.">SelectNotify</a>&amp; <a class="code" href="classAvahi_1_1Browser.html#a9100a1b58f16eb0b346a850b8fc2ee99" title="Call connect on.">signal_selection_done</a>(<span class="keywordtype">void</span>);
 <a name="l00092"></a>00092 
-<a name="l00093"></a>00093         <span class="keyword">private</span>:
+<a name="l00093"></a>00093     <span class="keyword">private</span>:
 <a name="l00094"></a>00094 
-<a name="l00095"></a>00095             <span class="comment">/* CALLBACKS */</span>
+<a name="l00095"></a>00095         <span class="comment">/* CALLBACKS */</span>
 <a name="l00096"></a>00096 
-<a name="l00097"></a>00097             <span class="keywordtype">void</span> client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
-<a name="l00098"></a>00098                     AvahiClientState state);
+<a name="l00097"></a>00097         <span class="keywordtype">void</span> client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
+<a name="l00098"></a>00098                              AvahiClientState state);
 <a name="l00099"></a>00099 
-<a name="l00100"></a>00100             <span class="keyword">static</span> <span class="keywordtype">void</span> wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
-<a name="l00101"></a>00101                     AvahiClientState state,
-<a name="l00102"></a>00102                     <span class="keywordtype">void</span> * <span class="keyword">self</span>);
+<a name="l00100"></a>00100         <span class="keyword">static</span> <span class="keywordtype">void</span> wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
+<a name="l00101"></a>00101                                          AvahiClientState state,
+<a name="l00102"></a>00102                                          <span class="keywordtype">void</span> * <span class="keyword">self</span>);
 <a name="l00103"></a>00103 
-<a name="l00104"></a>00104             <span class="comment">/* Argh... Avahi loves huge functions */</span>
-<a name="l00105"></a>00105             <span class="keywordtype">void</span> resolve_callback(
-<a name="l00106"></a>00106                     AvahiServiceResolver * resolver,
-<a name="l00107"></a>00107                     AVAHI_GCC_UNUSED AvahiIfIndex interface,
-<a name="l00108"></a>00108                     AVAHI_GCC_UNUSED AvahiProtocol protocol,
-<a name="l00109"></a>00109                     AvahiResolverEvent event,
-<a name="l00110"></a>00110                     <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
-<a name="l00111"></a>00111                     <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
-<a name="l00112"></a>00112                     <span class="keyword">const</span> <span class="keywordtype">char</span> *domain,
-<a name="l00113"></a>00113                     <span class="keyword">const</span> <span class="keywordtype">char</span> *host_name,
-<a name="l00114"></a>00114                     <span class="keyword">const</span> AvahiAddress *address,
-<a name="l00115"></a>00115                     uint16_t port,
-<a name="l00116"></a>00116                     AVAHI_GCC_UNUSED AvahiStringList *txt,
-<a name="l00117"></a>00117                     AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
+<a name="l00104"></a>00104         <span class="comment">/* Argh... Avahi loves huge functions */</span>
+<a name="l00105"></a>00105         <span class="keywordtype">void</span> resolve_callback(
+<a name="l00106"></a>00106             AvahiServiceResolver * resolver,
+<a name="l00107"></a>00107             AVAHI_GCC_UNUSED AvahiIfIndex interface,
+<a name="l00108"></a>00108             AVAHI_GCC_UNUSED AvahiProtocol protocol,
+<a name="l00109"></a>00109             AvahiResolverEvent event,
+<a name="l00110"></a>00110             <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
+<a name="l00111"></a>00111             <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
+<a name="l00112"></a>00112             <span class="keyword">const</span> <span class="keywordtype">char</span> *domain,
+<a name="l00113"></a>00113             <span class="keyword">const</span> <span class="keywordtype">char</span> *host_name,
+<a name="l00114"></a>00114             <span class="keyword">const</span> AvahiAddress *address,
+<a name="l00115"></a>00115             uint16_t port,
+<a name="l00116"></a>00116             AVAHI_GCC_UNUSED AvahiStringList *txt,
+<a name="l00117"></a>00117             AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
 <a name="l00118"></a>00118 
-<a name="l00119"></a>00119             <span class="keyword">static</span> <span class="keywordtype">void</span> wrap_resolve_callback(AvahiServiceResolver * r,
-<a name="l00120"></a>00120                     AvahiIfIndex interface,
-<a name="l00121"></a>00121                     AvahiProtocol protocol,
-<a name="l00122"></a>00122                     AvahiResolverEvent event,
-<a name="l00123"></a>00123                     <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
-<a name="l00124"></a>00124                     <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
-<a name="l00125"></a>00125                     <span class="keyword">const</span> <span class="keywordtype">char</span> *domain,
-<a name="l00126"></a>00126                     <span class="keyword">const</span> <span class="keywordtype">char</span> *host_name,
-<a name="l00127"></a>00127                     <span class="keyword">const</span> AvahiAddress *address,
-<a name="l00128"></a>00128                     uint16_t port,
-<a name="l00129"></a>00129                     AvahiStringList *txt,
-<a name="l00130"></a>00130                     AvahiLookupResultFlags flags,
-<a name="l00131"></a>00131                     <span class="keywordtype">void</span> * <span class="keyword">self</span>);
+<a name="l00119"></a>00119         <span class="keyword">static</span> <span class="keywordtype">void</span> wrap_resolve_callback(AvahiServiceResolver * r,
+<a name="l00120"></a>00120                                           AvahiIfIndex interface,
+<a name="l00121"></a>00121                                           AvahiProtocol protocol,
+<a name="l00122"></a>00122                                           AvahiResolverEvent event,
+<a name="l00123"></a>00123                                           <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
+<a name="l00124"></a>00124                                           <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
+<a name="l00125"></a>00125                                           <span class="keyword">const</span> <span class="keywordtype">char</span> *domain,
+<a name="l00126"></a>00126                                           <span class="keyword">const</span> <span class="keywordtype">char</span> *host_name,
+<a name="l00127"></a>00127                                           <span class="keyword">const</span> AvahiAddress *address,
+<a name="l00128"></a>00128                                           uint16_t port,
+<a name="l00129"></a>00129                                           AvahiStringList *txt,
+<a name="l00130"></a>00130                                           AvahiLookupResultFlags flags,
+<a name="l00131"></a>00131                                           <span class="keywordtype">void</span> * <span class="keyword">self</span>);
 <a name="l00132"></a>00132 
-<a name="l00133"></a>00133             <span class="comment">/* Servicebrowser callback.. *sigh* Why am I writing this ton of params..? */</span>
-<a name="l00134"></a>00134             <span class="keywordtype">void</span> service_browser_callback(AvahiServiceBrowser *b,
-<a name="l00135"></a>00135                     AvahiIfIndex interface,
-<a name="l00136"></a>00136                     AvahiProtocol protocol,
-<a name="l00137"></a>00137                     AvahiBrowserEvent event, 
-<a name="l00138"></a>00138                     <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
-<a name="l00139"></a>00139                     <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
-<a name="l00140"></a>00140                     <span class="keyword">const</span> <span class="keywordtype">char</span> *domain, 
-<a name="l00141"></a>00141                     AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
+<a name="l00133"></a>00133         <span class="comment">/* Servicebrowser callback.. *sigh* Why am I writing this ton of params..? */</span>
+<a name="l00134"></a>00134         <span class="keywordtype">void</span> service_browser_callback(AvahiServiceBrowser *b,
+<a name="l00135"></a>00135                                       AvahiIfIndex interface,
+<a name="l00136"></a>00136                                       AvahiProtocol protocol,
+<a name="l00137"></a>00137                                       AvahiBrowserEvent event,
+<a name="l00138"></a>00138                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
+<a name="l00139"></a>00139                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
+<a name="l00140"></a>00140                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *domain,
+<a name="l00141"></a>00141                                       AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
 <a name="l00142"></a>00142 
-<a name="l00143"></a>00143             <span class="keyword">static</span> <span class="keywordtype">void</span> wrap_service_browser_callback(AvahiServiceBrowser *b,
-<a name="l00144"></a>00144                     AvahiIfIndex interface,
-<a name="l00145"></a>00145                     AvahiProtocol protocol,
-<a name="l00146"></a>00146                     AvahiBrowserEvent event, 
-<a name="l00147"></a>00147                     <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
-<a name="l00148"></a>00148                     <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
-<a name="l00149"></a>00149                     <span class="keyword">const</span> <span class="keywordtype">char</span> *domain, 
-<a name="l00150"></a>00150                     AvahiLookupResultFlags flags,
-<a name="l00151"></a>00151                     <span class="keywordtype">void</span> * userdata);
-<a name="l00152"></a>00152             
-<a name="l00153"></a>00153             <span class="comment">/* -------------------------------------- */</span>
+<a name="l00143"></a>00143         <span class="keyword">static</span> <span class="keywordtype">void</span> wrap_service_browser_callback(AvahiServiceBrowser *b,
+<a name="l00144"></a>00144                 AvahiIfIndex interface,
+<a name="l00145"></a>00145                 AvahiProtocol protocol,
+<a name="l00146"></a>00146                 AvahiBrowserEvent event,
+<a name="l00147"></a>00147                 <span class="keyword">const</span> <span class="keywordtype">char</span> *name,
+<a name="l00148"></a>00148                 <span class="keyword">const</span> <span class="keywordtype">char</span> *type,
+<a name="l00149"></a>00149                 <span class="keyword">const</span> <span class="keywordtype">char</span> *domain,
+<a name="l00150"></a>00150                 AvahiLookupResultFlags flags,
+<a name="l00151"></a>00151                 <span class="keywordtype">void</span> * userdata);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153         <span class="comment">/* -------------------------------------- */</span>
 <a name="l00154"></a>00154 
-<a name="l00155"></a>00155             <span class="keywordtype">void</span> check_client_error(<span class="keyword">const</span> gchar * prefix_message);
-<a name="l00156"></a>00156             <span class="keywordtype">void</span> update_status_label(<span class="keywordtype">void</span>);
+<a name="l00155"></a>00155         <span class="keywordtype">void</span> check_client_error(<span class="keyword">const</span> gchar * prefix_message);
+<a name="l00156"></a>00156         <span class="keywordtype">void</span> update_status_label(<span class="keywordtype">void</span>);
 <a name="l00157"></a>00157 
-<a name="l00158"></a>00158             <span class="comment">/* -------------------------------------- */</span>
+<a name="l00158"></a>00158         <span class="comment">/* -------------------------------------- */</span>
 <a name="l00159"></a>00159 
-<a name="l00160"></a>00160             AvahiClient * client;
-<a name="l00161"></a>00161             AvahiGLibPoll * glib_poll;
-<a name="l00162"></a>00162             <a class="code" href="classAvahi_1_1View.html" title="Representation of the Avahi::Browser, do not use this yourself.">View</a> * window;
+<a name="l00160"></a>00160         AvahiClient * client;
+<a name="l00161"></a>00161         AvahiGLibPoll * glib_poll;
+<a name="l00162"></a>00162         <a class="code" href="classAvahi_1_1View.html" title="Representation of the Avahi::Browser, do not use this yourself.">View</a> * window;
 <a name="l00163"></a>00163 
-<a name="l00164"></a>00164             <span class="keywordtype">unsigned</span> server_counter;
+<a name="l00164"></a>00164         <span class="keywordtype">unsigned</span> server_counter;
 <a name="l00165"></a>00165     };
 <a name="l00166"></a>00166 }
 <a name="l00167"></a>00167 
@@ -234,7 +234,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 26 2011 00:01:25 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2012 19:02:29 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

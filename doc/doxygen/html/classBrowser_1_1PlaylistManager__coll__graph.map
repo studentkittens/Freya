@@ -1,11 +1,11 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Frame\n||}" alt="" coords="5,1320,63,1397"/>
 <area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="88,1283,235,1434"/>
-<area shape="rect" id="node6" href="$classAbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="259,1313,401,1405"/>
-<area shape="rect" id="node8" href="$classAbstractClientUser.html" title="{AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="426,1305,600,1412"/>
-<area shape="rect" id="node10" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="416,627,611,1218"/>
-<area shape="rect" id="node12" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="256,293,451,576"/>
-<area shape="rect" id="node14" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="113,35,305,200"/>
-<area shape="rect" id="node18" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="401,5,596,229"/>
-<area shape="rect" id="node20" href="$classAbstractItemGenerator.html" title="This class exists to allow use of the Proxy Pattern (i.e. a Proxy for MPD::Client)" alt="" coords="475,359,657,510"/>
+<area shape="rect" id="node6" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="259,1313,411,1405"/>
+<area shape="rect" id="node8" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="435,1305,609,1412"/>
+<area shape="rect" id="node10" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="425,627,620,1218"/>
+<area shape="rect" id="node12" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="263,293,457,576"/>
+<area shape="rect" id="node14" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="120,35,312,200"/>
+<area shape="rect" id="node18" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="408,5,603,229"/>
+<area shape="rect" id="node20" href="$classMPD_1_1AbstractItemGenerator.html" title="{MPD::AbstractItemGenerator\n||+ fill_queue()\l+ fill_queue_changes()\l+ fill_playlists()\l+ fill_outputs()\l+ fill_filelist()\l+ ~AbstractItemGenerator()\l}" alt="" coords="481,359,673,510"/>
 </map>

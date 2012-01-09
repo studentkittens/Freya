@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1AudioOutput.html" title="Wrapper for mpd_output, implements also two client commands: enable() and disable()" alt="" coords="5,205,136,371"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Directory.html" title="A wrapper for mpd_directory." alt="" coords="161,235,273,341"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands." alt="" coords="299,183,443,393"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Song.html" title="A wrapper for mpd_song." alt="" coords="467,176,611,400"/>
+</map>

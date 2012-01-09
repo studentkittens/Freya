@@ -319,11 +319,6 @@ von NotifyData.
 
 
 \subsection{Weitere Klassen}
-%
-%
-% Noch ein Klassendiagramm zur Übersicht.
-%
-
 Desweiteren gibt es einige weitere Klassen die am Rande eine Rolle spielen,
 und meist objektorientierte Wrapperklassen für die C-Strukturen von libmpdclient bereitstellen,
 oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos implementieren.
@@ -332,7 +327,7 @@ oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos impl
 
 Die Song Klasse ist ein Wrapper für mpd\_song Struktur und die dazugehörigen Funktion von libmpdclient. 
 MPD::Song soll alle Funktionen von libmpdclient \footnote{http://www.musicpd.org/doc/libmpdclient/song\_8h.html} anbieten.
-Diese werden hier nur aufgelistet aber nicht erklärt da sie genau wie ihre Vorbilder funktionieren:
+Diese werden hier nur aufgelistet aber nicht erklärt da sie genau wie ihre Vorbilder funktionieren sollen:
 
 \begin{verbatim}
     const char * get_path(void);

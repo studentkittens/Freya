@@ -14,7 +14,7 @@ var searchData=
   ['set_5fnext_5fextra',['set_next_extra',['../classNotify_1_1Notify.html#aa9fa91fbd91d2d6aea59b895e77bde4c',1,'Notify::Notify']]],
   ['set_5fpos',['set_pos',['../classMPD_1_1Song.html#ad0a1286c0c703b0bde67108272b61739',1,'MPD::Song']]],
   ['set_5fstatus',['set_status',['../classAvahi_1_1View.html#aaf55a6de9769013df3ee8c454fbc7cc0',1,'Avahi::View']]],
-  ['set_5fstock_5ficon',['set_stock_icon',['../classNotify_1_1Notify.html#a44a0c9a95c2bc0530a7cd735af083292',1,'Notify::Notify']]],
+  ['set_5fstock_5ficon',['set_stock_icon',['../classNotify_1_1Notify.html#ae204349963d84fbbc240557a1ff38a9d',1,'Notify::Notify']]],
   ['set_5fvalue',['set_value',['../classConfig_1_1Handler.html#a0bcb2b89c8d31bb94b135ca79eb48374',1,'Config::Handler']]],
   ['set_5fvalue_5fas_5fint',['set_value_as_int',['../classConfig_1_1Handler.html#a5acc969e8ea631b643b43e8096c71b58',1,'Config::Handler']]],
   ['set_5fvolume',['set_volume',['../classMPD_1_1Client.html#ad08ed2b177b40d09fe75b2d9b478e886',1,'MPD::Client']]],

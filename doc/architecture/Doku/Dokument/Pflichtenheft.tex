@@ -190,10 +190,16 @@ so sollen die Änderungen automatisch durch die Eindrückung angezeigt werden.
 %-----------------------------------------------
 
 \subsection{Playlistmanager}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{uc_playlist.pdf}
+	\caption{Use Case Diagramm Playlist}
+	\label{uc_playlist}
+\end{figure}
 Zeigt alle vorhandenen auf dem Server gespeicherten Playlisten in einer Liste.
 Dabei wird in der Liste der Playlistname und das letzte Änderungsdatum angezeigt.
 Die Namenszellen sind editierbar, sodass der Playlistname einfach geändert werden kann. 
-Ein Rechtsklickmenü bietet soll die folgenden Operationen bieten:
+Ein Rechtsklickmenü bietet soll die folgenden Operationen bieten (siehe \ref{uc_playlist}):
  \begin{itemize}
    \item Append: Fügt den Inhalt der Playliste der Queue am Ende hinzu
    \item Replace: Ersetzt den Inhalt der Queue mit dieser Playlist
@@ -203,6 +209,12 @@ Ein Rechtsklickmenü bietet soll die folgenden Operationen bieten:
 %-----------------------------------------------
 
 \subsection{Databasebrowser}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{uc_database.pdf}
+	\caption{Use Case Diagramm Database}
+	\label{uc_database}
+\end{figure}
 Der Databasebrowser zeigt eine Visualisierung der Datenbank die an einen Filebrowser angelehnt ist.
 \footnote{Es handelt sich hierbei nicht wirklich um ein Dateisystem, nur um eine Darstellung der Musikfiles des Ordners, der in der Konfigurationsdatei des MPD-Servers also Musik-Ordner festgelegt wurde}
 \begin{itemize}
@@ -218,7 +230,7 @@ Der Databasebrowser zeigt eine Visualisierung der Datenbank die an einen Filebro
      \item Das Suchfeld filtert die momentane Anzeige
      \item ganze rechts zeigt ein Label den aktuellen Pfad an
    \end{itemize}
-   \item Ein Kontextmenü bietet folgende Optionen:
+   \item Ein Kontextmenü bietet folgende Optionen (siehe auch Abb.: \ref{uc_database}):
    \begin{itemize}
      \item Add: Fügt die ausgewählte Menge der Queue hinzu, rekursiv falls sich Verzeichnisse darunter befinden
      \item Add All: Fügt alles, ungeachtet der auswahl der queue hinzu (performatere Version von add)
@@ -230,7 +242,15 @@ Der Databasebrowser zeigt eine Visualisierung der Datenbank die an einen Filebro
 
 %-----------------------------------------------
 
-\subsection{Queue}	
+\subsection{Queue}
+
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{uc_queue.pdf}
+	\caption{Use Case Diagramm Queue}
+	\label{uc_queue}
+\end{figure}
+
 \begin{itemize}
     \item Zeigt die aktuelle Warteschlange an
         \begin{itemize}
@@ -303,7 +323,7 @@ Falls verbunden zeigt sie:
 \end{itemize}
 \subsubsection{Sonstiges}
 \begin{itemize}
-	\item D\_0060 Nächster Song (Seitenleiste)
+	\item Nächster Song (Seitenleiste)
 \end{itemize}
 
 \section{Produktdaten}

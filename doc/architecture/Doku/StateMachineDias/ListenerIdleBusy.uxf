@@ -4,9 +4,9 @@
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>80</x>
-      <y>40</y>
-      <w>780</w>
+      <x>90</x>
+      <y>50</y>
+      <w>750</w>
       <h>330</h>
     </coordinates>
     <panel_attributes>*state machine*
@@ -107,7 +107,7 @@ can send events to Server</panel_attributes>
     <panel_attributes>lt=&lt;-
  
               processes single event</panel_attributes>
-    <additional_attributes>100;120;100;80;120;80;180;80;180;30;150;30</additional_attributes>
+    <additional_attributes>90;120;90;80;120;80;180;80;180;30;150;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SendSignal</type>

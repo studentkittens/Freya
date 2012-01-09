@@ -8,7 +8,7 @@ Es wird empfohlen die Einführung bis einschließlich Kapitel 2 zu lesen:
 \end{itemize}
 Die ersten Einsätze werden auch noch tiefer erklärt.
 
-
+\newpage
 \subsection{Hauptklassen}
 \begin{figure}[htb!]
 	\centering
@@ -17,10 +17,18 @@ Die ersten Einsätze werden auch noch tiefer erklärt.
 	\label{class_client_all}
 \end{figure}
 
+\newpage
 \subsubsection{Listener}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{st_ListenerIdleBusy.pdf}
+	\caption{Zustandsdiagramm Listener ,,idle/busy''}
+	\label{st_listener}
+\end{figure}
+
 Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes'' und den damit verbundenen Events
 zu tun hat. Er setzt den eingangs beschriebenen ,,Watchdog'' auf die asynchrone Verbindung an,
-und ,,parst'' die entsprechenden Antworten des Servers von Hand. 
+und ,,parst'' die entsprechenden Antworten des Servers von Hand (siehe \ref{st_listener}). 
 \\
 \\
 Es folgt eine Liste aller möglichen Events die von libmpdclient definiert werden.
@@ -134,10 +142,19 @@ mit signal\_error() registriert haben benachrichtigt.
 	\label{collab_base_client}
 \end{figure}
 
+\newpage
 \subsubsection{BaseClient}
+
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{st_BaseClientConnection.pdf}
+	\caption{Zustandsdiagramm BaseClient Connection}
+	\label{st_base_client}
+\end{figure}
+
 Diese Klasse bildet die Basis zum eigentlichen Client. Sie kann nicht direkt instanziert werden, da
 der Konstruktor protected sein soll.
-Sie verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau \ref{seq_client_connect} an sich. 
+Sie verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau an sich (siehe \ref{seq_client_connect} und \ref{st_base_client}). 
 Desweiteren bietet die Klasse einfache Methoden zum Eintreten (go\_idle()) und Verlassen (go\_busy()) des ,,Idlemodes'' an.
 Geht die Verbindung verloren, ohne dass \emph{\_\_disconnect()} explizit aufgerufen wurde, so wird versucht sich periodisch zu reconnecten.
 Das Intervall in dem diese Versuche geschehen sollen, soll von ,,settings.connection.reconnectinterval'' gelesen werden.

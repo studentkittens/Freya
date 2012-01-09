@@ -166,7 +166,7 @@ Sie bietet die folgenden Aktionen an die man über die Methode get\_action() abf
 Zeigt einem Dialog zum Speichern der aktuellen Queue als Playlist mit einem bestimmten Namen. Der Name wird durch den Dialog abgefragt.
 Es wird keine Validierung durchgeführt, außer dass der Name länger als ein 0 Zeichen sein muss. Der eingegebene Name soll an den Aufrufer zurückgegeben werden.
 
-
+\newpage
 \subsubsection{Settings}
 \paragraph{AbstractSettings}
 \begin{figure}[htb!]
@@ -193,10 +193,18 @@ Weist Reiter an, die letzten validen Werte aus der Config zu laden
 \end{verbatim}
 Weist Reiter an, die Defaultwerte aus der einkompilierten Config zu laden.
 
+\newpage
+
 \paragraph{Settings}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{st_Settings.eps}
+	\caption{Zustandsdiagramm Settings}
+	\label{st_settings}
+\end{figure}
 Die Settings Klasse repräsentiert den Settingsbrowser. Wie jeder andere Browser implementiert diese Klasse \emph{AbstractBrowser} und eine get\_container() Methode.
 Sobald etwas in der Präsentation geändert wird, soll es nicht gleich in die Config übernommen werden.
-Dies soll erst durch den Speicherbutton geschehen.
+Dies soll erst durch den Speicherbutton geschehen (siehe \ref{st_settings}).
 \begin{itemize}
 \item Zurücksetzen - Setzt alle Einstellungen auf Fabrikstandards zurück
 \item Rückgängig - Setzt Änderungen auf letzten Stand zurück

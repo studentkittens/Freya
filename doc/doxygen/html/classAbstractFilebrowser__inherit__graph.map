@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,147,139,283"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1DatabaseCache.html" title="Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data." alt="" coords="163,161,335,268"/>
-</map>

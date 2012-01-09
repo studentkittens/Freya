@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>90</y>
+      <w>180</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>MPD::Listener
+--
+--
++Listener()
++enter()
++leave()
++is_idling()
++signal_client_update()
++force_update()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>400</x>
+      <y>50</y>
+      <w>230</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>MPD::Connection
+--
+--
++Connection()
++is_connected()
++connect()
++disconnect()
++clear_error()
++check_error()
++signal_error()
++signal_connection_change()
++emit_connection_change()
++get_connection()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>290</x>
+      <y>330</y>
+      <w>230</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>MPD::BaseClient
+--
+# m_Conn
+# mp_Listener
+--
++ go_idle()
++ go_busy()
++ get_connection()
++ is_connected()
++ get_status()
++ force_update()
++ signal_client_update()
++ signal_connection_change()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>240</x>
+      <y>220</y>
+      <w>120</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-  mp_Listener</panel_attributes>
+    <additional_attributes>100;110;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>330</x>
+      <y>220</y>
+      <w>204</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+                    m_Conn</panel_attributes>
+    <additional_attributes>100;110;120;30</additional_attributes>
+  </element>
+</diagram>

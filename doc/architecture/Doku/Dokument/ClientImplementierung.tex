@@ -478,9 +478,16 @@ Beide Signale werden automatisch durch Konstruktor von AbstractClientUser regist
 Weiterhin können alle Klassen über den mp\_Client Pointer auf den Client zugreifen.
 \end{itemize}
 
-
+\newpage
+\begin{figure}[htb!]
 \subsubsection{AbstractItemlist}
-Für bestimmte Client Funktionen muss eine Nutzerklasse von \emph{AbstractItemlist} ableiten.
+    \centering
+    \includegraphics[width=\textwidth]{AbstractItemlist.png}
+    \caption{Die AbstractItemList}
+    \label{c_abstract_item_list}
+\end{figure}
+
+Für bestimmte Client Funktionen muss eine Nutzerklasse von \emph{AbstractItemlist} ableiten (siehe \ref{c_abstract_item_list}).
 Leitet man ab, so muss die Methode add\_item(AbstractComposite * data) implementiert werden. 
 Je nach Bedarf kann über \verb+static_cast<Zieltyp*>(data)+ der entsprechende Datentyp ,,rausgecasted'' werden.
 Beim Aufruf von MPD::Client::fill\_queue ruft der Client die add\_item Methode für jeden 
@@ -533,10 +540,17 @@ Holt ein Listing aller Songs und Directories aus der Datenbank im Pfad 'path' (n
 %<Klassendiagramm, bzw. Klassen die es verwenden von Doxygen nehmen>
 
 %-------------------------------------------
-
+\newpage
+\begin{figure}[htb!]
 \subsubsection{AbstractComposite}
+	\centering
+        \includegraphics[width=\textwidth]{AbstractComposite.png}
+	\caption{Klassendiagramm zu AbstractComposite}
+	\label{c_abstract_composite}
+\end{figure}
+
 Vereinheitlicht Zugriff auf Komponenten verschiedenen Typs.
-Die abstrakte Klasse zwingt seine Kinder dazu eine \emph{get\_path()} Funktion zu implementieren die die Lage im virtuellen Filesystem des Servers angibt.
+Die abstrakte Klasse (siehe Abb.: \ref{c_abstract_composite}) zwingt seine Kinder dazu eine \emph{get\_path()} Funktion zu implementieren die die Lage im virtuellen Filesystem des Servers angibt.
 Der Hauptanwender dieser Klasse ist der Databasebrowser, bzw. der dahinter gelagerte Cache, da AbstractComposite es erlaubt Songs und Verzeichnisse gleich zu behandeln (vgl. Composite Pattern).
 \\
 Die erbende Klasse muss im Konstruktor angeben, ob es sich bei der Klasse um ein ,,File'' (\emph{true} für MPD::Song) oder um einen ,,Container'' (\emph{false} für MPD::Directory) handelt.
@@ -545,27 +559,25 @@ Diese ,,is\_leaf'' Eigenschaft kann später mit der Funktion \emph{is\_leaf()} a
 % <Klassendiagramm für alle Klassen die von AbstractComposite erben, siehe Doxygen>
 
 %-------------------------------------------
+\newpage
+\begin{figure}[htb!]
 
 \subsubsection{AbstractClientExtension}
 
-% Klassen diagramm aus Doxygen hierhin.
-%
-%
+	\centering
+        \includegraphics[scale=0.8]{AbstractClientExtension.png}
+	\caption{Klassendiagramm zu AbstractClientExtension}
+	\label{c_abstract_client_extension}
+\end{figure}
 
-Diese abstrakte Klasse erlaubt abgeleiteten Klassen ähnlich zum BaseClient eigene Kommandos zu implementieren.
+
+Diese abstrakte Klasse erlaubt abgeleiteten Klassen ähnlich zum BaseClient eigene Kommandos zu implementieren (siehe \ref{c_abstract_client_extension}).
 Dies geschieht indem die abstrakte Klasse eine Referenz auf den BaseClient im Konstruktor erwartet und speichert.
 Ableitende Klassen können die \textit{protected} get\_c\_connection() Methode benutzen um eigene Kommandos zu implementieren.
 
 \begin{verbatim}
    AbstractClientExtension(MPD::BaseClient& base_client)
 \end{verbatim}
-
-\begin{figure}[htb!]
-	\centering
-        \includegraphics[scale=0.6]{AbstractClientExtension.png}
-	\caption{Klassendiagramm zu AbstractClientExtension}
-	\label{c_abstract_client_extension}
-\end{figure}
 
 \emph{AbstractClientExtension} wird in diesem Entwurf von MPD::Playlist und MPD::AudioOutput benutzt.
 Man kann allerdings darüber diskutieren dass dieses abstrakte Klasse der Modelschicht die Möglichkeit gibt zu ausgefeilte Logik zu implementieren, was nach dem MVC Paradigma nicht sein sollte.  

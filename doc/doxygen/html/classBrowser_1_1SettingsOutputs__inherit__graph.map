@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classBrowser_1_1AbstractSettings.html" title="Abstract base class for every Tab in the Settingsbrowser." alt="" coords="5,5,179,141"/>
-<area shape="rect" id="node4" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="204,27,356,119"/>
-<area shape="rect" id="node6" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="381,20,555,127"/>
-</map>

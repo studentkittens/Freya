@@ -8,15 +8,14 @@ Es wird empfohlen die Einführung bis einschließlich Kapitel 2 zu lesen:
 \end{itemize}
 Die ersten Einsätze werden auch noch tiefer erklärt.
 
-%Hier ein erstes Klassendiagramm zu  
-%     * BaseClient
-%     * Client 
-%     * Connection 
-%     * Listener
-%     * NotifyData
-%bzw. deren Verbindung zueinander
 
 \subsection{Hauptklassen}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[scale=0.5]{ClientCollab.pdf}
+	\caption{Übersichtsklassendiagramm zur Clientstruktur}
+	\label{class_client_all}
+\end{figure}
 
 \subsubsection{Listener}
 Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes'' und den damit verbundenen Events
@@ -65,10 +64,6 @@ soll sich zu updaten.
 \begin{verbatim}
        void force_update(void);
 \end{verbatim}
-
-%
-% Hier dann imho die Sequenzdiagramme für Connect/disconnect
-%
 
 \subsubsection{Connection}
 \begin{figure}[htb!]
@@ -324,11 +319,6 @@ von NotifyData.
 
 
 \subsection{Weitere Klassen}
-%
-%
-% Noch ein Klassendiagramm zur Übersicht.
-%
-
 Desweiteren gibt es einige weitere Klassen die am Rande eine Rolle spielen,
 und meist objektorientierte Wrapperklassen für die C-Strukturen von libmpdclient bereitstellen,
 oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos implementieren.
@@ -337,7 +327,7 @@ oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos impl
 
 Die Song Klasse ist ein Wrapper für mpd\_song Struktur und die dazugehörigen Funktion von libmpdclient. 
 MPD::Song soll alle Funktionen von libmpdclient \footnote{http://www.musicpd.org/doc/libmpdclient/song\_8h.html} anbieten.
-Diese werden hier nur aufgelistet aber nicht erklärt da sie genau wie ihre Vorbilder funktionieren:
+Diese werden hier nur aufgelistet aber nicht erklärt da sie genau wie ihre Vorbilder funktionieren sollen:
 
 \begin{verbatim}
     const char * get_path(void);

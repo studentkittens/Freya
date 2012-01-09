@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1SettingsGeneral.html" title="{Browser::SettingsGeneral\n||+ SettingsGeneral()\l+ ~SettingsGeneral()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l}" alt="" coords="5,227,176,363"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1SettingsNetwork.html" title="{Browser::SettingsNetwork\n||+ SettingsNetwork()\l+ ~SettingsNetwork()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l}" alt="" coords="201,227,375,363"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1SettingsOutputs.html" title="{Browser::SettingsOutputs\n||+ SettingsOutputs()\l+ ~SettingsOutputs()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l+ add_item()\l# on_client_update()\l# on_connection_change()\l# on_toggle()\l# on_select()\l}" alt="" coords="399,190,573,399"/>
-<area shape="rect" id="node9" href="$classBrowser_1_1SettingsPlayback.html" title="{Browser::SettingsPlayback\n||+ SettingsPlayback()\l+ ~SettingsPlayback()\l+ accept_new_settings()\l+ decline_new_settings()\l+ reset_settings()\l}" alt="" coords="598,227,777,363"/>
-</map>

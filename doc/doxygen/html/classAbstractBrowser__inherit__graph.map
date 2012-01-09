@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classBrowser_1_1Database.html" title="The Database Browser." alt="" coords="5,206,139,327"/>
-<area shape="rect" id="node5" href="$classBrowser_1_1Fortuna.html" title="A little easteregg browser." alt="" coords="164,221,287,313"/>
-<area shape="rect" id="node7" href="$classBrowser_1_1PlaylistManager.html" title="Shows a list of stored playlists." alt="" coords="311,213,481,320"/>
-<area shape="rect" id="node9" href="$classBrowser_1_1Queue.html" title="Shows a list of songs in the current playlist." alt="" coords="505,213,625,320"/>
-<area shape="rect" id="node11" href="$classBrowser_1_1Settings.html" title="The Settingsbrowser shown in the sidebar." alt="" coords="649,206,793,327"/>
-<area shape="rect" id="node13" href="$classBrowser_1_1StatBrowser.html" title="A simple representation of the current MPD::Statistics." alt="" coords="818,213,968,320"/>
-</map>

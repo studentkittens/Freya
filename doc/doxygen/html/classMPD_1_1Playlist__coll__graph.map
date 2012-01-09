@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMPD_1_1AbstractClientExtension.html" title="Abstract base class for classes that want to implement spefic MPD Commands." alt="" coords="145,648,345,755"/>
-<area shape="rect" id="node4" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="148,293,343,576"/>
-<area shape="rect" id="node6" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,197,200"/>
-<area shape="rect" id="node10" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="293,5,488,229"/>
-<area shape="rect" id="node12" href="$classMPD_1_1AbstractComposite.html" title="{MPD::AbstractComposite\n||+ AbstractComposite()\l+ ~AbstractComposite()\l+ is_leaf()\l+ get_path()\l}" alt="" coords="370,641,541,762"/>
-</map>

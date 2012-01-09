@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected" alt="" coords="373,5,582,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1BaseClient.html#a73be7dfed2693bea6deb4cd53d3aab7c" title="Returns the underlying connection." alt="" coords="367,56,587,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Connection.html#a7863b348d3496a85aa97fe3957c755ff" title="Returns the underlying C structure." alt="" coords="366,107,589,133"/>
-</map>

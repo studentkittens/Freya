@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>40</x>
+      <y>312</y>
+      <w>168</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>{active}
+MPD::Listener
+--
+- mp_Conn : Connection*
+- m_Async : mpd_async*
+- idle_events : unsigned
+- is_idle : bool
+- mp_Notifier : EventNotifer*
+--
++ enter() : bool 
++ leave() : bool
++ is_idling() : bool
++ force_update()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>248</x>
+      <y>360</y>
+      <w>176</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>MPD::BaseClient
+--
+- mp_Listener : Listener*
+- m_Conn : Connection
+- EventNotifer 
+--
++ is_connected() : bool 
++ get_status() : Status *
++ signal_client_update 
+   : EventNotifier&amp;
++ signal_connection_change 
+   : ConnectionNotifier
++ force_update() 
+# BaseClient
+# __connect() : bool
+# __disconnect() : bool
+- timeout_reconnect()
+- handle_errors() 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>392</x>
+      <y>136</y>
+      <w>200</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>MPD::Connection
+--
+conn : mpd_connection *
+m_ConnNotifier : ConnectionNotifier
+m_ErrorSig : ErrorNotify
+lastHost : ustring
+hostChanged : bool
+--
+is_connected() : bool
+connect() : bool
+disconnect() : bool
+check_error() : bool
+clear_error() : bool
+signal_connection_change() : 
+   ConnectionNotifer&amp;
+emit_connection_change()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>296</x>
+      <y>672</y>
+      <w>224</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>MPD::Client
+--
+--
++ Client()
++ connect()
++ disconnect()
+ 
++ playback_next() : bool
+/.../
+/(weitere Konkrete Clientanweisungen)/
+ 
++void fill_queue()
++void fill_queue_changes()
++void fill_playlists()
++void fill_outputs()
++void fill_filelist()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>464</x>
+      <y>416</y>
+      <w>184</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>/AbstractItemGenerator/
+--
+--
+/+void fill_queue()/
+/+void fill_queue_changes()/
+/+void fill_playlists()/
+/+void fill_outputs()/
+/+void fill_filelist()/
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>272</x>
+      <y>560</y>
+      <w>112</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;80;96;80;96;112</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>344</x>
+      <y>488</y>
+      <w>232</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>216;24;216;152;24;152;24;184</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>184</x>
+      <y>384</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>64;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>400</x>
+      <y>312</y>
+      <w>64</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;96;48;96;48;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>64</x>
+      <y>480</y>
+      <w>144</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>MPD::NotifyData
+--
+- mp_Conn : Connection
+- Status : Status
+- Statistics : Statistics
+- mp_Song : Song
+- mp_NextSong : Song
+--
+get_Status()
+/get_.../
+update_all()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>120</x>
+      <y>424</y>
+      <w>40</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>24;24;24;56</additional_attributes>
+  </element>
+</diagram>

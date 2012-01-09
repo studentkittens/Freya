@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="5,28,179,135"/>
-<area shape="rect" id="node4" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="204,35,356,127"/>
-<area shape="rect" id="node6" href="$classMPD_1_1AbstractItemGenerator.html" title="{MPD::AbstractItemGenerator\n||+ fill_queue()\l+ fill_queue_changes()\l+ fill_playlists()\l+ fill_outputs()\l+ fill_filelist()\l+ ~AbstractItemGenerator()\l}" alt="" coords="380,6,572,157"/>
-</map>

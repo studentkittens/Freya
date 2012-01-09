@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classMPD_1_1AbstractClientExtension.html" title="Abstract base class for classes that want to implement spefic MPD Commands." alt="" coords="6,19,207,45"/>
-<area shape="rect" id="node3" href="$classMPD_1_1AudioOutput.html" title="Wrapper for mpd_output, implements also two client commands: enable() and disable()" alt="" coords="257,5,389,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands." alt="" coords="271,56,374,83"/>
-<area shape="rect" id="node6" href="$classMPD_1_1AbstractComposite.html" title="MPD::AbstractComposite" alt="" coords="21,95,193,121"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Directory.html" title="A wrapper for mpd_directory." alt="" coords="266,107,379,133"/>
-<area shape="rect" id="node12" href="$classMPD_1_1Song.html" title="A wrapper for mpd_song." alt="" coords="277,157,368,184"/>
-</map>

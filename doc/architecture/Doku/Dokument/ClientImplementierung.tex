@@ -82,7 +82,8 @@ soll sich zu updaten.
 \end{figure}
 Diese Klasse stellt eine Art Wrapper um die \textit{mpd\_connection}
 \footnote{http://www.musicpd.org/doc/libmpdclient/connection\_8h.html} Struktur von libmpdclient da.
-Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connectio\_free()} aufrufen. Siehe \ref{seq_client_connect} für den detaillierten Verbindungsablauf. Die benötigten Verbindungsdaten (Host, Port, Timeout in Sekunden) holt sich MPD::Connection aus der Config.
+Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connectio\_free()} aufrufen. Siehe \ref{seq_client_connect} für den detaillierten Verbindungsablauf.
+Die benötigten Verbindungsdaten (Host, Port, Timeout in Sekunden) holt sich MPD::Connection aus der Config.
 \\
 Sie hält zudem den letzten Host als Membervariable um feststellen zu können ob sich dieser zwischen 
 zwei Verbindungsvorgängen geändert hat. Desweiteren bietet sie eine Schnittstelle um andere Klassen über Fehler in der Verbindung informieren zu lassen (signal\_error()), bzw. um sie zu ,,reparieren'' (clear\_error()).
@@ -108,7 +109,8 @@ Zur Implementierung konkreter Kommandos wird die darunterliegende C-Struktur ben
 Die Connectionklasse soll zudem Schnittstellen bieten um sich für Fehler- und Verbindungsänderungen
 zu registrieren. 
 Auf den Rückgabewert der folgenden Funktionen kann sigc::signal::connect() aufgerufen werden,
-um einen Funktionspointer zu registrieren der aufgerufen wird sobald ein Fehler eintritt,
+um einen Funktionspointer (bzw. ein ,,Funktor'' um den libsigc++ Begriff zu gebrauchen)
+zu registrieren der aufgerufen wird sobald ein Fehler eintritt,
 bzw. sich die Verbindung ändert. Die Schnittstellen sollen wie folgt aussehen:
 \begin{verbatim}
   typedef sigc::signal<void, bool,mpd_error> ErrorNotify;
@@ -229,7 +231,7 @@ allerdings prüfen sie mit Connection::check\_error() vorher stets auf Fehler.
 Der Client erbt von BaseClient und implementiert konkrete Kommandos wie ,,play'',,,random'' etc.
 Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des Playlistmanagers indem 
 er die abstrakte Klasse \emph{AbstractClientExtension} ausimplementiert.
-Er bietet die Methoden connect() und disconnect() die letzendlich von Anwendern der Clientklasse zum Verbinden und Trennen genutzt werden. 
+Er bietet die Methoden connect() und disconnect() die letztendlich von Anwendern der Clientklasse zum Verbinden und Trennen genutzt werden. 
 Ist in der config ,,settings.connection.autoconnect'' gesetzt, so connected er sich automatisch.
 \\
 \\
@@ -258,7 +260,7 @@ playback\_crossfade löst hingegen ein ,,options'' Event aus.
     void playback_song_at_id(unsigned song_id);
 \end{verbatim}
 
-Die folgenden Funktionen dienen dazu jeweils die \it random, consume, repeat\rm und \textit{single}-modi umzuschalten.
+Die folgenden Funktionen dienen dazu jeweils die \it random, consume, repeat\rm und \textit{single}-Modi umzuschalten.
 Alle lösen ein ,,options'' Event aus.
 \begin{verbatim}
     void toggle_random(void);
@@ -271,7 +273,7 @@ Desweiteren sollten Methoden zum Bearbeiten der Queue vorhanden sein.
 \begin{itemize}
     \item \textbf{queue\_add():} Fügt rekursiv den Pfad in der Datenbank hinzu. queue\_add(``/'') entspricht der ganzen Datenbank.
     \item \textbf{queue\_clear():} Leert die gesamte Queue.
-    \item \textbf{queue\_delete():} Leert den Song ander Position 'pos'
+    \item \textbf{queue\_delete():} Leert den Song an der Position 'pos'
     \item \textbf{queue\_save\_as\_playlist():} Speichert die aktuelle Queue als Playlist mit dem Namen 'name'
 \end{itemize}
 \begin{verbatim}
@@ -309,7 +311,7 @@ Siehe daher \emph{AbstractItemGenerator} für eine genaue Erklärung.
 \subsubsection{NotifyData}
 Speichert den aktuellen Status, den aktuellen Song und die aktuelle Datenbankstatistik.
 Bietet zudem eine Funktion um entsprechende Daten bei Aufruf zu ,,updaten''.
-Die Klasse gehört nach dem MVC Pattern somit der Modelebene an.
+Die Klasse gehört nach dem MVC Pattern somit der Model-Ebene an.
 Der Listener instanziert NotifyData im Konstruktor und gibt an wann sich dieser ,,updaten'' soll (über update\_all()).
 \\        
 
@@ -398,7 +400,7 @@ folgende Funktionen:
     unsigned long get_db_play_time(void);
 \end{verbatim}
 
-Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
+Diese Klasse gehört nach dem MVC Paradigma zur Model-Schicht.
 
 \subsubsection{Playlist}
 Die Playlist Klasse ist Wrapper für die mpd\_playlist Struktur und
@@ -511,7 +513,6 @@ Beim Aufruf von MPD::Client::fill\_queue ruft der Client die add\_item Methode f
 Song den er vom Server bekommt auf. Die ableitende Klasse kann diese dann verarbeiten.
 
 Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die davon ableiten) benutzbar.
-%<Klassendiagramm, bzw. Klassen die es verwenden von Doxygen nehmen>
 
 \subsubsection{AbstractItemGenerator}
 %

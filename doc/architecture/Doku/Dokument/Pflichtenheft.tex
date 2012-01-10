@@ -47,7 +47,7 @@ sogar diverse Smartphones möglich.
 
 \subsection{Zielgruppen}
 Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
-wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. durch Abgleich von Datenträgern). 
+wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. Durch Abgleich von Datenträgern). 
 Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig. 
 Der Benutzer muss die Systemsprache Englisch beherrschen.
 
@@ -72,7 +72,7 @@ Anwendungen unterscheiden und dementsprechend folgende Punkte erfüllen:
 Ein MPD-Server muss nicht unbedingt lokal installiert sein, dann muss 
 allerdings über das Netzwerk (Internet) ein Server erreichbar sein.
 Ohne MPD-Server soll der Client in einen definierten Zustand hochgefahren werden der das Verbinden ermöglicht.
-Avahi Daemon ist optional. Er ist nicht von nöten aber durchaus praktisch wenn man sich nicht ständig den Host (bzw. die IP) 
+Avahi Daemon ist optional. Er ist nicht vonnöten aber durchaus praktisch wenn man sich nicht ständig den Host (bzw. die IP) 
 vom Administrator geben lassen will.
 
 \subsection{Orgware}
@@ -225,15 +225,15 @@ Der Databasebrowser zeigt eine Visualisierung der Datenbank die an einen Filebro
    \item 'Backspace' geht ebenso ein Verzeicniss nach oben.
    \item Am unteren Rand befindet sich eine Steuerleiste:
    \begin{itemize}
-     \item homebutton: Geht zum Wurzelverzeichniss zurück
-     \item Zurückbutton: Dasselbe wie backspace
+     \item homebutton: Geht zum Wurzel-Verzeichnis zurück
+     \item Zurückbutton: Dasselbe wie Backspace
      \item Das Suchfeld filtert die momentane Anzeige
      \item ganze rechts zeigt ein Label den aktuellen Pfad an
    \end{itemize}
    \item Ein Kontextmenü bietet folgende Optionen (siehe auch Abb.: \ref{uc_database}):
    \begin{itemize}
      \item Add: Fügt die ausgewählte Menge der Queue hinzu, rekursiv falls sich Verzeichnisse darunter befinden
-     \item Add All: Fügt alles, ungeachtet der auswahl der queue hinzu (performatere Version von add)
+     \item Add All: Fügt alles, ungeachtet der auswahl der queue hinzu (performamtere Version von add)
      \item Replace: Wie add, löscht aber vorher die Queue
      \item Update: Weist den Server an die Datenbank zu aktualisieren, und neue/veränderte files zu aktualisieren
      \item Rescan: Weist den Server die Datenbank zu aktualisieren; untersucht alle files von neuen (teuer)
@@ -262,8 +262,8 @@ Der Databasebrowser zeigt eine Visualisierung der Datenbank die an einen Filebro
         \begin{itemize}
             \item Remove: Entfernen der Songs aus der Queue
             \item Clear: Entfernen aller Songs aus der Queue
-            \item Save as playlist: Die gesamte Queue wird als playlist abgespeicher, \\
-                  der name der neuen playlist wird durch einen Dialog abgefragt.
+            \item Save as playlist: Die gesamte Queue wird als playlist abgespeichert, \\
+                  der Name der neuen Playlist wird durch einen Dialog abgefragt.
         \end{itemize}
     \item Bei Änderungen des Server wird die Queue im Hintergrund geupdatet
 \end{itemize}
@@ -280,7 +280,7 @@ Falls dem Client die Verbindung verloren soll zum Settingsbrowser gesprungen wer
 Alle Settingstabs ändern die Werte nicht sofort:
 \begin{itemize} 
    \item Sie werden erst persistent übernommen wenn der user die Konfiguration abspeichert
-   \item Der Rückgängig button setzt die Präsentation auf die letzen persistent gesetzten Werte
+   \item Der Rückgängigbutton setzt die Präsentation auf die letzen persistent gesetzten Werte
    \item "Zurücksetzen" lädt überall die Defaultconfig
 \end{itemize}
 Innerhalb der Tabs sollen folgende Funktionen bereit gestellt werden:
@@ -305,7 +305,7 @@ Innerhalb der Tabs sollen folgende Funktionen bereit gestellt werden:
 	\end{itemize}
 	\item Der Benutzer soll eine Audioausgabeliste haben:
 	\begin{itemize}
-		\item Innerhalb der Liste soll es Checkboxes geben um den output entweder an oder auszuschalten
+		\item Innerhalb der Liste soll es Checkboxes geben um den Output entweder an oder auszuschalten
 		\item Dies soll nicht verfügbar sein wenn die Verbindung verloren geht
 	\end{itemize}
 \end{itemize}
@@ -315,7 +315,7 @@ Falls verbunden zeigt sie:
 \begin{itemize}
 	\item Samplingrate in Khz
 	\item Audiobitrate in Kbit
-	\item Outputart (serverbedingt kann nur Stereo oder Mono angezeit werden, 5.1 Audiofiles werden auch als Stereo dargestellt)
+	\item Outputart (serverbedingt kann nur Stereo oder Mono angezeigt werden, 5.1 Audiofiles werden auch als Stereo dargestellt)
 	\item Zeit aktuell von insgesamt
 	\item Anzahl an Songs in der Datenbank
 	\item Komplette Abspielzeit der Datenbank
@@ -332,7 +332,7 @@ Falls verbunden zeigt sie:
 \begin{itemize}
 	\item Der Benutzer kann das System zu jedem Zeitpunkt starten.
 	\item Der Benutzer kann das System zu jedem Zeitpunkt beenden.
-	\item Beim ersten Start wird ein Standart-System-Zustand geladen.
+	\item Beim ersten Start wird ein Standard-System-Zustand geladen.
 	\item Beim Beenden wird der aktuelle System-Zustand gespeichert.
 	\item Bei jedem weiteren Start wird der letzte System-Zustand geladen.
 \end{itemize}
@@ -343,7 +343,7 @@ Der Benutzer kann
 	\item Musik stoppen (Stop)
 	\item Musik pausieren (Pause)
 	\item Musik vor und zurück schalten (Skip)
-	\item Musik vor und zurück spuhlen (Seek)
+	\item Musik vor und zurück spulen (Seek)
 	\item Musik zufällig abspielen (Random)
 	\item Musik wiederholen (Repeat)
 	\item Musik im Consume-Mode abspielen
@@ -352,17 +352,17 @@ Der Benutzer kann
 \subsection{Abspielen von Musik (Shortcuts)}
 Folgende Shortcut sollen in der finalen Version verfügbar sein:
 \begin{itemize}
-	\item Play 	(ctrl + G)
-        \item Stop 	(ctrl + S)
-        \item Previous 	(ctrl + P)
-        \item Next	(ctrl + N)
-	\item Random	(ctrl + Z)
-	\item Single	(ctrl + Y)
-	\item Repeate	(ctrl + R)
-	\item Consume	(ctrl + T)
-        \item Verbinden	(ctrl + C)
-	\item Trennen	(ctrl + D)
-	\item Beenden	(ctrl + Q)
+	\item Play 	(Ctrl + G)
+        \item Stop 	(Ctrl + S)
+        \item Previous 	(Ctrl + P)
+        \item Next	(Ctrl + N)
+	\item Random	(Ctrl + Z)
+	\item Single	(Ctrl + Y)
+	\item Repeate	(Ctrl + R)
+	\item Consume	(Ctrl + T)
+        \item Verbinden	(Ctrl + C)
+	\item Trennen	(Ctrl + D)
+	\item Beenden	(Ctrl + Q)
 \end{itemize}
 
 
@@ -375,7 +375,7 @@ nicht implementiert.
 Eine einfache Textsuche zum finden von Titeln, Alben oder Interpreten innerhalb der 
 Abspiellisten wurde implementiert. Dabei springt die Markierung des Textes beim 
 eingeben von Zeichen in die Suche zu der ersten übereinstimmenden Stelle in der 
-Plaxlist des Clients. Erst beim bestätigen der Eingabe im Suchfeld wird die Auswahl 
+Playlist des Clients. Erst beim bestätigen der Eingabe im Suchfeld wird die Auswahl 
 gefiltert.
 \begin{itemize}
 	\item Der Benutzer kann seine Queue durchsuchen
@@ -421,17 +421,16 @@ werden die Nutzer direkt auf den Fehler aufmerksam gemacht.
 \subsection{Wartbarkeit}
 Der Wartungsaufwand der Software ist gering bis gar nicht vorhanden. Ändert sich die Umgebungssoftware
 (z.B. der MPD-Server) dann sind die Änderungen so geringfügig bzw. trivial, dass sie den MPD-Client 
-nicht beeinflussen werden. Fehler der Software (sollten Fehler auftreten) wären leicht analysier- bzw.
-prüfbar und natürlich auch leicht zu beheben. Zur Wartbarkeit gehört ebenso die Modularität, d. h.
+nicht beeinflussen werden. Fehler der Software (sollten Fehler auftreten) wären leicht analysiert bzw.
+prüfbar und natürlich auch leicht zu beheben. Zur Wartbarkeit gehört ebenso die Modularität, d.h.
 die Software ist technisch so realisiert, dass sie leicht erweitert werden kann, Stichwort Model View
-Controller (MVC). An kritischen Stellen versuchen Fehlerbehandlungroutinen alle Fehler möglichst vollständig abzufangen. 
-Alle diese Routinen schreiben Meldungen in eine Log-Datei.
+Controller (MVC). 
 \subsection{Zuverlässigkeit}
 Das System funktioniert und reagiert tolerant auf fehlerhafte Eingaben bzw. fehlerhafte Benutzung.
-Das Programm funktioniert sieben Tage die Woche und 24h am Tag und muss nicht abgeschaltet werden.
+Das Programm funktioniert sieben Tage die Woche und 24 Stunden am Tag und muss nicht abgeschaltet werden.
 
 \subsection{Effizienz}
-Der MPD-Client funktioniert möglichst effizient, d.h. das Programm ist schnell geladen und Eingaben des Benutzers
+Der MPD-Client funktioniert möglichst effizient, d.h. Das Programm ist schnell geladen und Eingaben des Benutzers
 werden praktisch sofort ausgeführt. Es gibt so gut wie keine Wartezeiten, jedenfalls sind diese 
 so genannten Reaktionszeiten für den Benutzer nicht merkbar. Selbst bei sehr großen Musik-Datenbanken
 und Playlists benötigt das Programm kaum Rechenzeit und sonstige Hardwareressourcen.

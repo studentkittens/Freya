@@ -13,7 +13,7 @@ Diese Änderungen müssen auch anderen Programmteilen bekannt gemacht werden.
 Für die Realisierung eignet sich hier das Observer Pattern gut. \footnote{http://de.wikipedia.org/wiki/Observer\_(Entwurfsmuster)}
 \\
 Der Client sollte im ,,idle''-Mode möglichst keine Ressourcen verschwenden und auch beim 
-trennen und verbinden die entprechenden Änderungen anderen Teilen des Programms mitteilen
+trennen und verbinden die entsprechenden Änderungen anderen Teilen des Programms mitteilen
 können. 
 \\
 
@@ -24,7 +24,7 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
         \\
         \emph{Problem:} Bei langsamen Netzwerkverbindungen erzeugt dies unnötige Netzwerklast. 
         Prinzipiell würde sich auf diese Art jedoch z.B. die Musik Bitrate anzeigen lassen. Es ist jedoch ein
-        wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste, denn man müsste manuell rausfinden 
+        wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste, denn man müsste manuell raus finden 
         was genau sich eigentlich geändert hat.
     \item [Nutzung der ,,\textit{idle}'' und ,,\textit{noidle}'' commands:]
         ,,\textit{idle}'' versetzt die Verbindung zum Server in einen Schlafzustand. Sobald Events wie ,,\textit{player}'' (wird beispielsweise durch pausieren getriggert) 
@@ -62,7 +62,7 @@ Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
         \emph{Lösung:} Man kann das ,,\textit{noidle}'' Kommando zum Verlassen senden, und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
 \end{itemize}
 
-Zum Verständniss der Problematik wird hier eine telnetsession gezeigt. 
+Zum Verständnis der Problematik wird hier eine telnetsession gezeigt. 
 Über telnet kann man das MPD Protokoll ,,interaktiv'' benutzen und ausprobieren: 
 % Insert telnet session
 \lstinputlisting[language=bash]{telnet.txt}

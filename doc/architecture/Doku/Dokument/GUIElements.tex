@@ -122,7 +122,7 @@ void get(void)    - Bekommt die jetzige Zeit
 void set(void)    - Setzt die jetzige Zeit absolut und zählt von dort weiter
 \end{verbatim}
 
-Zusätzlich stoppt die Heartbeat Klasse das Zählen wenn der Client das playback pausiert.
+Zusätzlich stoppt die Heartbeat Klasse das Zählen wenn der Client das Playback pausiert.
 Wird es fortgesetzt, so wird play() aufgerufen. 
 Zusätzlich wird bei jedem ,,Client Event'' der Zähler an der vergangen Zeit, im gerade spielenden Song, justiert.
 
@@ -139,7 +139,7 @@ Das Icon des Playbuttons wird entsprechend geändert falls das Playback pausiert
 bzw. fortgesetzt wird. Es sollen die Buttons \it Stop, Play/Pause, Previous und Next \rm angezeigt wird.
 
 \subsubsection{Statusbar}
-Kontrolliert die Anzeige der Statusbar (was den Text miteinfasst). 
+Kontrolliert die Anzeige der Statusbar (was den Text mit einfasst). 
 Benutzt GManager::Heartbeat um die Zeitanzeige zu aktualisieren. Ansonsten bekommt es alle Informationen rein vom Client update.
 
 \subsubsection{StatusIcons}
@@ -167,7 +167,7 @@ Dazu gehört auch die Definition und Anzeige des Popupmenüs, weshalb die Klasse
 (Siehe dazu die Erklärung zu Browser::BasePopup weiter unten)
 
 \subsubsection{Volumebutton}
-Verwaltet und kontrolliert die Anzeige des Volumebuttons. Aus Performancegründen sollen nur alle 0.05 Sekunden Volumeänderungen erlaubt werden.
+Verwaltet und kontrolliert die Anzeige des Volumebuttons. Aus Performance Gründen sollen nur alle 0.05 Sekunden Volumeänderungen erlaubt werden.
 
 \subsubsection{Window}
 Verwaltet das Hauptfenster von Freya.

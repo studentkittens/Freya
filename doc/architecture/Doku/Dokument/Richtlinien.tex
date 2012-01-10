@@ -2,21 +2,21 @@
 \section{Programmierrichtlinien}
 \renewcommand{\labelitemi}{•}
 \begin{itemize}
-\item Tabstop = 4 Leerzeichen.
-\item Keine nichtkonstanten globalen Variablen.
-\item Sinnvolle Variablenbenennung, "'lowercase"'.
-\item Klassenmethoden (static) nur in Ausnahmefällen bzw. nur mit guten Gründen.
-\item Valgrind darf keine Laufzeitfehler bringen, die nicht von Gtk oder anderen Bibliotheken stammen.
-\item ,,camelcase'' bei Objektnamen, C-Style (function\_name) bei Funktionsnamen - Präzise Namen.
 \item Modulare Gestaltung.
-\item Durchgehendes Model-View-Controller Pattern.
 \item Code-Sauberkeit ist wichtiger als Code Performance.
 \item "'make"' sollte keine Warnungen ausgeben, die man leicht umgehen könnte. (-Wall und -Wextra -std=c++0x wird genutzt)
 \item "'make test"' soll vollständig durchlaufen.
+\item Durchgehendes Model-View-Controller Pattern.
+\item Keine nichtkonstanten globalen Variablen.
+\item Sinnvolle Variablenbenennung
+\item Klassenmethoden (static) nur in Ausnahmefällen bzw. nur mit guten Gründen.
+\item Valgrind darf keine Laufzeitfehler bringen, die nicht von Gtk oder anderen Bibliotheken stammen.
+\item ,,camelcase'' bei Objektnamen, C-Style (function\_name) bei Funktionsnamen - Präzise Namen.
+\item Tabstop = 4 Leerzeichen.
 \item Allman-Stil.
 \end{itemize}
 \subsection{Begründung}
-Einhaltung dieser Programmierrichtlinen sorgen für ein einfaches, übersichtliches und einheitliches Arbeiten.
+Einhaltung dieser Programmierrichtlinien sorgen für ein einfaches, übersichtliches und einheitliches Arbeiten.
 Jeder sollte sich ohne größere Umstände in den Code eines anderen einlesen können. Dies gewährleistet eine
 hohe Wartbarkeit der Programm-Codes und beugt außerdem Fehlern vor. Das Programm ist leicht
 erweiterbar ohne große Anpassungen vornehmen zu müssen.
@@ -33,7 +33,7 @@ erweiterbar ohne große Anpassungen vornehmen zu müssen.
 \subsection{Begründung}
 CMake wurde ausgewählt da es eine solide und vor allem einfache Syntax bietet, und zudem leicht anpasspar ist. 
 Git dient zur Versionsverwaltung. Github wurde dabei als Hostingplattform ausgewählt, da das Hosting dort für Opensourceprojekte
-frei ist.  Glade bietet eine solide Trennung von der grafischen  Oberfläche zum Kontrollkern des Programms außerdem kann mit Glade sehr
+frei ist. Glade bietet eine solide Trennung von der grafischen  Oberfläche zum Kontrollkern des Programms außerdem kann mit Glade sehr
 einfach eine grafische Oberfläche erstellt werden. Da man sich in C++ im Gegensatz zu Java um sehr viele Sache selbst kümmern muss
 wurde Valgrind als Memorydebugger ausgewählt, um das Aufspüren von Fehlern zu vereinfachen.
 \section{Bibliotheken}
@@ -48,7 +48,7 @@ wurde Valgrind als Memorydebugger ausgewählt, um das Aufspüren von Fehlern zu 
 C++ wurde aufgrund persönlicher Interessen der Autoren gewählt. Außerdem gibt es für Java nur wenige
 oder sehr alte Bibliotheken für dieses Projekt. Gtkmm3 bietet ein dynamisches Layout und ist
 leichtgewichtiger als Qt, außerdem ist es einfacher in der Handhabung und lässt sich auf den meisten 
-Desktopumgebungen besser integrieren. Swing ist aus Sicht der Authoren nicht geeignet.
+Desktopumgebungen besser integrieren. Swing ist aus Sicht der Autoren nicht geeignet.
 Libmpdclient ist eine eigene lowlevel C-Bibliothek, sie ist unabhängig von eigentlichen MPD-Server.
 Libxml2 liefert einen standardisierten Xml Parser und ist sehr leichtgewichtig, sowie auf einer großen Zahl von Systemen vorhanden.
 Libnotify liefert Benachrichtigungen über interne Events und ist auf den meisten Linux

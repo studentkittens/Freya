@@ -1,7 +1,7 @@
 \section{Browserimplementierungen}
 
 Der Browser Namespace implementiert die einzelnen Browser die in der Sidebar angezeigt werden.
-Alle Klassen in diesem Namespace gehören nach dem MVC Paradigma der Controllerebene an - sie sind gewißermaßen der Kleber zwischen der Präsentation und der Logik.
+Alle Klassen in diesem Namespace gehören nach dem MVC Paradigma der Controllerebene an - sie sind gewissermaßen der Kleber zwischen der Präsentation und der Logik.
 Wie die meisten anderen peripheren Klassen erben diese von \emph{AbstractClientUser} um Änderungen von diesem empfangen zu können. Dies wird im Folgenden nicht mehr explizit erwähnt.
 
 \subsection{Hauptklassen}
@@ -88,7 +88,8 @@ Das zugrunde liegende Model ist dabei eine std::map (also eine Art Hashmap) die 
 und als Wert ein Vektor von \emph{AbstractComposites} speichert. Wird eine Seite vom ,,Cache'' über die fill\_filelist() Methode verlangt,
 so wird nachgeschaut ob im angegeben Pfad bereits eine Seite gespeichert ist, falls nicht wird sie vom Server geholt und gespeichert. 
 Anschließend wird über die Elemente iteriert welche durch die add\_item() Methode des Aufrufers weitergegeben werden. 
-Sollte sich der Server wechseln bzw. sich die Datenbank aktualisieren, so wird der Cache geleert damit die Anzeige stets aktuell ist. Das MPD Protokoll bietet hier leider keine Möglichkeit rauszufinden was genau sich geändert hat.
+Sollte sich der Server wechseln bzw. sich die Datenbank aktualisieren, so wird der Cache geleert damit die Anzeige stets aktuell ist. 
+Das MPD Protokoll bietet hier leider keine Möglichkeit herauszufinden was genau sich geändert hat.
 \\
 \textbf{Anmerkung:} Alle anderen Funktionen von AbstractItemGenerator werden nicht ausimplementiert.
 
@@ -121,7 +122,8 @@ Diese Klasse kontrolliert die Anzeige der Queue (der aktuellen Playlist) und auc
 \\
 \\
 \textbf{Suchfunktion:} Beim Tippen soll zum Künstler in der Liste gesprungen werden der mit den getippten Buchstaben beginnt.
-,,Kno'' sollte also zu ,,Knorkator'' springen. Bei Aktivierung des Suchfelds muss die Auswahl entsprechend einer Volltextsuche gefiltert werden. Durch Aktivieren der Tastenkombination \textit{Ctrl-F} soll zudem der Fokus auf das Suchfeld gelegt werden.
+,,Kno'' sollte also zu ,,Knorkator'' springen. Bei Aktivierung des Suchfelds muss die Auswahl entsprechend einer Volltextsuche gefiltert werden. Durch Aktivieren der Tastenkombination \textit{Ctrl-F}
+soll zudem der Fokus auf das Suchfeld gelegt werden.
 Zudem werden folgende Aktionen des Popupmenüs implementiert:
 \begin{itemize}
 \item Remove - Entfernt ausgewählte Elemente aus der Queue und benachrichtigt Server.

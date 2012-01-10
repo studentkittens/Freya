@@ -53,6 +53,12 @@ Im Code könnte das so aussehen:
 
 
 \subsubsection{Database}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{DatabaseClass.pdf}
+	\caption{Klassenübersicht zum Database Browser}
+	\label{st_database}
+\end{figure}
 \paragraph{Database}
 Diese Klasse kontrolliert die Anzeige des Datenbankbrowsers. Sie leitet sich daher von \emph{AbstractBrowser} ab um sich bei der Browserliste registrieren zu können.
 Um die Methoden des \emph{AbstractItemGenerator} Interface zu benutzen leitet es zudem von \emph{AbstractItemlist} ab und implementiert daher eine add\_item() Methode. 
@@ -100,6 +106,12 @@ Sie bietet die folgenden Aktionen an, die man über die Methode get\_action() ab
 \end{itemize}
 
 \subsubsection{Queue}
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{QueueClass.pdf}
+	\caption{Klassenübersicht zur Queue}
+	\label{st_queue}
+\end{figure}
 \paragraph{QueueModelColumns}
 Definiert die Spalten für die Queue, und erbt daher von Gtk::TreeModel::ColumnRecord, sodass ein Gtk::ListStore etwas damit anfangen kann.
 Die Definition ist nicht wie bei anderen Klassen als ,,Nested Class'' realisiert, da sowohl Queue als auch QueueMerger darauf zugreifen müssen. 

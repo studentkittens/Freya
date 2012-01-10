@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>462</x>
+      <y>322</y>
+      <w>203</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Database
+--
+- mp_IView : Gtk::IconView
+- m_DirStore : Gtk::ListStore
+- mp_Popup : DatabasePopup
+- mp_Cache : AbstractItemGenerator *
+--
++ get_container()
++ add_item()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>413</x>
+      <y>252</y>
+      <w>91</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>/AbstractItemlist/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>518</x>
+      <y>252</y>
+      <w>98</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>/AbstractClientUser/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>623</x>
+      <y>252</y>
+      <w>91</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>/AbstractBrowser/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>434</x>
+      <y>252</y>
+      <w>146</w>
+      <h>83</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;49;133;49;133;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>546</x>
+      <y>252</y>
+      <w>125</w>
+      <h>83</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>112;21;112;49;21;49;21;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>546</x>
+      <y>252</y>
+      <w>34</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;49</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>469</x>
+      <y>413</y>
+      <w>189</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>ModelColumns
+--
++ m_col_name
++ m_col_path
++ m_col_icon
++ m_col_is_file
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>182</x>
+      <y>378</y>
+      <w>224</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DatabasePopup
+--
+--
++ DatabasePopup(Gtk::Widget&amp; to_register)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>385</x>
+      <y>350</y>
+      <w>90</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;49;56;49;56;21;77;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>343</x>
+      <y>322</y>
+      <w>132</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>21;56;21;21;119;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>287</x>
+      <y>315</y>
+      <w>70</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Registers
+IconView of
+Database
+to be 
+rightclickable</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>175</x>
+      <y>217</y>
+      <w>203</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>BasePopup
+--
+--
++ BasePopup(Gtk::Widget&amp;,ustring ui)
++ get_action()
+- menu_add_item()
+- menu_construct</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>238</x>
+      <y>266</y>
+      <w>34</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;112</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>175</x>
+      <y>602</y>
+      <w>140</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>DatabaseCache
+--
+--
++ fill_queue()
++ fill_filelist()
+/(...)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>343</x>
+      <y>602</y>
+      <w>140</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>MPD::Client
+--
+--
++ fill_queue()
++ fill_filelist()
+/(...)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>245</x>
+      <y>483</y>
+      <w>154</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>/AbstractItemGenerator/
+--
+--
++ fill_queue()
++ fill_filelist()
+/(...)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>287</x>
+      <y>525</y>
+      <w>132</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;42;119;42;119;77</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>224</x>
+      <y>525</y>
+      <w>97</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>84;21;84;42;21;42;21;77</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>378</x>
+      <y>364</y>
+      <w>321</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>287;21;308;21;308;161;21;161</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>224</x>
+      <y>644</y>
+      <w>195</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;42;182;42;182;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>497</x>
+      <y>602</y>
+      <w>119</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>DatabaseCache caches
+retrieved data from
+Client.
+Offers same interface
+as Client.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>413</x>
+      <y>525</y>
+      <w>161</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Database instances
+mp_Cache as DatabaseCache</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

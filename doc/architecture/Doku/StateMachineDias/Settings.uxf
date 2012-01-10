@@ -4,7 +4,7 @@
   <element>
     <type>com.umlet.element.custom.InitialState</type>
     <coordinates>
-      <x>380</x>
+      <x>200</x>
       <y>40</y>
       <w>20</w>
       <h>20</h>
@@ -15,7 +15,7 @@
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>190</x>
+      <x>10</x>
       <y>20</y>
       <w>800</w>
       <h>400</h>
@@ -27,7 +27,7 @@ Settings</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
+      <x>190</x>
       <y>0</y>
       <w>380</w>
       <h>70</h>
@@ -39,7 +39,7 @@ Sub-Settings erzeugt</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>730</x>
+      <x>550</x>
       <y>30</y>
       <w>100</w>
       <h>40</h>
@@ -50,7 +50,7 @@ Sub-Settings erzeugt</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>630</x>
+      <x>450</x>
       <y>40</y>
       <w>350</w>
       <h>110</h>
@@ -62,7 +62,7 @@ Sub-Settings erzeugt</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>780</x>
+      <x>600</x>
       <y>130</y>
       <w>130</w>
       <h>40</h>
@@ -73,7 +73,7 @@ Sub-Settings erzeugt</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>780</x>
+      <x>600</x>
       <y>120</y>
       <w>170</w>
       <h>170</h>
@@ -85,7 +85,7 @@ Sub-Settings erzeugt</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
+      <x>450</x>
       <y>250</y>
       <w>180</w>
       <h>50</h>
@@ -100,19 +100,20 @@ Save &amp; Undo deaktiviert
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>0</x>
+      <x>80</x>
       <y>150</y>
-      <w>650</w>
-      <h>140</h>
+      <w>390</w>
+      <h>164</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-                                                                        Werte werden manuell verändert</panel_attributes>
-    <additional_attributes>310;30;310;120;630;120</additional_attributes>
+ 
+Werte werden manuell verändert</panel_attributes>
+    <additional_attributes>50;30;50;120;150;120;180;120;370;120</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>220</x>
+      <x>40</x>
       <y>130</y>
       <w>170</w>
       <h>50</h>
@@ -126,7 +127,7 @@ Save &amp; Undo aktiviert
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
+      <x>150</x>
       <y>140</y>
       <w>540</w>
       <h>114</h>
@@ -139,7 +140,7 @@ User-Config mit Werten aus GUI überschrieben</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>360</x>
+      <x>180</x>
       <y>100</y>
       <w>440</w>
       <h>94</h>
@@ -152,7 +153,7 @@ Undo()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>240</x>
+      <x>60</x>
       <y>150</y>
       <w>450</w>
       <h>214</h>
@@ -165,7 +166,7 @@ Default-Werte in das GUI laden</panel_attributes>
   <element>
     <type>com.umlet.element.custom.FinalState</type>
     <coordinates>
-      <x>860</x>
+      <x>680</x>
       <y>350</y>
       <w>20</w>
       <h>20</h>
@@ -176,7 +177,7 @@ Default-Werte in das GUI laden</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>710</x>
+      <x>530</x>
       <y>270</y>
       <w>130</w>
       <h>100</h>
@@ -187,7 +188,7 @@ Default-Werte in das GUI laden</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SynchBarVertical</type>
     <coordinates>
-      <x>810</x>
+      <x>630</x>
       <y>340</y>
       <w>20</w>
       <h>40</h>
@@ -198,7 +199,7 @@ Default-Werte in das GUI laden</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>210</x>
+      <x>30</x>
       <y>150</y>
       <w>630</w>
       <h>240</h>
@@ -209,7 +210,7 @@ Default-Werte in das GUI laden</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>790</x>
+      <x>610</x>
       <y>330</y>
       <w>90</w>
       <h>50</h>

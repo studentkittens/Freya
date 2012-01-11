@@ -62,6 +62,11 @@ ADD_CUSTOM_TARGET(doc
     COMMENT "Generate Doxygen doc" VERBATIM
     )
 
+ADD_CUSTOM_TARGET(tex 
+    COMMAND cd ${PROJECT_SOURCE_DIR}/doc/architecture && pdflatex -output-directory out/ doku.tex 
+    COMMENT "Generate Latex documents" VERBATIM
+    )
+
 # --------------------------
 # Add src/CMakeLists.txt
 # --------------------------

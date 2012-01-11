@@ -1,0 +1,20 @@
+h1. Freya
+
+A fun and slim Client for the MPD Server. 
+Started as some student's homework..
+
+h2. Debugging
+
+When using valgrind use it with the following command to kill a lot warnings caused by gtk3:
+@G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --leak-check=full --log-file=valg.log --suppressions=gtk.suppression@
+
+You might want to alias this.
+@alias gtkvg='<cmd_above>'@
+
+
+h2. Doxygen
+
+To generate documentation use:
+@doxygen FreyaDoxygen.conf@
+
+Generated documentation can be viewed in doc/doxygen/html/index.html

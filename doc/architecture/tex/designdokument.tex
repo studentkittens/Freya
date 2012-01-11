@@ -31,7 +31,7 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
         eintreten, wacht die Verbindung aus diesem Zustand auf und sendet an den Client eine Liste der Events die aufgetreten sind:
 
 	\begin{figure}[h!]
-	  \lstinputlisting[language=bash]{./source/state.txt}
+	  \lstinputlisting[language=bash]{./src/state.txt}
 	  \caption{Eine Beispielantwort des MPD Servers}
 	  \label{dd_state}
 	\end{figure}
@@ -65,7 +65,7 @@ Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
 Zum Verständnis der Problematik wird hier eine telnetsession gezeigt. 
 Über telnet kann man das MPD Protokoll ,,interaktiv'' benutzen und ausprobieren: 
 % Insert telnet session
-\lstinputlisting[language=bash]{./source/telnet.txt}
+\lstinputlisting[language=bash]{./src/telnet.txt}
 
 Die Idee zu dieser Implementierung (speziell das Benutzen einer asynchronen Verbindung), kommt von ,,\textit{ncmpc}'',
 der mehr oder minder offiziellen Referenzimplementierung des MPD Mit-Authors \emph{Max Kellermann}.

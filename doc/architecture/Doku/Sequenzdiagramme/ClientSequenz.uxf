@@ -4,8 +4,8 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>190</x>
-      <y>0</y>
+      <x>110</x>
+      <y>20</y>
       <w>50</w>
       <h>190</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>170</x>
-      <y>0</y>
+      <x>90</x>
+      <y>20</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>210</x>
-      <y>170</y>
+      <x>130</x>
+      <y>190</y>
       <w>20</w>
       <h>480</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>310</x>
-      <y>160</y>
+      <x>230</x>
+      <y>180</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -48,8 +48,8 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>350</x>
-      <y>160</y>
+      <x>270</x>
+      <y>180</y>
       <w>50</w>
       <h>100</h>
     </coordinates>
@@ -59,8 +59,8 @@
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>370</x>
-      <y>240</y>
+      <x>290</x>
+      <y>260</y>
       <w>20</w>
       <h>410</h>
     </coordinates>
@@ -70,8 +70,8 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>190</x>
-      <y>120</y>
+      <x>110</x>
+      <y>140</y>
       <w>148</w>
       <h>70</h>
     </coordinates>
@@ -82,8 +82,8 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>360</x>
-      <y>190</y>
+      <x>280</x>
+      <y>210</y>
       <w>152</w>
       <h>100</h>
     </coordinates>
@@ -94,8 +94,8 @@ BaseClient()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>380</x>
-      <y>260</y>
+      <x>300</x>
+      <y>280</y>
       <w>20</w>
       <h>370</h>
     </coordinates>
@@ -105,8 +105,8 @@ BaseClient()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>250</y>
+      <x>290</x>
+      <y>270</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -117,8 +117,8 @@ BaseClient()</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>500</x>
-      <y>290</y>
+      <x>420</x>
+      <y>310</y>
       <w>130</w>
       <h>30</h>
     </coordinates>
@@ -128,8 +128,8 @@ BaseClient()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>530</x>
-      <y>290</y>
+      <x>450</x>
+      <y>310</y>
       <w>50</w>
       <h>90</h>
     </coordinates>
@@ -139,8 +139,8 @@ BaseClient()</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>550</x>
-      <y>360</y>
+      <x>470</x>
+      <y>380</y>
       <w>20</w>
       <h>100</h>
     </coordinates>
@@ -150,8 +150,8 @@ BaseClient()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>530</x>
-      <y>310</y>
+      <x>450</x>
+      <y>330</y>
       <w>194</w>
       <h>100</h>
     </coordinates>
@@ -162,20 +162,8 @@ hostChanged=false</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>340</x>
-      <y>400</y>
-      <w>224</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;- 
-       m_ListBegun=false</panel_attributes>
-    <additional_attributes>60;80;120;80;120;50;90;50;60;50</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>530</x>
-      <y>430</y>
+      <x>450</x>
+      <y>450</y>
       <w>50</w>
       <h>120</h>
     </coordinates>
@@ -185,8 +173,8 @@ hostChanged=false</panel_attributes>
   <element>
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
-      <x>550</x>
-      <y>530</y>
+      <x>470</x>
+      <y>550</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -196,8 +184,8 @@ hostChanged=false</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>490</y>
+      <x>290</x>
+      <y>510</y>
       <w>200</w>
       <h>70</h>
     </coordinates>
@@ -208,8 +196,8 @@ signal_error()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>370</x>
-      <y>560</y>
+      <x>290</x>
+      <y>580</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
@@ -219,8 +207,8 @@ signal_error()</panel_attributes>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>600</x>
-      <y>550</y>
+      <x>520</x>
+      <y>570</y>
       <w>210</w>
       <h>80</h>
     </coordinates>
@@ -233,8 +221,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>440</x>
-      <y>520</y>
+      <x>360</x>
+      <y>540</y>
       <w>270</w>
       <h>50</h>
     </coordinates>
@@ -244,8 +232,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>200</x>
-      <y>620</y>
+      <x>120</x>
+      <y>640</y>
       <w>190</w>
       <h>50</h>
     </coordinates>
@@ -255,8 +243,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>190</x>
-      <y>620</y>
+      <x>110</x>
+      <y>640</y>
       <w>50</w>
       <h>150</h>
     </coordinates>
@@ -266,8 +254,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>350</x>
-      <y>620</y>
+      <x>270</x>
+      <y>640</y>
       <w>50</w>
       <h>150</h>
     </coordinates>
@@ -277,8 +265,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>530</x>
-      <y>560</y>
+      <x>450</x>
+      <y>580</y>
       <w>50</w>
       <h>210</h>
     </coordinates>
@@ -288,8 +276,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>120</x>
-      <y>40</y>
+      <x>40</x>
+      <y>60</y>
       <w>710</w>
       <h>630</h>
     </coordinates>
@@ -299,8 +287,8 @@ der Connection.</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>360</x>
-      <y>580</y>
+      <x>280</x>
+      <y>600</y>
       <w>110</w>
       <h>80</h>
     </coordinates>

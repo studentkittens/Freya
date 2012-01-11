@@ -4,8 +4,8 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>40</x>
-      <y>312</y>
+      <x>16</x>
+      <y>192</y>
       <w>168</w>
       <h>136</h>
     </coordinates>
@@ -27,8 +27,8 @@ MPD::Listener
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>248</x>
-      <y>360</y>
+      <x>224</x>
+      <y>240</y>
       <w>176</w>
       <h>224</h>
     </coordinates>
@@ -56,8 +56,8 @@ MPD::Listener
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>392</x>
-      <y>136</y>
+      <x>368</x>
+      <y>16</y>
       <w>200</w>
       <h>200</h>
     </coordinates>
@@ -83,8 +83,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>296</x>
-      <y>672</y>
+      <x>272</x>
+      <y>552</y>
       <w>224</w>
       <h>208</h>
     </coordinates>
@@ -109,8 +109,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>464</x>
-      <y>416</y>
+      <x>440</x>
+      <y>296</y>
       <w>184</w>
       <h>96</h>
     </coordinates>
@@ -130,8 +130,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>272</x>
-      <y>560</y>
+      <x>248</x>
+      <y>440</y>
       <w>112</w>
       <h>128</h>
     </coordinates>
@@ -141,8 +141,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>344</x>
-      <y>488</y>
+      <x>320</x>
+      <y>368</y>
       <w>232</w>
       <h>200</h>
     </coordinates>
@@ -152,8 +152,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>184</x>
-      <y>384</y>
+      <x>160</x>
+      <y>264</y>
       <w>80</w>
       <h>40</h>
     </coordinates>
@@ -163,8 +163,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>400</x>
-      <y>312</y>
+      <x>376</x>
+      <y>192</y>
       <w>64</w>
       <h>112</h>
     </coordinates>
@@ -174,8 +174,8 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>64</x>
-      <y>480</y>
+      <x>40</x>
+      <y>360</y>
       <w>144</w>
       <h>128</h>
     </coordinates>
@@ -195,8 +195,8 @@ update_all()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>120</x>
-      <y>424</y>
+      <x>96</x>
+      <y>304</y>
       <w>40</w>
       <h>72</h>
     </coordinates>

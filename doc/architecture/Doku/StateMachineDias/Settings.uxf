@@ -15,10 +15,10 @@
   <element>
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
-      <x>10</x>
+      <x>30</x>
       <y>20</y>
-      <w>800</w>
-      <h>400</h>
+      <w>750</w>
+      <h>380</h>
     </coordinates>
     <panel_attributes>*state machine*
 Settings</panel_attributes>

@@ -7,7 +7,7 @@
       <x>10</x>
       <y>10</y>
       <w>750</w>
-      <h>330</h>
+      <h>280</h>
     </coordinates>
     <panel_attributes>*state machine*
 Listener</panel_attributes>

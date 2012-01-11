@@ -16,5 +16,17 @@ h2. Doxygen
 
 To generate documentation use:
 @doxygen FreyaDoxygen.conf@
+or
+@make doc@
 
-Generated documentation can be viewed in doc/doxygen/html/index.html
+Generating the LaTeX part is done vie:
+@make tex@
+
+Running tests via:
+@make test@
+
+See @make help@ for a complete list of targets.
+
+Generated documentation can be viewed in _doc/doxygen/html/index.html_
+
+More to come here.

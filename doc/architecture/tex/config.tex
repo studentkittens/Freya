@@ -120,7 +120,6 @@ Die Konfigurations- und Logdatei soll nach XDG Standard \verb+($XDG_CONFIG_HOME)
 
 Die Optionen in der Konfigurationsdatei sind baumartig nach ,,Domainprinzip'' aufgebaut. Die Konfigurationsdatei unter \ref{c_config}
 zeigt exemplarisch den gewünschten Aufbau.
-
 \begin{figure}[htb!]
     \lstinputlisting[language=XML]{./src/config.xml}
     \caption{Config.xml Konfigurationsdatei im Überblick}
@@ -128,16 +127,17 @@ zeigt exemplarisch den gewünschten Aufbau.
 \end{figure}
 
 
+\newpage
 \subsection{Model}
-Die \emph{Config::Model} Klasse gehört nach dem MVC Paradigma zur Model Schicht. Diese Klasse soll die nötigen Daten (Konfigurationsdatei)
-die zum Betrieb von Freya nötig sind im Speicher vorhalten und Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte bereit stellen (siehe \ref{c_confmod}).
-
 \begin{figure}[htb!]
     \centering
     \includegraphics[scale=0.6]{./gfx/class/hand_model}
     \caption{Config-Model Beziechung}
     \label{c_confmod}
 \end{figure}
+Die \emph{Config::Model} Klasse gehört nach dem MVC Paradigma zur Model Schicht. Diese Klasse soll die nötigen Daten (Konfigurationsdatei)
+die zum Betrieb von Freya nötig sind im Speicher vorhalten und Methoden zum Lesen und Speichern der Konfigurationsdatei auf die Festplatte bereit stellen (siehe \ref{c_confmod}).
+
 
 
 Zum Parsen der XML Datei soll hier die C Programmbibliothek libxml2 verwendet werden. Diese Library wurde gewählt, weil sie alle benötigten Funktionen enthält, nach dem ANSI-C Standard implementiert ist

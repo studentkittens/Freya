@@ -4,7 +4,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>16</x>
+      <x>0</x>
       <y>192</y>
       <w>168</w>
       <h>136</h>
@@ -27,7 +27,7 @@ MPD::Listener
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>224</x>
+      <x>208</x>
       <y>240</y>
       <w>176</w>
       <h>224</h>
@@ -56,16 +56,16 @@ MPD::Listener
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>368</x>
+      <x>352</x>
       <y>16</y>
-      <w>200</w>
+      <w>208</w>
       <h>200</h>
     </coordinates>
     <panel_attributes>MPD::Connection
 --
 conn : mpd_connection *
 m_ConnNotifier : ConnectionNotifier
-m_ErrorSig : ErrorNotify
+m_ErrorSig : ErrorNotifier
 lastHost : ustring
 hostChanged : bool
 --
@@ -83,7 +83,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>272</x>
+      <x>256</x>
       <y>552</y>
       <w>224</w>
       <h>208</h>
@@ -109,7 +109,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>440</x>
+      <x>424</x>
       <y>296</y>
       <w>184</w>
       <h>96</h>
@@ -130,7 +130,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>248</x>
+      <x>232</x>
       <y>440</y>
       <w>112</w>
       <h>128</h>
@@ -141,7 +141,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
+      <x>304</x>
       <y>368</y>
       <w>232</w>
       <h>200</h>
@@ -152,7 +152,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>160</x>
+      <x>144</x>
       <y>264</y>
       <w>80</w>
       <h>40</h>
@@ -163,7 +163,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>376</x>
+      <x>360</x>
       <y>192</y>
       <w>64</w>
       <h>112</h>
@@ -174,7 +174,7 @@ emit_connection_change()
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>40</x>
+      <x>24</x>
       <y>360</y>
       <w>144</w>
       <h>128</h>
@@ -195,7 +195,7 @@ update_all()</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>96</x>
+      <x>80</x>
       <y>304</y>
       <w>40</w>
       <h>72</h>
@@ -203,5 +203,18 @@ update_all()</panel_attributes>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 </panel_attributes>
     <additional_attributes>24;24;24;56</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>32</x>
+      <y>72</y>
+      <w>296</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ConnectionNotifier, ErrorNotifier und EventNotifier
+sind ein jeweils typedef auf sigc::signal, und dienen
+den Observerpattern. Siehe dazu im Text weiteres.</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

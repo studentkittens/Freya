@@ -87,13 +87,14 @@ namespace MPD
         GET_BUSY
         {
             mpd_pair * ent = NULL;
-            mpd_send_command(conn,command,NULL);
-
-            while((ent = mpd_recv_pair(conn)))
+            if(mpd_send_command(conn,command,NULL))
             {
-                /* Debugging stuff, just shown in the test_client */
-                g_printerr("%s => %s\n",ent->name,ent->value);
-                mpd_return_pair(conn,ent);
+                while((ent = mpd_recv_pair(conn)))
+                {
+                    /* Debugging stuff, just shown in the test_client */
+                    g_printerr("%s => %s\n",ent->name,ent->value);
+                    mpd_return_pair(conn,ent);
+                }
             }
         }
         GET_LAID

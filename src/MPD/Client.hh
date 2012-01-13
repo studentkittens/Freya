@@ -247,6 +247,13 @@ namespace MPD
          * @return true on succesfull execution
          */
         bool send_command(const char * command);
+
+        /**
+         * @brief Pings server
+         *
+         * @return true if it responds correctly
+         */
+        bool ping(void);
     };
 
 }

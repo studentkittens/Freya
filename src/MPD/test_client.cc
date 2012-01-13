@@ -107,14 +107,21 @@ int main(int argc, char *argv[])
     g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data);
 
     freya.connect();
+    if(freya.ping() /* Extra test */)
+    {
+        Info("Enter your command prepended with a ':'");
+        Info("Example: :status or :next");
+        Info("Type 'q' to quit.");
 
-    Info("Enter your command prepended with a ':'");
-    Info("Example: :status or :next");
-    Info("Type 'q' to quit.");
+        /* Start listening to events */
+        app_loop->run();
+        app_loop->unreference();
+    }
+    else
+    {
+        Error("Cannot ping server.");
+    }
 
-    /* Start listening to events */
-    app_loop->run();
-    app_loop->unreference();
     g_io_channel_unref(stdin_chan);
 
     return EXIT_SUCCESS;

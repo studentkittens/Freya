@@ -452,5 +452,20 @@ namespace MPD
         }
         GET_LAID
     }
+    
+//--------------------
+
+    bool Client::ping(void)
+    {
+        bool retv = false;
+        GET_BUSY
+        {
+            if(mpd_send_command(conn,"ping",NULL))
+                retv = mpd_response_finish(conn);
+        }
+        GET_LAID
+        
+        return retv;
+    }
 
 } // END NAMESPACE

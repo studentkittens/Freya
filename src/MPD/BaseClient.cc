@@ -74,6 +74,7 @@ namespace MPD
                 {
                     mp_Listener->leave();
                     delete mp_Listener;
+                    mp_Listener = NULL;
                 }
             }
             m_Conn.disconnect();
@@ -87,7 +88,7 @@ namespace MPD
     void BaseClient::go_idle(void)
     {
         m_Conn.check_error();
-        if(mp_Listener->is_idling() == false)
+        if(mp_Listener && mp_Listener->is_idling() == false)
         {
             mp_Listener->enter();
         }
@@ -97,7 +98,7 @@ namespace MPD
 
     void BaseClient::go_busy(void)
     {
-        if(mp_Listener->is_idling() == true)
+        if(mp_Listener && mp_Listener->is_idling() == true)
         {
             mp_Listener->leave();
         }
@@ -181,7 +182,9 @@ namespace MPD
 
     gboolean BaseClient::timeout_reconnect(void)
     {
+        Info("Trying to stand up");
         gboolean retv = __connect();
+        Info("Sigh.");
 
         if(retv)
         {

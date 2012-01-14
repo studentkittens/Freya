@@ -45,6 +45,7 @@ public:
     void testLogWriter( void )
     {
         Init::Path path;
+        Glib::ustring LogPath = path.path_to_log();
         int aval = 0;
         long fsize_a,fsize_b = 0;
         GStatBuf statbuf;
@@ -52,33 +53,37 @@ public:
 
         /* gets a logwriter instance, should create a log if not avaiable */
         Log::Writer::instance();
-        aval = g_stat(path.path_to_log().c_str(),&statbuf);
+        aval = g_stat(LogPath.c_str(),&statbuf);
 
         if(aval != -1)
         {
             fsize_a = statbuf.st_size;
-            printf("filesize var_a: %ld bytes. \n",fsize_a);
-
             fsize_b = statbuf.st_size;
-            printf("filesize var_b: %ld bytes. \n",fsize_b);
 
             /* log size equal? */
             TS_ASSERT_EQUALS(fsize_a,fsize_b);
 
             /* writing a message to log, messeage should grow by 12 bytes + 64 bytes date/log footprint */
             Info("test message");
-            printf("writing message to log.\n");
 
             /*reinit stat struct and get new filesize */
-            g_stat(path.path_to_log().c_str(),&statbuf);
+            g_stat(LogPath.c_str(),&statbuf);
             fsize_b = statbuf.st_size;
-            printf("new filesize var_b: %ld bytes. \n",fsize_b);
 
             /* file_b bigger after writing to log? */
             TS_ASSERT(fsize_a < fsize_b);
 
             /* file_b size increased properly? file_a + written bytes? */
             TS_ASSERT(fsize_a+12+64 == fsize_b);
+
+            /* Test if Info gets written out */
+            LogSetVerbosity(Log::LOG_WARN);
+            Info("Should not be written to log");
+            g_stat(LogPath.c_str(),&statbuf);
+            TS_ASSERT(fsize_b == statbuf.st_size);
+            Warning("Should be written to log");
+            g_stat(LogPath.c_str(),&statbuf);
+            TS_ASSERT(fsize_b < statbuf.st_size);
         }
         else
         {

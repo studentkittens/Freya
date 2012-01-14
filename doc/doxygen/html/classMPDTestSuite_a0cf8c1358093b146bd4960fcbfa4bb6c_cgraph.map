@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e" title="Get the notify sigc::signal." alt="" coords="223,5,473,32"/>
+<area shape="rect" id="node5" href="$classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09" title="MPDTestSuite::clientUpdate" alt="" coords="253,56,443,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c" title="Register for connection changes." alt="" coords="205,107,491,133"/>
+<area shape="rect" id="node9" href="$classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a" title="MPDTestSuite::connectionChange" alt="" coords="236,157,460,184"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config." alt="" coords="274,208,422,235"/>
+</map>

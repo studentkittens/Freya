@@ -46,24 +46,41 @@ Diese grundlegenden Funktionen sollen ausgelagert werden damit sie von mehreren 
 Code zu vermeiden.
 
 \subsection{Logging}
-
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[scale=0.6]{./gfx/class/log}
+    \caption{Klassendiagramm zu Log::Writer}
+    \label{c_log}
+\end{figure}
 Im \emph{Log Namespace} befindet sich die Writer Klasse, welche auch als sog. ,,\textit{Utils-Klasse}'' Funktionen für alle anderen
-Klassen in Namespace bereitstellt. Bei dieser Klasse wurde das Singleton Pattern gewählt, damit sie ,,leicht von überall'' aus erreichbar ist, ohne dass vorher explizit eine Instanzierung statt finden muss. Die Logdatei wird im Konfigurationsverzeichnis von Freya als log.txt
+Klassen in Namespace bereitstellt. Bei dieser Klasse wurde das Singleton Pattern gewählt, damit sie leicht von ,,überall'' aus erreichbar ist, ohne dass vorher explizit eine Instanzierung statt finden muss. Die Logdatei wird im Konfigurationsverzeichnis von Freya als log.txt
 abgespeichert, im folgenden Dokument gibts dazu mehr Informationen. 
 Die Logklasse dient zur Protokollierung von Fehlern und besonderen Ereignissen.  
 
 \begin{figure}[htb!]
     Folgende selbsterklärende Makros werden von der \emph{Log::Writer} Klasse zur Protokollierung bereitgestellt:
 
-    \begin{verbatim}
-    Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
-    Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)
-    Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)
-    Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)
-    Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
-    Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
-    \end{verbatim}
+  \begin{verbatim}
+  _MSG(level, msg, ...) Log::Writer::instance().message(level, ...)
+
+  Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ...)
+  Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ...)
+  Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ...)
+  Success(msg, ...)  _MSG(Log::LOG_OK, msg, ...)
+  Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ...)
+  Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ...)
+  \end{verbatim}
 \end{figure}
+
+Als weitere Funktionalität soll beim instanzieren geprüft werden ob die Größe der Logdate 2MB überschreitet. In diesem Fall soll die Logdatei neu angelegt werden.
+Um die ,,Gesprächigkeit'' (Verbosity) der Logklasse zu kontrollieren sollen zudem folgende Makros geboten werden:
+\begin{verbatim}
+ LogSetVerbosity(LV) Log::Writer::instance().set_verbosity((Log::LOGLEVEL)LV)
+ LogGetVerbosity     Log::Writer::instance().get_verbosity()
+\end{verbatim}
+Die höchste Gesprächigkeit hat dabei \emph{Log::FATAL\_ERROR}, die niedrigste \emph{Log::LOG\_DEBUG}. Wird also beispielsweise LogSetVerbosity(\emph{Log::LOG\_WARN}) aufgerufen, so
+werden nur noch fatale Fehler, Fehler und Warnungen ausgegeben. Die Reihenfolge entspricht den Makros weiter oben.
+Soll die Ausgabe vollkommen abgeschalten werden so kann eine Zahl kleiner 1 an LogSetVerbosity() übergeben werden.
 
 %----------------------------------------------------------------------------------------------
 

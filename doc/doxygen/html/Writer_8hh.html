@@ -91,13 +91,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Writer.hh:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="Writer_8hh__incl.svg" width="332" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="Writer_8hh__incl.svg" width="332" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="Writer_8hh__dep__incl.svg" width="723" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="Writer_8hh__dep__incl.svg" width="835" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -114,6 +113,8 @@ Namespaces</h2></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Writer_8hh.html#a67237e77d247fb2b13d4bc9a322408bc">_MSG</a>(level, msg,...)&#160;&#160;&#160;Log::Writer::instance().message(__FILE__, __LINE__, level, msg,  ##__VA_ARGS__)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Writer_8hh.html#a8377a4b3fd3d12a5fc48496055fcf962">LogSetVerbosity</a>(X)&#160;&#160;&#160;Log::Writer::instance().set_verbosity((<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">Log::LOGLEVEL</a>)X)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Writer_8hh.html#a4826fa85d9a6487b041c41b549c60eb3">LogGetVerbosity</a>&#160;&#160;&#160;Log::Writer::instance().get_verbosity()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Writer_8hh.html#a76dc8e0e6250a0fd7124293961ebd111">Warning</a>(msg,...)&#160;&#160;&#160;<a class="el" href="Writer_8hh.html#a67237e77d247fb2b13d4bc9a322408bc">_MSG</a>(<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">Log::LOG_WARN</a>, msg, ##__VA_ARGS__)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Writer_8hh.html#ad33695a1806e13f4e48454c9541af99c">Info</a>(msg,...)&#160;&#160;&#160;<a class="el" href="Writer_8hh.html#a67237e77d247fb2b13d4bc9a322408bc">_MSG</a>(<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">Log::LOG_INFO</a>, msg, ##__VA_ARGS__)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Writer_8hh.html#aa75b27b8a5cc768d7a9b9636493e8c13">Fatal</a>(msg,...)&#160;&#160;&#160;<a class="el" href="Writer_8hh.html#a67237e77d247fb2b13d4bc9a322408bc">_MSG</a>(<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">Log::LOG_FATAL_ERROR</a>, msg, ##__VA_ARGS__)</td></tr>
@@ -123,12 +124,12 @@ Defines</h2></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">Log::LOGLEVEL</a> { <br/>
-&#160;&#160;<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">Log::LOG_OK</a>, 
+&#160;&#160;<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">Log::LOG_FATAL_ERROR</a> =  1, 
 <a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">Log::LOG_ERROR</a>, 
-<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">Log::LOG_FATAL_ERROR</a>, 
-<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">Log::LOG_INFO</a>, 
+<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">Log::LOG_WARN</a>, 
+<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">Log::LOG_OK</a>, 
 <br/>
-&#160;&#160;<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">Log::LOG_WARN</a>, 
+&#160;&#160;<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">Log::LOG_INFO</a>, 
 <a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">Log::LOG_DEBUG</a>
 <br/>
  }</td></tr>
@@ -195,7 +196,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00046">46</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00048">48</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 
 </div>
 </div>
@@ -224,7 +225,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00045">45</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00047">47</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 
 </div>
 </div>
@@ -253,7 +254,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00044">44</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00046">46</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 
 </div>
 </div>
@@ -282,7 +283,41 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00043">43</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00045">45</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4826fa85d9a6487b041c41b549c60eb3"></a><!-- doxytag: member="Writer.hh::LogGetVerbosity" ref="a4826fa85d9a6487b041c41b549c60eb3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="Writer_8hh.html#a4826fa85d9a6487b041c41b549c60eb3">LogGetVerbosity</a>&#160;&#160;&#160;Log::Writer::instance().get_verbosity()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00041">41</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8377a4b3fd3d12a5fc48496055fcf962"></a><!-- doxytag: member="Writer.hh::LogSetVerbosity" ref="a8377a4b3fd3d12a5fc48496055fcf962" args="(X)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="Writer_8hh.html#a8377a4b3fd3d12a5fc48496055fcf962">LogSetVerbosity</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">X</td><td>)</td>
+          <td>&#160;&#160;&#160;Log::Writer::instance().set_verbosity((<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">Log::LOGLEVEL</a>)X)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00040">40</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 
 </div>
 </div>
@@ -311,7 +346,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00047">47</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00049">49</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 
 </div>
 </div>
@@ -340,7 +375,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00042">42</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00044">44</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 
 </div>
 </div>
@@ -362,7 +397,7 @@ Enumerations</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 11 2012 09:55:05 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 14 2012 17:56:07 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

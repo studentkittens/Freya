@@ -167,7 +167,7 @@ namespace MPD
                 unsigned actual_event = (idle_events & mask);
                 if(actual_event != 0)
                 {
-                    Debug("  :%s",event_name);
+                    //Debug("  :%s",event_name);
 
                     /* Notify observers */
                     mp_Notifier->emit((mpd_idle)actual_event,m_NData);

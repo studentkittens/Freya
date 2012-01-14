@@ -51,6 +51,7 @@ var searchData=
   ['get_5fuptime',['get_uptime',['../classMPD_1_1Statistics.html#a2edd242a0f8c8336a7bca471ad154d38',1,'MPD::Statistics']]],
   ['get_5fvalue',['get_value',['../classConfig_1_1Handler.html#a234279c50d24218ec2ce7b5404fd3399',1,'Config::Handler']]],
   ['get_5fvalue_5fas_5fint',['get_value_as_int',['../classConfig_1_1Handler.html#a7895612f90be60c3af3eee62ee30f1e8',1,'Config::Handler']]],
+  ['get_5fverbosity',['get_verbosity',['../classLog_1_1Writer.html#a9be4c7c94ab1f59c516392b9d220eabf',1,'Log::Writer']]],
   ['get_5fvolume',['get_volume',['../classMPD_1_1Status.html#ab9ced2bc53a9e0372c75b6dcbac30317',1,'MPD::Status']]],
   ['get_5fwindow',['get_window',['../classAvahi_1_1Browser.html#a7f125f15c32bb87cf46a0bec14e96351',1,'Avahi::Browser::get_window()'],['../classGManager_1_1Window.html#ad55ebc075a1366544ecde51d6e60d69c',1,'GManager::Window::get_window()']]],
   ['getdefaultdocptr',['getDefaultDocPtr',['../classConfig_1_1Model.html#a06e607092b8b271fae4f6c3ad33867a9',1,'Config::Model']]],

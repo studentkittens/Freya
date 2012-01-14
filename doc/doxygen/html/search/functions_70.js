@@ -4,6 +4,7 @@ var searchData=
   ['path_5fto_5fconfig',['path_to_config',['../classInit_1_1Path.html#adb44ec215922f60aa8ce9c96b81f664e',1,'Init::Path']]],
   ['path_5fto_5flog',['path_to_log',['../classInit_1_1Path.html#a6f1a05a898cea1f4e513882d9c259bd9',1,'Init::Path']]],
   ['pause',['pause',['../classGManager_1_1Heartbeat.html#ae940cf159e953a8422648075727d7312',1,'GManager::Heartbeat']]],
+  ['ping',['ping',['../classMPD_1_1Client.html#aa896dd836da9c78a01300431dedcd73d',1,'MPD::Client']]],
   ['play',['play',['../classGManager_1_1Heartbeat.html#a7e460205dfa1aff69de200a21c721ad4',1,'GManager::Heartbeat']]],
   ['play_5fsong_5fat_5fid',['play_song_at_id',['../classMPD_1_1Client.html#a2cf834d27006584829883044ec67bde4',1,'MPD::Client']]],
   ['playback_5fcrossfade',['playback_crossfade',['../classMPD_1_1Client.html#aeefac47bc1e30337b5160d8ade31b615',1,'MPD::Client']]],

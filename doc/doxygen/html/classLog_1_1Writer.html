@@ -113,12 +113,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the <a class="el" href="namespaceLog.html" title="The namespace provides methods and marcos to interact with Freya&#39;s logging utility.">Log</a> also properly. It is not fatal when not being called.  <a href="#a269d50952bc092a39202bb0bba99c345"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0">message</a> (const char *file, int line, <a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">LOGLEVEL</a> level, const char *msg,...)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual instance method called. Do not use directly!  <a href="#ad8afb2db644239efdccc4ee9251073d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLog_1_1Writer.html#ae45116850d6bca723163473f01c42522">set_verbosity</a> (<a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">LOGLEVEL</a> v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the max. verbosity.  <a href="#ae45116850d6bca723163473f01c42522"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">LOGLEVEL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLog_1_1Writer.html#a9be4c7c94ab1f59c516392b9d220eabf">get_verbosity</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently set verbosity level.  <a href="#a9be4c7c94ab1f59c516392b9d220eabf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395">clear</a> (void)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the logfile (but keep it open)  <a href="#a926e590e88dd24616b64773d8ce96395"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00064">64</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
+<p>Definition at line <a class="el" href="Writer_8hh_source.html#l00066">66</a> of file <a class="el" href="Writer_8hh_source.html">Writer.hh</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a269d50952bc092a39202bb0bba99c345"></a><!-- doxytag: member="Log::Writer::~Writer" ref="a269d50952bc092a39202bb0bba99c345" args="()" -->
 <div class="memitem">
@@ -155,6 +159,25 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Clear the logfile (but keep it open) </p>
+
+</div>
+</div>
+<a class="anchor" id="a9be4c7c94ab1f59c516392b9d220eabf"></a><!-- doxytag: member="Log::Writer::get_verbosity" ref="a9be4c7c94ab1f59c516392b9d220eabf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">LOGLEVEL</a> <a class="el" href="classLog_1_1Writer.html#a9be4c7c94ab1f59c516392b9d220eabf">Log::Writer::get_verbosity</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the currently set verbosity level. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>a member of the LOGLEVEL enum </dd></dl>
 
 </div>
 </div>
@@ -215,6 +238,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae45116850d6bca723163473f01c42522"></a><!-- doxytag: member="Log::Writer::set_verbosity" ref="ae45116850d6bca723163473f01c42522" args="(LOGLEVEL v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLog_1_1Writer.html#ae45116850d6bca723163473f01c42522">Log::Writer::set_verbosity</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">LOGLEVEL</a>&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the max. verbosity. </p>
+<p>LOG_DEBUG is the highest level, LOG_FATAL_ERROR the lowest, the priority can be read from the LOGLEVEL enum above, to diasable logging completely you may pass 0.</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>a member of the LOGLEVEL enum </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Log/<a class="el" href="Writer_8hh_source.html">Writer.hh</a></li>
 </ul>
@@ -236,7 +285,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 11 2012 09:55:06 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 14 2012 17:56:07 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -46,8 +46,9 @@
 /* Clear after 2MB logsize */
 #define MAX_LOG_SIZE (2 * 1024 * 1024)
 
-/* Those work sadly only on Unix
- * win32 will just print out the actual escapes
+/* Those colors work sadly only on Unix
+ * win32 will just print out the actual escapes,
+ * (users of powershell might see color though)
  * */
 #define COL_RED "\x1b[31;01m"
 #define COL_YEL "\x1b[33;01m"
@@ -59,8 +60,7 @@ namespace Log
 {
     /*-----------------------------------------------*/
 
-// constructor
-    Writer::Writer()
+    Writer::Writer() : m_Verbosity(LOG_DEBUG)
     {
         Init::Path path_getter;
         m_Logpath = path_getter.path_to_log();
@@ -87,7 +87,6 @@ namespace Log
 
     /*-----------------------------------------------*/
 
-// destructor
     Writer::~Writer()
     {
         if(this->m_Logfile != NULL)
@@ -98,10 +97,9 @@ namespace Log
 
     /*-----------------------------------------------*/
 
-// message method to print a message into the logfile with LOGLEVEL
     void Writer::message(const char * File, int Line, LOGLEVEL level, const char * fmt, ...)
     {
-        if(this->m_Logfile != NULL)
+        if(this->m_Logfile != NULL && level <= m_Verbosity)
         {
             /* Write all va_args in the tmp_buf,
              * allocate memory as necessary */
@@ -175,13 +173,27 @@ namespace Log
     }
 
     /*-----------------------------------------------*/
+    
+    void Writer::set_verbosity(LOGLEVEL v)
+    {
+        m_Verbosity = CLAMP(v,(LOGLEVEL)0,LOG_DEBUG);
+    }
+    
+    /*-----------------------------------------------*/
+    
+    LOGLEVEL Writer::get_verbosity(void)
+    {
+        return m_Verbosity;
+    }
+    
+    /*-----------------------------------------------*/
 
     void Writer::clear(void)
     {
-        if(this->m_Logfile != NULL)
+        if(m_Logfile != NULL)
         {
             fclose(m_Logfile);
-            this->m_Logfile = fopen(m_Logpath.c_str(),"w");
+            m_Logfile = fopen(m_Logpath.c_str(),"w");
         }
     }
 

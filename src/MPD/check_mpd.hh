@@ -32,36 +32,70 @@
 #include "Client.hh"
 #include <glib.h>
 #include <glib/gstdio.h>
-
+#include "../Log/Writer.hh"
 
 /* The whole suite. One suit for each module. */
-class LogTestSuite : public CxxTest::TestSuite
+class MPDTestSuite : public CxxTest::TestSuite
 {
     MPD::Client cl;
+    bool clientUpdated;
+    bool connectionChanged;
 
 public:
 
     /* Fixtures */
     void setUp(void) {
-       cl.connect(); 
+       LogSetVerbosity(Log::LOG_WARN);
+       clientUpdated = false;
+       connectionChanged = false;
+       cl.signal_client_update().connect(sigc::mem_fun(*this,&MPDTestSuite::clientUpdate));
+       cl.signal_connection_change().connect(sigc::mem_fun(*this,&MPDTestSuite::connectionChange));
+       cl.connect();
     }
 
     void tearDown(void) {
         cl.disconnect();
+        connectionChanged = false;
+        clientUpdated = false;
+    }
+
+    void connectionChange(bool server_changed, bool is_connected)
+    {
+        connectionChanged = is_connected;
+    }
+    
+    void clientUpdate(enum mpd_idle, MPD::NotifyData& data)
+    {
+        clientUpdated = true;
     }
 
     /* --- */
 
     void testConnect(void)
     {
+        TS_ASSERT(connectionChanged);
         TS_ASSERT(cl.ping());
+        TS_ASSERT(cl.is_connected());
     }
 
     void testDisconnect(void)
     {
         cl.disconnect();
+        TS_ASSERT(!connectionChanged);
         TS_ASSERT(!cl.ping());
+        TS_ASSERT(!cl.is_connected());
         cl.connect();
         testConnect();
+    }
+
+    void testSignalClientUpdate(void)
+    {
+        // connect() should call force_update()
+        TS_ASSERT(clientUpdated);
+        clientUpdated = false;
+        // lets call it ourselves
+        cl.force_update();
+        TS_ASSERT(clientUpdated);
+        clientUpdated = false;
     }
 };

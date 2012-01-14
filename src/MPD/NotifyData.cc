@@ -156,7 +156,7 @@ namespace MPD
                 delete mp_Song;
                 mp_Song = NULL;
 
-                mpd_song * c_song  = mpd_run_current_song(mpd_conn);
+                mpd_song * c_song = mpd_run_current_song(mpd_conn);
                 if(c_song)
                     mp_Song = new Song(*c_song);
             }

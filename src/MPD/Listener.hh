@@ -71,7 +71,7 @@ namespace MPD
         // Classmembers  //
         //---------------//
 
-        NotifyData& signal_client_update_data(void);
+        NotifyData& get_data(void);
 
 
         /**

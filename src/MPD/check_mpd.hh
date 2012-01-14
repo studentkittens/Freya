@@ -40,7 +40,8 @@ class MPDTestSuite : public CxxTest::TestSuite
     MPD::Client cl;
     bool clientUpdated;
     bool connectionChanged;
-
+    bool isFirstRun; 
+    
 public:
 
     /* Fixtures */
@@ -48,8 +49,14 @@ public:
        LogSetVerbosity(Log::LOG_WARN);
        clientUpdated = false;
        connectionChanged = false;
-       cl.signal_client_update().connect(sigc::mem_fun(*this,&MPDTestSuite::clientUpdate));
-       cl.signal_connection_change().connect(sigc::mem_fun(*this,&MPDTestSuite::connectionChange));
+       isFirstRun = true;
+
+       /* Connect signals */
+       cl.signal_client_update().connect(
+               sigc::mem_fun(*this,&MPDTestSuite::clientUpdate));
+       cl.signal_connection_change().connect(
+               sigc::mem_fun(*this,&MPDTestSuite::connectionChange));
+
        cl.connect();
     }
 
@@ -58,6 +65,8 @@ public:
         connectionChanged = false;
         clientUpdated = false;
     }
+
+    /* -- Signals -- */
 
     void connectionChange(bool server_changed, bool is_connected)
     {
@@ -73,6 +82,7 @@ public:
 
     void testConnect(void)
     {
+        // All those should indicate we're connected
         TS_ASSERT(connectionChanged);
         TS_ASSERT(cl.ping());
         TS_ASSERT(cl.is_connected());
@@ -97,5 +107,33 @@ public:
         cl.force_update();
         TS_ASSERT(clientUpdated);
         clientUpdated = false;
+    }
+
+    bool toggleStates[4];
+    
+    /* Exemplary test of one client command */
+    void toggleCommandsClientUpdate(mpd_idle event, MPD::NotifyData& data) {
+        TS_ASSERT(data.get_status().get_random() == toggleStates[0]);
+        TS_ASSERT(data.get_status().get_consume() == toggleStates[1]);
+        TS_ASSERT(data.get_status().get_single() == toggleStates[2]);
+        TS_ASSERT(data.get_status().get_repeat() == toggleStates[3]);
+    }
+
+    void testToggleCommands(void) {
+        toggleStates[0] = cl.get_status()->get_random();
+        toggleStates[1] = cl.get_status()->get_consume();
+        toggleStates[2] = cl.get_status()->get_single();
+        toggleStates[3] = cl.get_status()->get_repeat();
+
+        cl.toggle_random();
+        cl.toggle_consume();
+        cl.toggle_single();
+        cl.toggle_repeat();
+
+        if(isFirstRun)
+        {
+            isFirstRun = false;
+            testToggleCommands();
+        }
     }
 };

@@ -353,6 +353,10 @@ namespace MPD
             /* Add a watch on the socket */
             create_watch(events);
 
+            Glib::RefPtr<Glib::MainContext> m = Glib::MainContext::get_default();
+            while(m->pending())
+                m->iteration(true);
+
             return true;
         }
         else
@@ -362,7 +366,7 @@ namespace MPD
         }
     }
 
-//--------------------------------
+    //--------------------------------
 
     void Listener::leave(void)
     {
@@ -415,14 +419,15 @@ namespace MPD
         }
     }
 
-//--------------------------------
+    //--------------------------------
 
-    NotifyData& Listener::signal_client_update_data(void)
+    NotifyData& Listener::get_data(void)
     {
+
         return m_NData;
     }
 
-//--------------------------------
+    //--------------------------------
 
     void Listener::force_update(void)
     {
@@ -439,8 +444,8 @@ namespace MPD
         is_forced = false;
     }
 
-//--------------------------------
-//--------------------------------
+    //--------------------------------
+    //--------------------------------
 
     mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
     {
@@ -452,7 +457,7 @@ namespace MPD
         return (mpd_async_event)events;
     }
 
-//--------------------------------
+    //--------------------------------
 
     /* Convert MPD's Async event to Glib's IO Socket events by a table */
     Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(mpd_async_event events)

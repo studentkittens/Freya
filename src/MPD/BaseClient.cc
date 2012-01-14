@@ -151,7 +151,7 @@ namespace MPD
     {
         if(m_Conn.is_connected())
         {
-            return &(mp_Listener->signal_client_update_data().get_status());
+            return &(mp_Listener->get_data().get_status());
         }
         return NULL;
     }

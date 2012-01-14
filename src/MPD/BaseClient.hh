@@ -90,6 +90,11 @@ namespace MPD
         /**
          * @brief Get the current MPD::Status
          *
+         * WARNING: This function does not guarantee to be up-to-date!!!
+         * If you need always the last status you may have to register for 
+         * client updates, since the mainloop iteration might take a few cycles.
+         * It is therefore not encouraged to be used.
+         *
          * @return A reference to it. Do not modify.
          */
         Status * get_status(void);
@@ -97,7 +102,7 @@ namespace MPD
         /**
          * @brief Get the notify sigc::signal
          *
-         * Use connect() on it. This is called always once a ne, ...w event
+         * Use connect() on it. This is called always once a new event
          * happens. See the typedef in Listener.hh for the exact signature
          *
          * @return the sigc::signal

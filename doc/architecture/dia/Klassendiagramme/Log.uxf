@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>360</x>
+      <y>80</y>
+      <w>330</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Singleton&gt;&gt;
+Log::Writer
+--
+ 
+- m_Verbosity : LOGLEVEL
+- mp_LogFile : FILE *
+- mp_LogFilePath : std::string
+ 
+--
+ 
+message(cfile,line,LOGLEVEL level,msg, ...)
+void set_verbosity(LOGLEVEL v)
+LOGLEVEL get_verbosity()
+clear()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>140</x>
+      <y>90</y>
+      <w>180</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Log::LOGLEVEL
+--
+LOG_FATAL_ERROR = 1,
+LOG_ERROR,
+LOG_WARN,
+LOG_OK,
+LOG_INFO,
+LOG_DEBUG
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>290</x>
+      <y>120</y>
+      <w>90</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>30;30;70;30</additional_attributes>
+  </element>
+</diagram>

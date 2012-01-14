@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server." alt="" coords="269,5,435,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Client.html#aa896dd836da9c78a01300431dedcd73d" title="Pings server." alt="" coords="535,81,662,108"/>
+<area shape="rect" id="node7" href="$classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected" alt="" coords="494,157,703,184"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config." alt="" coords="278,157,426,184"/>
+<area shape="rect" id="node11" href="$classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b" title="MPDTestSuite::testConnect" alt="" coords="259,107,445,133"/>
+</map>

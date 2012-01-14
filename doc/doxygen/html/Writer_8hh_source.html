@@ -119,55 +119,62 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 <span class="comment">/* Not supposed to used directly, use the macros below */</span>
 <a name="l00039"></a><a class="code" href="Writer_8hh.html#a67237e77d247fb2b13d4bc9a322408bc">00039</a> <span class="preprocessor">#define _MSG(level, msg, ...) Log::Writer::instance().message(__FILE__, __LINE__, level, msg,  ##__VA_ARGS__)</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span>
-<a name="l00041"></a>00041 <span class="comment">/* The actual macros */</span>
-<a name="l00042"></a><a class="code" href="Writer_8hh.html#a76dc8e0e6250a0fd7124293961ebd111">00042</a> <span class="preprocessor">#define Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)</span>
-<a name="l00043"></a><a class="code" href="Writer_8hh.html#ad33695a1806e13f4e48454c9541af99c">00043</a> <span class="preprocessor"></span><span class="preprocessor">#define Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)</span>
-<a name="l00044"></a><a class="code" href="Writer_8hh.html#aa75b27b8a5cc768d7a9b9636493e8c13">00044</a> <span class="preprocessor"></span><span class="preprocessor">#define Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)</span>
-<a name="l00045"></a><a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">00045</a> <span class="preprocessor"></span><span class="preprocessor">#define Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)</span>
-<a name="l00046"></a><a class="code" href="Writer_8hh.html#aef631d90143b139b77612a011a5a672f">00046</a> <span class="preprocessor"></span><span class="preprocessor">#define Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)</span>
-<a name="l00047"></a><a class="code" href="Writer_8hh.html#abb58542afa78bcdb2c6e2ae5d2034127">00047</a> <span class="preprocessor"></span><span class="preprocessor">#define Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)</span>
-<a name="l00048"></a>00048 <span class="preprocessor"></span>
-<a name="l00049"></a>00049 <span class="keyword">namespace </span>Log
-<a name="l00050"></a>00050 {
-<a name="l00054"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">00054</a>     <span class="keyword">enum</span> <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a>
-<a name="l00055"></a>00055     {
-<a name="l00056"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">00056</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">LOG_OK</a>,
-<a name="l00057"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">00057</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">LOG_ERROR</a>,
-<a name="l00058"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">00058</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">LOG_FATAL_ERROR</a>,
-<a name="l00059"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">00059</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">LOG_INFO</a>,
+<a name="l00040"></a><a class="code" href="Writer_8hh.html#a8377a4b3fd3d12a5fc48496055fcf962">00040</a> <span class="preprocessor"></span><span class="preprocessor">#define LogSetVerbosity(X) Log::Writer::instance().set_verbosity((Log::LOGLEVEL)X)</span>
+<a name="l00041"></a><a class="code" href="Writer_8hh.html#a4826fa85d9a6487b041c41b549c60eb3">00041</a> <span class="preprocessor"></span><span class="preprocessor">#define LogGetVerbosity Log::Writer::instance().get_verbosity()</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span>
+<a name="l00043"></a>00043 <span class="comment">/* The actual macros */</span>
+<a name="l00044"></a><a class="code" href="Writer_8hh.html#a76dc8e0e6250a0fd7124293961ebd111">00044</a> <span class="preprocessor">#define Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)</span>
+<a name="l00045"></a><a class="code" href="Writer_8hh.html#ad33695a1806e13f4e48454c9541af99c">00045</a> <span class="preprocessor"></span><span class="preprocessor">#define Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)</span>
+<a name="l00046"></a><a class="code" href="Writer_8hh.html#aa75b27b8a5cc768d7a9b9636493e8c13">00046</a> <span class="preprocessor"></span><span class="preprocessor">#define Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)</span>
+<a name="l00047"></a><a class="code" href="Writer_8hh.html#a4f164abb1e151a518ca4b881a392c998">00047</a> <span class="preprocessor"></span><span class="preprocessor">#define Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)</span>
+<a name="l00048"></a><a class="code" href="Writer_8hh.html#aef631d90143b139b77612a011a5a672f">00048</a> <span class="preprocessor"></span><span class="preprocessor">#define Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)</span>
+<a name="l00049"></a><a class="code" href="Writer_8hh.html#abb58542afa78bcdb2c6e2ae5d2034127">00049</a> <span class="preprocessor"></span><span class="preprocessor">#define Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span>
+<a name="l00051"></a>00051 <span class="keyword">namespace </span>Log
+<a name="l00052"></a>00052 {
+<a name="l00056"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82">00056</a>     <span class="keyword">enum</span> <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a>
+<a name="l00057"></a>00057     {
+<a name="l00058"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">00058</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a7d8a91df77c89b5ef6cc7d848894c5e3">LOG_FATAL_ERROR</a> = 1,
+<a name="l00059"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">00059</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa7fb8158f5fd7a885f037ef0081e42a1">LOG_ERROR</a>,
 <a name="l00060"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">00060</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">LOG_WARN</a>,
-<a name="l00061"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">00061</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">LOG_DEBUG</a>
-<a name="l00062"></a>00062     };
-<a name="l00063"></a>00063 
-<a name="l00064"></a><a class="code" href="classLog_1_1Writer.html">00064</a>     <span class="keyword">class </span><a class="code" href="classLog_1_1Writer.html">Writer</a>
-<a name="l00065"></a>00065     {
-<a name="l00066"></a>00066         <span class="comment">/* Make this class a singleton,</span>
-<a name="l00067"></a>00067 <span class="comment">         * this implicitely defines a ctor,</span>
-<a name="l00068"></a>00068 <span class="comment">         * Just the dtor is defined expl. below.</span>
-<a name="l00069"></a>00069 <span class="comment">         */</span>
-<a name="l00070"></a>00070         DEF_SINGLETON(<a class="code" href="classLog_1_1Writer.html">Writer</a>);
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072     <span class="keyword">public</span>:
+<a name="l00061"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">00061</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc">LOG_OK</a>,
+<a name="l00062"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">00062</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539">LOG_INFO</a>,
+<a name="l00063"></a><a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">00063</a>         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aa8432d05b57877db79213b95a3d108c6">LOG_DEBUG</a>
+<a name="l00064"></a>00064     };
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="classLog_1_1Writer.html">00066</a>     <span class="keyword">class </span><a class="code" href="classLog_1_1Writer.html">Writer</a>
+<a name="l00067"></a>00067     {
+<a name="l00068"></a>00068         <span class="comment">/* Make this class a singleton,</span>
+<a name="l00069"></a>00069 <span class="comment">         * this implicitely defines a ctor,</span>
+<a name="l00070"></a>00070 <span class="comment">         * Just the dtor is defined expl. below.</span>
+<a name="l00071"></a>00071 <span class="comment">         */</span>
+<a name="l00072"></a>00072         DEF_SINGLETON(<a class="code" href="classLog_1_1Writer.html">Writer</a>);
 <a name="l00073"></a>00073 
-<a name="l00077"></a>00077         <a class="code" href="classLog_1_1Writer.html#a269d50952bc092a39202bb0bba99c345" title="Closes the Log also properly. It is not fatal when not being called.">~Writer</a>();
-<a name="l00078"></a>00078 
-<a name="l00088"></a>00088         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0" title="Actual instance method called. Do not use directly!">message</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">int</span> line, <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, ...);
-<a name="l00089"></a>00089 
-<a name="l00093"></a>00093         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395" title="Clear the logfile (but keep it open)">clear</a>(<span class="keywordtype">void</span>);
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095     <span class="keyword">private</span>:
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098         Glib::ustring m_Logpath;
-<a name="l00099"></a>00099         FILE * m_Logfile;
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101         <span class="keyword">const</span> <span class="keywordtype">char</span> * convert_enum_to_str(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keywordtype">bool</span>&amp; append_location);
-<a name="l00102"></a>00102         <span class="keywordtype">void</span> get_current_time(<span class="keywordtype">char</span> buffer[]);
-<a name="l00103"></a>00103     };
-<a name="l00104"></a>00104 }
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
+<a name="l00074"></a>00074     <span class="keyword">public</span>:
+<a name="l00075"></a>00075 
+<a name="l00079"></a>00079         <a class="code" href="classLog_1_1Writer.html#a269d50952bc092a39202bb0bba99c345" title="Closes the Log also properly. It is not fatal when not being called.">~Writer</a>();
+<a name="l00080"></a>00080 
+<a name="l00090"></a>00090         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0" title="Actual instance method called. Do not use directly!">message</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">int</span> line, <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, ...);
+<a name="l00091"></a>00091 
+<a name="l00101"></a>00101         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#ae45116850d6bca723163473f01c42522" title="Set the max. verbosity.">set_verbosity</a>(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> v);
+<a name="l00102"></a>00102 
+<a name="l00108"></a>00108         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> <a class="code" href="classLog_1_1Writer.html#a9be4c7c94ab1f59c516392b9d220eabf" title="Get the currently set verbosity level.">get_verbosity</a>();
+<a name="l00109"></a>00109 
+<a name="l00113"></a>00113         <span class="keywordtype">void</span> <a class="code" href="classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395" title="Clear the logfile (but keep it open)">clear</a>(<span class="keywordtype">void</span>);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     <span class="keyword">private</span>:
+<a name="l00116"></a>00116 
+<a name="l00120"></a>00120         Glib::ustring m_Logpath;
+<a name="l00124"></a>00124         FILE * m_Logfile;
+<a name="l00125"></a>00125 
+<a name="l00129"></a>00129         <a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> m_Verbosity; 
+<a name="l00130"></a>00130 
+<a name="l00136"></a>00136         <span class="keyword">const</span> <span class="keywordtype">char</span> * convert_enum_to_str(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82" title="Log severity, influencing the color.">LOGLEVEL</a> level, <span class="keywordtype">bool</span>&amp; append_location);
+<a name="l00142"></a>00142         <span class="keywordtype">void</span> get_current_time(<span class="keywordtype">char</span> buffer[]);
+<a name="l00143"></a>00143     };
+<a name="l00144"></a>00144 }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -186,7 +193,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 11 2012 09:55:05 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 14 2012 17:56:07 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

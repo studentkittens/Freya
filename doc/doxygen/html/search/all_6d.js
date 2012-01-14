@@ -26,12 +26,12 @@ var searchData=
   ['m_5fvbox',['m_VBox',['../classAvahi_1_1View.html#aaaafe7936d263803cdfe27dd09bf4920',1,'Avahi::View']]],
   ['menu_5fadd_5fitem',['menu_add_item',['../classBrowser_1_1BasePopup.html#a1e9a7ed9e04c13fe4a099e67024141ac',1,'Browser::BasePopup']]],
   ['menu_5fconstruct',['menu_construct',['../classBrowser_1_1BasePopup.html#ab8d49d3892bf338ba451e60728feae05',1,'Browser::BasePopup']]],
-  ['menulist',['MenuList',['../classGManager_1_1MenuList.html#ad580d2a008e1bc90b577b698fa47fbea',1,'GManager::MenuList']]],
   ['menulist',['MenuList',['../classGManager_1_1MenuList.html',1,'GManager']]],
+  ['menulist',['MenuList',['../classGManager_1_1MenuList.html#ad580d2a008e1bc90b577b698fa47fbea',1,'GManager::MenuList']]],
   ['menulist_2ehh',['MenuList.hh',['../MenuList_8hh.html',1,'']]],
   ['message',['message',['../classLog_1_1Writer.html#ad8afb2db644239efdccc4ee9251073d0',1,'Log::Writer']]],
-  ['model',['Model',['../classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520',1,'Config::Model']]],
   ['model',['Model',['../classConfig_1_1Model.html',1,'Config']]],
+  ['model',['Model',['../classConfig_1_1Model.html#ab49608439fb79f5f8ac6454534efc520',1,'Config::Model']]],
   ['model_2ehh',['Model.hh',['../Model_8hh.html',1,'']]],
   ['modelcolumns',['ModelColumns',['../classAvahi_1_1View_1_1ModelColumns.html#a4bf315595c1d34ef779fd13cfe7211de',1,'Avahi::View::ModelColumns']]],
   ['modelcolumns',['ModelColumns',['../classAvahi_1_1View_1_1ModelColumns.html',1,'Avahi::View']]],
@@ -44,5 +44,6 @@ var searchData=
   ['mpd_5fplaylist',['mpd_playlist',['../namespaceMPD.html#a2878ba3d1824cafe5700cbd3defb26e2',1,'MPD']]],
   ['mpd_5fsong',['mpd_song',['../namespaceMPD.html#a0395985bd21236df18454092e2cc1f42',1,'MPD']]],
   ['mpd_5fstate',['mpd_state',['../namespaceMPD.html#accbda53f9e83eff4a768018b3c740bab',1,'MPD']]],
-  ['mpd_5fstats',['mpd_stats',['../namespaceMPD.html#acd9472f1ede8ba621cf7ec296735e25f',1,'MPD']]]
+  ['mpd_5fstats',['mpd_stats',['../namespaceMPD.html#acd9472f1ede8ba621cf7ec296735e25f',1,'MPD']]],
+  ['mpdtestsuite',['MPDTestSuite',['../classMPDTestSuite.html',1,'']]]
 ];

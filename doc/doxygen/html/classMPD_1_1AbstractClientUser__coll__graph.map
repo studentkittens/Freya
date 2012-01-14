@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="311,627,505,1218"/>
+<area shape="rect" id="node2" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="311,627,505,1247"/>
 <area shape="rect" id="node4" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="148,293,343,576"/>
 <area shape="rect" id="node6" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,197,200"/>
 <area shape="rect" id="node10" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="293,5,488,229"/>

@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$AbstractClientUser_8hh.html" title="src/MPD/AbstractClientUser.hh" alt="" coords="2247,80,2453,107"/>
+<area shape="rect" id="node3" href="$AbstractClientUser_8hh.html" title="src/MPD/AbstractClientUser.hh" alt="" coords="2305,80,2511,107"/>
 <area shape="rect" id="node5" href="$Database_8hh.html" title="src/Browser/Database/Database.hh" alt="" coords="297,155,527,181"/>
 <area shape="rect" id="node9" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="552,155,856,181"/>
 <area shape="rect" id="node11" href="$PlaylistAddDialog_8hh.html" title="src/Browser/Queue/PlaylistAddDialog.hh" alt="" coords="1416,155,1673,181"/>
@@ -15,6 +15,7 @@
 <area shape="rect" id="node50" href="$TitleLabel_8hh.html" title="src/GManager/TitleLabel.hh" alt="" coords="3737,155,3919,181"/>
 <area shape="rect" id="node52" href="$Volumebutton_8hh.html" title="src/GManager/Volumebutton.hh" alt="" coords="3943,155,4149,181"/>
 <area shape="rect" id="node61" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="4225,80,4471,107"/>
+<area shape="rect" id="node70" href="$check__mpd_8hh.html" title="src/MPD/check_mpd.hh" alt="" coords="4495,80,4657,107"/>
 <area shape="rect" id="node7" href="$DatabaseCache_8hh.html" title="src/Browser/Database/DatabaseCache.hh" alt="" coords="2513,155,2780,181"/>
 <area shape="rect" id="node16" href="$QueueMerger_8hh.html" title="src/Browser/Queue/QueueMerger.hh" alt="" coords="1749,155,1983,181"/>
 <area shape="rect" id="node32" href="$BrowserList_8hh.html" title="src/GManager/BrowserList.hh" alt="" coords="2243,155,2437,181"/>

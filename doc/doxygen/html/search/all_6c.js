@@ -13,6 +13,8 @@ var searchData=
   ['log_5finfo',['LOG_INFO',['../namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a1cf39d354435f486ff2856157e9ca539',1,'Log']]],
   ['log_5fok',['LOG_OK',['../namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82aeb9b95c3f7ed982c3570becab16eb1fc',1,'Log']]],
   ['log_5fwarn',['LOG_WARN',['../namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9',1,'Log']]],
+  ['loggetverbosity',['LogGetVerbosity',['../Writer_8hh.html#a4826fa85d9a6487b041c41b549c60eb3',1,'Writer.hh']]],
   ['loglevel',['LOGLEVEL',['../namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82',1,'Log']]],
+  ['logsetverbosity',['LogSetVerbosity',['../Writer_8hh.html#a8377a4b3fd3d12a5fc48496055fcf962',1,'Writer.hh']]],
   ['logtestsuite',['LogTestSuite',['../classLogTestSuite.html',1,'']]]
 ];

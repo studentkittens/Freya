@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['teardown',['tearDown',['../classMPDTestSuite.html#a3167bba8a9a950608f614becbeeb9b9a',1,'MPDTestSuite']]],
+  ['testconnect',['testConnect',['../classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b',1,'MPDTestSuite']]],
+  ['testdisconnect',['testDisconnect',['../classMPDTestSuite.html#a07b97bc2d75537a342505869c213943b',1,'MPDTestSuite']]],
   ['testlogwriter',['testLogWriter',['../classLogTestSuite.html#a1bd9ded59feb684cc45833ae1df80bc4',1,'LogTestSuite']]],
   ['testseconds_5fto_5fduration_5f0_5fseconds',['testseconds_to_duration_0_seconds',['../classUtilsTestSuite.html#a92aa73b0ac7565c91b81eb52ce810548',1,'UtilsTestSuite']]],
   ['testseconds_5fto_5fduration_5f1_5fday',['testseconds_to_duration_1_day',['../classUtilsTestSuite.html#ae6419827ad4598a9bb2c4c009e0d7ffe',1,'UtilsTestSuite']]],
@@ -17,6 +20,7 @@ var searchData=
   ['testsend_5ffull',['testsend_full',['../classNotifyTestSuite.html#a937bd91da9a7800b2df086feebe00a45',1,'NotifyTestSuite']]],
   ['testset_5fnext_5fextra',['testset_next_extra',['../classNotifyTestSuite.html#a13c85b62bf01e8b7159245030a85a63b',1,'NotifyTestSuite']]],
   ['testset_5fstock_5ficon',['testset_stock_icon',['../classNotifyTestSuite.html#a6f18d64d2f1fdd6e3749d73959bc021a',1,'NotifyTestSuite']]],
+  ['testsignalclientupdate',['testSignalClientUpdate',['../classMPDTestSuite.html#abea55fa4fed09f233f7bad2f53653eb0',1,'MPDTestSuite']]],
   ['timeslide',['Timeslide',['../classGManager_1_1Timeslide.html#a40a6b2caff63c01cd53d5e0bc4013d79',1,'GManager::Timeslide']]],
   ['titlelabel',['TitleLabel',['../classGManager_1_1TitleLabel.html#a7392cdfa0ca4b4cf2c285ed1a806e561',1,'GManager::TitleLabel']]],
   ['toggle_5fconsume',['toggle_consume',['../classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0',1,'MPD::Client']]],

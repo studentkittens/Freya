@@ -2,6 +2,7 @@ var searchData=
 [
   ['check_5ferror',['check_error',['../classMPD_1_1Connection.html#ab55db5589c416d76259e1cf4b4b8a104',1,'MPD::Connection']]],
   ['check_5flog_2ehh',['check_log.hh',['../check__log_8hh.html',1,'']]],
+  ['check_5fmpd_2ehh',['check_mpd.hh',['../check__mpd_8hh.html',1,'']]],
   ['check_5fnotify_2ehh',['check_notify.hh',['../check__notify_8hh.html',1,'']]],
   ['check_5futils_2ehh',['check_utils.hh',['../check__utils_8hh.html',1,'']]],
   ['clear',['clear',['../classBrowser_1_1SettingsOutputs.html#a441ca9896888ef8c604de5c57b9a4972',1,'Browser::SettingsOutputs::clear()'],['../classLog_1_1Writer.html#a926e590e88dd24616b64773d8ce96395',1,'Log::Writer::clear()']]],
@@ -9,6 +10,7 @@ var searchData=
   ['client',['Client',['../classMPD_1_1Client.html',1,'MPD']]],
   ['client',['Client',['../classMPD_1_1Client.html#ac804cf198d57cec1c8574e7b20663fa3',1,'MPD::Client']]],
   ['client_2ehh',['Client.hh',['../Client_8hh.html',1,'']]],
+  ['clientupdate',['clientUpdate',['../classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09',1,'MPDTestSuite']]],
   ['colactive',['colActive',['../classBrowser_1_1OutputsModelColumns.html#af80f3cc62b01109abf4cabc0fbf44d82',1,'Browser::OutputsModelColumns']]],
   ['colname',['colName',['../classBrowser_1_1OutputsModelColumns.html#a30194006c0468fa9ea65f9834b283bac',1,'Browser::OutputsModelColumns']]],
   ['coloutput',['colOutput',['../classBrowser_1_1OutputsModelColumns.html#a5a5d2cf5197115b7a539319377e01e4d',1,'Browser::OutputsModelColumns']]],
@@ -23,8 +25,9 @@ var searchData=
   ['config_5fset',['CONFIG_SET',['../Handler_8hh.html#ae1de8dc4542f5d8a666be2dc70138fcf',1,'Handler.hh']]],
   ['config_5fset_5fas_5fint',['CONFIG_SET_AS_INT',['../Handler_8hh.html#aca2851bc87d20bf1710fd04a1f8fe8a4',1,'Handler.hh']]],
   ['connect',['connect',['../classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de',1,'MPD::Client::connect()'],['../classMPD_1_1Connection.html#a920eba8faa096f56bc9967393b961ee1',1,'MPD::Connection::connect()']]],
-  ['connection',['Connection',['../classMPD_1_1Connection.html#a383e1a08bfa66e7852577ed53752f5dd',1,'MPD::Connection']]],
   ['connection',['Connection',['../classMPD_1_1Connection.html',1,'MPD']]],
+  ['connection',['Connection',['../classMPD_1_1Connection.html#a383e1a08bfa66e7852577ed53752f5dd',1,'MPD::Connection']]],
   ['connection_2ehh',['Connection.hh',['../Connection_8hh.html',1,'']]],
+  ['connectionchange',['connectionChange',['../classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a',1,'MPDTestSuite']]],
   ['connectionnotifier',['ConnectionNotifier',['../namespaceMPD.html#ad3d56bae39a923ba52f905c21afc9e55',1,'MPD']]]
 ];

@@ -25,9 +25,13 @@ alle möglichen Funktionen der grafischen Oberfläche aufgelistet werden. Außer
 anderen Funktionen kombiniert und mehrfach ausgeführt werden. Zu jedem dieser Fälle ist ein zu erwartendes Ergebnis
 festzulegen und anschließend zu überprüfen ob das erwartete Ergebnis eingetroffen ist. Das eingetroffene Ergebnis
 ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortcuts geprüft.
+
+
+\newpage
 \subsubsection{Abspielfunktionen}
-\textbf{Einfache Ausführung:}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\textbf{Einfache Ausführung:}
+\\
+\begin{tabularx}{\textwidth}{|X|X|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -55,8 +59,9 @@ ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortc
     \hline
 \end{tabularx}
 \newpage
-\textbf{Kombinierte Ausführung:}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|X|}
+\textbf{Kombinierte Ausführung:}
+\\
+\begin{tabularx}{\textwidth}{|X|p{7cm}|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -103,7 +108,9 @@ ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortc
     Repeat all, 4 & Queue wiederholen 4 & Ja\\
     \hline
 \end{tabularx}
-\begin{tabularx}{\textwidth}{|X|l|X|}
+
+
+\begin{tabularx}{\textwidth}{|X|l|p{3cm}|}
     %\begin{tabularx}[c]{|p{6cm}|p{6cm}|c|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -138,9 +145,12 @@ ist ebenfalls zu protokollieren. Es wurden jeweils die Buttons, sowie die Shortc
     \hline
 \end{tabularx}
 \newpage
-Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
-\textbf{Mehrfache Ausführung:}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
+\\
+\\
+\textbf{Mehrfache Ausführung:}
+\\
+\begin{tabularx}{\textwidth}{|X|X|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -205,9 +215,11 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Fall 35 x 10 & Fall 35 x 10 & Ja\\
     \hline
 \end{tabularx}
+
+
 \subsubsection{Queue-Funktionen}
-\textbf{Einfache Ausführung}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|l|l|}
+\textbf{Einfache Ausführung} \\
+\begin{tabularx}{\textwidth}{|X|l|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -220,34 +232,38 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Suchen & Nach eingegebenem Wort suchen & Ja\\
     \hline
 \end{tabularx}
-\newpage
-\textbf{Kombinierte Ausführung}\ \\ \\
+\\
+\\
+\textbf{Kombinierte Ausführung} \\
 Kombinierte Ausführung der Funktionen der Queue machen nicht wirklich viel Sinn da z.B.
 die Funktion Clear die Queue löscht. Auch Save as Playlist wird wohl kaum öfter als einmal
 pro Queue angewandt. Die einzige Kombination die Sinn macht getestet zu werden ist die 
 folgende:\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\begin{tabularx}{\textwidth}{|X|X|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
     Suchen, Remove & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-\textbf{Mehrfache Ausführung}\ \\ \\
+\\
+\\
+\textbf{Mehrfache Ausführung} \\
 Die mehrfache Ausführung ist ähnlich unsinnig wie die der kombinierten Ausführung.
 Mehrmals hintereinander die Queue löschen ist nicht möglich, genauso wie man wohl kaum 
 mehrmals die gleiche Playlist erstellt. So bleibt wieder nur ein Testfall zu prüfen:\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\begin{tabularx}{\textwidth}{|X|p{7cm}|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
     Suchen, Remove x 10 & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen x 10& Ja\\
     \hline
 \end{tabularx}
+
+\newpage
 \subsubsection{Playlist-Funktionen}
-\textbf{Einfache Ausführung}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\textbf{Einfache Ausführung} \\ 
+\begin{tabularx}{\textwidth}{|X|X|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -258,9 +274,10 @@ mehrmals die gleiche Playlist erstellt. So bleibt wieder nur ein Testfall zu pr�
     Playlist entfernen & Playlist löschen & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-\textbf{Kombinierte Ausführung}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\\
+\\
+\textbf{Kombinierte Ausführung} \\
+\begin{tabularx}{\textwidth}{|X|X|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -275,9 +292,13 @@ mehrmals die gleiche Playlist erstellt. So bleibt wieder nur ein Testfall zu pr�
     Ersetzen, Entfernen & Playlist ersetzen\newline Playlist entfernen & Ja\\
     \hline
 \end{tabularx}
-\newpage
-Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
-\textbf{Mehrfache Ausführung:}\ \\ \\
+\\
+\\
+\\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
+\\
+\textbf{Mehrfache Ausführung:}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -293,9 +314,12 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Fall 5 x 10 & Fall 5 x 10 & Ja\\
     \hline
 \end{tabularx}
+
+\newpage
 \subsubsection{Dateibrowser-Funktionen}
-\textbf{Einfache Ausführung}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\textbf{Einfache Ausführung}
+\\
+\begin{tabularx}{\textwidth}{|X|p{7cm}|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -312,11 +336,11 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Suchen & Nach eingegebenem Wort suchen & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-
-\newpage
-\textbf{Kombinierte Ausführung}\ \\ \\
-\begin{tabularx}{\textwidth}{|X|X|l|}
+\\
+\\
+\textbf{Kombinierte Ausführung:}
+\\
+\begin{tabularx}{\textwidth}{|X|p{7cm}|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
@@ -341,6 +365,8 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Hinzufügen\newline Neu einlesen & Zur Queue hinzufügen\newline Dateibrowser neu einlesen & Ja\\
     \hline
 \end{tabularx}
+
+
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -368,9 +394,12 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Neu einlesen\newline Suchen & Dateibrowser neu einlesen\newline Nach eingegebenem Wort suchen & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
-\textbf{Mehrfache Ausführung}\ \\ \\
+
+\newpage
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
+\\
+\textbf{Mehrfache Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -395,11 +424,6 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     \hline
     Fall 10 x 10 & Fall 10 x 10 & Ja\\
     \hline
-\end{tabularx}
-\begin{tabularx}{\textwidth}{|X|X|l|}
-    \hline
-    \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
-    \hline
     Fall 11 x 10 & Fall 11 x 10 & Ja\\
     \hline
     Fall 12 x 10 & Fall 12 x 10 & Ja\\
@@ -423,10 +447,13 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Fall 21 x 10 & Fall 21 x 10 & Ja\\
     \hline
 \end{tabularx}
+
+\newpage
 \subsubsection{Statistik}
 Für die Statistik kann kein Testprotokoll angewandt werden.
 \subsubsection{Einstellungen}
-\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Einfache Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -434,11 +461,10 @@ Für die Statistik kann kein Testprotokoll angewandt werden.
     Zeige Liste & Zeige Avahi Liste & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-\textbf{Kombinierte Ausführung}\ \\ \\
-
-Es existieren keine Buttons oder Shortcuts die kombiniert werden könnten.\ \\ \\
-
+\\
+\\
+\textbf{Kombinierte Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -446,19 +472,25 @@ Es existieren keine Buttons oder Shortcuts die kombiniert werden könnten.\ \\ \
     Fall 1 x 10 & Fall 1 x 10 & Ja\\
     \hline
 \end{tabularx}
+\\
+\\
+Es existieren keine Buttons oder Shortcuts die kombiniert werden könnten. 
 \subsubsection{Lautstärke}
-\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Einfache Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
+    \hline
+    \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
     Lautstärke erhöhen & Lautstärke erhöhen & Ja\\
     \hline
     Lautstärke verringern & Lautstärke verringern & Ja\\
     \hline
-    \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
-    \hline
 \end{tabularx}
-\ \\ \\
-\textbf{Kombinierte Ausführung}\ \\ \\
+\\
+\\
+\textbf{Kombinierte Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -466,9 +498,13 @@ Es existieren keine Buttons oder Shortcuts die kombiniert werden könnten.\ \\ \
     Lautstärke erhöhen\newline Lautstärke verringern & Lautstärke erhöhen\newline Lautstärke verringern & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
-\textbf{Mehrfache Ausführung}\ \\ \\
+\\
+\\
+\\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
+\\
+\textbf{Mehrfache Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -476,8 +512,11 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Fall 1 x 10 & Fall 1 x 10 & Ja\\
     \hline
 \end{tabularx}
+
+\newpage
 \subsubsection{Sonstiges}
-\textbf{Einfache Ausführung}\ \\ \\
+\textbf{Einfache Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -489,8 +528,10 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Beenden & MPD-Client beenden & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-\textbf{Kombinierte Ausführung}\ \\ \\
+\\
+\\
+\textbf{Kombinierte Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
@@ -504,9 +545,12 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ 
     Trennen\newline Beenden & Verbindung zum Server trennen\newline MPD-Client beenden & Ja\\
     \hline
 \end{tabularx}
-\ \\ \\
-Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.\ \\ \\
-\textbf{Mehrfache Ausführung}\ \\ \\
+\\
+\\
+Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
+\\
+\textbf{Mehrfache Ausführung}
+\\
 \begin{tabularx}{\textwidth}{|X|X|l|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\

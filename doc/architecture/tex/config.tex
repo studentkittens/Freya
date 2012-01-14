@@ -1,12 +1,22 @@
-
-\newpage
-\begin{figure}[thb!]
-\subsubsection{Namespace-Übersicht}
+\begin{figure}
+\section{Namespace-Übersicht}
     \centering
     \includegraphics[scale=0.50]{./gfx/class/package}
     \caption{Die Namespaces im Überblick}
     \label{dd_namespaces}
 \end{figure}
+
+\begin{figure}
+\section{Aufbau der Anwendung}
+	\centering
+        \includegraphics[scale=0.5]{./gfx/seq/main}
+	\caption{Die Initialisierungsphase}
+	\label{seq_main_init}
+\end{figure}
+
+
+
+
 
 \section{Utils und Writer} 
 
@@ -237,27 +247,22 @@ zu haben. Desweiteren sollen Wrapper um die get und set value Methoden geschrieb
     \end{verbatim}
 \end{figure}
 
-\begin{figure}[htb!]
-Über die \emph{save\_now()} Abb. \ref{c_configsave} Methode soll die aktuelle Konfiguration direkt über das Model gespeichert werden können.
-Alle Methoden nutzen nach Möglichkeit Log::Writer um Informationen und Fehler in der Logdatei zu protokollieren.
-
-
+\begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{./gfx/seq/config_save}
+    \includegraphics[scale=0.5]{./gfx/seq/config_save}
     \caption{Ablauf der Config Save Methode}
     \label{c_configsave}
 \end{figure}
-
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[scale=0.5]{./gfx/seq/config_set}
-    \caption{Config get vlaue() Ablauf}
-    \label{c_configget}
-\end{figure}
-
+Über die \emph{save\_now()} Abb. \ref{c_configsave} Methode soll die aktuelle Konfiguration direkt über das Model gespeichert werden können.
+Alle Methoden nutzen nach Möglichkeit Log::Writer um Informationen und Fehler in der Logdatei zu protokollieren.
 \newpage
 \paragraph{Grober Ablauf beim setzen einer Integer Wertes:}
-
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{./gfx/seq/config_set}
+    \caption{Config set vlaue() Ablauf}
+    \label{c_configget}
+\end{figure}
 \begin{itemize}
 
     \item Aufruf des \verb+CONFIG_SET_AS_INT("settings.connection.port",6667)+ Makros
@@ -274,20 +279,13 @@ Alle Methoden nutzen nach Möglichkeit Log::Writer um Informationen und Fehler i
     \item Wird die Url nicht gefunden oder sind andere Fehler aufgetreten wird ein \emph{NULL Pointer} zurückgegeben und eine entsprechende Fehlermeldung in die Logdatei geschrieben
     \item Wird die Url gefunden, so wird ein NodePointer auf den Optionswert über die Aufruferkette an die set\_value() Methode \emph{returned}. In dieser wird dann der Wert an der entsprechende Stelle gesetzt.  
 \end{itemize}
-
-
-\begin{figure}[htb!]
+\paragraph{Grober Ablauf beim Lesen eines Wertes:}
+\begin{figure}
     \centering
     \includegraphics[scale=0.5]{./gfx/seq/config_get}
     \caption{Config get\_value() Ablauf}
     \label{c_configget}
 \end{figure}
-
-%-------------------------------------------
-
-
-\paragraph{Grober Ablauf beim Lesen eines Wertes:}
-
 \begin{itemize}
     \item Das Makro \verb+CONFIG_GET("settings.connection.host")+ wird analog dem Setzen aufgerufen, dieses ruft die entsprechende Wrapper
         Methode get\_value() welche die eigentliche private \_get\_value() Methode aufruft.

@@ -23,12 +23,12 @@ Die ersten Einsätze werden auch noch tiefer erklärt.
 	\centering
         \includegraphics[width=\textwidth]{./gfx/state/listener}
 	\caption{Zustandsdiagramm Listener ,,idle/busy''}
-	\label{st_listener}
+    \label{st_state_listener}
 \end{figure}
 
 Der Listener verwaltet alles was mit dem Betreten und Verlassen des ,,Idlemodes'' und den damit verbundenen Events
 zu tun hat. Er setzt den eingangs beschriebenen ,,Watchdog'' auf die asynchrone Verbindung an,
-und ,,parst'' die entsprechenden Antworten des Servers von Hand (siehe \ref{st_listener}). 
+und ,,parst'' die entsprechenden Antworten des Servers von Hand (siehe \ref{st_state_listener}). 
 \\
 \\
 Es folgt eine Liste aller möglichen Events die von libmpdclient definiert werden.
@@ -78,11 +78,11 @@ soll sich zu updaten.
 	\centering
         \includegraphics[scale=0.5]{./gfx/seq/connect}
 	\caption{Sequenzdiagramm zum Verbindungsaufbau}
-	\label{seq_client_connect}
+	\label{client_seq_connect}
 \end{figure}
 Diese Klasse stellt eine Art Wrapper um die \textit{mpd\_connection}
 \footnote{http://www.musicpd.org/doc/libmpdclient/connection\_8h.html} Struktur von libmpdclient da.
-Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connectio\_free()} aufrufen. Siehe \ref{seq_client_connect} für den detaillierten Verbindungsablauf.
+Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connectio\_free()} aufrufen. Siehe \ref{client_seq_connect} für den detaillierten Verbindungsablauf.
 Die benötigten Verbindungsdaten (Host, Port, Timeout in Sekunden) holt sich MPD::Connection aus der Config.
 \\
 Sie hält zudem den letzten Host als Membervariable um feststellen zu können ob sich dieser zwischen 
@@ -148,7 +148,7 @@ mit signal\_error() registriert haben benachrichtigt.
 
 Diese Klasse bildet die Basis zum eigentlichen Client. Sie kann nicht direkt instanziert werden, da
 der Konstruktor protected sein soll.
-Sie verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau an sich (siehe \ref{seq_client_connect} und \ref{st_base_client}). 
+Sie verwaltet administrative Tätigkeiten wie den eigentlichen Verbindungsaufbau an sich (siehe \ref{client_seq_connect} und \ref{st_base_client}). 
 Desweiteren bietet die Klasse einfache Methoden zum Eintreten (go\_idle()) und Verlassen (go\_busy()) des ,,Idlemodes'' an.
 Geht die Verbindung verloren, ohne dass \emph{\_\_disconnect()} explizit aufgerufen wurde, so wird versucht sich periodisch zu reconnecten.
 Das Intervall in dem diese Versuche geschehen sollen, soll von ,,settings.connection.reconnectinterval'' gelesen werden.
@@ -506,6 +506,7 @@ Song den er vom Server bekommt auf. Die ableitende Klasse kann diese dann verarb
 
 Dadurch werden alle Methoden von AbstractItemGenerator (bzw. die Klassen die davon ableiten) benutzbar.
 
+\newpage
 \subsubsection{AbstractItemGenerator}
 %
 %
@@ -593,6 +594,3 @@ Ableitende Klassen können die \textit{protected} get\_c\_connection() Methode b
 Man kann allerdings darüber diskutieren dass dieses abstrakte Klasse der Modelschicht die Möglichkeit gibt zu ausgefeilte Logik zu implementieren, was nach dem MVC Paradigma nicht sein sollte.  
 Da die Logik meist darin besteht einfache Kommandos an den Server zu schicken, wurde dieser Weg gewählt um 
 den Entwurf zu vereinfachen.
-
-
-%=============================================

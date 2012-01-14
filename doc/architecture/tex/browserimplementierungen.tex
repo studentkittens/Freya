@@ -107,9 +107,9 @@ Sie bietet die folgenden Aktionen an, die man über die Methode get\_action() ab
 \item pl\_replace (Dasselbe wie pl\_append, aber leert vorher Queue)
 \item pl\_delete (Löscht Playliste aus der Liste und vom Server)
 \end{itemize}
-
+\newpage
+\begin{figure}
 \subsubsection{Queue}
-\begin{figure}[htb!]
 	\centering
         \includegraphics[width=\textwidth]{./gfx/class/queue}
 	\caption{Klassenübersicht zur Queue}
@@ -135,7 +135,7 @@ Das zugrundeliegende Model ist ein Gtk::ListStore dessen Spaltenlayout durch Que
 Als View wird ein Gtk::TreeView verwendet.
 
 \paragraph{QueueModelColumns}
-Definiert die Spalten für die Queue, und erbt daher von Gtk::TreeModel::ColumnRecord, sodass ein Gtk::ListStore etwas damit anfangen kann.
+Definiert die Spalten für die Queue, und erbt daher von \\ Gtk::TreeModel::ColumnRecord, sodass ein Gtk::ListStore etwas damit anfangen kann.
 Die Definition ist nicht wie bei anderen Klassen als ,,Nested Class'' realisiert, da sowohl Queue als auch QueueMerger darauf zugreifen müssen. 
 Sie definiert die folgenden Spalten:
 \begin{itemize}
@@ -218,11 +218,11 @@ Weist Reiter an, die Defaultwerte aus der einkompilierten Config zu laden.
 	\centering
         \includegraphics[width=\textwidth]{./gfx/state/settings}
 	\caption{Zustandsdiagramm Settings}
-	\label{st_settings}
+	\label{st_state_settings}
 \end{figure}
 Die Settings Klasse repräsentiert den Settingsbrowser. Wie jeder andere Browser implementiert diese Klasse \emph{AbstractBrowser} und eine get\_container() Methode.
 Sobald etwas in der Präsentation geändert wird, soll es nicht gleich in die Config übernommen werden.
-Dies soll erst durch den Speicherbutton geschehen (siehe \ref{st_settings}).
+Dies soll erst durch den Speicherbutton geschehen (siehe \ref{st_seq_settings}).
 \begin{itemize}
 \item Zurücksetzen - Setzt alle Einstellungen auf Fabrikstandards zurück
 \item Rückgängig - Setzt Änderungen auf letzten Stand zurück
@@ -237,10 +237,9 @@ Um in jeden Tab die Settings zurückzusetzen (auf letzten validen Wert oder Stan
 
 %<Zustandsdiagramm zum Settings akzeptieren, sprich buttons in/sens machen>
 
-\paragraph{Settings}
-\begin{figure}[htb!]
+\begin{figure}
 	\centering
-        \includegraphics[scale=0.52]{./gfx/seq/settings}
+        \includegraphics[scale=0.5]{./gfx/seq/settings}
 	\caption{Settings Sequenzdiagramm}
 	\label{st_seq_settings}
 \end{figure}

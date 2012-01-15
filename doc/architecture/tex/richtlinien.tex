@@ -3,17 +3,16 @@
 \renewcommand{\labelitemi}{•}
 \begin{itemize}
 \item Modulare Gestaltung.
-\item Code-Sauberkeit ist wichtiger als Code Performance.
-\item "'make"' sollte keine Warnungen ausgeben, die man leicht umgehen könnte. (-Wall und -Wextra -std=c++0x wird genutzt)
-\item "'make test"' soll vollständig durchlaufen.
-\item Durchgehendes Model-View-Controller Pattern.
+\item Sauberkeit ist wichtiger als Performance.
+\item Durchgehende Anwendung des Model-View-Controller Pattern.
+\item ,,make'' sollte keine Warnungen ausgeben, die man leicht umgehen könnte. (-Wall und -Wextra wird genutzt)
+\item ,,make test'' soll vollständig durchlaufen.
+\item Sinnvolle Variablenbenennung.
 \item Keine nichtkonstanten globalen Variablen.
-\item Sinnvolle Variablenbenennung
-\item Klassenmethoden (static) nur in Ausnahmefällen bzw. nur mit guten Gründen.
+\item Klassenmethoden (\emph{static}) nur in Ausnahmefällen bzw. nur mit guten Gründen.
 \item Valgrind darf keine Laufzeitfehler bringen, die nicht von Gtk oder anderen Bibliotheken stammen.
-\item ,,camelcase'' bei Objektnamen, C-Style (function\_name) bei Funktionsnamen - Präzise Namen.
-\item Tabstop = 4 Leerzeichen.
-\item Allman-Stil.
+\item ,,camelCase'' bei Objektnamen, C-Style (function\_name()) bei Funktionsnamen - Präzise Namen.
+\item Tabstop = 4 Leerzeichen, Allman-Stil.
 \end{itemize}
 \subsection{Begründung}
 Einhaltung dieser Programmierrichtlinien sorgen für ein einfaches, übersichtliches und einheitliches Arbeiten.
@@ -56,4 +55,5 @@ Distributionen verbreitet. Avahi-glib ist ein Interface für den Avahidaemon, de
 dient als Server-Borwser, kann allerdings nur MPD Server finden, die sich per Zeroconf am Avahidaemon registriert
 haben.
 \\ 
-Primäre Entwicklerplattform ist ein GNU/Linux-System nach Wahl.
+Primäre Entwicklerplattform ist ein GNU/Linux-System nach Wahl. Der Client soll dabei nach Möglichkeit portabel gehalten werden, um später 
+auf andere vom MPD Server unterstützte Plattformen portiert werden zu können.

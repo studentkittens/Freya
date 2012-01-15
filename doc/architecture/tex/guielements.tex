@@ -32,7 +32,8 @@
 
 \subsection{Hauptklassen}
 Der GManager Namespace enthält Klassen die der Verwaltung und Kontrolle des Hauptfensters von Freya dienen,
-jedoch nicht den eigentlichen Inhalt des Hauptfensters bereitstellen (dies soll von den Browserklassen getan werden)
+jedoch nicht den eigentlichen Inhalt des Hauptfensters bereitstellen (dies soll von den Browserklassen getan werden).
+Von der Aufteilung her wurden für alle zusammengehörigen Elemente jeweils eine Klasse angelegt.
 Alle Klassen gehören nach dem MVC Paradigma der Controllerschicht an.
 \\
 Der Begriff ,,Browser'' wird im folgenden für die einzelnen Tabs benutzt die Links in der Sidebar zu finden sind. 
@@ -126,6 +127,8 @@ void set(void)    - Setzt die jetzige Zeit absolut und zählt von dort weiter
 Zusätzlich stoppt die Heartbeat Klasse das Zählen wenn der Client das Playback pausiert.
 Wird es fortgesetzt, so wird play() aufgerufen. 
 Zusätzlich wird bei jedem ,,Client Event'' der Zähler an der vergangen Zeit, im gerade spielenden Song, justiert.
+\\
+Neben dem Listener ist Heartbeat somit die einzige ,,aktive'' Klasse.
 
 \subsubsection{MenuList}
 Kontrolliert und verwaltet die Anzeige (Sensitivität) und Steuerung der Menüleiste.

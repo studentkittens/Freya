@@ -5,10 +5,10 @@
 
 \section{,,Das Problem''}
 
-Da die grundlegende Funktionsweise des MPD Server auf einer Client Server Architektur beruht, muss der MPD Client
-verschiedene Kommandos wie zum Beispiel \it play, pause, listplaylists \rm etc. an den Server schicken können
+Da die grundlegende Funktionsweise des MPD Servers auf einer Client-Server-Architektur beruht, muss der MPD Client
+verschiedene Kommandos, wie zum Beispiel \it play, pause, listplaylists \rm etc., an den Server schicken
 und zur gleichen Zeit aber auch auf Änderungen reagieren können, d.h. zum Beispiel wenn sich die Lautstärke ändert,
-da jederzeit auch andere Clients oder Server den MPD internen Zustand ändern können.
+da jederzeit auch andere Clients oder Server den internen Zustand des MPD ändern können.
 Diese Änderungen müssen auch anderen Programmteilen bekannt gemacht werden.
 Für die Realisierung eignet sich hier das Observer Pattern gut. \footnote{http://de.wikipedia.org/wiki/Observer\_(Entwurfsmuster)}
 \\
@@ -17,14 +17,14 @@ trennen und verbinden die entsprechenden Änderungen anderen Teilen des Programm
 können. 
 \\
 
-Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} bietet folgende Möglichkeiten das zu realisieren
+Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} bietet folgende Möglichkeiten das zu realisieren.
 \begin{description}
     \item [Periodisch] (zB. alle 500ms) das ,,\textit{status}'' Kommando absetzen und nach Bedarf auch Kommandos wie ,,\textit{currentsong}''
         senden.
         \\
         \emph{Problem:} Bei langsamen Netzwerkverbindungen erzeugt dies unnötige Netzwerklast. 
-        Prinzipiell würde sich auf diese Art jedoch z.B. die Musik Bitrate anzeigen lassen. Es ist jedoch ein
-        wenig komfortabler Weg da hier wieder einmal das Rad neu erfunden werden müsste, denn man müsste manuell raus finden 
+        Prinzipiell würde sich auf diese Art jedoch z.B. die Musik Bitrate anzeigen lassen. Es ist jedoch ein ein wenig
+        komfortablerer Weg, da man ansonsten das Rad neu erfinden und manuell heraus finden müsste, 
         was genau sich eigentlich geändert hat.
     \item [Nutzung der ,,\textit{idle}'' und ,,\textit{noidle}'' commands:]
         ,,\textit{idle}'' versetzt die Verbindung zum Server in einen Schlafzustand. Sobald Events wie ,,\textit{player}'' (wird beispielsweise durch pausieren getriggert) 
@@ -36,17 +36,17 @@ Das MPD Protokoll \footnote{http://www.musicpd.org/doc/protocol/index.html} biet
 	  \label{dd_state}
 	\end{figure}
 
-        Allerdings gibt es hier eine weitere Einschränkung: Während die Verbindung im idle mode ist kann kein reguläres Kommando wie ,,\textit{play}'' gesendet werden!
+        Allerdings gibt es hier eine weitere Einschränkung: Während die Verbindung im idle mode ist, kann kein reguläres Kommando wie ,,\textit{play}'' gesendet werden!
         Sollte man es doch tun wird man augenblicklich vom Server getrennt.
         Die einzige Möglichkeit aus dem idle mode aufzuwachen ist das ,,\textit{noidle}'' Kommando, das gesendet werden
-        kann während die Verbindung schlafen gelegt wurde.
+        kann, während die Verbindung schlafen gelegt wurde.
         Jedoch gibt es auch hier ein Problem, denn das ,,\textit{idle}'' Kommando blockiert, sprich es sendet kein ,,OK'' an den  Sender zurück.
-        Ein Warten auf dieses ,,OK'' würde mit den Wunsch eine in der Zwischenzeit bedienbare Oberfläche zu haben kollidieren.
+        Ein Warten auf dieses ,,OK'' würde mit dem Wunsch eine in der Zwischenzeit bedienbare Oberfläche zu haben kollidieren.
 \end{description}
 
 Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
 \begin{itemize}
-    \item Man hält zwei Verbindungen zum Server, eine die Kommandos sendet, eine die stets im ,,\textit{idle}'' mode liegt,
+    \item Man hält zwei Verbindungen zum Server: eine, die Kommandos sendet, und eine, die stets im ,,\textit{idle}'' mode liegt.
         Für die Realisierung müssten Threads herangezogen werden. Ein Thread würde dann im Hintergrund auf Events lauschen,
         der andere würde zum Abschicken der Kommandos benutzt werden.
         \emph{Problem:} Es müssen 2 Verbindungen gehandelt werden, was wiederum ein Mehraufwand an Code bedeutet.
@@ -58,8 +58,8 @@ Prinzipiell gibt es 2 Möglichkeiten dieses Problem zu lösen:
         Callbackfunktion aufruft sobald auf der Verbindung etwas Interessantes passiert. Da während des Wartens der MainLoop
         weiterarbeitet, bleibt die GUI (und andere Module) aktiv und benutzbar.
         \\
-        \emph{Problem:} Vor dem Senden eines Kommandos wie ,,\textit{play}'' muss der idle mode verlassen werden.
-        \emph{Lösung:} Man kann das ,,\textit{noidle}'' Kommando zum Verlassen senden, und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
+        \emph{Problem:} Vor dem Senden eines Kommandos wie ,,\textit{play}'', muss der idle mode verlassen werden.
+        \emph{Lösung:} Man kann das ,,\textit{noidle}'' Kommando zum Verlassen senden und nach dem Absenden des eigentlichen Kommandos wieder den idle-mode betreten.
 \end{itemize}
 
 Zum Verständnis der Problematik wird hier eine telnetsession gezeigt. 

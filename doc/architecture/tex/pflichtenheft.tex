@@ -33,7 +33,7 @@ Wer soll an dem Projekt teilnehmen?
 Der MPD-Client ist nicht auf bestimmte Gewerbe beschränkt, ein jeder soll diesen Client
 verwenden können. \\
 Die Software soll unter folgender Lizenz stehen:
-Version 3 vom 29 Juni 2007.\ \\ 
+General Public License Version 3 vom 29 Juni 2007.\ \\ 
 Definition der GPL:
 \begin{center}
     \url{http://www.gnu.org/licenses/gpl.html}
@@ -45,8 +45,8 @@ Das wären z.B. Personal Computer, Musikanlagen, Laptops und evtl.
 sogar diverse Smartphones möglich.
 
 \subsection{Zielgruppen}
-Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
-wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. Durch Abgleich von Datenträgern). 
+Personengruppen, die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
+wollen, ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. Durch Abgleich von Datenträgern). 
 Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig. 
 Der Benutzer muss die Systemsprache Englisch beherrschen.
 
@@ -68,11 +68,10 @@ Anwendungen unterscheiden und dementsprechend folgende Punkte erfüllen:
 	\item Avahi Daemon
 	\item Benötigte Bibliotheken können statisch einkompiliert werden
 \end{itemize}
-Ein MPD-Server muss nicht unbedingt lokal installiert sein, dann muss 
-allerdings über das Netzwerk (Internet) ein Server erreichbar sein.
+Ein MPD-Server muss nicht unbedingt lokal installiert, jedoch dann über das Netzwerk (Internet) erreichbar sein.
 Ohne MPD-Server soll der Client in einen definierten Zustand hochgefahren werden der das Verbinden ermöglicht.
-Ein laufender Avahi Daemon ist optional. Er ist nicht vonnöten aber durchaus praktisch wenn man sich nicht ständig den Host (bzw. die IP) 
-vom Administrator geben lassen will, und stattdessen in der eingebauten Serverliste nachschauen kann.
+Ein laufender Avahi Daemon ist optional. Er ist nicht vonnöten, aber durchaus praktisch, wenn man sich nicht ständig den Host (bzw. die IP) 
+vom Administrator geben lassen will und stattdessen in der eingebauten Serverliste nachschauen kann.
 
 \subsection{Orgware}
 \begin{itemize}
@@ -87,10 +86,10 @@ vom Administrator geben lassen will, und stattdessen in der eingebauten Serverli
 
 \section{Produktfunktionen}
 Funktionen des MPD-Clients.\ \\
-Beim ersten Start des Systems soll eine einkompilierte Standard-Konfiguration geladen werden und die Verbindungseinstellungen
-zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
-die vom Benutzer erstellt hat,  falls keine Konfiguration gefunden wurde, oder diese korrumpiert ist,
-so wird auf eine vom Client bereitgestellte Standardkonfiguration zurückgefallen. Der Benutzer soll sämtliche
+Beim ersten Start des Systems soll eine einkompilierte Standard-Konfiguration geladen und die Verbindungseinstellungen
+zu einem MPD-Server vorgenommen werden. Bei jedem weiteren Start soll die vom Benutzer erstellte Konfiguration geladen werden.
+Falls keine Konfiguration gefunden wurde oder diese beschädigt ist,
+wird auf eine vom Client bereitgestellte Standardkonfiguration zurückgegriffen. Der Benutzer soll sämtliche
 Einstellungen selbstverständlich zu jeder Zeit ändern können.
 \newpage
 \paragraph{Mockup:}
@@ -124,11 +123,6 @@ wurde verzichtet, da das Designdokument einen leicht anderen Aufbau hat, was das
   \item Stop
   \item Consume, Single, Random, Repeat 
   \end{itemize}   
-\item Misc
-  \begin{itemize}
-  \item ,,Increase Volume''
-  \item ,,Decrease Volume''
-  \end{itemize}
 \item Help
   \begin{itemize}
   \item About Dialog
@@ -197,14 +191,14 @@ so sollen die Änderungen automatisch durch die Eindrückung angezeigt werden.
     \caption{Use Case Diagramm Playlist}
     \label{uc_playlist}
 \end{figure}
-Zeigt alle vorhandenen auf dem Server gespeicherten Playlisten in einer Liste.
+Zeigt alle vorhandenen, auf dem Server gespeicherten Playlists in einer Liste.
 Dabei wird in der Liste der Playlistname und das letzte Änderungsdatum angezeigt.
-Die Namenszellen sind editierbar, sodass der Playlistname einfach geändert werden kann. 
-Ein Rechtsklickmenü bietet soll die folgenden Operationen bieten (siehe \ref{uc_playlist}):
+Die Namenszellen sind editierbar, so dass der Playlistname einfach geändert werden kann. 
+Ein Rechtsklickmenü soll die folgenden Operationen bieten (siehe \ref{uc_playlist}):
 \begin{itemize}
-    \item \textbf{Append:} Fügt den Inhalt der Playliste der Queue am Ende hinzu
+    \item \textbf{Append:} Fügt den Inhalt der Playlist der Queue am Ende hinzu
     \item \textbf{Replace:} Ersetzt den Inhalt der Queue mit dieser Playlist
-    \item \textbf{Delete:} Entfernt die ausgewählten Playlisten unwiderruflich
+    \item \textbf{Delete:} Entfernt die ausgewählten Playlists unwiderruflich
 \end{itemize}   
 
 %-----------------------------------------------
@@ -223,7 +217,7 @@ Es handelt sich hierbei nicht wirklich um ein Dateisystem, nur um eine Darstellu
     \item Anzeige des "Dateinamen" unter dem Icon
     \item Doppelklick oder Enter auf einen Ordner bewirkt ein Absteigen in diesen
     \item Doppelklick oder Enter auf ein Songfile bewirkt ein Hinzufügen dessen zur Ende der Queue
-    \item ''Backspace'' geht ebenso ein Verzeicniss nach oben.
+    \item ,,Backspace'' geht ebenso ein Verzeicniss nach oben.
     \item Am unteren Rand befindet sich eine Steuerleiste:
         \begin{itemize}
             \item \textbf{Homebutton:} Geht zum Wurzel-Verzeichnis zurück
@@ -274,15 +268,15 @@ Es handelt sich hierbei nicht wirklich um ein Dateisystem, nur um eine Darstellu
 \subsection{Settingsbrowser}
 Die Einstellungen sollen in ein Tabbasiertes Layout eingebettet sein. 
 Werden Änderungen vorgenommen, so werden sie nicht gleich gespeichert und übernommen. 
-Es sollte daher ein Speicherfunktion geben, und dazugehörig eine Undofunktion für die letzten Änderungen.
+Es sollte daher eine Speicherfunktion geben und dazugehörig eine Undofunktion für die letzten Änderungen.
 \\
-Falls dem Client die Verbindung verloren soll zum Settingsbrowser gesprungen werden, sodass der Benutzer entsprechende
+Falls der Client die Verbindung verliert, soll zum Settingsbrowser gesprungen werden, sodass der Benutzer entsprechende
 Änderungen machen kann. Aus diesem Grunde muss der Settingsbrowser auch ohne Verbindung voll funktionsfähig sein.
 Alle Settingstabs ändern die Werte nicht sofort:
 \begin{itemize} 
     \item Sie werden erst persistent übernommen wenn der Benutzer die Konfiguration abspeichert
-    \item Der Rückgängigbutton setzt die Präsentation auf die letzen persistent gesetzten Werte
-    \item ,,Zurücksetzen'' lädt überall die Defaultconfig
+    \item Der ,,Undo''-Button setzt die Präsentation auf die letzen persistent gesetzten Werte
+    \item ,,Reset'' lädt überall die Defaultconfig
 \end{itemize}
 Innerhalb der Tabs sollen folgende Funktionen bereit gestellt werden:
 \begin{itemize}
@@ -426,7 +420,7 @@ beispielsweise zusätzliche Informationen wie ein ,,Rating'' zu speichern, oder 
 Client Einstellungen werden lokal gespeichert, außerdem ist stets eine Defaultconfig vorhanden, falls die des Dateisystems defekt ist.
 Die Konfigurationsdatei wird nach dem XDG-Standard in \emph{~/.config/freya/config.xml} gespeichert. Den selben Speicherplatz wählt auch die Logdatei 
 (\emph{~/.config/freya/log.txt}). Sollten nur einzelne Werte in der Konfigurationsdatei nicht vorhanden sein so wird nachgeschaut ob die Defaultconfig
-diese Werte bereitstellt und es wird versucht sie von dort zu laden. So ist für valide Wert stets abgesichert dass mindestens ein Wert vorliegt.
+diese Werte bereitstellt und es wird versucht sie von dort zu laden. So ist für valide Wert stets abgesichert, dass mindestens ein Wert vorliegt.
 \section{Qualitätsanforderungen}
 Die Software soll natürlich von hoher Qualität sein. Hierfür sollen folgende
 Anforderungen erfüllt werden:
@@ -437,8 +431,8 @@ Fehler gefunden werden sollte, wird dieser sofort ausgebessert. Bei schwerwiegen
 werden die Nutzer direkt auf den Fehler aufmerksam gemacht.
 \subsection{Wartbarkeit}
 Der Wartungsaufwand der Software ist gering bis gar nicht vorhanden. Ändert sich die Umgebungssoftware
-(z.B. der MPD-Server) dann sind die Änderungen so geringfügig bzw. trivial, dass sie den MPD-Client 
-nicht beeinflussen werden. Fehler der Software (sollten Fehler auftreten) wären leicht analysiert bzw.
+(z.B. der MPD-Server), dann sind die Änderungen so geringfügig bzw. trivial, dass sie den MPD-Client 
+nicht beeinflussen sollten. Fehler der Software (sollten Fehler auftreten) wären leicht analysiert bzw.
 prüfbar und natürlich auch leicht zu beheben. Zur Wartbarkeit gehört ebenso die Modularität, d.h.
 die Software ist technisch so realisiert, dass sie leicht erweitert werden kann - Stichwort ModelViewController (MVC). 
 \subsection{Zuverlässigkeit}
@@ -446,7 +440,7 @@ Das System funktioniert und reagiert tolerant auf fehlerhafte Eingaben bzw. fehl
 Das Programm funktioniert sieben Tage die Woche und 24 Stunden am Tag und muss nicht abgeschaltet werden.
 
 \subsection{Effizienz}
-Der MPD-Client funktioniert möglichst effizient, d.h. Das Programm ist schnell geladen und Eingaben des Benutzers
+Der MPD-Client funktioniert möglichst effizient, d.h. das Programm ist schnell geladen und Eingaben des Benutzers
 werden praktisch sofort ausgeführt. Es gibt so gut wie keine Wartezeiten, jedenfalls sind diese 
 so genannten Reaktionszeiten für den Benutzer nicht merkbar. Selbst bei sehr großen Musik-Datenbanken
 und Playlists benötigt das Programm kaum Rechenzeit und sonstige Hardwareressourcen.

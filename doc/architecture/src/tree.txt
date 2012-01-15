@@ -1,19 +1,36 @@
-src
-├── Avahi
-├── AvahiBrowser
-├── Browser
-│   ├── Database
-│   ├── Fortuna
-│   ├── PlaylistManager
-│   ├── Queue
-│   ├── Settings
-│   └── Statistics
-├── Config
-├── GManager
-├── Init
-├── Log
-├── MPD
-├── Notify
-└── Utils
-
-16 directories
+Freya
+    |-- doc
+    |   |-- architecture
+    |   |   |-- gfx
+    |   |   |-- tex
+    |   |   |-- src
+    |   |   |-- dia
+    |   |   |-- doku.pdf 
+    |   |-- doxygen
+    |        |-- html
+    |            |-- index.html
+    |-- ui
+    |   |-- Freya.glade
+    |   |-- (..)
+    |-- src
+        |-- Avahi
+        |-- AvahiBrowser
+        |-- Browser
+        |   |-- Database
+        |   |-- Fortuna
+        |   |-- PlaylistManager
+        |   |-- Queue
+        |   |-- Settings
+        |   |-- Statistics
+        |-- GManager
+        |-- Init
+        |   |-- Main.cc
+        |-- Notify
+        |-- Config
+        |   |-- check_config.hh
+        |-- Log
+        |   |-- check_log.hh
+        |-- MPD
+        |   |-- check_mpd.hh
+        |-- Utils
+            |-- check_utils.hh

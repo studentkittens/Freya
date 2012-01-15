@@ -143,8 +143,7 @@ namespace Browser
 
         bool mergeDisabled;
         bool mergeIterIsValid;
-        bool serverChanged;
-        bool isFirstStart;
+        bool m_ServerChanged;
 
         Gtk::TreeModel::iterator mergeIter;
 

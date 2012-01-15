@@ -219,6 +219,8 @@ namespace Browser
     }
 
     /*------------------------------------------------*/
+    /* ---------------- LOGIC ----------------------- */
+    /*------------------------------------------------*/
 
     void Database::set_current_path(const char * path)
     {
@@ -235,11 +237,13 @@ namespace Browser
         std::string dir_up = Glib::path_get_dirname(mp_Path);
 
         if(dir_up == ".")
-            dir_up = "";
+            dir_up = "/";
 
         set_current_path(dir_up.c_str());
     }
 
+    /*------------------------------------------------*/
+    /* --------------- Client Updates --------------- */
     /*------------------------------------------------*/
 
     void Database::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
@@ -257,10 +261,11 @@ namespace Browser
         /* Go back to root when server changed */
         if(server_changed)
         {
-            set_current_path("");
+            set_current_path("/");
         }
     }
 
+    /*------------------------------------------------*/
     /*------------------------------------------------*/
 
     void Database::focus_item_starting_with(const char * prefix)

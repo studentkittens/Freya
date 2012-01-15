@@ -42,8 +42,7 @@ namespace Browser
         AbstractClientUser(client),
         mergeDisabled(false),
         mergeIterIsValid(false),
-        serverChanged(true),
-        isFirstStart(true),
+        m_ServerChanged(true),
         lastPlaylistVersion(0),
         playlistLength(0),
         mergePos(0),
@@ -119,7 +118,7 @@ namespace Browser
         g_assert(pSong);
         MPD::Song * new_song = static_cast<MPD::Song*>(pSong);
 
-        if(serverChanged)
+        if(m_ServerChanged)
         {
             add_row(new_song);
         }
@@ -152,6 +151,7 @@ namespace Browser
     {
         if(event & MPD_IDLE_QUEUE)
         {
+            Info("Doing Merge");
             if(!mergeDisabled)
             {
                 MPD::Status& status = data.get_status();
@@ -159,12 +159,12 @@ namespace Browser
                 unsigned qu_l = status.get_queue_length();
 
                 /* Do a full refill if requested (e.g. on startup) */
-                if(serverChanged)
+                if(m_ServerChanged)
                 {
                     Info("Doing full refill of the queue.");
                     mp_QueueModel->clear();
                     mp_Client->fill_queue(*this);
-                    serverChanged = false;
+                    m_ServerChanged = false;
                 }
                 else
                 {
@@ -189,8 +189,7 @@ namespace Browser
     void QueueMerger::on_connection_change(bool server_changed, bool is_connected)
     {
         /* This is also true on startup */
-        serverChanged = (isFirstStart) ? false :server_changed;
-        isFirstStart = false;
+        m_ServerChanged = server_changed; 
     }
 
     /*-------------------*/

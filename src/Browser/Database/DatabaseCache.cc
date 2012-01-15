@@ -30,6 +30,7 @@
 **************************************************************/
 
 #include "DatabaseCache.hh"
+#include "../../Log/Writer.hh"
 
 namespace Browser
 {
@@ -88,7 +89,7 @@ namespace Browser
     {
         if(event & MPD_IDLE_DATABASE)
         {
-            if(isFirstStart)
+            if(!isFirstStart)
             {
                 /* We have no way to check what exactly changed */
                 clear_cache();

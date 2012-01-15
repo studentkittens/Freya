@@ -31,12 +31,16 @@
 #include "Connection.hh"
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
+        
+#include <iostream>
+        using namespace std;
 
 namespace MPD
 {
 //--------------------------------------
 
     Connection::Connection(void) :
+        lastHost(""),
         hostChanged(false)
     {
         conn = NULL;
@@ -74,13 +78,16 @@ namespace MPD
         int port = CONFIG_GET_AS_INT("settings.connection.port");
 
         /* Hostname, might be an IP or a hostname like localhost */
-        Glib::ustring str_host = CONFIG_GET("settings.connection.host").c_str();
+        Glib::ustring str_host = CONFIG_GET("settings.connection.host");
+
 
         /* Check if the host changed */
         if(str_host.compare(lastHost) != 0)
             hostChanged = true;
         else
             hostChanged = false;
+
+        std::cerr << hostChanged << " -> new: " << str_host << " | " << lastHost <<  std::endl;
 
         /* Remember last host */
         lastHost = str_host;

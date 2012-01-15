@@ -1,0 +1,19 @@
+src
+├── Avahi
+├── AvahiBrowser
+├── Browser
+│   ├── Database
+│   ├── Fortuna
+│   ├── PlaylistManager
+│   ├── Queue
+│   ├── Settings
+│   └── Statistics
+├── Config
+├── GManager
+├── Init
+├── Log
+├── MPD
+├── Notify
+└── Utils
+
+16 directories

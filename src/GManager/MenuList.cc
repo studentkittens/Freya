@@ -55,12 +55,10 @@ namespace GManager
         BUILDER_GET(builder,"menu_mode_single", menu_single);
         BUILDER_GET(builder,"menu_mode_random", menu_random);
         BUILDER_GET(builder,"menu_mode_consume", menu_consume);
-        BUILDER_GET(builder,"menu_item_vol_up", menu_vol_inc);
-        BUILDER_GET(builder,"menu_item_vol_down", menu_vol_dec);
+
         BUILDER_GET(builder,"menu_about",menu_about);
 
         BUILDER_GET(builder,"playback_menuitem",menu_playback);
-        BUILDER_GET(builder,"misc_menuitem",menu_misc);
 
         BUILDER_ADD(builder,"ui/About.glade");
         BUILDER_GET_NO_MANAGE(builder,"about_main",window_about);
@@ -79,8 +77,6 @@ namespace GManager
         menu_single->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_single));
         menu_consume->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_consume));
 
-        menu_vol_inc->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_vol_inc));
-        menu_vol_dec->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_vol_dec));
         menu_about->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_about));
     }
 
@@ -136,7 +132,6 @@ namespace GManager
         menu_connect->set_sensitive(!is_connected);
         menu_disconnect->set_sensitive(is_connected);
         menu_playback->set_sensitive(is_connected);
-        menu_misc->set_sensitive(is_connected);
     }
 
 //-----------------------------
@@ -183,15 +178,4 @@ namespace GManager
         window_about->hide();
     }
 //-----------------------------
-    void MenuList::on_menu_vol_dec(void)
-    {
-        unsigned curVol = mp_Client->get_status()->get_volume();
-        curVol = (curVol < VOLUME_STEP) ? 0 : (curVol - VOLUME_STEP);
-    }
-//-----------------------------
-    void MenuList::on_menu_vol_inc(void)
-    {
-        unsigned curVol = mp_Client->get_status()->get_volume();
-        curVol = (curVol > (100-VOLUME_STEP)) ? 100 : (curVol + VOLUME_STEP);
-    }
 }

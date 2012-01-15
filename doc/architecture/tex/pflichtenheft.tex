@@ -33,7 +33,7 @@ Wer soll an dem Projekt teilnehmen?
 Der MPD-Client ist nicht auf bestimmte Gewerbe beschränkt, ein jeder soll diesen Client
 verwenden können. \\
 Die Software soll unter folgender Lizenz stehen:
-Version 3 vom 29 Juni 2007.\ \\ 
+General Public License Version 3 vom 29 Juni 2007.\ \\ 
 Definition der GPL:
 \begin{center}
     \url{http://www.gnu.org/licenses/gpl.html}
@@ -45,8 +45,8 @@ Das wären z.B. Personal Computer, Musikanlagen, Laptops und evtl.
 sogar diverse Smartphones möglich.
 
 \subsection{Zielgruppen}
-Personengruppen die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
-wollen ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. Durch Abgleich von Datenträgern). 
+Personengruppen, die komfortabel von überall aus auf ihre Musik und Playlist zugreifen
+wollen, ohne diese jedes mal aufwändig synchronisieren zu müssen (z.B. Durch Abgleich von Datenträgern). 
 Aufgrund der für das System vorgesehenen Betriebsumgebung sind ebenso Kenntnisse im Umgang mit Unix nötig. 
 Der Benutzer muss die Systemsprache Englisch beherrschen.
 
@@ -68,11 +68,10 @@ Anwendungen unterscheiden und dementsprechend folgende Punkte erfüllen:
 	\item Avahi Daemon
 	\item Benötigte Bibliotheken können statisch einkompiliert werden
 \end{itemize}
-Ein MPD-Server muss nicht unbedingt lokal installiert sein, dann muss 
-allerdings über das Netzwerk (Internet) ein Server erreichbar sein.
+Ein MPD-Server muss nicht unbedingt lokal installiert, jedoch dann über das Netzwerk (Internet) erreichbar sein.
 Ohne MPD-Server soll der Client in einen definierten Zustand hochgefahren werden der das Verbinden ermöglicht.
-Ein laufender Avahi Daemon ist optional. Er ist nicht vonnöten aber durchaus praktisch wenn man sich nicht ständig den Host (bzw. die IP) 
-vom Administrator geben lassen will, und stattdessen in der eingebauten Serverliste nachschauen kann.
+Ein laufender Avahi Daemon ist optional. Er ist nicht vonnöten, aber durchaus praktisch, wenn man sich nicht ständig den Host (bzw. die IP) 
+vom Administrator geben lassen will und stattdessen in der eingebauten Serverliste nachschauen kann.
 
 \subsection{Orgware}
 \begin{itemize}
@@ -87,10 +86,10 @@ vom Administrator geben lassen will, und stattdessen in der eingebauten Serverli
 
 \section{Produktfunktionen}
 Funktionen des MPD-Clients.\ \\
-Beim ersten Start des Systems soll eine einkompilierte Standard-Konfiguration geladen werden und die Verbindungseinstellungen
-zu einem MPD-Server müssen vorgenommen werden. Bei jedem weiteren Start soll die Konfiguration geladen werden,
-die vom Benutzer erstellt hat,  falls keine Konfiguration gefunden wurde, oder diese korrumpiert ist,
-so wird auf eine vom Client bereitgestellte Standardkonfiguration zurückgefallen. Der Benutzer soll sämtliche
+Beim ersten Start des Systems soll eine einkompilierte Standard-Konfiguration geladen und die Verbindungseinstellungen
+zu einem MPD-Server vorgenommen werden. Bei jedem weiteren Start soll die vom Benutzer erstellte Konfiguration geladen werden.
+Falls keine Konfiguration gefunden wurde oder diese beschädigt ist,
+wird auf eine vom Client bereitgestellte Standardkonfiguration zurückgegriffen. Der Benutzer soll sämtliche
 Einstellungen selbstverständlich zu jeder Zeit ändern können.
 \newpage
 \paragraph{Mockup:}
@@ -124,11 +123,6 @@ wurde verzichtet, da das Designdokument einen leicht anderen Aufbau hat, was das
   \item Stop
   \item Consume, Single, Random, Repeat 
   \end{itemize}   
-\item Misc
-  \begin{itemize}
-  \item ,,Increase Volume''
-  \item ,,Decrease Volume''
-  \end{itemize}
 \item Help
   \begin{itemize}
   \item About Dialog

@@ -1,4 +1,8 @@
 Freya
+    |-- bin
+        |-- test_client (..)
+        |-- check_log (..)
+        |-- Freya
     |-- doc
     |   |-- architecture
     |   |   |-- gfx
@@ -10,8 +14,7 @@ Freya
     |        |-- html
     |            |-- index.html
     |-- ui
-    |   |-- Freya.glade
-    |   |-- (..)
+    |   |-- Freya.glade (..)
     |-- src
         |-- Avahi
         |-- AvahiBrowser

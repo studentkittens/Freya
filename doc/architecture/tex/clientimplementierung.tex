@@ -1,8 +1,8 @@
 \section{Aufbau des Clients}
 
 Aus den oben genannten Anforderungen kann eine grobe Architektur abgeleitet werden.
-Zur Realisierung des Observerpatterns wird die sigc++ library benutzt die mit Gtkmm kommt.
-Es wird empfohlen die Einführung bis einschließlich Kapitel 2 zu lesen:
+Zur Realisierung des Observerpatterns wird die sigc++ library benutzt, die mit Gtkmm geliefert wird.
+Es wird empfohlen, die Einführung bis einschließlich Kapitel 2 zu lesen:
 \begin{itemize}
 \item \url{http://developer.gnome.org/libsigc++-tutorial/stable/ch01.html}
 \end{itemize}
@@ -44,18 +44,18 @@ Die Aktionen die passieren müssen, damit diese eintreten, stehen in Klammern.
     \item \small MPD\_IDLE\_UPDATE \it(Datenbankupdate/rescan wurde gestartet)\rm
 \end{itemize}
 \normalsize
-Bei der Instanzierung des Listeners soll das \textit{sigc::signal} welches das Clientupdate darstellt übergeben werden.
-Zudem benötigt der Listener eine Referenz auf MPD::Connection um an die darunter liegende asynchrone Verbindung zu kommen.  
+Bei der Instanzierung des Listeners soll das \textit{sigc::signal}, welches das Clientupdate darstellt, übergeben werden.
+Zudem benötigt der Listener eine Referenz auf MPD::Connection, um an die darunter liegende asynchrone Verbindung zu kommen.  
 \begin{verbatim}
   Listener(EventNotifier& Notifier, Connection& sync_conn);
 \end{verbatim}
 
 Eine weitere Aufgabe des Listeners ist es, das Model MPD::NotifyData aktuell zu halten. Siehe dazu auch MPD::NotifyData.
-Bemerkt der Listener Events so ruft er emit() auf dem übergebenen \textit{sigc::signal} auf,
+Bemerkt der Listener Events, so ruft er emit() auf dem übergebenen \textit{sigc::signal} auf,
 und übergibt als Parameter das aufgetretene Event, sowie eine Instanz von MPD::NotifyData.
-\footnote{Als spätere Optimierung könnte das aufgetretene Event übergeben werden um selektiv Daten ,,upzudaten''; Sprich bei einer Lautstärkeänderung muss kein neues Statistikobjekt geholt werden.}
+\footnote{Als spätere Optimierung könnte das aufgetretene Event übergeben werden, um selektiv Daten ,,upzudaten''; Sprich bei einer Lautstärkeänderung muss kein neues Statistikobjekt geholt werden.}
 \\
-Es folgt eine Liste von Funktionen die der Listener mindestens haben soll.
+Es folgt eine Liste von Funktionen, die der Listener mindestens haben soll.
 \\
 enter() tritt in den ,,Idlemode'' ein. Es ist ab diesem Punkt nicht mehr erlaubt Kommandos zu senden.
 leave() ist das genaue Gegenteil von enter() und verlässt den ,,Idlemode'' sodass Kommandos gesendet werden können.  
@@ -106,11 +106,11 @@ Zur Implementierung konkreter Kommandos wird die darunterliegende C-Struktur ben
     mpd_connection * get_connection(void);
 \end{verbatim}
 
-Die Connectionklasse soll zudem Schnittstellen bieten um sich für Fehler- und Verbindungsänderungen
+Die Connectionklasse soll zudem Schnittstellen bieten, um sich für Fehler- und Verbindungsänderungen
 zu registrieren. 
 Auf den Rückgabewert der folgenden Funktionen kann sigc::signal::connect() aufgerufen werden,
 um einen Funktionspointer (bzw. ein ,,Funktor'' um den libsigc++ Begriff zu gebrauchen)
-zu registrieren der aufgerufen wird sobald ein Fehler eintritt,
+zu registrieren, der aufgerufen wird sobald ein Fehler eintritt,
 bzw. sich die Verbindung ändert. Die Schnittstellen sollen wie folgt aussehen:
 \begin{verbatim}
   typedef sigc::signal<void, bool,mpd_error> ErrorNotify;
@@ -220,10 +220,10 @@ allerdings prüfen sie mit Connection::check\_error() vorher stets auf Fehler.
 % Sprich: go_busy( ) -> send command -> go_idle( )
 %
 \subsubsection{Client}
-Der Client erbt von BaseClient und implementiert konkrete Kommandos wie ,,play'',,,random'' etc.
-Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des Playlistmanagers indem 
+Der Client erbt von BaseClient und implementiert konkrete Kommandos wie ,,play'', ,,random'' etc.
+Er bietet zudem Schnittstellen zur Befüllung der Datenbank, der Queue und des Playlistmanagers, indem 
 er die abstrakte Klasse \emph{AbstractClientExtension} ausimplementiert.
-Er bietet die Methoden connect() und disconnect() die letztendlich von Anwendern der Clientklasse zum Verbinden und Trennen genutzt werden. 
+Er bietet die Methoden connect() und disconnect(), die letztendlich von Anwendern der Clientklasse zum Verbinden und Trennen genutzt werden. 
 Ist in der config ,,settings.connection.autoconnect'' gesetzt, so connected er sich automatisch.
 \\
 \\
@@ -313,7 +313,7 @@ Die folgenden 2 Funktionen garantieren einen validen Rückgabewert, solange eine
     Statistics& get_statistics(void);
 \end{verbatim}
 
-\textbf{Anmerkung:} Die folgenden 2 Funktionen sollen NULL zurückgeben können, falls beispielsweise
+\textbf{Anmerkung:} Die folgenden 2 Funktionen sollen \emph{NULL} zurückgeben können, falls beispielsweise
 nichts wiedergegeben wird, oder man im ,,\textit{Singlemode}'' ist.
 get\_song() liefert den aktuell spielenden MPD::Song, oder \emph{NULL}.
 get\_next\_song() liefert den als nächstes spielenden MPD::Song oder \emph{NULL}.
@@ -360,9 +360,9 @@ Ein beispielhafter Aufruf:
     SomeSong.song_format("Artist is by ${artist}") 
 \end{verbatim}
 
-Die Escapestrings die dabei unterstützt werden sollen entsprechen in etwa der \textit{mpd\_tag\_type} Enumeration vom libmpdclient.\footnote{http://www.musicpd.org/doc/libmpdclient/tag\_8h.html\#a3e0e0c332f17c6570ffdf788a685adbf}
+Die Escapestrings die dabei unterstützt werden sollen in etwa der \textit{mpd\_tag\_type} Enumeration vom libmpdclient entsprechen.\footnote{http://www.musicpd.org/doc/libmpdclient/tag\_8h.html\#a3e0e0c332f17c6570ffdf788a685adbf}
 Die unterstützten Typen sind somit: \it artist, title, album, track, name, data, album\_artist, genre, composer, performer, comment, disc\rm.
-Ist ein Escapestring nicht bekannt, so wird er nicht escaped. Ist der ,,tag'' nicht vorhanden, soll mit ,,unknown'' escaped werden.
+Ist ein Escapestring nicht bekannt, so wird er nicht escaped. Ist der ,,tag'' nicht vorhanden, soll mit ,,unknown'', bzw. im Fall ``artist'' mit dem Dateinamen escaped werden.
 \\
 Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 
@@ -425,11 +425,11 @@ Die Klasse bietet desweiteren  Funktionen zum:
     void add_song(MPD::Song& song);
 \end{verbatim}
 \end{itemize}
-Die genannten Funktionen benötigen müssen den idlemode verlassen können,
+Die genannten Funktionen müssen den idlemode verlassen können,
 daher leitet MPD::Playlist von AbstractClientExtension ab.
 
 \subsubsection{AudioOutput}
-Die AudioOutput Klasse ist ein Wrapper für mpd\_output, 
+Die AudioOutput Klasse ist ein Wrapper für mpd\_output und
 implementiert von \url{http://www.musicpd.org/doc/libmpdclient/output\_8h.html} folgende Funktionen:
 \begin{verbatim}
     unsigned get_id(void);
@@ -481,11 +481,11 @@ Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 \end{verbatim}
 
      \textit{on\_connection\_change()} wird aufgerufen sobald sich der Client verbunden oder getrennt hat. Im ersten Fall
-ist is\_connected true, im anderen false. Sollte sich der Client verbunden haben,
-und der neue Server entspricht nicht mehr dem alten so ist auch server\_changed true.
+ist is\_connected true, im anderen false. Sollte sich der Client verbunden haben
+und der neue Server entspricht nicht mehr dem alten, so ist auch server\_changed true.
 server\_changed soll beim Start des Clients automatisch wahr sein.
 \\
-Beide Signale werden automatisch durch Konstruktor von AbstractClientUser registriert.
+Beide Signale werden automatisch durch den Konstruktor von AbstractClientUser registriert.
 Weiterhin können alle Klassen über den mp\_Client Pointer auf den Client zugreifen.
 \end{itemize}
 
@@ -561,7 +561,7 @@ Holt ein Listing aller Songs und Directories aus der Datenbank im Pfad 'path' (n
 \end{figure}
 
 Vereinheitlicht Zugriff auf Komponenten verschiedenen Typs.
-Die abstrakte Klasse (siehe Abb.: \ref{c_abstract_composite}) zwingt seine Kinder dazu eine \emph{get\_path()} Funktion zu implementieren die die Lage im virtuellen Filesystem des Servers angibt.
+Die abstrakte Klasse (siehe Abb.: \ref{c_abstract_composite}) zwingt seine Kinder dazu eine \emph{get\_path()} Funktion zu implementieren, die die Lage im virtuellen Filesystem des Servers angibt.
 Der Hauptanwender dieser Klasse ist der Databasebrowser, bzw. der dahinter gelagerte Cache, da AbstractComposite es erlaubt Songs und Verzeichnisse gleich zu behandeln (vgl. Composite Pattern).
 \\
 Die erbende Klasse muss im Konstruktor angeben, ob es sich bei der Klasse um ein ,,File'' (\emph{true} für MPD::Song) oder um einen ,,Container'' (\emph{false} für MPD::Directory) handelt.
@@ -591,6 +591,6 @@ Ableitende Klassen können die \textit{protected} get\_c\_connection() Methode b
 \end{verbatim}
 
 \emph{AbstractClientExtension} wird in diesem Entwurf von MPD::Playlist und MPD::AudioOutput benutzt.
-Man kann allerdings darüber diskutieren dass dieses abstrakte Klasse der Modelschicht die Möglichkeit gibt zu ausgefeilte Logik zu implementieren, was nach dem MVC Paradigma nicht sein sollte.  
+Man kann allerdings darüber diskutieren, ob diese abstrakte Klasse der Modelschicht die Möglichkeit gibt, zu ausgefeilte Logik zu implementieren, was nach dem MVC Paradigma nicht sein sollte.  
 Da die Logik meist darin besteht einfache Kommandos an den Server zu schicken, wurde dieser Weg gewählt um 
 den Entwurf zu vereinfachen.

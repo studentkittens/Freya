@@ -56,16 +56,16 @@ gesteuert werden. Es gibt viele verschiedene Clients mit unterschiedlichsten Fun
 Client nicht auf den Funktionsumfang des MPD begrenzt ist. Das heißt im Klartext, dass der Client
 zwar nur die Funktionen über das Netzwerk steuern kann, die vom MPD implementiert sind aber nicht, 
 dass er deshalb auch keine lokalen Dienste bzw. Funktionen anwenden kann. So kann ein Client 
-beispielsweise alle Funktionen lokal implementieren, die unter dem Punkt \"3.1.2 Der MPD kann nicht:\" 
+beispielsweise alle Funktionen lokal implementieren, die unter dem Punkt ,,Der MPD kann nicht''
 erwähnt wurden.
 
 \section{Grafische Übersicht}
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.6]{./gfx/misc/Mpd-overview.png}
+    \includegraphics[scale=0.5]{./gfx/misc/Mpd-overview.png}
 \end{figure}
-\footnote{Bild-Quelle: http://images.wikia.com/mpd/images/6/68/Mpd-overview.png}
-Der MPD-Server bekommt als Input mp3, ogg, flac, wav, mp4/aac,... Musik-Dateien die entweder in einer
+\footnote{\href{http://images.wikia.com/mpd/images/6/68/Mpd-overview.png}{ Bild-Quelle}}
+Der MPD-Server bekommt als Input \it mp3, ogg, flac, wav, mp4/aac,\rm ... Musik-Dateien die entweder in einer
 Musik-Datenbank oder in Playlisten gespeichert sind. Der Standardoutput des MPD ist Alsa, libao, jack 
 oder OSS, die Musik kann aber auch über einen Icecast oder Pulseaudio Clienten ausgegeben werden.
-Der MPD-Client steuert den MPD-Server und hat selbst keinen Audio-Output.
+Der MPD-Client steuert den MPD-Server, dekodiert aber selbst keine Musik.

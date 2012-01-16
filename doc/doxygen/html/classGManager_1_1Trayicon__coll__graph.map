@@ -4,7 +4,7 @@
 <area shape="rect" id="node14" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="474,1341,648,1448"/>
 <area shape="rect" id="node16" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="600,627,795,1247"/>
 <area shape="rect" id="node18" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="445,293,640,576"/>
-<area shape="rect" id="node20" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="303,35,495,200"/>
+<area shape="rect" id="node20" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="377,35,493,200"/>
 <area shape="rect" id="node24" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="591,5,785,229"/>
 <area shape="rect" id="node26" href="$classMPD_1_1AbstractItemGenerator.html" title="{MPD::AbstractItemGenerator\n||+ fill_queue()\l+ fill_queue_changes()\l+ fill_playlists()\l+ fill_outputs()\l+ fill_filelist()\l+ ~AbstractItemGenerator()\l}" alt="" coords="664,359,856,510"/>
 </map>

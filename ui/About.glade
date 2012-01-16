@@ -26,13 +26,11 @@ You should have received a copy of the GNU General Public License along with Fre
     <property name="authors">
 Christopher "sahib" Pahl, sahib@online.de
 Christoph "kitteh" Piechula, christoph@nullcat.de
-Eduard "eddY" Schneider, eduard.schneider@hof-university.de
-Marc "lybrial" Tigges, marc.tigges@hof-university.de</property>
+Eduard "eddY" Schneider, eduard.schneider@hof-university.de</property>
     <property name="documenters">
 Christopher "sahib" Pahl, sahib@online.de
 Christoph "kitteh" Piechula, christoph@nullcat.de
-Eduard "eddY" Schneider, eduard.schneider@hof-university.de
-Marc "lybrial" Tigges, marc.tigges@hof-university.de</property>
+Eduard "eddY" Schneider, eduard.schneider@hof-university.de</property>
     <property name="logo">Freya_about.jpg</property>
     <property name="wrap_license">True</property>
     <property name="license_type">custom</property>

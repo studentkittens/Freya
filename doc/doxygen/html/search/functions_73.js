@@ -26,7 +26,6 @@ var searchData=
   ['settingsplayback',['SettingsPlayback',['../classBrowser_1_1SettingsPlayback.html#aa8c978029b7b9ef0161e332494fda1c7',1,'Browser::SettingsPlayback']]],
   ['setup',['setUp',['../classMPDTestSuite.html#a0cf8c1358093b146bd4960fcbfa4bb6c',1,'MPDTestSuite']]],
   ['signal_5fclient_5fupdate',['signal_client_update',['../classGManager_1_1Heartbeat.html#a7a08bca0b290d181295b8b2dc60c9535',1,'GManager::Heartbeat::signal_client_update()'],['../classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e',1,'MPD::BaseClient::signal_client_update()']]],
-  ['signal_5fclient_5fupdate_5fdata',['signal_client_update_data',['../classMPD_1_1Listener.html#af2c0c7c63c430b35442f3885d3aed99f',1,'MPD::Listener']]],
   ['signal_5fconnection_5fchange',['signal_connection_change',['../classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c',1,'MPD::BaseClient::signal_connection_change()'],['../classMPD_1_1Connection.html#ac06e6530271d3637fb83714f0f49ad1a',1,'MPD::Connection::signal_connection_change()']]],
   ['signal_5ferror',['signal_error',['../classMPD_1_1Connection.html#a5266f074ec5c17bab936d5d373865129',1,'MPD::Connection']]],
   ['signal_5fselection_5fdone',['signal_selection_done',['../classAvahi_1_1Browser.html#a9100a1b58f16eb0b346a850b8fc2ee99',1,'Avahi::Browser']]],

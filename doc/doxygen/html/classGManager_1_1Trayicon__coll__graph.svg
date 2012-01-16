@@ -221,24 +221,24 @@
 <!-- Node11 -->
 <g id="node20" class="node"><title>Node11</title>
 <a xlink:href="classMPD_1_1Listener.html" target="_top" xlink:title="Listener for Server events, Freya&#39;s actual core.">
-<polygon fill="white" stroke="black" points="223,-1054.5 223,-1177.5 367,-1177.5 367,-1054.5 223,-1054.5"/>
-<text text-anchor="middle" x="295" y="-1165.5" font-family="Helvetica,sans-Serif" font-size="10.00">MPD::Listener</text>
-<polyline fill="none" stroke="black" points="223,-1158.5 367,-1158.5 "/>
-<text text-anchor="middle" x="295" y="-1146.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="223,-1139.5 367,-1139.5 "/>
-<text text-anchor="start" x="231" y="-1127.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Listener()</text>
-<text text-anchor="start" x="231" y="-1116.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Listener()</text>
-<text text-anchor="start" x="231" y="-1105.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ enter()</text>
-<text text-anchor="start" x="231" y="-1094.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ leave()</text>
-<text text-anchor="start" x="231" y="-1083.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_idling()</text>
-<text text-anchor="start" x="231" y="-1072.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ signal_client_update_data()</text>
-<text text-anchor="start" x="231" y="-1061.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ force_update()</text>
+<polygon fill="white" stroke="black" points="279,-1054.5 279,-1177.5 367,-1177.5 367,-1054.5 279,-1054.5"/>
+<text text-anchor="middle" x="323" y="-1165.5" font-family="Helvetica,sans-Serif" font-size="10.00">MPD::Listener</text>
+<polyline fill="none" stroke="black" points="279,-1158.5 367,-1158.5 "/>
+<text text-anchor="middle" x="323" y="-1146.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="279,-1139.5 367,-1139.5 "/>
+<text text-anchor="start" x="287" y="-1127.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Listener()</text>
+<text text-anchor="start" x="287" y="-1116.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Listener()</text>
+<text text-anchor="start" x="287" y="-1105.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ enter()</text>
+<text text-anchor="start" x="287" y="-1094.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ leave()</text>
+<text text-anchor="start" x="287" y="-1083.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_idling()</text>
+<text text-anchor="start" x="287" y="-1072.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_data()</text>
+<text text-anchor="start" x="287" y="-1061.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ force_update()</text>
 </a>
 </g>
 <!-- Node11&#45;&gt;Node10 -->
 <g id="edge20" class="edge"><title>Node11&#45;&gt;Node10</title>
-<path fill="none" stroke="#404040" d="M319.39,-1054.28C326.458,-1037.26 334.34,-1018.82 342,-1002 343.103,-999.576 344.227,-997.13 345.366,-994.668"/>
-<polygon fill="none" stroke="#404040" points="345.37,-994.659 344.288,-987.53 350.453,-983.789 351.535,-990.918 345.37,-994.659"/>
+<path fill="none" stroke="#404040" d="M329.833,-1054.39C332.669,-1037.21 336.601,-1018.65 342,-1002 342.73,-999.747 343.496,-997.483 344.293,-995.213"/>
+<polygon fill="none" stroke="#404040" points="344.342,-995.08 342.683,-988.063 348.522,-983.832 350.182,-990.849 344.342,-995.08"/>
 <text text-anchor="middle" x="370.5" y="-1005.5" font-family="Helvetica,sans-Serif" font-size="10.00"> mp_Listener</text>
 </g>
 <!-- Node12 -->

@@ -6,8 +6,9 @@ $license = <<-eos
 * This file is part of Freya 
 * - A free MPD Gtk3 MPD Client -
 * 
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider, Marc Tigges
+* Authors: Christopher Pahl,
+*          Christoph Piechula,
+*          Eduard Schneider 
 *
 * Copyright (C) [2011-2012]
 * Hosted at: https://github.com/studentkittens/Freya

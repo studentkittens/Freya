@@ -85,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00003"></a>00003 <span class="comment"> * - A free MPD Gtk3 MPD Client -</span>
 <a name="l00004"></a>00004 <span class="comment"> *</span>
 <a name="l00005"></a>00005 <span class="comment"> * Authors: Christopher Pahl, Christoph Piechula,</span>
-<a name="l00006"></a>00006 <span class="comment"> *          Eduard Schneider, Marc Tigges</span>
+<a name="l00006"></a>00006 <span class="comment"> *          Eduard Schneider</span>
 <a name="l00007"></a>00007 <span class="comment"> *</span>
 <a name="l00008"></a>00008 <span class="comment"> * Copyright (C) [2011-2012]</span>
 <a name="l00009"></a>00009 <span class="comment"> * Hosted at: https://github.com/studentkittens/Freya</span>
@@ -122,65 +122,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040     <a class="code" href="classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol.">MPD::Client</a> cl;
 <a name="l00041"></a>00041     <span class="keywordtype">bool</span> clientUpdated;
 <a name="l00042"></a>00042     <span class="keywordtype">bool</span> connectionChanged;
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="keyword">public</span>:
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046     <span class="comment">/* Fixtures */</span>
-<a name="l00047"></a><a class="code" href="classMPDTestSuite.html#a0cf8c1358093b146bd4960fcbfa4bb6c">00047</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a0cf8c1358093b146bd4960fcbfa4bb6c">setUp</a>(<span class="keywordtype">void</span>) {
-<a name="l00048"></a>00048        <a class="code" href="Writer_8hh.html#a8377a4b3fd3d12a5fc48496055fcf962">LogSetVerbosity</a>(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">Log::LOG_WARN</a>);
-<a name="l00049"></a>00049        clientUpdated = <span class="keyword">false</span>;
-<a name="l00050"></a>00050        connectionChanged = <span class="keyword">false</span>;
-<a name="l00051"></a>00051        cl.<a class="code" href="classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e" title="Get the notify sigc::signal.">signal_client_update</a>().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;<a class="code" href="classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09">MPDTestSuite::clientUpdate</a>));
-<a name="l00052"></a>00052        cl.<a class="code" href="classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c" title="Register for connection changes.">signal_connection_change</a>().connect(sigc::mem_fun(*<span class="keyword">this</span>,&amp;<a class="code" href="classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a">MPDTestSuite::connectionChange</a>));
-<a name="l00053"></a>00053        cl.<a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config.">connect</a>();
-<a name="l00054"></a>00054     }
-<a name="l00055"></a>00055 
-<a name="l00056"></a><a class="code" href="classMPDTestSuite.html#a3167bba8a9a950608f614becbeeb9b9a">00056</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a3167bba8a9a950608f614becbeeb9b9a">tearDown</a>(<span class="keywordtype">void</span>) {
-<a name="l00057"></a>00057         cl.<a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server.">disconnect</a>();
-<a name="l00058"></a>00058         connectionChanged = <span class="keyword">false</span>;
-<a name="l00059"></a>00059         clientUpdated = <span class="keyword">false</span>;
-<a name="l00060"></a>00060     }
-<a name="l00061"></a>00061 
-<a name="l00062"></a><a class="code" href="classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a">00062</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a">connectionChange</a>(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected)
-<a name="l00063"></a>00063     {
-<a name="l00064"></a>00064         connectionChanged = is_connected;
-<a name="l00065"></a>00065     }
-<a name="l00066"></a>00066     
-<a name="l00067"></a><a class="code" href="classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09">00067</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09">clientUpdate</a>(<span class="keyword">enum</span> mpd_idle, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data)
-<a name="l00068"></a>00068     {
-<a name="l00069"></a>00069         clientUpdated = <span class="keyword">true</span>;
-<a name="l00070"></a>00070     }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072     <span class="comment">/* --- */</span>
-<a name="l00073"></a>00073 
-<a name="l00074"></a><a class="code" href="classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b">00074</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b">testConnect</a>(<span class="keywordtype">void</span>)
-<a name="l00075"></a>00075     {
-<a name="l00076"></a>00076         TS_ASSERT(connectionChanged);
-<a name="l00077"></a>00077         TS_ASSERT(cl.<a class="code" href="classMPD_1_1Client.html#aa896dd836da9c78a01300431dedcd73d" title="Pings server.">ping</a>());
-<a name="l00078"></a>00078         TS_ASSERT(cl.<a class="code" href="classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected">is_connected</a>());
+<a name="l00043"></a>00043     <span class="keywordtype">bool</span> isFirstRun; 
+<a name="l00044"></a>00044     
+<a name="l00045"></a>00045 <span class="keyword">public</span>:
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047     <span class="comment">/* Fixtures */</span>
+<a name="l00048"></a><a class="code" href="classMPDTestSuite.html#a0cf8c1358093b146bd4960fcbfa4bb6c">00048</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a0cf8c1358093b146bd4960fcbfa4bb6c">setUp</a>(<span class="keywordtype">void</span>) {
+<a name="l00049"></a>00049        <a class="code" href="Writer_8hh.html#a8377a4b3fd3d12a5fc48496055fcf962">LogSetVerbosity</a>(<a class="code" href="namespaceLog.html#a375d98af14b5e7f9c7c5d3d362c5af82a63e2cb3367c9a230dd9fd78a0c5a08a9">Log::LOG_WARN</a>);
+<a name="l00050"></a>00050        clientUpdated = <span class="keyword">false</span>;
+<a name="l00051"></a>00051        connectionChanged = <span class="keyword">false</span>;
+<a name="l00052"></a>00052        isFirstRun = <span class="keyword">true</span>;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054        <span class="comment">/* Connect signals */</span>
+<a name="l00055"></a>00055        cl.<a class="code" href="classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e" title="Get the notify sigc::signal.">signal_client_update</a>().connect(
+<a name="l00056"></a>00056                sigc::mem_fun(*<span class="keyword">this</span>,&amp;<a class="code" href="classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09">MPDTestSuite::clientUpdate</a>));
+<a name="l00057"></a>00057        cl.<a class="code" href="classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c" title="Register for connection changes.">signal_connection_change</a>().connect(
+<a name="l00058"></a>00058                sigc::mem_fun(*<span class="keyword">this</span>,&amp;<a class="code" href="classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a">MPDTestSuite::connectionChange</a>));
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060        cl.<a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config.">connect</a>();
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="classMPDTestSuite.html#a3167bba8a9a950608f614becbeeb9b9a">00063</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a3167bba8a9a950608f614becbeeb9b9a">tearDown</a>(<span class="keywordtype">void</span>) {
+<a name="l00064"></a>00064         cl.<a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server.">disconnect</a>();
+<a name="l00065"></a>00065         connectionChanged = <span class="keyword">false</span>;
+<a name="l00066"></a>00066         clientUpdated = <span class="keyword">false</span>;
+<a name="l00067"></a>00067     }
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069     <span class="comment">/* -- Signals -- */</span>
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a">00071</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a64d2528994af467ea691d14ee4c2590a">connectionChange</a>(<span class="keywordtype">bool</span> server_changed, <span class="keywordtype">bool</span> is_connected)
+<a name="l00072"></a>00072     {
+<a name="l00073"></a>00073         connectionChanged = is_connected;
+<a name="l00074"></a>00074     }
+<a name="l00075"></a>00075     
+<a name="l00076"></a><a class="code" href="classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09">00076</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#add092e38e59bb2d84279ede952925a09">clientUpdate</a>(<span class="keyword">enum</span> mpd_idle, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data)
+<a name="l00077"></a>00077     {
+<a name="l00078"></a>00078         clientUpdated = <span class="keyword">true</span>;
 <a name="l00079"></a>00079     }
 <a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="classMPDTestSuite.html#a07b97bc2d75537a342505869c213943b">00081</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a07b97bc2d75537a342505869c213943b">testDisconnect</a>(<span class="keywordtype">void</span>)
-<a name="l00082"></a>00082     {
-<a name="l00083"></a>00083         cl.<a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server.">disconnect</a>();
-<a name="l00084"></a>00084         TS_ASSERT(!connectionChanged);
-<a name="l00085"></a>00085         TS_ASSERT(!cl.<a class="code" href="classMPD_1_1Client.html#aa896dd836da9c78a01300431dedcd73d" title="Pings server.">ping</a>());
-<a name="l00086"></a>00086         TS_ASSERT(!cl.<a class="code" href="classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected">is_connected</a>());
-<a name="l00087"></a>00087         cl.<a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config.">connect</a>();
-<a name="l00088"></a>00088         <a class="code" href="classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b">testConnect</a>();
+<a name="l00081"></a>00081     <span class="comment">/* --- */</span>
+<a name="l00082"></a>00082 
+<a name="l00083"></a><a class="code" href="classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b">00083</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b">testConnect</a>(<span class="keywordtype">void</span>)
+<a name="l00084"></a>00084     {
+<a name="l00085"></a>00085         <span class="comment">// All those should indicate we&#39;re connected</span>
+<a name="l00086"></a>00086         TS_ASSERT(connectionChanged);
+<a name="l00087"></a>00087         TS_ASSERT(cl.<a class="code" href="classMPD_1_1Client.html#aa896dd836da9c78a01300431dedcd73d" title="Pings server.">ping</a>());
+<a name="l00088"></a>00088         TS_ASSERT(cl.<a class="code" href="classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected">is_connected</a>());
 <a name="l00089"></a>00089     }
 <a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="classMPDTestSuite.html#abea55fa4fed09f233f7bad2f53653eb0">00091</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#abea55fa4fed09f233f7bad2f53653eb0">testSignalClientUpdate</a>(<span class="keywordtype">void</span>)
+<a name="l00091"></a><a class="code" href="classMPDTestSuite.html#a07b97bc2d75537a342505869c213943b">00091</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a07b97bc2d75537a342505869c213943b">testDisconnect</a>(<span class="keywordtype">void</span>)
 <a name="l00092"></a>00092     {
-<a name="l00093"></a>00093         <span class="comment">// connect() should call force_update()</span>
-<a name="l00094"></a>00094         TS_ASSERT(clientUpdated);
-<a name="l00095"></a>00095         clientUpdated = <span class="keyword">false</span>;
-<a name="l00096"></a>00096         <span class="comment">// lets call it ourselves</span>
-<a name="l00097"></a>00097         cl.<a class="code" href="classMPD_1_1BaseClient.html#a820d4c8e20e112335ffd3136abb65704" title="Forces client update.">force_update</a>();
-<a name="l00098"></a>00098         TS_ASSERT(clientUpdated);
-<a name="l00099"></a>00099         clientUpdated = <span class="keyword">false</span>;
-<a name="l00100"></a>00100     }
-<a name="l00101"></a>00101 };
+<a name="l00093"></a>00093         cl.<a class="code" href="classMPD_1_1Client.html#aca35baf8dfcfe778fef2a1f3802c4c0a" title="Disconnects from the currently connected server.">disconnect</a>();
+<a name="l00094"></a>00094         TS_ASSERT(!connectionChanged);
+<a name="l00095"></a>00095         TS_ASSERT(!cl.<a class="code" href="classMPD_1_1Client.html#aa896dd836da9c78a01300431dedcd73d" title="Pings server.">ping</a>());
+<a name="l00096"></a>00096         TS_ASSERT(!cl.<a class="code" href="classMPD_1_1BaseClient.html#a7f307f2b57a8556fe60973b606626d85" title="true if connected">is_connected</a>());
+<a name="l00097"></a>00097         cl.<a class="code" href="classMPD_1_1Client.html#a2144f99e66aeacfc25e6cea72b12e1de" title="Connect to the MPD Server specified in the config.">connect</a>();
+<a name="l00098"></a>00098         <a class="code" href="classMPDTestSuite.html#a7438969cafa19ab3353b42c119851d7b">testConnect</a>();
+<a name="l00099"></a>00099     }
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="classMPDTestSuite.html#abea55fa4fed09f233f7bad2f53653eb0">00101</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#abea55fa4fed09f233f7bad2f53653eb0">testSignalClientUpdate</a>(<span class="keywordtype">void</span>)
+<a name="l00102"></a>00102     {
+<a name="l00103"></a>00103         <span class="comment">// connect() should call force_update()</span>
+<a name="l00104"></a>00104         TS_ASSERT(clientUpdated);
+<a name="l00105"></a>00105         clientUpdated = <span class="keyword">false</span>;
+<a name="l00106"></a>00106         <span class="comment">// lets call it ourselves</span>
+<a name="l00107"></a>00107         cl.<a class="code" href="classMPD_1_1BaseClient.html#a820d4c8e20e112335ffd3136abb65704" title="Forces client update.">force_update</a>();
+<a name="l00108"></a>00108         TS_ASSERT(clientUpdated);
+<a name="l00109"></a>00109         clientUpdated = <span class="keyword">false</span>;
+<a name="l00110"></a>00110     }
+<a name="l00111"></a>00111 
+<a name="l00112"></a><a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">00112</a>     <span class="keywordtype">bool</span> <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[4];
+<a name="l00113"></a>00113     
+<a name="l00114"></a>00114     <span class="comment">/* Exemplary test of one client command */</span>
+<a name="l00115"></a><a class="code" href="classMPDTestSuite.html#ad7ec644d8d87f5c1d920b402db652b82">00115</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#ad7ec644d8d87f5c1d920b402db652b82">toggleCommandsClientUpdate</a>(mpd_idle event, <a class="code" href="classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal.">MPD::NotifyData</a>&amp; data) {
+<a name="l00116"></a>00116         TS_ASSERT(data.<a class="code" href="classMPD_1_1NotifyData.html#a363434284ac4fa3fcffd7728b446f0c2" title="Get the current MPD::Status.">get_status</a>().<a class="code" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455" title="True if on random mode.">get_random</a>() == <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[0]);
+<a name="l00117"></a>00117         TS_ASSERT(data.<a class="code" href="classMPD_1_1NotifyData.html#a363434284ac4fa3fcffd7728b446f0c2" title="Get the current MPD::Status.">get_status</a>().<a class="code" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467" title="True if on consume mode.">get_consume</a>() == <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[1]);
+<a name="l00118"></a>00118         TS_ASSERT(data.<a class="code" href="classMPD_1_1NotifyData.html#a363434284ac4fa3fcffd7728b446f0c2" title="Get the current MPD::Status.">get_status</a>().<a class="code" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e" title="True if on single mode.">get_single</a>() == <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[2]);
+<a name="l00119"></a>00119         TS_ASSERT(data.<a class="code" href="classMPD_1_1NotifyData.html#a363434284ac4fa3fcffd7728b446f0c2" title="Get the current MPD::Status.">get_status</a>().<a class="code" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c" title="True if on repeat mode.">get_repeat</a>() == <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[3]);
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121 
+<a name="l00122"></a><a class="code" href="classMPDTestSuite.html#a90a666e3c6a7a3dcad8580962dae5274">00122</a>     <span class="keywordtype">void</span> <a class="code" href="classMPDTestSuite.html#a90a666e3c6a7a3dcad8580962dae5274">testToggleCommands</a>(<span class="keywordtype">void</span>) {
+<a name="l00123"></a>00123         <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[0] = cl.<a class="code" href="classMPD_1_1BaseClient.html#a6797f70cd2cdc6807ca7da8d62302352" title="Get the current MPD::Status.">get_status</a>()-&gt;<a class="code" href="classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455" title="True if on random mode.">get_random</a>();
+<a name="l00124"></a>00124         <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[1] = cl.<a class="code" href="classMPD_1_1BaseClient.html#a6797f70cd2cdc6807ca7da8d62302352" title="Get the current MPD::Status.">get_status</a>()-&gt;<a class="code" href="classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467" title="True if on consume mode.">get_consume</a>();
+<a name="l00125"></a>00125         <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[2] = cl.<a class="code" href="classMPD_1_1BaseClient.html#a6797f70cd2cdc6807ca7da8d62302352" title="Get the current MPD::Status.">get_status</a>()-&gt;<a class="code" href="classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e" title="True if on single mode.">get_single</a>();
+<a name="l00126"></a>00126         <a class="code" href="classMPDTestSuite.html#a308ed3fb364f9d757d09eab26442ad15">toggleStates</a>[3] = cl.<a class="code" href="classMPD_1_1BaseClient.html#a6797f70cd2cdc6807ca7da8d62302352" title="Get the current MPD::Status.">get_status</a>()-&gt;<a class="code" href="classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c" title="True if on repeat mode.">get_repeat</a>();
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128         cl.<a class="code" href="classMPD_1_1Client.html#a77f6e322d6f30a37b3100976bf218b62" title="Toggle randome mode.">toggle_random</a>();
+<a name="l00129"></a>00129         cl.<a class="code" href="classMPD_1_1Client.html#a3e2cd3bc2f7aff8cfc27b85597fa23a0" title="Toggle consume mode (song gets deleted from playlist after playing)">toggle_consume</a>();
+<a name="l00130"></a>00130         cl.<a class="code" href="classMPD_1_1Client.html#afccca0d48bba40c4a937ee119f1b1269" title="Toggle single mode (stops playing after one song)">toggle_single</a>();
+<a name="l00131"></a>00131         cl.<a class="code" href="classMPD_1_1Client.html#a1cab014c39b0e730635186b8a7a70ae3" title="Toggle repeat mode (repeat playlist)">toggle_repeat</a>();
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133         <span class="keywordflow">if</span>(isFirstRun)
+<a name="l00134"></a>00134         {
+<a name="l00135"></a>00135             isFirstRun = <span class="keyword">false</span>;
+<a name="l00136"></a>00136             <a class="code" href="classMPDTestSuite.html#a90a666e3c6a7a3dcad8580962dae5274">testToggleCommands</a>();
+<a name="l00137"></a>00137         }
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139 };
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -199,7 +237,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 14 2012 17:56:07 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 16 2012 23:31:32 for Freya by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

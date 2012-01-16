@@ -81,7 +81,7 @@ soll sich zu updaten.
 	\label{client_seq_connect}
 \end{figure}
 Diese Klasse stellt eine Art Wrapper um die \textit{mpd\_connection}
-\footnote{http://www.musicpd.org/doc/libmpdclient/connection\_8h.html} Struktur von libmpdclient da.
+(siehe \url{http://www.musicpd.org/doc/libmpdclient/connection\_8h.html}) Struktur von libmpdclient da.
 Sie bietet die ,,eigentlichen'' connect() und disconnect() Methoden die letzlich \textit{mpd\_connection\_new()} bzw. \textit{mpd\_connectio\_free()} aufrufen. Siehe \ref{client_seq_connect} für den detaillierten Verbindungsablauf.
 Die benötigten Verbindungsdaten (Host, Port, Timeout in Sekunden) holt sich MPD::Connection aus der Config.
 \\
@@ -337,7 +337,7 @@ oder im Falle von MPD::AudioOutput und MPD::Playlist eigene Clientkommandos impl
 \subsubsection{Song}
 
 Die Song Klasse ist ein Wrapper für mpd\_song Struktur und die dazugehörigen Funktion von libmpdclient. 
-MPD::Song soll alle Funktionen von libmpdclient \footnote{http://www.musicpd.org/doc/libmpdclient/song\_8h.html} anbieten.
+MPD::Song soll alle Funktionen von libmpdclient (siehe \url{http://www.musicpd.org/doc/libmpdclient/song\_8h.html}) anbieten.
 Diese werden hier nur aufgelistet aber nicht erklärt da sie genau wie ihre Vorbilder funktionieren sollen:
 
 \begin{verbatim}
@@ -360,7 +360,8 @@ Ein beispielhafter Aufruf:
     SomeSong.song_format("Artist is by ${artist}") 
 \end{verbatim}
 
-Die Escapestrings die dabei unterstützt werden sollen in etwa der \textit{mpd\_tag\_type} Enumeration vom libmpdclient entsprechen.\footnote{http://www.musicpd.org/doc/libmpdclient/tag\_8h.html\#a3e0e0c332f17c6570ffdf788a685adbf}
+Die Escapestrings die dabei unterstützt werden sollen in etwa der \textit{mpd\_tag\_type} Enumeration vom libmpdclient entsprechen.
+\footnote{\url{http://www.musicpd.org/doc/libmpdclient/tag\_8h.html\#a3e0e0c332f17c6570ffdf788a685adbf}}
 Die unterstützten Typen sind somit: \it artist, title, album, track, name, data, album\_artist, genre, composer, performer, comment, disc\rm.
 Ist ein Escapestring nicht bekannt, so wird er nicht escaped. Ist der ,,tag'' nicht vorhanden, soll mit ,,unknown'', bzw. im Fall ``artist'' mit dem Dateinamen escaped werden.
 \\
@@ -440,19 +441,18 @@ implementiert von \url{http://www.musicpd.org/doc/libmpdclient/output\_8h.html} 
 Die Klasse bietet desweiteren Funktionen zum:
 \begin{itemize}
     \item ,,Enablen'' des Ausgabegerätes:
-        \begin{verbatim}
-            bool enable(void);
-        \end{verbatim}
+\begin{verbatim}
+    bool enable(void);
+\end{verbatim}
     \item ,,Disablen'' des Ausgabegerätes:
-        \begin{verbatim}
-            bool disable(void);
-        \end{verbatim}
+\begin{verbatim}
+    bool disable(void);
+\end{verbatim}
 \end{itemize}
 
 
 enable() und disable() müssen den ,,idlemode'' verlassen können,
 daher leitet MPD::AudioOutput von \emph{AbstractClientExtension} ab.
-\\
 Diese Klasse gehört nach dem MVC Paradigma zur Modelschicht.
 
 \newpage

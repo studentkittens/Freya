@@ -72,14 +72,14 @@ Die Logklasse dient zur Protokollierung von Fehlern und besonderen Ereignissen.
   \end{verbatim}
 \end{figure}
 
-Als weitere Funktionalität soll beim instanzieren geprüft werden ob die Größe der Logdate 2MB überschreitet. In diesem Fall soll die Logdatei neu angelegt werden.
+Als weitere Funktionalität soll beim Instanzieren geprüft werden ob die Größe der Logdatei 2MB überschreitet. In diesem Fall soll die Logdatei neu angelegt werden.
 Um die ,,Gesprächigkeit'' (Verbosity) der Logklasse zu kontrollieren, sollen zudem folgende Makros geboten werden:
 \begin{verbatim}
  LogSetVerbosity(LV) Log::Writer::instance().set_verbosity((Log::LOGLEVEL)LV)
  LogGetVerbosity     Log::Writer::instance().get_verbosity()
 \end{verbatim}
 Die höchste Gesprächigkeit hat dabei \emph{Log::FATAL\_ERROR}, die niedrigste \emph{Log::LOG\_DEBUG}. Wird also beispielsweise LogSetVerbosity(\emph{Log::LOG\_WARN}) aufgerufen, so
-werden nur noch fatale Fehler, Fehler und Warnungen ausgegeben. Die Reihenfolge entspricht den Makros weiter oben.
+werden nur noch fatale Fehler, Fehler und Warnungen ausgegeben. Die Reihenfolge entspricht der Enumeration LOGLEVEL in \ref{c_log}.
 Soll die Ausgabe vollkommen abgeschalten werden so kann eine Zahl kleiner 1 an LogSetVerbosity() übergeben werden.
 
 %----------------------------------------------------------------------------------------------

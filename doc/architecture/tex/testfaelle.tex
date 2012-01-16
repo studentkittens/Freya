@@ -236,13 +236,15 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
 \\
 \textbf{Kombinierte Ausführung} \\
 Kombinierte Ausführung der Funktionen der Queue machen nicht wirklich viel Sinn da z.B.
-die Funktion Clear die Queue löscht. Die einzige Kombination die Sinn macht getestet zu werden ist die 
-folgende:\ \\ \\
+die Funktion Clear die Queue löscht. Die einzige Kombination die Sinn macht getestet zu werden sind die 
+folgenden: \\ \\  
 \begin{tabularx}{\textwidth}{|X|X|p{3cm}|}
     \hline
     \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
     \hline
     Suchen, Remove & Nach eingegebenem Wort suchen\newline Ein Lied aus der Queue entfernen & Ja\\
+    \hline
+    Suchen, Hinzufügen von gesuchten Songs aus DB & Doppelte Anzeige der Songs in Queue & Ja\\
     \hline
 \end{tabularx}
 \\
@@ -448,7 +450,16 @@ Im folgenden wird auf das Protokoll der kombinierten Ausführung referenziert.
 
 \newpage
 \subsubsection{Statistik}
-Für die Statistik kann kein Testprotokoll angewandt werden.
+\begin{tabularx}{\textwidth}{|X|X|l|}
+    \hline
+    \textbf{Testfall} & \textbf{Erwartetes Ergebnis} & \textbf{Ergebnis eingetroffen?}\\
+    \hline
+    Abgleich der Informationen mit MPD & Passend & Ja \\
+    \hline
+    Hinzufügen von Song zu DB & Entsprechende Anpassung der Information & Ja\\
+    \hline
+\end{tabularx}
+
 \subsubsection{Einstellungen}
 \textbf{Einfache Ausführung}
 \\

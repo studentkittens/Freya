@@ -32,9 +32,6 @@
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
         
-#include <iostream>
-        using namespace std;
-
 namespace MPD
 {
 //--------------------------------------
@@ -86,8 +83,6 @@ namespace MPD
             hostChanged = true;
         else
             hostChanged = false;
-
-        std::cerr << hostChanged << " -> new: " << str_host << " | " << lastHost <<  std::endl;
 
         /* Remember last host */
         lastHost = str_host;

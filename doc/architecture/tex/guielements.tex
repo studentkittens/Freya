@@ -12,7 +12,7 @@
    \begin{enumerate}
    \item Wird aufgerufen sobald der Listener ein Event festgestellt hat. Für jedes eingetretene Event wird on\_client\_update()    
    einmal aufgerufen. ,,event'' ist dabei eine Enumeration aller möglichen Events, die von libmpdclient 
-   vorgegeben werden. (Siehe auch \href{``http://www.musicpd.org/doc/libmpdclient/idle\_8h.html#a3378f7a24c714d7cb1058232330d7a1c''}{``www.musicpd.org''})
+   vorgegeben werden. (Siehe auch die einzelnen Events weiter oben)
    ,,data'' ist eine Referenz auf eine Instanz von MPD::NotifyData. Die benutzenden Klassen können mit folgenden Funktionen bei Events sofort die aktuellen Daten auslesen:
    \begin{itemize} 
      \item get\_status() gibt den aktuellen MPD::Status

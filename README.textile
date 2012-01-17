@@ -19,7 +19,7 @@ To generate documentation use:
 or
 @make doc@
 
-Generating the LaTeX part is done vie:
+Generating the LaTeX part is done via:
 @make tex@
 
 Running tests via:

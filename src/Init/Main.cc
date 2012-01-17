@@ -63,6 +63,12 @@ int main(int argc, char *argv[])
 
     try
     {
+        /* Check if debug output enabled */
+        if(argc > 1 && !strcmp("-v",argv[1]))
+            LogSetVerbosity(Log::LOG_DEBUG);
+        else
+            LogSetVerbosity(Log::LOG_INFO);
+
         /* Register fatal signals like SIGSEGV */
         Init::SignalHandler sig_handler;
 

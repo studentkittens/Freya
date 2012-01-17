@@ -152,12 +152,12 @@ namespace Browser
     {
         if(event & MPD_IDLE_QUEUE)
         {
+            MPD::Status& status = data.get_status();
+            unsigned qu_v = status.get_queue_version();
+            unsigned qu_l = status.get_queue_length();
+
             if(!mergeDisabled)
             {
-                MPD::Status& status = data.get_status();
-                unsigned qu_v = status.get_queue_version();
-                unsigned qu_l = status.get_queue_length();
-
                 /* Do a full refill if requested (e.g. on startup) */
                 if(m_ServerChanged || isFirstStart)
                 {
@@ -176,10 +176,9 @@ namespace Browser
                     if(qu_l < playlistLength)
                         trim(qu_l);
                 }
-
-                lastPlaylistVersion = qu_v;
-                playlistLength = qu_l;
             }
+            lastPlaylistVersion = qu_v;
+            playlistLength = qu_l;
             mergeDisabled = false;
         }
     }
@@ -190,6 +189,7 @@ namespace Browser
     {
         /* This is also true on startup */
         m_ServerChanged = isFirstStart ? false : server_changed; 
+        isFirstStart = false;
     }
 
     /*-------------------*/

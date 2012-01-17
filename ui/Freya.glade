@@ -7,6 +7,24 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkImage" id="image_random">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-justify-right</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image_repeat">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-refresh</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="image_single">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-jump-to</property>
+    <property name="icon-size">2</property>
+  </object>
   <object class="GtkWindow" id="FreyaMainWindow">
     <property name="width_request">650</property>
     <property name="height_request">510</property>
@@ -266,7 +284,7 @@
                   <object class="GtkVolumeButton" id="volume_button">
                     <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can_focus">False</property>
                     <property name="receives_default">True</property>
                     <property name="has_tooltip">True</property>
                     <property name="use_action_appearance">False</property>
@@ -298,7 +316,7 @@ audio-volume-medium</property>
                           <object class="GtkButton" id="stop_button">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">stop_image</property>
@@ -317,7 +335,7 @@ audio-volume-medium</property>
                           <object class="GtkButton" id="pause_button">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">pause_image</property>
@@ -334,7 +352,7 @@ audio-volume-medium</property>
                           <object class="GtkButton" id="prev_button">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">prev_image</property>
@@ -351,7 +369,7 @@ audio-volume-medium</property>
                           <object class="GtkButton" id="next_button">
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
                             <property name="image">next_image</property>
@@ -383,7 +401,7 @@ audio-volume-medium</property>
                     <child>
                       <object class="GtkScale" id="time_slide">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="adjustment">adjustment1</property>
                         <property name="show_fill_level">True</property>
@@ -753,24 +771,6 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-indent</property>
-    <property name="icon-size">2</property>
-  </object>
-  <object class="GtkImage" id="image_random">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-justify-right</property>
-    <property name="icon-size">2</property>
-  </object>
-  <object class="GtkImage" id="image_repeat">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-refresh</property>
-    <property name="icon-size">2</property>
-  </object>
-  <object class="GtkImage" id="image_single">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-jump-to</property>
     <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="next_image">

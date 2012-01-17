@@ -43,6 +43,7 @@ namespace Browser
         mergeDisabled(false),
         mergeIterIsValid(false),
         m_ServerChanged(true),
+        isFirstStart(true),
         lastPlaylistVersion(0),
         playlistLength(0),
         mergePos(0),
@@ -151,7 +152,6 @@ namespace Browser
     {
         if(event & MPD_IDLE_QUEUE)
         {
-            Info("Doing Merge");
             if(!mergeDisabled)
             {
                 MPD::Status& status = data.get_status();
@@ -159,7 +159,7 @@ namespace Browser
                 unsigned qu_l = status.get_queue_length();
 
                 /* Do a full refill if requested (e.g. on startup) */
-                if(m_ServerChanged)
+                if(m_ServerChanged || isFirstStart)
                 {
                     Info("Doing full refill of the queue.");
                     mp_QueueModel->clear();
@@ -189,7 +189,8 @@ namespace Browser
     void QueueMerger::on_connection_change(bool server_changed, bool is_connected)
     {
         /* This is also true on startup */
-        m_ServerChanged = server_changed; 
+        m_ServerChanged = isFirstStart ? false : server_changed; 
+        isFirstStart = false;
     }
 
     /*-------------------*/

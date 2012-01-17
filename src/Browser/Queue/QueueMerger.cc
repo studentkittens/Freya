@@ -190,7 +190,6 @@ namespace Browser
     {
         /* This is also true on startup */
         m_ServerChanged = isFirstStart ? false : server_changed; 
-        isFirstStart = false;
     }
 
     /*-------------------*/

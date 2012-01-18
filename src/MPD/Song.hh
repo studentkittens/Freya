@@ -141,7 +141,7 @@ namespace MPD
 
     private:
         mpd_song * mp_Song;
-        static char unknown_tag[];
+        static const char unknown_tag[];
     };
 }
 

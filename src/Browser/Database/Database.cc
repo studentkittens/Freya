@@ -33,6 +33,8 @@
 #include "../../Log/Writer.hh"
 #include "../../Utils/Utils.hh"
 
+#include <algorithm>
+
 using namespace std;
 
 namespace Browser
@@ -273,14 +275,17 @@ namespace Browser
         if(prefix == NULL)
             return;
 
-        gsize prefix_len = strlen(prefix);
         unsigned cursor  = 0;
+
+        Glib::ustring strPrefix(prefix);
+        strPrefix = strPrefix.lowercase();
 
         for(Gtk::TreeModel::iterator iter = m_DirStore->get_iter("0"); iter; iter++)
         {
             Gtk::TreeRow row = *iter;
             Glib::ustring row_str = row[m_Columns.m_col_name];
-            if(row_str.compare(0,prefix_len,prefix) == 0)
+
+            if(row_str.lowercase().compare(strPrefix) == 0)
             {
                 Gtk::TreePath focus_path(Utils::int_to_string(cursor));
                 mp_IView->select_path(focus_path);
@@ -292,10 +297,8 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::on_search_entry_activated(void)
-    {
-        //TODO: Needs a Search API first.
-    }
+    //TODO: Needs a Search API first.
+    void Database::on_search_entry_activated(void) { }
 
     /*------------------------------------------------*/
 
@@ -313,7 +316,6 @@ namespace Browser
                 event->keyval <= GDK_KEY_z)
         {
             gchar * key_name = gdk_keyval_name(event->keyval);
-            g_message("Pressed: %s",key_name);
             focus_item_starting_with(key_name);
         }
 

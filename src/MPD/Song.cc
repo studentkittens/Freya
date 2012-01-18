@@ -32,7 +32,7 @@
 #include <iostream>
 namespace MPD
 {
-    char Song::unknown_tag[] = "unknown";
+    const char Song::unknown_tag[] = "unknown";
 
     Song::Song(const mpd_song& song) :
         AbstractComposite(true)
@@ -72,7 +72,7 @@ namespace MPD
     const char * Song::get_tag(enum mpd_tag_type type, unsigned idx)
     {
         const char* tag = mpd_song_get_tag(mp_Song,type,idx);
-        return tag!=NULL ? tag : type == MPD_TAG_ARTIST ? get_path() : unknown_tag ;
+        return tag!=NULL ? tag : type  ==  MPD_TAG_ARTIST ? get_path() : unknown_tag ;
 
     }
     /*------------------------------*/
@@ -115,51 +115,55 @@ namespace MPD
     {
 
         Glib::ustring result(format);
-        unsigned n=0, i=0;
+        unsigned n = 0, i = 0;
 
-        while(n<result.size())
+        const char escape_beg[] = "${",
+                   escape_end[] = "}";
+
+        while(n < result.size())
         {
-            n=result.find("${",n);
-            i=result.find("}",n);
-            if(n>=result.size())
-                continue;
-            Glib::ustring tmp = result.substr(n+2,i-n-2);
+            n = result.find(escape_beg,n);
+            i = result.find(escape_end,n);
 
-            if(tmp=="artist")
+            if(n >= result.size())
+                break;
+
+            /* Split out escape string */
+            Glib::ustring tmp = result.substr(n + sizeof(escape_beg) - 1,
+                                              i - sizeof(escape_end) - n);
+
+            if(tmp == "artist")
                 tmp = get_tag(MPD_TAG_ARTIST,0);
-            else if(tmp=="title")
+            else if(tmp == "title")
                 tmp = get_tag(MPD_TAG_TITLE,0);
-            else if(tmp=="album")
+            else if(tmp == "album")
                 tmp = get_tag(MPD_TAG_ALBUM,0);
-            else if(tmp=="track")
+            else if(tmp == "track")
                 tmp = get_tag(MPD_TAG_TRACK,0);
-            else if(tmp=="name")
+            else if(tmp == "name")
                 tmp = get_tag(MPD_TAG_NAME,0);
-            else if(tmp=="date")
+            else if(tmp == "date")
                 tmp = get_tag(MPD_TAG_DATE,0);
-            else if(tmp=="album_artist")
+            else if(tmp == "album_artist")
                 tmp = get_tag(MPD_TAG_ALBUM_ARTIST,0);
-            else if(tmp=="genre")
+            else if(tmp == "genre")
                 tmp = get_tag(MPD_TAG_GENRE,0);
-            else if(tmp=="composer")
+            else if(tmp == "composer")
                 tmp = get_tag(MPD_TAG_COMPOSER,0);
-            else if(tmp=="performer")
+            else if(tmp == "performer")
                 tmp = get_tag(MPD_TAG_PERFORMER,0);
-            else if(tmp=="comment")
+            else if(tmp == "comment")
                 tmp = get_tag(MPD_TAG_COMMENT,0);
-            else if(tmp=="disc")
+            else if(tmp == "disc")
                 tmp = get_tag(MPD_TAG_DISC,0);
             else
-                tmp=" ";
-
+                tmp="";
 
             if(markup)
-            {
-                tmp=Glib::Markup::escape_text(tmp);
-            }
+                tmp = Glib::Markup::escape_text(tmp);
 
-            result.replace(n,i-n+1,tmp);
-            n=n+tmp.size()+1;
+            result.replace(n, i - n + (sizeof(escape_end)-1), tmp);
+            n += tmp.size() + 1;
         }
 
 

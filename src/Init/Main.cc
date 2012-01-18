@@ -109,14 +109,14 @@ int main(int argc, char *argv[])
         Browser::Settings settings_browser(client,builder,&tray);
         browser_list.add(settings_browser);
 
-        Browser::Fortuna easter_egg(builder);
-        browser_list.set(easter_egg);
-
         /* Send a good morning to all widgets */
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
             client.connect();
         }
+
+        Browser::Fortuna easter_egg(builder);
+        browser_list.set(easter_egg);
 
         main_window.get_window()->show();
 

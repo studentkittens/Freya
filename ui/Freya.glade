@@ -7,6 +7,12 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkImage" id="image_consume">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-indent</property>
+    <property name="icon-size">2</property>
+  </object>
   <object class="GtkImage" id="image_random">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -483,7 +489,7 @@ audio-volume-medium</property>
                     <child>
                       <object class="GtkTreeView" id="plugin_view">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="can_focus">False</property>
                         <property name="headers_visible">False</property>
                         <property name="headers_clickable">False</property>
                         <property name="reorderable">True</property>
@@ -766,12 +772,6 @@ audio-volume-medium</property>
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="image_consume">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-indent</property>
-    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="next_image">
     <property name="visible">True</property>

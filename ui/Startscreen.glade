@@ -19,7 +19,7 @@
             <property name="width_request">903</property>
             <property name="height_request">882</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
             <property name="xalign">0</property>
             <property name="pixbuf">Freya_emblem.svg</property>
           </object>

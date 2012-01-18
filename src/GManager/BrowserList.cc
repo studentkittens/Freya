@@ -135,6 +135,10 @@ namespace GManager
             {
                 mp_List->remove(*element);
             }
+            else
+            {
+                Warning("Cannot set browser - Empty Mainbox?");
+            }
 
             Gtk::Widget * content = browser->get_container();
             content->grab_focus();

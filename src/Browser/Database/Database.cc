@@ -33,10 +33,6 @@
 #include "../../Log/Writer.hh"
 #include "../../Utils/Utils.hh"
 
-#include <algorithm>
-
-using namespace std;
-
 namespace Browser
 {
     Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :

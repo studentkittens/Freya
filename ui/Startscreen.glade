@@ -59,7 +59,7 @@ if you have the 'fortune' program installed.
             <property name="can_focus">False</property>
             <child>
               <object class="GtkLabel" id="fortune_heading">
-                <property name="width_request">94</property>
+                <property name="width_request">108</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>

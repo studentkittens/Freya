@@ -181,14 +181,14 @@ namespace Log
     
     /*-----------------------------------------------*/
     
-    LOGLEVEL Writer::get_verbosity(void)
+    LOGLEVEL Writer::get_verbosity()
     {
         return m_Verbosity;
     }
     
     /*-----------------------------------------------*/
 
-    void Writer::clear(void)
+    void Writer::clear()
     {
         if(m_Logfile != NULL)
         {

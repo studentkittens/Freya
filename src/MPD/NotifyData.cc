@@ -44,7 +44,7 @@ namespace MPD
 
 //------------------
 
-    NotifyData::~NotifyData(void)
+    NotifyData::~NotifyData()
     {
         delete mp_Statistics;
         delete mp_Status;
@@ -57,7 +57,7 @@ namespace MPD
     /* Since libmpdclient does not support the next-song-id,
      * we habe to improvise a little bit.
      */
-    Status * NotifyData::recv_status_own(void)
+    Status * NotifyData::recv_status_own()
     {
         struct mpd_status * status = NULL;
         struct mpd_connection * conn = NULL;
@@ -111,7 +111,7 @@ namespace MPD
 
 //------------------
 
-    Status& NotifyData::get_status(void)
+    Status& NotifyData::get_status()
     {
         /* This should never be NULL. */
         g_assert(mp_Status);
@@ -120,7 +120,7 @@ namespace MPD
 
 //------------------
 
-    Statistics& NotifyData::get_statistics(void)
+    Statistics& NotifyData::get_statistics()
     {
         /* This should never be NULL. */
         g_assert(mp_Statistics);
@@ -129,14 +129,14 @@ namespace MPD
 
 //------------------
 
-    Song * NotifyData::get_song(void)
+    Song * NotifyData::get_song()
     {
         return mp_Song;
     }
 
 //------------------
 
-    Song * NotifyData::get_next_song(void)
+    Song * NotifyData::get_next_song()
     {
         return mp_NextSong;
     }

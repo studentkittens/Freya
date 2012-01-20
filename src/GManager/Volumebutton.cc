@@ -67,7 +67,7 @@ namespace GManager
 
 // -------------------
 
-    void Volumebutton::do_volume_step(void)
+    void Volumebutton::do_volume_step()
     {
         mp_Client->set_volume(mp_VButton->get_value() * 100);
     }

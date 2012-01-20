@@ -111,7 +111,7 @@ namespace MPD
 
 //--------------------------------
 
-    bool Listener::is_idling(void)
+    bool Listener::is_idling()
     {
         return is_idle;
     }
@@ -121,7 +121,7 @@ namespace MPD
 //--------------------------------
 
     /* Check if a error occured */
-    bool Listener::check_async_error(void)
+    bool Listener::check_async_error()
     {
         g_assert(async_conn);
 
@@ -137,7 +137,7 @@ namespace MPD
 
 //--------------------------------
 
-    void Listener::invoke_user_callback(void)
+    void Listener::invoke_user_callback()
     {
         if(idle_events != 0 || is_forced)
         {
@@ -248,7 +248,7 @@ namespace MPD
      *    OK
      *
      */
-    bool Listener::recv_parseable(void)
+    bool Listener::recv_parseable()
     {
         char * line = NULL;
         bool retval = true;
@@ -331,7 +331,7 @@ namespace MPD
 
 //--------------------------------
 
-    bool Listener::enter(void)
+    bool Listener::enter()
     {
         if(is_idling() == false)
         {
@@ -368,7 +368,7 @@ namespace MPD
 
     //--------------------------------
 
-    void Listener::leave(void)
+    void Listener::leave()
     {
         if(is_idling() && mp_Conn->is_connected())
         {
@@ -421,7 +421,7 @@ namespace MPD
 
     //--------------------------------
 
-    NotifyData& Listener::get_data(void)
+    NotifyData& Listener::get_data()
     {
 
         return m_NData;
@@ -429,7 +429,7 @@ namespace MPD
 
     //--------------------------------
 
-    void Listener::force_update(void)
+    void Listener::force_update()
     {
         idle_events = (mpd_idle)1;
         if(is_idling())

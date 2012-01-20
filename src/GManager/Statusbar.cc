@@ -54,7 +54,7 @@ namespace GManager
 
     /* ------------------ */
 
-    Statusbar::~Statusbar(void)
+    Statusbar::~Statusbar()
     {
         g_free(mp_Message);
     }

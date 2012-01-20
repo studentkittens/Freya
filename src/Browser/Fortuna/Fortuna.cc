@@ -53,14 +53,14 @@ namespace Browser
 
     /*-----------------------*/
 
-    Gtk::Widget * Fortuna::get_container(void)
+    Gtk::Widget * Fortuna::get_container()
     {
         return mp_FortuneScroll;
     }
 
     /*-----------------------*/
 
-    void Fortuna::on_refresh_fortune(void)
+    void Fortuna::on_refresh_fortune()
     {
         Glib::ustring fortune = get_fortune();
         if(!fortune.empty())
@@ -71,7 +71,7 @@ namespace Browser
 
 //----------------------------
 
-    Glib::ustring Fortuna::get_fortune(void)
+    Glib::ustring Fortuna::get_fortune()
     {
         Glib::ustring retv = "";
 

@@ -63,11 +63,11 @@ namespace Browser
     }
 
 
-    SettingsGeneral::~SettingsGeneral(void) {}
+    SettingsGeneral::~SettingsGeneral() {}
 
 //----------------------------
 
-    void SettingsGeneral::accept_new_settings(void)
+    void SettingsGeneral::accept_new_settings()
     {
         bool notify_value =  libnotify->get_active();
         bool tray_value =  trayicon->get_active();
@@ -88,7 +88,7 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsGeneral::decline_new_settings(void)
+    void SettingsGeneral::decline_new_settings()
     {
         int libnot, trayic, timeout_value, to_tray_value;
         libnot = CONFIG_GET_AS_INT(notify);
@@ -107,7 +107,7 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsGeneral::reset_settings(void)
+    void SettingsGeneral::reset_settings()
     {
         int libnot, trayic, timeout_value, to_tray_value;
         libnot = CONFIG_GET_DEFAULT_AS_INT(notify);
@@ -126,12 +126,12 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsGeneral::on_notify_toggled(void)
+    void SettingsGeneral::on_notify_toggled()
     {
         notify_box->set_visible(libnotify->get_active());
     }
 //----------------------------
-    void SettingsGeneral::on_tray_toggled(void)
+    void SettingsGeneral::on_tray_toggled()
     {
         tray_box->set_visible(trayicon->get_active());
     }

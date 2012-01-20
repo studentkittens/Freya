@@ -243,7 +243,7 @@ namespace Avahi
     /* --------------------------------------- */
 
     /* CTor */
-    Browser::Browser(void)
+    Browser::Browser()
     {
         const AvahiPoll *poll_api;
         int error = 0;
@@ -290,7 +290,7 @@ namespace Avahi
     /* --------------------------------------- */
 
     /* DTor */
-    Browser::~Browser(void)
+    Browser::~Browser()
     {
         delete window;
         if(client != NULL)
@@ -302,7 +302,7 @@ namespace Avahi
 
     /* --------------------------------------- */
 
-    Gtk::Window& Browser::get_window(void)
+    Gtk::Window& Browser::get_window()
     {
         return *(window);
     }
@@ -310,21 +310,21 @@ namespace Avahi
     /* --------------------------------------- */
 
     /* Check if this browser has a working connection */
-    bool Browser::is_connected(void)
+    bool Browser::is_connected()
     {
         return !(window == NULL);
     }
 
     /* --------------------------------------- */
 
-    SelectNotify& Browser::signal_selection_done(void)
+    SelectNotify& Browser::signal_selection_done()
     {
         return window->signal_select;
     }
 
     /* --------------------------------------- */
 
-    void Browser::update_status_label(void)
+    void Browser::update_status_label()
     {
         char msg_buf[128] = {0};
         g_sprintf(msg_buf,"Found %d server%s",server_counter,(server_counter == 1) ? "" : "s");

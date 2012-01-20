@@ -53,7 +53,7 @@ namespace MPD
 
     /*------------------------------*/
 
-    Song::~Song(void)
+    Song::~Song()
     {
         if(mp_Song != NULL)
         {
@@ -63,7 +63,7 @@ namespace MPD
 
     /*------------------------------*/
 
-    const char * Song::get_path(void)
+    const char * Song::get_path()
     {
         return mpd_song_get_uri(mp_Song);
     }
@@ -77,14 +77,14 @@ namespace MPD
     }
     /*------------------------------*/
 
-    unsigned Song::get_duration(void)
+    unsigned Song::get_duration()
     {
         return mpd_song_get_duration(mp_Song);
 
     }
     /*------------------------------*/
 
-    time_t Song::get_last_modified(void)
+    time_t Song::get_last_modified()
     {
         return mpd_song_get_last_modified(mp_Song);
 
@@ -98,14 +98,14 @@ namespace MPD
     }
     /*------------------------------*/
 
-    unsigned Song::get_pos(void)
+    unsigned Song::get_pos()
     {
         return mpd_song_get_pos(mp_Song);
 
     }
     /*------------------------------*/
 
-    unsigned Song::get_id(void)
+    unsigned Song::get_id()
     {
         return mpd_song_get_id(mp_Song);
     }

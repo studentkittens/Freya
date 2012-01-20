@@ -119,7 +119,7 @@ namespace Notify
 
     }
 //------------------------
-    void Notify::re_init(void)
+    void Notify::re_init()
     {
         while(working);
 
@@ -160,7 +160,7 @@ namespace Notify
     }
 //------------------------
 
-    void Notify::clear_icon(void)
+    void Notify::clear_icon()
     {
         if(icon !=NULL)
         {
@@ -170,7 +170,7 @@ namespace Notify
     }
 //------------------------
 
-    void Notify::set_next_extra(void)
+    void Notify::set_next_extra()
     {
         extra=true;
     }

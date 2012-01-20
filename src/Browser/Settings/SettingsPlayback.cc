@@ -46,11 +46,11 @@ namespace Browser
     }
 
 
-    SettingsPlayback::~SettingsPlayback(void) {}
+    SettingsPlayback::~SettingsPlayback() {}
 
 //----------------------------
 
-    void SettingsPlayback::accept_new_settings(void)
+    void SettingsPlayback::accept_new_settings()
     {
         unsigned crossfade_value = crossfade->get_value_as_int();
         bool stoponexit_value =  stoponexit->get_active();
@@ -61,7 +61,7 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsPlayback::decline_new_settings(void)
+    void SettingsPlayback::decline_new_settings()
     {
         MPD::Status * status = mp_Client->get_status();
         if(status != NULL)
@@ -72,7 +72,7 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsPlayback::reset_settings(void)
+    void SettingsPlayback::reset_settings()
     {
         crossfade->set_value(0);
         stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);

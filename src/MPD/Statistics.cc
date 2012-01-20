@@ -37,7 +37,7 @@ namespace MPD
         mp_Statistics = &statistics;
     }
 
-    Statistics::~Statistics(void)
+    Statistics::~Statistics()
     {
         if(mp_Statistics)
         {
@@ -45,32 +45,32 @@ namespace MPD
         }
     }
 
-    unsigned Statistics::get_number_of_artists(void)
+    unsigned Statistics::get_number_of_artists()
     {
         return mpd_stats_get_number_of_artists(mp_Statistics);
     }
 
-    unsigned Statistics::get_number_of_albums(void)
+    unsigned Statistics::get_number_of_albums()
     {
         return mpd_stats_get_number_of_albums(mp_Statistics);
     }
 
-    unsigned Statistics::get_number_of_songs(void)
+    unsigned Statistics::get_number_of_songs()
     {
         return mpd_stats_get_number_of_songs(mp_Statistics);
     }
 
-    unsigned long Statistics::get_uptime(void)
+    unsigned long Statistics::get_uptime()
     {
         return mpd_stats_get_uptime(mp_Statistics);
     }
 
-    unsigned long Statistics::get_db_update_time(void)
+    unsigned long Statistics::get_db_update_time()
     {
         return mpd_stats_get_db_update_time(mp_Statistics);
     }
 
-    unsigned long Statistics::get_play_time(void)
+    unsigned long Statistics::get_play_time()
     {
         return mpd_stats_get_play_time(mp_Statistics);
     }

@@ -64,7 +64,7 @@ namespace Browser
 
     /* ------------------------------- */
 
-    void SettingsOutputs::clear(void)
+    void SettingsOutputs::clear()
     {
         typedef Gtk::TreeModel::Children type_children;
         type_children children = treeModel->children();
@@ -109,14 +109,14 @@ namespace Browser
 
     /* ------------------------------- */
 
-    void SettingsOutputs::decline_new_settings(void)
+    void SettingsOutputs::decline_new_settings()
     {
         reset_settings();
     }
 
     /* ------------------------------- */
 
-    void SettingsOutputs::accept_new_settings(void)
+    void SettingsOutputs::accept_new_settings()
     {
         running = true;
         typedef Gtk::TreeModel::Children type_children;
@@ -144,7 +144,7 @@ namespace Browser
 
     /* ------------------------------- */
 
-    void SettingsOutputs::reset_settings(void)
+    void SettingsOutputs::reset_settings()
     {
         running = true;
         typedef Gtk::TreeModel::Children type_children;

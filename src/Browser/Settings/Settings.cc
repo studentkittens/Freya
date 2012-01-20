@@ -62,7 +62,7 @@ namespace Browser
     }
 //---------------------------
 
-    Settings::~Settings(void)
+    Settings::~Settings()
     {
         for(unsigned int i=0; i<sub_sections.size(); i++)
             delete sub_sections[i];
@@ -70,7 +70,7 @@ namespace Browser
 
 //---------------------------
 
-    void Settings::on_button_ok(void)
+    void Settings::on_button_ok()
     {
         for(unsigned int i=0; i< sub_sections.size(); i++)
         {
@@ -82,7 +82,7 @@ namespace Browser
         Notify::Notify::instance().re_init();
     }
 //---------------------------
-    void Settings::on_button_cancel(void)
+    void Settings::on_button_cancel()
     {
         for(unsigned int i=0; i< sub_sections.size(); i++)
         {
@@ -92,12 +92,12 @@ namespace Browser
         cancel_button->set_sensitive(false);
     }
 //---------------------------
-    Gtk::Widget* Settings::get_container(void)
+    Gtk::Widget* Settings::get_container()
     {
         return settings_main;
     }
 //---------------------------
-    void Settings::on_button_reset(void)
+    void Settings::on_button_reset()
     {
         for(unsigned int i=0; i< sub_sections.size(); i++)
         {
@@ -105,7 +105,7 @@ namespace Browser
         }
     }
 //--------------------------
-    void Settings::settings_changed(void)
+    void Settings::settings_changed()
     {
         ok_button->set_sensitive(true);
         cancel_button->set_sensitive(true);

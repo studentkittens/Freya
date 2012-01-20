@@ -36,7 +36,7 @@ namespace MPD
 {
 //--------------------------------------
 
-    Connection::Connection(void) :
+    Connection::Connection() :
         lastHost(""),
         hostChanged(false)
     {
@@ -45,14 +45,14 @@ namespace MPD
 
 //--------------------------------------
 
-    Connection::~Connection(void)
+    Connection::~Connection()
     {
         disconnect();
     }
 
 //--------------------------------------
 
-    mpd_connection * Connection::get_connection(void)
+    mpd_connection * Connection::get_connection()
     {
         check_error();
         if(is_connected())
@@ -63,7 +63,7 @@ namespace MPD
 
 //--------------------------------------
 
-    bool Connection::connect(void)
+    bool Connection::connect()
     {
         if(is_connected())
             return false;
@@ -104,7 +104,7 @@ namespace MPD
 
 //--------------------------------------
 
-    bool Connection::disconnect(void)
+    bool Connection::disconnect()
     {
         if(is_connected())
         {
@@ -118,28 +118,28 @@ namespace MPD
 
 //--------------------------------------
 
-    bool Connection::is_connected(void)
+    bool Connection::is_connected()
     {
         return !(conn == NULL);
     }
 
 //--------------------------------------
 
-    ErrorNotify& Connection::signal_error(void)
+    ErrorNotify& Connection::signal_error()
     {
         return m_ErrorSig;
     }
 
 //--------------------------------------
 
-    ConnectionNotifier& Connection::signal_connection_change(void)
+    ConnectionNotifier& Connection::signal_connection_change()
     {
         return m_ConnNotifer;
     }
 
 //--------------------------------------
 
-    void Connection::emit_connection_change(void)
+    void Connection::emit_connection_change()
     {
         if(is_connected())
             m_ConnNotifer.emit(hostChanged,is_connected());
@@ -149,7 +149,7 @@ namespace MPD
 
 //--------------------------------------
 
-    bool Connection::clear_error(void)
+    bool Connection::clear_error()
     {
         bool retv = false;
         if(conn != NULL)
@@ -169,7 +169,7 @@ namespace MPD
 
 //--------------------------------------
 
-    bool Connection::check_error(void)
+    bool Connection::check_error()
     {
         bool result = false;
         if(is_connected())

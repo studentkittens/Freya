@@ -66,14 +66,14 @@ namespace MPD
 
 //-------------------------------
 
-    void Client::connect(void)
+    void Client::connect()
     {
         __connect();
     }
 
 //-------------------------------
 
-    void Client::disconnect(void)
+    void Client::disconnect()
     {
         __disconnect();
     }
@@ -103,35 +103,35 @@ namespace MPD
 
 //-------------------------------
 
-    bool Client::playback_play(void)
+    bool Client::playback_play()
     {
         return this->send_command("play");
     }
 
 //-------------------------------
 
-    bool Client::playback_stop(void)
+    bool Client::playback_stop()
     {
         return this->send_command("stop");
     }
 
 //-------------------------------
 
-    bool Client::playback_next(void)
+    bool Client::playback_next()
     {
         return this->send_command("next");
     }
 
 //-------------------------------
 
-    bool Client::playback_prev(void)
+    bool Client::playback_prev()
     {
         return this->send_command("previous");
     }
 
 //-------------------------------
 
-    bool Client::playback_pause(void)
+    bool Client::playback_pause()
     {
         if(m_Conn.is_connected())
         {
@@ -186,7 +186,7 @@ namespace MPD
 
 //-------------------------------
 
-    void Client::queue_clear(void)
+    void Client::queue_clear()
     {
         GET_BUSY
         {
@@ -357,7 +357,7 @@ namespace MPD
 
 //--------------------
 
-    void Client::toggle_random(void)
+    void Client::toggle_random()
     {
         GET_BUSY
         {
@@ -368,7 +368,7 @@ namespace MPD
 
 //--------------------
 
-    void Client::toggle_consume(void)
+    void Client::toggle_consume()
     {
         GET_BUSY
         {
@@ -379,7 +379,7 @@ namespace MPD
 
 //--------------------
 
-    void Client::toggle_repeat(void)
+    void Client::toggle_repeat()
     {
         GET_BUSY
         {
@@ -390,7 +390,7 @@ namespace MPD
 
 //--------------------
 
-    void Client::toggle_single(void)
+    void Client::toggle_single()
     {
         GET_BUSY
         {
@@ -456,7 +456,7 @@ namespace MPD
     
 //--------------------
 
-    bool Client::ping(void)
+    bool Client::ping()
     {
         bool retv = false;
         GET_BUSY

@@ -52,28 +52,28 @@ namespace GManager
 
 //----------------------------
 
-    void PlaybackButtons::on_button_stop(void)
+    void PlaybackButtons::on_button_stop()
     {
         mp_Client->playback_stop();
     }
 
 //----------------------------
 
-    void PlaybackButtons::on_button_pause(void)
+    void PlaybackButtons::on_button_pause()
     {
         mp_Client->playback_pause();
     }
 
 //----------------------------
 
-    void PlaybackButtons::on_button_prev(void)
+    void PlaybackButtons::on_button_prev()
     {
         mp_Client->playback_prev();
     }
 
 //----------------------------
 
-    void PlaybackButtons::on_button_next(void)
+    void PlaybackButtons::on_button_next()
     {
         mp_Client->playback_next();
     }

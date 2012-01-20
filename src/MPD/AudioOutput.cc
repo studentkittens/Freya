@@ -40,21 +40,21 @@ namespace MPD
 
     /* ----------------- */
 
-    unsigned AudioOutput::get_id(void)
+    unsigned AudioOutput::get_id()
     {
         return mpd_output_get_id(mp_Output);
     }
 
 //-----------------------
 
-    const char * AudioOutput::get_name(void)
+    const char * AudioOutput::get_name()
     {
         return mpd_output_get_name(mp_Output);
     }
 
 //-----------------------
 
-    bool AudioOutput::get_enabled(void)
+    bool AudioOutput::get_enabled()
     {
         return mpd_output_get_enabled(mp_Output);
     }
@@ -63,7 +63,7 @@ namespace MPD
 // CLIENT EXTENSIONS
 //-----------------------
 
-    bool AudioOutput::enable(void)
+    bool AudioOutput::enable()
     {
         bool retv = false;
         unsigned id = get_id();
@@ -79,7 +79,7 @@ namespace MPD
 
 //-----------------------
 
-    bool AudioOutput::disable(void)
+    bool AudioOutput::disable()
     {
         bool retv = false;
         unsigned id = get_id();
@@ -95,7 +95,7 @@ namespace MPD
 
 //-----------------------
 
-    const char * AudioOutput::get_path(void)
+    const char * AudioOutput::get_path()
     {
         return get_name();
     }

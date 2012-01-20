@@ -45,7 +45,7 @@ namespace Browser
 
     /* ------------------------------ */
 
-    DatabaseCache::~DatabaseCache(void)
+    DatabaseCache::~DatabaseCache()
     {
         clear_cache();
     }
@@ -116,7 +116,7 @@ namespace Browser
 
     /* ------------------------------ */
 
-    void DatabaseCache::clear_cache(void)
+    void DatabaseCache::clear_cache()
     {
         CacheMapType::const_iterator iter;
         for(iter = cacheMap.begin(); iter != cacheMap.end(); iter++)

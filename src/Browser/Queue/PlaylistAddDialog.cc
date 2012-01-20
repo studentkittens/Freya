@@ -59,14 +59,14 @@ namespace Browser
 
     /* ----------------------- */
 
-    PlaylistAddDialog::~PlaylistAddDialog(void)
+    PlaylistAddDialog::~PlaylistAddDialog()
     {
         delete mp_Dialog;
     }
 
     /* ----------------------- */
 
-    void PlaylistAddDialog::on_add_clicked(void)
+    void PlaylistAddDialog::on_add_clicked()
     {
         Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
         mp_Client->playlist_save(new_pl_name.c_str());
@@ -75,7 +75,7 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistAddDialog::on_cancel_clicked(void)
+    void PlaylistAddDialog::on_cancel_clicked()
     {
         mp_Dialog->hide();
         is_running = false;
@@ -83,7 +83,7 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistAddDialog::run(void)
+    void PlaylistAddDialog::run()
     {
         if(is_running == false)
         {
@@ -94,7 +94,7 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistAddDialog::on_entry_change(void)
+    void PlaylistAddDialog::on_entry_change()
     {
         /* Get length of Text */
         mp_ApplyButton->set_sensitive(mp_PlaylistEntry->get_text_length() > 0);
@@ -102,7 +102,7 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistAddDialog::on_entry_activate(void)
+    void PlaylistAddDialog::on_entry_activate()
     {
         on_add_clicked();
     }

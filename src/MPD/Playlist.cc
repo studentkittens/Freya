@@ -54,7 +54,7 @@ namespace MPD
 
 //---------------------------
 
-    Playlist::~Playlist(void)
+    Playlist::~Playlist()
     {
         if(mpc_playlist != NULL)
             mpd_playlist_free(mpc_playlist);
@@ -62,14 +62,14 @@ namespace MPD
 
 //---------------------------
 
-    const char * Playlist::get_path(void)
+    const char * Playlist::get_path()
     {
         return mpd_playlist_get_path(mpc_playlist);
     }
 
 //---------------------------
 
-    time_t Playlist::get_last_modified(void)
+    time_t Playlist::get_last_modified()
     {
         return mpd_playlist_get_last_modified(mpc_playlist);
     }
@@ -78,7 +78,7 @@ namespace MPD
 // CLIENT EXTENSIONS
 //---------------------------
 
-    void Playlist::remove(void)
+    void Playlist::remove()
     {
         EXTERNAL_GET_BUSY
         {
@@ -89,7 +89,7 @@ namespace MPD
 
 //---------------------------
 
-    void Playlist::load(void)
+    void Playlist::load()
     {
         EXTERNAL_GET_BUSY
         {

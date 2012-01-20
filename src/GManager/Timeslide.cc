@@ -64,14 +64,14 @@ namespace GManager
 
     /* ------------------ */
 
-    void Timeslide::do_scroll(void)
+    void Timeslide::do_scroll()
     {
         mp_Client->playback_seek(current_song_id,m_Timeslide->get_value());
     }
 
     /* ------------------ */
 
-    void Timeslide::on_user_action(void)
+    void Timeslide::on_user_action()
     {
         /* only allow updates every 0.1 seconds */
         if(!ignore_signal && m_Timeguard.elapsed() > UPDATE_TIMEOUT)

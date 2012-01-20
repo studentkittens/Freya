@@ -45,7 +45,7 @@ namespace GManager
 
 //----------------
 
-    void TitleLabel::stash_next_title(void)
+    void TitleLabel::stash_next_title()
     {
         mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
         mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");

@@ -48,12 +48,12 @@ namespace GManager
 
 // -------------
 
-    Heartbeat::~Heartbeat(void)
+    Heartbeat::~Heartbeat()
     {}
 
 // -------------
 
-    gboolean Heartbeat::on_interval(void)
+    gboolean Heartbeat::on_interval()
     {
         if(count_up)
         {
@@ -65,21 +65,21 @@ namespace GManager
 
 // -------------
 
-    void Heartbeat::reset(void)
+    void Heartbeat::reset()
     {
         timer = 0.0;
     }
 
 // -------------
 
-    void Heartbeat::pause(void)
+    void Heartbeat::pause()
     {
         count_up = false;
     }
 
 // -------------
 
-    void Heartbeat::play(void)
+    void Heartbeat::play()
     {
         count_up = true;
     }
@@ -93,14 +93,14 @@ namespace GManager
 
 // -------------
 
-    double Heartbeat::get(void)
+    double Heartbeat::get()
     {
         return timer;
     }
 
 // -------------
 
-    TimerNotifier& Heartbeat::signal_client_update(void)
+    TimerNotifier& Heartbeat::signal_client_update()
     {
         return signal_proxy;
     }

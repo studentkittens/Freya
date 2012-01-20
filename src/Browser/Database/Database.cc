@@ -98,7 +98,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    Database::~Database(void)
+    Database::~Database()
     {
         delete mp_Popup;
         delete mp_Cache;
@@ -106,7 +106,7 @@ namespace Browser
 
     /* MENU STUFF*/
 
-    void Database::on_menu_db_add_clicked(void)
+    void Database::on_menu_db_add_clicked()
     {
         std::vector<Gtk::TreePath> items = mp_IView->get_selected_items();
 
@@ -129,7 +129,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::on_menu_db_add_all_clicked(void)
+    void Database::on_menu_db_add_all_clicked()
     {
         /* Add root dir */
         mp_Client->queue_add("/");
@@ -138,7 +138,7 @@ namespace Browser
     /*------------------------------------------------*/
 
 
-    void Database::on_menu_db_update_clicked(void)
+    void Database::on_menu_db_update_clicked()
     {
         Info("Updating Database.");
         const char * path = mp_Path.c_str();
@@ -148,7 +148,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::on_menu_db_rescan_clicked(void)
+    void Database::on_menu_db_rescan_clicked()
     {
         Info("Rescanning Database.");
         const char * path = mp_Path.c_str();
@@ -158,7 +158,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::on_menu_db_replace_clicked(void)
+    void Database::on_menu_db_replace_clicked()
     {
         mp_Client->queue_clear();
         on_menu_db_add_clicked();
@@ -166,7 +166,7 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    Gtk::Widget * Database::get_container(void)
+    Gtk::Widget * Database::get_container()
     {
         return mp_ParentBox;
     }
@@ -191,9 +191,9 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    void Database::on_home_button_clicked(void)
+    void Database::on_home_button_clicked()
     {
-        set_current_path("");
+        set_current_path("/");
     }
 
     /*------------------------------------------------*/
@@ -225,12 +225,12 @@ namespace Browser
         mp_Path = path;
         m_DirStore->clear();
         mp_Cache->fill_filelist(*this,path);
-        mp_StatusLabel->set_text(!mp_Path.empty() ? ("/" + mp_Path) : "/");
+        mp_StatusLabel->set_text((mp_Path != "/") ? ("/" + mp_Path) : "/");
     }
 
     /*------------------------------------------------*/
 
-    void Database::go_one_up(void)
+    void Database::go_one_up()
     {
         std::string dir_up = Glib::path_get_dirname(mp_Path);
 
@@ -294,7 +294,7 @@ namespace Browser
     /*------------------------------------------------*/
 
     //TODO: Needs a Search API first.
-    void Database::on_search_entry_activated(void) { }
+    void Database::on_search_entry_activated() { }
 
     /*------------------------------------------------*/
 

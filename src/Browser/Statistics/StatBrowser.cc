@@ -85,7 +85,7 @@ namespace Browser
     }
 
 
-    Gtk::Widget * StatBrowser::get_container(void)
+    Gtk::Widget * StatBrowser::get_container()
     {
         return this;
     }

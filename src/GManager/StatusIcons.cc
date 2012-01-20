@@ -73,22 +73,22 @@ namespace GManager
         }
     }
 
-    void Statusicons::on_clicked_random(void)
+    void Statusicons::on_clicked_random()
     {
         if(!ignore_updates) mp_Client->toggle_random();
     }
 
-    void Statusicons::on_clicked_single(void)
+    void Statusicons::on_clicked_single()
     {
         if(!ignore_updates) mp_Client->toggle_single();
     }
 
-    void Statusicons::on_clicked_consume(void)
+    void Statusicons::on_clicked_consume()
     {
         if(!ignore_updates) mp_Client->toggle_consume();
     }
 
-    void Statusicons::on_clicked_repeat(void)
+    void Statusicons::on_clicked_repeat()
     {
         if(!ignore_updates) mp_Client->toggle_repeat();
     }

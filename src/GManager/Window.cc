@@ -72,7 +72,7 @@ namespace GManager
 
     /*-------------------------*/
 
-    Gtk::Window* Window::get_window(void)
+    Gtk::Window* Window::get_window()
     {
         return this->main_window;
     }

@@ -53,7 +53,7 @@ namespace Browser
 
     /*-------------------*/
 
-    void QueueMerger::disable_merge_once(void)
+    void QueueMerger::disable_merge_once()
     {
         mergeDisabled = true;
     }

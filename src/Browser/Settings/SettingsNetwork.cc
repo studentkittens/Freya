@@ -61,7 +61,7 @@ namespace Browser
 
 //----------------------------
 
-    SettingsNetwork::~SettingsNetwork(void)
+    SettingsNetwork::~SettingsNetwork()
     {
         if(handle!=NULL)
         {
@@ -77,7 +77,7 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsNetwork::accept_new_settings(void)
+    void SettingsNetwork::accept_new_settings()
     {
 
         Glib::ustring ip_value;
@@ -103,7 +103,7 @@ namespace Browser
 
 //----------------------------
 
-    void SettingsNetwork::decline_new_settings(void)
+    void SettingsNetwork::decline_new_settings()
     {
         ip->set_text(CONFIG_GET(ip_name));
         port->set_value((double)CONFIG_GET_AS_INT(port_name));
@@ -112,7 +112,7 @@ namespace Browser
     }
 
 //----------------------------
-    void SettingsNetwork::show_avahi(void)
+    void SettingsNetwork::show_avahi()
     {
         delete handle;
         handle = new Avahi::Browser();
@@ -135,7 +135,7 @@ namespace Browser
         this->port->set_value((double)port);
     }
 //----------------------------
-    void SettingsNetwork::reset_settings(void)
+    void SettingsNetwork::reset_settings()
     {
         ip->set_text(CONFIG_GET_DEFAULT(ip_name));
         port->set_value((double)CONFIG_GET_DEFAULT_AS_INT(port_name));

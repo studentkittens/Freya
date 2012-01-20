@@ -152,7 +152,7 @@ namespace GManager
 
 //----------------------------
 
-    void BrowserList::on_selection_changed(void)
+    void BrowserList::on_selection_changed()
     {
         Gtk::TreeModel::iterator iter = m_TreeSelection->get_selected();
         if(iter)

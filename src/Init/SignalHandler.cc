@@ -31,7 +31,7 @@ namespace Init
 
     /* ----------------------------- */
 
-    SignalHandler::SignalHandler(void)
+    SignalHandler::SignalHandler()
     {
         sa_struct.sa_handler = signal_handler;
         sigemptyset(&sa_struct.sa_mask);

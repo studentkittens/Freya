@@ -32,7 +32,7 @@
 
 namespace Avahi
 {
-    View::View(void) :
+    View::View() :
         Gtk::Window(Gtk::WINDOW_TOPLEVEL),
         m_VBox(Gtk::ORIENTATION_HORIZONTAL,2),
         m_Button_Cancel("Cancel"),
@@ -84,12 +84,12 @@ namespace Avahi
 
 /// Event Callbacks ////
 
-    void View::on_button_cancel(void)
+    void View::on_button_cancel()
     {
         hide();
     }
 
-    void View::on_button_select(void)
+    void View::on_button_select()
     {
         Glib::RefPtr<Gtk::TreeSelection> refTreeSelection = m_TreeView.get_selection();
         Gtk::TreeModel::iterator iter = refTreeSelection->get_selected();

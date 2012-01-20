@@ -152,14 +152,14 @@ namespace Browser
 
     /* ----------------------- */
 
-    Gtk::Widget * PlaylistManager::get_container(void)
+    Gtk::Widget * PlaylistManager::get_container()
     {
         return this;
     }
 
     /* ----------------------- */
 
-    PlaylistManager::~PlaylistManager(void)
+    PlaylistManager::~PlaylistManager()
     {
         clear();
         delete mp_Popup;
@@ -167,7 +167,7 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistManager::clear(void)
+    void PlaylistManager::clear()
     {
         for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
         {
@@ -222,21 +222,21 @@ namespace Browser
 
     /* ----------------------- */
 
-    void PlaylistManager::on_menu_del_clicked(void)
+    void PlaylistManager::on_menu_del_clicked()
     {
         selection_helper(false);
     }
 
     /* ----------------------- */
 
-    void PlaylistManager::on_menu_append_clicked(void)
+    void PlaylistManager::on_menu_append_clicked()
     {
         selection_helper(true);
     }
 
     /* ----------------------- */
 
-    void PlaylistManager::on_menu_replace_clicked(void)
+    void PlaylistManager::on_menu_replace_clicked()
     {
         mp_Client->queue_clear();
         on_menu_append_clicked();

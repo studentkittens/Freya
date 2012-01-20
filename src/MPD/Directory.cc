@@ -40,7 +40,7 @@ namespace MPD
 
     /* ----------------------------- */
 
-    Directory::~Directory(void)
+    Directory::~Directory()
     {
         if(mp_Dir != NULL)
         {
@@ -51,7 +51,7 @@ namespace MPD
 
     /* ---------------------------- */
 
-    const char * Directory::get_path(void)
+    const char * Directory::get_path()
     {
         return mpd_directory_get_path(mp_Dir);
     }

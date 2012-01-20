@@ -34,7 +34,7 @@
 
 namespace MPD
 {
-    BaseClient::BaseClient(void) :
+    BaseClient::BaseClient() :
         m_Conn(),
         mp_Listener(NULL),
         m_ListBegun(false)
@@ -46,7 +46,7 @@ namespace MPD
 
 //-------------------------------
 
-    bool BaseClient::__connect(void)
+    bool BaseClient::__connect()
     {
         if(m_Conn.is_connected() == false)
         {
@@ -64,7 +64,7 @@ namespace MPD
 
 //-------------------------------
 
-    bool BaseClient::__disconnect(void)
+    bool BaseClient::__disconnect()
     {
         if(m_Conn.is_connected())
         {
@@ -85,7 +85,7 @@ namespace MPD
 
 //-------------------------------
 
-    void BaseClient::go_idle(void)
+    void BaseClient::go_idle()
     {
         m_Conn.check_error();
         if(mp_Listener && mp_Listener->is_idling() == false)
@@ -96,7 +96,7 @@ namespace MPD
 
 //-------------------------------
 
-    void BaseClient::go_busy(void)
+    void BaseClient::go_busy()
     {
         if(mp_Listener && mp_Listener->is_idling() == true)
         {
@@ -107,21 +107,21 @@ namespace MPD
 
 //-------------------------------
 
-    Connection& BaseClient::get_connection(void)
+    Connection& BaseClient::get_connection()
     {
         return m_Conn;
     }
 
 //-------------------------------
 
-    bool BaseClient::is_connected(void)
+    bool BaseClient::is_connected()
     {
         return m_Conn.is_connected();
     }
 
 //-------------------------------
 
-    void BaseClient::begin(void)
+    void BaseClient::begin()
     {
         if(is_connected())
         {
@@ -133,7 +133,7 @@ namespace MPD
 
 //-------------------------------
 
-    void BaseClient::commit(void)
+    void BaseClient::commit()
     {
         if(is_connected())
         {
@@ -147,7 +147,7 @@ namespace MPD
 
 //--------------------
 
-    Status * BaseClient::get_status(void)
+    Status * BaseClient::get_status()
     {
         if(m_Conn.is_connected())
         {
@@ -158,21 +158,21 @@ namespace MPD
 
 //--------------------
 
-    EventNotifier& BaseClient::signal_client_update(void)
+    EventNotifier& BaseClient::signal_client_update()
     {
         return m_Notifier;
     }
 
 //--------------------
 
-    ConnectionNotifier& BaseClient::signal_connection_change(void)
+    ConnectionNotifier& BaseClient::signal_connection_change()
     {
         return m_Conn.signal_connection_change();
     }
 
 //--------------------
 
-    void BaseClient::force_update(void)
+    void BaseClient::force_update()
     {
         if(m_Conn.is_connected())
             mp_Listener->force_update();
@@ -180,7 +180,7 @@ namespace MPD
 
 //-------------------------------
 
-    gboolean BaseClient::timeout_reconnect(void)
+    gboolean BaseClient::timeout_reconnect()
     {
         Info("Trying to stand up");
         gboolean retv = __connect();

@@ -74,7 +74,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    Queue::~Queue(void)
+    Queue::~Queue()
     {
         delete mp_Popup;
         delete mp_AddDialog;
@@ -84,7 +84,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::configure_signals(void)
+    void Queue::configure_signals()
     {
         /* Start searching */
         mp_Entry->signal_activate().connect(
@@ -118,7 +118,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::configure_columns(void)
+    void Queue::configure_columns()
     {
         /* Add the TreeView's view columns: */
         /* Useful for debugging purpose */
@@ -186,7 +186,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::on_entry_activate(void)
+    void Queue::on_entry_activate()
     {
         m_FilterText = mp_Entry->get_text();
         m_refTreeModelFilter->refilter();
@@ -232,7 +232,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    Gtk::Widget * Queue::get_container(void)
+    Gtk::Widget * Queue::get_container()
     {
         return mp_QueueBox;
     }
@@ -265,7 +265,7 @@ namespace Browser
     /*-------------------------------*/
 
     /* Menuhandling */
-    void Queue::on_menu_clear_clicked(void)
+    void Queue::on_menu_clear_clicked()
     {
         mp_Client->queue_clear();
         m_refTreeModel->clear();
@@ -273,7 +273,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::on_menu_remove_clicked(void)
+    void Queue::on_menu_remove_clicked()
     {
         std::vector<Gtk::TreePath> path_row_vec = m_TreeSelection->get_selected_rows();
 
@@ -307,7 +307,7 @@ namespace Browser
 
     /*-------------------------------*/
 
-    void Queue::on_menu_add_as_pl_clicked(void)
+    void Queue::on_menu_add_as_pl_clicked()
     {
         mp_AddDialog->run();
     }

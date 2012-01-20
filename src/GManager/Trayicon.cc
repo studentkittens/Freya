@@ -85,42 +85,42 @@ namespace GManager
 
 //---------------------------
 
-    void Trayicon::on_activate(void)
+    void Trayicon::on_activate()
     {
         mp_Window->set_visible(!mp_Window->get_visible());
     }
 
 //---------------------------
 
-    void Trayicon::on_next_clicked(void)
+    void Trayicon::on_next_clicked()
     {
         mp_Client->playback_next();
     }
 
 //---------------------------
 
-    void Trayicon::on_prev_clicked(void)
+    void Trayicon::on_prev_clicked()
     {
         mp_Client->playback_prev();
     }
 
 //---------------------------
 
-    void Trayicon::on_stop_clicked(void)
+    void Trayicon::on_stop_clicked()
     {
         mp_Client->playback_stop();
     }
 
 //---------------------------
 
-    void Trayicon::on_pause_clicked(void)
+    void Trayicon::on_pause_clicked()
     {
         mp_Client->playback_pause();
     }
 
 //---------------------------
 
-    void Trayicon::on_quit_clicked(void)
+    void Trayicon::on_quit_clicked()
     {
         Gtk::Main::quit();
     }
@@ -144,11 +144,13 @@ namespace GManager
         {
             m_ActionPause->set_stock_id(Gtk::Stock::MEDIA_PAUSE);
             m_ActionPause->set_label("Pause");
+            set(mp_Window->render_icon_pixbuf(Gtk::Stock::MEDIA_PLAY,Gtk::ICON_SIZE_LARGE_TOOLBAR));
         }
         else
         {
             m_ActionPause->set_stock_id(Gtk::Stock::MEDIA_PLAY);
             m_ActionPause->set_label("Play");
+            set(mp_Window->render_icon_pixbuf(Gtk::Stock::MEDIA_PAUSE,Gtk::ICON_SIZE_LARGE_TOOLBAR));
         }
     }
 

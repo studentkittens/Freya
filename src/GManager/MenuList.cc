@@ -81,7 +81,7 @@ namespace GManager
     }
 
 //-----------------------------
-    MenuList::~MenuList(void)
+    MenuList::~MenuList()
     {
         if(window_about!=NULL)
         {
@@ -90,37 +90,37 @@ namespace GManager
         }
     }
 //-----------------------------
-    void MenuList::on_menu_connect(void)
+    void MenuList::on_menu_connect()
     {
         mp_Client->connect();
     }
 //-----------------------------
-    void MenuList::on_menu_disconnect(void)
+    void MenuList::on_menu_disconnect()
     {
         mp_Client->disconnect();
     }
 //-----------------------------
-    void MenuList::on_menu_quit(void)
+    void MenuList::on_menu_quit()
     {
         Gtk::Main::quit();
     }
 //-----------------------------
-    void MenuList::on_menu_play(void)
+    void MenuList::on_menu_play()
     {
         mp_Client->playback_pause();
     }
 //-----------------------------
-    void MenuList::on_menu_stop(void)
+    void MenuList::on_menu_stop()
     {
         mp_Client->playback_stop();
     }
 //-----------------------------
-    void MenuList::on_menu_prev(void)
+    void MenuList::on_menu_prev()
     {
         mp_Client->playback_prev();
     }
 //-----------------------------
-    void MenuList::on_menu_next(void)
+    void MenuList::on_menu_next()
     {
         mp_Client->playback_next();
     }
@@ -152,27 +152,27 @@ namespace GManager
 
 //-----------------------------
 
-    void MenuList::on_menu_random(void)
+    void MenuList::on_menu_random()
     {
         if(!running) mp_Client->toggle_random();
     }
 //-----------------------------
-    void MenuList::on_menu_repeat(void)
+    void MenuList::on_menu_repeat()
     {
         if(!running) mp_Client->toggle_repeat();
     }
 //-----------------------------
-    void MenuList::on_menu_single(void)
+    void MenuList::on_menu_single()
     {
         if(!running) mp_Client->toggle_single();
     }
 //-----------------------------
-    void MenuList::on_menu_consume(void)
+    void MenuList::on_menu_consume()
     {
         if(!running) mp_Client->toggle_consume();
     }
 //-----------------------------
-    void MenuList::on_menu_about(void)
+    void MenuList::on_menu_about()
     {
         window_about->run();
         window_about->hide();

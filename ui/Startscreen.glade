@@ -30,14 +30,14 @@
         </child>
         <child>
           <object class="GtkLabel" id="fortune_label">
-            <property name="width_request">311</property>
-            <property name="height_request">331</property>
+            <property name="width_request">422</property>
+            <property name="height_request">322</property>
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="xalign">0.019999999552965164</property>
             <property name="yalign">0.019999999552965164</property>
-            <property name="label" translatable="yes">&lt;span font='14.5'&gt;Some fortune may happen to you,
+            <property name="label" translatable="yes">&lt;span font='13.5'&gt;Some fortune may happen to you,
 if you have the 'fortune' program installed.
    -- Freya Dev Team
 &lt;/span&gt;</property>
@@ -65,7 +65,7 @@ if you have the 'fortune' program installed.
                 <property name="can_focus">False</property>
                 <property name="xalign">0.019999999552965164</property>
                 <property name="yalign">0.019999999552965164</property>
-                <property name="label" translatable="yes">&lt;span font='9.5' weight='light'&gt;Today's Fortune:&lt;/span&gt;</property>
+                <property name="label" translatable="yes">&lt;span font='9.5'&gt;Today's Fortune:&lt;/span&gt;</property>
                 <property name="use_markup">True</property>
                 <property name="wrap">True</property>
                 <property name="max_width_chars">20</property>
@@ -80,7 +80,7 @@ if you have the 'fortune' program installed.
               <object class="GtkButton" id="fortune_refresh">
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
                 <property name="margin_left">172</property>
                 <property name="margin_top">2</property>

@@ -30,15 +30,18 @@
 **************************************************************/
 #include "Fortuna.hh"
 #include "../../Utils/Utils.hh"
-#include <algorithm>
 
-#define FORTUNE_BUF_SIZE 1024
+/* Fortuna command: -s -> short text; -n max 500 length */
 #define FORTUNE_COMMAND  "fortune -s -n 500"
+#define FORTUNE_BUF_SIZE 1024
 
 namespace Browser
 {
     Fortuna::Fortuna(Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Fortuna",false,true,Gtk::Stock::DIALOG_QUESTION)
+        AbstractBrowser("Fortuna",
+                false, /* Needs connection? */
+                true,  /* Is visible?       */
+                Gtk::Stock::DIALOG_QUESTION)
     {
         BUILDER_ADD(builder,"ui/Startscreen.glade");
         BUILDER_GET(builder,"fortune_scrolledwindow",mp_FortuneScroll);
@@ -69,7 +72,7 @@ namespace Browser
         }
     }
 
-//----------------------------
+    /*-----------------------*/
 
     Glib::ustring Fortuna::get_fortune()
     {
@@ -93,17 +96,8 @@ namespace Browser
 
                 /* Build markup'd string */
                 retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<span font='10.5' weight='light'>");
+                retv.insert(0,"<span font='9.0'>");
                 retv.append("</span>");
-
-                for(Glib::ustring::iterator iter = retv.begin(); iter != retv.end(); iter++)
-                {
-                    /* Erase newline if next char is not a whitespcae,
-                     * provides basic formatting for fortunes */
-                    Glib::ustring::iterator next = iter;
-                    if(*iter == '\n' && !isspace(*(++next)))
-                        iter = retv.erase(iter);
-                }
             }
             pclose(pipe);
         }

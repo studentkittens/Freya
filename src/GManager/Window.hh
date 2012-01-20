@@ -49,7 +49,7 @@ namespace GManager
          *
          * @return
          */
-        Gtk::Window* get_window(void);
+        Gtk::Window* get_window();
 
     protected:
         bool on_delete_event(GdkEventAny* event);

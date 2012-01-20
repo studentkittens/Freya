@@ -51,13 +51,13 @@ namespace Browser
         SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon *trayptr);
         ~SettingsGeneral();
 
-        void accept_new_settings(void);
-        void decline_new_settings(void);
-        void reset_settings(void);
+        void accept_new_settings();
+        void decline_new_settings();
+        void reset_settings();
 
     private:
-        void on_notify_toggled(void);
-        void on_tray_toggled(void);
+        void on_notify_toggled();
+        void on_tray_toggled();
         GManager::Trayicon * trayptr;
         Browser::Settings * sett;
         Glib::ustring notify,tray,timeout, to_tray;

@@ -64,7 +64,7 @@ namespace MPD
          *
          * See also #BaseClient
          */
-        void connect(void);
+        void connect();
         /**
          * @brief Disconnects from the currently connected server
          *
@@ -72,20 +72,20 @@ namespace MPD
          * If connection was lost violently #BaseClient will try to
          * periodically reconnect.
          */
-        void disconnect(void);
+        void disconnect();
 
         /**
          * @brief Go to next song
          *
          * @return true on success
          */
-        bool playback_next(void);
+        bool playback_next();
         /**
          * @brief Go the prev song
          *
          * @return true on success
          */
-        bool playback_prev(void);
+        bool playback_prev();
         /**
          * @brief Stop playback
          *
@@ -94,13 +94,13 @@ namespace MPD
          *
          * @return true on success
          */
-        bool playback_stop(void);
+        bool playback_stop();
         /**
          * @brief Resume from stopmode
          *
          * @return true on success
          */
-        bool playback_play(void);
+        bool playback_play();
         /**
          * @brief Toggle pause-state
          *
@@ -109,7 +109,7 @@ namespace MPD
          *
          * @return true on success
          */
-        bool playback_pause(void);
+        bool playback_pause();
 
         /**
          * @brief Seek forward in song song_id, to abs_time from start
@@ -128,19 +128,19 @@ namespace MPD
         /**
          * @brief Toggle randome mode
          */
-        void toggle_random(void);
+        void toggle_random();
         /**
          * @brief Toggle consume mode (song gets deleted from playlist after playing)
          */
-        void toggle_consume(void);
+        void toggle_consume();
         /**
          * @brief Toggle repeat mode (repeat playlist)
          */
-        void toggle_repeat(void);
+        void toggle_repeat();
         /**
          * @brief Toggle single mode (stops playing after one song)
          */
-        void toggle_single(void);
+        void toggle_single();
 
         /**
          * @brief Play song at ID (not the Pos in the Queue!)
@@ -164,7 +164,7 @@ namespace MPD
         /**
          * @brief Clears entire queue
          */
-        void queue_clear(void);
+        void queue_clear();
         /**
          * @brief Deletes song in the queue
          *
@@ -253,7 +253,7 @@ namespace MPD
          *
          * @return true if it responds correctly
          */
-        bool ping(void);
+        bool ping();
     };
 
 }

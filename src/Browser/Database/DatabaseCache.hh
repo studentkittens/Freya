@@ -55,7 +55,7 @@ namespace Browser
     public:
 
         DatabaseCache(MPD::Client& client);
-        virtual ~DatabaseCache(void);
+        virtual ~DatabaseCache();
 
         /**
          * @brief Same as MPD::Client::fill_filelist(), but gets locally cached data
@@ -117,7 +117,7 @@ namespace Browser
         void on_connection_change(bool server_changed, bool is_connected);
 
         /* Logic */
-        void clear_cache(void);
+        void clear_cache();
 
         /* ------------------------------- */
 

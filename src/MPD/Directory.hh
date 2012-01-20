@@ -51,14 +51,14 @@ namespace MPD
         /**
          * @brief dtor will free underlying mpd_directory
          */
-        virtual ~Directory(void);
+        virtual ~Directory();
 
         /**
          * @brief The path of the directory
          *
          * @return a string
          */
-        const char * get_path(void);
+        const char * get_path();
 
     private:
 

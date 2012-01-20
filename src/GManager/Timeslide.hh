@@ -51,8 +51,8 @@ namespace GManager
         void tick(double time);
         void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
         void on_connection_change(bool server_changed, bool is_connected);
-        void on_user_action(void);
-        void do_scroll(void);
+        void on_user_action();
+        void do_scroll();
 
         unsigned current_song_id;
         bool ignore_signal;

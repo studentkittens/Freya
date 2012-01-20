@@ -71,7 +71,7 @@ namespace Browser
          *
          * @return The surrounding mainbox
          */
-        Gtk::Widget * get_container(void);
+        Gtk::Widget * get_container();
 
         /**
          * @brief Implemented from AbstractFilebrowser
@@ -85,16 +85,16 @@ namespace Browser
     private:
 
         /* Menu signals */
-        void on_menu_db_add_clicked(void);
-        void on_menu_db_add_all_clicked(void);
-        void on_menu_db_update_clicked(void);
-        void on_menu_db_rescan_clicked(void);
-        void on_menu_db_replace_clicked(void);
+        void on_menu_db_add_clicked();
+        void on_menu_db_add_all_clicked();
+        void on_menu_db_update_clicked();
+        void on_menu_db_rescan_clicked();
+        void on_menu_db_replace_clicked();
 
         /* GUI Signals */
         void on_item_activated(const Gtk::TreeModel::Path& path);
-        void on_home_button_clicked(void);
-        void on_search_entry_activated(void);
+        void on_home_button_clicked();
+        void on_search_entry_activated();
         bool on_button_press_event(GdkEventButton* event);
         bool on_key_press_handler(GdkEventKey * event);
 
@@ -103,7 +103,7 @@ namespace Browser
         void on_connection_change(bool server_changed, bool is_connected);
 
         /* Logic */
-        void go_one_up(void);
+        void go_one_up();
         void set_current_path(const char * path);
         void focus_item_starting_with(const char * prefix);
 

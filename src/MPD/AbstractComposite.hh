@@ -21,7 +21,7 @@ namespace MPD
          *
          * @return
          */
-        bool is_leaf(void)
+        bool is_leaf()
         {
             return m_IsLeaf;
         }
@@ -30,7 +30,7 @@ namespace MPD
          *
          * @return
          */
-        virtual const char * get_path(void) = 0;
+        virtual const char * get_path() = 0;
 
     private:
         bool m_IsLeaf;

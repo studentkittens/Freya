@@ -61,13 +61,13 @@ namespace Browser
          *
          * @return
          */
-        Gtk::Widget * get_container(void);
+        Gtk::Widget * get_container();
 
     private:
 
         /* Workers */
-        Glib::ustring get_fortune(void);
-        void on_refresh_fortune(void);
+        Glib::ustring get_fortune();
+        void on_refresh_fortune();
 
         /* Widgets */
         Gtk::ScrolledWindow * mp_FortuneScroll;

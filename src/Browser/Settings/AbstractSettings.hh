@@ -42,9 +42,9 @@ namespace Browser
         AbstractSettings() {};
         virtual ~AbstractSettings() {};
 
-        virtual void accept_new_settings(void)=0;
-        virtual void decline_new_settings(void)=0;
-        virtual void reset_settings(void)=0;
+        virtual void accept_new_settings()=0;
+        virtual void decline_new_settings()=0;
+        virtual void reset_settings()=0;
     };
 
 }

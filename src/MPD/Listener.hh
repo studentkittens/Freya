@@ -57,27 +57,27 @@ namespace MPD
         /* Enter idle mode
          * Returns: true on success
          */
-        bool enter(void);
+        bool enter();
 
         /* Leave idle mode (in order to send commands)
         */
-        void leave(void);
+        void leave();
 
         /* Checks if connection is in idle mode
         */
-        bool is_idling(void);
+        bool is_idling();
 
         //---------------//
         // Classmembers  //
         //---------------//
 
-        NotifyData& get_data(void);
+        NotifyData& get_data();
 
 
         /**
          * @brief Emits callback forced with current data
          */
-        void force_update(void);
+        void force_update();
 
     private:
 
@@ -96,11 +96,11 @@ namespace MPD
 
 
         /* check if async connection is doing weird things */
-        bool check_async_error(void);
-        bool recv_parseable(void);
+        bool check_async_error();
+        bool recv_parseable();
         gboolean io_callback(Glib::IOCondition condition);
         bool parse_response(char *line);
-        void invoke_user_callback(void);
+        void invoke_user_callback();
         void create_watch(enum mpd_async_event events);
 
         //-----------------//

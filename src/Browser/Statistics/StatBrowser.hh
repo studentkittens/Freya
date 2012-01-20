@@ -56,7 +56,7 @@ namespace Browser
          *
          * @return topcontainer of this browser
          */
-        Gtk::Widget * get_container(void);
+        Gtk::Widget * get_container();
 
     private:
 

@@ -53,7 +53,7 @@ namespace GManager
         void on_client_update(enum mpd_idle, MPD::NotifyData& data);
         void on_connection_change(bool server_changed, bool is_connected);
         void update_next_song_widget(MPD::NotifyData& data);
-        void stash_next_title(void);
+        void stash_next_title();
 
         /* Widgets */
         Gtk::Label * mp_TitleLabel, * mp_ArtistAlbumLabel,

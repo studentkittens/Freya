@@ -14,7 +14,7 @@ namespace Init
     class SignalHandler
     {
     public:
-        SignalHandler(void);
+        SignalHandler();
 
     private:
         struct sigaction sa_struct;

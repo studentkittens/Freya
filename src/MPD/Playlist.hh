@@ -48,29 +48,29 @@ namespace MPD
     public:
         Playlist(MPD::BaseClient& base_client, mpd_playlist& c_playlist);
         Playlist(const Playlist& copy_this);
-        virtual ~Playlist(void);
+        virtual ~Playlist();
 
         /**
          * Returns the path name of this playlist file.  It does not begin
          * with a slash.
          */
-        const char * get_path(void);
+        const char * get_path();
 
         /**
          * @return the POSIX UTC time stamp of the last modification, or 0 if
          * that is unknown
          */
-        time_t get_last_modified(void);
+        time_t get_last_modified();
 
         /**
          * @brief Remove this Playlist from MPD
          */
-        void remove(void);
+        void remove();
 
         /**
          * @brief load this playlist into the queue (add to end)
          */
-        void load(void);
+        void load();
 
         /**
          * @brief Rename playlist

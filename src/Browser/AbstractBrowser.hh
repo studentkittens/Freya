@@ -66,7 +66,7 @@ public:
      *
      * @return A reference to the containing widget of the browser
      */
-    virtual Gtk::Widget * get_container(void) = 0; /* No Impl. */
+    virtual Gtk::Widget * get_container() = 0; /* No Impl. */
 
     /**
      * @brief Get the name of the browser (shown in the browserlist)
@@ -75,7 +75,7 @@ public:
      *
      * @return a reference to a ustring
      */
-    Glib::ustring& get_name(void)
+    Glib::ustring& get_name()
     {
         return m_Name;
     }
@@ -85,7 +85,7 @@ public:
      *
      * @return See above.
      */
-    Gtk::StockID get_icon_stock_id(void)
+    Gtk::StockID get_icon_stock_id()
     {
         return m_IconId;
     }
@@ -95,7 +95,7 @@ public:
      *
      * @return a boolean
      */
-    bool is_visible(void)
+    bool is_visible()
     {
         return m_IsVisible;
     }
@@ -105,7 +105,7 @@ public:
      *
      * @return a boolean
      */
-    bool needs_connection(void)
+    bool needs_connection()
     {
         return m_NeedsConnection;
     }

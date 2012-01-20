@@ -57,38 +57,38 @@ namespace MPD
          *
          * @return an unsigned integer, starting from 0
          */
-        unsigned get_id(void);
+        unsigned get_id();
         /**
          * @brief Get the name of this putput
          *
          * @return a nullterminated string
          */
-        const char * get_name(void);
+        const char * get_name();
         /**
          * @brief Obvious.
          *
          * @return
          */
-        bool get_enabled(void);
+        bool get_enabled();
         /**
          * @brief Enable this output
          *
          * @return true on success
          */
-        bool enable(void);
+        bool enable();
         /**
          * @brief Disable this output
          *
          * @return true on success
          */
-        bool disable(void);
+        bool disable();
 
         /**
          * @brief Alias for get_name() (Implemented due to Compositum)
          *
          * @return
          */
-        const char * get_path(void);
+        const char * get_path();
 
     private:
         mpd_output * mp_Output;

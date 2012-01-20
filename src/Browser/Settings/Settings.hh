@@ -62,16 +62,16 @@ namespace Browser
          *
          * @return
          */
-        Gtk::Widget* get_container(void);
+        Gtk::Widget* get_container();
         /**
          * @brief Called when saving the Config (makes ok/cancel insensitive)
          */
-        void settings_changed(void);
+        void settings_changed();
 
     private:
-        void on_button_ok(void);
-        void on_button_cancel(void);
-        void on_button_reset(void);
+        void on_button_ok();
+        void on_button_cancel();
+        void on_button_reset();
         vector<AbstractSettings*> sub_sections;
 
         /* Widgets */

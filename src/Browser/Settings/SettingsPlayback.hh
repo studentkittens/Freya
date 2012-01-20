@@ -51,9 +51,9 @@ namespace Browser
         SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
         ~SettingsPlayback();
 
-        void accept_new_settings(void);
-        void decline_new_settings(void);
-        void reset_settings(void);
+        void accept_new_settings();
+        void decline_new_settings();
+        void reset_settings();
 
     private:
 

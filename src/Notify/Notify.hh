@@ -93,8 +93,8 @@ namespace Notify
         Glib::ustring * icon;
         NotifyNotification *notification;
         bool extra,working;
-        void re_init(void);
-        void clear_icon(void);
+        void re_init();
+        void clear_icon();
         int timeout,use_notify;
         void _send(const char *hl, const char *msg, GdkPixbuf * pixbuf);
     };

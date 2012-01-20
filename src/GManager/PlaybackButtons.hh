@@ -53,10 +53,10 @@ namespace GManager
         void on_connection_change(bool server_changed, bool is_connected);
 
         /* GTK Signals */
-        void on_button_stop(void);
-        void on_button_pause(void);
-        void on_button_next(void);
-        void on_button_prev(void);
+        void on_button_stop();
+        void on_button_pause();
+        void on_button_next();
+        void on_button_prev();
 
         /* Widgets */
         Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;

@@ -50,33 +50,33 @@ namespace MPD
          * @param conn
          */
         NotifyData(Connection& conn);
-        ~NotifyData(void);
+        ~NotifyData();
 
         /**
          * @brief Get the current MPD::Status
          *
          * @return
          */
-        Status& get_status(void);
+        Status& get_status();
         /**
          * @brief Get the current MPD::Statistics
          *
          * @return
          */
-        Statistics& get_statistics(void);
+        Statistics& get_statistics();
 
         /**
          * @brief Get the currently playing MPD::Song
          *
          * @return This is NULL when not playing! Check for it!
          */
-        Song * get_song(void);
+        Song * get_song();
         /**
          * @brief Get the next playing MPD::Song
          *
          * @return This might be NULL at end of the queue and when not repeating.
          */
-        Song * get_next_song(void);
+        Song * get_next_song();
 
         /**
          * @brief Update internal client state
@@ -90,7 +90,7 @@ namespace MPD
          *
          * @return same as mpd_run_status(), but sets m_NextSongID
          */
-        Status * recv_status_own(void);
+        Status * recv_status_own();
 
         /**
          * @brief Current valid connection.

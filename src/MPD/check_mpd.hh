@@ -45,7 +45,7 @@ class MPDTestSuite : public CxxTest::TestSuite
 public:
 
     /* Fixtures */
-    void setUp(void) {
+    void setUp() {
        LogSetVerbosity(Log::LOG_WARN);
        clientUpdated = false;
        connectionChanged = false;
@@ -60,7 +60,7 @@ public:
        cl.connect();
     }
 
-    void tearDown(void) {
+    void tearDown() {
         cl.disconnect();
         connectionChanged = false;
         clientUpdated = false;
@@ -80,7 +80,7 @@ public:
 
     /* --- */
 
-    void testConnect(void)
+    void testConnect()
     {
         // All those should indicate we're connected
         TS_ASSERT(connectionChanged);
@@ -88,7 +88,7 @@ public:
         TS_ASSERT(cl.is_connected());
     }
 
-    void testDisconnect(void)
+    void testDisconnect()
     {
         cl.disconnect();
         TS_ASSERT(!connectionChanged);
@@ -98,7 +98,7 @@ public:
         testConnect();
     }
 
-    void testSignalClientUpdate(void)
+    void testSignalClientUpdate()
     {
         // connect() should call force_update()
         TS_ASSERT(clientUpdated);
@@ -119,7 +119,7 @@ public:
         TS_ASSERT(data.get_status().get_repeat() == toggleStates[3]);
     }
 
-    void testToggleCommands(void) {
+    void testToggleCommands() {
         toggleStates[0] = cl.get_status()->get_random();
         toggleStates[1] = cl.get_status()->get_consume();
         toggleStates[2] = cl.get_status()->get_single();

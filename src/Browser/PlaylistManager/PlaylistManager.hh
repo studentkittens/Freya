@@ -63,21 +63,21 @@ namespace Browser
          *
          * @return a pointer to the widget containing the playlist
          */
-        Gtk::Widget * get_container(void);
+        Gtk::Widget * get_container();
 
     private:
 
         /* Menu Popup */
-        void on_menu_append_clicked(void);
-        void on_menu_replace_clicked(void);
-        void on_menu_del_clicked(void);
+        void on_menu_append_clicked();
+        void on_menu_replace_clicked();
+        void on_menu_del_clicked();
         void selection_helper(bool load_or_remove);
 
         /* Other */
         bool on_row_double_click(GdkEventButton * event);
 
         /* Clear list (frees memory) */
-        void clear(void);
+        void clear();
 
         /* Implemented from AbstractItemlist */
         void add_item(MPD::AbstractComposite * pPlaylist);

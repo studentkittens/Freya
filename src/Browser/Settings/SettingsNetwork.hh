@@ -50,12 +50,12 @@ namespace Browser
         SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
         ~SettingsNetwork();
 
-        void accept_new_settings(void);
-        void decline_new_settings(void);
-        void reset_settings(void);
+        void accept_new_settings();
+        void decline_new_settings();
+        void reset_settings();
 
     private:
-        void show_avahi(void);
+        void show_avahi();
         void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port);
         Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
 

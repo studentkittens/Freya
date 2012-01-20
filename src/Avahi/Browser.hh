@@ -72,14 +72,14 @@ namespace Avahi
          *
          * @return a reference to Gtk::Window, you might want to call show() on it
          */
-        Gtk::Window& get_window(void);
+        Gtk::Window& get_window();
 
         /**
          * @brief Check if Browser is ready for use
          *
          * @return obvious.
          */
-        bool is_connected(void);
+        bool is_connected();
 
         /**
          * @brief Call connect on
@@ -88,7 +88,7 @@ namespace Avahi
          *
          * @return a sigc::signal on which you can call conncet()
          */
-        SelectNotify& signal_selection_done(void);
+        SelectNotify& signal_selection_done();
 
     private:
 
@@ -153,7 +153,7 @@ namespace Avahi
         /* -------------------------------------- */
 
         void check_client_error(const gchar * prefix_message);
-        void update_status_label(void);
+        void update_status_label();
 
         /* -------------------------------------- */
 

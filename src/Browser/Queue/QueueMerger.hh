@@ -72,7 +72,7 @@ namespace Browser
          * but the next update is disabled with this method.
          * Also positions in the row are calculated manually via recalculate_positions()
          */
-        void disable_merge_once(void);
+        void disable_merge_once();
         /**
          * @brief Recalculate the position row of the Queue
          *

@@ -41,7 +41,7 @@ namespace Avahi
     class View : public Gtk::Window
     {
     public:
-        View(void);
+        View();
 
         /**
          * @brief Append a new server to the View

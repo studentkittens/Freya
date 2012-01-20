@@ -47,21 +47,21 @@ namespace Browser
     {
     public:
         PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
-        ~PlaylistAddDialog(void);
+        ~PlaylistAddDialog();
 
         /**
          * @brief Show the dialog (closes itself)
          *
          * This functions blocks, other items in Freya may not be accessed anymore
          */
-        void run(void);
+        void run();
 
     private:
 
-        void on_cancel_clicked(void);
-        void on_add_clicked(void);
-        void on_entry_change(void);
-        void on_entry_activate(void);
+        void on_cancel_clicked();
+        void on_add_clicked();
+        void on_entry_change();
+        void on_entry_activate();
 
         /* From AbstractClientUser */
         void on_client_update(mpd_idle event, MPD::NotifyData& data);

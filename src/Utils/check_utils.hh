@@ -39,47 +39,47 @@ class UtilsTestSuite : public CxxTest::TestSuite
 public:
 //-------------------------------------------------------------
 // Utils::seconds_to_duration(unsinged long)
-    void testseconds_to_duration_1_year(void)
+    void testseconds_to_duration_1_year()
     {
         TS_ASSERT("52 weeks 1 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(60/*seconds*/ * 60/*minutes*/ * 24/*hours*/ * 365/*days*/));
     }
-    void testseconds_to_duration_check_if_always_the_same(void)
+    void testseconds_to_duration_check_if_always_the_same()
     {
         TS_ASSERT(Utils::seconds_to_duration(60*60*24*365) == Utils::seconds_to_duration(60*60*24*365));
     }
-    void testseconds_to_duration_1_second(void)
+    void testseconds_to_duration_1_second()
     {
         TS_ASSERT("0 hours 0 minutes 1 seconds" == Utils::seconds_to_duration(1));
     }
-    void testseconds_to_duration_0_seconds(void)
+    void testseconds_to_duration_0_seconds()
     {
         TS_ASSERT("0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(0));
     }
-    void testseconds_to_duration_1_minutes(void)
+    void testseconds_to_duration_1_minutes()
     {
         TS_ASSERT("0 hours 1 minutes 0 seconds" == Utils::seconds_to_duration(60));
     }
-    void testseconds_to_duration_2_minutes(void)
+    void testseconds_to_duration_2_minutes()
     {
         TS_ASSERT("0 hours 2 minutes 0 seconds" == Utils::seconds_to_duration(120));
     }
-    void testseconds_to_duration_1_hour(void)
+    void testseconds_to_duration_1_hour()
     {
         TS_ASSERT("1 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(3600));
     }
-    void testseconds_to_duration_2_hours(void)
+    void testseconds_to_duration_2_hours()
     {
         TS_ASSERT("2 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(7200));
     }
-    void testseconds_to_duration_1_day(void)
+    void testseconds_to_duration_1_day()
     {
         TS_ASSERT("1 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(3600*24));
     }
-    void testseconds_to_duration_2_days(void)
+    void testseconds_to_duration_2_days()
     {
         TS_ASSERT("2 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(2*3600*24));
     }
-    void testseconds_to_duration_2_years(void)
+    void testseconds_to_duration_2_years()
     {
         TS_ASSERT("104 weeks 2 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(2*60*60*24*365));
     }

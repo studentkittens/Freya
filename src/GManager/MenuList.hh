@@ -55,21 +55,21 @@ namespace GManager
         void on_connection_change(bool server_changed, bool is_connected);
         void on_client_update(enum mpd_idle event, MPD::NotifyData &data);
 
-        void on_menu_connect(void);
-        void on_menu_disconnect(void);
-        void on_menu_quit(void);
+        void on_menu_connect();
+        void on_menu_disconnect();
+        void on_menu_quit();
 
-        void on_menu_play(void);
-        void on_menu_stop(void);
-        void on_menu_prev(void);
-        void on_menu_next(void);
+        void on_menu_play();
+        void on_menu_stop();
+        void on_menu_prev();
+        void on_menu_next();
 
-        void on_menu_random(void);
-        void on_menu_repeat(void);
-        void on_menu_single(void);
-        void on_menu_consume(void);
+        void on_menu_random();
+        void on_menu_repeat();
+        void on_menu_single();
+        void on_menu_consume();
 
-        void on_menu_about(void);
+        void on_menu_about();
 
         bool running;
 

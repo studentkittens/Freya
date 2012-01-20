@@ -51,10 +51,10 @@ namespace GManager
         void on_client_update(enum mpd_idle, MPD::NotifyData& data);
         void on_connection_change(bool server_changed, bool is_connected);
 
-        void on_clicked_random(void);
-        void on_clicked_single(void);
-        void on_clicked_consume(void);
-        void on_clicked_repeat(void);
+        void on_clicked_random();
+        void on_clicked_single();
+        void on_clicked_consume();
+        void on_clicked_repeat();
         void on_conn_change(bool is_connected);
 
         /* Widgets */

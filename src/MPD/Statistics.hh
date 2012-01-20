@@ -50,50 +50,50 @@ namespace MPD
          * @param stats
          */
         Statistics(mpd_stats& stats);
-        ~Statistics(void);
+        ~Statistics();
 
         /**
          * @brief Number of artists in DB
          *
          * @return
          */
-        unsigned get_number_of_artists(void);
+        unsigned get_number_of_artists();
         /**
          * @brief Number of albums in DB
          *
          * @return
          */
-        unsigned get_number_of_albums(void);
+        unsigned get_number_of_albums();
         /**
          * @brief Number of songs in DB
          *
          * @return
          */
-        unsigned get_number_of_songs(void);
+        unsigned get_number_of_songs();
         /**
          * @brief Get uptime in seconds
          *
          * @return
          */
-        unsigned long get_uptime(void);
+        unsigned long get_uptime();
         /**
          * @brief get seconds since last update
          *
          * @return
          */
-        unsigned long get_db_update_time(void);
+        unsigned long get_db_update_time();
         /**
          * @brief Playing since xxx seconds
          *
          * @return
          */
-        unsigned long get_play_time(void);
+        unsigned long get_play_time();
         /**
          * @brief Total time in seconds needed to play the whole DB
          *
          * @return
          */
-        unsigned long get_db_play_time(void);
+        unsigned long get_db_play_time();
 
     private:
 

@@ -52,7 +52,7 @@ namespace GManager
     public:
 
         Heartbeat(MPD::Client& client);
-        ~Heartbeat(void);
+        ~Heartbeat();
         /**
          * @brief Register to the hearbeat signal
          *
@@ -60,20 +60,20 @@ namespace GManager
          *
          * @return A sigc::connection, call connect() on it
          */
-        TimerNotifier& signal_client_update(void);
+        TimerNotifier& signal_client_update();
 
         /**
          * @brief Start incrementing
          */
-        void play(void);
+        void play();
         /**
          * @brief Pause incrementing
          */
-        void pause(void);
+        void pause();
         /**
          * @brief Reset value to 0
          */
-        void reset(void);
+        void reset();
         /**
          * @brief Set the current value
          *
@@ -85,14 +85,14 @@ namespace GManager
          *
          * @return
          */
-        double get(void);
+        double get();
 
     private:
 
         double timer;
         bool count_up;
 
-        gboolean on_interval(void);
+        gboolean on_interval();
         TimerNotifier signal_proxy;
 
         void on_client_update(enum mpd_idle event, MPD::NotifyData& data);

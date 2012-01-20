@@ -54,11 +54,11 @@ namespace MPD
         /**
          * @brief Go into idle mode, you are not allowed to send commands while idling!
          */
-        void go_idle(void);
+        void go_idle();
         /**
          * @brief Leave idle mode, so you can send commands to the server
          */
-        void go_busy(void);
+        void go_busy();
 
         /**
          * @brief Returns the underlying connection
@@ -69,23 +69,23 @@ namespace MPD
          *
          * @return A ref to a MPD::Connection
          */
-        Connection& get_connection(void);
+        Connection& get_connection();
 
         /**
          * @brief true if connected
          *
          * @return
          */
-        bool is_connected(void);
+        bool is_connected();
 
         /**
          * @brief Start a commandlist
          */
-        void begin(void);
+        void begin();
         /**
          * @brief Commit the commandlist
          */
-        void commit(void);
+        void commit();
 
         /**
          * @brief Get the current MPD::Status
@@ -97,7 +97,7 @@ namespace MPD
          *
          * @return A reference to it. Do not modify.
          */
-        Status * get_status(void);
+        Status * get_status();
 
         /**
          * @brief Get the notify sigc::signal
@@ -107,14 +107,14 @@ namespace MPD
          *
          * @return the sigc::signal
          */
-        EventNotifier& signal_client_update(void);
+        EventNotifier& signal_client_update();
 
         /**
          * @brief Register for connection changes
          *
          * @return a sigc::signal, you can call connect() on
          */
-        ConnectionNotifier& signal_connection_change(void);
+        ConnectionNotifier& signal_connection_change();
 
         /**
          * @brief Forces client update
@@ -123,27 +123,27 @@ namespace MPD
          * and sends all possible events to all connected listeners
          *
          */
-        void force_update(void);
+        void force_update();
 
     protected:
 
         /**
          * @brief Do not allow to instantiate BaseClient
          */
-        BaseClient(void);
+        BaseClient();
 
         /**
          * @brief This is called internally by MPD::Client and does the actual connect work
          *
          * @return is_connected()
          */
-        bool __connect(void);
+        bool __connect();
         /**
          * @brief Same as __connect()
          *
          * @return is_connected()
          */
-        bool __disconnect(void);
+        bool __disconnect();
 
         /**
          * @brief The connection to the MPD server
@@ -169,7 +169,7 @@ namespace MPD
          *
          * @return It returns false once reconnected (which means: Remove mainloopsource)
          */
-        gboolean timeout_reconnect(void);
+        gboolean timeout_reconnect();
 
         /**
          * @brief Called when MPD::Connection notices an connection error

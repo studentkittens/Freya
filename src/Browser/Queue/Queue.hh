@@ -61,13 +61,13 @@ namespace Browser
          *
          * @return a pointer to the widget containing the playlist
          */
-        Gtk::Widget * get_container(void);
+        Gtk::Widget * get_container();
 
     private:
 
         /* Init */
-        void configure_columns(void);
-        void configure_signals(void);
+        void configure_columns();
+        void configure_signals();
 
         /* Implemtend from AbstractItemlist */
         void add_item(void * pSong);
@@ -80,14 +80,14 @@ namespace Browser
         void on_connection_change(bool server_changed, bool is_connected);
 
         /* Menuhandling */
-        void on_menu_clear_clicked(void);
-        void on_menu_remove_clicked(void);
-        void on_menu_add_as_pl_clicked(void);
+        void on_menu_clear_clicked();
+        void on_menu_remove_clicked();
+        void on_menu_add_as_pl_clicked();
 
         /* Other */
         void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
         bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
-        void on_entry_activate(void);
+        void on_entry_activate();
         void on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
         bool on_key_press_handler(GdkEventKey * event);
 

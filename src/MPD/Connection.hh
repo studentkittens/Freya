@@ -63,18 +63,18 @@ namespace MPD
         /**
          * @brief Initializes a new connection object
          */
-        Connection(void);
+        Connection();
         /**
          * @brief Automatically disconnects
          */
-        ~Connection(void);
+        ~Connection();
 
         /**
          * @brief is connected?
          *
          * @return true if connected
          */
-        bool is_connected(void);
+        bool is_connected();
 
         /**
          * @brief Tries to connect accordingly to the values in the config
@@ -83,13 +83,13 @@ namespace MPD
          *
          * @return true on success
          */
-        bool connect(void);
+        bool connect();
         /**
          * @brief Disconnects connection
          *
          * @return true on success
          */
-        bool disconnect(void);
+        bool disconnect();
         /**
          * @brief Clears any occured errors
          *
@@ -100,7 +100,7 @@ namespace MPD
          *
          * @return true if error was not fatal
          */
-        bool clear_error(void);
+        bool clear_error();
 
         /**
          * @brief check if an error occured
@@ -109,21 +109,21 @@ namespace MPD
          *
          * @return true if yes
          */
-        bool check_error(void);
+        bool check_error();
 
         /**
          * @brief get a sigc::connection that is emit()'d once an error occures
          *
          * @return a ref to a sigc::signal - call connect() on it
          */
-        ErrorNotify& signal_error(void);
+        ErrorNotify& signal_error();
 
         /**
          * @brief Use this to register for connection changes
          *
          * @return a ref to a sigc::signal - call connect() on it
          */
-        ConnectionNotifier& signal_connection_change(void);
+        ConnectionNotifier& signal_connection_change();
 
         /**
          * @brief Call emit() on the ConnectionNotifier signal
@@ -132,14 +132,14 @@ namespace MPD
          * after making other things ready first.
          * You have to call connect() or disconnect() BEFORE emitting though!
          */
-        void emit_connection_change(void);
+        void emit_connection_change();
 
         /**
          * @brief Returns the underlying C structure
          *
          * @return NULL if disconnected.
          */
-        mpd_connection * get_connection(void);
+        mpd_connection * get_connection();
 
 
     private:

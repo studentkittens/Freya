@@ -110,7 +110,7 @@ namespace Log
         /**
          * @brief Clear the logfile (but keep it open)
          */
-        void clear(void);
+        void clear();
 
     private:
 

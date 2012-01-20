@@ -53,9 +53,9 @@ namespace Browser
         SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
         ~SettingsOutputs();
 
-        void accept_new_settings(void);
-        void decline_new_settings(void);
-        void reset_settings(void);
+        void accept_new_settings();
+        void decline_new_settings();
+        void reset_settings();
         void add_item(MPD::AbstractComposite *item);
 
     protected:
@@ -63,7 +63,7 @@ namespace Browser
         void on_connection_change(bool,bool);
         void on_toggle(const Glib::ustring& path);
         bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
-        void clear(void);
+        void clear();
 
     private:
         Glib::RefPtr<Gtk::ListStore> treeModel;

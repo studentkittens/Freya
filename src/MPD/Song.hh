@@ -56,14 +56,14 @@ namespace MPD
          * @param other
          */
         Song(const MPD::Song& other);
-        ~Song(void);
+        ~Song();
 
         /**
          * @brief The path of the song in the DB
          *
          * @return
          */
-        const char * get_path(void);
+        const char * get_path();
         /**
          * @brief Get a certain tag from the song
          *
@@ -110,13 +110,13 @@ namespace MPD
          *
          * @return
          */
-        unsigned get_duration(void);
+        unsigned get_duration();
         /**
          * @brief Get seconds since last modifieGet seconds since last modifieff
          *
          * @return time_t type (unsigned long)
          */
-        time_t get_last_modified(void);
+        time_t get_last_modified();
         /**
          * @brief Set the position in the queue
          *
@@ -131,13 +131,13 @@ namespace MPD
          *
          * @return
          */
-        unsigned get_pos(void);
+        unsigned get_pos();
         /**
          * @brief Get Database ID of the Song
          *
          * @return
          */
-        unsigned get_id(void);
+        unsigned get_id();
 
     private:
         mpd_song * mp_Song;

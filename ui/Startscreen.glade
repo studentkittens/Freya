@@ -52,8 +52,8 @@
             <property name="label" translatable="yes">&lt;b&gt;&lt;span font='13.5'&gt;
 
 
-            Some fortune may happen to you,
-            if you have the 'fortune' program installed.
+    Some fortune may happen to you,
+    if you have the 'fortune' program installed.
                    -- Freya Dev Team
 &lt;/span&gt;&lt;/b&gt;
 </property>
@@ -75,7 +75,7 @@
             <property name="can_focus">False</property>
             <child>
               <object class="GtkLabel" id="fortune_heading">
-                <property name="width_request">108</property>
+                <property name="width_request">142</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -84,7 +84,7 @@
                 <property name="yalign">0.019999999552965164</property>
                 <property name="label" translatable="yes">&lt;b&gt;&lt;span font='9.5'&gt;Today's Fortune:&lt;/span&gt;&lt;/b&gt; </property>
                 <property name="use_markup">True</property>
-                <property name="wrap">True</property>
+                <property name="single_line_mode">True</property>
                 <property name="max_width_chars">20</property>
               </object>
               <packing>
@@ -99,7 +99,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">True</property>
-                <property name="margin_left">256</property>
+                <property name="margin_left">220</property>
                 <property name="margin_bottom">2</property>
                 <property name="use_action_appearance">False</property>
                 <property name="image">refresh_image</property>

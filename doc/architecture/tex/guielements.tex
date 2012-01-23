@@ -24,7 +24,13 @@
          ,,server\_changed'' soll dann anzeigen, ob der Server derselbe ist, wie beim zuvor geschehenen Connectvorgang.
          Dies ist beim ersten Start stets wahr. ,,server\_changed'' kann nicht wahr sein, wenn ,,is\_connected'' falsch ist.
    \end{enumerate}
-\item Ableitung von den oben beschriebenen abstrakten Klassen AbstractItemlist und AbstractFilebrowser, um alle Funktionen von AbstractItemGenerator nutzen zu können. Beispiele dazu folgen weiter unten.
+\item Ableitung von der oben beschriebenen abstrakten Klasse AbstractItemlist, um alle Funktionen von AbstractItemGenerator nutzen zu können. Siehe dazu \ref{seq_abstract_file_generator}, bzw. die weiteren Beispiele unten.
+\begin{figure}[htb!]
+	\centering
+        \includegraphics[width=\textwidth]{./gfx/seq/fill_queue}
+	\caption{Sequenzdiagramm zur Benutzung von AbstractFileGenerator}
+	\label{seq_abstract_file_generator}
+\end{figure}
 \end{itemize}
 
 \newpage

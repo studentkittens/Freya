@@ -32,7 +32,7 @@
 #include "../../Utils/Utils.hh"
 
 /* Fortuna command: -s -> short text; -n max 500 length */
-#define FORTUNE_COMMAND  "fortune -n 500"
+#define FORTUNE_COMMAND  "fortune -n 350"
 #define FORTUNE_BUF_SIZE 1024
 
 namespace Browser
@@ -96,7 +96,7 @@ namespace Browser
 
                 /* Build markup'd string */
                 retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<b><span font='9.0'>");
+                retv.insert(0,"<b><span color='#111111' font='10.5'>");
                 retv.append("</span></b>");
             }
             pclose(pipe);

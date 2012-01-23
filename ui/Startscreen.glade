@@ -32,24 +32,24 @@
             <property name="vexpand">True</property>
             <property name="xalign">0</property>
             <property name="yalign">0</property>
-            <property name="pixbuf">Freya_emblem.svg</property>
+            <property name="pixbuf">Freya_emblem.png</property>
           </object>
           <packing>
-            <property name="x">-75</property>
-            <property name="y">-115</property>
+            <property name="x">-6</property>
+            <property name="y">2</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel" id="fortune_label">
-            <property name="width_request">419</property>
-            <property name="height_request">316</property>
+            <property name="width_request">418</property>
+            <property name="height_request">344</property>
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="margin_top">10</property>
             <property name="xalign">0.019999999552965164</property>
             <property name="yalign">0.019999999552965164</property>
-            <property name="label" translatable="yes">&lt;b&gt;&lt;span font='13.5'&gt;
+            <property name="label" translatable="yes">&lt;b&gt;&lt;span font='13.5' color='#000000'&gt;
 
 
             Some fortune may happen to you,
@@ -63,26 +63,26 @@
             <property name="max_width_chars">20</property>
           </object>
           <packing>
-            <property name="x">18</property>
-            <property name="y">38</property>
+            <property name="x">138</property>
+            <property name="y">80</property>
           </packing>
         </child>
         <child>
           <object class="GtkBox" id="box1">
-            <property name="width_request">100</property>
+            <property name="width_request">162</property>
             <property name="height_request">6</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
               <object class="GtkLabel" id="fortune_heading">
-                <property name="width_request">108</property>
+                <property name="width_request">191</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">10</property>
+                <property name="margin_top">5</property>
                 <property name="xalign">0.019999999552965164</property>
                 <property name="yalign">0.019999999552965164</property>
-                <property name="label" translatable="yes">&lt;b&gt;&lt;span font='9.5'&gt;Today's Fortune:&lt;/span&gt;&lt;/b&gt; </property>
+                <property name="label" translatable="yes">&lt;b&gt;&lt;span font='9.5' color='#000000'&gt;&lt;/span&gt;&lt;/b&gt; </property>
                 <property name="use_markup">True</property>
                 <property name="wrap">True</property>
                 <property name="max_width_chars">20</property>
@@ -117,19 +117,8 @@
             </child>
           </object>
           <packing>
-            <property name="x">24</property>
-            <property name="y">11</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator" id="separator4">
-            <property name="width_request">414</property>
-            <property name="height_request">79</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="x">18</property>
+            <property name="x">112</property>
+            <property name="y">44</property>
           </packing>
         </child>
       </object>

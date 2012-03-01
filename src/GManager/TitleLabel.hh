@@ -56,8 +56,8 @@ namespace GManager
         void stash_next_title();
 
         /* Widgets */
-        Gtk::Label * mp_TitleLabel, * mp_ArtistAlbumLabel,
-            * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
+        Gtk::Label * mp_TopLabel,
+                   * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
 
         MPD::Client * mp_Client;
     };

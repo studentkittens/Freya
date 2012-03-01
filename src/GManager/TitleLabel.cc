@@ -37,13 +37,12 @@ namespace GManager
     TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
         : AbstractClientUser(client)
     {
-        BUILDER_GET(builder,"title_label",mp_TitleLabel);
-        BUILDER_GET(builder,"artist_album_label",mp_ArtistAlbumLabel);
+        BUILDER_GET(builder,"top_label",mp_TopLabel);
         BUILDER_GET(builder,"next_song_artist",mp_NextSongArtistLabel);
         BUILDER_GET(builder,"next_song_title",mp_NextSongTitleLabel);
     }
 
-//----------------
+    //----------------
 
     void TitleLabel::stash_next_title()
     {
@@ -51,17 +50,15 @@ namespace GManager
         mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
     }
 
-//----------------
+    //----------------
 
     void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
     {
         MPD::Song * current_song = data.get_next_song();
         if(current_song != NULL)
         {
-
             mp_NextSongArtistLabel->set_markup(current_song->song_format("<small>${title}</small>"));
             mp_NextSongTitleLabel->set_markup(current_song->song_format("<small>${artist}</small>"));
-
         }
         else
         {
@@ -69,19 +66,18 @@ namespace GManager
         }
     }
 
-//----------------
+    //----------------
 
     void TitleLabel::on_connection_change(bool server_changed, bool is_connected)
     {
         if(!is_connected)
         {
-            mp_TitleLabel->set_markup("<b>You do not seem to be connected :-(</b>");
-            mp_ArtistAlbumLabel->set_markup("<small>Adjust your settings and try File->Connect</small>");
+            mp_TopLabel->set_markup("<b>Not connected you are.</b>");
             stash_next_title();
         }
     }
 
-//----------------
+    //----------------
 
     void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
@@ -90,15 +86,16 @@ namespace GManager
             MPD::Song * current_song = data.get_song();
             if(current_song != NULL)
             {
-
-                mp_TitleLabel->set_markup(current_song->song_format("<b>${title}</b> (Track ${track})"));
-                mp_ArtistAlbumLabel->set_markup(current_song->song_format("<small><span weight='light'><i>by</i></span> ${artist} <span weight='light'><i>on</i></span> ${album} (${date})</small>"));
-
+                mp_TopLabel->set_markup(current_song->song_format(
+                            " <b>${title}</b> [Track ${track}]"
+                            " <i>by</i> "
+                            "${artist} <i>on</i> "
+                            "${album} (${date})"
+                            ));
             }
             else
             {
-                mp_TitleLabel->set_markup("<b>Not Playing</b>");
-                mp_ArtistAlbumLabel->set_markup("<small>Select a new Song</small>");
+                mp_TopLabel->set_markup("<b>Not Playing</b>");
             }
         }
 

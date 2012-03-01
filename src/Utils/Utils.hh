@@ -37,14 +37,20 @@
 #include "../Log/Writer.hh"
 
 /* Gtk::Builder macros */
-#define BUILDER_GET(builder_refp, widget_name, widget_ptr) \
+#define BUILDER_GET(builder_refp, widget_name, widget_ptr)       \
     BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \
     Gtk::manage(widget_ptr);
 
+#define BUILDER_GET_DERIVED(builder_refp, widget_name, derived_class) \
+    derived_class = NULL;                                             \
+    builder_refp->get_widget_derived(widget_name,derived_class);      \
+    g_assert(derived_class);                                          \
+    Gtk::manage(derived_class);                                       \
+
 #define BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \
-    widget_ptr = NULL;                                     \
-    builder_refp->get_widget(widget_name,widget_ptr);      \
-    g_assert(widget_ptr);                                  \
+    widget_ptr = NULL;                                               \
+    builder_refp->get_widget(widget_name,widget_ptr);                \
+    g_assert(widget_ptr);                                            \
  
 
 #define BUILDER_ADD(builder_ref, filename)   \

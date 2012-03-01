@@ -1,4 +1,4 @@
-ADD_LIBRARY(FreyaInit STATIC Path.cc SignalHandler.cc)
+ADD_LIBRARY(FreyaInit STATIC Path.cc SignalHandler.cc CssLoader.cc)
 TARGET_LINK_LIBRARIES(FreyaInit
                      ${GLIBMM_PACKAGE_LIBRARIES}
 )

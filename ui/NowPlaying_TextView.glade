@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkScrolledWindow" id="np_textview_scw">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="hscrollbar_policy">never</property>
+    <property name="vscrollbar_policy">never</property>
+    <child>
+      <object class="GtkTextView" id="textview">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+      </object>
+    </child>
+  </object>
+</interface>

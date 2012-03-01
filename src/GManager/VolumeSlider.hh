@@ -28,41 +28,39 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_VOLUMEBUTTON_GUARD
-#define FREYA_VOLUMEBUTTON_GUARD
+#ifndef FREYA_VolumeSlider_GUARD
+#define FREYA_VolumeSlider_GUARD
 
 #include <gtkmm.h>
 
-/* Needs to be included itself for some reason.. */
-#include <gtkmm/volumebutton.h>
-
 #include "../MPD/Client.hh"
 #include "../MPD/AbstractClientUser.hh"
+#include "CairoSlider.hh"
 
 namespace GManager
 {
     /**
-     * @brief Manages the Volumebutton
+     * @brief Manages the VolumeSlider
      *
      * Updates on the mixer event, only updates every 0.05 seconds to prevent high ressource-usage.
      * Also schedules an Glib::signal_idle() event instead of executing it directly.
      */
-    class Volumebutton : public MPD::AbstractClientUser
+    class VolumeSlider : public MPD::AbstractClientUser, public CairoSlider 
     {
-    public:
-        Volumebutton(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+        public:
+            VolumeSlider(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-    private:
+        private:
 
-        void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-        void on_user_change(double val);
-        void volume_notify(int curVol);
-        void do_volume_step();
+            void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
+            void on_connection_change(bool server_changed, bool is_connected);
+            void volume_notify(int curVol);
+            void do_volume_step();
 
-        bool ignore_signal;
-        Gtk::VolumeButton * mp_VButton;
-        Glib::Timer m_Timerguard;
+        protected:
+
+            bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
+            void on_percent_change();
     };
 }
 

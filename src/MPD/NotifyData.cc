@@ -1,33 +1,33 @@
 /***********************************************************
-* This file is part of Freya
-* - A free MPD Gtk3 MPD Client -
-*
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider
-*
-* Copyright (C) [2011-2012]
-* Hosted at: https://github.com/studentkittens/Freya
-*
-*              __..--''``---....___   _..._    __
-*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
-*   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //
-*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
-*
-* Freya is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Freya is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Freya. If not, see <http://www.gnu.org/licenses/>.
-**************************************************************/
+ * This file is part of Freya
+ * - A free MPD Gtk3 MPD Client -
+ *
+ * Authors: Christopher Pahl, Christoph Piechula,
+ *          Eduard Schneider
+ *
+ * Copyright (C) [2011-2012]
+ * Hosted at: https://github.com/studentkittens/Freya
+ *
+ *              __..--''``---....___   _..._    __
+ *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+ *   ///_.-' _..--.'_                        `( ) ) // //
+ *   / (_..-' // (< _     ;_..__               ; `' / ///
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
+ *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+ *
+ * Freya is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Freya is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Freya. If not, see <http://www.gnu.org/licenses/>.
+ **************************************************************/
 #include "NotifyData.hh"
 #include "../Log/Writer.hh"
 
@@ -42,7 +42,7 @@ namespace MPD
         mp_NextSong = NULL;
     }
 
-//------------------
+    //------------------
 
     NotifyData::~NotifyData()
     {
@@ -52,7 +52,7 @@ namespace MPD
         delete mp_NextSong;
     }
 
-//------------------
+    //------------------
 
     /* Since libmpdclient does not support the next-song-id,
      * we habe to improvise a little bit.
@@ -109,7 +109,7 @@ namespace MPD
         return retv_status;
     }
 
-//------------------
+    //------------------
 
     Status& NotifyData::get_status()
     {
@@ -118,7 +118,7 @@ namespace MPD
         return *(mp_Status);
     }
 
-//------------------
+    //------------------
 
     Statistics& NotifyData::get_statistics()
     {
@@ -127,21 +127,21 @@ namespace MPD
         return *(mp_Statistics);
     }
 
-//------------------
+    //------------------
 
     Song * NotifyData::get_song()
     {
         return mp_Song;
     }
 
-//------------------
+    //------------------
 
     Song * NotifyData::get_next_song()
     {
         return mp_NextSong;
     }
 
-//------------------
+    //------------------
 
     void NotifyData::update_all(unsigned event)
     {

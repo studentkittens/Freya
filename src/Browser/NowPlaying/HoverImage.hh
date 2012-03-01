@@ -28,45 +28,38 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_TIMESLIDE_GUARD
-#define FREYA_TIMESLIDE_GUARD
+
+#ifndef FREYA_HOVERIMAGE_GUARD
+#define FREYA_HOVERIMAGE_GUARD
 
 #include <gtkmm.h>
-#include "Heartbeat.hh"
-#include "CairoSlider.hh"
-#include "../MPD/AbstractClientUser.hh"
 
-namespace GManager
+namespace Browser
 {
-    /**
-     * @brief Manager for the Timeslide in the topbar
-     *
-     * Updates the time every 500ms according to the Heartbeat.
+    /* 
+     * A Gtk::Builder derived class,
+     * implementing a Hoverable Image,
+     * i.e. an image with a certain dimension, that shows
+     * the full-sized version after a click
      */
-    class Timeslide : public MPD::AbstractClientUser, public CairoSlider
+    class HoverImage : public Gtk::EventBox 
     {
-    public:
-        Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+        public:
+            HoverImage(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+            HoverImage();
 
-    private:
-        void tick(double time);
+        private:
+           // Normal:
+           void setup();
 
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-        
-        bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
-        void on_percent_change();
+            // Signals:
+           bool on_image_clicked(GdkEventButton * ev);
 
-        // Vars:
-
-        // Heartbeat-giver (ticks every 0.5 seconds)
-        GManager::Heartbeat * mp_Heartbeat;
-
-        // Currently played song
-        MPD::Song * currSong;
-
-        // Draw the full line, or just an empty shell
-        bool drawFullLine;
-    };
+           // Vars:
+           Gtk::Image * mImg;
+           Glib::RefPtr<Gdk::Pixbuf> mNoImage;
+    }; 
 }
-#endif
+
+#endif /* end of include guard: FREYA_HOVERIMAGE_GUARD */
+

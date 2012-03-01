@@ -192,65 +192,63 @@ namespace Config
     /* ----------------------------------------- */
 
     /*traverse and return node pointer or nothing*/
-    xmlNodePtr Handler::_traverse(const char* url, char* marker_prev, char* marker_next, int len, xmlNodePtr cur)
+    xmlNodePtr Handler::_traverse(const char* url, char* marker_prev, char* marker_next, size_t len, xmlNodePtr cur)
     {
         xmlNodePtr result = NULL;
-
-        if (NULL != cur)
+        while (NULL != cur)
         {
-            while (NULL != cur)
+            /*check if len an string matches*/
+            if (len == strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))
             {
-                /*check if len an string matches*/
-                if (len == (int)strlen((char*)cur->name) && (!xmlStrncmp(cur->name, (const xmlChar *)url, len)))
+                /*if at last '.' position, print result*/
+                if(url == (marker_next+1))
                 {
-                    /*if at last '.' position, print result*/
-                    if(url == (marker_next+1))
+                    result = cur;
+                }
+                else
+                {
+                    /*set url ptr to next dot*/
+                    if (url == (marker_prev+1))
                     {
-                        result = cur;
+                        url = (marker_next+1);
+                        len = strlen(url);
                     }
                     else
                     {
-                        /*set url ptr to next dot*/
-                        if (url == (marker_prev+1))
-                        {
-                            url = (marker_next+1);
-                            len = strlen(url);
-                        }
-                        else
-                        {
-                            url = (marker_prev+1);
-                            len = ABS(marker_next-url);
-                        }
-                        /*jump to next level*/
-                        cur=cur->xmlChildrenNode;
-                        this->_traverse(url,marker_prev,marker_next,len,cur);
+                        url = (marker_prev+1);
+                        len = ABS(marker_next-url);
                     }
+                    /*jump to next level*/
+                    cur=cur->xmlChildrenNode;
+                    this->_traverse(url,marker_prev,marker_next,len,cur);
                 }
-                cur = cur->next;
             }
-            return result;
+            cur = cur->next;
         }
-        else
-        {
-            Warning("URL '%s' does not yield a value.",url);
-            return result;
-        }
+        return result;
     }
+
+    /* ----------------------------------------- */
 
     void Handler::save_config_now()
     {
         cfgmodel.save();
         Info("Trying to save config now.");
     }
+    
+    /* ----------------------------------------- */
 
     Glib::ustring Handler::get_default_value(Glib::ustring url)
     {
         return _get_value(url,true);
     }
+    
+    /* ----------------------------------------- */
 
     int Handler::get_default_value_as_int(Glib::ustring url)
     {
         return _get_value_as_int(url,true);
     }
 
+    /* ----------------------------------------- */
 }

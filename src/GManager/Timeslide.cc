@@ -32,57 +32,29 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
-#define UPDATE_TIMEOUT 0.05
-
 namespace GManager
 {
     Timeslide::Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(client),
-        current_song_id(0),
-        ignore_signal(false),
         mp_Heartbeat(&tproxy),
-        m_Timeguard()
+        currSong(NULL),
+        drawFullLine(true)
     {
-        BUILDER_GET(builder,"time_slide",m_Timeslide);
-        m_Timeslide->set_range(0.0,100.0);
+        Gtk::Alignment * align = NULL;
+        BUILDER_GET(builder,"timeslider_align",align);
+        set_size_request(75,12);
+        align->add(*this);
+        align->show_all();
 
-        m_Timeslide->signal_value_changed().connect(
-            sigc::mem_fun(*this,&Timeslide::on_user_action));
-
-        tproxy.signal_client_update().connect(
-            sigc::mem_fun(*this,&Timeslide::tick));
+        tproxy.signal_client_update().connect(sigc::mem_fun(*this,&Timeslide::tick));
     }
 
-    /* ------------------ */
+    //////////////////////////////
 
     void Timeslide::tick(double time)
     {
-        ignore_signal = true;
-        m_Timeslide->set_value(time);
-        ignore_signal = false;
-    }
-
-    /* ------------------ */
-
-    void Timeslide::do_scroll()
-    {
-        mp_Client->playback_seek(current_song_id,m_Timeslide->get_value());
-    }
-
-    /* ------------------ */
-
-    void Timeslide::on_user_action()
-    {
-        /* only allow updates every 0.1 seconds */
-        if(!ignore_signal && m_Timeguard.elapsed() > UPDATE_TIMEOUT)
-        {
-            if(mp_Client->is_connected())
-            {
-                Glib::signal_idle().connect_once(
-                    sigc::mem_fun(*this,&Timeslide::do_scroll),Glib::PRIORITY_LOW);
-            }
-            mp_Heartbeat->set(m_Timeslide->get_value());
-            m_Timeguard.reset();
+        if(currSong) {
+            set_percentage(time / (double)currSong->get_duration() * 100.0);
         }
     }
 
@@ -90,27 +62,92 @@ namespace GManager
 
     void Timeslide::on_connection_change(bool server_changed, bool is_connected)
     {
-        m_Timeslide->set_sensitive(is_connected);
+        if(is_connected == false) {
+            drawFullLine = false;
+        }
     }
 
-    /* ------------------ */
+    //////////////////////////////
 
     void Timeslide::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
-        if(!ignore_signal && event & (MPD_IDLE_PLAYER))
-        {
-            MPD::Status& status = data.get_status();
-            MPD::Song * current_song = data.get_song();
+        if(event & MPD_IDLE_PLAYER) {
+            drawFullLine = (data.get_status().get_state() > (MPD_STATE_STOP));
+            queue_draw();
+        }
+        currSong = data.get_song();
+    }
 
-            if(current_song != NULL)
-            {
-                current_song_id = current_song->get_id();
+    //////////////////////////////
 
-                ignore_signal = true;
-                m_Timeslide->set_range(0.0,status.get_total_time());
-                m_Timeslide->set_value(status.get_elapsed_ms() / 1000.0);
-                ignore_signal = false;
-            }
+    bool Timeslide::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
+    {
+        Gtk::Allocation allocation = get_allocation();
+        const int width = allocation.get_width();
+        const int height = allocation.get_height();
+        const int line_width = 2; /* for the shell only */
+
+        const int thick   = line_width + 2, /* px, border to window */
+              thickd2 = (thick  >> 1),
+              radius  = (height >> 1) - thickd2,
+              mid     = (thick  >> 1) + radius,
+              midx2   = (mid    << 1),
+              length  = width - midx2;
+
+        bool do_draw = drawFullLine;
+
+        Gdk::RGBA& ac = get_active_color();
+        Gdk::RGBA& ic = get_inactive_color();
+
+        cr->set_line_cap(Cairo::LINE_CAP_SQUARE);
+        cr->set_source_rgb(ac.get_red(),ac.get_green(),ac.get_blue());
+
+        // Left Arc
+        cr->set_line_width(line_width);
+        cr->arc_negative(mid,mid,radius,-M_PI / 2, M_PI / 2);
+
+        // Upper line
+        cr->move_to(mid,thickd2);
+        cr->line_to(mid + length, thickd2);
+
+        // Right Arc
+        cr->arc(mid + length, mid, radius, -M_PI / 2, M_PI / 2);
+
+        // Lower line
+        cr->move_to(mid, midx2 - thickd2);
+        cr->line_to(mid + length, midx2 - thickd2);
+
+        if(do_draw) {
+            cr->rectangle(mid,thickd2,length,midx2 - 2*thickd2);
+            cr->clip();
+            cr->paint();
+        } else {
+            cr->stroke();
+        }
+
+        if(do_draw) {
+            cr->set_source_rgb(ac.get_red(),ac.get_green(),ac.get_blue());
+            cr->rectangle(0,0,get_border(),height);
+            cr->fill();
+            cr->set_source_rgb(ic.get_red(),ic.get_green(),ic.get_blue());
+            cr->rectangle(get_border(),0,width - get_border(),height);
+            cr->fill();
+            cr->stroke();
+        }
+
+        return true;
+    }
+
+    //////////////////////////////
+
+    /*
+     * Called on userinput,
+     * not when using set_percentage()
+     */
+    void Timeslide::on_percent_change()
+    {
+        if(currSong) {
+            mp_Client->playback_seek(currSong->get_id(), round(get_percentage()/100.0 * currSong->get_duration()));
         }
     }
 }

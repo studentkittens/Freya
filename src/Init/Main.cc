@@ -37,7 +37,7 @@
 #include "../GManager/Timeslide.hh"
 #include "../GManager/TitleLabel.hh"
 #include "../GManager/StatusIcons.hh"
-#include "../GManager/Volumebutton.hh"
+#include "../GManager/VolumeSlider.hh"
 #include "../GManager/Heartbeat.hh"
 #include "../GManager/MenuList.hh"
 #include "../GManager/NotifyManager.hh"
@@ -48,14 +48,14 @@
 #include "../Browser/Database/Database.hh"
 #include "../Browser/Statistics/StatBrowser.hh"
 #include "../Browser/Settings/Settings.hh"
-#include "../Browser/Fortuna/Fortuna.hh"
+#include "../Browser/NowPlaying/NowPlaying.hh"
 #include "../Log/Writer.hh"
 
 #include "../Utils/Utils.hh"
-
 #include "SignalHandler.hh"
+#include "CssLoader.hh"
 
-using namespace std;
+////////////////////////
 
 int main(int argc, char *argv[])
 {
@@ -74,6 +74,9 @@ int main(int argc, char *argv[])
 
         /* Instance the client */
         MPD::Client client;
+        
+        /* Try to laod the css file */
+        Init::CssLoader css;
 
         /* Get the glade file */
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
@@ -87,13 +90,16 @@ int main(int argc, char *argv[])
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
-        GManager::Volumebutton vol_button(client,builder);
+        GManager::VolumeSlider vol_button(client,builder);
         GManager::BrowserList browser_list(client,builder);
         GManager::MenuList menu_list(client,builder);
         GManager::Trayicon tray(client,*main_window.get_window());
         GManager::NotifyManager notify_mgr(client);
 
         /* Instance browser  */
+        Browser::NowPlaying np_browser(client,builder);
+        browser_list.add(np_browser);
+
         Browser::Queue queue_browser(client,builder);
         browser_list.add(queue_browser);
 
@@ -109,14 +115,15 @@ int main(int argc, char *argv[])
         Browser::Settings settings_browser(client,builder,&tray);
         browser_list.add(settings_browser);
 
+        ///////////////////
+
         /* Send a good morning to all widgets */
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
             client.connect();
         }
 
-        Browser::Fortuna easter_egg(builder);
-        browser_list.set(easter_egg);
+        browser_list.set(np_browser);
 
         main_window.get_window()->show();
 

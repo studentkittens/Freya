@@ -113,7 +113,7 @@ namespace Config
     private:
         /*internal traversing funcs*/
         xmlNodePtr traverse(const char*, xmlNodePtr);
-        xmlNodePtr _traverse(const char*, char*, char*, int, xmlNodePtr);
+        xmlNodePtr _traverse(const char*, char*, char*, size_t, xmlNodePtr);
 
         /*model config member for data access*/
         Model cfgmodel;

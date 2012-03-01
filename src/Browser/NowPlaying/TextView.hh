@@ -28,45 +28,20 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef FREYA_TIMESLIDE_GUARD
-#define FREYA_TIMESLIDE_GUARD
+
+#ifndef FREYA_TEXTVIEW_GUARD
+#define FREYA_TEXTVIEW_GUARD
 
 #include <gtkmm.h>
-#include "Heartbeat.hh"
-#include "CairoSlider.hh"
-#include "../MPD/AbstractClientUser.hh"
 
-namespace GManager
+namespace Browser
 {
-    /**
-     * @brief Manager for the Timeslide in the topbar
-     *
-     * Updates the time every 500ms according to the Heartbeat.
-     */
-    class Timeslide : public MPD::AbstractClientUser, public CairoSlider
+    class TextView : public Gtk::ScrolledWindow
     {
-    public:
-        Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-
-    private:
-        void tick(double time);
-
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-        
-        bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
-        void on_percent_change();
-
-        // Vars:
-
-        // Heartbeat-giver (ticks every 0.5 seconds)
-        GManager::Heartbeat * mp_Heartbeat;
-
-        // Currently played song
-        MPD::Song * currSong;
-
-        // Draw the full line, or just an empty shell
-        bool drawFullLine;
-    };
+        public:
+            TextView(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+    }; 
 }
-#endif
+
+#endif /* end of include guard: FREYA_TEXTVIEW_GUARD */
+

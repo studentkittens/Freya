@@ -31,8 +31,8 @@
 #ifndef FREYA_LOG_WRITER_GUARD
 #define FREYA_LOG_WRITER_GUARD
 
-#include <glibmm.h>
 #include <stdio.h>
+#include <glibmm/ustring.h>
 #include "../Utils/Singleton.hh"
 
 /* Not supposed to used directly, use the macros below */

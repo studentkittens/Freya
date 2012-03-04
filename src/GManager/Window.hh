@@ -31,7 +31,7 @@
 #ifndef FREYA_MAIN_WINDOW_GUARD
 #define FREYA_MAIN_WINDOW_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 
 namespace GManager
 {

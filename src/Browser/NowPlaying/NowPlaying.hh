@@ -32,17 +32,19 @@
 #define FREYA_NOWPLAYING_GUARD
 
 #include "../../MPD/Client.hh"
-#include "../../MPD/AbstractClientUser.hh"
 #include "../AbstractBrowser.hh"
 #include <gtkmm.h>
 
-#include "HoverImage.hh"
+#include "OtherAlbumsMgr.hh"
+#include "TracklistMgr.hh"
+#include "TextItemsMgr.hh"
+#include "CoverArtMgr.hh"
+#include "ArtistPhotosMgr.hh"
+#include "RelatedLinksMgr.hh"
 
 namespace Browser
 {
-    class NowPlaying : 
-        public AbstractBrowser,
-        public MPD::AbstractClientUser
+    class NowPlaying : public AbstractBrowser
     {
         public:
 
@@ -62,45 +64,18 @@ namespace Browser
 
         private:
 
-            // Models
-
-            class TypeModelColumns : public Gtk::TreeModel::ColumnRecord {
-                public:
-                TypeModelColumns() {
-                    add(m_col_id);
-                    add(m_col_icon);
-                }
-                Gtk::TreeModelColumn<Glib::ustring> m_col_id;
-                Gtk::TreeModelColumn< Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
-            };
-            TypeModelColumns m_TypeColumns;
-            Glib::RefPtr<Gtk::ListStore> m_TypeModel;
-
-            // Client
-
-            void on_client_update(mpd_idle events, MPD::NotifyData& data);
-            void on_connection_change(bool,bool) {}
-
-            // Setup
-
-            void setup(Glib::RefPtr<Gtk::Builder>& builder);
-            void add_txtview_page(Glib::RefPtr<Gtk::Builder>& builder,const char * name, Gtk::StockID icon);
-
-            // Callbacks
-
-            void on_type_combo_changed();
-
             // Vars
 
             Gtk::ScrolledWindow * mp_NPScroll;
-            Gtk::Notebook * mp_NBook;
-            Gtk::Label * mp_ArtistLabel, 
-                * mp_AlbumLabel,
-                * mp_TitleLabel,
-                * mp_YearLabel;
-            Gtk::ComboBox * mp_TypeSelection;
             
-            HoverImage * mp_Cover;
+            // Managers
+            
+            ArtistPhotosMgr  * mp_ArtistPhotos;
+            OtherAlbumsMgr  * mp_OtherAlbums;
+            TracklistMgr   * mp_Tracklist;
+            TextItemsMgr  * mp_Textitems;
+            RelatedLinks * mp_RelatedLinks;
+            CoverArtMgr * mp_CoverArt;
     };
 }
 

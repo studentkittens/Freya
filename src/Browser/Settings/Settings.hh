@@ -31,8 +31,8 @@
 #ifndef FREYA_SETTINGS_GUARD
 #define FREYA_SETTINGS_GUARD
 
-#include <gtkmm.h>
 #include <vector>
+#include "../../ui_includes.hh"
 
 #include "SettingsPlayback.hh"
 #include "SettingsNetwork.hh"

@@ -31,8 +31,6 @@
 #ifndef FREYA_SETTINGS_NETWORK_GUARD
 #define FREYA_SETTINGS_NETWORK_GUARD
 
-#include <gtkmm.h>
-
 #include "../../Config/Handler.hh"
 #include "../../Avahi/Browser.hh"
 #include "AbstractSettings.hh"

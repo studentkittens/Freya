@@ -31,7 +31,7 @@
 #ifndef FREYA_ABSTRACT_POPUP
 #define FREYA_ABSTRACT_POPUP
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 
 namespace Browser
 {

@@ -1,8 +1,6 @@
 #ifndef FREYA_SIGNALHANDLER_HH
 #define FREYA_SIGNALHANDLER_HH
 
-#include <signal.h>
-
 namespace Init
 {
     /**
@@ -10,14 +8,13 @@ namespace Init
      *
      * SIGSEGV and other crash signals are catched, so that log and
      * config can be closed properly.
+     *
+     * Only compiled on not windows plattforms
      */
     class SignalHandler
     {
-    public:
-        SignalHandler();
-
-    private:
-        struct sigaction sa_struct;
+        public:
+            SignalHandler();
     };
 }
 

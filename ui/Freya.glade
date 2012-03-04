@@ -552,7 +552,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="padding">2</property>
+                        <property name="padding">1</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -572,7 +572,6 @@
                       <object class="GtkBox" id="box2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="border_width">3</property>
                         <child>
                           <object class="GtkToggleButton" id="icon_repeat">
                             <property name="use_action_appearance">False</property>
@@ -727,8 +726,8 @@
           <object class="GtkLabel" id="statusbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_top">2</property>
-            <property name="margin_bottom">2</property>
+            <property name="margin_top">1</property>
+            <property name="margin_bottom">1</property>
             <property name="xalign">0</property>
             <property name="label" translatable="yes">N/C</property>
             <property name="single_line_mode">True</property>

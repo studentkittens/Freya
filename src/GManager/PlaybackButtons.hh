@@ -31,7 +31,7 @@
 #ifndef FREYA_PLAYBACKBUTTONS_GUARD
 #define FREYA_PLAYBACKBUTTONS_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/AbstractClientUser.hh"
 

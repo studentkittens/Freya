@@ -38,7 +38,7 @@ namespace GManager
         /* Everything by AbstractClientUser already */
     }
 
-// ------------------------------------
+    // ------------------------------------
 
     void NotifyManager::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
@@ -62,7 +62,7 @@ namespace GManager
         }
     }
 
-// ------------------------------------
+    // ------------------------------------
 
     void NotifyManager::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -79,6 +79,6 @@ namespace GManager
         }
     }
 
-// ------------------------------------
+    // ------------------------------------
 
 }

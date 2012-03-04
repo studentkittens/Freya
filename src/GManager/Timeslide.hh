@@ -31,7 +31,7 @@
 #ifndef FREYA_TIMESLIDE_GUARD
 #define FREYA_TIMESLIDE_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 #include "Heartbeat.hh"
 #include "CairoSlider.hh"
 #include "../MPD/AbstractClientUser.hh"

@@ -31,8 +31,6 @@
 #ifndef FREYA_SETTINGS_GENERAL_GUARD
 #define FREYA_SETTINGS_GENERAL_GUARD
 
-#include <gtkmm.h>
-
 #include "../../Config/Handler.hh"
 #include "../../GManager/Trayicon.hh"
 #include "AbstractSettings.hh"

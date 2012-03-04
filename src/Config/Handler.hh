@@ -31,8 +31,8 @@
 #ifndef FREYA_CONFIG_HANDLER_89V106EN
 #define FREYA_CONFIG_HANDLER_89V106EN
 
-#include <glib.h>
 #include <libxml/parser.h>
+#include <glibmm/ustring.h>
 
 #include "Model.hh"
 #include "../Utils/Singleton.hh"

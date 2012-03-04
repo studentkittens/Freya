@@ -71,11 +71,11 @@ namespace GManager
 
     void Timeslide::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
+        currSong = data.get_song();
         if(event & MPD_IDLE_PLAYER) {
             drawFullLine = (data.get_status().get_state() > (MPD_STATE_STOP));
-            queue_draw();
+            tick(data.get_status().get_elapsed_time());
         }
-        currSong = data.get_song();
     }
 
     //////////////////////////////

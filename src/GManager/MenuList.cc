@@ -80,7 +80,7 @@ namespace GManager
         menu_about->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_about));
     }
 
-//-----------------------------
+    //-----------------------------
     MenuList::~MenuList()
     {
         if(window_about!=NULL)
@@ -89,43 +89,43 @@ namespace GManager
             window_about=NULL;
         }
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_connect()
     {
         mp_Client->connect();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_disconnect()
     {
         mp_Client->disconnect();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_quit()
     {
         Gtk::Main::quit();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_play()
     {
         mp_Client->playback_pause();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_stop()
     {
         mp_Client->playback_stop();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_prev()
     {
         mp_Client->playback_prev();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_next()
     {
         mp_Client->playback_next();
     }
 
-//-----------------------------
+    //-----------------------------
 
     void MenuList::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -134,7 +134,7 @@ namespace GManager
         menu_playback->set_sensitive(is_connected);
     }
 
-//-----------------------------
+    //-----------------------------
 
     void MenuList::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
     {
@@ -150,32 +150,32 @@ namespace GManager
         }
     }
 
-//-----------------------------
+    //-----------------------------
 
     void MenuList::on_menu_random()
     {
         if(!running) mp_Client->toggle_random();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_repeat()
     {
         if(!running) mp_Client->toggle_repeat();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_single()
     {
         if(!running) mp_Client->toggle_single();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_consume()
     {
         if(!running) mp_Client->toggle_consume();
     }
-//-----------------------------
+    //-----------------------------
     void MenuList::on_menu_about()
     {
         window_about->run();
         window_about->hide();
     }
-//-----------------------------
+    //-----------------------------
 }

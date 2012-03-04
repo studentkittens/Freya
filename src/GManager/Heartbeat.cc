@@ -46,12 +46,12 @@ namespace GManager
         Glib::signal_timeout().connect(sigc::mem_fun(*this,&Heartbeat::on_interval),INTERVAL);
     }
 
-// -------------
+    // -------------
 
     Heartbeat::~Heartbeat()
     {}
 
-// -------------
+    // -------------
 
     gboolean Heartbeat::on_interval()
     {
@@ -63,49 +63,49 @@ namespace GManager
         return TRUE;
     }
 
-// -------------
+    // -------------
 
     void Heartbeat::reset()
     {
         timer = 0.0;
     }
 
-// -------------
+    // -------------
 
     void Heartbeat::pause()
     {
         count_up = false;
     }
 
-// -------------
+    // -------------
 
     void Heartbeat::play()
     {
         count_up = true;
     }
 
-// -------------
+    // -------------
 
     void Heartbeat::set(double val)
     {
         timer = val;
     }
 
-// -------------
+    // -------------
 
     double Heartbeat::get()
     {
         return timer;
     }
 
-// -------------
+    // -------------
 
     TimerNotifier& Heartbeat::signal_client_update()
     {
         return signal_proxy;
     }
 
-// -------------
+    // -------------
 
     void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -115,7 +115,7 @@ namespace GManager
             pause();
     }
 
-// -------------
+    // -------------
 
     /* Implemented from AbstractClientUser, but empty in this case */
     void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
@@ -127,16 +127,16 @@ namespace GManager
             set(status.get_elapsed_ms() / 1000.0);
             switch(status.get_state())
             {
-            case MPD_STATE_PLAY:
-                play();
-                break;
-            case MPD_STATE_STOP:
-            case MPD_STATE_PAUSE:
-                pause();
-                break;
-            case MPD_STATE_UNKNOWN:
-            default:
-                break;
+                case MPD_STATE_PLAY:
+                    play();
+                    break;
+                case MPD_STATE_STOP:
+                case MPD_STATE_PAUSE:
+                    pause();
+                    break;
+                case MPD_STATE_UNKNOWN:
+                default:
+                    break;
             }
         }
     }

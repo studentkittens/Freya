@@ -68,12 +68,10 @@ namespace Utils
         }
         else if(day != 0)
         {
-
             g_snprintf(durstr,BUFFER,"%d days %d hours %d minutes %d seconds",day,hour,min,sec);
         }
         else
         {
-
             g_snprintf(durstr,BUFFER,"%d hours %d minutes %d seconds",hour,min,sec);
         }
         Glib::ustring retv = durstr;

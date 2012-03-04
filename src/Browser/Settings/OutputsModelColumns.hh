@@ -31,6 +31,7 @@
 #ifndef FREYA_OUTPUTCOLUMNS_GUARD
 #define FREYA_OUTPUTCOLUMNS_GUARD
 
+#include "../../ui_includes.hh"
 #include "../../MPD/AudioOutput.hh"
 
 namespace Browser

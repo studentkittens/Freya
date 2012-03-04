@@ -28,11 +28,11 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
-#ifndef INIT_SP0811FS
+#ifndef INIT_PATH_GUARD
+#define INIT_PATH_GUARD
 
-#define INIT_SP0811FS
-#include <glibmm.h>
-#include <glib/gstdio.h>
+#include <glibmm/ustring.h>
+
 namespace Init
 {
 

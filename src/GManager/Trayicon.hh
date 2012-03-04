@@ -31,7 +31,7 @@
 #ifndef FREYA_TRAYICON_GUARD
 #define FREYA_TRAYICON_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 #include "../MPD/Client.hh"
 #include "../Browser/BasePopup.hh"
 #include "../MPD/AbstractClientUser.hh"

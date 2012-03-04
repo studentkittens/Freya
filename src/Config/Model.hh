@@ -32,8 +32,7 @@
 #define FREYA_CONFIG_MODEL_ATB3SUAE
 
 #include <libxml/parser.h>
-#include "./defaultcfg.inl"
-#include "../Init/Path.hh"
+
 #define outputfile "./config.xml"
 
 namespace Config

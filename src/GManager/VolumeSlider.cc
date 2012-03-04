@@ -51,6 +51,9 @@ namespace GManager
 
     void VolumeSlider::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
+        // TODO: Does not get drawn correctly on startup,
+        //       because, the widget has a width of 0 at
+        //       this point
         if(event & (MPD_IDLE_MIXER))
         {
             set_percentage(data.get_status().get_volume());

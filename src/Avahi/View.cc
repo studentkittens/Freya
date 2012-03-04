@@ -1,33 +1,33 @@
 /***********************************************************
-* This file is part of Freya
-* - A free MPD Gtk3 MPD Client -
-*
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider
-*
-* Copyright (C) [2011-2012]
-* Hosted at: https://github.com/studentkittens/Freya
-*
-*              __..--''``---....___   _..._    __
-*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
-*   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //
-*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
-*
-* Freya is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Freya is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Freya. If not, see <http://www.gnu.org/licenses/>.
-**************************************************************/
+ * This file is part of Freya
+ * - A free MPD Gtk3 MPD Client -
+ *
+ * Authors: Christopher Pahl, Christoph Piechula,
+ *          Eduard Schneider
+ *
+ * Copyright (C) [2011-2012]
+ * Hosted at: https://github.com/studentkittens/Freya
+ *
+ *              __..--''``---....___   _..._    __
+ *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+ *   ///_.-' _..--.'_                        `( ) ) // //
+ *   / (_..-' // (< _     ;_..__               ; `' / ///
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
+ *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+ *
+ * Freya is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Freya is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Freya. If not, see <http://www.gnu.org/licenses/>.
+ **************************************************************/
 #include "View.hh"
 
 namespace Avahi
@@ -82,7 +82,7 @@ namespace Avahi
         show_all_children();
     }
 
-/// Event Callbacks ////
+    /// Event Callbacks ////
 
     void View::on_button_cancel()
     {
@@ -97,15 +97,15 @@ namespace Avahi
         {
             Gtk::TreeModel::Row row = *iter;
             signal_select.emit(
-                row[m_Columns.m_col_ip],
-                row[m_Columns.m_col_hostname],
-                row[m_Columns.m_col_name],
-                row[m_Columns.m_col_port]);
+                    row[m_Columns.m_col_ip],
+                    row[m_Columns.m_col_hostname],
+                    row[m_Columns.m_col_name],
+                    row[m_Columns.m_col_port]);
         }
         hide();
     }
 
-/// User functions ///
+    /// User functions ///
 
     /* Delete a certain IP */
     void View::server_append(const char * ip, const char * hostname, const char * name, unsigned int port)

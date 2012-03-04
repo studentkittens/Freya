@@ -31,7 +31,7 @@
 #ifndef FREYA_UTILS_GUARD
 #define FREYA_UTILS_GUARD
 
-#include <glibmm.h>
+#include <glibmm/ustring.h>
 
 /* For Error() */
 #include "../Log/Writer.hh"
@@ -63,6 +63,7 @@
            "| Is '%s' there and okay?",      \
            e.what().c_str(),filename);       \
     }
+
 namespace Utils
 {
 

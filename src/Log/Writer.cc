@@ -31,15 +31,17 @@
 #include "Writer.hh"
 #include "../Init/Path.hh"
 
-#include <stdlib.h>
-#include <string.h>
+/* for: time() */
 #include <time.h>
 
 /* for: g_strdup_printf() */
-#include <glib.h>
+#include <glib/gstdio.h>
 
 /* for: g_vasprintf() */
 #include <glib/gprintf.h>
+
+/* for: Glib::get_basename() */
+#include <glibmm/miscutils.h>
 
 #define TIME_BUF_SIZE 128
 

@@ -31,7 +31,7 @@
 #ifndef FREYA_BROWSERLIST_GUARD
 #define FREYA_BROWSERLIST_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 #include "../Browser/AbstractBrowser.hh"
 #include "../MPD/AbstractClientUser.hh"
 

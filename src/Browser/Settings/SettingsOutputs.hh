@@ -31,10 +31,9 @@
 #ifndef FREYA_SETTINGS_OUTPUTS_GUARD
 #define FREYA_SETTINGS_OUTPUTS_GUARD
 
-#include <gtkmm.h>
-
 #include "AbstractSettings.hh"
 #include "OutputsModelColumns.hh"
+#include "../../ui_includes.hh"
 #include "../../MPD/AbstractItemlist.hh"
 #include "../../MPD/AbstractClientUser.hh"
 #include "../../MPD/Client.hh"

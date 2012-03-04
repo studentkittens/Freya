@@ -32,7 +32,6 @@
 #include "../Log/Writer.hh"
 
 #include <cstring>
-#include <glib.h>
 
 #define URL_DELIMITER '.'
 

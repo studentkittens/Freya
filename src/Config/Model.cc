@@ -30,6 +30,8 @@
 **************************************************************/
 #include "Model.hh"
 #include "../Log/Writer.hh"
+#include "../Init/Path.hh"
+#include "defaultcfg.inl"
 
 #include <cstring>
 

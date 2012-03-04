@@ -13,9 +13,11 @@
           <object class="GtkTreeView" id="queue_treeview">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="headers_clickable">False</property>
             <property name="reorderable">True</property>
             <property name="rules_hint">True</property>
             <property name="search_column">1</property>
+            <property name="hover_selection">True</property>
             <property name="rubber_banding">True</property>
             <property name="enable_grid_lines">vertical</property>
             <child internal-child="selection">

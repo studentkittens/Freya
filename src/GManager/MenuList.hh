@@ -31,7 +31,7 @@
 #ifndef FREYA_MENULIST_GUARD
 #define FREYA_MENULIST_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 #include "../MPD/Client.hh"
 #include "../MPD/AbstractClientUser.hh"
 #include "../Notify/Notify.hh"

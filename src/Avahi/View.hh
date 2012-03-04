@@ -31,7 +31,7 @@
 #ifndef FREYA_AVAHIVIEW_H
 #define FREYA_AVAHIVIEW_H
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 
 namespace Avahi
 {

@@ -31,7 +31,7 @@
 #ifndef FREYA_STATUSBAR_GUARD
 #define FREYA_STATUSBAR_GUARD
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 
 #include "../MPD/Client.hh"
 #include "../MPD/AbstractClientUser.hh"

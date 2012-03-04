@@ -63,10 +63,10 @@ namespace GManager
 
     void Statusbar::on_connection_change(bool server_changed, bool is_connected)
     {
-        if(is_connected == false)
+        if(is_connected == false) {
             mp_Lastdata = NULL;
-
-        m_Statusbar->set_text("Not connected");
+            m_Statusbar->set_text("Not connected");
+        }
     }
 
     /* ------------------ */

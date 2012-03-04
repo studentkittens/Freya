@@ -29,10 +29,9 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #ifndef STATBROWSER_H0M8CVQP
-
 #define STATBROWSER_H0M8CVQP
 
-#include <gtkmm.h>
+#include "../../ui_includes.hh"
 #include "../../MPD/Client.hh"
 #include "../../Utils/Utils.hh"
 #include "../AbstractBrowser.hh"

@@ -31,8 +31,7 @@
 #ifndef FREYA_SETTINGS_PLAYBACK_GUARD
 #define FREYA_SETTINGS_PLAYBACK_GUARD
 
-#include <gtkmm.h>
-
+#include "../../ui_includes.hh"
 #include "../../Config/Handler.hh"
 #include "../../MPD/Client.hh"
 #include "../../MPD/AbstractClientUser.hh"

@@ -29,8 +29,11 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "Path.hh"
+
 #include "../Config/defaultcfg.inl"
+
 #include <string.h>
+#include <glib/gstdio.h>
 
 namespace Init
 {

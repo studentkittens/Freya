@@ -31,7 +31,7 @@
 #ifndef FREYA_ABSTRACT_BROWSER
 #define FREYA_ABSTRACT_BROWSER
 
-#include <gtkmm.h>
+#include "../ui_includes.hh"
 #include <iostream>
 
 /**

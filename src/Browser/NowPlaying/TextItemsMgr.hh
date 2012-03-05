@@ -36,6 +36,11 @@ namespace Browser
             Gtk::ComboBox * mp_TypeSelection;
 
             /* 
+             * Text pages
+             */
+            ManagerVector managerList;
+
+            /* 
              * Model for the combobox
              */
             class TypeModelColumns : public Gtk::TreeModel::ColumnRecord {

@@ -10,4 +10,9 @@ namespace Browser
     }
 
     ////////////////////
+            
+    void TextPageMgr::update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data)
+    {
+
+    }
 }

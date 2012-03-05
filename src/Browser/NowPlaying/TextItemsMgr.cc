@@ -58,7 +58,7 @@ namespace Browser
         if(temp_builder) 
         {
             TextPageMgr * pageMgr;
-            BUILDER_GET_DERIVED(temp_builder,"np_textview_scw",pageMgr);
+            ADD_MANAGER(temp_builder,"np_textview_scw",pageMgr);
 
             if(pageMgr != NULL) {
                 Gtk::TreeModel::Row row = *(m_TypeModel->append());
@@ -87,7 +87,10 @@ namespace Browser
     
     /////////////////////////////////
 
-    void TextItemsMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
+    void TextItemsMgr::update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data)
     {
+        for(ManagerVector::iterator it = managerList.begin(); it != managerList.end(); it++) {
+            (*it)->update(client,events,data);
+        }
     }
 }

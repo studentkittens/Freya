@@ -11,4 +11,10 @@ namespace Browser
             txtWall.add(*Gtk::manage(new Gtk::LinkButton("http://www.google.de","A Track in the queue")));
         }
     }
+    
+    /////////////////////////////////
+
+    void TracklistMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
+    {
+    }
 }

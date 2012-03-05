@@ -3,10 +3,12 @@
 
 #include <gtkmm.h>
 #include "../../MPD/AbstractClientUser.hh"
+#include "EventImage.hh"
+#include "UpdateInterface.hh"
 
 namespace Browser
 {
-    class CoverArtMgr : public Gtk::Expander 
+    class CoverArtMgr : public Gtk::Expander, public UpdateInterface
     {
         public:
             CoverArtMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
@@ -14,8 +16,7 @@ namespace Browser
 
         protected:
 
-            void on_client_update(mpd_idle events, MPD::NotifyData& data);
-            void on_connection_change(bool,bool) {}
+            void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
             
         private:
 

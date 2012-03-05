@@ -2,13 +2,28 @@
 #define FREYA_TEXTITEMSMGR_HH
 
 #include <gtkmm.h>
+#include "UpdateInterface.hh"
+
+/*
+ * Instance the Manager from the glade file,
+ * any other instancing is done by the manager itself,
+ * also remember a pointer to the manager, so we can update
+ * it later.
+ */
+#define ADD_MANAGER(builder, name, interface)        \
+        BUILDER_GET_DERIVED(builder,name,interface); \
+        managerList.push_back(interface);            \
 
 namespace Browser 
 {
-    class TextItemsMgr : public Gtk::Expander
+    typedef std::vector<UpdateInterface*> ManagerVector;
+
+    class TextItemsMgr : public Gtk::Expander, public UpdateInterface
     {
         public:
+
             TextItemsMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+            void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
 
         protected:
 

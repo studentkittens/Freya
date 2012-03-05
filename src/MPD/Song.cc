@@ -71,8 +71,8 @@ namespace MPD
 
     const char * Song::get_tag(enum mpd_tag_type type, unsigned idx)
     {
-        const char* tag = mpd_song_get_tag(mp_Song,type,idx);
-        return tag!=NULL ? tag : type  ==  MPD_TAG_ARTIST ? get_path() : unknown_tag ;
+        const char * tag = mpd_song_get_tag(mp_Song,type,idx);
+        return (tag != NULL) ? tag : (type == MPD_TAG_ARTIST) ? get_path() : unknown_tag;
 
     }
     /*------------------------------*/

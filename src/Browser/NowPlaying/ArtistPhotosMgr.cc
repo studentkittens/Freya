@@ -18,4 +18,9 @@ namespace Browser
     }
     
     /////////////////////////////
+    
+    void ArtistPhotosMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
+    {
+
+    }
 }

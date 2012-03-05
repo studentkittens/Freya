@@ -2,7 +2,7 @@
 
 namespace Browser
 {
-    RelatedLinks::RelatedLinks(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
+    RelatedLinksMgr::RelatedLinksMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
         : Gtk::Expander(cobject),
           txtWall(10,2)
     {
@@ -11,5 +11,11 @@ namespace Browser
         txtWall.add(*Gtk::manage(new Gtk::LinkButton("http://www.google.de","Wikipedia Album")));
         txtWall.add(*Gtk::manage(new Gtk::LinkButton("http://www.google.de","Last.fm Page")));
         txtWall.add(*Gtk::manage(new Gtk::LinkButton("http://www.google.de","AllMusic Page")));
+    }
+
+    /////////////////////////////////
+
+    void RelatedLinksMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
+    {
     }
 }

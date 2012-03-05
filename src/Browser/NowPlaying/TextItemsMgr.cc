@@ -1,5 +1,5 @@
 #include "TextItemsMgr.hh"
-#include "TextView.hh"
+#include "TextPageMgr.hh"
 #include "../../Utils/Utils.hh"
 
 namespace Browser
@@ -42,7 +42,6 @@ namespace Browser
                         &TextItemsMgr::on_type_combo_changed));
         }
 
-
         add_txtview_page(builder,"Songtext",Gtk::Stock::FILE);
         add_txtview_page(builder,"Artist Biography",Gtk::Stock::ORIENTATION_PORTRAIT);
         add_txtview_page(builder,"Album Review",Gtk::Stock::CDROM);
@@ -56,18 +55,20 @@ namespace Browser
     void TextItemsMgr::add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, const char * name, Gtk::StockID icon)
     {
         Glib::RefPtr<Gtk::Builder> temp_builder = Gtk::Builder::create_from_file("ui/NowPlaying_TextView.glade");
-        if(temp_builder) {
-            TextView * pageView = NULL;
-            BUILDER_GET_DERIVED(temp_builder,"np_textview_scw",pageView);
-            if(pageView != NULL) {
+        if(temp_builder) 
+        {
+            TextPageMgr * pageMgr;
+            BUILDER_GET_DERIVED(temp_builder,"np_textview_scw",pageMgr);
+
+            if(pageMgr != NULL) {
                 Gtk::TreeModel::Row row = *(m_TypeModel->append());
                 row[m_TypeColumns.m_col_id]   = name; 
                 row[m_TypeColumns.m_col_icon] = mp_NBook->render_icon_pixbuf(icon,Gtk::ICON_SIZE_DND);
-                mp_NBook->append_page(*pageView,name);
-            } else {
-                Error("Broken .glade file");
+                mp_NBook->append_page(*pageMgr,name);
             }
-        } else {
+        }
+        else
+        {
             Error("Cannot instantiate temporate builder");
             Error("Does NowPlaying_TextView.glade exist?");
         }
@@ -82,5 +83,11 @@ namespace Browser
     void TextItemsMgr::on_type_combo_changed()
     {
         mp_NBook->set_current_page(mp_TypeSelection->get_active_row_number()); 
+    }
+    
+    /////////////////////////////////
+
+    void TextItemsMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
+    {
     }
 }

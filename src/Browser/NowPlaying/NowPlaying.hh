@@ -41,10 +41,11 @@
 #include "CoverArtMgr.hh"
 #include "ArtistPhotosMgr.hh"
 #include "RelatedLinksMgr.hh"
+#include "UpdateInterface.hh"
 
 namespace Browser
 {
-    class NowPlaying : public AbstractBrowser
+    class NowPlaying : public AbstractBrowser, public MPD::AbstractClientUser
     {
         public:
 
@@ -64,17 +65,23 @@ namespace Browser
 
         private:
 
+            // Client
+
+            void on_client_update(mpd_idle, MPD::NotifyData&);
+            void on_connection_change(bool, bool);
+
             // Vars
 
+            ManagerVector managerList;
             Gtk::ScrolledWindow * mp_NPScroll;
-            
+
             // Managers
-            
+
             ArtistPhotosMgr  * mp_ArtistPhotos;
-            OtherAlbumsMgr  * mp_OtherAlbums;
-            TracklistMgr   * mp_Tracklist;
-            TextItemsMgr  * mp_Textitems;
-            RelatedLinks * mp_RelatedLinks;
+            RelatedLinksMgr * mp_RelatedLinks;
+            OtherAlbumsMgr * mp_OtherAlbums;
+            TracklistMgr  * mp_Tracklist;
+            TextItemsMgr * mp_Textitems;
             CoverArtMgr * mp_CoverArt;
     };
 }

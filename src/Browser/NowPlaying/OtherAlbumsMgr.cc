@@ -15,4 +15,10 @@ namespace Browser
         }
         show_all();
     }
+    
+    /////////////////////////////////
+
+    void OtherAlbumsMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
+    {
+    }
 }

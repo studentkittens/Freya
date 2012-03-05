@@ -25,9 +25,9 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     Fortuna/Fortuna.cc
     ##################
     NowPlaying/NowPlaying.cc
-    NowPlaying/TextView.cc
     NowPlaying/ImageWall.cc
     NowPlaying/EventImage.cc
+    NowPlaying/TextPageMgr.cc
     NowPlaying/OtherAlbumsMgr.cc
     NowPlaying/TracklistMgr.cc
     NowPlaying/RelatedLinksMgr.cc

@@ -3,16 +3,17 @@
 
 #include <gtkmm.h>
 #include "ImageWall.hh"
+#include "UpdateInterface.hh"
 
 namespace Browser 
 {
-    class TracklistMgr : public Gtk::Expander
+    class TracklistMgr : public Gtk::Expander, public UpdateInterface
     {
         public:
             TracklistMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+            void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
 
         private:
-            //Gtk::Box trackBox;
             ImageWall txtWall;
     };
 }

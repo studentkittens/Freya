@@ -41,7 +41,7 @@
 #include "CoverArtMgr.hh"
 #include "ArtistPhotosMgr.hh"
 #include "RelatedLinksMgr.hh"
-#include "UpdateInterface.hh"
+#include "../../Glyr/UpdateInterface.hh"
 
 namespace Browser
 {

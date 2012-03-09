@@ -45,6 +45,7 @@ namespace GManager
         set_size_request(75);
         align->add(*this);
         align->show_all();
+
     }
 
     /////////////////////////

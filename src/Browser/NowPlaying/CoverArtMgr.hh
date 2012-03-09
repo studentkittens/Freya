@@ -4,11 +4,11 @@
 #include <gtkmm.h>
 #include "../../MPD/AbstractClientUser.hh"
 #include "EventImage.hh"
-#include "UpdateInterface.hh"
+#include "../../Glyr/UpdateInterface.hh"
 
 namespace Browser
 {
-    class CoverArtMgr : public Gtk::Expander, public UpdateInterface
+    class CoverArtMgr : public Gtk::Expander, public Glyr::UpdateInterface
     {
         public:
             CoverArtMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
@@ -17,7 +17,8 @@ namespace Browser
         protected:
 
             void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
-            
+            void on_deliver(GlyrMemCache * list);
+
         private:
 
             Gtk::Label * mp_ArtistLabel, 

@@ -89,8 +89,6 @@ namespace Browser
 
     void TextItemsMgr::update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data)
     {
-        for(ManagerVector::iterator it = managerList.begin(); it != managerList.end(); it++) {
-            (*it)->update(client,events,data);
-        }
+        managerList.at(mp_TypeSelection->get_active_row_number())->update(client,events,data);
     }
 }

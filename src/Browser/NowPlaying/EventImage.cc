@@ -1,5 +1,6 @@
 #include "EventImage.hh"
 #include "../../Log/Writer.hh"
+#include <giomm/memoryinputstream.h>
 
 #define NO_IMAGE_PATH "ui/gfx/noimage.png"
 
@@ -25,6 +26,23 @@ namespace Browser
         } catch(...) {
             Warning("Can not load '%s'",NO_IMAGE_PATH);
         }
+    }
+
+    /////////////////
+
+    void EventImage::set(const char * data, gsize len)
+    {
+        Glib::RefPtr<Gio::MemoryInputStream> is = Gio::MemoryInputStream::create();
+        is->add_data(data,len);
+        Glib::RefPtr<Gdk::Pixbuf> pix = Gdk::Pixbuf::create_from_stream_at_scale(is,200,200,false);
+        set(pix);
+    }
+
+    /////////////////
+
+    void EventImage::set(Glib::RefPtr<Gdk::Pixbuf>& pix)
+    {
+        image->set(pix);
     }
 
     /////////////////

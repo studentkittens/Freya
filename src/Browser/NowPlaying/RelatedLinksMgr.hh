@@ -3,11 +3,11 @@
 
 #include <gtkmm.h>
 #include "ImageWall.hh"
-#include "UpdateInterface.hh"
+#include "../../Glyr/UpdateInterface.hh"
 
 namespace Browser 
 {
-    class RelatedLinksMgr : public Gtk::Expander, public UpdateInterface
+    class RelatedLinksMgr : public Gtk::Expander, public Glyr::UpdateInterface
     {
         public:
             RelatedLinksMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);

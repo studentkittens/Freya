@@ -2,7 +2,7 @@
 #define FREYA_TEXTITEMSMGR_HH
 
 #include <gtkmm.h>
-#include "UpdateInterface.hh"
+#include "../../Glyr/UpdateInterface.hh"
 
 /*
  * Instance the Manager from the glade file,
@@ -16,9 +16,9 @@
 
 namespace Browser 
 {
-    typedef std::vector<UpdateInterface*> ManagerVector;
+    typedef std::vector<Glyr::UpdateInterface*> ManagerVector;
 
-    class TextItemsMgr : public Gtk::Expander, public UpdateInterface
+    class TextItemsMgr : public Gtk::Expander, public Glyr::UpdateInterface
     {
         public:
 

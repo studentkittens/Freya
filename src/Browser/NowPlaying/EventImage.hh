@@ -11,6 +11,9 @@ namespace Browser
             EventImage();
             EventImage(Glib::RefPtr<Gdk::Pixbuf>& pix);
             ~EventImage();
+    
+            void set(Glib::RefPtr<Gdk::Pixbuf>& pix);
+            void set(const char * data, gsize len);
 
         private:
             /* Common ctor */

@@ -2,11 +2,11 @@
 #define FREYA_TEXTPAGEMGR_HH
 
 #include <gtkmm.h>
-#include "UpdateInterface.hh"
+#include "../../Glyr/UpdateInterface.hh"
 
 namespace Browser
 {
-    class TextPageMgr : public Gtk::ScrolledWindow, public UpdateInterface
+    class TextPageMgr : public Gtk::ScrolledWindow, public Glyr::UpdateInterface
     {
         public: 
             TextPageMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);

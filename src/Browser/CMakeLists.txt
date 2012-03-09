@@ -36,4 +36,4 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     NowPlaying/ArtistPhotosMgr.cc
     )
 
-TARGET_LINK_LIBRARIES(FreyaBrowserLib FreyaAvahiLib ${GTKMM3_PACKAGE_LIBRARIES})
+TARGET_LINK_LIBRARIES(FreyaBrowserLib FreyaAvahiLib FreyaGlyrLib ${GTKMM3_PACKAGE_LIBRARIES})

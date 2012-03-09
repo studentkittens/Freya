@@ -1,5 +1,6 @@
 #include "CoverArtMgr.hh"
 #include "../../Utils/Utils.hh"
+#include "../../Glyr/Request.hh"
 
 namespace Browser
 {
@@ -30,6 +31,14 @@ namespace Browser
     
     /////////////////////////////
     
+    void CoverArtMgr::on_deliver(GlyrMemCache * list)
+    {
+        coverArt->set(list->data,list->size);
+        glyr_cache_free(list);
+    }
+    
+    /////////////////////////////
+    
     void CoverArtMgr::update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data)
     {
         if(events & MPD_IDLE_PLAYER) {
@@ -39,6 +48,9 @@ namespace Browser
                 mp_AlbumLabel ->set_text(curr->get_tag(MPD_TAG_ARTIST,0));
                 mp_TitleLabel ->set_text(curr->get_tag(MPD_TAG_ALBUM,0));
                 mp_YearLabel  ->set_text(curr->get_tag(MPD_TAG_DATE,0));
+
+                Glyr::Stack::instance().request(this,*curr,GLYR_GET_COVERART);
+
             } else {
                 mp_ArtistLabel->set_text("[Not Playing]");
                 mp_AlbumLabel ->set_text("");

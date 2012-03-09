@@ -50,20 +50,27 @@
 #include "../Browser/Settings/Settings.hh"
 #include "../Browser/NowPlaying/NowPlaying.hh"
 #include "../Log/Writer.hh"
+#include "../Glyr/Request.hh"
 
 #include "../Utils/Utils.hh"
 #include "SignalHandler.hh"
 #include "CssLoader.hh"
 
+
 ////////////////////////
 
 int main(int argc, char *argv[])
 {
+    Glib::thread_init(NULL);
     setlocale(LC_ALL,"");
+
     Gtk::Main kit(argc,argv);
 
     try
     {
+        /* Metadata System */
+        Glyr::Stack::instance();
+
         /* Check if debug output enabled */
         if(argc > 1 && !strcmp("-v",argv[1]))
             LogSetVerbosity(Log::LOG_DEBUG);
@@ -75,7 +82,7 @@ int main(int argc, char *argv[])
 
         /* Instance the client */
         MPD::Client client;
-        
+
         /* Try to laod the css file */
         Init::CssLoader css;
 

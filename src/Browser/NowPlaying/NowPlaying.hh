@@ -69,11 +69,14 @@ namespace Browser
 
             void on_client_update(mpd_idle, MPD::NotifyData&);
             void on_connection_change(bool, bool);
+    
+            void on_expander_changed(Glyr::UpdateInterface * intf);
 
             // Vars
 
             ManagerVector managerList;
             Gtk::ScrolledWindow * mp_NPScroll;
+            MPD::NotifyData * lastData;
 
             // Managers
 

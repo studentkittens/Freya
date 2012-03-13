@@ -4,13 +4,27 @@
 #include "../MPD/Client.hh"
 #include "../Utils/Singleton.hh"
 #include "UpdateInterface.hh"
+#include <gdkmm/pixbuf.h>
+#include <giomm/memoryinputstream.h>
 
-extern "C" {
-  #include <glyr/cache.h>
-}
+#include <glyr/cache.h>
 
 namespace Glyr 
 {
+    /**
+     * @brief Glyr related Util function to turn a GlyrMemCache to an pixbuf
+     *
+     * @param c the cache, must be imagedata.
+     * @param size_x width
+     * @param size_y height
+     * @param aspect keep aspect?
+     *
+     * @return a newly Refpointerd Pixbuf
+     */
+    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_cache(GlyrMemCache * c, int size_x = 150, int size_y = 150, bool aspect = false);
+
+    /////////////////////////////
+
     class Stack
     {
         DEF_SINGLETON(Stack)
@@ -41,13 +55,24 @@ namespace Glyr
              */
             void destroy();
 
+            /**
+             * @brief Begin a request
+             *
+             * This is not necessary to call - most of the time it's just
+             * fine to call request(), but if you want to group several 
+             * requests in one response use begin_request() and end_request()
+             * to wrap your requests, so they get delievered as "one", 
+             * otherwise only the most recent request gets delivered 
+             */
+            void enqueue(UpdateInterface * intf);
+
         private:
-            
+
             /*
              * Actual thread function that calls
              * glyr_get() and notifies the client
              */
-            void thread(GlyrQuery * q, UpdateInterface * intf, Glib::Dispatcher * disp);
+            void thread(GlyrQuery * q, UpdateInterface * intf, Glib::Dispatcher * disp, int reqID);
 
             // Vars
 

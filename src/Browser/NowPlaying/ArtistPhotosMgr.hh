@@ -12,6 +12,7 @@ namespace Browser
         public:
             ArtistPhotosMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
             void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
+            void on_deliver(GlyrMemCache * list);
 
         private:
             ImageWall wall;

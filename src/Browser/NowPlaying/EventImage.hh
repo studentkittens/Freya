@@ -13,7 +13,8 @@ namespace Browser
             ~EventImage();
     
             void set(Glib::RefPtr<Gdk::Pixbuf>& pix);
-            void set(const char * data, gsize len);
+            void set(const char * data, gsize len, int width = 200, int height = 200, bool aspect = false);
+            void set_default();
 
         private:
             /* Common ctor */

@@ -1,5 +1,6 @@
 #include "ImageWall.hh"
 #include "EventImage.hh"
+#include "../../Glyr/Request.hh"
 
 namespace Browser 
 {
@@ -33,6 +34,18 @@ void ImageWall::add(Gtk::Widget& w)
         col++;
         row = 0;
     }
+    show_all();
+}
+
+/////////////////
+
+void ImageWall::add(GlyrMemCache * c, int width, int height, bool aspect)
+{
+    Glib::RefPtr<Gdk::Pixbuf> pix = Glyr::create_pixbuf_from_cache(c,width,height,aspect);
+    EventImage * img = Gtk::manage(new EventImage(pix));
+    if(img != NULL) {
+        add(*img);
+    }
 }
 
 /////////////////
@@ -49,6 +62,7 @@ void ImageWall::clear()
         Gtk::Widget * w = *it;
         if(w != NULL) {
             Gtk::Container::remove(*w);
+            delete  w;
         }
     }
 }

@@ -140,11 +140,13 @@ int main(int argc, char *argv[])
         kit.run();
 
         /*------ END ---------- */
-
+        
         if(CONFIG_GET_AS_INT("settings.playback.stoponexit"))
         {
             client.playback_stop();
         }
+        
+        Glyr::Stack::instance().destroy();
 
         client.disconnect();
     }

@@ -2,6 +2,7 @@
 #define FREYA_IMAGEWALL_HH
 
 #include <gtkmm.h>
+#include <glyr/glyr.h>
 
 namespace Browser 
 {
@@ -12,6 +13,7 @@ namespace Browser
 
             void add(Widget& w);
             void add(std::string& path);
+            void add(GlyrMemCache * c, int width = 75, int height = 75, bool aspect = false);
             void clear();
 
         private:

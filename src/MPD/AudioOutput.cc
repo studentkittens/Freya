@@ -29,6 +29,8 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "AudioOutput.hh"
+#include "BaseClient.hh"
+
 namespace MPD
 {
     AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) :
@@ -45,23 +47,23 @@ namespace MPD
         return mpd_output_get_id(mp_Output);
     }
 
-//-----------------------
+    //-----------------------
 
     const char * AudioOutput::get_name()
     {
         return mpd_output_get_name(mp_Output);
     }
 
-//-----------------------
+    //-----------------------
 
     bool AudioOutput::get_enabled()
     {
         return mpd_output_get_enabled(mp_Output);
     }
 
-//-----------------------
-// CLIENT EXTENSIONS
-//-----------------------
+    //-----------------------
+    // CLIENT EXTENSIONS
+    //-----------------------
 
     bool AudioOutput::enable()
     {
@@ -74,10 +76,10 @@ namespace MPD
         }
         EXTERNAL_GET_LAID
 
-        return retv;
+            return retv;
     }
 
-//-----------------------
+    //-----------------------
 
     bool AudioOutput::disable()
     {
@@ -90,10 +92,10 @@ namespace MPD
         }
         EXTERNAL_GET_LAID
 
-        return retv;
+            return retv;
     }
 
-//-----------------------
+    //-----------------------
 
     const char * AudioOutput::get_path()
     {

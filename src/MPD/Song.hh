@@ -75,7 +75,7 @@ namespace MPD
          *
          * @return a string
          */
-        const char * get_tag(enum mpd_tag_type type, unsigned idx);
+        const char * get_tag(enum mpd_tag_type type, unsigned idx = 0);
         /**
          * @brief Formats the data of the song into a string
          *

@@ -13,8 +13,13 @@ namespace Browser
             
             void update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data);
 
+            void set_request_type(GLYR_GET_TYPE type);
+    
+            void on_deliver(GlyrMemCache * list);
+
         private:
             Gtk::TextView * textView;
+            GLYR_GET_TYPE type;
 
     };
 }

@@ -1,5 +1,6 @@
 #include "ArtistPhotosMgr.hh"
 #include "../../Utils/Utils.hh"
+#include "../../Glyr/Request.hh"
 
 namespace Browser
 {
@@ -8,19 +9,30 @@ namespace Browser
           wall(7,3)
     {
         add(wall);
-        for(int i = 0; i < 3; i++) {
-            char * s = g_strdup_printf("ui/Akrea_artistphoto_%d.jpeg",i);
-            puts(s);
-            std::string a(s);
-            wall.add(a);
-        }
         show_all();
+    }
+    
+    /////////////////////////////
+    
+    void ArtistPhotosMgr::on_deliver(GlyrMemCache * list)
+    {
+        for(GlyrMemCache * iter = list; iter; iter = iter->next) {
+            wall.add(iter,120,120,true);
+        }
+        glyr_free_list(list);
     }
     
     /////////////////////////////
     
     void ArtistPhotosMgr::update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data)
     {
-
+        if(event & MPD_IDLE_PLAYER) 
+        {
+            wall.clear();
+            MPD::Song * curr = data.get_song();
+            if(curr != NULL) {
+                Glyr::Stack::instance().request(this,*curr,GLYR_GET_ARTIST_PHOTOS,6);
+            }
+        }
     }
 }

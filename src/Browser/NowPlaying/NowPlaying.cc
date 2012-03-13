@@ -50,7 +50,42 @@ namespace Browser
         ADD_MANAGER(builder,"np_artistimage_expander",mp_ArtistPhotos);
         ADD_MANAGER(builder,"np_relatedlinks_expander",mp_RelatedLinks);
 
+        /*
+         * Register for the 'expand' signal of all Managers,
+         * so we can send an update signal once they get visible
+         */
+        for(ManagerVector::iterator it = managerList.begin(); it != managerList.end(); it++)
+        {
+            Gtk::Expander * ex = dynamic_cast<Gtk::Expander*>(*it);
+            if(ex != NULL) {
+                ex->property_expanded().signal_changed().connect(
+                      sigc::bind(sigc::mem_fun(*this,&NowPlaying::on_expander_changed),*it)
+                );
+            }
+        }
+
+        // Colors
+        Gdk::RGBA black;
+        black.set_rgba(0,0,0);
+
+        Gtk::Viewport * vp = NULL;
+        BUILDER_GET(builder,"np_Viewport",vp);
+        vp->override_background_color(black);
+
+
         get_container()->show_all();
+    }
+
+    /////////////////////////////
+
+    void NowPlaying::on_expander_changed(Glyr::UpdateInterface * intf)
+    {
+        if(lastData != NULL) {
+            Gtk::Expander * ex = dynamic_cast<Gtk::Expander*>(intf);
+            if(ex && ex->get_expanded()) {
+                intf->update(*mp_Client,MPD_IDLE_PLAYER,*lastData);
+            }      
+        }
     }
 
     /////////////////////////////
@@ -61,18 +96,22 @@ namespace Browser
     }
 
     /////////////////////////////
-            
+
     void NowPlaying::on_client_update(mpd_idle events, MPD::NotifyData& data)
     {
-        for(ManagerVector::iterator it = managerList.begin(); it != managerList.end(); it++) {
-            (*it)->update(*mp_Client,events,data);
+        if(events & MPD_IDLE_PLAYER) {
+            for(ManagerVector::iterator it = managerList.begin(); it != managerList.end(); it++) {
+                Gtk::Expander * ex = dynamic_cast<Gtk::Expander*>(*it);
+                if(ex && ex->get_expanded()) {
+                    (*it)->update(*mp_Client,events,data);
+                }
+            }
         }
+        lastData = &data;
     }
-    
+
     /////////////////////////////
 
     void NowPlaying::on_connection_change(bool server_changed, bool is_connected)
-    {
-
-    }
+    {}
 }

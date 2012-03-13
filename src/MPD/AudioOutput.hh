@@ -34,10 +34,10 @@
 #include "AbstractClientExtension.hh"
 #include "AbstractComposite.hh"
 
+#include <mpd/client.h>
+
 namespace MPD
 {
-    typedef struct mpd_output mpd_output;
-
     /**
      * @brief Wrapper for mpd_output, implements also two client commands:
      * enable() and disable()

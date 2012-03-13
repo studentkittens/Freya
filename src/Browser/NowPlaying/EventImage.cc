@@ -27,14 +27,14 @@ namespace Browser
             Warning("Can not load '%s'",NO_IMAGE_PATH);
         }
     }
-
+    
     /////////////////
 
-    void EventImage::set(const char * data, gsize len)
+    void EventImage::set(const char * data, gsize len, int width, int height, bool aspect)
     {
         Glib::RefPtr<Gio::MemoryInputStream> is = Gio::MemoryInputStream::create();
         is->add_data(data,len);
-        Glib::RefPtr<Gdk::Pixbuf> pix = Gdk::Pixbuf::create_from_stream_at_scale(is,200,200,false);
+        Glib::RefPtr<Gdk::Pixbuf> pix = Gdk::Pixbuf::create_from_stream_at_scale(is,width,height,aspect);
         set(pix);
     }
 
@@ -52,6 +52,13 @@ namespace Browser
         setup(pix);
     }
 
+    /////////////////
+    
+    void EventImage::set_default()
+    {
+        set(EventImage::noImagePix);
+    }
+    
     /////////////////
 
     void EventImage::setup(Glib::RefPtr<Gdk::Pixbuf>& pix)

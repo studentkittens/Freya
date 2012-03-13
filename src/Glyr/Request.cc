@@ -3,6 +3,13 @@
 
 namespace Glyr
 {
+    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_cache(GlyrMemCache * c, int size_x, int size_y, bool aspect)
+    {
+        Glib::RefPtr<Gio::MemoryInputStream> is = Gio::MemoryInputStream::create();
+        is->add_data(c->data,c->size);
+        return Gdk::Pixbuf::create_from_stream_at_scale(is,size_x,size_y,aspect);
+    }
+
     Stack::Stack() :
         pool(4,false),
         jobCounter(0),
@@ -19,6 +26,8 @@ namespace Glyr
     void Stack::destroy()
     {
         Info("Shutting down Metadatasystem...");
+        gotDestroyed = true;
+        pool.shutdown(true);
 
         /*
          * Send a goodbye to every Query, so they exit early 
@@ -37,17 +46,15 @@ namespace Glyr
         condMutex.unlock();
 
         /*
-         * Clean up
+         * Kill the DB connection
          */
-        gotDestroyed = true;
         glyr_db_destroy(dbConnection);
-        pool.shutdown(true);
 
     }
 
     ////////////////////////
 
-    void Stack::thread(GlyrQuery * q, UpdateInterface * intf, Glib::Dispatcher * disp)
+    void Stack::thread(GlyrQuery * q, UpdateInterface * intf, Glib::Dispatcher * disp, int reqID)
     {
         jobCounter++;
 
@@ -60,12 +67,34 @@ namespace Glyr
          * is served at a time, the actual
          * callback is called inside the mainthread
          * (thanks to the dispatcher)
+         *
+         * Only deliver when request is the last one send.
          */
         if(intf != NULL) {
-            Glib::Mutex::Lock lock(deliverMutex);
+            if(intf->requestCounter == reqID || intf->queueCounter) {
+                Glib::Mutex::Lock lock(deliverMutex);
+                disp->connect(sigc::bind(
+                              sigc::mem_fun(intf,&UpdateInterface::deliver_internal),results,disp,true)
+                             );
 
-            disp->connect(sigc::bind(sigc::mem_fun(intf,&UpdateInterface::deliver_internal),results,disp));
-            disp->emit();
+                disp->emit();
+            } else {
+                /* 
+                 * Glib::Dispatcher does not like to be freed
+                 * in another thread in which it had been instanced,
+                 * so use it to kill itself.. 
+                 */
+                disp->connect(sigc::bind(
+                              sigc::mem_fun(intf,&UpdateInterface::deliver_internal),results,disp,false)
+                             );
+
+                disp->emit();
+                glyr_free_list(results);
+            }
+
+            if(intf->queueCounter) {
+                intf->queueCounter--;
+            }
         }
 
         /*
@@ -97,13 +126,22 @@ namespace Glyr
     }
 
     ////////////////////////
+    ////     PUBLIC    /////
+    ////////////////////////
+
+    void Stack::enqueue(UpdateInterface * intf)
+    {
+        intf->queueCounter++;
+    }
+
+    ////////////////////////
 
     void Stack::request(UpdateInterface * intf, MPD::Song& song, GLYR_GET_TYPE type, int number)
     {
         request(intf,
-                song.get_tag(MPD_TAG_ARTIST,0),
-                song.get_tag(MPD_TAG_ALBUM, 0),
-                song.get_tag(MPD_TAG_TITLE, 0),
+                song.get_tag(MPD_TAG_ARTIST),
+                song.get_tag(MPD_TAG_ALBUM ),
+                song.get_tag(MPD_TAG_TITLE ),
                 type,number);
     }
 
@@ -129,10 +167,14 @@ namespace Glyr
                     glyr_opt_verbosity(query,2);
                 }
 
-                Glib::Dispatcher * disp = new Glib::Dispatcher;
+                /* 
+                 * Dispatcher needs to be instanced in
+                 * the thread of the mainloop, i.e. here
+                 */
+                Glib::Dispatcher * disp = new Glib::Dispatcher; 
 
                 murderList.push_back(query);
-                pool.push(sigc::bind(sigc::mem_fun(*this,&Stack::thread),query,intf,disp));
+                pool.push(sigc::bind(sigc::mem_fun(*this,&Stack::thread),query,intf,disp,++(intf->requestCounter)));
             }
         }
     }

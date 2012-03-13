@@ -28,7 +28,7 @@ namespace Browser
         protected:
 
             void on_type_combo_changed();
-            void add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder,const char * name,Gtk::StockID icon);
+            void add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, GLYR_GET_TYPE type, const char * name, Gtk::StockID icon);
 
         private:
 

@@ -42,9 +42,9 @@ namespace Browser
                         &TextItemsMgr::on_type_combo_changed));
         }
 
-        add_txtview_page(builder,"Songtext",Gtk::Stock::FILE);
-        add_txtview_page(builder,"Artist Biography",Gtk::Stock::ORIENTATION_PORTRAIT);
-        add_txtview_page(builder,"Album Review",Gtk::Stock::CDROM);
+        add_txtview_page(builder,GLYR_GET_LYRICS,"Songtext",Gtk::Stock::FILE);
+        add_txtview_page(builder,GLYR_GET_ARTISTBIO,"Artist Biography",Gtk::Stock::ORIENTATION_PORTRAIT);
+        add_txtview_page(builder,GLYR_GET_ALBUM_REVIEW,"Album Review",Gtk::Stock::CDROM);
         mp_TypeSelection->set_active(0);
     }
 
@@ -52,7 +52,7 @@ namespace Browser
     ///////// Private ///////////
     /////////////////////////////
 
-    void TextItemsMgr::add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, const char * name, Gtk::StockID icon)
+    void TextItemsMgr::add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, GLYR_GET_TYPE type, const char * name, Gtk::StockID icon)
     {
         Glib::RefPtr<Gtk::Builder> temp_builder = Gtk::Builder::create_from_file("ui/NowPlaying_TextView.glade");
         if(temp_builder) 
@@ -61,6 +61,7 @@ namespace Browser
             ADD_MANAGER(temp_builder,"np_textview_scw",pageMgr);
 
             if(pageMgr != NULL) {
+                pageMgr->set_request_type(type);
                 Gtk::TreeModel::Row row = *(m_TypeModel->append());
                 row[m_TypeColumns.m_col_id]   = name; 
                 row[m_TypeColumns.m_col_icon] = mp_NBook->render_icon_pixbuf(icon,Gtk::ICON_SIZE_DND);

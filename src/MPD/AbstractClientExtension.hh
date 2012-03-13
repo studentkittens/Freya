@@ -31,10 +31,10 @@
 #ifndef FREYA_ABSTRACTCLIENTEXTENSION_HH
 #define FREYA_ABSTRACTCLIENTEXTENSION_HH
 
-#include "BaseClient.hh"
-
 namespace MPD
 {
+    class BaseClient;
+
     /**
      * @brief Abstract base class for classes that want to implement spefic MPD Commands.
      */
@@ -47,48 +47,33 @@ namespace MPD
          *
          * @param base_client a reference to the MPD::Client
          */
-        AbstractClientExtension(MPD::BaseClient& base_client)
+        AbstractClientExtension(BaseClient& base_client)
         {
             mp_BaseClient = &base_client;
         }
 
-        virtual ~AbstractClientExtension() {};
-
     protected:
 
-        MPD::BaseClient * mp_BaseClient;
-
-        /**
-         * @brief Get the underlying C struct
-         *
-         * @return a pointer to a valid mpd_connection
-         */
-        mpd_connection * get_c_connection()
-        {
-            g_assert(mp_BaseClient);
-            if(mp_BaseClient->is_connected())
-            {
-                MPD::Connection& conn = mp_BaseClient->get_connection();
-                return conn.get_connection();
-            }
-            else
-            {
-                return NULL;
-            }
-        }
+        BaseClient * mp_BaseClient;
     };
 
-    /* Go into active mode */
-#define EXTERNAL_GET_BUSY                   \
-            if(mp_BaseClient->is_connected())   \
-            {                                   \
-                mp_BaseClient->go_busy();       \
-                mpd_connection * conn =         \
-                get_c_connection();             \
+/* Get the mpd_connection */
+#define get_c_connection()                                 \
+        (mp_BaseClient->is_connected()) ?                  \
+        mp_BaseClient->get_connection().get_connection() : \
+        NULL
+
+/* Go into active mode */
+#define EXTERNAL_GET_BUSY                     \
+            if(mp_BaseClient->is_connected()) \
+            {                                 \
+                mp_BaseClient->go_busy();     \
+                mpd_connection * conn =       \
+                get_c_connection();           \
                 if(conn != NULL) {
 
-    /* Go back idling, *never* forget this */
-#define EXTERNAL_GET_LAID             \
+/* Go back idling, *never* forget this */
+#define EXTERNAL_GET_LAID                 \
                 }                         \
                 mp_BaseClient->go_idle(); \
             }

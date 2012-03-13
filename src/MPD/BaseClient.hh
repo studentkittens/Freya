@@ -33,6 +33,7 @@
 
 #include "Listener.hh"
 #include "Connection.hh"
+#include "Query.hh"
 
 namespace MPD
 {
@@ -124,6 +125,24 @@ namespace MPD
          *
          */
         void force_update();
+
+        /**
+         * @brief Creates a Query to search songs in the the Database
+         *
+         * @param exact Exact or fuzzy matching?
+         *
+         * @return A newly allocated Query, delete after use
+         */
+        Query * create_db_songs_query(bool exact = false);
+
+        /**
+         * @brief Creates a Query to search tags in the Database
+         *
+         * @param tag 
+         *
+         * @return 
+         */
+        Query * create_db_tag_query(mpd_tag_type tag);
 
     protected:
 

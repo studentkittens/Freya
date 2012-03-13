@@ -29,6 +29,7 @@
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
 #include "Playlist.hh"
+#include "BaseClient.hh"
 
 namespace MPD
 {
@@ -40,7 +41,7 @@ namespace MPD
         mpc_playlist = &playlist;
     }
 
-//---------------------------
+    //---------------------------
 
     Playlist::Playlist(const Playlist& copy_this) :
         AbstractClientExtension(*mp_BaseClient),
@@ -52,7 +53,7 @@ namespace MPD
         }
     }
 
-//---------------------------
+    //---------------------------
 
     Playlist::~Playlist()
     {
@@ -60,23 +61,23 @@ namespace MPD
             mpd_playlist_free(mpc_playlist);
     }
 
-//---------------------------
+    //---------------------------
 
     const char * Playlist::get_path()
     {
         return mpd_playlist_get_path(mpc_playlist);
     }
 
-//---------------------------
+    //---------------------------
 
     time_t Playlist::get_last_modified()
     {
         return mpd_playlist_get_last_modified(mpc_playlist);
     }
 
-//---------------------------
-// CLIENT EXTENSIONS
-//---------------------------
+    //---------------------------
+    // CLIENT EXTENSIONS
+    //---------------------------
 
     void Playlist::remove()
     {
@@ -87,7 +88,7 @@ namespace MPD
         EXTERNAL_GET_LAID
     }
 
-//---------------------------
+    //---------------------------
 
     void Playlist::load()
     {
@@ -98,7 +99,7 @@ namespace MPD
         EXTERNAL_GET_LAID
     }
 
-//---------------------------
+    //---------------------------
 
     void Playlist::rename(const char * new_name)
     {
@@ -112,7 +113,7 @@ namespace MPD
         }
     }
 
-//---------------------------
+    //---------------------------
 
     void Playlist::add_song(const char * uri)
     {
@@ -126,12 +127,12 @@ namespace MPD
         }
     }
 
-//---------------------------
+    //---------------------------
 
     void Playlist::add_song(MPD::Song& song)
     {
         add_song(song.get_path());
     }
 
-//---------------------------
+    //---------------------------
 }

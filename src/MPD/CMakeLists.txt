@@ -10,6 +10,7 @@ ADD_LIBRARY(FreyaMPDLib
             Directory.cc
             AudioOutput.cc
             NotifyData.cc
+            Query.cc
             )
 
 TARGET_LINK_LIBRARIES(
@@ -29,3 +30,6 @@ ENDIF()
 
 ADD_EXECUTABLE(test_client test_client.cc)
 TARGET_LINK_LIBRARIES(test_client FreyaMPDLib)
+
+ADD_EXECUTABLE(test_query test_query.cc)
+TARGET_LINK_LIBRARIES(test_query FreyaMPDLib)

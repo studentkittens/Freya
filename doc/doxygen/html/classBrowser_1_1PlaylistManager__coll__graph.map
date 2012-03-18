@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Frame\n||}" alt="" coords="5,1349,63,1427"/>
-<area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="88,1313,235,1463"/>
-<area shape="rect" id="node6" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="259,1342,411,1434"/>
-<area shape="rect" id="node8" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="435,1335,609,1441"/>
+<area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Frame\n||}" alt="" coords="5,1364,63,1441"/>
+<area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="88,1313,235,1493"/>
+<area shape="rect" id="node6" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="259,1357,411,1449"/>
+<area shape="rect" id="node8" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n||+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="435,1349,609,1456"/>
 <area shape="rect" id="node10" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="425,627,620,1247"/>
 <area shape="rect" id="node12" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="263,293,457,576"/>
 <area shape="rect" id="node14" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="195,35,311,200"/>

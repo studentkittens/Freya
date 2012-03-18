@@ -43,7 +43,7 @@
 /* The actual macros */
 #define Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
 #define Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)
-#define Fatal(msg, ...)    _MSG(Log::LOG_FATAL_ERROR, msg, ##__VA_ARGS__)
+#define Critical(msg, ...) _MSG(Log::LOG_CRITICAL, msg, ##__VA_ARGS__)
 #define Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)
 #define Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
 #define Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
@@ -55,12 +55,13 @@ namespace Log
      */
     enum LOGLEVEL
     {
-        LOG_FATAL_ERROR = 1,
+        LOG_CRITICAL = 1,
         LOG_ERROR,
         LOG_WARN,
         LOG_OK,
         LOG_INFO,
-        LOG_DEBUG
+        LOG_DEBUG,
+        LOG_NUMS_OF_LEVEL
     };
 
     class Writer
@@ -129,17 +130,13 @@ namespace Log
         LOGLEVEL m_Verbosity; 
 
         /**
-         * @brief Translate LOGLEVEL to a string
-         *
-         * @return Converted string as const char *
-         */
-        const char * convert_enum_to_str(LOGLEVEL level, bool& append_location);
-        /**
          * @brief get current time as timestamp
          *
          * @param buffer[] output argument, must be at least 20 bytes in size
          */
         void get_current_time(char buffer[]);
+    
+        void write_out(std::stringstream& stream);
     };
 }
 

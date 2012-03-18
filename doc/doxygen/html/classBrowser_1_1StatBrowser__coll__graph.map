@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Gtk::Frame\n||}" alt="" coords="5,43,93,120"/>
-<area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="117,6,264,157"/>
+<area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Gtk::Frame\n||}" alt="" coords="5,57,93,135"/>
+<area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="117,6,264,186"/>
 </map>

@@ -1,33 +1,33 @@
 /***********************************************************
-* This file is part of Freya
-* - A free MPD Gtk3 MPD Client -
-*
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider
-*
-* Copyright (C) [2011-2012]
-* Hosted at: https://github.com/studentkittens/Freya
-*
-*              __..--''``---....___   _..._    __
-*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
-*   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //
-*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
-*
-* Freya is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Freya is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Freya. If not, see <http://www.gnu.org/licenses/>.
-**************************************************************/
+ * This file is part of Freya
+ * - A free MPD Gtk3 MPD Client -
+ *
+ * Authors: Christopher Pahl, Christoph Piechula,
+ *          Eduard Schneider
+ *
+ * Copyright (C) [2011-2012]
+ * Hosted at: https://github.com/studentkittens/Freya
+ *
+ *              __..--''``---....___   _..._    __
+ *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+ *   ///_.-' _..--.'_                        `( ) ) // //
+ *   / (_..-' // (< _     ;_..__               ; `' / ///
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
+ *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+ *
+ * Freya is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Freya is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Freya. If not, see <http://www.gnu.org/licenses/>.
+ **************************************************************/
 #include "Listener.hh"
 #include "../Log/Writer.hh"
 
@@ -43,17 +43,17 @@ namespace MPD
      */
     static const int map_IOCondtion_MPDASync[][2] =
     {
-        {G_IO_IN,  MPD_ASYNC_EVENT_READ},
-        {G_IO_OUT, MPD_ASYNC_EVENT_WRITE},
-        {G_IO_HUP, MPD_ASYNC_EVENT_HUP},
-        {G_IO_ERR, MPD_ASYNC_EVENT_ERROR}
+        {Glib::IO_IN,  MPD_ASYNC_EVENT_READ},
+        {Glib::IO_OUT, MPD_ASYNC_EVENT_WRITE},
+        {Glib::IO_HUP, MPD_ASYNC_EVENT_HUP},
+        {Glib::IO_ERR, MPD_ASYNC_EVENT_ERROR}
     };
 
 
     /* Number of rows in above table */
-    static const unsigned map_IOAsync_size = (sizeof(map_IOCondtion_MPDASync)/sizeof(unsigned));
+    static const unsigned map_IOAsync_size = (sizeof(map_IOCondtion_MPDASync)/sizeof(const int)/2);
 
-//--------------------------------
+    ///////////////////////////
 
     Listener::Listener(EventNotifier * notifier, Connection& sync_conn) : m_NData(sync_conn)
     {
@@ -99,7 +99,7 @@ namespace MPD
         async_socket_fd = mpd_async_get_fd(async_conn);
     }
 
-//--------------------------------
+    ///////////////////////////
 
     Listener::~Listener()
     {
@@ -109,16 +109,16 @@ namespace MPD
             mpd_parser_free(mp_Parser);
     }
 
-//--------------------------------
+    ///////////////////////////
 
     bool Listener::is_idling()
     {
         return is_idle;
     }
 
-//--------------------------------
-//--------------------------------
-//--------------------------------
+    ///////////////////////////
+    ///////////////////////////
+    ///////////////////////////
 
     /* Check if a error occured */
     bool Listener::check_async_error()
@@ -135,7 +135,7 @@ namespace MPD
         return result;
     }
 
-//--------------------------------
+    ///////////////////////////
 
     void Listener::invoke_user_callback()
     {
@@ -187,7 +187,7 @@ namespace MPD
         }
     }
 
-//--------------------------------
+    ///////////////////////////
 
     /*
      * Parse a respone and add every occured event
@@ -202,43 +202,43 @@ namespace MPD
 
         switch (result)
         {
-        case MPD_PARSER_ERROR:
-        {
-            io_eventmask = (mpd_async_event)0;
-            check_async_error();
-            Error("ParserError: %d - %s",
-                  mpd_parser_get_server_error(mp_Parser),
-                  mpd_parser_get_message(mp_Parser));
+            case MPD_PARSER_ERROR:
+                {
+                    io_eventmask = (mpd_async_event)0;
+                    check_async_error();
+                    Error("ParserError: %d - %s",
+                            mpd_parser_get_server_error(mp_Parser),
+                            mpd_parser_get_message(mp_Parser));
 
-            return false;
-        }
-        case MPD_PARSER_PAIR:
-        {
-            const char * name = NULL;
-            if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
-            {
-                const char * value = mpd_parser_get_value(mp_Parser);
-                idle_events |= mpd_idle_name_parse(value);
-            }
-            break;
-        }
-        case MPD_PARSER_MALFORMED:
-        {
-            io_eventmask = (mpd_async_event)0;
-            check_async_error();
-            return false;
-        }
-        case MPD_PARSER_SUCCESS:
-        {
-            io_eventmask = (mpd_async_event)0;
-            invoke_user_callback();
-            return true;
-        }
+                    return false;
+                }
+            case MPD_PARSER_PAIR:
+                {
+                    const char * name = NULL;
+                    if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
+                    {
+                        const char * value = mpd_parser_get_value(mp_Parser);
+                        idle_events |= mpd_idle_name_parse(value);
+                    }
+                    break;
+                }
+            case MPD_PARSER_MALFORMED:
+                {
+                    io_eventmask = (mpd_async_event)0;
+                    check_async_error();
+                    return false;
+                }
+            case MPD_PARSER_SUCCESS:
+                {
+                    io_eventmask = (mpd_async_event)0;
+                    invoke_user_callback();
+                    return true;
+                }
         }
         return true;
     }
 
-//--------------------------------
+    ///////////////////////////
 
     /* Reads respone from server line by line,
      * till OK comes in, or an error is occured
@@ -266,7 +266,7 @@ namespace MPD
         return retval;
     }
 
-//--------------------------------
+    ///////////////////////////
 
     /* Create the watchdog on the socket */
     void Listener::create_watch(mpd_async_event events)
@@ -284,7 +284,7 @@ namespace MPD
         io_functor = Glib::signal_io().connect(sigc::mem_fun(this,&Listener::io_callback), async_socket_fd,condition, Glib::PRIORITY_HIGH);
     }
 
-//--------------------------------
+    ///////////////////////////
 
     /* Called once data comes into the socket */
     gboolean Listener::io_callback(Glib::IOCondition condition)
@@ -329,7 +329,7 @@ namespace MPD
         return true;
     }
 
-//--------------------------------
+    ///////////////////////////
 
     bool Listener::enter()
     {
@@ -338,6 +338,7 @@ namespace MPD
             if(is_leaving || is_working)
                 return false;
 
+            Debug("Putting connection into 'idle' state.");
             if(mpd_async_send_command(async_conn, "idle", NULL) == false)
             {
                 check_async_error();
@@ -350,12 +351,20 @@ namespace MPD
             /* Indicate we get into idlemode */
             is_idle = true;
 
-            /* Add a watch on the socket */
-            create_watch(events);
+            Glib::RefPtr<Glib::MainContext> mctx = Glib::MainContext::get_default();
+            if(mctx) 
+            {
+                /* Add a watch on the socket */
+                create_watch(events);
 
-            Glib::RefPtr<Glib::MainContext> m = Glib::MainContext::get_default();
-            while(m->pending())
-                m->iteration(true);
+                /* Let the Mainloop spin a bit.. 
+                 * there are often events waiting at this point
+                 */
+                while(mctx->pending()) {
+                    mctx->iteration(true);
+                }
+
+            }
 
             return true;
         }
@@ -366,7 +375,7 @@ namespace MPD
         }
     }
 
-    //--------------------------------
+    ///////////////////////////
 
     void Listener::leave()
     {
@@ -419,15 +428,14 @@ namespace MPD
         }
     }
 
-    //--------------------------------
+    ///////////////////////////
 
     NotifyData& Listener::get_data()
     {
-
         return m_NData;
     }
 
-    //--------------------------------
+    ///////////////////////////
 
     void Listener::force_update()
     {
@@ -444,8 +452,8 @@ namespace MPD
         is_forced = false;
     }
 
-    //--------------------------------
-    //--------------------------------
+    ///////////////////////////
+    ///////////////////////////
 
     mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
     {
@@ -457,12 +465,11 @@ namespace MPD
         return (mpd_async_event)events;
     }
 
-    //--------------------------------
+    ///////////////////////////
 
     /* Convert MPD's Async event to Glib's IO Socket events by a table */
     Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(mpd_async_event events)
     {
-        /* "Mix in" by using binary OR */
         int condition = 0;
         for(unsigned i = 0; i < map_IOAsync_size; i++)
             if(events & map_IOCondtion_MPDASync[i][1])

@@ -1,5 +1,6 @@
 #include "Request.hh"
 #include "../Log/Writer.hh"
+#include <giomm/memoryinputstream.h>
 
 namespace Glyr
 {

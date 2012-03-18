@@ -1,7 +1,9 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$Handler_8hh.html" title="src/Config/Handler.hh" alt="" coords="405,155,553,181"/>
-<area shape="rect" id="node16" href="$Writer_8hh.html" title="src/Log/Writer.hh" alt="" coords="1283,80,1405,107"/>
-<area shape="rect" id="node31" href="$Notify_8hh.html" title="src/Notify/Notify.hh" alt="" coords="1759,80,1893,107"/>
+<area shape="rect" id="node16" href="$Writer_8hh.html" title="src/Log/Writer.hh" alt="" coords="1297,80,1420,107"/>
+<area shape="rect" id="node31" href="$Request_8hh.html" title="src/Glyr/Request.hh" alt="" coords="1472,80,1611,107"/>
+<area shape="rect" id="node33" href="$Notify_8hh.html" title="src/Notify/Notify.hh" alt="" coords="1649,80,1784,107"/>
+<area shape="rect" id="node41" href="$CompileSymbols_8hh.html" title="src/Utils/CompileSymbols.hh" alt="" coords="1809,80,2001,107"/>
 <area shape="rect" id="node5" href="$SettingsPlayback_8hh.html" title="src/Browser/Settings/SettingsPlayback.hh" alt="" coords="5,229,272,256"/>
 <area shape="rect" id="node7" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="373,304,587,331"/>
 <area shape="rect" id="node9" href="$SettingsNetwork_8hh.html" title="src/Browser/Settings/SettingsNetwork.hh" alt="" coords="349,229,611,256"/>
@@ -12,7 +14,7 @@
 <area shape="rect" id="node20" href="$SettingsOutputs_8hh.html" title="src/Browser/Settings/SettingsOutputs.hh" alt="" coords="918,229,1177,256"/>
 <area shape="rect" id="node23" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="1203,229,1448,256"/>
 <area shape="rect" id="node25" href="$check__utils_8hh.html" title="src/Utils/check_utils.hh" alt="" coords="1473,229,1631,256"/>
-<area shape="rect" id="node33" href="$MenuList_8hh.html" title="src/GManager/MenuList.hh" alt="" coords="1628,155,1807,181"/>
-<area shape="rect" id="node35" href="$NotifyManager_8hh.html" title="src/GManager/NotifyManager.hh" alt="" coords="1831,155,2040,181"/>
-<area shape="rect" id="node37" href="$check__notify_8hh.html" title="src/Notify/check_notify.hh" alt="" coords="2066,155,2240,181"/>
+<area shape="rect" id="node35" href="$MenuList_8hh.html" title="src/GManager/MenuList.hh" alt="" coords="1628,155,1807,181"/>
+<area shape="rect" id="node37" href="$NotifyManager_8hh.html" title="src/GManager/NotifyManager.hh" alt="" coords="1831,155,2040,181"/>
+<area shape="rect" id="node39" href="$check__notify_8hh.html" title="src/Notify/check_notify.hh" alt="" coords="2066,155,2240,181"/>
 </map>

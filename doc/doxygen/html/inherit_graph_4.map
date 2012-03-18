@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classGManager_1_1Window.html" title="Just manages the close button." alt="" coords="6,5,143,32"/>
+<area shape="rect" id="node1" href="$classGtk_1_1EventBox.html" title="EventBox" alt="" coords="6,5,85,32"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1EventImage.html" title="Browser::EventImage" alt="" coords="134,5,282,32"/>
 </map>

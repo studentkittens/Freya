@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ArtistPhotosMgr_8hh.html" title="src/Browser/NowPlaying/ArtistPhotosMgr.hh" alt="" coords="5,80,287,107"/>
+<area shape="rect" id="node5" href="$NowPlaying_8hh.html" title="src/Browser/NowPlaying/NowPlaying.hh" alt="" coords="664,155,921,181"/>
+<area shape="rect" id="node7" href="$CoverArtMgr_8hh.html" title="src/Browser/NowPlaying/CoverArtMgr.hh" alt="" coords="363,80,625,107"/>
+<area shape="rect" id="node10" href="$OtherAlbumsMgr_8hh.html" title="src/Browser/NowPlaying/OtherAlbumsMgr.hh" alt="" coords="650,80,936,107"/>
+<area shape="rect" id="node13" href="$TracklistMgr_8hh.html" title="src/Browser/NowPlaying/TracklistMgr.hh" alt="" coords="961,80,1220,107"/>
+<area shape="rect" id="node16" href="$TextItemsMgr_8hh.html" title="src/Browser/NowPlaying/TextItemsMgr.hh" alt="" coords="1245,80,1515,107"/>
+<area shape="rect" id="node19" href="$RelatedLinksMgr_8hh.html" title="src/Browser/NowPlaying/RelatedLinksMgr.hh" alt="" coords="1539,80,1825,107"/>
+<area shape="rect" id="node23" href="$TextPageMgr_8hh.html" title="src/Browser/NowPlaying/TextPageMgr.hh" alt="" coords="1851,80,2117,107"/>
+<area shape="rect" id="node25" href="$Request_8hh.html" title="src/Glyr/Request.hh" alt="" coords="2141,80,2280,107"/>
+</map>

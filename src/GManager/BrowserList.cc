@@ -32,11 +32,14 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
+#include "../Browser/AbstractBrowser.hh"
+
 namespace GManager
 {
     BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(client),
-        m_NoBrowsers("No Browsers found. This is weird and probably a bug.")
+        m_NoBrowsers("No Browsers found. This is weird and probably a bug."),
+        mp_Active(NULL)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -143,6 +146,16 @@ namespace GManager
             Gtk::Widget * content = browser->get_container();
             content->grab_focus();
             mp_List->add(*(content));
+
+            browser->m_IsActive = true;
+            if(mp_Active != NULL) 
+            {
+                mp_Active->m_IsActive = false;
+            }
+
+            mp_Active = browser;
+
+            browser->on_getting_active();
         }
         else
         {

@@ -11,17 +11,43 @@ INCLUDE(CheckCXXCompilerFlag)
 # ------------------------------------------------
 SET(FREYA_VERSION_MAJOR "0")
 SET(FREYA_VERSION_MINOR "0")
-SET(FREYA_VERSION_MICRO "0")
+SET(FREYA_VERSION_MICRO "1")
 SET(FREYA_VERSION_NAME  "Terrifying Tarantula") 
 # ------------------------------------------------
 
-# a new comment
+# ------------------------------------------------
+# You can configure the next few params on the cmd:
+# -DLIB_SUFFIX="64" for example
+# ------------------------------------------------
+IF(NOT DEFINED INSTALL_BIN_DIR)
+ SET(INSTALL_BIN_DIR bin)
+ELSE()
+  MESSAGE("-- Install binaries to: \"${INSTALL_BIN_DIR}\"")
+ENDIF()
+
+IF(NOT DEFINED INSTALL_LIB_DIR)
+  SET(INSTALL_LIB_DIR lib${LIB_SUFFIX})
+ELSE()
+  MESSAGE("-- Install library to: \"${INSTALL_LIB_DIR}\"")
+ENDIF()
+
+IF(NOT DEFINED INSTALL_INC_DIR)
+  SET(INSTALL_INC_DIR include)
+ELSE()
+  MESSAGE("-- Install headers to: \"${INSTALL_INC_DIR}\"")
+ENDIF()
+
+IF(DEFINED LIB_SUFFIX)
+  MESSAGE("-- Library suffix is: \"${LIB_SUFFIX}\"")
+ENDIF()
+# ------------------------------------------------
+
 
 # ------------------------------------------------
 # CFlags and warnlevel / build config 
 # ------------------------------------------------
-SET(COMMON_FLAGS "-Wall -Wextra -std=c++0x -Wno-unused-parameter -ggdb3 -pipe")
-SET(CMAKE_CXX_FLAGS_RELEASE "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS} -Os -march=native -s")
+SET(COMMON_FLAGS "-Wall -Wextra -std=c++0x -Wno-unused-parameter -pipe")
+SET(CMAKE_CXX_FLAGS_RELEASE "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS} -Os -s -march=native")
 SET(CMAKE_CXX_FLAGS_DEBUG   "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS} -ggdb3")
 SET(CMAKE_CXX_FLAGS         "${COMMON_FLAGS} ${CMAKE_CXX_FLAGS}")
 ADD_DEFINITIONS(${CMAKE_CXX_FLAGS})
@@ -73,3 +99,31 @@ ADD_CUSTOM_TARGET(tex
 # Add src/CMakeLists.txt
 # --------------------------
 ADD_SUBDIRECTORY(src)
+
+
+# --------------------------
+# uninstall target
+# --------------------------
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY
+    )
+
+ADD_CUSTOM_TARGET(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+
+# --------------------------
+# dest target
+# --------------------------
+
+ADD_CUSTOM_TARGET(release COMMAND "ruby" "scripts/amalgamation.rb > ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils/CompileSymbols.cc")
+
+# --------------------------
+# dest target
+# --------------------------
+SET(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
+ADD_CUSTOM_TARGET(dist
+    COMMAND git archive --prefix=${CMAKE_PROJECT_NAME}/ HEAD
+        | bzip2 > ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+

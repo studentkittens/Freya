@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classGtk_1_1Window.html" title="{Gtk::Window\n||}" alt="" coords="5,199,104,276"/>
-<area shape="rect" id="node14" href="$classAvahi_1_1View_1_1ModelColumns.html" title="{Avahi::View::ModelColumns\n|+ m_col_ip\l+ m_col_hostname\l+ m_col_name\l+ m_col_port\l|+ ModelColumns()\l}" alt="" coords="733,177,920,298"/>
+<area shape="rect" id="node2" href="$classGtk_1_1Window.html" title="{Gtk::Window\n||}" alt="" coords="5,191,104,268"/>
+<area shape="rect" id="node14" href="$classAvahi_1_1View_1_1ModelColumns.html" title="{Avahi::View::ModelColumns\n|+ m_col_ip\l+ m_col_hostname\l+ m_col_name\l|+ ModelColumns()\l}" alt="" coords="733,176,920,283"/>
 <area shape="rect" id="node16" href="$classGtk_1_1TreeModel_1_1ColumnRecord.html" title="{ColumnRecord\n||}" alt="" coords="581,5,691,83"/>
 </map>

@@ -7,5 +7,6 @@ var searchData=
   ['abstractitemgenerator_2ehh',['AbstractItemGenerator.hh',['../AbstractItemGenerator_8hh.html',1,'']]],
   ['abstractitemlist_2ehh',['AbstractItemlist.hh',['../AbstractItemlist_8hh.html',1,'']]],
   ['abstractsettings_2ehh',['AbstractSettings.hh',['../AbstractSettings_8hh.html',1,'']]],
+  ['artistphotosmgr_2ehh',['ArtistPhotosMgr.hh',['../ArtistPhotosMgr_8hh.html',1,'']]],
   ['audiooutput_2ehh',['AudioOutput.hh',['../AudioOutput_8hh.html',1,'']]]
 ];

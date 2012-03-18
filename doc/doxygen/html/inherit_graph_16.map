@@ -1,7 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classCxxTest_1_1TestSuite.html" title="TestSuite" alt="" coords="6,81,85,108"/>
-<area shape="rect" id="node3" href="$classLogTestSuite.html" title="LogTestSuite" alt="" coords="141,5,240,32"/>
-<area shape="rect" id="node5" href="$classMPDTestSuite.html" title="MPDTestSuite" alt="" coords="137,56,245,83"/>
-<area shape="rect" id="node7" href="$classNotifyTestSuite.html" title="NotifyTestSuite" alt="" coords="134,107,247,133"/>
-<area shape="rect" id="node9" href="$classUtilsTestSuite.html" title="UtilsTestSuite" alt="" coords="138,157,243,184"/>
+<area shape="rect" id="node1" href="$classMPD_1_1NotifyData.html" title="NotifyData is passed as second argument to the on_client_update signal." alt="" coords="5,5,128,32"/>
 </map>

@@ -1,5 +1,6 @@
 #include "EventImage.hh"
 #include "../../Log/Writer.hh"
+#include "../../Utils/Utils.hh"
 #include <giomm/memoryinputstream.h>
 
 #define NO_IMAGE_PATH "ui/gfx/noimage.png"
@@ -17,7 +18,7 @@ namespace Browser
     {
         try {
             if(!EventImage::noImagePix) {
-                EventImage::noImagePix = Gdk::Pixbuf::create_from_file(NO_IMAGE_PATH);
+                EventImage::noImagePix = Utils::pixbuf_internal_fetch(NO_IMAGE_PATH);
             }
 
             image = new Gtk::Image(EventImage::noImagePix);

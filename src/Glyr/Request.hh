@@ -5,7 +5,6 @@
 #include "../Utils/Singleton.hh"
 #include "UpdateInterface.hh"
 #include <gdkmm/pixbuf.h>
-#include <giomm/memoryinputstream.h>
 
 #include <glyr/cache.h>
 

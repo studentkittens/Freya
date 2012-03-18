@@ -1,5 +1,5 @@
-ADD_LIBRARY(FreyaUtils STATIC Utils.cc)
-TARGET_LINK_LIBRARIES(FreyaUtils  ${GLIBMM_PACKAGE_LIBRARIES})
+ADD_LIBRARY(FreyaUtils STATIC Utils.cc CompileSymbols.cc)
+TARGET_LINK_LIBRARIES(FreyaUtils FreyaLogHandlerLib ${GTKMM3_PACKAGE_LIBRARIES})
 ADD_EXECUTABLE(test_utils test_utils.cc)
 TARGET_LINK_LIBRARIES(test_utils FreyaUtils)
 

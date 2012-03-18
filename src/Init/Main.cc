@@ -56,7 +56,6 @@
 #include "SignalHandler.hh"
 #include "CssLoader.hh"
 
-
 ////////////////////////
 
 int main(int argc, char *argv[])
@@ -87,7 +86,9 @@ int main(int argc, char *argv[])
         Init::CssLoader css;
 
         /* Get the glade file */
-        Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
+        //Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
+        Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create();
+        BUILDER_ADD(builder,"ui/Freya.glade");
 
         GManager::Window main_window(builder);
 
@@ -123,6 +124,12 @@ int main(int argc, char *argv[])
         Browser::Settings settings_browser(client,builder,&tray);
         browser_list.add(settings_browser);
 
+        browser_list.set(queue_browser);
+
+        main_window.get_window()->show();
+
+        Debug("Setting up GUI done.");
+
         ///////////////////
 
         /* Send a good morning to all widgets */
@@ -131,21 +138,19 @@ int main(int argc, char *argv[])
             client.connect();
         }
 
-        browser_list.set(np_browser);
-
-        main_window.get_window()->show();
-
         /* ------START -------- */
+
+        Debug("Entering Mainloop!");
 
         kit.run();
 
         /*------ END ---------- */
-        
+
         if(CONFIG_GET_AS_INT("settings.playback.stoponexit"))
         {
             client.playback_stop();
         }
-        
+
         Glyr::Stack::instance().destroy();
 
         client.disconnect();

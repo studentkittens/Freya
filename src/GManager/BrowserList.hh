@@ -32,8 +32,9 @@
 #define FREYA_BROWSERLIST_GUARD
 
 #include "../ui_includes.hh"
-#include "../Browser/AbstractBrowser.hh"
 #include "../MPD/AbstractClientUser.hh"
+
+class AbstractBrowser;
 
 namespace GManager
 {
@@ -105,6 +106,10 @@ namespace GManager
 
         /* fortune label on startup */
         Gtk::Label m_NoBrowsers;
+
+        /* Actively shown browser */
+        AbstractBrowser * mp_Active;
+
     };
 }
 

@@ -33,6 +33,9 @@
 #include <glib.h>
 
 #include "Utils.hh"
+#include "CompileSymbols.hh"
+
+#include <giomm/memoryinputstream.h>
 
 namespace Utils
 {
@@ -102,5 +105,77 @@ namespace Utils
         char num_buf[size];
         g_snprintf(num_buf,size,"%d",num);
         return std::string(num_buf);
+    }
+    
+    /*-----------------------*/
+
+    void builder_internal_fetch(Glib::RefPtr<Gtk::Builder>& ref, const char * file)
+    {
+        const char * defs = CompileSymbols::instance().get_defs(file); 
+        try
+        {
+            if(defs == NULL) {
+                Debug("Fetching from file: %s",file);
+                ref->add_from_file(file);
+            } else {
+                Debug("Fetching from Memory: %s",file);
+                ref->add_from_string(defs,-1);
+            }
+        }
+        catch(const Gtk::BuilderError& e)
+        {
+            Error("Unable to load .glade file:\n"       
+                  "    Reason:  %s            \n"   
+                  "    Is '%s' a valid path?  \n",      
+                  e.what().c_str(),file);       
+        }
+    }
+    
+    /*-----------------------*/
+    
+    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_data(const guchar * data, gsize len, int width, int height, bool aspect)
+    {
+        Glib::RefPtr<Gio::MemoryInputStream> is = Gio::MemoryInputStream::create();
+        if(is) {
+            is->add_data(data,len);
+        }
+
+        if(width == -1 && height == -1) 
+        {
+            return Gdk::Pixbuf::create_from_stream(is);
+        }
+        else
+        {
+            return Gdk::Pixbuf::create_from_stream_at_scale(is,width,height,aspect);
+        }
+    }
+    
+    /*-----------------------*/
+
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf_internal_fetch(const char * file, int width, int height, bool aspect)
+    {
+        const char * defs = CompileSymbols::instance().get_defs(file); 
+        if(defs == NULL)
+        {
+            Debug("Fetching image from FS: %s",file);
+
+            std::string sfile(file);
+            if(width == -1 && height == -1)
+            {
+                return Gdk::Pixbuf::create_from_file(sfile);
+            } 
+            else
+            {
+                return Gdk::Pixbuf::create_from_file(sfile,width,height,aspect);
+            }
+        }
+        else
+        {
+            Debug("Fetching image from memory: %s",file);
+
+            gsize out_len = 0;
+            guchar * imgdata = g_base64_decode(defs,&out_len);
+            return create_pixbuf_from_data(imgdata,out_len,width,height,aspect);
+        }
     }
 }

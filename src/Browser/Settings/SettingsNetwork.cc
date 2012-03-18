@@ -36,7 +36,7 @@
 
 namespace Browser
 {
-    SettingsNetwork::SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett) :
+    SettingsNetwork::SettingsNetwork(Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett) :
         ip_name("settings.connection.host"),
         port_name("settings.connection.port"),
         timeout_name("settings.connection.reconnectinterval"),

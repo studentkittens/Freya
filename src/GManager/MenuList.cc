@@ -33,16 +33,13 @@
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 
-#define VOLUME_STEP 5
-#define VOLUME_LOW 33
-#define VOLUME_MID 66
-
 namespace GManager
 {
-    MenuList::MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder) :
+    MenuList::MenuList(MPD::Client &client, Glib::RefPtr<Gtk::Builder> &builder) :
         AbstractClientUser(client)
     {
-        running=false;
+        running = false;
+
         BUILDER_GET(builder,"menu_item_connect", menu_connect);
         BUILDER_GET(builder,"menu_item_disconnect", menu_disconnect);
         BUILDER_GET(builder,"menu_item_quit", menu_quit);
@@ -57,11 +54,13 @@ namespace GManager
         BUILDER_GET(builder,"menu_mode_consume", menu_consume);
 
         BUILDER_GET(builder,"menu_about",menu_about);
-
         BUILDER_GET(builder,"playback_menuitem",menu_playback);
 
         BUILDER_ADD(builder,"ui/About.glade");
         BUILDER_GET_NO_MANAGE(builder,"about_main",window_about);
+
+        Glib::RefPtr<Gdk::Pixbuf> logo = Utils::pixbuf_internal_fetch("ui/gfx/Freya_about.jpg",-1,-1);
+        window_about->set_logo(logo);
 
         menu_connect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_connect));
         menu_disconnect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_disconnect));

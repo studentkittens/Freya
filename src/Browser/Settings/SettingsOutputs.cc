@@ -36,7 +36,7 @@
 namespace Browser
 {
 
-    SettingsOutputs::SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett)
+    SettingsOutputs::SettingsOutputs(MPD::Client &client,Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett)
         : AbstractClientUser(client), running(false)
     {
         this->sett = sett;

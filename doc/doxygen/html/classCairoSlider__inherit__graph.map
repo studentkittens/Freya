@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classGManager_1_1Timeslide.html" title="Manager for the Timeslide in the topbar." alt="" coords="5,404,152,481"/>
+<area shape="rect" id="node7" href="$classGManager_1_1VolumeSlider.html" title="Manages the VolumeSlider." alt="" coords="177,389,343,496"/>
+<area shape="rect" id="node2" href="$classGtk_1_1DrawingArea.html" title="{Gtk::DrawingArea\n||}" alt="" coords="106,5,232,83"/>
+</map>

@@ -35,7 +35,7 @@
 
 namespace Browser
 {
-    SettingsPlayback::SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
+    SettingsPlayback::SettingsPlayback(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
         AbstractClientUser(client),
         stoponexit_name("settings.playback.stoponexit")
     {

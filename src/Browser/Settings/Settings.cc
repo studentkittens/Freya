@@ -35,7 +35,7 @@
 #include "../../MPD/AbstractItemlist.hh"
 namespace Browser
 {
-    Settings::Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray):
+    Settings::Settings(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray):
         AbstractBrowser("Settings",true,false,Gtk::Stock::PREFERENCES)
     {
         BUILDER_ADD(builder,"ui/Settings.glade");

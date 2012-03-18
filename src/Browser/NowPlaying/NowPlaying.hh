@@ -71,6 +71,7 @@ namespace Browser
             void on_connection_change(bool, bool);
     
             void on_expander_changed(Glyr::UpdateInterface * intf);
+            void on_getting_active();
 
             // Vars
 

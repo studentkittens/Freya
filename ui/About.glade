@@ -4,7 +4,6 @@
   <object class="GtkAboutDialog" id="about_main">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">About</property>
     <property name="modal">True</property>
     <property name="window_position">center-always</property>
@@ -23,15 +22,14 @@ Freya is free software: you can redistribute it and/or modify it under the terms
 Freya is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with Freya. If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
-    <property name="authors">
-Christopher "sahib" Pahl, sahib@online.de
-Christoph "kitteh" Piechula, christoph@nullcat.de
-Eduard "eddY" Schneider, eduard.schneider@hof-university.de</property>
-    <property name="documenters">
-Christopher "sahib" Pahl, sahib@online.de
-Christoph "kitteh" Piechula, christoph@nullcat.de
-Eduard "eddY" Schneider, eduard.schneider@hof-university.de</property>
-    <property name="logo">Freya_about.jpg</property>
+    <property name="authors">\n
+Christopher "sahib" Pahl, sahib@online.de\n
+Christoph "kitteh" Piechula, christoph@nullcat.de\n
+Eduard "eddY" Schneider, eduard.schneider@hof-university.de\n</property>
+    <property name="documenters">\n
+Christopher "sahib" Pahl, sahib@online.de\n
+Christoph "kitteh" Piechula, christoph@nullcat.de\n
+Eduard "eddY" Schneider, eduard.schneider@hof-university.de\n</property>
     <property name="wrap_license">True</property>
     <property name="license_type">custom</property>
     <child internal-child="vbox">

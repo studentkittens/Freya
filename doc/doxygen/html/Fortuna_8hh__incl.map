@@ -1,3 +1,19 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$AbstractBrowser_8hh.html" title="../AbstractBrowser.hh" alt="" coords="89,80,237,107"/>
+<area shape="rect" id="node3" href="$AbstractBrowser_8hh.html" title="../AbstractBrowser.hh" alt="" coords="264,80,412,107"/>
+<area shape="rect" id="node5" href="$ui__includes_8hh.html" title="../ui_includes.hh" alt="" coords="258,229,374,256"/>
+<area shape="rect" id="node11" href="$BrowserList_8hh.html" title="../GManager/BrowserList.hh" alt="" coords="406,155,590,181"/>
+<area shape="rect" id="node14" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="400,229,597,256"/>
+<area shape="rect" id="node16" href="$Client_8hh.html" title="Client.hh" alt="" coords="461,304,534,331"/>
+<area shape="rect" id="node18" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="313,379,417,405"/>
+<area shape="rect" id="node59" href="$AbstractItemGenerator_8hh.html" title="AbstractItemGenerator.hh" alt="" coords="544,379,716,405"/>
+<area shape="rect" id="node20" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="270,453,356,480"/>
+<area shape="rect" id="node35" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="25,603,132,629"/>
+<area shape="rect" id="node53" href="$Query_8hh.html" title="Query.hh" alt="" coords="525,603,598,629"/>
+<area shape="rect" id="node30" href="$Status_8hh.html" title="Status.hh" alt="" coords="370,603,448,629"/>
+<area shape="rect" id="node33" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="76,528,178,555"/>
+<area shape="rect" id="node39" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="156,603,250,629"/>
+<area shape="rect" id="node43" href="$Song_8hh.html" title="Song.hh" alt="" coords="275,603,345,629"/>
+<area shape="rect" id="node46" href="$AbstractComposite_8hh.html" title="AbstractComposite.hh" alt="" coords="666,677,818,704"/>
+<area shape="rect" id="node57" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="461,677,642,704"/>
+<area shape="rect" id="node61" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="616,453,748,480"/>
 </map>

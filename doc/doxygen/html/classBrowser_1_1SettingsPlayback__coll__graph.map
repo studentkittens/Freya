@@ -1,6 +1,6 @@
 <map id="G" name="G">
 <area shape="rect" id="node2" href="$classBrowser_1_1AbstractSettings.html" title="Abstract base class for every Tab in the Settingsbrowser." alt="" coords="47,1312,221,1448"/>
-<area shape="rect" id="node4" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="246,1327,420,1433"/>
+<area shape="rect" id="node4" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n||+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="246,1327,420,1433"/>
 <area shape="rect" id="node6" href="$classMPD_1_1Client.html" title="The client implements concrete commands of the MPD Protocol." alt="" coords="236,627,431,1247"/>
 <area shape="rect" id="node8" href="$classMPD_1_1BaseClient.html" title="The Base to MPD::Client." alt="" coords="73,293,268,576"/>
 <area shape="rect" id="node10" href="$classMPD_1_1Listener.html" title="Listener for Server events, Freya&#39;s actual core." alt="" coords="5,35,121,200"/>

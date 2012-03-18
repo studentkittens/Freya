@@ -1,3 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classMPD_1_1Status.html" title="A Wrapper for mpd_status." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node1" href="$classMPD_1_1AbstractClientExtension.html" title="Abstract base class for classes that want to implement spefic MPD Commands." alt="" coords="6,56,207,83"/>
+<area shape="rect" id="node3" href="$classMPD_1_1AudioOutput.html" title="Wrapper for mpd_output, implements also two client commands: enable() and disable()" alt="" coords="257,107,389,133"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands." alt="" coords="271,56,374,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Query.html" title="MPD::Query" alt="" coords="275,5,370,32"/>
+<area shape="rect" id="node8" href="$classMPD_1_1AbstractComposite.html" title="MPD::AbstractComposite" alt="" coords="21,132,193,159"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Directory.html" title="A wrapper for mpd_directory." alt="" coords="266,208,379,235"/>
+<area shape="rect" id="node14" href="$classMPD_1_1Song.html" title="A wrapper for mpd_song." alt="" coords="277,157,368,184"/>
 </map>

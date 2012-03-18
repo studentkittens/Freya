@@ -1,9 +1,9 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$Database_8hh.html" title="src/Browser/Database/Database.hh" alt="" coords="5,80,235,107"/>
 <area shape="rect" id="node5" href="$Fortuna_8hh.html" title="src/Browser/Fortuna/Fortuna.hh" alt="" coords="259,80,465,107"/>
-<area shape="rect" id="node7" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="491,80,795,107"/>
-<area shape="rect" id="node9" href="$Queue_8hh.html" title="src/Browser/Queue/Queue.hh" alt="" coords="819,80,1013,107"/>
-<area shape="rect" id="node11" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="1038,80,1252,107"/>
-<area shape="rect" id="node13" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="1277,80,1523,107"/>
-<area shape="rect" id="node15" href="$BrowserList_8hh.html" title="src/GManager/BrowserList.hh" alt="" coords="1547,80,1741,107"/>
+<area shape="rect" id="node7" href="$NowPlaying_8hh.html" title="src/Browser/NowPlaying/NowPlaying.hh" alt="" coords="491,80,748,107"/>
+<area shape="rect" id="node9" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="773,80,1077,107"/>
+<area shape="rect" id="node11" href="$Queue_8hh.html" title="src/Browser/Queue/Queue.hh" alt="" coords="1101,80,1296,107"/>
+<area shape="rect" id="node13" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="1321,80,1535,107"/>
+<area shape="rect" id="node15" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="1560,80,1805,107"/>
 </map>

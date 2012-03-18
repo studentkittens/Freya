@@ -46,7 +46,7 @@ namespace Browser
     class SettingsGeneral : public AbstractSettings
     {
     public:
-        SettingsGeneral(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon *trayptr);
+        SettingsGeneral(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon *trayptr);
         ~SettingsGeneral();
 
         void accept_new_settings();

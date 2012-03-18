@@ -1,15 +1,19 @@
 <map id="G" name="G">
-<area shape="rect" id="node5" href="$Heartbeat_8hh.html" title="Heartbeat.hh" alt="" coords="545,80,642,107"/>
-<area shape="rect" id="node49" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="582,155,779,181"/>
-<area shape="rect" id="node7" href="$Client_8hh.html" title="../MPD/Client.hh" alt="" coords="553,229,673,256"/>
-<area shape="rect" id="node9" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="479,304,583,331"/>
-<area shape="rect" id="node44" href="$AbstractItemGenerator_8hh.html" title="AbstractItemGenerator.hh" alt="" coords="608,304,779,331"/>
-<area shape="rect" id="node11" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="292,379,378,405"/>
-<area shape="rect" id="node26" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="415,528,522,555"/>
-<area shape="rect" id="node21" href="$Status_8hh.html" title="Status.hh" alt="" coords="99,528,177,555"/>
-<area shape="rect" id="node24" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="328,453,430,480"/>
-<area shape="rect" id="node30" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="201,528,295,555"/>
-<area shape="rect" id="node34" href="$Song_8hh.html" title="Song.hh" alt="" coords="320,528,390,555"/>
-<area shape="rect" id="node37" href="$AbstractComposite_8hh.html" title="AbstractComposite.hh" alt="" coords="561,603,713,629"/>
-<area shape="rect" id="node46" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="628,379,759,405"/>
+<area shape="rect" id="node3" href="$ui__includes_8hh.html" title="../ui_includes.hh" alt="" coords="184,80,300,107"/>
+<area shape="rect" id="node7" href="$Heartbeat_8hh.html" title="Heartbeat.hh" alt="" coords="408,80,505,107"/>
+<area shape="rect" id="node57" href="$AbstractClientUser_8hh.html" title="../MPD/AbstractClientUser.hh" alt="" coords="272,155,469,181"/>
+<area shape="rect" id="node60" href="$CairoSlider_8hh.html" title="CairoSlider.hh" alt="" coords="565,80,669,107"/>
+<area shape="rect" id="node9" href="$Client_8hh.html" title="../MPD/Client.hh" alt="" coords="378,229,498,256"/>
+<area shape="rect" id="node11" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="305,304,409,331"/>
+<area shape="rect" id="node52" href="$AbstractItemGenerator_8hh.html" title="AbstractItemGenerator.hh" alt="" coords="559,304,730,331"/>
+<area shape="rect" id="node13" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="251,379,337,405"/>
+<area shape="rect" id="node28" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="25,528,132,555"/>
+<area shape="rect" id="node46" href="$Query_8hh.html" title="Query.hh" alt="" coords="525,528,598,555"/>
+<area shape="rect" id="node23" href="$Status_8hh.html" title="Status.hh" alt="" coords="370,528,448,555"/>
+<area shape="rect" id="node26" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="76,453,178,480"/>
+<area shape="rect" id="node32" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="156,528,250,555"/>
+<area shape="rect" id="node36" href="$Song_8hh.html" title="Song.hh" alt="" coords="275,528,345,555"/>
+<area shape="rect" id="node39" href="$AbstractComposite_8hh.html" title="AbstractComposite.hh" alt="" coords="666,603,818,629"/>
+<area shape="rect" id="node50" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="461,603,642,629"/>
+<area shape="rect" id="node54" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="623,379,754,405"/>
 </map>

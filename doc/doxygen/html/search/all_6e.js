@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['needs_5fconnection',['needs_connection',['../classAbstractBrowser.html#a850becf4ab659f7ba2eab72862de7826',1,'AbstractBrowser']]],
+  ['needs_5fconnection',['needs_connection',['../classAbstractBrowser.html#ab1d69a8e8520adcfb2f8bcf2b4a54092',1,'AbstractBrowser']]],
   ['notify',['Notify',['../classNotify_1_1Notify.html',1,'Notify']]],
   ['notify',['Notify',['../namespaceNotify.html',1,'']]],
   ['notify_2ehh',['Notify.hh',['../Notify_8hh.html',1,'']]],
@@ -11,8 +11,11 @@ var searchData=
   ['notifydata',['NotifyData',['../classMPD_1_1NotifyData.html',1,'MPD']]],
   ['notifydata',['NotifyData',['../classMPD_1_1NotifyData.html#ac96d8d4c656d579035693132d317bf62',1,'MPD::NotifyData']]],
   ['notifydata_2ehh',['NotifyData.hh',['../NotifyData_8hh.html',1,'']]],
-  ['notifymanager',['NotifyManager',['../classGManager_1_1NotifyManager.html',1,'GManager']]],
   ['notifymanager',['NotifyManager',['../classGManager_1_1NotifyManager.html#a20515a2671a8dab24b54cdaaa58b6f00',1,'GManager::NotifyManager']]],
+  ['notifymanager',['NotifyManager',['../classGManager_1_1NotifyManager.html',1,'GManager']]],
   ['notifymanager_2ehh',['NotifyManager.hh',['../NotifyManager_8hh.html',1,'']]],
-  ['notifytestsuite',['NotifyTestSuite',['../classNotifyTestSuite.html',1,'']]]
+  ['notifytestsuite',['NotifyTestSuite',['../classNotifyTestSuite.html',1,'']]],
+  ['nowplaying',['NowPlaying',['../classBrowser_1_1NowPlaying.html#a6187611712fe0dff94c7d00376cbeb84',1,'Browser::NowPlaying']]],
+  ['nowplaying',['NowPlaying',['../classBrowser_1_1NowPlaying.html',1,'Browser']]],
+  ['nowplaying_2ehh',['NowPlaying.hh',['../NowPlaying_8hh.html',1,'']]]
 ];

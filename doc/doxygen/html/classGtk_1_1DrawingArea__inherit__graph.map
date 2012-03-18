@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classCairoSlider.html" title="{CairoSlider\n||+ CairoSlider()\l+ ~CairoSlider()\l# on_draw()\l# get_border()\l# get_percentage()\l# set_percentage()\l# on_percent_change()\l# get_update_timeout()\l# get_active_color()\l# get_inactive_color()\l}" alt="" coords="92,131,245,341"/>
+<area shape="rect" id="node5" href="$classGManager_1_1Timeslide.html" title="Manager for the Timeslide in the topbar." alt="" coords="5,404,152,481"/>
+<area shape="rect" id="node7" href="$classGManager_1_1VolumeSlider.html" title="Manages the VolumeSlider." alt="" coords="177,389,343,496"/>
+</map>

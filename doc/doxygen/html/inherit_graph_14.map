@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classNotify_1_1Notify.html" title="A Singletonclass to provide Access to libnotify, use the macros down preferrably." alt="" coords="6,5,106,32"/>
+<area shape="rect" id="node1" href="$classMPD_1_1Connection.html" title="A convinience Wrapper around mpd_connection*." alt="" coords="6,5,133,32"/>
 </map>

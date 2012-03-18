@@ -32,6 +32,8 @@
 #define FREYA_UTILS_GUARD
 
 #include <glibmm/ustring.h>
+#include <gtkmm/builder.h>
+#include <gdkmm/pixbuf.h>
 
 /* For Error() */
 #include "../Log/Writer.hh"
@@ -52,17 +54,9 @@
     builder_refp->get_widget(widget_name,widget_ptr);                \
     g_assert(widget_ptr);                                            \
  
-
-#define BUILDER_ADD(builder_ref, filename)   \
-    g_assert(filename);                      \
-    try {                                    \
-     builder_ref->add_from_file(filename);   \
-    } catch(const Gtk::BuilderError& e) {    \
-     Error("Could not add playlist ui"       \
-           "definitions to builder. => %s"   \
-           "| Is '%s' there and okay?",      \
-           e.what().c_str(),filename);       \
-    }
+#define BUILDER_ADD(builder_ref, filename)               \
+    g_assert(filename);                                  \
+    Utils::builder_internal_fetch(builder_ref,filename); \
 
 namespace Utils
 {
@@ -95,5 +89,16 @@ namespace Utils
      * @return a std::string containing just the number (copy for further use!)
      */
     std::string int_to_string(int num);
+    
+    /**
+     * @brief Fetches ui definitions either from file or from compiled-in glade xml
+     *
+     * @param ref the builder to add to
+     * @param file the file, Freya maintains a lookup table in release mode.
+     */
+    void builder_internal_fetch(Glib::RefPtr<Gtk::Builder>& ref, const char * file);
+    
+    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_data(const guchar * data, gsize len, int width = 150, int height = 150, bool aspect = false);
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf_internal_fetch(const char * file, int width = 150, int height = 150, bool aspect = false);
 }
 #endif

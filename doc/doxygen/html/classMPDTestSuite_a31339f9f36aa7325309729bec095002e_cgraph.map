@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#ac83ecfbfe2136cd37de6bc2e462de0ae" title="Get the current MPD::Status." alt="" coords="301,5,494,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Status.html#a81fdec61b201d82dc7d74cc793e9887d" title="True if on random mode." alt="" coords="310,56,485,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Status.html#a4c9f8dae160fe747ec381ba08a253d8e" title="True if on consume mode." alt="" coords="305,107,489,133"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Status.html#a96e738c0b47d883a216fdbe49bf8f849" title="True if on single mode." alt="" coords="315,157,480,184"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Status.html#adcfe90f2caa6d8d56508aef5d54f50b1" title="True if on repeat mode." alt="" coords="314,208,481,235"/>
+<area shape="rect" id="node13" href="$classMPD_1_1Client.html#ac283adb626c5f867f2568c11853bf2e5" title="Toggle randome mode." alt="" coords="304,259,491,285"/>
+<area shape="rect" id="node15" href="$classMPD_1_1Client.html#afa6871fdcf58896043545de56879ea5b" title="Toggle consume mode (song gets deleted from playlist after playing)" alt="" coords="299,309,496,336"/>
+<area shape="rect" id="node17" href="$classMPD_1_1Client.html#a053487f6a71e8c1a9334b81d253a73cc" title="Toggle single mode (stops playing after one song)" alt="" coords="308,360,487,387"/>
+<area shape="rect" id="node19" href="$classMPD_1_1Client.html#ac307c67aff6b342780bcb3bbc91c7578" title="Toggle repeat mode (repeat playlist)" alt="" coords="307,411,487,437"/>
+</map>

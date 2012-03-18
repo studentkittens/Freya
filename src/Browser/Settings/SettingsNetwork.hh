@@ -45,7 +45,7 @@ namespace Browser
     class SettingsNetwork : public AbstractSettings
     {
     public:
-        SettingsNetwork(const Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
+        SettingsNetwork(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
         ~SettingsNetwork();
 
         void accept_new_settings();

@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#ad6846d7cfc8fd752baf8da42bdbfc01e" title="Get the notify sigc::signal." alt="" coords="375,5,625,32"/>
+<area shape="rect" id="node3" href="$classMPD_1_1BaseClient.html#a1011b4f89e94b4bf131513fd3e910a08" title="Get the notify sigc::signal." alt="" coords="375,5,625,32"/>
 <area shape="rect" id="node5" href="$classMPD_1_1AbstractClientUser.html#a1ee5e7593a61d76b82ada057e86c1462" title="Derived class have to implement this." alt="" coords="361,56,639,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1BaseClient.html#a7de1b19d75cc7147d48bdf05c33c151c" title="Register for connection changes." alt="" coords="357,107,643,133"/>
+<area shape="rect" id="node7" href="$classMPD_1_1BaseClient.html#ad58967f7f75ab70e0fe5e85244091512" title="Register for connection changes." alt="" coords="357,107,643,133"/>
 <area shape="rect" id="node9" href="$classMPD_1_1AbstractClientUser.html#a666e06645956aad6d230e31df6f89f30" title="Derived class have to implement this." alt="" coords="344,157,656,184"/>
 </map>

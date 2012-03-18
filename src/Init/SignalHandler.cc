@@ -26,7 +26,7 @@ namespace Init
                 Info("Closing.");
                 break;
             default:
-                Fatal("Freya received an unexpted signal (%s)\n"
+                Critical("Freya received an unexpted signal (%s)\n"
                         "                 Please go to https://github.com/studentkittens/Freya/issues\n"
                         "                 and start to throw bad words like 'backtrace' at us.\n"
                         "                 This message was emitted from: ",

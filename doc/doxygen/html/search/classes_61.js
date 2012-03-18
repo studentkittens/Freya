@@ -7,5 +7,6 @@ var searchData=
   ['abstractitemgenerator',['AbstractItemGenerator',['../classMPD_1_1AbstractItemGenerator.html',1,'MPD']]],
   ['abstractitemlist',['AbstractItemlist',['../classMPD_1_1AbstractItemlist.html',1,'MPD']]],
   ['abstractsettings',['AbstractSettings',['../classBrowser_1_1AbstractSettings.html',1,'Browser']]],
+  ['artistphotosmgr',['ArtistPhotosMgr',['../classBrowser_1_1ArtistPhotosMgr.html',1,'Browser']]],
   ['audiooutput',['AudioOutput',['../classMPD_1_1AudioOutput.html',1,'MPD']]]
 ];

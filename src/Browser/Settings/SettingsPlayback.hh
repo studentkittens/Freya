@@ -47,7 +47,7 @@ namespace Browser
     class SettingsPlayback : public AbstractSettings, public MPD::AbstractClientUser
     {
     public:
-        SettingsPlayback(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+        SettingsPlayback(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
         ~SettingsPlayback();
 
         void accept_new_settings();

@@ -48,26 +48,123 @@
 /* Clear after 2MB logsize */
 #define MAX_LOG_SIZE (2 * 1024 * 1024)
 
-/* Those colors work sadly only on Unix
- * win32 will just print out the actual escapes,
- * (users of powershell might see color though)
- * */
-#define COL_RED "\x1b[31;01m"
-#define COL_YEL "\x1b[33;01m"
-#define COL_GRE "\x1b[32;01m"
-#define COL_BLU "\x1b[34;01m"
-#define COL_NCO "\x1b[0m"
+namespace Log {
+    /* Termcolors 
+     * Based on: http://linuxgazette.net/issue65/padala.html
+     */ 
+    typedef enum {
+        RESET,
+        BRIGHT,
+        DIM,
+        UNDERLINE,
+        BLINK,
+        REVERSE,
+        HIDDEN		
+    } termattribute;
+    
+    /////////////////////////////
 
-namespace Log
-{
-    /*-----------------------------------------------*/
+    typedef enum {
+        BLACK,
+        RED,
+        GREEN,
+        YELLOW,
+        BLUE,
+        MAGENTA,
+        CYAN,
+        WHITE 
+    } termcolor;
+
+    /////////////////////////////
+
+    struct LogDetail
+    {
+        termattribute attr;
+        termcolor color;
+        const char * text;
+        bool detail;
+        bool usedomain; 
+    };
+
+    /////////////////////////////
+
+
+    LogDetail __info[] = {
+        {RESET, BLACK,   "None",     false, false },
+        {RESET, MAGENTA, "Critical", true,  true  },
+        {RESET, RED,     "Error  ",  true,  true  },
+        {RESET, YELLOW,  "Warning",  true,  true  },
+        {RESET, GREEN,   "Done   ",  false, false },
+        {RESET, WHITE,   "Info   ",  false, false },
+        {RESET, BLUE,    "Debug  ",  true,  true  }
+    };
+
+    /////////////////////////////
+    
+    static void resetcolor(FILE * stream)
+    {
+        fprintf(stream,"%c[0m",0x1B);
+    }
+    
+    /////////////////////////////
+
+    static void textcolor(FILE * stream, termattribute attr, termcolor fg)
+    {	
+        /* 
+         * Command is the control command to the terminal 
+         */
+        fprintf(stream,"%c[%d;%dm", 0x1B, attr, fg + 30);
+    }
+
+    /////////////////////////////
+    
+    static void glib_logging(const gchar *log_domain,GLogLevelFlags log_level,const gchar *message, gpointer user_data)
+    {        
+        switch(log_level) {
+            case G_LOG_LEVEL_CRITICAL:
+                Critical(message);
+                break;
+            case G_LOG_LEVEL_ERROR:
+                Error(message);
+                break;
+            case G_LOG_LEVEL_WARNING:      
+                Warning(message);
+                break;
+            case G_LOG_LEVEL_MESSAGE:         
+                Success(message);
+                break;
+            case G_LOG_LEVEL_INFO:         
+                Info(message);
+                break;
+            case G_LOG_LEVEL_DEBUG:
+                Debug(message);
+               break; 
+            case G_LOG_FLAG_RECURSION:
+            case G_LOG_FLAG_FATAL:
+            case G_LOG_LEVEL_MASK:
+            default:
+               break;
+        }
+    }
+
+    /////////////////////////////
+    
+    static void register_log_domains(const char * domain)
+    {
+        g_log_set_handler(domain,
+               (GLogLevelFlags)(G_LOG_LEVEL_MASK | G_LOG_FLAG_FATAL| G_LOG_FLAG_RECURSION),
+               glib_logging, NULL);
+    }
+    
+    /////////////////////////////
 
     Writer::Writer() : m_Verbosity(LOG_DEBUG)
     {
+
         Init::Path path_getter;
         m_Logpath = path_getter.path_to_log();
-
         m_Logfile = fopen(m_Logpath.c_str(),"a");
+
         if(m_Logfile != NULL)
         {
             GStatBuf buf;
@@ -78,26 +175,56 @@ namespace Log
                 clear();
             }
 
-            fprintf(m_Logfile,"#####################################\n");
+            fprintf(m_Logfile,"\n---- cut here ----\n\n");
         }
         else
         {
             perror("Cannot write to logfile");
             g_error("Tried to write it at: %s",m_Logpath.c_str());
         }
+
+        register_log_domains("Glib");
+        register_log_domains("Glib-GObject");
+        register_log_domains("Gtk");
     }
 
-    /*-----------------------------------------------*/
+    /////////////////////////////
 
     Writer::~Writer()
     {
-        if(this->m_Logfile != NULL)
+        if(m_Logfile != NULL)
         {
             fclose(m_Logfile);
         }
     }
 
-    /*-----------------------------------------------*/
+    /////////////////////////////
+
+    void Writer::write_out(std::stringstream& stream)
+    {
+        std::string format = stream.str();
+        fwrite(format.c_str(),1,format.size(),m_Logfile);
+        fwrite(format.c_str(),1,format.size(),stderr);
+        fflush(m_Logfile);
+    }
+    
+    /////////////////////////////
+    
+    std::string get_domain_from_file(const char * file_path)
+    {
+        std::string dir = Glib::path_get_dirname(file_path);
+        return dir.substr(dir.find_last_of(G_DIR_SEPARATOR) + 1);
+    }
+    
+    /////////////////////////////
+
+#define PRINT_LOG_PART(expression) \
+    {                              \
+        std::stringstream buf;     \
+        buf << expression ;        \
+        write_out(buf);            \
+    }                              \
+
 
     void Writer::message(const char * File, int Line, LOGLEVEL level, const char * fmt, ...)
     {
@@ -115,80 +242,51 @@ namespace Log
             char buffer[TIME_BUF_SIZE] = {0};
             get_current_time(buffer);
 
-            /* Convert enum to an approp. string */
-            bool append_location = false;
-            const char * title = convert_enum_to_str(level,append_location);
+            LogDetail &logInfo = __info[level];
+            {
+                textcolor(stderr,logInfo.attr,logInfo.color);
+                PRINT_LOG_PART("[" << logInfo.text << " " << buffer << "]");
+                resetcolor(stderr);
 
-            std::stringstream bufstream;
+                if(logInfo.usedomain)
+                {
+                    textcolor(stderr,logInfo.attr,MAGENTA);
+                    PRINT_LOG_PART("[" << get_domain_from_file(File) << "]");
+                    resetcolor(stderr);
+                }
 
-            /* Add Prefix */
-            bufstream << "[" << title << " " << buffer << "] ";
+                PRINT_LOG_PART(" " << tmp_buf);
 
-            /* Infix the message */
-            bufstream << tmp_buf;
+                if(logInfo.detail) 
+                {
+                    textcolor(stderr,logInfo.attr,logInfo.color);
+                    PRINT_LOG_PART(" (" << Glib::path_get_basename(File) << ":" << Line << ")");
+                    resetcolor(stderr);
+                }
 
-            /* Do the suffix */
-            if(append_location)
-                bufstream << " (" << Glib::path_get_basename(File) << ":" << Line << ")";
-
-            bufstream << std::endl;
-
-            /* Write it to all streams */
-            std::string format = bufstream.str();
-            fwrite(format.c_str(),1,format.size(),m_Logfile);
-            fwrite(format.c_str(),1,format.size(),stderr);
-            fflush(m_Logfile);
+                PRINT_LOG_PART(std::endl);
+            }
 
             /* Format is dyn. allocated - free */
             g_free(tmp_buf);
         }
     }
 
-    /*-----------------------------------------------*/
+    /////////////////////////////
 
-    const char* Writer::convert_enum_to_str(LOGLEVEL level, bool& append_location)
-    {
-        switch(level)
-        {
-        case LOG_OK:
-            append_location = false;
-            return COL_GRE"DONE "COL_NCO;
-        case LOG_ERROR:
-            append_location = true;
-            return COL_RED"ERROR"COL_NCO;
-        case LOG_FATAL_ERROR:
-            append_location = true;
-            return COL_RED"FATAL"COL_NCO;
-        case LOG_INFO:
-            append_location = false;
-            return COL_NCO"INFO "COL_NCO;
-        case LOG_WARN:
-            append_location = true;
-            return COL_YEL"WARN "COL_NCO;
-        case LOG_DEBUG:
-            append_location = true;
-            return COL_BLU"DEBUG"COL_NCO;
-        default:
-            append_location = false;
-            return COL_NCO"INFO "COL_NCO;
-        }
-    }
-
-    /*-----------------------------------------------*/
-    
     void Writer::set_verbosity(LOGLEVEL v)
     {
-        m_Verbosity = CLAMP(v,(LOGLEVEL)0,LOG_DEBUG);
+        m_Verbosity = CLAMP(v,(LOGLEVEL)0,LOG_NUMS_OF_LEVEL);
     }
-    
-    /*-----------------------------------------------*/
-    
+
+    /////////////////////////////
+
     LOGLEVEL Writer::get_verbosity()
     {
         return m_Verbosity;
     }
-    
-    /*-----------------------------------------------*/
+
+    /////////////////////////////
 
     void Writer::clear()
     {
@@ -199,7 +297,7 @@ namespace Log
         }
     }
 
-    /*-----------------------------------------------*/
+    /////////////////////////////
 
     void Writer::get_current_time(char buffer[])
     {

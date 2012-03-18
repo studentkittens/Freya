@@ -53,12 +53,14 @@ namespace MPD
             if(m_Conn.connect())
             {
                 mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
+                Debug("Entering initial Idle mode");
                 go_idle();
+                Debug("Forcing update on GUI...");
                 force_update();
+                Debug("Fully connected.");
             }
             m_Conn.emit_connection_change();
         }
-
         return is_connected();
     }
 

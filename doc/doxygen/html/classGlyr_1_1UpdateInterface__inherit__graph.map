@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classBrowser_1_1ArtistPhotosMgr.html" title="{Browser::ArtistPhotosMgr\n||+ ArtistPhotosMgr()\l+ update()\l+ on_deliver()\l}" alt="" coords="5,168,176,275"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1CoverArtMgr.html" title="{Browser::CoverArtMgr\n||+ CoverArtMgr()\l+ ~CoverArtMgr()\l# update()\l# on_deliver()\l}" alt="" coords="201,161,353,282"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1OtherAlbumsMgr.html" title="{Browser::OtherAlbumsMgr\n||+ OtherAlbumsMgr()\l+ update()\l+ on_deliver()\l}" alt="" coords="377,168,553,275"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1RelatedLinksMgr.html" title="{Browser::RelatedLinksMgr\n||+ RelatedLinksMgr()\l+ update()\l+ on_deliver()\l}" alt="" coords="577,168,753,275"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1TextItemsMgr.html" title="{Browser::TextItemsMgr\n||+ TextItemsMgr()\l+ update()\l# on_type_combo_changed()\l# add_txtview_page()\l}" alt="" coords="777,161,967,282"/>
+<area shape="rect" id="node13" href="$classBrowser_1_1TextPageMgr.html" title="{Browser::TextPageMgr\n||+ TextPageMgr()\l+ update()\l+ set_request_type()\l+ on_deliver()\l}" alt="" coords="991,161,1147,282"/>
+<area shape="rect" id="node15" href="$classBrowser_1_1TracklistMgr.html" title="{Browser::TracklistMgr\n||+ TracklistMgr()\l+ update()\l}" alt="" coords="1171,175,1321,267"/>
+</map>

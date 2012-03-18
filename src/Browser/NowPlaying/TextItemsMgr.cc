@@ -54,7 +54,8 @@ namespace Browser
 
     void TextItemsMgr::add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, GLYR_GET_TYPE type, const char * name, Gtk::StockID icon)
     {
-        Glib::RefPtr<Gtk::Builder> temp_builder = Gtk::Builder::create_from_file("ui/NowPlaying_TextView.glade");
+        Glib::RefPtr<Gtk::Builder> temp_builder = Gtk::Builder::create();
+        BUILDER_ADD(temp_builder,"ui/NowPlaying_TextView.glade");
         if(temp_builder) 
         {
             TextPageMgr * pageMgr;

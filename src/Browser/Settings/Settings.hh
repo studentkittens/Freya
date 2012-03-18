@@ -54,7 +54,7 @@ namespace Browser
     class Settings : public AbstractBrowser
     {
     public:
-        Settings(MPD::Client& client, const Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
+        Settings(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray);
         ~Settings();
 
         /**

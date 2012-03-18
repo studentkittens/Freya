@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Frame\n||}" alt="" coords="5,43,63,120"/>
-<area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="88,6,235,157"/>
-<area shape="rect" id="node6" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="259,35,411,127"/>
-<area shape="rect" id="node8" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="435,28,609,135"/>
+<area shape="rect" id="node2" href="$classGtk_1_1Frame.html" title="{Frame\n||}" alt="" coords="5,57,63,135"/>
+<area shape="rect" id="node4" href="$classAbstractBrowser.html" title="Inherit from this class in order to be able to add the browser to the browserlist." alt="" coords="88,6,235,186"/>
+<area shape="rect" id="node6" href="$classMPD_1_1AbstractItemlist.html" title="Inhertit from this class to use MPD::Client&#39;s fill_* methods." alt="" coords="259,50,411,142"/>
+<area shape="rect" id="node8" href="$classMPD_1_1AbstractClientUser.html" title="{MPD::AbstractClientUser\n|# mp_Client\l|+ AbstractClientUser()\l# on_client_update()\l# on_connection_change()\l}" alt="" coords="435,43,609,149"/>
 </map>

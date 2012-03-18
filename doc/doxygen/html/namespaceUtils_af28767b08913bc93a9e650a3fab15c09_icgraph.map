@@ -1,13 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classUtilsTestSuite.html#a1b0a69522e22a1af0eee505163da8e51" title="UtilsTestSuite::testseconds_to_duration_1_year" alt="" coords="293,5,595,32"/>
-<area shape="rect" id="node5" href="$classUtilsTestSuite.html#a758a9b8a6b628ec3ac654a3eb185ac6a" title="UtilsTestSuite::testseconds_to_duration_check_if_always_the_same" alt="" coords="233,56,655,83"/>
-<area shape="rect" id="node7" href="$classUtilsTestSuite.html#a5224da4462705f1d9c820ee9e8f6dff5" title="UtilsTestSuite::testseconds_to_duration_1_second" alt="" coords="285,107,603,133"/>
-<area shape="rect" id="node9" href="$classUtilsTestSuite.html#a92aa73b0ac7565c91b81eb52ce810548" title="UtilsTestSuite::testseconds_to_duration_0_seconds" alt="" coords="281,157,607,184"/>
-<area shape="rect" id="node11" href="$classUtilsTestSuite.html#a76865b4a8bc407b47b4c7cb47527cd9d" title="UtilsTestSuite::testseconds_to_duration_1_minutes" alt="" coords="283,208,605,235"/>
-<area shape="rect" id="node13" href="$classUtilsTestSuite.html#a6ac595cd98d0370adde1f2aca876ce9a" title="UtilsTestSuite::testseconds_to_duration_2_minutes" alt="" coords="283,259,605,285"/>
-<area shape="rect" id="node15" href="$classUtilsTestSuite.html#a401df2d4a13d84f46165b6f7ad969195" title="UtilsTestSuite::testseconds_to_duration_1_hour" alt="" coords="293,309,595,336"/>
-<area shape="rect" id="node17" href="$classUtilsTestSuite.html#aeb66dc6be04b645001abe88e6a5e7084" title="UtilsTestSuite::testseconds_to_duration_2_hours" alt="" coords="290,360,598,387"/>
-<area shape="rect" id="node19" href="$classUtilsTestSuite.html#ae6419827ad4598a9bb2c4c009e0d7ffe" title="UtilsTestSuite::testseconds_to_duration_1_day" alt="" coords="295,411,593,437"/>
-<area shape="rect" id="node21" href="$classUtilsTestSuite.html#a2ed42546557468b2266ad4eb69d84de1" title="UtilsTestSuite::testseconds_to_duration_2_days" alt="" coords="292,461,596,488"/>
-<area shape="rect" id="node23" href="$classUtilsTestSuite.html#a9ba241ce97ba03092b13c3303deffbe3" title="UtilsTestSuite::testseconds_to_duration_2_years" alt="" coords="290,512,598,539"/>
+<area shape="rect" id="node3" href="$classUtilsTestSuite.html#a801c759539deb10cfec2a1a8ac3715cd" title="UtilsTestSuite::testseconds_to_duration_1_year" alt="" coords="293,5,595,32"/>
+<area shape="rect" id="node5" href="$classUtilsTestSuite.html#acd259549a602afe46a0b877486b3b353" title="UtilsTestSuite::testseconds_to_duration_check_if_always_the_same" alt="" coords="233,56,655,83"/>
+<area shape="rect" id="node7" href="$classUtilsTestSuite.html#a49c0ac263c2326ed76cd1abe1fa99dd1" title="UtilsTestSuite::testseconds_to_duration_1_second" alt="" coords="285,107,603,133"/>
+<area shape="rect" id="node9" href="$classUtilsTestSuite.html#ab2ad030e8dc3b65247785e5acd95106d" title="UtilsTestSuite::testseconds_to_duration_0_seconds" alt="" coords="281,157,607,184"/>
+<area shape="rect" id="node11" href="$classUtilsTestSuite.html#afdca7e06e525b7ab89c5914f8278cd2a" title="UtilsTestSuite::testseconds_to_duration_1_minutes" alt="" coords="283,208,605,235"/>
+<area shape="rect" id="node13" href="$classUtilsTestSuite.html#a248dd19c4d610170ba4d7f2bca892893" title="UtilsTestSuite::testseconds_to_duration_2_minutes" alt="" coords="283,259,605,285"/>
+<area shape="rect" id="node15" href="$classUtilsTestSuite.html#a4b06d1130c58958aba892f9b488a0357" title="UtilsTestSuite::testseconds_to_duration_1_hour" alt="" coords="293,309,595,336"/>
+<area shape="rect" id="node17" href="$classUtilsTestSuite.html#a1d08d432e448c3454fe7ad7510190ce6" title="UtilsTestSuite::testseconds_to_duration_2_hours" alt="" coords="290,360,598,387"/>
+<area shape="rect" id="node19" href="$classUtilsTestSuite.html#a86e6e867e6b5c51e748ca422c6361d06" title="UtilsTestSuite::testseconds_to_duration_1_day" alt="" coords="295,411,593,437"/>
+<area shape="rect" id="node21" href="$classUtilsTestSuite.html#af35d0a3cb0657dd0b3dd451d60c43d41" title="UtilsTestSuite::testseconds_to_duration_2_days" alt="" coords="292,461,596,488"/>
+<area shape="rect" id="node23" href="$classUtilsTestSuite.html#a0058477e12e234d41f5a2dcb8d39b1f6" title="UtilsTestSuite::testseconds_to_duration_2_years" alt="" coords="290,512,598,539"/>
 </map>

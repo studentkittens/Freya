@@ -49,7 +49,7 @@ namespace Browser
     class SettingsOutputs : public AbstractSettings, public MPD::AbstractItemlist, public MPD::AbstractClientUser
     {
     public:
-        SettingsOutputs(MPD::Client &client,const Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+        SettingsOutputs(MPD::Client &client,Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
         ~SettingsOutputs();
 
         void accept_new_settings();

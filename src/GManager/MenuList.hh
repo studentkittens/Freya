@@ -47,7 +47,7 @@ namespace GManager
     {
     public:
 
-        MenuList(MPD::Client &client, const Glib::RefPtr<Gtk::Builder> &builder);
+        MenuList(MPD::Client &client, Glib::RefPtr<Gtk::Builder> &builder);
         ~MenuList();
 
     private:

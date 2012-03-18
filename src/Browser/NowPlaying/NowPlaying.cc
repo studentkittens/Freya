@@ -89,6 +89,15 @@ namespace Browser
     }
 
     /////////////////////////////
+    
+    void NowPlaying::on_getting_active()
+    {
+        if(lastData != NULL) {
+            on_client_update(MPD_IDLE_PLAYER,*lastData);
+        }
+    }
+    
+    /////////////////////////////
 
     Gtk::Widget * NowPlaying::get_container()
     {
@@ -99,7 +108,7 @@ namespace Browser
 
     void NowPlaying::on_client_update(mpd_idle events, MPD::NotifyData& data)
     {
-        if(events & MPD_IDLE_PLAYER) {
+        if((events & MPD_IDLE_PLAYER) && is_active()) {
             for(ManagerVector::iterator it = managerList.begin(); it != managerList.end(); it++) {
                 Gtk::Expander * ex = dynamic_cast<Gtk::Expander*>(*it);
                 if(ex && ex->get_expanded()) {

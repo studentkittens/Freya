@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$UpdateInterface_8hh.html" title="../../Glyr/UpdateInterface.hh" alt="" coords="467,80,652,107"/>
+<area shape="rect" id="node7" href="$Client_8hh.html" title="../MPD/Client.hh" alt="" coords="437,155,557,181"/>
+<area shape="rect" id="node9" href="$BaseClient_8hh.html" title="BaseClient.hh" alt="" coords="313,229,417,256"/>
+<area shape="rect" id="node50" href="$AbstractItemGenerator_8hh.html" title="AbstractItemGenerator.hh" alt="" coords="545,229,716,256"/>
+<area shape="rect" id="node11" href="$Listener_8hh.html" title="Listener.hh" alt="" coords="270,304,356,331"/>
+<area shape="rect" id="node26" href="$Connection_8hh.html" title="Connection.hh" alt="" coords="25,453,132,480"/>
+<area shape="rect" id="node44" href="$Query_8hh.html" title="Query.hh" alt="" coords="525,453,599,480"/>
+<area shape="rect" id="node21" href="$Status_8hh.html" title="Status.hh" alt="" coords="370,453,448,480"/>
+<area shape="rect" id="node24" href="$NotifyData_8hh.html" title="NotifyData.hh" alt="" coords="77,379,179,405"/>
+<area shape="rect" id="node30" href="$Statistics_8hh.html" title="Statistics.hh" alt="" coords="157,453,251,480"/>
+<area shape="rect" id="node34" href="$Song_8hh.html" title="Song.hh" alt="" coords="275,453,345,480"/>
+<area shape="rect" id="node37" href="$AbstractComposite_8hh.html" title="AbstractComposite.hh" alt="" coords="667,528,819,555"/>
+<area shape="rect" id="node48" href="$AbstractClientExtension_8hh.html" title="AbstractClientExtension.hh" alt="" coords="461,528,643,555"/>
+<area shape="rect" id="node52" href="$AbstractItemlist_8hh.html" title="AbstractItemlist.hh" alt="" coords="617,304,748,331"/>
+</map>

@@ -1,4 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1AudioOutput.html" title="Wrapper for mpd_output, implements also two client commands: enable() and disable()" alt="" coords="5,183,136,348"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands." alt="" coords="161,161,305,370"/>
+<area shape="rect" id="node3" href="$classMPD_1_1AudioOutput.html" title="Wrapper for mpd_output, implements also two client commands: enable() and disable()" alt="" coords="5,153,136,319"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Playlist.html" title="A Wrapper for mpd_playlist, also implements own client commands." alt="" coords="161,131,305,341"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Query.html" title="{MPD::Query\n||+ add_tag_constraint()\l+ add_tag_constraint()\l+ commit()\l+ commit()\l+ cancel()\l}" alt="" coords="329,168,481,304"/>
 </map>

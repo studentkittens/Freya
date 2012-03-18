@@ -1,3 +1,12 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classInit_1_1SignalHandler.html" title="By Instancing this class Signalhandlers are registered." alt="" coords="6,5,135,32"/>
+<area shape="rect" id="node1" href="$classGtk_1_1Expander.html" title="Expander" alt="" coords="40,107,117,133"/>
+<area shape="rect" id="node3" href="$classBrowser_1_1ArtistPhotosMgr.html" title="Browser::ArtistPhotosMgr" alt="" coords="202,157,374,184"/>
+<area shape="rect" id="node5" href="$classBrowser_1_1CoverArtMgr.html" title="Browser::CoverArtMgr" alt="" coords="212,208,364,235"/>
+<area shape="rect" id="node7" href="$classBrowser_1_1OtherAlbumsMgr.html" title="Browser::OtherAlbumsMgr" alt="" coords="200,259,376,285"/>
+<area shape="rect" id="node9" href="$classBrowser_1_1RelatedLinksMgr.html" title="Browser::RelatedLinksMgr" alt="" coords="200,5,376,32"/>
+<area shape="rect" id="node11" href="$classBrowser_1_1TextItemsMgr.html" title="Browser::TextItemsMgr" alt="" coords="209,56,367,83"/>
+<area shape="rect" id="node13" href="$classBrowser_1_1TracklistMgr.html" title="Browser::TracklistMgr" alt="" coords="213,107,363,133"/>
+<area shape="rect" id="node14" href="$classGtk_1_1ScrolledWindow.html" title="ScrolledWindow" alt="" coords="21,309,137,336"/>
+<area shape="rect" id="node16" href="$classBrowser_1_1TextPageMgr.html" title="Browser::TextPageMgr" alt="" coords="210,309,366,336"/>
+<area shape="rect" id="node17" href="$classGlyr_1_1UpdateInterface.html" title="Very similar to AbstractClientUser, but doesnt take a Client instance." alt="" coords="5,157,152,184"/>
 </map>

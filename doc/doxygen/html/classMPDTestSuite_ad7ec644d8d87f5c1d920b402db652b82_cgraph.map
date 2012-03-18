@@ -1,7 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classMPD_1_1NotifyData.html#a363434284ac4fa3fcffd7728b446f0c2" title="Get the current MPD::Status." alt="" coords="349,5,541,32"/>
-<area shape="rect" id="node5" href="$classMPD_1_1Status.html#aebea5eb9e5531c41c29d7b172eb3c455" title="True if on random mode." alt="" coords="358,56,533,83"/>
-<area shape="rect" id="node7" href="$classMPD_1_1Status.html#a61ca703d1ad786f649f0c6cf215c8467" title="True if on consume mode." alt="" coords="353,107,537,133"/>
-<area shape="rect" id="node9" href="$classMPD_1_1Status.html#a114b5aa3226b2965713064937875588e" title="True if on single mode." alt="" coords="363,157,528,184"/>
-<area shape="rect" id="node11" href="$classMPD_1_1Status.html#ae13f705c034e8db03dc1a6f19c66a72c" title="True if on repeat mode." alt="" coords="362,208,529,235"/>
+<area shape="rect" id="node3" href="$classMPD_1_1NotifyData.html#a191d90b5e33902caf9534262bb68c708" title="Get the current MPD::Status." alt="" coords="349,5,541,32"/>
+<area shape="rect" id="node5" href="$classMPD_1_1Status.html#a81fdec61b201d82dc7d74cc793e9887d" title="True if on random mode." alt="" coords="358,56,533,83"/>
+<area shape="rect" id="node7" href="$classMPD_1_1Status.html#a4c9f8dae160fe747ec381ba08a253d8e" title="True if on consume mode." alt="" coords="353,107,537,133"/>
+<area shape="rect" id="node9" href="$classMPD_1_1Status.html#a96e738c0b47d883a216fdbe49bf8f849" title="True if on single mode." alt="" coords="363,157,528,184"/>
+<area shape="rect" id="node11" href="$classMPD_1_1Status.html#adcfe90f2caa6d8d56508aef5d54f50b1" title="True if on repeat mode." alt="" coords="362,208,529,235"/>
 </map>

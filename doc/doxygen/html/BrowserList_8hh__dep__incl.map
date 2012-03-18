@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$AbstractBrowser_8hh.html" title="src/Browser/AbstractBrowser.hh" alt="" coords="820,80,1029,107"/>
+<area shape="rect" id="node5" href="$Database_8hh.html" title="src/Browser/Database/Database.hh" alt="" coords="5,155,235,181"/>
+<area shape="rect" id="node7" href="$Fortuna_8hh.html" title="src/Browser/Fortuna/Fortuna.hh" alt="" coords="259,155,465,181"/>
+<area shape="rect" id="node9" href="$NowPlaying_8hh.html" title="src/Browser/NowPlaying/NowPlaying.hh" alt="" coords="491,155,748,181"/>
+<area shape="rect" id="node11" href="$PlaylistManager_8hh.html" title="src/Browser/PlaylistManager/PlaylistManager.hh" alt="" coords="773,155,1077,181"/>
+<area shape="rect" id="node13" href="$Queue_8hh.html" title="src/Browser/Queue/Queue.hh" alt="" coords="1101,155,1296,181"/>
+<area shape="rect" id="node15" href="$Settings_8hh.html" title="src/Browser/Settings/Settings.hh" alt="" coords="1321,155,1535,181"/>
+<area shape="rect" id="node17" href="$StatBrowser_8hh.html" title="src/Browser/Statistics/StatBrowser.hh" alt="" coords="1560,155,1805,181"/>
+</map>

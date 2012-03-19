@@ -39,7 +39,7 @@ namespace Notify
     {
         re_init();
     }
-//---------------------------
+    //---------------------------
     Notify::~Notify()
     {
         if(notify_is_initted())
@@ -50,22 +50,21 @@ namespace Notify
         clear_icon();
     }
 
-//---------------------------
-//---------------------------
-//---------------------------
+    //---------------------------
+    //---------------------------
+    //---------------------------
     void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
     {
         _send(hl.c_str(),msg.c_str(),NULL);
     }
-//---------------------------
+    //---------------------------
     void Notify::send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf )
     {
         _send(hl.c_str(),msg.c_str(),pixbuf);
     }
-//---------------------------
-//---------------------------
-    /**/
-//---------------------------
+    //---------------------------
+    //---------------------------
+    //---------------------------
     void Notify::_send(const char * hl, const char  * msg, GdkPixbuf * pixbuf )
     {
 
@@ -78,20 +77,20 @@ namespace Notify
             if(extra)
             {
                 notification_ptr=notify_notification_new(
-                                     hl!=NULL?hl:"",
-                                     msg!=NULL?msg:"",
-                                     icon!=NULL?icon->c_str():NULL
-                                 );
+                        hl!=NULL?hl:"",
+                        msg!=NULL?msg:"",
+                        icon!=NULL?icon->c_str():NULL
+                        );
 
             }
             else
             {
                 notify_notification_update(
-                    notification,
-                    hl!=NULL?hl:"",
-                    msg!=NULL?msg:"",
-                    icon!=NULL?icon->c_str():NULL
-                );
+                        notification,
+                        hl!=NULL?hl:"",
+                        msg!=NULL?msg:"",
+                        icon!=NULL?icon->c_str():NULL
+                        );
                 notification_ptr = notification;
             }
 
@@ -118,7 +117,7 @@ namespace Notify
 
 
     }
-//------------------------
+    //------------------------
     void Notify::re_init()
     {
         while(working);
@@ -151,14 +150,14 @@ namespace Notify
 
     }
 
-//------------------------
+    //------------------------
 
     void Notify::set_stock_icon(const char* name)
     {
         clear_icon();
         icon = new Glib::ustring(name);
     }
-//------------------------
+    //------------------------
 
     void Notify::clear_icon()
     {
@@ -168,11 +167,11 @@ namespace Notify
             icon=NULL;
         }
     }
-//------------------------
+    //------------------------
 
     void Notify::set_next_extra()
     {
         extra=true;
     }
-//------------------------
+    //------------------------
 }

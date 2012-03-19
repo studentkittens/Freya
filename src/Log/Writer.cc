@@ -118,26 +118,28 @@ namespace Log {
 
     /////////////////////////////
     
+
     static void glib_logging(const gchar *log_domain,GLogLevelFlags log_level,const gchar *message, gpointer user_data)
     {        
+        #define GTK_FORWARD(level,domain,msg) _MSG(level,domain,"%s",msg)
         switch(log_level) {
             case G_LOG_LEVEL_CRITICAL:
-                Critical(message);
+                GTK_FORWARD(Log::LOG_CRITICAL,"Gtk-Critical",message);
                 break;
             case G_LOG_LEVEL_ERROR:
-                Error(message);
+                GTK_FORWARD(Log::LOG_ERROR,"Gtk-Error",message);
                 break;
             case G_LOG_LEVEL_WARNING:      
-                Warning(message);
+                GTK_FORWARD(Log::LOG_WARN,"Gtk-Warning",message);
                 break;
             case G_LOG_LEVEL_MESSAGE:         
-                Success(message);
+                GTK_FORWARD(Log::LOG_OK,"Gtk-Message",message);
                 break;
             case G_LOG_LEVEL_INFO:         
-                Info(message);
+                GTK_FORWARD(Log::LOG_INFO,"Gtk-Info",message);
                 break;
             case G_LOG_LEVEL_DEBUG:
-                Debug(message);
+                GTK_FORWARD(Log::LOG_DEBUG,"Gtk-Debug",message);
                break; 
             case G_LOG_FLAG_RECURSION:
             case G_LOG_FLAG_FATAL:
@@ -145,6 +147,7 @@ namespace Log {
             default:
                break;
         }
+        #undef GLIB_FORWARD
     }
 
     /////////////////////////////
@@ -184,7 +187,6 @@ namespace Log {
         }
 
         register_log_domains("Glib");
-        register_log_domains("Glib-GObject");
         register_log_domains("Gtk");
     }
 
@@ -226,9 +228,9 @@ namespace Log {
     }                              \
 
 
-    void Writer::message(const char * File, int Line, LOGLEVEL level, const char * fmt, ...)
+    void Writer::message(const char * File, const char * domain, int Line, LOGLEVEL level, const char * fmt, ...)
     {
-        if(this->m_Logfile != NULL && level <= m_Verbosity)
+        if(m_Logfile != NULL && level <= m_Verbosity)
         {
             /* Write all va_args in the tmp_buf,
              * allocate memory as necessary */
@@ -251,7 +253,11 @@ namespace Log {
                 if(logInfo.usedomain)
                 {
                     textcolor(stderr,logInfo.attr,MAGENTA);
-                    PRINT_LOG_PART("[" << get_domain_from_file(File) << "]");
+                    if(domain == NULL) {
+                        PRINT_LOG_PART("[" << get_domain_from_file(File) << "]");
+                    } else {
+                        PRINT_LOG_PART("[" << domain << "]");
+                    }
                     resetcolor(stderr);
                 }
 

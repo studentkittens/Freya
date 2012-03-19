@@ -10,20 +10,6 @@
 
 namespace Glyr 
 {
-    /**
-     * @brief Glyr related Util function to turn a GlyrMemCache to an pixbuf
-     *
-     * @param c the cache, must be imagedata.
-     * @param size_x width
-     * @param size_y height
-     * @param aspect keep aspect?
-     *
-     * @return a newly Refpointerd Pixbuf
-     */
-    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_cache(GlyrMemCache * c, int size_x = 150, int size_y = 150, bool aspect = false);
-
-    /////////////////////////////
-
     class Stack
     {
         DEF_SINGLETON(Stack)

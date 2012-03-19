@@ -1,16 +1,9 @@
 #include "Request.hh"
 #include "../Log/Writer.hh"
-#include <giomm/memoryinputstream.h>
+#include "../Init/Path.hh"
 
 namespace Glyr
 {
-    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_cache(GlyrMemCache * c, int size_x, int size_y, bool aspect)
-    {
-        Glib::RefPtr<Gio::MemoryInputStream> is = Gio::MemoryInputStream::create();
-        is->add_data(c->data,c->size);
-        return Gdk::Pixbuf::create_from_stream_at_scale(is,size_x,size_y,aspect);
-    }
-
     Stack::Stack() :
         pool(4,false),
         jobCounter(0),
@@ -19,7 +12,18 @@ namespace Glyr
     {
         glyr_init();
         atexit(glyr_cleanup);
-        dbConnection = glyr_db_init("/tmp/");
+
+        /* 
+         * Find out path and create DB
+         */
+        Init::Path cfgpath;
+        Debug("Writing metadata.db to: %s",cfgpath.path_to_metadata_db().c_str());
+
+        dbConnection = glyr_db_init(cfgpath.get_config_dir().c_str());
+        if(dbConnection == NULL)
+        {
+            Warning("Unable to write metadata.db for unknown reason.");
+        }
     }
 
     ////////////////////////

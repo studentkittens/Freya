@@ -52,7 +52,6 @@ namespace Init
          */
         Glib::ustring get_config_dir();
 
-
         /**
          * @brief returns absolute path to config file e.g. /home/user/.config/freya/config.xml
          *
@@ -60,13 +59,26 @@ namespace Init
          */
         Glib::ustring path_to_config();
 
-
         /**
-         * @brief returns absolute path log file e.g. ~/.config/freya/log.txt
+         * @brief returns absolute path to log file e.g. ~/.config/freya/log.txt
          *
          * @return log file path as ustring
          */
         Glib::ustring path_to_log();
+    
+        /**
+         * @brief returns absolute path to metadata.db of libglyr 
+         *
+         * @return db path as ustring
+         */
+        Glib::ustring path_to_metadata_db();
+
+        /**
+         * @brief returns absolute path to style.css
+         *
+         * @return css file path as ustring
+         */
+        Glib::ustring path_to_css();
 
     private:
         void create_config();

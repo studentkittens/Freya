@@ -36,17 +36,17 @@
 #include "../Utils/Singleton.hh"
 
 /* Not supposed to used directly, use the macros below */
-#define _MSG(level, msg, ...) Log::Writer::instance().message(__FILE__, __LINE__, level, msg,  ##__VA_ARGS__)
+#define _MSG(level, domain, msg, ...) Log::Writer::instance().message(__FILE__, domain, __LINE__, level, msg,  ##__VA_ARGS__)
 #define LogSetVerbosity(X) Log::Writer::instance().set_verbosity((Log::LOGLEVEL)X)
 #define LogGetVerbosity Log::Writer::instance().get_verbosity()
 
 /* The actual macros */
-#define Warning(msg, ...)  _MSG(Log::LOG_WARN, msg, ##__VA_ARGS__)
-#define Info(msg, ...)     _MSG(Log::LOG_INFO, msg, ##__VA_ARGS__)
-#define Critical(msg, ...) _MSG(Log::LOG_CRITICAL, msg, ##__VA_ARGS__)
-#define Error(msg, ...)    _MSG(Log::LOG_ERROR, msg, ##__VA_ARGS__)
-#define Debug(msg, ...)    _MSG(Log::LOG_DEBUG, msg, ##__VA_ARGS__)
-#define Success(msg, ...)  _MSG(Log::LOG_OK, msg, ##__VA_ARGS__)
+#define Warning(msg, ...)  _MSG(Log::LOG_WARN, NULL, msg, ##__VA_ARGS__)
+#define Info(msg, ...)     _MSG(Log::LOG_INFO, NULL, msg, ##__VA_ARGS__)
+#define Critical(msg, ...) _MSG(Log::LOG_CRITICAL, NULL, msg, ##__VA_ARGS__)
+#define Error(msg, ...)    _MSG(Log::LOG_ERROR, NULL, msg, ##__VA_ARGS__)
+#define Debug(msg, ...)    _MSG(Log::LOG_DEBUG, NULL, msg, ##__VA_ARGS__)
+#define Success(msg, ...)  _MSG(Log::LOG_OK, NULL, msg, ##__VA_ARGS__)
 
 namespace Log
 {
@@ -83,12 +83,13 @@ namespace Log
          * @brief Actual instance method called. Do not use directly!
          *
          * @param file Passed by the macro.
+         * @param domain Log domain (e.g. Glib) or NULL for auto
          * @param line Passed by the macro.
          * @param level Severitylevel
          * @param msg Actual message
          * @param ... a va_list to allow printf style logging
          */
-        void message(const char *file, int line, LOGLEVEL level, const char *msg, ...);
+        void message(const char *file, const char * domain, int line, LOGLEVEL level, const char *msg, ...);
 
         /**
          * @brief Set the max. verbosity

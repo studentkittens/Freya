@@ -34,11 +34,9 @@ namespace GManager
 {
     NotifyManager::NotifyManager(MPD::Client& client) :
         AbstractClientUser(client)
-    {
-        /* Everything implemented by AbstractClientUser already */
-    }
+    {}
 
-    // ------------------------------------
+    ////////////////////////////////
 
     void NotifyManager::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
     {
@@ -56,13 +54,12 @@ namespace GManager
                 else if((status.get_state() == MPD_STATE_PAUSE))
                     NOTIFY_STOCK_ICON("media-playback-pause");
 
- //               NOTIFY_SEND(current_song->song_format("${title} (Track ${track})",false),current_song->song_format("by ${artist} on ${album} (${date})",true));
-
+                NOTIFY_SEND(current_song->song_format("${title} (Track ${track})",false),current_song->song_format("by ${artist} on ${album} (${date})",true));
             }
         }
     }
-
-    // ------------------------------------
+    
+    ////////////////////////////////
 
     void NotifyManager::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -79,6 +76,6 @@ namespace GManager
         }
     }
 
-    // ------------------------------------
+    ////////////////////////////////
 
 }

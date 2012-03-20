@@ -43,7 +43,7 @@ namespace Init
     CssLoader::CssLoader()
     {
         Init::Path cfg;
-        Glib::ustring cssPath = cfg.get_config_dir() + "/style.css";
+        Glib::ustring cssPath = cfg.path_to_css();
 
         Glib::RefPtr<Gtk::CssProvider> cssProv = Gtk::CssProvider::create();
         Glib::RefPtr<Gtk::StyleContext> ctx = Gtk::StyleContext::create();

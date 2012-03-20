@@ -34,6 +34,7 @@
 
 #include <string.h>
 #include <glib/gstdio.h>
+#include <glyr/cache.h>
 
 namespace Init
 {
@@ -59,22 +60,33 @@ namespace Init
     /* return config dir path as ustring */
     Glib::ustring Path::get_config_dir()
     {
-        Glib::ustring retv = Glib::ustring(g_get_user_config_dir()) + (char*)"/freya";
+        Glib::ustring retv = Glib::ustring(g_get_user_config_dir()) + G_DIR_SEPARATOR_S + "freya";
         return retv;
     }
-
 
     /* return path to config */
     Glib::ustring Path::path_to_config()
     {
-        Glib::ustring retv = Glib::ustring(get_config_dir())+ (char*)"/config.xml";
+        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "config.xml";
         return retv;
     }
 
-    /* return path to config */
+    /* return path to log */
     Glib::ustring Path::path_to_log()
     {
-        Glib::ustring retv = Glib::ustring(get_config_dir())+ (char*)"/log.txt";
+        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "log.txt";
+        return retv;
+    }
+    
+    Glib::ustring Path::path_to_metadata_db()
+    {
+        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + GLYR_DB_FILENAME;
+        return retv;
+    }
+    
+    Glib::ustring Path::path_to_css()
+    {
+        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "style.css";
         return retv;
     }
 

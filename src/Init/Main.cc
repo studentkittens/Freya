@@ -67,14 +67,14 @@ int main(int argc, char *argv[])
 
     try
     {
-        /* Metadata System */
-        Glyr::Stack::instance();
-
         /* Check if debug output enabled */
         if(argc > 1 && !strcmp("-v",argv[1]))
             LogSetVerbosity(Log::LOG_DEBUG);
         else
             LogSetVerbosity(Log::LOG_INFO);
+        
+        /* Metadata System */
+        Glyr::Stack::instance();
 
         /* Register fatal signals like SIGSEGV */
         Init::SignalHandler sig_handler;
@@ -86,24 +86,23 @@ int main(int argc, char *argv[])
         Init::CssLoader css;
 
         /* Get the glade file */
-        //Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("ui/Freya.glade");
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create();
         BUILDER_ADD(builder,"ui/Freya.glade");
 
-        GManager::Window main_window(builder);
-
         /* Instanmce gui elements */
+        GManager::Window main_window(builder);
         GManager::Heartbeat proxy(client);
         GManager::Timeslide timeslide(proxy,client,builder);
+        GManager::VolumeSlider vol_button(client,builder);
         GManager::Statusbar statusbar(proxy,client,builder);
         GManager::PlaybackButtons buttons(client,builder);
         GManager::TitleLabel title_label(client,builder);
         GManager::Statusicons status_icons(client,builder);
-        GManager::VolumeSlider vol_button(client,builder);
-        GManager::BrowserList browser_list(client,builder);
         GManager::MenuList menu_list(client,builder);
         GManager::Trayicon tray(client,*main_window.get_window());
         GManager::NotifyManager notify_mgr(client);
+        
+        GManager::BrowserList browser_list(client,builder);
 
         /* Instance browser  */
         Browser::NowPlaying np_browser(client,builder);

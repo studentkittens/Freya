@@ -35,7 +35,7 @@ namespace GManager
     NotifyManager::NotifyManager(MPD::Client& client) :
         AbstractClientUser(client)
     {
-        /* Everything by AbstractClientUser already */
+        /* Everything implemented by AbstractClientUser already */
     }
 
     // ------------------------------------
@@ -56,7 +56,7 @@ namespace GManager
                 else if((status.get_state() == MPD_STATE_PAUSE))
                     NOTIFY_STOCK_ICON("media-playback-pause");
 
-                NOTIFY_SEND(current_song->song_format("${title} (Track ${track})",false),current_song->song_format("by ${artist} on ${album} (${date})",true));
+ //               NOTIFY_SEND(current_song->song_format("${title} (Track ${track})",false),current_song->song_format("by ${artist} on ${album} (${date})",true));
 
             }
         }

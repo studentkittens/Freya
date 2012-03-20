@@ -1,33 +1,33 @@
 /***********************************************************
-* This file is part of Freya
-* - A free MPD Gtk3 MPD Client -
-*
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider
-*
-* Copyright (C) [2011-2012]
-* Hosted at: https://github.com/studentkittens/Freya
-*
-*              __..--''``---....___   _..._    __
-*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
-*   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //
-*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
-*
-* Freya is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Freya is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Freya. If not, see <http://www.gnu.org/licenses/>.
-**************************************************************/
+ * This file is part of Freya
+ * - A free MPD Gtk3 MPD Client -
+ *
+ * Authors: Christopher Pahl, Christoph Piechula,
+ *          Eduard Schneider
+ *
+ * Copyright (C) [2011-2012]
+ * Hosted at: https://github.com/studentkittens/Freya
+ *
+ *              __..--''``---....___   _..._    __
+ *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+ *   ///_.-' _..--.'_                        `( ) ) // //
+ *   / (_..-' // (< _     ;_..__               ; `' / ///
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
+ *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+ *
+ * Freya is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Freya is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Freya. If not, see <http://www.gnu.org/licenses/>.
+ **************************************************************/
 #include "SettingsGeneral.hh"
 #include "Settings.hh"
 #include "../../Utils/Utils.hh"
@@ -65,7 +65,7 @@ namespace Browser
 
     SettingsGeneral::~SettingsGeneral() {}
 
-//----------------------------
+    //----------------------------
 
     void SettingsGeneral::accept_new_settings()
     {
@@ -86,7 +86,7 @@ namespace Browser
         CONFIG_SET_AS_INT(timeout,timeout_value?timeout_value*1000:-1);
     }
 
-//----------------------------
+    //----------------------------
 
     void SettingsGeneral::decline_new_settings()
     {
@@ -96,16 +96,17 @@ namespace Browser
         to_tray_value = CONFIG_GET_AS_INT(to_tray);
         timeout_value = CONFIG_GET_AS_INT(timeout);
 
-        if(!trayic)
+        if(!trayic) {
             to_tray_value = 0;
+        }
 
-        notify_timeout->set_value((double)(timeout_value==-1?0:((double)timeout_value)/1000) );
-        libnotify->set_active(libnot==1);
-        close_to_tray->set_active(to_tray_value==1);
-        trayicon->set_active(trayic==1);
+        notify_timeout->set_value((double)(timeout_value ==- 1 ? 0 : ((double)timeout_value)/1000));
+        libnotify->set_active(libnot == 1);
+        close_to_tray->set_active(to_tray_value == 1);
+        trayicon->set_active(trayic == 1);
     }
 
-//----------------------------
+    //----------------------------
 
     void SettingsGeneral::reset_settings()
     {
@@ -124,13 +125,13 @@ namespace Browser
         notify_timeout->set_value((double)(timeout_value==-1?0:((double)timeout_value)/1000) );
     }
 
-//----------------------------
+    //----------------------------
 
     void SettingsGeneral::on_notify_toggled()
     {
         notify_box->set_visible(libnotify->get_active());
     }
-//----------------------------
+    //----------------------------
     void SettingsGeneral::on_tray_toggled()
     {
         tray_box->set_visible(trayicon->get_active());

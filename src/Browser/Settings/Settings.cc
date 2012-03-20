@@ -1,33 +1,33 @@
 /***********************************************************
-* This file is part of Freya
-* - A free MPD Gtk3 MPD Client -
-*
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider
-*
-* Copyright (C) [2011-2012]
-* Hosted at: https://github.com/studentkittens/Freya
-*
-*              __..--''``---....___   _..._    __
-*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
-*   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //
-*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
-*
-* Freya is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Freya is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Freya. If not, see <http://www.gnu.org/licenses/>.
-**************************************************************/
+ * This file is part of Freya
+ * - A free MPD Gtk3 MPD Client -
+ *
+ * Authors: Christopher Pahl, Christoph Piechula,
+ *          Eduard Schneider
+ *
+ * Copyright (C) [2011-2012]
+ * Hosted at: https://github.com/studentkittens/Freya
+ *
+ *              __..--''``---....___   _..._    __
+ *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+ *   ///_.-' _..--.'_                        `( ) ) // //
+ *   / (_..-' // (< _     ;_..__               ; `' / ///
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
+ *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+ *
+ * Freya is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Freya is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Freya. If not, see <http://www.gnu.org/licenses/>.
+ **************************************************************/
 #include "Settings.hh"
 #include "../../Utils/Utils.hh"
 #include "../../Log/Writer.hh"
@@ -60,7 +60,7 @@ namespace Browser
         cancel_button->set_sensitive(false);
 
     }
-//---------------------------
+    //---------------------------
 
     Settings::~Settings()
     {
@@ -68,7 +68,7 @@ namespace Browser
             delete sub_sections[i];
     }
 
-//---------------------------
+    //---------------------------
 
     void Settings::on_button_ok()
     {
@@ -79,9 +79,8 @@ namespace Browser
         CONFIG_SAVE_NOW();
         ok_button->set_sensitive(false);
         cancel_button->set_sensitive(false);
-        Notify::Notify::instance().re_init();
     }
-//---------------------------
+    //---------------------------
     void Settings::on_button_cancel()
     {
         for(unsigned int i=0; i< sub_sections.size(); i++)
@@ -91,12 +90,12 @@ namespace Browser
         ok_button->set_sensitive(false);
         cancel_button->set_sensitive(false);
     }
-//---------------------------
+    //---------------------------
     Gtk::Widget* Settings::get_container()
     {
         return settings_main;
     }
-//---------------------------
+    //---------------------------
     void Settings::on_button_reset()
     {
         for(unsigned int i=0; i< sub_sections.size(); i++)
@@ -104,7 +103,7 @@ namespace Browser
             sub_sections[i]->reset_settings();
         }
     }
-//--------------------------
+    //--------------------------
     void Settings::settings_changed()
     {
         ok_button->set_sensitive(true);

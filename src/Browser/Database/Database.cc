@@ -293,8 +293,38 @@ namespace Browser
 
     /*------------------------------------------------*/
 
-    //TODO: Needs a Search API first.
-    void Database::on_search_entry_activated() { }
+    void Database::on_search_entry_activated() 
+    {
+        Glib::ustring search_term = mp_SearchEntry->get_text();
+        if(search_term.empty())
+        {
+            set_current_path("/");
+        }
+        else
+        {
+            m_DirStore->clear();
+
+            MPD::Query * search = mp_Client->create_db_songs_query(false);
+            if(search != NULL)
+            {
+                MPD::SongVector songvec;
+                search->add_tag_constraint(MPD_TAG_ARTIST,search_term.c_str());
+                search->commit(songvec);
+
+                for(MPD::SongVector::iterator it = songvec.begin(); it != songvec.end(); it++)
+                {
+                    MPD::Song * song = *it;
+                    if(song != NULL)
+                    {
+                        add_item(song);
+                        delete song;
+                    }
+                }
+
+                delete search;
+            }
+        }
+    }
 
     /*------------------------------------------------*/
 

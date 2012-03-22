@@ -15,29 +15,50 @@ namespace Init
 
 #ifndef G_OS_WIN32
     static struct sigaction sa_struct;
+    static int killCtr = 0;
     
     //////////////////////////////////////
 
     static void signal_handler(int signo)
     {
+        const char * sigstr = g_strsignal(signo);
         switch(signo)
         {
             case SIGINT:
+            {
                 Info("Closing.");
+                if(killCtr > 1)
+                {
+                    Config::Handler::instance().save_config_now();
+                    Error("Pressed Ctrl-C twice or more");
+                    exit(-23);
+                }
+
+                killCtr++;
+       
+                Gtk::Main::quit();
                 break;
-            default:
+            }
+            case SIGABRT:
+            case SIGSEGV:
+            case SIGFPE:
+            {
                 Critical("Freya received an unexpted signal (%s)\n"
                         "                 Please go to https://github.com/studentkittens/Freya/issues\n"
                         "                 and start to throw bad words like 'backtrace' at us.\n"
                         "                 This message was emitted from: ",
-                        Glib::strsignal(signo).c_str());
+                        sigstr);
 
-                Info("Will try to save data and exit now.");
                 Config::Handler::instance().save_config_now();
                 exit(-42);
                 break;
+            }
+            default:
+            {
+                Warning("Received unknown signal: %s",sigstr);
+            }
         }
-        Gtk::Main::quit();
+
     }
 #endif
 

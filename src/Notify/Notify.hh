@@ -82,9 +82,8 @@ namespace Notify
             void set_next_extra();
 
         private:
-            Glib::ustring icon;
+            Glib::ustring icon_name;
             int timeout,use_notify;
-
             bool extra;
 
             void do_init();

@@ -35,7 +35,10 @@
 
 namespace Notify
 {
-    Notify::Notify()
+    Notify::Notify() : 
+       timeout(0),
+       use_notify(false),
+       extra(false)
     {}
 
     //////////////////
@@ -55,8 +58,6 @@ namespace Notify
 
     void Notify::_send(const char * summary, const char  * msg, const char * icon_name)
     {
-        GError * err = NULL;
-
         if(summary == NULL)
         {
             Warning("Notify::_send() requires at least a summary.");
@@ -65,48 +66,53 @@ namespace Notify
 
         do_init();
 
-        NotifyNotification * nobj = notify_notification_new(summary,msg,icon_name);
-        if(nobj != NULL)
+        NotifyNotification * noti_obj = notify_notification_new(summary,msg,icon_name);
+        if(noti_obj != NULL)
         {
-            notify_notification_set_timeout(nobj,timeout);
-            notify_notification_show(nobj,&err);
+            GError * err = NULL;
+
+            notify_notification_set_timeout(noti_obj,timeout);
+            notify_notification_show(noti_obj,&err);
 
             if(err != NULL)
             {
                 Warning("Unable to show notification: %s",err->message);
                 g_error_free(err);
             }
-            g_object_unref(G_OBJECT(nobj));
+            else
+            {
+                g_object_unref(G_OBJECT(noti_obj));
+            }
         }
     }
-    
+
     //////////////////
 
     void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
     {
         _send(hl.c_str(),msg.c_str(),NULL);
     }
-    
+
     //////////////////
 
     void Notify::send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf)
     {
         _send(hl.c_str(),msg.c_str(),NULL);
     }
-    
+
     //////////////////
 
     void Notify::set_next_extra()
     {
         extra = true;
     }
-    
+
     //////////////////
-    
+
     void Notify::set_stock_icon(const char* name)
     {
-        icon = Glib::ustring(name);
+        icon_name = Glib::ustring(name);
     }
-    
+
     //////////////////
 }

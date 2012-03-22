@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 require 'base64'
+require 'thread'
+
 
 SOURCE = <<-eos
 
@@ -41,17 +43,15 @@ def base64_encode_image img_path
     
     result = "\""
 
-    ctr = 1
-    enc.each_char do |char|
-        result += char
-        if ctr % 100 == 0 then 
-            result += "\"\n\""
-        end
-
-        ctr += 1
+    counter = 0
+    maxlen  = 150
+    
+    until counter >= enc.length do
+        result += (enc[counter,maxlen] + "\"\n\"")
+        counter += maxlen
     end
-
-    unless result.end_with? "\"" then
+    
+    unless result.end_with? "\"\"" then
         result += "\""
     end
     return result
@@ -66,19 +66,29 @@ end
 
 def traverse_defs root
     lines = ""
+    thread = []
+    semaphore = Mutex.new
+
     Dir.entries(root).each do |file|
-        path = root + file
-        data = ""
-        if file.end_with? ".glade" then
-            data = read_in_content path
-        elsif end_with_one_of?(file,[".png",".jpg",".jpeg"]) 
-            data = base64_encode_image path
-        end
-            
-        unless data.empty? 
-            lines += NODE % ["\"" + path + "\"",data]
+        thread << Thread.new do
+            path = root + file
+            data = ""
+            if file.end_with? ".glade" then
+                data = read_in_content path
+            elsif end_with_one_of?(file,[".png",".jpg",".jpeg"]) 
+                data = base64_encode_image path
+            end
+                
+            unless data.empty? 
+                semaphore.synchronize do
+                    lines += NODE % ["\"" + path + "\"",data]
+                end
+            end
         end
     end
+
+    thread.each { |th| th.join }
+
     return lines
 end
 

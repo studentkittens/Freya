@@ -87,7 +87,7 @@ namespace Glyr
              * Locking stuff.
              */
             Glib::Cond destroyCond;
-            Glib::Mutex deliverMutex, condMutex, deleteMutex;
+            Glib::Mutex deliverMutex, condMutex, deleteMutex, addMutex;
 
             /*
              * True once destroy() was called

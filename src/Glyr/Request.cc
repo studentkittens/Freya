@@ -37,7 +37,7 @@ namespace Glyr
         /*
          * Send a goodbye to every Query, so they exit early 
          */
-        for(QueryList::iterator it = murderList.begin(); it != murderList.end(); it++) {
+        for(auto it = murderList.begin(); it != murderList.end(); it++) {
             glyr_signal_exit(*it);
         }
 
@@ -76,7 +76,7 @@ namespace Glyr
          * Only deliver when request is the last one send.
          */
         if(intf != NULL) {
-            if(intf->requestCounter == reqID || intf->queueCounter) {
+            if(intf->requestCounter == reqID) {
                 Glib::Mutex::Lock lock(deliverMutex);
                 disp->connect(sigc::bind(
                               sigc::mem_fun(intf,&UpdateInterface::deliver_internal),results,disp,true)
@@ -95,10 +95,6 @@ namespace Glyr
 
                 disp->emit();
                 glyr_free_list(results);
-            }
-
-            if(intf->queueCounter) {
-                intf->queueCounter--;
             }
         }
 
@@ -124,10 +120,11 @@ namespace Glyr
         /*
          * Notify eventually listening destroy() func
          */
-        condMutex.lock();
-        jobCounter--;
-        destroyCond.signal();
-        condMutex.unlock();
+        {
+            Glib::Mutex::Lock(condMutex);
+            jobCounter--;
+            destroyCond.signal();
+        }
     }
 
     ////////////////////////
@@ -159,6 +156,10 @@ namespace Glyr
             GlyrQuery * query = (GlyrQuery*)g_slice_alloc(sizeof(GlyrQuery));
             if(query != NULL) 
             {
+                /* 
+                 * Set up a suitable query. 
+                 * Also see: http://sahib.github.com/glyr/doc/html/libglyr-Glyr.html
+                 */ 
                 glyr_query_init(query);
                 glyr_opt_type(query,type);
                 glyr_opt_artist(query,(char*)artist);
@@ -178,8 +179,22 @@ namespace Glyr
                  */
                 Glib::Dispatcher * disp = new Glib::Dispatcher; 
 
+                /* 
+                 * The request counter only gets incremented if
+                 * no requests are enqueued (-> delivered as one)
+                 */
+                {
+                    Glib::Mutex::Lock lock(addMutex);
+                    if(intf->queueCounter)
+                        --(intf->queueCounter);
+                    else
+                        ++(intf->requestCounter);
+                }
+
                 murderList.push_back(query);
-                pool.push(sigc::bind(sigc::mem_fun(*this,&Stack::thread),query,intf,disp,++(intf->requestCounter)));
+                pool.push(sigc::bind(
+                            sigc::mem_fun(*this,&Stack::thread),query,intf,disp,intf->requestCounter)
+                         );
             }
         }
     }

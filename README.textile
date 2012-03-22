@@ -22,6 +22,9 @@ or
 Generating the LaTeX part is done via:
 @make tex@
 
+Note: Latex docu is written in german and will not be updated, in favour of
+a shorter, more descriptive english document.
+
 Running tests via:
 @make test@
 

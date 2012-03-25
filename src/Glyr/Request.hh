@@ -81,7 +81,7 @@ namespace Glyr
              * which is not atomar and would require 
              * additional locking
              */
-            int jobCounter;
+            volatile int jobCounter;
 
             /*
              * Locking stuff.

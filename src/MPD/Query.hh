@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "AbstractClientExtension.hh"
+#include "../Utils/UseMemPool.hh"
 
 namespace MPD
 {
@@ -20,7 +21,8 @@ namespace MPD
     typedef std::vector<MPD::Song*> SongVector;
     typedef std::vector<char*> TagVector;
 
-    class Query : public AbstractClientExtension
+    class Query : public AbstractClientExtension, 
+                  public UseMemPool<Query>
     {
         // Only MPD::BaseClient may instance Queries
         friend class BaseClient;

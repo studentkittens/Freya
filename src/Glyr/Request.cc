@@ -121,7 +121,7 @@ namespace Glyr
          * Notify eventually listening destroy() func
          */
         {
-            Glib::Mutex::Lock(condMutex);
+            Glib::Mutex::Lock lock(condMutex);
             jobCounter--;
             destroyCond.signal();
         }
@@ -177,7 +177,7 @@ namespace Glyr
                  * Dispatcher needs to be instanced in
                  * the thread of the mainloop, i.e. here
                  */
-                Glib::Dispatcher * disp = new Glib::Dispatcher; 
+                auto * disp = new Glib::Dispatcher; 
 
                 /* 
                  * The request counter only gets incremented if

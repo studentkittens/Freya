@@ -33,36 +33,38 @@
 
 #include <mpd/client.h>
 #include "AbstractComposite.hh"
+#include "../Utils/UseMemPool.hh"
 
 namespace MPD
 {
     /**
      * @brief A wrapper for mpd_directory
      */
-    class Directory : public AbstractComposite
+    class Directory : public AbstractComposite,
+                      public UseMemPool<Directory>
     {
-    public:
-        /**
-         * @brief You are not supposed to instace this yourself.
-         *
-         * @param dir
-         */
-        Directory(mpd_directory& dir);
-        /**
-         * @brief dtor will free underlying mpd_directory
-         */
-        virtual ~Directory();
+        public:
+            /**
+             * @brief You are not supposed to instace this yourself.
+             *
+             * @param dir
+             */
+            Directory(mpd_directory& dir);
+            /**
+             * @brief dtor will free underlying mpd_directory
+             */
+            virtual ~Directory();
 
-        /**
-         * @brief The path of the directory
-         *
-         * @return a string
-         */
-        const char * get_path();
+            /**
+             * @brief The path of the directory
+             *
+             * @return a string
+             */
+            const char * get_path();
 
-    private:
+        private:
 
-        mpd_directory * mp_Dir;
+            mpd_directory * mp_Dir;
     };
 }
 

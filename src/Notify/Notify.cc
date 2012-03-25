@@ -55,6 +55,27 @@ namespace Notify
     }
     
     //////////////////
+    
+    gpointer send_notify_signal(gpointer v_noti_obj)
+    {
+        GError * err = NULL;
+
+        NotifyNotification * noti_obj = (NotifyNotification*)v_noti_obj;
+        notify_notification_show(noti_obj,&err);
+
+        if(err != NULL)
+        {
+            Warning("Unable to show notification: %s",err->message);
+            g_error_free(err);
+        }
+        else
+        {
+            g_object_unref(G_OBJECT(noti_obj));
+        }
+        return NULL;
+    }
+
+    //////////////////
 
     void Notify::_send(const char * summary, const char  * msg, const char * icon_name)
     {
@@ -66,23 +87,19 @@ namespace Notify
 
         do_init();
 
+        if(use_notify == false)
+            return;
+
         NotifyNotification * noti_obj = notify_notification_new(summary,msg,icon_name);
         if(noti_obj != NULL)
         {
-            GError * err = NULL;
-
+            /*
+             * For some reason showing the notification 
+             * is rather expensive, we do it in a separate thread
+             * therefore.
+             */
             notify_notification_set_timeout(noti_obj,timeout);
-            notify_notification_show(noti_obj,&err);
-
-            if(err != NULL)
-            {
-                Warning("Unable to show notification: %s",err->message);
-                g_error_free(err);
-            }
-            else
-            {
-                g_object_unref(G_OBJECT(noti_obj));
-            }
+            g_thread_create(send_notify_signal,noti_obj,false,NULL);
         }
     }
 

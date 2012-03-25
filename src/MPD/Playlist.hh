@@ -36,14 +36,16 @@
 #include "AbstractComposite.hh"
 #include "Song.hh"
 
+#include "../Utils/UseMemPool.hh"
+
 namespace MPD
 {
-    typedef struct mpd_playlist mpd_playlist;
-
     /**
      * @brief A Wrapper for mpd_playlist, also implements own client commands
      */
-    class Playlist : public AbstractClientExtension, public AbstractComposite
+    class Playlist : public AbstractClientExtension,
+                     public AbstractComposite,
+                     public UseMemPool<Playlist>
     {
     public:
         Playlist(MPD::BaseClient& base_client, mpd_playlist& c_playlist);

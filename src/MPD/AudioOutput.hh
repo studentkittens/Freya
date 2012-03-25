@@ -33,6 +33,7 @@
 
 #include "AbstractClientExtension.hh"
 #include "AbstractComposite.hh"
+#include "../Utils/UseMemPool.hh"
 
 #include <mpd/client.h>
 
@@ -42,56 +43,58 @@ namespace MPD
      * @brief Wrapper for mpd_output, implements also two client commands:
      * enable() and disable()
      */
-    class AudioOutput : public AbstractClientExtension, public AbstractComposite
+    class AudioOutput : public AbstractClientExtension,
+                        public AbstractComposite,
+                        public UseMemPool<AudioOutput>
     {
-    public:
-        /**
-         * @brief You cannot instance this class yourself.
-         *
-         * @param client
-         * @param output
-         */
-        AudioOutput(MPD::BaseClient& client, mpd_output& output);
-        /**
-         * @brief Output ID - this is usually not needed
-         *
-         * @return an unsigned integer, starting from 0
-         */
-        unsigned get_id();
-        /**
-         * @brief Get the name of this putput
-         *
-         * @return a nullterminated string
-         */
-        const char * get_name();
-        /**
-         * @brief Obvious.
-         *
-         * @return
-         */
-        bool get_enabled();
-        /**
-         * @brief Enable this output
-         *
-         * @return true on success
-         */
-        bool enable();
-        /**
-         * @brief Disable this output
-         *
-         * @return true on success
-         */
-        bool disable();
+        public:
+            /**
+             * @brief You cannot instance this class yourself.
+             *
+             * @param client
+             * @param output
+             */
+            AudioOutput(MPD::BaseClient& client, mpd_output& output);
+            /**
+             * @brief Output ID - this is usually not needed
+             *
+             * @return an unsigned integer, starting from 0
+             */
+            unsigned get_id();
+            /**
+             * @brief Get the name of this putput
+             *
+             * @return a nullterminated string
+             */
+            const char * get_name();
+            /**
+             * @brief Obvious.
+             *
+             * @return
+             */
+            bool get_enabled();
+            /**
+             * @brief Enable this output
+             *
+             * @return true on success
+             */
+            bool enable();
+            /**
+             * @brief Disable this output
+             *
+             * @return true on success
+             */
+            bool disable();
 
-        /**
-         * @brief Alias for get_name() (Implemented due to Compositum)
-         *
-         * @return
-         */
-        const char * get_path();
+            /**
+             * @brief Alias for get_name() (Implemented due to Compositum)
+             *
+             * @return
+             */
+            const char * get_path();
 
-    private:
-        mpd_output * mp_Output;
+        private:
+            mpd_output * mp_Output;
     };
 }
 

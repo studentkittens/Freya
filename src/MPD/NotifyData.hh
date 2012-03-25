@@ -35,81 +35,82 @@
 #include "Statistics.hh"
 #include "Status.hh"
 #include "Song.hh"
+#include "../Utils/UseMemPool.hh"
 
 namespace MPD
 {
     /**
      * @brief NotifyData is passed as second argument to the on_client_update signal.
      */
-    class NotifyData
+    class NotifyData : public UseMemPool<NotifyData>
     {
-    public:
-        /**
-         * @brief You are not supposed to instance this yourself.
-         *
-         * @param conn
-         */
-        NotifyData(Connection& conn);
-        ~NotifyData();
+        public:
+            /**
+             * @brief You are not supposed to instance this yourself.
+             *
+             * @param conn
+             */
+            NotifyData(Connection& conn);
+            ~NotifyData();
 
-        /**
-         * @brief Get the current MPD::Status
-         *
-         * @return
-         */
-        Status& get_status();
-        /**
-         * @brief Get the current MPD::Statistics
-         *
-         * @return
-         */
-        Statistics& get_statistics();
+            /**
+             * @brief Get the current MPD::Status
+             *
+             * @return
+             */
+            Status& get_status();
+            /**
+             * @brief Get the current MPD::Statistics
+             *
+             * @return
+             */
+            Statistics& get_statistics();
 
-        /**
-         * @brief Get the currently playing MPD::Song
-         *
-         * @return This is NULL when not playing! Check for it!
-         */
-        Song * get_song();
-        /**
-         * @brief Get the next playing MPD::Song
-         *
-         * @return This might be NULL at end of the queue and when not repeating.
-         */
-        Song * get_next_song();
+            /**
+             * @brief Get the currently playing MPD::Song
+             *
+             * @return This is NULL when not playing! Check for it!
+             */
+            Song * get_song();
+            /**
+             * @brief Get the next playing MPD::Song
+             *
+             * @return This might be NULL at end of the queue and when not repeating.
+             */
+            Song * get_next_song();
 
-        /**
-         * @brief Update internal client state
-         */
-        void update_all(unsigned event = UINT_MAX);
+            /**
+             * @brief Update internal client state
+             */
+            void update_all(unsigned event = UINT_MAX);
 
-    private:
+        private:
 
-        /**
-         * @brief Custom implementation of mpd_run_status()
-         *
-         * @return same as mpd_run_status(), but sets m_NextSongID
-         */
-        Status * recv_status_own();
+            /**
+             * @brief Custom implementation of mpd_run_status()
+             *
+             * @return same as mpd_run_status(), but sets m_NextSongID
+             */
+            Status * recv_status_own();
 
-        /**
-         * @brief Current valid connection.
-         */
-        Connection * mp_Conn;
+            /**
+             * @brief Current valid connection.
+             */
+            Connection * mp_Conn;
 
-        /**
-         * @brief The mpd status (wrapped to C++ object)
-         */
-        Status * mp_Status;
-        /**
-         * @brief MPD statistics (wrapped to C++ object)
-         */
-        Statistics * mp_Statistics;
-        /**
-         * @brief Currently playing song (wrapped to C++ object)
-         */
-        Song * mp_Song;
-        Song * mp_NextSong;
+            /**
+             * @brief The mpd status (wrapped to C++ object)
+             */
+            Status * mp_Status;
+            /**
+             * @brief MPD statistics (wrapped to C++ object)
+             */
+            Statistics * mp_Statistics;
+            /**
+             * @brief Currently playing song (wrapped to C++ object)
+             */
+            Song * mp_Song;
+            Song * mp_NextSong;
     };
 }
 

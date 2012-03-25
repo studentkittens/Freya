@@ -32,72 +32,71 @@
 #define FREYA_STATISTICS_GUARD
 
 #include <mpd/client.h>
+#include "../Utils/UseMemPool.hh"
 
 namespace MPD
 {
-    typedef struct mpd_stats mpd_stats;
-
     /**
      * @brief A wrapper for mpd_stats
      */
-    class Statistics
+    class Statistics : public UseMemPool<Statistics>
     {
-    public:
+        public:
 
-        /**
-         * @brief You are not supposed to instance this yourself
-         *
-         * @param stats
-         */
-        Statistics(mpd_stats& stats);
-        ~Statistics();
+            /**
+             * @brief You are not supposed to instance this yourself
+             *
+             * @param stats
+             */
+            Statistics(mpd_stats& stats);
+            ~Statistics();
 
-        /**
-         * @brief Number of artists in DB
-         *
-         * @return
-         */
-        unsigned get_number_of_artists();
-        /**
-         * @brief Number of albums in DB
-         *
-         * @return
-         */
-        unsigned get_number_of_albums();
-        /**
-         * @brief Number of songs in DB
-         *
-         * @return
-         */
-        unsigned get_number_of_songs();
-        /**
-         * @brief Get uptime in seconds
-         *
-         * @return
-         */
-        unsigned long get_uptime();
-        /**
-         * @brief get seconds since last update
-         *
-         * @return
-         */
-        unsigned long get_db_update_time();
-        /**
-         * @brief Playing since xxx seconds
-         *
-         * @return
-         */
-        unsigned long get_play_time();
-        /**
-         * @brief Total time in seconds needed to play the whole DB
-         *
-         * @return
-         */
-        unsigned long get_db_play_time();
+            /**
+             * @brief Number of artists in DB
+             *
+             * @return
+             */
+            unsigned get_number_of_artists();
+            /**
+             * @brief Number of albums in DB
+             *
+             * @return
+             */
+            unsigned get_number_of_albums();
+            /**
+             * @brief Number of songs in DB
+             *
+             * @return
+             */
+            unsigned get_number_of_songs();
+            /**
+             * @brief Get uptime in seconds
+             *
+             * @return
+             */
+            unsigned long get_uptime();
+            /**
+             * @brief get seconds since last update
+             *
+             * @return
+             */
+            unsigned long get_db_update_time();
+            /**
+             * @brief Playing since xxx seconds
+             *
+             * @return
+             */
+            unsigned long get_play_time();
+            /**
+             * @brief Total time in seconds needed to play the whole DB
+             *
+             * @return
+             */
+            unsigned long get_db_play_time();
 
-    private:
+        private:
 
-        mpd_stats * mp_Statistics;
+            mpd_stats * mp_Statistics;
     };
 }
 

@@ -361,7 +361,7 @@ namespace MPD
                  * there are often events waiting at this point
                  */
                 while(mctx->pending()) {
-                    mctx->iteration(true);
+                    mctx->iteration(false);
                 }
 
             }

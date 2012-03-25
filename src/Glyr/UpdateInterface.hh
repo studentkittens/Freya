@@ -51,11 +51,11 @@ namespace Glyr
         /**
          * @brief Counts the calls to Glyr::Stack::request()
          */
-        int requestCounter;
+        volatile int requestCounter;
         /**
          * @brief Counts the calls to Glyr::Stack::enqueue()
          */
-        int queueCounter;
+        volatile int queueCounter;
 
         /**
          * @brief This is called before each delievery

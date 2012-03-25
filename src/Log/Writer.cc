@@ -121,25 +121,32 @@ namespace Log {
 
     static void glib_logging(const gchar *log_domain,GLogLevelFlags log_level,const gchar *message, gpointer user_data)
     {        
-        #define GTK_FORWARD(level,domain,msg) _MSG(level,domain,"%s",msg)
+        #define GTK_FORWARD(level,str_level,msg)                \
+              {                                                 \
+                char * actual_domain = g_strdup_printf("%s-%s", \
+                                        log_domain,str_level);  \
+                _MSG(level,actual_domain,"%s",msg);             \
+                g_free(actual_domain);                          \
+              }       
+
         switch(log_level) {
             case G_LOG_LEVEL_CRITICAL:
-                GTK_FORWARD(Log::LOG_CRITICAL,"Gtk-Critical",message);
+                GTK_FORWARD(Log::LOG_CRITICAL,"Critical",message);
                 break;
             case G_LOG_LEVEL_ERROR:
-                GTK_FORWARD(Log::LOG_ERROR,"Gtk-Error",message);
+                GTK_FORWARD(Log::LOG_ERROR,"Error",message);
                 break;
             case G_LOG_LEVEL_WARNING:      
-                GTK_FORWARD(Log::LOG_WARN,"Gtk-Warning",message);
+                GTK_FORWARD(Log::LOG_WARN,"Warning",message);
                 break;
             case G_LOG_LEVEL_MESSAGE:         
-                GTK_FORWARD(Log::LOG_OK,"Gtk-Message",message);
+                GTK_FORWARD(Log::LOG_OK,"Message",message);
                 break;
             case G_LOG_LEVEL_INFO:         
-                GTK_FORWARD(Log::LOG_INFO,"Gtk-Info",message);
+                GTK_FORWARD(Log::LOG_INFO,"Info",message);
                 break;
             case G_LOG_LEVEL_DEBUG:
-                GTK_FORWARD(Log::LOG_DEBUG,"Gtk-Debug",message);
+                GTK_FORWARD(Log::LOG_DEBUG,"Debug",message);
                break; 
             case G_LOG_FLAG_RECURSION:
             case G_LOG_FLAG_FATAL:
@@ -186,7 +193,9 @@ namespace Log {
             g_error("Tried to write it at: %s",m_Logpath.c_str());
         }
 
-        register_log_domains("Glib");
+        register_log_domains("GLib");
+        register_log_domains("GLib-GObject");
+        register_log_domains("Gdk");
         register_log_domains("Gtk");
     }
 

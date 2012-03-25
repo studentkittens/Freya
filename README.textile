@@ -33,3 +33,5 @@ See @make help@ for a complete list of targets.
 Generated documentation can be viewed in _doc/doxygen/html/index.html_
 
 More to come here.
+
+<img src="https://github.com/studentkittens/Freya/raw/master/screenshot.png" alt="Recent Screenshot">

@@ -85,6 +85,8 @@ namespace Notify
             Glib::ustring icon_name;
             int timeout,use_notify;
             bool extra;
+    
+            Glib::Mutex mtx;
 
             void do_init();
             void _send(const char *hl, const char *msg, const char * icon);

@@ -33,15 +33,15 @@
 
 #include "mpd/client.h"
 #include "AbstractComposite.hh"
+#include "../Utils/UseMemPool.hh"
 #include <glibmm.h>
+
 namespace MPD
 {
-    typedef struct mpd_song mpd_song;
-
     /**
      * @brief A wrapper for mpd_song
      */
-    class Song : public AbstractComposite
+    class Song : public AbstractComposite, public UseMemPool<Song>
     {
     public:
         /**

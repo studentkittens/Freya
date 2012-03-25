@@ -33,10 +33,12 @@ h4. Running tests via:
 
 See @make help@ for a complete list of targets.
 
-h6. 
-
 Generated documentation can be viewed in _doc/doxygen/html/index.html_
 
+h2.  
+
 More to come here.
+
+h2.  
 
 <img src="https://github.com/studentkittens/Freya/raw/master/screenshot.png" alt="Recent Screenshot">

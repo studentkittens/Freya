@@ -14,21 +14,26 @@ You might want to alias this.
 
 h2. Doxygen
 
-To generate documentation use:
+h4. To generate documentation use:
+
 @doxygen FreyaDoxygen.conf@
 or
 @make doc@
 
-Generating the LaTeX part is done via:
+h4. Generating the LaTeX part is done via:
+
 @make tex@
 
 Note: Latex docu is written in german and will not be updated, in favour of
 a shorter, more descriptive english document.
 
-Running tests via:
+h4. Running tests via:
+
 @make test@
 
 See @make help@ for a complete list of targets.
+
+h6. 
 
 Generated documentation can be viewed in _doc/doxygen/html/index.html_
 

@@ -64,7 +64,7 @@ namespace Browser
 
     Settings::~Settings()
     {
-        for(unsigned int i=0; i<sub_sections.size(); i++)
+        for(int i = 0; i < sub_sections.size(); i++)
             delete sub_sections[i];
     }
 

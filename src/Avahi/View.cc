@@ -74,10 +74,10 @@ namespace Avahi
         m_refTreeModel = Gtk::ListStore::create(m_Columns);
         m_TreeView.set_model(m_refTreeModel);
 
-        m_TreeView.append_column("IP",   m_Columns.m_col_ip);
-        m_TreeView.append_column("Host", m_Columns.m_col_hostname);
-        m_TreeView.append_column("Name", m_Columns.m_col_name);
-        m_TreeView.append_column("Port", m_Columns.m_col_port);
+        m_TreeView.append_column("IP",         m_Columns.m_col_ip);
+        m_TreeView.append_column("Host",       m_Columns.m_col_hostname);
+        m_TreeView.append_column("Servername", m_Columns.m_col_name);
+        m_TreeView.append_column("Port",       m_Columns.m_col_port);
 
         show_all_children();
     }

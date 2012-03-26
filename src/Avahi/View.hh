@@ -35,10 +35,7 @@
 
 namespace Avahi
 {
-    /**
-     * @brief Representation of the Avahi::Browser, do not use this yourself
-     */
-    class View : public Gtk::Window
+    class View : public Gtk::ScrolledWindow
     {
     public:
         View();

@@ -52,12 +52,12 @@ namespace Avahi
         if(avahi_client_errno(client) != AVAHI_OK)
         {
             const gchar * error_message = avahi_strerror(avahi_client_errno(client));
-            window->set_status(error_message);
             Warning("%s: %s",prefix_message,error_message);
+            m_signal_error_message.emit(Glib::ustring(prefix_message) + error_message);
         }
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
     /* STATUS CALLBACK */
 
@@ -72,7 +72,7 @@ namespace Avahi
         }
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
     /* static wrapper for the callback */
     void Browser::wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
@@ -83,7 +83,7 @@ namespace Avahi
         myself->client_callback(client,state);
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
     /* RESOLVER CALLBACK */
 
@@ -103,70 +103,66 @@ namespace Avahi
         AVAHI_GCC_UNUSED AvahiLookupResultFlags flags)
     {
 
-        if(resolver == NULL)
-        {
-            return;
-        }
+        g_return_if_fail(resolver);
 
         /* Check if we had been successful */
         switch(event)
         {
-        case AVAHI_RESOLVER_FAILURE:
-        {
-            gchar * format = g_strdup_printf("Failed to resolve service '%s' of type '%s' in domain '%s'", name, type, domain);
-            check_client_error("Failed to resolve service ");
-            g_free(format);
-            break;
-        }
-        case AVAHI_RESOLVER_FOUND:
-        {
-            /* Get the IP */
-            char addr[AVAHI_ADDRESS_STR_MAX];
-            avahi_address_snprint(addr, sizeof(addr), address);
+            case AVAHI_RESOLVER_FAILURE:
+                {
+                    gchar * format = g_strdup_printf("Failed to resolve service '%s' of type '%s' in domain '%s'", name, type, domain);
+                    check_client_error(format);
+                    g_free(format);
+                    break;
+                }
+            case AVAHI_RESOLVER_FOUND:
+                {
+                    /* Get the IP */
+                    char addr[AVAHI_ADDRESS_STR_MAX];
+                    avahi_address_snprint(addr, sizeof(addr), address);
 
-            Info("=> '%s' of type '%s' in domain '%s':", name, type, domain);
-            Info("=> %s:%u (%s)",host_name, port, addr);
-
-            /* Add in View */
-            window->server_append(addr,host_name, name, port);
-        }
+                    Info("=> '%s' of type '%s' in domain '%s':", name, type, domain);
+                    Info("=> %s:%u (%s)",host_name, port, addr);
+                    
+                    m_signal_got_server.emit(host_name,addr,name,port);
+                }
         }
 
         avahi_service_resolver_free(resolver);
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
     /* static wrapper for the resolver callback */
     void Browser::wrap_resolve_callback(AvahiServiceResolver * r,
-                                        AvahiIfIndex interface,
-                                        AvahiProtocol protocol,
-                                        AvahiResolverEvent event,
-                                        const char *name,
-                                        const char *type,
-                                        const char *domain,
-                                        const char *host_name,
-                                        const AvahiAddress *address,
-                                        uint16_t port,
-                                        AvahiStringList *txt,
-                                        AvahiLookupResultFlags flags,
-                                        void * self)
+            AvahiIfIndex interface,
+            AvahiProtocol protocol,
+            AvahiResolverEvent event,
+            const char *name,
+            const char *type,
+            const char *domain,
+            const char *host_name,
+            const AvahiAddress *address,
+            uint16_t port,
+            AvahiStringList *txt,
+            AvahiLookupResultFlags flags,
+            void * self)
     {
         Browser * myself = (Browser*)self;
         myself->resolve_callback(r,interface,protocol,event,name,type,domain,host_name,address,port,txt,flags);
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
     /* SERVICE BROWSER CALLBACK */
     void Browser::service_browser_callback(AvahiServiceBrowser *b,
-                                           AvahiIfIndex interface,
-                                           AvahiProtocol protocol,
-                                           AvahiBrowserEvent event,
-                                           const char *name,
-                                           const char *type,
-                                           const char *domain,
-                                           AVAHI_GCC_UNUSED AvahiLookupResultFlags flags)
+            AvahiIfIndex interface,
+            AvahiProtocol protocol,
+            AvahiBrowserEvent event,
+            const char *name,
+            const char *type,
+            const char *domain,
+            AVAHI_GCC_UNUSED AvahiLookupResultFlags flags)
     {
         /* Necessary since this may block till client is fully connected */
         AvahiClient * full_client = avahi_service_browser_get_client(b);
@@ -174,56 +170,52 @@ namespace Avahi
         /* Check event, comments from the avahi documentation. */
         switch(event)
         {
-            /* The object is new on the network.*/
-        case AVAHI_BROWSER_NEW:
-        {
-            Info("-- NEW: %s %s %s",name,type,domain);
-            if(avahi_service_resolver_new(full_client, interface, protocol, name, type, domain,
-                                          (AvahiLookupFlags)AVAHI_PROTO_INET, (AvahiLookupFlags)0,
-                                          Browser::wrap_resolve_callback, this) == NULL)
-            {
-                gchar * format = g_strdup_printf("Failed to resolve service '%s'",name);
-                check_client_error(format);
-                g_free(format);
-            }
-            server_counter++;
-            update_status_label();
-            break;
-        }
-        /* The object has been removed from the network.*/
-        case AVAHI_BROWSER_REMOVE:
-        {
-            Info("-- DEL: %s %s %s",name,type,domain);
-            window->server_delete(name);
-            server_counter--;
-            update_status_label();
-            break;
-        }
-        /* One-time event, to notify the user that all entries from the caches have been sent. */
-        case AVAHI_BROWSER_CACHE_EXHAUSTED:
-        {
-            break;
-        }
-        /* One-time event, to notify the user that more records will probably not show up in the near future, i.e.
-         * all cache entries have been read and all static servers been queried */
-        case AVAHI_BROWSER_ALL_FOR_NOW:
-        {
-            Info("-- Got all domains for now...");
-            update_status_label();
-            break;
-        }
-        /* Browsing failed due to some reason which can be retrieved using avahi_server_errno()/avahi_client_errno() */
-        case AVAHI_BROWSER_FAILURE:
-        {
-            check_client_error("Error while browsing");
-            break;
-        }
-        default:
-            break;
+            /* The object is new on the network */
+            case AVAHI_BROWSER_NEW:
+                {
+                    Info("-- NEW: %s %s %s",name,type,domain);
+                    if(avahi_service_resolver_new(full_client, interface, protocol, name, type, domain,
+                                (AvahiLookupFlags)AVAHI_PROTO_INET, (AvahiLookupFlags)0,
+                                Browser::wrap_resolve_callback, this) == NULL)
+                    {
+                        gchar * format = g_strdup_printf("Failed to resolve service '%s'",name);
+                        check_client_error(format);
+                        g_free(format);
+                    }
+                    server_counter++;
+                    break;
+                }
+                /* The object has been removed from the network.*/
+            case AVAHI_BROWSER_REMOVE:
+                {
+                    Info("-- DEL: %s %s %s",name,type,domain);
+                    server_counter--;
+                    break;
+                }
+                /* One-time event, to notify the user that all entries from the caches have been sent. */
+            case AVAHI_BROWSER_CACHE_EXHAUSTED:
+                {
+                    break;
+                }
+                /* One-time event, to notify the user that more records will probably not show up in the near future, i.e.
+                 * all cache entries have been read and all static servers been queried */
+            case AVAHI_BROWSER_ALL_FOR_NOW:
+                {
+                    Info("-- Got all domains for now...");
+                    break;
+                }
+                /* Browsing failed due to some reason which can be retrieved using avahi_server_errno()/avahi_client_errno() */
+            case AVAHI_BROWSER_FAILURE:
+                {
+                    check_client_error("Error while browsing");
+                    break;
+                }
+            default:
+                break;
         }
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
     /* static wrapper for service callbacks */
     void Browser::wrap_service_browser_callback(AvahiServiceBrowser *b,
@@ -240,59 +232,40 @@ namespace Avahi
         myself->service_browser_callback(b,interface,protocol,event,name,type,domain,flags);
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
-    /* CTor */
-    Browser::Browser()
+    Browser::Browser() :
+        server_counter(0)
     {
         const AvahiPoll *poll_api;
         int error = 0;
 
-        server_counter = 0;
-
-        /* Build View */
-        window = new View();
-
         /* Optional: Tell avahi to use g_malloc and g_free */
         avahi_set_allocator (avahi_glib_allocator());
-
-        /* Create the GLIB Adaptor */
-        glib_poll = avahi_glib_poll_new (NULL, Glib::PRIORITY_HIGH);
+        glib_poll = avahi_glib_poll_new (NULL, G_PRIORITY_HIGH);
         poll_api = avahi_glib_poll_get (glib_poll);
 
-        /* Create a new AvahiClient instance */
         client = avahi_client_new(poll_api,(AvahiClientFlags)AVAHI_CLIENT_NO_FAIL,
-                                  Browser::wrap_client_callback,this,&error);
+                Browser::wrap_client_callback,this,&error);
 
         /* Check the error return code */
         if(client != NULL && avahi_client_get_state(client) != AVAHI_CLIENT_CONNECTING)
-        {
             avahi_service_browser_new(client,
-                                      AVAHI_IF_UNSPEC,
-                                      AVAHI_PROTO_UNSPEC,
-                                      MPD_AVAHI_SERVICE_TYPE,
-                                      avahi_client_get_domain_name(client),
-                                      (AvahiLookupFlags)0,
-                                      Browser::wrap_service_browser_callback, this);
-        }
-        else
-        {
-            if(client != NULL)
-            {
-                check_client_error("Initializing Avahi");
-            }
-
-            delete window;
-            window = NULL;
-        }
+                    AVAHI_IF_UNSPEC,
+                    AVAHI_PROTO_UNSPEC,
+                    MPD_AVAHI_SERVICE_TYPE,
+                    avahi_client_get_domain_name(client),
+                    (AvahiLookupFlags)0,
+                    Browser::wrap_service_browser_callback,
+                    this);
+        else if(client != NULL)
+            check_client_error("Initializing Avahi");
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
-    /* DTor */
     Browser::~Browser()
     {
-        delete window;
         if(client != NULL)
             avahi_client_free(client);
 
@@ -300,36 +273,26 @@ namespace Avahi
             avahi_glib_poll_free(glib_poll);
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
-    Gtk::Window& Browser::get_window()
-    {
-        return *(window);
-    }
-
-    /* --------------------------------------- */
-
-    /* Check if this browser has a working connection */
     bool Browser::is_connected()
     {
-        return !(window == NULL);
+        return true;
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
-    SelectNotify& Browser::signal_selection_done()
+    GotServerNotify& Browser::signal_got_server()
     {
-        return window->signal_select;
+        return m_signal_got_server;
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 
-    void Browser::update_status_label()
+    ErroMessageNotify& Browser::signal_error_message()
     {
-        char msg_buf[128] = {0};
-        g_sprintf(msg_buf,"Found %d server%s",server_counter,(server_counter == 1) ? "" : "s");
-        window->set_status(msg_buf);
+        return m_signal_error_message;
     }
 
-    /* --------------------------------------- */
+    ////////////////////////////////
 }

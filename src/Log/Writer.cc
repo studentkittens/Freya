@@ -197,6 +197,8 @@ namespace Log {
         register_log_domains("GLib-GObject");
         register_log_domains("Gdk");
         register_log_domains("Gtk");
+        register_log_domains("gtkmm");
+        register_log_domains("glibmm");
     }
 
     /////////////////////////////

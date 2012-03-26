@@ -98,6 +98,7 @@ namespace Notify
              * is rather expensive, we do it in a separate thread
              * therefore.
              */
+            // TODO: Use a threadpool here
             notify_notification_set_timeout(noti_obj,timeout);
             g_thread_create(send_notify_signal,noti_obj,false,NULL);
         }

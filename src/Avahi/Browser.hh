@@ -31,8 +31,6 @@
 #ifndef FREYA_AVAHI_BROWSER_HH
 #define FREYA_AVAHI_BROWSER_HH
 
-#include "View.hh"
-
 /* Avahi stuff */
 #include <avahi-client/client.h>
 #include <avahi-client/lookup.h>
@@ -40,128 +38,115 @@
 #include <avahi-glib/glib-watch.h>
 #include <avahi-glib/glib-malloc.h>
 
+#include <glibmm.h>
+
 namespace Avahi
 {
     /**
      * @brief Called when the user selectes a server from the list
      */
-    typedef sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring, unsigned int> SelectNotify;
+    typedef sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring,unsigned> GotServerNotify;
+    typedef sigc::signal<void,Glib::ustring> ErroMessageNotify;
 
     /**
      * @brief This class offers a simple Zeroconf Serverbrowser
-     *
-     * It also instances a View of it (Avahi::View)
-     * To show the window call show() on get_window()
      */
     class Browser
     {
-    public:
+        public:
 
-        /**
-         * @brief Instance the underlying browser and already start querying
-         */
-        Browser();
+            /**
+             * @brief Instance the underlying browser and already start querying
+             */
+            Browser();
 
-        /**
-         * @brief Clean up before you can instance another one
-         */
-        ~Browser();
+            /**
+             * @brief Clean up before you can instance another one
+             */
+            ~Browser();
 
-        /**
-         * @brief Get the Gtk::Window of the view
-         *
-         * @return a reference to Gtk::Window, you might want to call show() on it
-         */
-        Gtk::Window& get_window();
+            /**
+             * @brief Check if Browser is ready for use
+             *
+             * @return obvious.
+             */
+            bool is_connected();
 
-        /**
-         * @brief Check if Browser is ready for use
-         *
-         * @return obvious.
-         */
-        bool is_connected();
+            GotServerNotify& signal_got_server();
+            ErroMessageNotify& signal_error_message();
 
-        /**
-         * @brief Call connect on
-         *
-         * See the typedef above, for the needed prototype
-         *
-         * @return a sigc::signal on which you can call conncet()
-         */
-        SelectNotify& signal_selection_done();
+        private:
 
-    private:
+            void client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
+                    AvahiClientState state);
 
-        /* CALLBACKS */
+            static void wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
+                    AvahiClientState state,
+                    void * self);
 
-        void client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
-                             AvahiClientState state);
+            /* Argh... Avahi loves huge functions */
+            void resolve_callback(
+                    AvahiServiceResolver * resolver,
+                    AVAHI_GCC_UNUSED AvahiIfIndex interface,
+                    AVAHI_GCC_UNUSED AvahiProtocol protocol,
+                    AvahiResolverEvent event,
+                    const char *name,
+                    const char *type,
+                    const char *domain,
+                    const char *host_name,
+                    const AvahiAddress *address,
+                    uint16_t port,
+                    AVAHI_GCC_UNUSED AvahiStringList *txt,
+                    AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
 
-        static void wrap_client_callback(AVAHI_GCC_UNUSED AvahiClient *client,
-                                         AvahiClientState state,
-                                         void * self);
+            static void wrap_resolve_callback(AvahiServiceResolver * r,
+                    AvahiIfIndex interface,
+                    AvahiProtocol protocol,
+                    AvahiResolverEvent event,
+                    const char *name,
+                    const char *type,
+                    const char *domain,
+                    const char *host_name,
+                    const AvahiAddress *address,
+                    uint16_t port,
+                    AvahiStringList *txt,
+                    AvahiLookupResultFlags flags,
+                    void * self);
 
-        /* Argh... Avahi loves huge functions */
-        void resolve_callback(
-            AvahiServiceResolver * resolver,
-            AVAHI_GCC_UNUSED AvahiIfIndex interface,
-            AVAHI_GCC_UNUSED AvahiProtocol protocol,
-            AvahiResolverEvent event,
-            const char *name,
-            const char *type,
-            const char *domain,
-            const char *host_name,
-            const AvahiAddress *address,
-            uint16_t port,
-            AVAHI_GCC_UNUSED AvahiStringList *txt,
-            AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
+            /* Servicebrowser callback.. *sigh* Why am I writing this ton of params..? */
+            void service_browser_callback(AvahiServiceBrowser *b,
+                    AvahiIfIndex interface,
+                    AvahiProtocol protocol,
+                    AvahiBrowserEvent event,
+                    const char *name,
+                    const char *type,
+                    const char *domain,
+                    AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
 
-        static void wrap_resolve_callback(AvahiServiceResolver * r,
-                                          AvahiIfIndex interface,
-                                          AvahiProtocol protocol,
-                                          AvahiResolverEvent event,
-                                          const char *name,
-                                          const char *type,
-                                          const char *domain,
-                                          const char *host_name,
-                                          const AvahiAddress *address,
-                                          uint16_t port,
-                                          AvahiStringList *txt,
-                                          AvahiLookupResultFlags flags,
-                                          void * self);
+            static void wrap_service_browser_callback(AvahiServiceBrowser *b,
+                    AvahiIfIndex interface,
+                    AvahiProtocol protocol,
+                    AvahiBrowserEvent event,
+                    const char *name,
+                    const char *type,
+                    const char *domain,
+                    AvahiLookupResultFlags flags,
+                    void * userdata);
 
-        /* Servicebrowser callback.. *sigh* Why am I writing this ton of params..? */
-        void service_browser_callback(AvahiServiceBrowser *b,
-                                      AvahiIfIndex interface,
-                                      AvahiProtocol protocol,
-                                      AvahiBrowserEvent event,
-                                      const char *name,
-                                      const char *type,
-                                      const char *domain,
-                                      AVAHI_GCC_UNUSED AvahiLookupResultFlags flags);
+            void check_client_error(const gchar * prefix_message);
 
-        static void wrap_service_browser_callback(AvahiServiceBrowser *b,
-                AvahiIfIndex interface,
-                AvahiProtocol protocol,
-                AvahiBrowserEvent event,
-                const char *name,
-                const char *type,
-                const char *domain,
-                AvahiLookupResultFlags flags,
-                void * userdata);
+            ////////////////////////
 
-        /* -------------------------------------- */
+            AvahiClient * client;
+            AvahiGLibPoll * glib_poll;
 
-        void check_client_error(const gchar * prefix_message);
-        void update_status_label();
+            unsigned server_counter;
 
-        /* -------------------------------------- */
-
-        AvahiClient * client;
-        AvahiGLibPoll * glib_poll;
-        View * window;
-
-        unsigned server_counter;
+            /*
+             * Error messages
+             */
+            GotServerNotify m_signal_got_server;
+            ErroMessageNotify m_signal_error_message;
     };
 }
 

@@ -102,7 +102,6 @@ namespace Avahi
         AVAHI_GCC_UNUSED AvahiStringList *txt,
         AVAHI_GCC_UNUSED AvahiLookupResultFlags flags)
     {
-
         g_return_if_fail(resolver);
 
         /* Check if we had been successful */
@@ -124,7 +123,7 @@ namespace Avahi
                     Info("=> '%s' of type '%s' in domain '%s':", name, type, domain);
                     Info("=> %s:%u (%s)",host_name, port, addr);
                     
-                    m_signal_got_server.emit(host_name,addr,name,port);
+                    m_signal_got_server.emit(addr,host_name,name,port);
                 }
         }
 
@@ -189,6 +188,7 @@ namespace Avahi
             case AVAHI_BROWSER_REMOVE:
                 {
                     Info("-- DEL: %s %s %s",name,type,domain);
+                    m_signal_deleted_server.emit(name);
                     server_counter--;
                     break;
                 }
@@ -201,13 +201,13 @@ namespace Avahi
                  * all cache entries have been read and all static servers been queried */
             case AVAHI_BROWSER_ALL_FOR_NOW:
                 {
-                    Info("-- Got all domains for now...");
+                    m_signal_error_message.emit(" Got all domains for now.");
                     break;
                 }
                 /* Browsing failed due to some reason which can be retrieved using avahi_server_errno()/avahi_client_errno() */
             case AVAHI_BROWSER_FAILURE:
                 {
-                    check_client_error("Error while browsing");
+                    m_signal_error_message.emit("Error while browsing (See cmd)");
                     break;
                 }
             default:
@@ -295,4 +295,16 @@ namespace Avahi
     }
 
     ////////////////////////////////
+            
+    DeleteServerNotify& Browser::signal_deleted_server()
+    {
+        return m_signal_deleted_server;
+    }
+
+    ////////////////////////////////
+
+    int Browser::get_server_count()
+    {
+        return server_counter;
+    }
 }

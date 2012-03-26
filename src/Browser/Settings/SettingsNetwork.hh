@@ -32,8 +32,9 @@
 #define FREYA_SETTINGS_NETWORK_GUARD
 
 #include "../../Config/Handler.hh"
-#include "../../Avahi/Browser.hh"
 #include "AbstractSettings.hh"
+
+#include <gtkmm.h>
 
 namespace Browser
 {
@@ -58,9 +59,9 @@ namespace Browser
         Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
 
         /* Widgets */
-        Avahi::Browser avahi_handle;
         Gtk::Entry *ip;
         Gtk::SpinButton *port, *recon_timeout;
+        Gtk::Button *avahi;
         Gtk::CheckButton *autoconnect;
         Gtk::MessageDialog *avahi_warning;
     };

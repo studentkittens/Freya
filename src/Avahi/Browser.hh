@@ -46,6 +46,7 @@ namespace Avahi
      * @brief Called when the user selectes a server from the list
      */
     typedef sigc::signal<void,Glib::ustring,Glib::ustring,Glib::ustring,unsigned> GotServerNotify;
+    typedef sigc::signal<void,Glib::ustring> DeleteServerNotify;
     typedef sigc::signal<void,Glib::ustring> ErroMessageNotify;
 
     /**
@@ -72,8 +73,11 @@ namespace Avahi
              */
             bool is_connected();
 
+            int get_server_count();
+
             GotServerNotify& signal_got_server();
             ErroMessageNotify& signal_error_message();
+            DeleteServerNotify& signal_deleted_server();
 
         private:
 
@@ -147,6 +151,7 @@ namespace Avahi
              */
             GotServerNotify m_signal_got_server;
             ErroMessageNotify m_signal_error_message;
+            DeleteServerNotify m_signal_deleted_server;
     };
 }
 

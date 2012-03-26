@@ -49,6 +49,7 @@
 #include "../Browser/Statistics/StatBrowser.hh"
 #include "../Browser/Settings/Settings.hh"
 #include "../Browser/NowPlaying/NowPlaying.hh"
+#include "../Browser/Avahi/ServerList.hh"
 #include "../Log/Writer.hh"
 #include "../Glyr/Request.hh"
 
@@ -107,6 +108,9 @@ int main(int argc, char *argv[])
         /* Instance browser  */
         Browser::NowPlaying np_browser(client,builder);
         browser_list.add(np_browser);
+        
+        Browser::ServerList server_list(builder);
+        browser_list.add(server_list);
 
         Browser::Queue queue_browser(client,builder);
         browser_list.add(queue_browser);
@@ -156,11 +160,11 @@ int main(int argc, char *argv[])
     }
     catch(const Gtk::BuilderError& e)
     {
-        std::cerr << "BuilderError: " << e.what() << std::endl;
+        Critical("BuilderError: %s",e.what().c_str());
     }
     catch(const Glib::FileError& e)
     {
-        std::cerr << "General exception: " << e.what() << std::endl;
+        Critical("General Uncaught Exception: %s",e.what().c_str());
     }
     return EXIT_SUCCESS;
 }

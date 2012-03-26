@@ -32,7 +32,6 @@
 #define FREYA_ABSTRACT_BROWSER
 
 #include "../ui_includes.hh"
-#include <iostream>
 #include "../GManager/BrowserList.hh"
 
 /**

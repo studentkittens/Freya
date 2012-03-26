@@ -60,18 +60,18 @@ namespace GManager
         mp_PluginListview->append_column("", m_Columns.m_col_icon);
         mp_PluginListview->append_column("Browsers", m_Columns.m_col_name);
 
-        /* Add a "Here are no browsers label, in case something
+        /* Add a "Here are no browsers" label, in case something
          * goes terribly wrong */
         mp_List->add(m_NoBrowsers);
         mp_List->show_all();
     }
 
-    //----------------------------
+    //////////////////////////////////
 
     void BrowserList::on_client_update(enum mpd_idle type, MPD::NotifyData& data)
     {}
 
-    //----------------------------
+    //////////////////////////////////
 
     void BrowserList::on_connection_change(bool server_changed, bool is_connected)
     {
@@ -102,7 +102,7 @@ namespace GManager
         mp_PluginListview->set_sensitive(is_connected);
     }
 
-    //----------------------------
+    //////////////////////////////////
 
     void BrowserList::add(AbstractBrowser& browser)
     {
@@ -116,14 +116,14 @@ namespace GManager
                 Gtk::ICON_SIZE_DND);
     }
 
-    //----------------------------
+    //////////////////////////////////
 
     void BrowserList::set(AbstractBrowser& browser)
     {
         change_browser(&browser);
     }
 
-    //----------------------------
+    //////////////////////////////////
 
     void BrowserList::change_browser(AbstractBrowser * browser)
     {
@@ -163,7 +163,7 @@ namespace GManager
         }
     }
 
-    //----------------------------
+    //////////////////////////////////
 
     void BrowserList::on_selection_changed()
     {

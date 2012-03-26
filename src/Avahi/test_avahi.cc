@@ -35,15 +35,18 @@
 
 using namespace std;
 
+#if 0
 void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port)
 {
     CONFIG_SET("settings.connection.host",ip);
     CONFIG_SET_AS_INT("settings.connection.port",port);
     cerr << ip << endl << hostname << endl << name << endl << port << endl;
 }
+#endif 
 
 int main (int argc, char *argv[])
 {
+#if 0
     Gtk::Main kit(argc, argv);
 
     /* Build Browser */
@@ -57,6 +60,7 @@ int main (int argc, char *argv[])
         Gtk::Main::run(handle.get_window());
     }
 
+#endif
     /* Goodbye */
     return EXIT_SUCCESS;
 }

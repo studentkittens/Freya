@@ -22,6 +22,8 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     Settings/SettingsPlayback.cc
     Settings/SettingsOutputs.cc
     ##################
+    Avahi/ServerList.cc
+    ##################
     Fortuna/Fortuna.cc
     ##################
     NowPlaying/NowPlaying.cc

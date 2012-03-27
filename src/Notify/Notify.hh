@@ -46,6 +46,8 @@ namespace Notify
         DEF_SINGLETON( Notify )
 
         public:
+            ~Notify();
+
             /**
              * @brief Calls libnotifys notify-send indirectly.
              *
@@ -85,7 +87,9 @@ namespace Notify
             Glib::ustring icon_name;
             int timeout,use_notify;
             bool extra;
-    
+        
+            GAsyncQueue * async_queue;
+
             void do_init();
             void _send(const char *hl, const char *msg, const char * icon);
     };

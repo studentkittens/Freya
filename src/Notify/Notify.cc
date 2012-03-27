@@ -33,14 +33,71 @@
 #include "../Log/Writer.hh"
 #include <libnotify/notify.h>
 
+#define THREAD_TERMINATOR ((gpointer)0x1)
+
 namespace Notify
 {
+    /*
+     * Worker Thread,
+     * waits for notifications to show
+     */
+    gpointer send_notify_signal(gpointer v_async_queue)
+    {
+        GAsyncQueue * async_queue = (GAsyncQueue*)v_async_queue;
+
+        while(true)
+        {
+            gpointer job = g_async_queue_pop(async_queue);
+            if(job == THREAD_TERMINATOR)
+            {
+                g_async_queue_unref(async_queue);
+                return NULL;
+            }
+            else
+            {
+                GError * err = NULL;
+
+                NotifyNotification * noti_obj = (NotifyNotification*)job;
+                notify_notification_show(noti_obj,&err);
+
+                if(err != NULL)
+                {
+                    Warning("Unable to show notification: %s",err->message);
+                    g_error_free(err);
+                }
+                else
+                {
+                    g_object_unref(G_OBJECT(noti_obj));
+                }
+            }
+        }
+        return NULL;
+    }
+    
+    //////////////////
+    
     Notify::Notify() : 
        timeout(0),
        use_notify(false),
-       extra(false)
-    {}
+       extra(false),
+       async_queue(g_async_queue_new())
+    {
+        GError * err = NULL;
+        g_thread_create(send_notify_signal,async_queue,false,&err);
+        if(err != NULL)
+        {
+            Warning("Cannot create Notify Thread: %s",err->message);
+            g_error_free(err);
+        }
+    }
 
+    //////////////////
+    
+    Notify::~Notify()
+    {
+        g_async_queue_push(async_queue,THREAD_TERMINATOR);
+    }
+    
     //////////////////
 
     void Notify::do_init()
@@ -54,26 +111,6 @@ namespace Notify
         }
     }
     
-    //////////////////
-    
-    gpointer send_notify_signal(gpointer v_noti_obj)
-    {
-        GError * err = NULL;
-
-        NotifyNotification * noti_obj = (NotifyNotification*)v_noti_obj;
-        notify_notification_show(noti_obj,&err);
-
-        if(err != NULL)
-        {
-            Warning("Unable to show notification: %s",err->message);
-            g_error_free(err);
-        }
-        else
-        {
-            g_object_unref(G_OBJECT(noti_obj));
-        }
-        return NULL;
-    }
 
     //////////////////
 
@@ -98,9 +135,7 @@ namespace Notify
              * is rather expensive, we do it in a separate thread
              * therefore.
              */
-            // TODO: Use a threadpool here
-            notify_notification_set_timeout(noti_obj,timeout);
-            g_thread_create(send_notify_signal,noti_obj,false,NULL);
+            g_async_queue_push(async_queue,noti_obj);
         }
     }
 

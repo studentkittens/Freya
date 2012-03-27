@@ -79,6 +79,10 @@ int main(int argc, char *argv[])
 
         /* Register fatal signals like SIGSEGV */
         Init::SignalHandler sig_handler;
+    
+        /* TODO: Play a bit around with prealloc() */
+        MPD::Song::prealloc(10000);
+        atexit(MPD::Song::disposeAll);
 
         /* Instance the client */
         MPD::Client client;

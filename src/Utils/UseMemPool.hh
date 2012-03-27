@@ -29,6 +29,22 @@ class UseMemPool
 
         ////////////////////////////
 
+        /* 
+         * WARNING: This only works fine when real slice allocation can be used.
+         *          If g_malloc() is used freeing memory will cause weird beahviour / memory leaks.
+         *          Memory allocation can be influenced by the G_SLICE Env variable.
+         */
+        static void prealloc(size_t n_iterations = 128)
+        {
+            gsize memsize = sizeof(StorageClass) * n_iterations;
+            gpointer memdata = g_slice_alloc(memsize);
+
+            for(unsigned off = 0; off < memsize; off += sizeof(StorageClass))
+                operator delete (((char*)memdata) + off);
+        }
+        
+        ////////////////////////////
+
         static void disposeAll()
         {
             g_slice_free_chain(GTrashStack,memstack,next);

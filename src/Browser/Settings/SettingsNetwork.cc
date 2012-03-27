@@ -48,7 +48,10 @@ namespace Browser
         BUILDER_GET(builder,"avahi_button",avahi);
         BUILDER_GET(builder,"autoconnect_checkbox",autoconnect);
 
-        avahi->signal_clicked().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi));
+        avahi->signal_clicked().connect(
+                sigc::bind(sigc::mem_fun(*this,&Browser::SettingsNetwork::show_avahi),sett)
+                    );
+
         BUILDER_ADD(builder,"ui/AvahiWarning.glade");
         BUILDER_GET_NO_MANAGE(builder,"avahi_warning",avahi_warning);
 
@@ -69,13 +72,6 @@ namespace Browser
 
     SettingsNetwork::~SettingsNetwork()
     {
-        /*
-        if(handle!=NULL)
-        {
-            delete handle;
-            handle=NULL;
-        }
-        */
         if(avahi_warning!=NULL)
         {
             delete avahi_warning;
@@ -120,22 +116,10 @@ namespace Browser
     }
 
     //----------------------------
-    void SettingsNetwork::show_avahi()
+    void SettingsNetwork::show_avahi(Browser::Settings * sett)
     {
-        /*
-        delete handle;
-        handle = new Avahi::Browser();
-        if(handle->is_connected())
-        {
-            handle->signal_selection_done().connect(sigc::mem_fun(*this,&Browser::SettingsNetwork::selected_callback));
-            handle->get_window().show();
-        }
-        else
-        {
-            avahi_warning->run();
-            avahi_warning->hide();
-        }
-        */
+        if(sett != NULL)
+            sett->get_browser_list().set("Serverlist");
     }
     //----------------------------
 

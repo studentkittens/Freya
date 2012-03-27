@@ -39,7 +39,8 @@ namespace GManager
     BrowserList::BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
         AbstractClientUser(client),
         m_NoBrowsers("No Browsers found. This is weird and probably a bug."),
-        mp_Active(NULL)
+        mp_Active(NULL),
+        mp_PrevBrowser(NULL)
     {
         BUILDER_GET(builder,"plugin_view",mp_PluginListview);
 
@@ -117,10 +118,36 @@ namespace GManager
     }
 
     //////////////////////////////////
+    
+    void BrowserList::set_previous()
+    {
+        if(mp_PrevBrowser != NULL)
+        {
+            change_browser(mp_PrevBrowser);
+        }
+    }
+
+    //////////////////////////////////
 
     void BrowserList::set(AbstractBrowser& browser)
     {
         change_browser(&browser);
+    }
+    
+    //////////////////////////////////
+
+    void BrowserList::set(Glib::ustring name)
+    {
+        for(Gtk::TreeModel::iterator iter = m_refTreeModel->get_iter("0"); iter; iter++)
+        {
+            Gtk::TreeRow row = *iter;
+            if(row[m_Columns.m_col_name] == name)
+            {
+                change_browser(row[m_Columns.m_col_browser]);
+                return;
+            }
+        }
+        Warning("Cannot set browser named '%s'",name.c_str());
     }
 
     //////////////////////////////////
@@ -153,6 +180,7 @@ namespace GManager
                 mp_Active->m_IsActive = false;
             }
 
+            mp_PrevBrowser = mp_Active;
             mp_Active = browser;
 
             browser->on_getting_active();

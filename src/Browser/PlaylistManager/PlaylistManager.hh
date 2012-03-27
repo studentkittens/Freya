@@ -55,7 +55,7 @@ namespace Browser
         public MPD::AbstractClientUser
     {
     public:
-        PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
+        PlaylistManager(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
         virtual ~PlaylistManager();
 
         /**

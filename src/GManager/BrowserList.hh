@@ -67,6 +67,18 @@ namespace GManager
          */
         void set(AbstractBrowser& browser);
 
+        /**
+         * @brief Set a browser by it's name
+         *
+         * @param name the name of a browser; e.g. 'Avahi', 'Settings', 'Queue'...
+         */
+        void set(Glib::ustring name);
+
+        /**
+         * @brief Reset to the previously set browser
+         */
+        void set_previous();
+        
     private:
 
         void change_browser(AbstractBrowser * browser);
@@ -108,7 +120,7 @@ namespace GManager
         Gtk::Label m_NoBrowsers;
 
         /* Actively shown browser */
-        AbstractBrowser * mp_Active;
+        AbstractBrowser * mp_Active, * mp_PrevBrowser;
 
     };
 }

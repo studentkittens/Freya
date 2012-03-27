@@ -47,7 +47,7 @@ namespace Browser
     class StatBrowser : public Gtk::Frame, public AbstractBrowser
     {
     public:
-        StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&);
+        StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&,GManager::BrowserList& list);
         ~StatBrowser ();
 
         /**

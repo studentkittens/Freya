@@ -61,7 +61,7 @@ namespace Browser
          * @param client
          * @param builder
          */
-        Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
+        Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
         virtual ~Database();
 
         /**

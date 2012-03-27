@@ -41,7 +41,7 @@ namespace Browser
     class ServerList : public AbstractBrowser
     {
         public:
-            ServerList(Glib::RefPtr<Gtk::Builder>& builder);
+            ServerList(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
 
             Gtk::Widget * get_container();
 

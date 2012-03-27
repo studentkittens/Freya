@@ -39,8 +39,8 @@ using namespace std;
 
 namespace Browser
 {
-    Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Queue",true,true,Gtk::Stock::ZOOM_FIT),
+    Queue::Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
+        AbstractBrowser(list,"Queue",true,true,Gtk::Stock::ZOOM_FIT),
         AbstractClientUser(client),
         m_FilterText(""),
         mp_CurrentSong(NULL)

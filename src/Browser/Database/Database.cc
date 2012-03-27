@@ -35,8 +35,8 @@
 
 namespace Browser
 {
-    Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Database",true,true,Gtk::Stock::DIRECTORY),
+    Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
+        AbstractBrowser(list,"Database",true,true,Gtk::Stock::DIRECTORY),
         AbstractClientUser(client),
         mp_SearchEntry(NULL)
     {

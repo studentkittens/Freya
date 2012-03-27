@@ -33,8 +33,9 @@
 
 namespace Browser
 {
-    NowPlaying::NowPlaying(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Now Playing",
+    NowPlaying::NowPlaying(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
+        AbstractBrowser(list,
+                "Now Playing",
                 true,  /* Needs connection? */
                 true,  /* Is visible?       */
                 Gtk::Stock::CDROM),

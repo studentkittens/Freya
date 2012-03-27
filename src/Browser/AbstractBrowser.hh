@@ -1,33 +1,33 @@
 /***********************************************************
-* This file is part of Freya
-* - A free MPD Gtk3 MPD Client -
-*
-* Authors: Christopher Pahl, Christoph Piechula,
-*          Eduard Schneider
-*
-* Copyright (C) [2011-2012]
-* Hosted at: https://github.com/studentkittens/Freya
-*
-*              __..--''``---....___   _..._    __
-*    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-*   ///_.-' _..--.'_                        `( ) ) // //
-*   / (_..-' // (< _     ;_..__               ; `' / ///
-*    / // // //  `-._,_)' // / ``--...____..-' /// / //
-*  Ascii-Art by Felix Lee <flee@cse.psu.edu>
-*
-* Freya is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Freya is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Freya. If not, see <http://www.gnu.org/licenses/>.
-**************************************************************/
+ * This file is part of Freya
+ * - A free MPD Gtk3 MPD Client -
+ *
+ * Authors: Christopher Pahl, Christoph Piechula,
+ *          Eduard Schneider
+ *
+ * Copyright (C) [2011-2012]
+ * Hosted at: https://github.com/studentkittens/Freya
+ *
+ *              __..--''``---....___   _..._    __
+ *    /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+ *   ///_.-' _..--.'_                        `( ) ) // //
+ *   / (_..-' // (< _     ;_..__               ; `' / ///
+ *    / // // //  `-._,_)' // / ``--...____..-' /// / //
+ *  Ascii-Art by Felix Lee <flee@cse.psu.edu>
+ *
+ * Freya is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Freya is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Freya. If not, see <http://www.gnu.org/licenses/>.
+ **************************************************************/
 #ifndef FREYA_ABSTRACT_BROWSER
 #define FREYA_ABSTRACT_BROWSER
 
@@ -46,20 +46,25 @@ class AbstractBrowser
         /**
          * @brief Inherit from this class to be able to add this browser to the browserlist
          *
+         * @param list a ref to the browserlistmanager
          * @param name The name shown in the list
          * @param is_visible if it is visible in the list (most likely true)
          * @param needs_connection false if this browser works withouth a connection
          * @param icon the icon shown lefthand to the name
          */
-        AbstractBrowser(const char * name,
+        AbstractBrowser(
+                GManager::BrowserList& list,
+                const char * name,
                 bool is_visible,
                 bool needs_connection,
                 Gtk::StockID icon)
-            : m_Name(name),
-            m_IconId(icon),
-            m_NeedsConnection(needs_connection),
-            m_IsVisible(is_visible),
-            m_IsActive(false)
+            :
+                m_ListRef(list),
+                m_Name(name),
+                m_IconId(icon),
+                m_NeedsConnection(needs_connection),
+                m_IsVisible(is_visible),
+                m_IsActive(false)
     {}
 
         /**
@@ -118,10 +123,18 @@ class AbstractBrowser
             return m_IsActive;
         }
 
-        void on_getting_active() {};
+        void on_getting_active() 
+        {
+        }
+
+        GManager::BrowserList& get_browser_list()
+        {
+            return m_ListRef;
+        }
 
     private:
 
+        GManager::BrowserList& m_ListRef;
         Glib::ustring m_Name;
         Gtk::StockID m_IconId;
         bool m_NeedsConnection;

@@ -53,7 +53,7 @@ namespace Browser
     class Queue : public AbstractBrowser, public MPD::AbstractClientUser
     {
     public:
-        Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder);
+        Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
         virtual ~Queue();
 
         /**

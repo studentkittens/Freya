@@ -37,8 +37,8 @@
 
 namespace Browser
 {
-    Fortuna::Fortuna(Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Fortuna",
+    Fortuna::Fortuna(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
+        AbstractBrowser(list,"Fortuna",
                 false, /* Needs connection? */
                 true,  /* Is visible?       */
                 Gtk::Stock::DIALOG_QUESTION)

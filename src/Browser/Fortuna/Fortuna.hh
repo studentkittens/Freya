@@ -54,7 +54,7 @@ namespace Browser
          *
          * @param builder
          */
-        Fortuna(Glib::RefPtr<Gtk::Builder>& builder);
+        Fortuna(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
 
         /**
          * @brief Implemented by AbstractBrowser

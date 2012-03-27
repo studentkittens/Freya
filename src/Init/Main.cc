@@ -106,26 +106,26 @@ int main(int argc, char *argv[])
         GManager::BrowserList browser_list(client,builder);
 
         /* Instance browser  */
-        Browser::NowPlaying np_browser(client,builder);
+        Browser::NowPlaying np_browser(client,builder,browser_list);
         browser_list.add(np_browser);
         
-        Browser::ServerList server_list(builder);
-        browser_list.add(server_list);
-
-        Browser::Queue queue_browser(client,builder);
+        Browser::Queue queue_browser(client,builder,browser_list);
         browser_list.add(queue_browser);
 
-        Browser::PlaylistManager playlists_browser(client,builder);
+        Browser::PlaylistManager playlists_browser(client,builder,browser_list);
         browser_list.add(playlists_browser);
 
-        Browser::Database db_browser(client,builder);
+        Browser::Database db_browser(client,builder,browser_list);
         browser_list.add(db_browser);
 
-        Browser::StatBrowser stat_browser(client,builder);
+        Browser::StatBrowser stat_browser(client,builder,browser_list);
         browser_list.add(stat_browser);
 
-        Browser::Settings settings_browser(client,builder,&tray);
+        Browser::Settings settings_browser(client,builder,&tray,browser_list);
         browser_list.add(settings_browser);
+        
+        Browser::ServerList server_list(builder,browser_list);
+        browser_list.add(server_list);
 
         browser_list.set(queue_browser);
 

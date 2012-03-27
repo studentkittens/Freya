@@ -34,8 +34,8 @@
 
 namespace Browser 
 {
-    ServerList::ServerList(Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractBrowser("Serverlist",true,false,Gtk::Stock::NETWORK)
+    ServerList::ServerList(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
+        AbstractBrowser(list,"Serverlist",false,false,Gtk::Stock::NETWORK)
     {
         BUILDER_ADD(builder,"ui/AvahiBrowser.glade");
         BUILDER_GET(builder,"avahi_scrolledwindow",avahi_scrl_window);
@@ -87,6 +87,7 @@ namespace Browser
 
     void ServerList::on_button_cancel()
     {
+        get_browser_list().set_previous();
     }
 
     //////////////////////
@@ -118,6 +119,9 @@ namespace Browser
 
             port_spinbutton->set_value(new_port);
             ip_textfield->set_text(new_host);
+
+
+            on_button_cancel();
         }
     }
 

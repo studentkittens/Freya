@@ -54,7 +54,7 @@ namespace Browser
              *
              * @param builder
              */
-            NowPlaying(MPD::Client &client, Glib::RefPtr<Gtk::Builder>& builder);
+            NowPlaying(MPD::Client &client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
 
             /**
              * @brief Implemented by AbstractBrowser

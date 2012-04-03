@@ -31,8 +31,9 @@
 #ifndef FREYA_AVAHI_SERVERLIST_HH
 #define FREYA_AVAHI_SERVERLIST_HH
 
-#include <gtkmm.h>
+#include "../../../config.h"
 
+#include <gtkmm.h>
 #include "../../Avahi/Browser.hh"
 #include "../AbstractBrowser.hh"
 
@@ -86,5 +87,7 @@ namespace Browser
 
             Avahi::Browser avahi_handle;
     };
+
 }
-#endif 
+
+#endif // FREYA_AVAHI_SERVERLIST_HH

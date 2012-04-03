@@ -28,6 +28,10 @@
 * You should have received a copy of the GNU General Public License
 * along with Freya. If not, see <http://www.gnu.org/licenses/>.
 **************************************************************/
+#include "../../config.h"
+
+#if USE_AVAHI
+
 #include "Browser.hh"
 #include "../Log/Writer.hh"
 
@@ -308,3 +312,5 @@ namespace Avahi
         return server_counter;
     }
 }
+
+#endif

@@ -1,3 +1,6 @@
+ADD_SUBDIRECTORY(Avahi)
+ADD_SUBDIRECTORY(NowPlaying)
+
 ADD_LIBRARY(FreyaBrowserLib STATIC 
     BasePopup.cc
     ##################
@@ -22,20 +25,16 @@ ADD_LIBRARY(FreyaBrowserLib STATIC
     Settings/SettingsPlayback.cc
     Settings/SettingsOutputs.cc
     ##################
-    Avahi/ServerList.cc
-    ##################
     Fortuna/Fortuna.cc
     ##################
-    NowPlaying/NowPlaying.cc
-    NowPlaying/ImageWall.cc
-    NowPlaying/EventImage.cc
-    NowPlaying/TextPageMgr.cc
-    NowPlaying/OtherAlbumsMgr.cc
-    NowPlaying/TracklistMgr.cc
-    NowPlaying/RelatedLinksMgr.cc
-    NowPlaying/TextItemsMgr.cc
-    NowPlaying/CoverArtMgr.cc
-    NowPlaying/ArtistPhotosMgr.cc
     )
 
-TARGET_LINK_LIBRARIES(FreyaBrowserLib FreyaAvahiLib FreyaGlyrLib ${GTKMM3_PACKAGE_LIBRARIES})
+if(USE_GLYR)
+    SET(OptionalBrowserDeps ${OptionalBrowserDeps} FreyaNowPlayingLib)
+endif()
+
+if(USE_AVAHI)
+    SET(OptionalBrowserDeps ${OptionalBrowserDeps} FreyaServerListLib)
+endif()
+
+TARGET_LINK_LIBRARIES(FreyaBrowserLib FreyaUtils ${OptionalBrowserDeps} ${GTKMM3_PACKAGE_LIBRARIES})

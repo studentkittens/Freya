@@ -1,0 +1,43 @@
+#ifndef FREYA_CONFIG_HH
+#define FREYA_CONFIG_HH
+/////////////////////////// 
+////// Feature Macros /////
+/////////////////////////// 
+
+// Enables: 
+// * Serverlistbrowser
+// Depends:
+// * avahi-glib
+#define USE_AVAHI @USE_AVAHI@
+// Enables:
+// * NowPlaying Browser
+// Depends:
+// * librsvg for cover widget
+// * libglyr for all metadata
+#define USE_GLYR  @USE_GLYR@
+// Enables:
+// * Notifications
+// Depends:
+// * libnotify
+#define USE_LIBNOTIFY @USE_LIBNOTIFY@
+
+/////////////////////////// 
+///// Misc defs  ////////// 
+/////////////////////////// 
+
+// -DFREYA_VERSION_NAME="Hello World"
+
+#define FREYA_VERSION_NAME  "@FREYA_VERSION_NAME@"
+
+#define FREYA_VERSION_MAJOR "@FREYA_VERSION_MAJOR@"
+#define FREYA_VERSION_MINOR "@FREYA_VERSION_MINOR@"
+#define FREYA_VERSION_MICRO "@FREYA_VERSION_MICRO@"
+
+#define FREYA_VERSION_MAJOR_INT @FREYA_VERSION_MAJOR@
+#define FREYA_VERSION_MINOR_INT @FREYA_VERSION_MINOR@
+#define FREYA_VERSION_MICRO_INT @FREYA_VERSION_MICRO@
+
+// true for CMAKE_RELEASE_TYPE="debug"
+#define FREYA_DEBUG         @FREYA_DEBUG@
+
+#endif

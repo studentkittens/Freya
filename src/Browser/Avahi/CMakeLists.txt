@@ -1,0 +1,4 @@
+IF(USE_AVAHI)
+    ADD_LIBRARY(FreyaServerListLib STATIC ServerList.cc)
+    TARGET_LINK_LIBRARIES(FreyaServerListLib FreyaAvahiLib ${GTKMM3_PACKAGE_LIBRARIES})
+ENDIF(USE_AVAHI)

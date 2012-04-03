@@ -30,6 +30,8 @@
  **************************************************************/
 #include "../MPD/Client.hh"
 
+#include "../../config.h"
+
 #include "../GManager/Window.hh"
 #include "../GManager/PlaybackButtons.hh"
 #include "../GManager/BrowserList.hh"
@@ -40,7 +42,6 @@
 #include "../GManager/VolumeSlider.hh"
 #include "../GManager/Heartbeat.hh"
 #include "../GManager/MenuList.hh"
-#include "../GManager/NotifyManager.hh"
 #include "../GManager/Trayicon.hh"
 
 #include "../Browser/Queue/Queue.hh"
@@ -48,14 +49,25 @@
 #include "../Browser/Database/Database.hh"
 #include "../Browser/Statistics/StatBrowser.hh"
 #include "../Browser/Settings/Settings.hh"
-#include "../Browser/NowPlaying/NowPlaying.hh"
-#include "../Browser/Avahi/ServerList.hh"
-#include "../Log/Writer.hh"
-#include "../Glyr/Request.hh"
 
+#include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
 #include "SignalHandler.hh"
 #include "CssLoader.hh"
+
+#if USE_LIBNOTIFY
+    #include "../GManager/NotifyManager.hh"
+#endif
+
+#if USE_AVAHI
+    #include "../Browser/Avahi/ServerList.hh"
+#endif
+
+#if USE_GLYR
+    #include "../Browser/NowPlaying/NowPlaying.hh"
+    #include "../Glyr/Request.hh"
+#endif 
+
 
 ////////////////////////
 
@@ -73,13 +85,15 @@ int main(int argc, char *argv[])
             LogSetVerbosity(Log::LOG_DEBUG);
         else
             LogSetVerbosity(Log::LOG_INFO);
-        
+
+#if USE_GLYR
         /* Metadata System */
         Glyr::Stack::instance();
+#endif
 
         /* Register fatal signals like SIGSEGV */
         Init::SignalHandler sig_handler;
-    
+
         /* TODO: Play a bit around with prealloc() */
         MPD::Song::prealloc(10000);
         atexit(MPD::Song::disposeAll);
@@ -105,14 +119,20 @@ int main(int argc, char *argv[])
         GManager::Statusicons status_icons(client,builder);
         GManager::MenuList menu_list(client,builder);
         GManager::Trayicon tray(client,*main_window.get_window());
+
+#if USE_LIBNOTIFY
         GManager::NotifyManager notify_mgr(client);
-        
+#endif
+
         GManager::BrowserList browser_list(client,builder);
 
-        /* Instance browser  */
+        /* Instance browsers */
+
+#if USE_GLYR
         Browser::NowPlaying np_browser(client,builder,browser_list);
         browser_list.add(np_browser);
-        
+#endif
+
         Browser::Queue queue_browser(client,builder,browser_list);
         browser_list.add(queue_browser);
 
@@ -127,9 +147,11 @@ int main(int argc, char *argv[])
 
         Browser::Settings settings_browser(client,builder,&tray,browser_list);
         browser_list.add(settings_browser);
-        
+
+#if USE_AVAHI    
         Browser::ServerList server_list(builder,browser_list);
         browser_list.add(server_list);
+#endif
 
         browser_list.set(queue_browser);
 
@@ -158,7 +180,10 @@ int main(int argc, char *argv[])
             client.playback_stop();
         }
 
+#if USE_GLYR
+        // Do this before disconnecting, since it may take some time.
         Glyr::Stack::instance().destroy();
+#endif
 
         client.disconnect();
     }

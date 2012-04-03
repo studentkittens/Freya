@@ -1,3 +1,8 @@
+if(USE_LIBNOTIFY)
+    ADD_LIBRARY(FreyaGManagerNotifyLib STATIC NotifyManager.cc)
+    TARGET_LINK_LIBRARIES(FreyaGManagerNotifyLib FreyaNotifyLib)
+endif()
+
 ADD_LIBRARY(FreyaGManagerLib STATIC 
     Window.cc
     PlaybackButtons.cc
@@ -10,8 +15,11 @@ ADD_LIBRARY(FreyaGManagerLib STATIC
     Heartbeat.cc
     Trayicon.cc
     MenuList.cc
-    NotifyManager.cc
     CairoSlider.cc
     )
 
-TARGET_LINK_LIBRARIES(FreyaGManagerLib ${GTKMM3_PACKAGE_LIBRARIES} FreyaMPDLib FreyaConfigLib)
+if(USE_LIBNOTIFY)
+    SET(OptionalGManagerFeatures ${OptionalGManagerFeatures} FreyaGManagerNotifyLib)
+endif()
+    
+TARGET_LINK_LIBRARIES(FreyaGManagerLib ${GTKMM3_PACKAGE_LIBRARIES} ${OptionalGManagerFeatures} FreyaMPDLib FreyaConfigLib)

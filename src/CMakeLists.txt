@@ -11,5 +11,5 @@ ADD_SUBDIRECTORY(Glyr)
 
 
 ADD_EXECUTABLE(Freya Init/Main.cc)
-TARGET_LINK_LIBRARIES(Freya FreyaGManagerLib FreyaBrowserLib FreyaNotifyLib)
+TARGET_LINK_LIBRARIES(Freya FreyaGManagerLib FreyaBrowserLib)
 INSTALL(TARGETS Freya RUNTIME DESTINATION ${INSTALL_BIN_DIR})

@@ -31,6 +31,10 @@
 #ifndef FREYA_AVAHI_BROWSER_HH
 #define FREYA_AVAHI_BROWSER_HH
 
+#include "../../config.h"
+
+#if USE_AVAHI
+
 /* Avahi stuff */
 #include <avahi-client/client.h>
 #include <avahi-client/lookup.h>
@@ -39,6 +43,7 @@
 #include <avahi-glib/glib-malloc.h>
 
 #include <glibmm.h>
+
 
 namespace Avahi
 {
@@ -155,4 +160,7 @@ namespace Avahi
     };
 }
 
+#endif //USE_AVAHI
+
 #endif // FREYA_AVAHI_BROWSER_HH 
+

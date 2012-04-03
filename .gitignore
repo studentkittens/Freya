@@ -3,6 +3,9 @@
 *.a
 bin/
 
+config.h
+*mockup*
+
 # Ignore Testing/
 Testing/
 

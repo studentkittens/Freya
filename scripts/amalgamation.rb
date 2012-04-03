@@ -66,7 +66,7 @@ eos
 def read_in_content file_path
     content = "\n"
     File.open(file_path).each do |line|
-        content += ((" " * 20) + "\"" + line.chomp!.gsub(/"/,'\"') + "\"\n")
+        content += ((" " * 20) + "\"" + line.chomp!.gsub(/\\/,"\\\\").gsub(/"/,'\"') + "\"\n")
     end
     return content
 end
@@ -112,7 +112,7 @@ def traverse_defs root
         thread << Thread.new do
             path = root + file
             data = ""
-            if file.end_with? ".glade" then
+            if end_with_one_of?(file,[".glade",".svg"]) then
                 data = read_in_content path
             elsif end_with_one_of?(file,[".png",".jpg",".jpeg"]) 
                 data = base64_encode_image path

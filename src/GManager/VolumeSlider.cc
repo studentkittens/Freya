@@ -37,81 +37,75 @@
 
 namespace GManager
 {
-    VolumeSlider::VolumeSlider(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractClientUser(client)
-    {
-        Gtk::Alignment * align = NULL;
-        BUILDER_GET(builder,"volumeslider_align",align);
-        set_size_request(75);
-        align->add(*this);
-        align->show_all();
+VolumeSlider::VolumeSlider(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+    AbstractClientUser(client)
+{
+    Gtk::Alignment * align = NULL;
+    BUILDER_GET(builder,"volumeslider_align",align);
+    set_size_request(75);
+    align->add(*this);
+    align->show_all();
+}
 
+/////////////////////////
+
+void VolumeSlider::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+{
+    // TODO: Does not get drawn correctly on startup,
+    //       because, the widget has a width of 0 at
+    //       this point
+    if(event & (MPD_IDLE_MIXER))
+    {
+        set_percentage(data.get_status().get_volume());
     }
+}
 
-    /////////////////////////
+/////////////////////////
 
-    void VolumeSlider::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+/*
+ * Does the acutal drawing work, simple gap based layout,
+ * always going from left down, to upper right corner
+ */
+bool VolumeSlider::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
+{
+    Gtk::Allocation allocation = get_allocation();
+    const int width = allocation.get_width();
+    const int height = allocation.get_height();
+    const int extra_gap = LINE_WIDTH + LINE_GAP;
+    bool turnedColor = false;
+    const double pitch = height / (double)width;
+    Gdk::RGBA& ac = get_active_color();
+    Gdk::RGBA& ic = get_inactive_color();
+    cr->set_line_width(LINE_WIDTH);
+    cr->set_source_rgb(ac.get_red(), ac.get_green(), ac.get_blue());
+    for(int i = 0; i < width; i += extra_gap)
     {
-        // TODO: Does not get drawn correctly on startup,
-        //       because, the widget has a width of 0 at
-        //       this point
-        if(event & (MPD_IDLE_MIXER))
+        cr->move_to(i,height);
+        double lim = height - (i * pitch) - 2;
+        cr->line_to(i,lim);
+        if(lim <= 0)
         {
-            set_percentage(data.get_status().get_volume());
+            break;
+        }
+        if(!turnedColor && i >= get_border())
+        {
+            cr->stroke();
+            cr->set_source_rgb(ic.get_red(), ic.get_green(), ic.get_blue());
+            turnedColor = !turnedColor;
         }
     }
+    cr->stroke();
+    return true;
+}
 
-    /////////////////////////
+/////////////////////////
 
-    /* 
-     * Does the acutal drawing work, simple gap based layout,
-     * always going from left down, to upper right corner
-     */
-    bool VolumeSlider::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
-    {
-        Gtk::Allocation allocation = get_allocation();
-        const int width = allocation.get_width();
-        const int height = allocation.get_height();
-        const int extra_gap = LINE_WIDTH + LINE_GAP;
-        bool turnedColor = false;
+void VolumeSlider::on_percent_change()
+{
+    mp_Client->set_volume(get_percentage());
+}
 
-        const double pitch = height / (double)width;
+/////////////////////////
 
-        Gdk::RGBA& ac = get_active_color();
-        Gdk::RGBA& ic = get_inactive_color();
-
-        cr->set_line_width(LINE_WIDTH);
-        cr->set_source_rgb(ac.get_red(), ac.get_green(), ac.get_blue());
-
-        for(int i = 0; i < width; i += extra_gap) {
-            cr->move_to(i,height);
-
-            double lim = height - (i * pitch) - 2;
-            cr->line_to(i,lim);
-
-            if(lim <= 0) {
-                break;
-            }
-
-            if(!turnedColor && i >= get_border()) {
-                cr->stroke();
-                cr->set_source_rgb(ic.get_red(), ic.get_green(), ic.get_blue());
-                turnedColor = !turnedColor;
-            }
-        }
-
-        cr->stroke();
-        return true;
-    }
-
-    /////////////////////////
-
-    void VolumeSlider::on_percent_change()
-    {
-        mp_Client->set_volume(get_percentage());
-    }   
-    
-    /////////////////////////
-    
-    void VolumeSlider::on_connection_change(bool server_changed, bool is_connected) {}
+void VolumeSlider::on_connection_change(bool server_changed, bool is_connected) {}
 }

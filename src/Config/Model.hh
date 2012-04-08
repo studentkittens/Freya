@@ -37,64 +37,64 @@
 
 namespace Config
 {
+/**
+ * @brief Data needed by Config::Handler
+ */
+class Model
+{
+public:
+    Model();
+    ~Model();
+
+
     /**
-     * @brief Data needed by Config::Handler
+     * @brief loads current configuration file from hard disk as fileDoc xmlDocPtr
+     *
+     * @param char*,  path to config.xml file as char ptr
      */
-    class Model
-    {
-    public:
-        Model ();
-        ~Model ();
+    void load(char*);
 
 
-        /**
-         * @brief loads current configuration file from hard disk as fileDoc xmlDocPtr
-         *
-         * @param char*,  path to config.xml file as char ptr
-         */
-        void load(char*);
+    /**
+     * @brief loads default config as defaultDoc xmlDocPtr
+     */
+    void loadDefaultDoc();
+
+    /**
+     * @brief saves _current_ config to hard disk (config.xml)
+     */
+    void save();
+
+    /**
+     * @brief alternative save function to write given xmlDoc to a given path
+     *
+     * @param char*, alternative path for saving config file
+     * @param xmlDocPtr, alternative ptr to xmlDoc you want to save
+     */
+    void save(char*, xmlDocPtr);
 
 
-        /**
-         * @brief loads default config as defaultDoc xmlDocPtr
-         */
-        void loadDefaultDoc();
+    /**
+     * @brief simple getter for xmlDocPtr
+     *
+     * @return xmlDocPtr to config file
+     */
+    xmlDocPtr getDocPtr();
 
-        /**
-         * @brief saves _current_ config to hard disk (config.xml)
-         */
-        void save();
+    /**
+     * @brief simple getter for _default_ xmlDocPtr
+     *
+     * @return xmlDocPtr to _default_ config
+     */
+    xmlDocPtr getDefaultDocPtr();
 
-        /**
-         * @brief alternative save function to write given xmlDoc to a given path
-         *
-         * @param char*, alternative path for saving config file
-         * @param xmlDocPtr, alternative ptr to xmlDoc you want to save
-         */
-        void save(char*, xmlDocPtr);
-
-
-        /**
-         * @brief simple getter for xmlDocPtr
-         *
-         * @return xmlDocPtr to config file
-         */
-        xmlDocPtr getDocPtr();
-
-        /**
-         * @brief simple getter for _default_ xmlDocPtr
-         *
-         * @return xmlDocPtr to _default_ config
-         */
-        xmlDocPtr getDefaultDocPtr();
-
-    private:
-        /*xml document and xml node member*/
-        xmlDocPtr fileDoc;
-        xmlDocPtr defaultDoc;
-        void setpath(char*);
-        char* pathtofile;
-    };
+private:
+    /*xml document and xml node member*/
+    xmlDocPtr fileDoc;
+    xmlDocPtr defaultDoc;
+    void setpath(char*);
+    char* pathtofile;
+};
 }
 
 #endif /* end of include guard */

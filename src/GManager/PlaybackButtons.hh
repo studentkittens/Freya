@@ -37,31 +37,31 @@
 
 namespace GManager
 {
-    /**
-     * @brief Manages the Playbackbuttons
-     *
-     * Does nothing more than catching signals, and changing symbols.
-     */
-    class PlaybackButtons : public MPD::AbstractClientUser
-    {
-    public:
-        PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+/**
+ * @brief Manages the Playbackbuttons
+ *
+ * Does nothing more than catching signals, and changing symbols.
+ */
+class PlaybackButtons : public MPD::AbstractClientUser
+{
+public:
+    PlaybackButtons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-    private:
-        /* Client Signals */
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
+private:
+    /* Client Signals */
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        /* GTK Signals */
-        void on_button_stop();
-        void on_button_pause();
-        void on_button_next();
-        void on_button_prev();
+    /* GTK Signals */
+    void on_button_stop();
+    void on_button_pause();
+    void on_button_next();
+    void on_button_prev();
 
-        /* Widgets */
-        Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
-        Gtk::Image play_icon, pause_icon;
-    };
+    /* Widgets */
+    Gtk::Button *stop_button, *pause_button, *prev_button, *next_button;
+    Gtk::Image play_icon, pause_icon;
+};
 }
 
 #endif

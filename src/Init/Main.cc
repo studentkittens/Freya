@@ -58,17 +58,17 @@
 #include "CssLoader.hh"
 
 #if USE_LIBNOTIFY
-    #include "../GManager/NotifyManager.hh"
+#include "../GManager/NotifyManager.hh"
 #endif
 
 #if USE_AVAHI
-    #include "../Browser/Avahi/ServerList.hh"
+#include "../Browser/Avahi/ServerList.hh"
 #endif
 
 #if USE_GLYR
-    #include "../Browser/NowPlaying/NowPlaying.hh"
-    #include "../Glyr/Request.hh"
-#endif 
+#include "../Browser/NowPlaying/NowPlaying.hh"
+#include "../Glyr/Request.hh"
+#endif
 
 
 ////////////////////////
@@ -77,39 +77,30 @@ int main(int argc, char *argv[])
 {
     Glib::thread_init(NULL);
     setlocale(LC_ALL,"");
-
     // TODO: Change this to Gtk::Application once available
     Gtk::Main app(argc,argv);
-
     try
     {
-        // Parse arguments (this may call exit() if 
-        // parsing got wrong, so no important Init 
+        // Parse arguments (this may call exit() if
+        // parsing got wrong, so no important Init
         // was done till here
         Init::parse_and_handle_arguments(argc,argv);
-
 #if USE_GLYR
         /* Metadata System */
         Glyr::Stack::instance();
 #endif
-
         /* Register fatal signals like SIGSEGV */
         Init::SignalHandler sig_handler;
-
         /* TODO: Play a bit around with prealloc() */
         MPD::Song::prealloc(10000);
         atexit(MPD::Song::disposeAll);
-
         /* Instance the client */
         MPD::Client client;
-
         /* Try to laod the css file */
         Init::CssLoader css;
-
         /* Get the glade file */
         Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create();
         BUILDER_ADD(builder,"ui/Freya.glade");
-
         /* Instanmce gui elements */
         GManager::Window main_window(builder);
         GManager::Heartbeat proxy(client);
@@ -121,72 +112,50 @@ int main(int argc, char *argv[])
         GManager::Statusicons status_icons(client,builder);
         GManager::MenuList menu_list(client,builder);
         GManager::Trayicon tray(client,*main_window.get_window());
-
 #if USE_LIBNOTIFY
         GManager::NotifyManager notify_mgr(client);
 #endif
-
         GManager::BrowserList browser_list(client,builder);
-
         /* Instance browsers */
-
 #if USE_GLYR
         Browser::NowPlaying np_browser(client,builder,browser_list);
         browser_list.add(np_browser);
 #endif
-
         Browser::Queue queue_browser(client,builder,browser_list);
         browser_list.add(queue_browser);
-
         Browser::PlaylistManager playlists_browser(client,builder,browser_list);
         browser_list.add(playlists_browser);
-
         Browser::Database db_browser(client,builder,browser_list);
         browser_list.add(db_browser);
-
         Browser::StatBrowser stat_browser(client,builder,browser_list);
         browser_list.add(stat_browser);
-
         Browser::Settings settings_browser(client,builder,&tray,browser_list);
         browser_list.add(settings_browser);
-
-#if USE_AVAHI    
+#if USE_AVAHI
         Browser::ServerList server_list(builder,browser_list);
         browser_list.add(server_list);
 #endif
-
         browser_list.set(queue_browser);
-
         main_window.get_window()->show();
-
         Debug("Setting up GUI done.");
-
         ///////////////////
-
         /* Send a good morning to all widgets */
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
             client.connect();
         }
-
         /* ------START -------- */
-
         Debug("Entering Mainloop!");
-
         app.run();
-
         /*------ END ---------- */
-
         if(CONFIG_GET_AS_INT("settings.playback.stoponexit"))
         {
             client.playback_stop();
         }
-
 #if USE_GLYR
         // Do this before disconnecting, since it may take some time.
         Glyr::Stack::instance().destroy();
 #endif
-
         client.disconnect();
     }
     catch(const Gtk::BuilderError& e)

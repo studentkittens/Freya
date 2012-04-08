@@ -45,111 +45,111 @@ typedef sigc::signal<void,enum mpd_idle, MPD::NotifyData&> EventNotifier;
 
 namespace MPD
 {
-    /**
-     * @brief Listener for Server events, Freya's actual core.
+/**
+ * @brief Listener for Server events, Freya's actual core.
+ */
+class Listener
+{
+public:
+    Listener(EventNotifier * notifier, Connection& sync_conn);
+    ~Listener();
+
+    /* Enter idle mode
+     * Returns: true on success
      */
-    class Listener
-    {
-    public:
-        Listener(EventNotifier * notifier, Connection& sync_conn);
-        ~Listener();
+    bool enter();
 
-        /* Enter idle mode
-         * Returns: true on success
-         */
-        bool enter();
+    /* Leave idle mode (in order to send commands)
+    */
+    void leave();
 
-        /* Leave idle mode (in order to send commands)
-        */
-        void leave();
+    /* Checks if connection is in idle mode
+    */
+    bool is_idling();
 
-        /* Checks if connection is in idle mode
-        */
-        bool is_idling();
+    //---------------//
+    // Classmembers  //
+    //---------------//
 
-        //---------------//
-        // Classmembers  //
-        //---------------//
-
-        NotifyData& get_data();
+    NotifyData& get_data();
 
 
-        /**
-         * @brief Emits callback forced with current data
-         */
-        void force_update();
+    /**
+     * @brief Emits callback forced with current data
+     */
+    void force_update();
 
-    private:
+private:
 
-        /**
-         * Utility (therefore static) function to
-         * convert a GIOCondition bit mask to #mpd_async_event.
-         */
-        enum mpd_async_event GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition);
+    /**
+     * Utility (therefore static) function to
+     * convert a GIOCondition bit mask to #mpd_async_event.
+     */
+    enum mpd_async_event GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition);
 
-        //--------------------------------
+    //--------------------------------
 
-        /**
-         * Converts a #mpd_async_event bit mask to GIOCondition.
-         */
-        Glib::IOCondition MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events);
+    /**
+     * Converts a #mpd_async_event bit mask to GIOCondition.
+     */
+    Glib::IOCondition MPDAsyncEvent_to_GIOCondition(enum mpd_async_event events);
 
 
-        /* check if async connection is doing weird things */
-        bool check_async_error();
-        bool recv_parseable();
-        gboolean io_callback(Glib::IOCondition condition);
-        bool parse_response(char *line);
-        void invoke_user_callback();
-        void create_watch(enum mpd_async_event events);
+    /* check if async connection is doing weird things */
+    bool check_async_error();
+    bool recv_parseable();
+    gboolean io_callback(Glib::IOCondition condition);
+    bool parse_response(char *line);
+    void invoke_user_callback();
+    void create_watch(enum mpd_async_event events);
 
-        //-----------------//
-        // Instancemembers //
-        //-----------------//
+    //-----------------//
+    // Instancemembers //
+    //-----------------//
 
-        /* true if in idlemode */
-        bool is_idle;
+    /* true if in idlemode */
+    bool is_idle;
 
-        /* True while executing leave(),
-         * prevents enter() from being called
-         * */
-        bool is_leaving;
+    /* True while executing leave(),
+     * prevents enter() from being called
+     * */
+    bool is_leaving;
 
-        /* True while callback is executed */
-        bool is_working;
+    /* True while callback is executed */
+    bool is_working;
 
-        /* True when a forced update was requested */
-        bool is_forced;
+    /* True when a forced update was requested */
+    bool is_forced;
 
-        /* A reponse parser */
-        struct mpd_parser * mp_Parser;
+    /* A reponse parser */
+    struct mpd_parser * mp_Parser;
 
-        /* Non blocking connection */
-        struct mpd_async  * async_conn;
+    /* Non blocking connection */
+    struct mpd_async  * async_conn;
 
-        /* The fd id of async_conn */
-        int async_socket_fd;
+    /* The fd id of async_conn */
+    int async_socket_fd;
 
-        /* What IO events did happen? */
-        mpd_async_event io_eventmask;
+    /* What IO events did happen? */
+    mpd_async_event io_eventmask;
 
-        /* The actual events (like "player","mixer".. etc) */
-        unsigned idle_events;
+    /* The actual events (like "player","mixer".. etc) */
+    unsigned idle_events;
 
-        /* A functor representing the io_callback */
-        sigc::connection io_functor;
+    /* A functor representing the io_callback */
+    sigc::connection io_functor;
 
-        /* emit() is called on this on events */
-        EventNotifier * mp_Notifier;
+    /* emit() is called on this on events */
+    EventNotifier * mp_Notifier;
 
-        /* MPD Status */
-        Status * mp_Status;
+    /* MPD Status */
+    Status * mp_Status;
 
-        /* Synchronous connection */
-        Connection * mp_Conn;
+    /* Synchronous connection */
+    Connection * mp_Conn;
 
-        /* The data passed to the observer */
-        NotifyData m_NData;
-    };
+    /* The data passed to the observer */
+    NotifyData m_NData;
+};
 }
 #endif

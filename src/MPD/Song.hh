@@ -38,111 +38,111 @@
 
 namespace MPD
 {
+/**
+ * @brief A wrapper for mpd_song
+ */
+class Song : public AbstractComposite, public UseMemPool<Song>
+{
+public:
     /**
-     * @brief A wrapper for mpd_song
+     * @brief You are not supposed to instance this yourself.
+     *
+     * @param song
      */
-    class Song : public AbstractComposite, public UseMemPool<Song>
-    {
-    public:
-        /**
-         * @brief You are not supposed to instance this yourself.
-         *
-         * @param song
-         */
-        Song(const mpd_song& song);
-        /**
-         * @brief Copy Ctor
-         *
-         * @param other
-         */
-        Song(const MPD::Song& other);
-        ~Song();
+    Song(const mpd_song& song);
+    /**
+     * @brief Copy Ctor
+     *
+     * @param other
+     */
+    Song(const MPD::Song& other);
+    ~Song();
 
-        /**
-         * @brief The path of the song in the DB
-         *
-         * @return
-         */
-        const char * get_path();
-        /**
-         * @brief Get a certain tag from the song
-         *
-         * use song_format() if you just want a easy way to convert
-         * a MPD::Song to a nice string.
-         *
-         * @param type The typ of the tag
-         * @param idx some tags might have more than values, use this to index it, starting with 0
-         *
-         * @return a string
-         */
-        const char * get_tag(enum mpd_tag_type type, unsigned idx = 0);
-        /**
-         * @brief Formats the data of the song into a string
-         *
-         * You can use the following formatting strings inside format
-         *   - artist
-         *   - title
-         *   - album
-         *   - track
-         *   - name
-         *   - data
-         *   - album_artist
-         *   - genre
-         *   - composer
-         *   - performer
-         *   - comment
-         *   - disc
-         *
-         * Each of these values should be placed inside ${fill_tagtype_in_here},
-         * If the tagtype is not known, it gets not escaped, if the tag is empty,
-         * it is escaped with "unknown".
-         *
-         * If markup ist set the string gets already markup'd for use in Gtk Widgets.
-         *
-         * @param format The format prototype
-         * @param markup if markup should be done (see Glib::Markup::escape())
-         *
-         * @return the ready formatted string
-         */
-        Glib::ustring song_format(const char* format, bool markup=true);
-        /**
-         * @brief Get duratin of song in seconds
-         *
-         * @return
-         */
-        unsigned get_duration();
-        /**
-         * @brief Get seconds since last modifieGet seconds since last modifieff
-         *
-         * @return time_t type (unsigned long)
-         */
-        time_t get_last_modified();
-        /**
-         * @brief Set the position in the queue
-         *
-         * This is not a client command,
-         * and it is not used in Freya.
-         *
-         * @param pos the new pos
-         */
-        void set_pos(unsigned pos);
-        /**
-         * @brief Get the position of the Song in the Queue
-         *
-         * @return
-         */
-        unsigned get_pos();
-        /**
-         * @brief Get Database ID of the Song
-         *
-         * @return
-         */
-        unsigned get_id();
+    /**
+     * @brief The path of the song in the DB
+     *
+     * @return
+     */
+    const char * get_path();
+    /**
+     * @brief Get a certain tag from the song
+     *
+     * use song_format() if you just want a easy way to convert
+     * a MPD::Song to a nice string.
+     *
+     * @param type The typ of the tag
+     * @param idx some tags might have more than values, use this to index it, starting with 0
+     *
+     * @return a string
+     */
+    const char * get_tag(enum mpd_tag_type type, unsigned idx = 0);
+    /**
+     * @brief Formats the data of the song into a string
+     *
+     * You can use the following formatting strings inside format
+     *   - artist
+     *   - title
+     *   - album
+     *   - track
+     *   - name
+     *   - data
+     *   - album_artist
+     *   - genre
+     *   - composer
+     *   - performer
+     *   - comment
+     *   - disc
+     *
+     * Each of these values should be placed inside ${fill_tagtype_in_here},
+     * If the tagtype is not known, it gets not escaped, if the tag is empty,
+     * it is escaped with "unknown".
+     *
+     * If markup ist set the string gets already markup'd for use in Gtk Widgets.
+     *
+     * @param format The format prototype
+     * @param markup if markup should be done (see Glib::Markup::escape())
+     *
+     * @return the ready formatted string
+     */
+    Glib::ustring song_format(const char* format, bool markup=true);
+    /**
+     * @brief Get duratin of song in seconds
+     *
+     * @return
+     */
+    unsigned get_duration();
+    /**
+     * @brief Get seconds since last modifieGet seconds since last modifieff
+     *
+     * @return time_t type (unsigned long)
+     */
+    time_t get_last_modified();
+    /**
+     * @brief Set the position in the queue
+     *
+     * This is not a client command,
+     * and it is not used in Freya.
+     *
+     * @param pos the new pos
+     */
+    void set_pos(unsigned pos);
+    /**
+     * @brief Get the position of the Song in the Queue
+     *
+     * @return
+     */
+    unsigned get_pos();
+    /**
+     * @brief Get Database ID of the Song
+     *
+     * @return
+     */
+    unsigned get_id();
 
-    private:
-        mpd_song * mp_Song;
-        static const char unknown_tag[];
-    };
+private:
+    mpd_song * mp_Song;
+    static const char unknown_tag[];
+};
 }
 
 #endif

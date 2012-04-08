@@ -44,87 +44,87 @@
 
 namespace Browser
 {
+/**
+ * @brief Shows a list of songs in the current playlist
+ *
+ * It does not offer you any public methods.
+ * The fetching and updating is done by QueueMerger.
+ */
+class Queue : public AbstractBrowser, public MPD::AbstractClientUser
+{
+public:
+    Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
+    virtual ~Queue();
+
     /**
-     * @brief Shows a list of songs in the current playlist
+     * @brief Inherited from AbstractBrowser
      *
-     * It does not offer you any public methods.
-     * The fetching and updating is done by QueueMerger.
+     * @return a pointer to the widget containing the playlist
      */
-    class Queue : public AbstractBrowser, public MPD::AbstractClientUser
-    {
-    public:
-        Queue(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
-        virtual ~Queue();
+    Gtk::Widget * get_container();
 
-        /**
-         * @brief Inherited from AbstractBrowser
-         *
-         * @return a pointer to the widget containing the playlist
-         */
-        Gtk::Widget * get_container();
+private:
 
-    private:
+    /* Init */
+    void configure_columns();
+    void configure_signals();
 
-        /* Init */
-        void configure_columns();
-        void configure_signals();
+    /* Implemtend from AbstractItemlist */
+    void add_item(void * pSong);
 
-        /* Implemtend from AbstractItemlist */
-        void add_item(void * pSong);
+    /* Util */
+    void merge_changes(MPD::Song * pSong);
 
-        /* Util */
-        void merge_changes(MPD::Song * pSong);
+    /* Implemented from AbstractClientUser */
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        /* Implemented from AbstractClientUser */
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
+    /* Menuhandling */
+    void on_menu_clear_clicked();
+    void on_menu_remove_clicked();
+    void on_menu_add_as_pl_clicked();
 
-        /* Menuhandling */
-        void on_menu_clear_clicked();
-        void on_menu_remove_clicked();
-        void on_menu_add_as_pl_clicked();
+    /* Other */
+    void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
+    bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
+    void on_entry_activate();
+    void on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
+    bool on_key_press_handler(GdkEventKey * event);
 
-        /* Other */
-        void on_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
-        bool on_filter_row_visible(const Gtk::TreeModel::const_iterator& iter);
-        void on_entry_activate();
-        void on_entry_clear_icon(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
-        bool on_key_press_handler(GdkEventKey * event);
+    /*----------------------*/
+    /*----------------------*/
+    /*----------------------*/
 
-        /*----------------------*/
-        /*----------------------*/
-        /*----------------------*/
+    Glib::ustring m_FilterText;
 
-        Glib::ustring m_FilterText;
+    /* Treeview related */
+    QueueModelColumns m_Columns;
 
-        /* Treeview related */
-        QueueModelColumns m_Columns;
+    /* View of the list */
+    Gtk::TreeView * mp_TreeView;
 
-        /* View of the list */
-        Gtk::TreeView * mp_TreeView;
+    /* Actual data */
+    Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
 
-        /* Actual data */
-        Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+    /* Filtered data */
+    Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
 
-        /* Filtered data */
-        Glib::RefPtr<Gtk::TreeModelFilter> m_refTreeModelFilter;
+    /* Selected data */
+    Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
 
-        /* Selected data */
-        Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
+    /* Popup */
+    QueuePopup * mp_Popup;
 
-        /* Popup */
-        QueuePopup * mp_Popup;
+    /* other widgets */
+    Gtk::Entry * mp_Entry;
+    Gtk::Box * mp_QueueBox;
+    PlaylistAddDialog * mp_AddDialog;
 
-        /* other widgets */
-        Gtk::Entry * mp_Entry;
-        Gtk::Box * mp_QueueBox;
-        PlaylistAddDialog * mp_AddDialog;
+    /* Current Song */
+    MPD::Song * mp_CurrentSong;
 
-        /* Current Song */
-        MPD::Song * mp_CurrentSong;
-
-        /* Handles updating the queue */
-        QueueMerger * mp_Merger;
-    };
+    /* Handles updating the queue */
+    QueueMerger * mp_Merger;
+};
 }
 #endif //FREYA_QUEUE_H

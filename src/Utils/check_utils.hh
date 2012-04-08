@@ -37,8 +37,8 @@ class UtilsTestSuite : public CxxTest::TestSuite
 {
 
 public:
-//-------------------------------------------------------------
-// Utils::seconds_to_duration(unsinged long)
+    //-------------------------------------------------------------
+    // Utils::seconds_to_duration(unsinged long)
     void testseconds_to_duration_1_year()
     {
         TS_ASSERT("52 weeks 1 days 0 hours 0 minutes 0 seconds" == Utils::seconds_to_duration(60/*seconds*/ * 60/*minutes*/ * 24/*hours*/ * 365/*days*/));
@@ -85,8 +85,8 @@ public:
     }
 
 
-//-------------------------------------------------------------
-//  Utils::seconds_to_timestamp(const long)
+    //-------------------------------------------------------------
+    //  Utils::seconds_to_timestamp(const long)
     void testseconds_to_timestamp_date1(void)
     {
         TS_ASSERT("2011-12-05" == Utils::seconds_to_timestamp(1323039600));

@@ -37,33 +37,33 @@
 
 namespace GManager
 {
-    /**
-     * @brief Manager for the status icons in the down sidebar
-     *
-     * Toggles/updates random, consume, repeat, single.
-     */
-    class Statusicons : public MPD::AbstractClientUser
-    {
-    public:
-        Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+/**
+ * @brief Manager for the status icons in the down sidebar
+ *
+ * Toggles/updates random, consume, repeat, single.
+ */
+class Statusicons : public MPD::AbstractClientUser
+{
+public:
+    Statusicons(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-    private:
-        void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
+private:
+    void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        void on_clicked_random();
-        void on_clicked_single();
-        void on_clicked_consume();
-        void on_clicked_repeat();
-        void on_conn_change(bool is_connected);
+    void on_clicked_random();
+    void on_clicked_single();
+    void on_clicked_consume();
+    void on_clicked_repeat();
+    void on_conn_change(bool is_connected);
 
-        /* Widgets */
-        Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
+    /* Widgets */
+    Gtk::ToggleButton *mp_Random, * mp_Single, * mp_Consume, * mp_Repeat;
 
-        /* set_active() emits a signal, this would cause infinite loops of updating,
-         * ignore signals while recv. updates from client therefore. */
-        bool ignore_updates;
-    };
+    /* set_active() emits a signal, this would cause infinite loops of updating,
+     * ignore signals while recv. updates from client therefore. */
+    bool ignore_updates;
+};
 }
 
 #endif

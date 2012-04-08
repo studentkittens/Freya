@@ -36,41 +36,41 @@
 
 namespace GManager
 {
+/**
+ * @brief Just manages the close button.
+ */
+class Window
+{
+
+public:
+    Window(const Glib::RefPtr<Gtk::Builder> &builder);
+    virtual ~Window();
+
     /**
-     * @brief Just manages the close button.
+     * @brief Get the Gtk::Window of Freya
+     *
+     * @return
      */
-    class Window
-    {
+    Gtk::Window * get_window();
 
-        public:
-            Window(const Glib::RefPtr<Gtk::Builder> &builder);
-            virtual ~Window();
+    /**
+     * @brief Static convienience method to get the current main window.
+     *
+     *  This is usually the same as get_window(), just from a static context,
+     *  since may gtk routines need the main window, and it would be inconvenient to
+     *  pass it all the way around.
+     *
+     * @return
+     */
+    static Gtk::Window * get_current_window();
 
-            /**
-             * @brief Get the Gtk::Window of Freya
-             *
-             * @return
-             */
-            Gtk::Window * get_window();
+protected:
+    bool on_delete_event(GdkEventAny* event);
 
-            /**
-             * @brief Static convienience method to get the current main window.
-             *
-             *  This is usually the same as get_window(), just from a static context,
-             *  since may gtk routines need the main window, and it would be inconvenient to
-             *  pass it all the way around.
-             *
-             * @return 
-             */
-            static Gtk::Window * get_current_window();
-
-        protected:
-            bool on_delete_event(GdkEventAny* event);
-
-        private:
-            Gtk::Window * main_window;
-            static Gtk::Window * current_main_window;
-    };
+private:
+    Gtk::Window * main_window;
+    static Gtk::Window * current_main_window;
+};
 }
 
 #endif

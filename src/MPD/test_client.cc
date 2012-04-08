@@ -47,11 +47,9 @@ typedef struct
 gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer data)
 {
     gboolean  retv = true;
-
     shell_data * watch_data = (shell_data *)data;
     GMainLoop * main_loop = watch_data->loop;
     MPD::Client * client = watch_data->client;
-
     int c = getchar();
     switch(c)
     {
@@ -65,7 +63,7 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
     }
     case ':':
     {
-        char cmd[256] = {0};
+        char cmd[256] = {0 };
         if(fgets(cmd,255,stdin))
         {
             /* Chomp newline */
@@ -73,7 +71,6 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
             if(nl != NULL) nl[0] = 0;
             client->send_command(cmd);
         }
-
         /* Do not unread newline */
         return true;
     }
@@ -82,10 +79,8 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
         break;
     }
     }
-
     /* Unread characters left on the stream (if any) */
-    while ((c = getchar()) != EOF && c != '\n');
-
+    while((c = getchar()) != EOF && c != '\n');
     return retv;
 }
 
@@ -95,24 +90,19 @@ gboolean stdin_io_callback(GIOChannel *source, GIOCondition condition, gpointer 
 int main(int argc, char *argv[])
 {
     MPD::Client freya;
-
     /* Eventloop */
     RefPtr<MainLoop> app_loop = MainLoop::create(false);
-
     shell_data data;
     data.client = &freya;
     data.loop   = app_loop->gobj();
-
     GIOChannel * stdin_chan = g_io_channel_unix_new(fileno(stdin));
     g_io_add_watch(stdin_chan,G_IO_IN,stdin_io_callback,(gpointer)&data);
-
     freya.connect();
     if(freya.ping() /* Extra test */)
     {
         Info("Enter your command prepended with a ':'");
         Info("Example: :status or :next");
         Info("Type 'q' to quit.");
-
         /* Start listening to events */
         app_loop->run();
         app_loop->unreference();
@@ -121,9 +111,7 @@ int main(int argc, char *argv[])
     {
         Error("Cannot ping server.");
     }
-
     g_io_channel_unref(stdin_chan);
-
     return EXIT_SUCCESS;
 }
 

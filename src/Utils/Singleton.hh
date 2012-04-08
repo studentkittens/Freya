@@ -36,13 +36,13 @@
  */
 
 #define DEF_SINGLETON( NAME )    \
- public:                         \
+    public:                         \
     static NAME& instance()      \
     {                            \
-       static NAME _instance;    \
-       return _instance;         \
+        static NAME _instance;    \
+        return _instance;         \
     }                            \
- private:                        \
+    private:                        \
     NAME();                      \
     NAME(const NAME&);
 

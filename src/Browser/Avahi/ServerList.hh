@@ -37,56 +37,56 @@
 #include "../../Avahi/Browser.hh"
 #include "../AbstractBrowser.hh"
 
-namespace Browser 
+namespace Browser
 {
-    class ServerList : public AbstractBrowser
+class ServerList : public AbstractBrowser
+{
+public:
+    ServerList(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
+
+    Gtk::Widget * get_container();
+
+protected:
+
+    /* Signal handlers */
+    void on_button_cancel();
+    void on_button_select(Glib::RefPtr<Gtk::Builder>& builder);
+
+    void on_got_server(Glib::ustring addr, Glib::ustring hostname, Glib::ustring name, unsigned port);
+    void on_deleted_server(Glib::ustring deleted_name);
+    void on_error_message(Glib::ustring msg);
+
+    /* Treemodel def */
+    class ModelColumns : public Gtk::TreeModel::ColumnRecord
     {
-        public:
-            ServerList(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
+    public:
 
-            Gtk::Widget * get_container();
+        ModelColumns()
+        {
+            add(m_col_addr);
+            add(m_col_hostname);
+            add(m_col_name);
+            add(m_col_port);
+        }
 
-        protected:
-
-            /* Signal handlers */
-            void on_button_cancel();
-            void on_button_select(Glib::RefPtr<Gtk::Builder>& builder);
-
-            void on_got_server(Glib::ustring addr, Glib::ustring hostname, Glib::ustring name, unsigned port);
-            void on_deleted_server(Glib::ustring deleted_name);
-            void on_error_message(Glib::ustring msg);
-
-            /* Treemodel def */
-            class ModelColumns : public Gtk::TreeModel::ColumnRecord
-            {
-            public:
-
-                ModelColumns()
-                {
-                    add(m_col_addr);
-                    add(m_col_hostname);
-                    add(m_col_name);
-                    add(m_col_port);
-                }
-
-                Gtk::TreeModelColumn<Glib::ustring> m_col_addr;
-                Gtk::TreeModelColumn<Glib::ustring> m_col_hostname;
-                Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-                Gtk::TreeModelColumn<unsigned int>  m_col_port;
-            };
-
-            ///////////////////////
-
-            Gtk::ScrolledWindow * avahi_scrl_window;
-            Gtk::TreeView * mp_TreeView;
-            Gtk::Button * mp_Button_Cancel, * mp_Button_Select;
-            Gtk::Label * mp_Status_Label;
-
-            Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
-            ModelColumns m_Columns;
-
-            Avahi::Browser avahi_handle;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_addr;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_hostname;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+        Gtk::TreeModelColumn<unsigned int>  m_col_port;
     };
+
+    ///////////////////////
+
+    Gtk::ScrolledWindow * avahi_scrl_window;
+    Gtk::TreeView * mp_TreeView;
+    Gtk::Button * mp_Button_Cancel, * mp_Button_Select;
+    Gtk::Label * mp_Status_Label;
+
+    Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+    ModelColumns m_Columns;
+
+    Avahi::Browser avahi_handle;
+};
 
 }
 

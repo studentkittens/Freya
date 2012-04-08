@@ -48,57 +48,57 @@
     builder_refp->get_widget_derived(widget_name,derived_class);      \
     g_assert(derived_class);                                          \
     Gtk::manage(derived_class);                                       \
-
+     
 #define BUILDER_GET_NO_MANAGE(builder_refp, widget_name, widget_ptr) \
     widget_ptr = NULL;                                               \
     builder_refp->get_widget(widget_name,widget_ptr);                \
     g_assert(widget_ptr);                                            \
- 
+     
 #define BUILDER_ADD(builder_ref, filename)               \
     g_assert(filename);                                  \
     Utils::builder_internal_fetch(builder_ref,filename); \
-
+     
 namespace Utils
 {
 
-    /**
-     * @brief converts a given time in seconds to a duration ustring
-     *
-     * @param long, duration in seconds to convert
-     *
-     * @return duration as ustring, e.g. "4 hours 2 minutes 0 seconds"
-     */
-    Glib::ustring seconds_to_duration(unsigned long);
+/**
+ * @brief converts a given time in seconds to a duration ustring
+ *
+ * @param long, duration in seconds to convert
+ *
+ * @return duration as ustring, e.g. "4 hours 2 minutes 0 seconds"
+ */
+Glib::ustring seconds_to_duration(unsigned long);
 
 
-    /**
-     * @brief converts a given time in seconds to a "timestamp"
-     *
-     * @param long, duration in seconds to convert
-     *
-     * @return date as ustring, e.g. 2011-04-02
-     */
-    Glib::ustring seconds_to_timestamp(const long);
+/**
+ * @brief converts a given time in seconds to a "timestamp"
+ *
+ * @param long, duration in seconds to convert
+ *
+ * @return date as ustring, e.g. 2011-04-02
+ */
+Glib::ustring seconds_to_timestamp(const long);
 
 
-    /**
-     * @brief Simply converts any integer to a std::string
-     *
-     * @param num the integer
-     *
-     * @return a std::string containing just the number (copy for further use!)
-     */
-    std::string int_to_string(int num);
-    
-    /**
-     * @brief Fetches ui definitions either from file or from compiled-in glade xml
-     *
-     * @param ref the builder to add to
-     * @param file the file, Freya maintains a lookup table in release mode.
-     */
-    void builder_internal_fetch(Glib::RefPtr<Gtk::Builder>& ref, const char * file);
-    
-    Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_data(const guchar * data, gsize len, int width = 150, int height = 150, bool aspect = false);
-    Glib::RefPtr<Gdk::Pixbuf> pixbuf_internal_fetch(const char * file, int width = 150, int height = 150, bool aspect = false);
+/**
+ * @brief Simply converts any integer to a std::string
+ *
+ * @param num the integer
+ *
+ * @return a std::string containing just the number (copy for further use!)
+ */
+std::string int_to_string(int num);
+
+/**
+ * @brief Fetches ui definitions either from file or from compiled-in glade xml
+ *
+ * @param ref the builder to add to
+ * @param file the file, Freya maintains a lookup table in release mode.
+ */
+void builder_internal_fetch(Glib::RefPtr<Gtk::Builder>& ref, const char * file);
+
+Glib::RefPtr<Gdk::Pixbuf> create_pixbuf_from_data(const guchar * data, gsize len, int width = 150, int height = 150, bool aspect = false);
+Glib::RefPtr<Gdk::Pixbuf> pixbuf_internal_fetch(const char * file, int width = 150, int height = 150, bool aspect = false);
 }
 #endif

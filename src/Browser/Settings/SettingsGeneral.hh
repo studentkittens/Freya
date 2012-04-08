@@ -37,32 +37,32 @@
 
 namespace Browser
 {
-    /* Prototype */
-    class Settings;
+/* Prototype */
+class Settings;
 
-    /**
-     * @brief General Settings Tab.
-     */
-    class SettingsGeneral : public AbstractSettings
-    {
-    public:
-        SettingsGeneral(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon *trayptr);
-        ~SettingsGeneral();
+/**
+ * @brief General Settings Tab.
+ */
+class SettingsGeneral : public AbstractSettings
+{
+public:
+    SettingsGeneral(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon *trayptr);
+    ~SettingsGeneral();
 
-        void accept_new_settings();
-        void decline_new_settings();
-        void reset_settings();
+    void accept_new_settings();
+    void decline_new_settings();
+    void reset_settings();
 
-    private:
-        void on_notify_toggled();
-        void on_tray_toggled();
-        GManager::Trayicon * trayptr;
-        Browser::Settings * sett;
-        Glib::ustring notify,tray,timeout, to_tray;
-        /* Widgets */
-        Gtk::CheckButton *libnotify, *trayicon, *close_to_tray;
-        Gtk::SpinButton *notify_timeout;
-        Gtk::Box *notify_box, *tray_box;
-    };
+private:
+    void on_notify_toggled();
+    void on_tray_toggled();
+    GManager::Trayicon * trayptr;
+    Browser::Settings * sett;
+    Glib::ustring notify,tray,timeout, to_tray;
+    /* Widgets */
+    Gtk::CheckButton *libnotify, *trayicon, *close_to_tray;
+    Gtk::SpinButton *notify_timeout;
+    Gtk::Box *notify_box, *tray_box;
+};
 }
 #endif

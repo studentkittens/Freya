@@ -60,6 +60,5 @@ int main(int argc, char *argv[])
         Glib::ustring bla  = CONFIG_GET(Glib::ustring(argv[2]));
         g_message("value = '%s'",bla.c_str());
     }
-
     return EXIT_SUCCESS;
 }

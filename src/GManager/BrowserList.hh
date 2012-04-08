@@ -38,91 +38,91 @@ class AbstractBrowser;
 
 namespace GManager
 {
+/**
+ * @brief List of Browsers in sidebar
+ *
+ * Manages a list of AbstractBrowser and switches
+ * to the first browser that needs no connection on disconnect.
+ * Also supports hidden Browsers (Browser::Fortune e.g.)
+ */
+class BrowserList : public MPD::AbstractClientUser
+{
+public:
+
+    BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+
     /**
-     * @brief List of Browsers in sidebar
+     * @brief Add the browser to the list and manage it
      *
-     * Manages a list of AbstractBrowser and switches
-     * to the first browser that needs no connection on disconnect.
-     * Also supports hidden Browsers (Browser::Fortune e.g.)
+     * @param browser A user class that inherits from AbstractBrowser
      */
-    class BrowserList : public MPD::AbstractClientUser
+    void add(AbstractBrowser& browser);
+
+    /**
+     * @brief Set a specfici browser
+     *
+     * Note: The browser should be already added with add()
+     *
+     * @param browser
+     */
+    void set(AbstractBrowser& browser);
+
+    /**
+     * @brief Set a browser by it's name
+     *
+     * @param name the name of a browser; e.g. 'Avahi', 'Settings', 'Queue'...
+     */
+    void set(Glib::ustring name);
+
+    /**
+     * @brief Reset to the previously set browser
+     */
+    void set_previous();
+
+private:
+
+    void change_browser(AbstractBrowser * browser);
+    void on_selection_changed();
+    void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
+
+    /* Tree model columns: */
+    class ModelColumns : public Gtk::TreeModel::ColumnRecord
     {
     public:
-
-        BrowserList(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-
-        /**
-         * @brief Add the browser to the list and manage it
-         *
-         * @param browser A user class that inherits from AbstractBrowser
-         */
-        void add(AbstractBrowser& browser);
-
-        /**
-         * @brief Set a specfici browser
-         *
-         * Note: The browser should be already added with add()
-         *
-         * @param browser
-         */
-        void set(AbstractBrowser& browser);
-
-        /**
-         * @brief Set a browser by it's name
-         *
-         * @param name the name of a browser; e.g. 'Avahi', 'Settings', 'Queue'...
-         */
-        void set(Glib::ustring name);
-
-        /**
-         * @brief Reset to the previously set browser
-         */
-        void set_previous();
-        
-    private:
-
-        void change_browser(AbstractBrowser * browser);
-        void on_selection_changed();
-        void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-
-        /* Tree model columns: */
-        class ModelColumns : public Gtk::TreeModel::ColumnRecord
+        ModelColumns()
         {
-        public:
-            ModelColumns()
-            {
-                add(m_col_name);
-                add(m_col_icon);
-                add(m_col_browser);
-            }
-            Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-            Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
-            Gtk::TreeModelColumn<AbstractBrowser*> m_col_browser;
-        };
-
-        /* View */
-        Gtk::TreeView * mp_PluginListview;
-
-        /* Actual model */
-        Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
-
-        /* Model layout */
-        ModelColumns m_Columns;
-
-        /* Selected data of model */
-        Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
-
-        /* Browserlist widget, where all browser stuff is happening in */
-        Gtk::Box * mp_List;
-
-        /* fortune label on startup */
-        Gtk::Label m_NoBrowsers;
-
-        /* Actively shown browser */
-        AbstractBrowser * mp_Active, * mp_PrevBrowser;
-
+            add(m_col_name);
+            add(m_col_icon);
+            add(m_col_browser);
+        }
+        Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+        Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
+        Gtk::TreeModelColumn<AbstractBrowser*> m_col_browser;
     };
+
+    /* View */
+    Gtk::TreeView * mp_PluginListview;
+
+    /* Actual model */
+    Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+
+    /* Model layout */
+    ModelColumns m_Columns;
+
+    /* Selected data of model */
+    Glib::RefPtr<Gtk::TreeSelection> m_TreeSelection;
+
+    /* Browserlist widget, where all browser stuff is happening in */
+    Gtk::Box * mp_List;
+
+    /* fortune label on startup */
+    Gtk::Label m_NoBrowsers;
+
+    /* Actively shown browser */
+    AbstractBrowser * mp_Active, * mp_PrevBrowser;
+
+};
 }
 
 #endif

@@ -45,17 +45,17 @@
  */
 namespace MPD
 {
-    class AbstractItemGenerator
-    {
-    public:
-        virtual void fill_queue(AbstractItemlist& data_model) = 0;
-        virtual void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) = 0;
-        virtual void fill_playlists(AbstractItemlist& data_model) = 0;
-        virtual void fill_outputs(AbstractItemlist& data_model) = 0;
-        virtual void fill_filelist(AbstractItemlist& data_model, const char * path) = 0;
+class AbstractItemGenerator
+{
+public:
+    virtual void fill_queue(AbstractItemlist& data_model) = 0;
+    virtual void fill_queue_changes(AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) = 0;
+    virtual void fill_playlists(AbstractItemlist& data_model) = 0;
+    virtual void fill_outputs(AbstractItemlist& data_model) = 0;
+    virtual void fill_filelist(AbstractItemlist& data_model, const char * path) = 0;
 
-        virtual ~AbstractItemGenerator() {};
-    };
+    virtual ~AbstractItemGenerator() {};
+};
 }
 
 #endif /* end of include guard: FREYA_ABSTRACTITEM_GENERATOR */

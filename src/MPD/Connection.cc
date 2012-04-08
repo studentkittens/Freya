@@ -31,187 +31,173 @@
 #include "Connection.hh"
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
-        
+
 namespace MPD
 {
 //--------------------------------------
 
-    Connection::Connection() :
-        lastHost(""),
-        hostChanged(false)
-    {
-        conn = NULL;
-    }
+Connection::Connection() :
+    lastHost(""),
+    hostChanged(false)
+{
+    conn = NULL;
+}
 
 //--------------------------------------
 
-    Connection::~Connection()
-    {
-        disconnect();
-    }
+Connection::~Connection()
+{
+    disconnect();
+}
 
 //--------------------------------------
 
-    mpd_connection * Connection::get_connection()
-    {
-        check_error();
-        if(is_connected())
-            return conn;
-        else
-            return NULL;
-    }
+mpd_connection * Connection::get_connection()
+{
+    check_error();
+    if(is_connected())
+        return conn;
+    else
+        return NULL;
+}
 
 //--------------------------------------
 
-    bool Connection::connect()
-    {
-        if(is_connected())
-            return false;
-
-        /* Timeout in seconds */
-        int timeout = CONFIG_GET_AS_INT("settings.connection.timeout") * 1000;
-
-        /* Port as integer */
-        int port = CONFIG_GET_AS_INT("settings.connection.port");
-
-        /* Hostname, might be an IP or a hostname like localhost */
-        Glib::ustring str_host = CONFIG_GET("settings.connection.host");
-
-
-        /* Check if the host changed */
-        if(str_host.compare(lastHost) != 0)
-            hostChanged = true;
-        else
-            hostChanged = false;
-
-        /* Remember last host */
-        lastHost = str_host;
-
-        /* Instance underlying C struct */
-        mpd_connection * mpd_conn = mpd_connection_new(str_host.c_str(), port, timeout);
-        if(mpd_conn != NULL)
-        {
-            conn = mpd_conn;
-            if(mpd_connection_get_error(mpd_conn) != MPD_ERROR_SUCCESS)
-            {
-                Warning("Could not connect: %s",mpd_connection_get_error_message(conn));
-                mpd_connection_free(mpd_conn);
-                conn = NULL;
-            }
-        }
-        return is_connected();
-    }
-
-//--------------------------------------
-
-    bool Connection::disconnect()
-    {
-        if(is_connected())
-        {
-            Info("Disconnecting");
-            mpd_connection_free(conn);
-            conn = NULL;
-            return true;
-        }
+bool Connection::connect()
+{
+    if(is_connected())
         return false;
-    }
-
-//--------------------------------------
-
-    bool Connection::is_connected()
+    /* Timeout in seconds */
+    int timeout = CONFIG_GET_AS_INT("settings.connection.timeout") * 1000;
+    /* Port as integer */
+    int port = CONFIG_GET_AS_INT("settings.connection.port");
+    /* Hostname, might be an IP or a hostname like localhost */
+    Glib::ustring str_host = CONFIG_GET("settings.connection.host");
+    /* Check if the host changed */
+    if(str_host.compare(lastHost) != 0)
+        hostChanged = true;
+    else
+        hostChanged = false;
+    /* Remember last host */
+    lastHost = str_host;
+    /* Instance underlying C struct */
+    mpd_connection * mpd_conn = mpd_connection_new(str_host.c_str(), port, timeout);
+    if(mpd_conn != NULL)
     {
-        return !(conn == NULL);
-    }
-
-//--------------------------------------
-
-    ErrorNotify& Connection::signal_error()
-    {
-        return m_ErrorSig;
-    }
-
-//--------------------------------------
-
-    ConnectionNotifier& Connection::signal_connection_change()
-    {
-        return m_ConnNotifer;
-    }
-
-//--------------------------------------
-
-    void Connection::emit_connection_change()
-    {
-        if(is_connected())
-            m_ConnNotifer.emit(hostChanged,is_connected());
-        else
-            m_ConnNotifer.emit(false,is_connected());
-    }
-
-//--------------------------------------
-
-    bool Connection::clear_error()
-    {
-        bool retv = false;
-        if(conn != NULL)
+        conn = mpd_conn;
+        if(mpd_connection_get_error(mpd_conn) != MPD_ERROR_SUCCESS)
         {
-            enum mpd_error err_code = mpd_connection_get_error(conn);
-            if(err_code != MPD_ERROR_SUCCESS)
+            Warning("Could not connect: %s",mpd_connection_get_error_message(conn));
+            mpd_connection_free(mpd_conn);
+            conn = NULL;
+        }
+    }
+    return is_connected();
+}
+
+//--------------------------------------
+
+bool Connection::disconnect()
+{
+    if(is_connected())
+    {
+        Info("Disconnecting");
+        mpd_connection_free(conn);
+        conn = NULL;
+        return true;
+    }
+    return false;
+}
+
+//--------------------------------------
+
+bool Connection::is_connected()
+{
+    return !(conn == NULL);
+}
+
+//--------------------------------------
+
+ErrorNotify& Connection::signal_error()
+{
+    return m_ErrorSig;
+}
+
+//--------------------------------------
+
+ConnectionNotifier& Connection::signal_connection_change()
+{
+    return m_ConnNotifer;
+}
+
+//--------------------------------------
+
+void Connection::emit_connection_change()
+{
+    if(is_connected())
+        m_ConnNotifer.emit(hostChanged,is_connected());
+    else
+        m_ConnNotifer.emit(false,is_connected());
+}
+
+//--------------------------------------
+
+bool Connection::clear_error()
+{
+    bool retv = false;
+    if(conn != NULL)
+    {
+        enum mpd_error err_code = mpd_connection_get_error(conn);
+        if(err_code != MPD_ERROR_SUCCESS)
+        {
+            if((retv = mpd_connection_clear_error(conn)) == false)
             {
-                if((retv = mpd_connection_clear_error(conn)) == false)
-                {
-                    const char * err_string = mpd_connection_get_error_message(conn);
-                    Warning("Cannot recover from error: %s",err_string);
-                }
+                const char * err_string = mpd_connection_get_error_message(conn);
+                Warning("Cannot recover from error: %s",err_string);
             }
         }
-        return retv;
     }
+    return retv;
+}
 
 //--------------------------------------
 
-    bool Connection::check_error()
+bool Connection::check_error()
+{
+    bool result = false;
+    if(is_connected())
     {
-        bool result = false;
-        if(is_connected())
+        bool is_fatal = false;
+        /* Get the errorcode */
+        mpd_error err_code = mpd_connection_get_error(conn);
+        /* Cross fingers.. */
+        if(err_code != MPD_ERROR_SUCCESS)
         {
-            bool is_fatal = false;
-
-            /* Get the errorcode */
-            mpd_error err_code = mpd_connection_get_error(conn);
-
-            /* Cross fingers.. */
-            if(err_code != MPD_ERROR_SUCCESS)
-            {
-                const int buf_size = 1024;
-                char error_buf[buf_size] = {0};
-
-                /* Build string */
-                if(err_code == MPD_ERROR_SERVER)
-                    g_snprintf(error_buf,buf_size,"(server) #%d: %s",
-                               mpd_connection_get_server_error(conn),
-                               mpd_connection_get_error_message(conn));
-                else
-                    g_snprintf(error_buf,buf_size,"(client) #%d: %s: ",
-                               err_code,
-                               mpd_connection_get_error_message(conn));
-
-                /* Clear non fatal errors */
-                is_fatal = clear_error();
-
-                if(is_fatal)
-                    Error("%s",error_buf);
-                else
-                    Warning("%s",error_buf);
-
-                /* Notify Observers */
-                m_ErrorSig.emit(is_fatal,err_code);
-
-                /* An error occured */
-                result = true;
-            }
+            const int buf_size = 1024;
+            char error_buf[buf_size] = {0 };
+            /* Build string */
+            if(err_code == MPD_ERROR_SERVER)
+                g_snprintf(error_buf,buf_size,"(server) #%d: %s",
+                           mpd_connection_get_server_error(conn),
+                           mpd_connection_get_error_message(conn));
+            else
+                g_snprintf(error_buf,buf_size,"(client) #%d: %s: ",
+                           err_code,
+                           mpd_connection_get_error_message(conn));
+            /* Clear non fatal errors */
+            is_fatal = clear_error();
+            if(is_fatal)
+                Error("%s",error_buf);
+            else
+                Warning("%s",error_buf);
+            /* Notify Observers */
+            m_ErrorSig.emit(is_fatal,err_code);
+            /* An error occured */
+            result = true;
         }
-        return result;
     }
+    return result;
+}
 
 //--------------------------------------
 }

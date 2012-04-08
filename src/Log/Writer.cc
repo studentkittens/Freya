@@ -48,188 +48,188 @@
 /* Clear after 2MB logsize */
 #define MAX_LOG_SIZE (2 * 1024 * 1024)
 
-namespace Log {
-    /* Termcolors 
-     * Based on: http://linuxgazette.net/issue65/padala.html
-     */ 
-    typedef enum {
-        RESET,
-        BRIGHT,
-        DIM,
-        UNDERLINE,
-        BLINK,
-        REVERSE,
-        HIDDEN		
-    } termattribute;
-    
-    /////////////////////////////
+namespace Log
+{
+/* Termcolors
+ * Based on: http://linuxgazette.net/issue65/padala.html
+ */
+typedef enum
+{
+    RESET,
+    BRIGHT,
+    DIM,
+    UNDERLINE,
+    BLINK,
+    REVERSE,
+    HIDDEN
+} termattribute;
 
-    typedef enum {
-        BLACK,
-        RED,
-        GREEN,
-        YELLOW,
-        BLUE,
-        MAGENTA,
-        CYAN,
-        WHITE 
-    } termcolor;
+/////////////////////////////
 
-    /////////////////////////////
+typedef enum
+{
+    BLACK,
+    RED,
+    GREEN,
+    YELLOW,
+    BLUE,
+    MAGENTA,
+    CYAN,
+    WHITE
+} termcolor;
 
-    struct LogDetail
-    {
-        termattribute attr;
-        termcolor color;
-        const char * text;
-        bool detail;
-        bool usedomain; 
-    };
+/////////////////////////////
 
-    /////////////////////////////
+struct LogDetail
+{
+    termattribute attr;
+    termcolor color;
+    const char * text;
+    bool detail;
+    bool usedomain;
+};
+
+/////////////////////////////
 
 
-    LogDetail __info[] = {
-        {RESET, BLACK,   "None",     false, false },
-        {RESET, MAGENTA, "Critical", true,  true  },
-        {RESET, RED,     "Error  ",  true,  true  },
-        {RESET, YELLOW,  "Warning",  true,  true  },
-        {RESET, GREEN,   "Done   ",  false, false },
-        {RESET, WHITE,   "Info   ",  false, false },
-        {RESET, BLUE,    "Debug  ",  true,  true  }
-    };
+LogDetail __info[] =
+{
+    {RESET, BLACK,   "None",     false, false },
+    {RESET, MAGENTA, "Critical", true,  true  },
+    {RESET, RED,     "Error  ",  true,  true  },
+    {RESET, YELLOW,  "Warning",  true,  true  },
+    {RESET, GREEN,   "Done   ",  false, false },
+    {RESET, WHITE,   "Info   ",  false, false },
+    {RESET, BLUE,    "Debug  ",  true,  true  }
+};
 
-    /////////////////////////////
-    
-    static void resetcolor(FILE * stream)
-    {
-        fprintf(stream,"%c[0m",0x1B);
+/////////////////////////////
+
+static void resetcolor(FILE * stream)
+{
+    fprintf(stream,"%c[0m",0x1B);
+}
+
+/////////////////////////////
+
+static void textcolor(FILE * stream, termattribute attr, termcolor fg)
+{
+    /*
+     * Command is the control command to the terminal
+     */
+    fprintf(stream,"%c[%d;%dm", 0x1B, attr, fg + 30);
+}
+
+/////////////////////////////
+
+
+static void glib_logging(const gchar *log_domain,GLogLevelFlags log_level,const gchar *message, gpointer user_data)
+{
+#define GTK_FORWARD(level,str_level,msg)                \
+    {                                                 \
+        char * actual_domain = g_strdup_printf("%s-%s", \
+                                               log_domain,str_level);  \
+        _MSG(level,actual_domain,"%s",msg);             \
+        g_free(actual_domain);                          \
     }
-    
-    /////////////////////////////
-
-    static void textcolor(FILE * stream, termattribute attr, termcolor fg)
-    {	
-        /* 
-         * Command is the control command to the terminal 
-         */
-        fprintf(stream,"%c[%d;%dm", 0x1B, attr, fg + 30);
-    }
-
-    /////////////////////////////
-    
-
-    static void glib_logging(const gchar *log_domain,GLogLevelFlags log_level,const gchar *message, gpointer user_data)
-    {        
-        #define GTK_FORWARD(level,str_level,msg)                \
-              {                                                 \
-                char * actual_domain = g_strdup_printf("%s-%s", \
-                                        log_domain,str_level);  \
-                _MSG(level,actual_domain,"%s",msg);             \
-                g_free(actual_domain);                          \
-              }       
-
-        switch(log_level) {
-            case G_LOG_LEVEL_CRITICAL:
-                GTK_FORWARD(Log::LOG_CRITICAL,"Critical",message);
-                break;
-            case G_LOG_LEVEL_ERROR:
-                GTK_FORWARD(Log::LOG_ERROR,"Error",message);
-                break;
-            case G_LOG_LEVEL_WARNING:      
-                GTK_FORWARD(Log::LOG_WARN,"Warning",message);
-                break;
-            case G_LOG_LEVEL_MESSAGE:         
-                GTK_FORWARD(Log::LOG_OK,"Message",message);
-                break;
-            case G_LOG_LEVEL_INFO:         
-                GTK_FORWARD(Log::LOG_INFO,"Info",message);
-                break;
-            case G_LOG_LEVEL_DEBUG:
-                GTK_FORWARD(Log::LOG_DEBUG,"Debug",message);
-               break; 
-            case G_LOG_FLAG_RECURSION:
-            case G_LOG_FLAG_FATAL:
-            case G_LOG_LEVEL_MASK:
-            default:
-               break;
-        }
-        #undef GLIB_FORWARD
-    }
-
-    /////////////////////////////
-    
-    static void register_log_domains(const char * domain)
+    switch(log_level)
     {
-        g_log_set_handler(domain,
-               (GLogLevelFlags)(G_LOG_LEVEL_MASK | G_LOG_FLAG_FATAL| G_LOG_FLAG_RECURSION),
-               glib_logging, NULL);
+    case G_LOG_LEVEL_CRITICAL:
+        GTK_FORWARD(Log::LOG_CRITICAL,"Critical",message);
+        break;
+    case G_LOG_LEVEL_ERROR:
+        GTK_FORWARD(Log::LOG_ERROR,"Error",message);
+        break;
+    case G_LOG_LEVEL_WARNING:
+        GTK_FORWARD(Log::LOG_WARN,"Warning",message);
+        break;
+    case G_LOG_LEVEL_MESSAGE:
+        GTK_FORWARD(Log::LOG_OK,"Message",message);
+        break;
+    case G_LOG_LEVEL_INFO:
+        GTK_FORWARD(Log::LOG_INFO,"Info",message);
+        break;
+    case G_LOG_LEVEL_DEBUG:
+        GTK_FORWARD(Log::LOG_DEBUG,"Debug",message);
+        break;
+    case G_LOG_FLAG_RECURSION:
+    case G_LOG_FLAG_FATAL:
+    case G_LOG_LEVEL_MASK:
+    default:
+        break;
     }
-    
-    /////////////////////////////
+#undef GLIB_FORWARD
+}
 
-    Writer::Writer() : m_Verbosity(LOG_DEBUG)
+/////////////////////////////
+
+static void register_log_domains(const char * domain)
+{
+    g_log_set_handler(domain,
+                      (GLogLevelFlags)(G_LOG_LEVEL_MASK | G_LOG_FLAG_FATAL| G_LOG_FLAG_RECURSION),
+                      glib_logging, NULL);
+}
+
+/////////////////////////////
+
+Writer::Writer() : m_Verbosity(LOG_DEBUG)
+{
+    Init::Path path_getter;
+    m_Logpath = path_getter.path_to_log();
+    m_Logfile = fopen(m_Logpath.c_str(),"a");
+    if(m_Logfile != NULL)
     {
-
-        Init::Path path_getter;
-        m_Logpath = path_getter.path_to_log();
-        m_Logfile = fopen(m_Logpath.c_str(),"a");
-
-        if(m_Logfile != NULL)
+        GStatBuf buf;
+        g_stat(m_Logpath.c_str(),&buf);
+        if(buf.st_size >= MAX_LOG_SIZE)
         {
-            GStatBuf buf;
-            g_stat(m_Logpath.c_str(),&buf);
-            if(buf.st_size >= MAX_LOG_SIZE)
-            {
-                g_message("Clearing Log because it's size exceeds %d Bytes.",MAX_LOG_SIZE);
-                clear();
-            }
-
-            fprintf(m_Logfile,"\n---- cut here ----\n\n");
+            g_message("Clearing Log because it's size exceeds %d Bytes.",MAX_LOG_SIZE);
+            clear();
         }
-        else
-        {
-            perror("Cannot write to logfile");
-            g_error("Tried to write it at: %s",m_Logpath.c_str());
-        }
-
-        register_log_domains("GLib");
-        register_log_domains("GLib-GObject");
-        register_log_domains("Gdk");
-        register_log_domains("Gtk");
-        register_log_domains("gtkmm");
-        register_log_domains("glibmm");
+        fprintf(m_Logfile,"\n---- cut here ----\n\n");
     }
-
-    /////////////////////////////
-
-    Writer::~Writer()
+    else
     {
-        if(m_Logfile != NULL)
-        {
-            fclose(m_Logfile);
-        }
+        perror("Cannot write to logfile");
+        g_error("Tried to write it at: %s",m_Logpath.c_str());
     }
+    register_log_domains("GLib");
+    register_log_domains("GLib-GObject");
+    register_log_domains("Gdk");
+    register_log_domains("Gtk");
+    register_log_domains("gtkmm");
+    register_log_domains("glibmm");
+}
 
-    /////////////////////////////
+/////////////////////////////
 
-    void Writer::write_out(std::stringstream& stream)
+Writer::~Writer()
+{
+    if(m_Logfile != NULL)
     {
-        std::string format = stream.str();
-        fwrite(format.c_str(),1,format.size(),m_Logfile);
-        fwrite(format.c_str(),1,format.size(),stderr);
-        fflush(m_Logfile);
+        fclose(m_Logfile);
     }
-    
-    /////////////////////////////
-    
-    std::string get_domain_from_file(const char * file_path)
-    {
-        std::string dir = Glib::path_get_dirname(file_path);
-        return dir.substr(dir.find_last_of(G_DIR_SEPARATOR) + 1);
-    }
-    
-    /////////////////////////////
+}
+
+/////////////////////////////
+
+void Writer::write_out(std::stringstream& stream)
+{
+    std::string format = stream.str();
+    fwrite(format.c_str(),1,format.size(),m_Logfile);
+    fwrite(format.c_str(),1,format.size(),stderr);
+    fflush(m_Logfile);
+}
+
+/////////////////////////////
+
+std::string get_domain_from_file(const char * file_path)
+{
+    std::string dir = Glib::path_get_dirname(file_path);
+    return dir.substr(dir.find_last_of(G_DIR_SEPARATOR) + 1);
+}
+
+/////////////////////////////
 
 #define PRINT_LOG_PART(expression) \
     {                              \
@@ -237,90 +237,86 @@ namespace Log {
         buf << expression ;        \
         write_out(buf);            \
     }                              \
+     
 
-
-    void Writer::message(const char * File, const char * domain, int Line, LOGLEVEL level, const char * fmt, ...)
+void Writer::message(const char * File, const char * domain, int Line, LOGLEVEL level, const char * fmt, ...)
+{
+    if(m_Logfile != NULL && level <= m_Verbosity)
     {
-        if(m_Logfile != NULL && level <= m_Verbosity)
+        /* Write all va_args in the tmp_buf,
+         * allocate memory as necessary */
+        gchar * tmp_buf = NULL;
+        va_list params;
+        va_start(params,fmt);
+        g_vasprintf(&tmp_buf,fmt,params);
+        va_end(params);
+        /* Write current time in the buffer */
+        char buffer[TIME_BUF_SIZE] = {0 };
+        get_current_time(buffer);
+        LogDetail &logInfo = __info[level];
         {
-            /* Write all va_args in the tmp_buf,
-             * allocate memory as necessary */
-            gchar * tmp_buf = NULL;
-            va_list params;
-            va_start(params,fmt);
-            g_vasprintf(&tmp_buf,fmt,params);
-            va_end(params);
-
-            /* Write current time in the buffer */
-            char buffer[TIME_BUF_SIZE] = {0};
-            get_current_time(buffer);
-
-            LogDetail &logInfo = __info[level];
+            textcolor(stderr,logInfo.attr,logInfo.color);
+            PRINT_LOG_PART("[" << logInfo.text << " " << buffer << "]");
+            resetcolor(stderr);
+            if(logInfo.usedomain)
+            {
+                textcolor(stderr,logInfo.attr,MAGENTA);
+                if(domain == NULL)
+                {
+                    PRINT_LOG_PART("[" << get_domain_from_file(File) << "]");
+                }
+                else
+                {
+                    PRINT_LOG_PART("[" << domain << "]");
+                }
+                resetcolor(stderr);
+            }
+            PRINT_LOG_PART(" " << tmp_buf);
+            if(logInfo.detail)
             {
                 textcolor(stderr,logInfo.attr,logInfo.color);
-                PRINT_LOG_PART("[" << logInfo.text << " " << buffer << "]");
+                PRINT_LOG_PART(" (" << Glib::path_get_basename(File) << ":" << Line << ")");
                 resetcolor(stderr);
-
-                if(logInfo.usedomain)
-                {
-                    textcolor(stderr,logInfo.attr,MAGENTA);
-                    if(domain == NULL) {
-                        PRINT_LOG_PART("[" << get_domain_from_file(File) << "]");
-                    } else {
-                        PRINT_LOG_PART("[" << domain << "]");
-                    }
-                    resetcolor(stderr);
-                }
-
-                PRINT_LOG_PART(" " << tmp_buf);
-
-                if(logInfo.detail) 
-                {
-                    textcolor(stderr,logInfo.attr,logInfo.color);
-                    PRINT_LOG_PART(" (" << Glib::path_get_basename(File) << ":" << Line << ")");
-                    resetcolor(stderr);
-                }
-
-                PRINT_LOG_PART(std::endl);
             }
-
-            /* Format is dyn. allocated - free */
-            g_free(tmp_buf);
+            PRINT_LOG_PART(std::endl);
         }
+        /* Format is dyn. allocated - free */
+        g_free(tmp_buf);
     }
+}
 
-    /////////////////////////////
+/////////////////////////////
 
-    void Writer::set_verbosity(LOGLEVEL v)
+void Writer::set_verbosity(LOGLEVEL v)
+{
+    m_Verbosity = CLAMP(v,(LOGLEVEL)0,LOG_NUMS_OF_LEVEL);
+}
+
+/////////////////////////////
+
+LOGLEVEL Writer::get_verbosity()
+{
+    return m_Verbosity;
+}
+
+/////////////////////////////
+
+void Writer::clear()
+{
+    if(m_Logfile != NULL)
     {
-        m_Verbosity = CLAMP(v,(LOGLEVEL)0,LOG_NUMS_OF_LEVEL);
+        fclose(m_Logfile);
+        m_Logfile = fopen(m_Logpath.c_str(),"w");
     }
+}
 
-    /////////////////////////////
+/////////////////////////////
 
-    LOGLEVEL Writer::get_verbosity()
-    {
-        return m_Verbosity;
-    }
-
-    /////////////////////////////
-
-    void Writer::clear()
-    {
-        if(m_Logfile != NULL)
-        {
-            fclose(m_Logfile);
-            m_Logfile = fopen(m_Logpath.c_str(),"w");
-        }
-    }
-
-    /////////////////////////////
-
-    void Writer::get_current_time(char buffer[])
-    {
-        struct tm * timeinfo = NULL;
-        time_t rawtime = time(NULL);
-        timeinfo = localtime(&rawtime);
-        strftime(buffer, TIME_BUF_SIZE,"%H:%M:%S", timeinfo);
-    }
+void Writer::get_current_time(char buffer[])
+{
+    struct tm * timeinfo = NULL;
+    time_t rawtime = time(NULL);
+    timeinfo = localtime(&rawtime);
+    strftime(buffer, TIME_BUF_SIZE,"%H:%M:%S", timeinfo);
+}
 }

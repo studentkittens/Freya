@@ -38,40 +38,40 @@
 
 namespace Browser
 {
+/**
+ * @brief Shows a simple dialog when a new playlist needs to be saved
+ *
+ * This class does the adding itself
+ */
+class PlaylistAddDialog : public MPD::AbstractClientUser
+{
+public:
+    PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
+    ~PlaylistAddDialog();
+
     /**
-     * @brief Shows a simple dialog when a new playlist needs to be saved
+     * @brief Show the dialog (closes itself)
      *
-     * This class does the adding itself
+     * This functions blocks, other items in Freya may not be accessed anymore
      */
-    class PlaylistAddDialog : public MPD::AbstractClientUser
-    {
-    public:
-        PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
-        ~PlaylistAddDialog();
+    void run();
 
-        /**
-         * @brief Show the dialog (closes itself)
-         *
-         * This functions blocks, other items in Freya may not be accessed anymore
-         */
-        void run();
+private:
 
-    private:
+    void on_cancel_clicked();
+    void on_add_clicked();
+    void on_entry_change();
+    void on_entry_activate();
 
-        void on_cancel_clicked();
-        void on_add_clicked();
-        void on_entry_change();
-        void on_entry_activate();
+    /* From AbstractClientUser */
+    void on_client_update(mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        /* From AbstractClientUser */
-        void on_client_update(mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-
-        bool is_running;
-        Gtk::Dialog * mp_Dialog;
-        Gtk::Entry * mp_PlaylistEntry;
-        Gtk::Button * mp_ApplyButton, * mp_CancelButton;
-    };
+    bool is_running;
+    Gtk::Dialog * mp_Dialog;
+    Gtk::Entry * mp_PlaylistEntry;
+    Gtk::Button * mp_ApplyButton, * mp_CancelButton;
+};
 }
 
 #endif /* end of include guard: FREYA_PLAYLISTADD_DIALOG */

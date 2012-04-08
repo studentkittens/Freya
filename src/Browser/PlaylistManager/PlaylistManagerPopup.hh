@@ -36,20 +36,20 @@
 
 namespace Browser
 {
-    /**
-     * @brief The Popup for Browser::PlaylistManager
-     *
-     * See Browser::BasePopup for a more detailed description.
-     */
-    class PlaylistManagerPopup : public BasePopup
-    {
-    public:
-        PlaylistManagerPopup(Gtk::Widget& to_register);
+/**
+ * @brief The Popup for Browser::PlaylistManager
+ *
+ * See Browser::BasePopup for a more detailed description.
+ */
+class PlaylistManagerPopup : public BasePopup
+{
+public:
+    PlaylistManagerPopup(Gtk::Widget& to_register);
 
-    private:
-        Glib::RefPtr<Gtk::Action> m_ActionAdd;
-        Glib::RefPtr<Gtk::Action> m_ActionDel;
-        Glib::RefPtr<Gtk::Action> m_ActionRepl;
-    };
+private:
+    Glib::RefPtr<Gtk::Action> m_ActionAdd;
+    Glib::RefPtr<Gtk::Action> m_ActionDel;
+    Glib::RefPtr<Gtk::Action> m_ActionRepl;
+};
 }
 #endif

@@ -33,72 +33,68 @@
 
 namespace MPD
 {
-    AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) :
-        AbstractClientExtension(client),
-        AbstractComposite(true)
+AudioOutput::AudioOutput(MPD::BaseClient& client, mpd_output& output) :
+    AbstractClientExtension(client),
+    AbstractComposite(true)
+{
+    mp_Output = &output;
+}
+
+/* ----------------- */
+
+unsigned AudioOutput::get_id()
+{
+    return mpd_output_get_id(mp_Output);
+}
+
+//-----------------------
+
+const char * AudioOutput::get_name()
+{
+    return mpd_output_get_name(mp_Output);
+}
+
+//-----------------------
+
+bool AudioOutput::get_enabled()
+{
+    return mpd_output_get_enabled(mp_Output);
+}
+
+//-----------------------
+// CLIENT EXTENSIONS
+//-----------------------
+
+bool AudioOutput::enable()
+{
+    bool retv = false;
+    unsigned id = get_id();
+    EXTERNAL_GET_BUSY
     {
-        mp_Output = &output;
+        retv = mpd_run_enable_output(conn,id);
     }
+    EXTERNAL_GET_LAID
+    return retv;
+}
 
-    /* ----------------- */
+//-----------------------
 
-    unsigned AudioOutput::get_id()
+bool AudioOutput::disable()
+{
+    bool retv = false;
+    unsigned id = get_id();
+    EXTERNAL_GET_BUSY
     {
-        return mpd_output_get_id(mp_Output);
+        retv = mpd_run_disable_output(conn,id);
     }
+    EXTERNAL_GET_LAID
+    return retv;
+}
 
-    //-----------------------
+//-----------------------
 
-    const char * AudioOutput::get_name()
-    {
-        return mpd_output_get_name(mp_Output);
-    }
-
-    //-----------------------
-
-    bool AudioOutput::get_enabled()
-    {
-        return mpd_output_get_enabled(mp_Output);
-    }
-
-    //-----------------------
-    // CLIENT EXTENSIONS
-    //-----------------------
-
-    bool AudioOutput::enable()
-    {
-        bool retv = false;
-        unsigned id = get_id();
-
-        EXTERNAL_GET_BUSY
-        {
-            retv = mpd_run_enable_output(conn,id);
-        }
-        EXTERNAL_GET_LAID
-
-            return retv;
-    }
-
-    //-----------------------
-
-    bool AudioOutput::disable()
-    {
-        bool retv = false;
-        unsigned id = get_id();
-
-        EXTERNAL_GET_BUSY
-        {
-            retv = mpd_run_disable_output(conn,id);
-        }
-        EXTERNAL_GET_LAID
-
-            return retv;
-    }
-
-    //-----------------------
-
-    const char * AudioOutput::get_path()
-    {
-        return get_name();
-    }
+const char * AudioOutput::get_path()
+{
+    return get_name();
+}
 }

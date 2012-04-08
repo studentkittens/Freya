@@ -37,135 +37,129 @@
 
 namespace Notify
 {
-    /*
-     * Worker Thread,
-     * waits for notifications to show
-     */
-    gpointer send_notify_signal(gpointer v_async_queue)
+/*
+ * Worker Thread,
+ * waits for notifications to show
+ */
+gpointer send_notify_signal(gpointer v_async_queue)
+{
+    GAsyncQueue * async_queue = (GAsyncQueue*)v_async_queue;
+    while(true)
     {
-        GAsyncQueue * async_queue = (GAsyncQueue*)v_async_queue;
-
-        while(true)
+        gpointer job = g_async_queue_pop(async_queue);
+        if(job == THREAD_TERMINATOR)
         {
-            gpointer job = g_async_queue_pop(async_queue);
-            if(job == THREAD_TERMINATOR)
+            g_async_queue_unref(async_queue);
+            return NULL;
+        }
+        else
+        {
+            GError * err = NULL;
+            NotifyNotification * noti_obj = (NotifyNotification*)job;
+            notify_notification_show(noti_obj,&err);
+            if(err != NULL)
             {
-                g_async_queue_unref(async_queue);
-                return NULL;
+                Warning("Unable to show notification: %s",err->message);
+                g_error_free(err);
             }
             else
             {
-                GError * err = NULL;
-
-                NotifyNotification * noti_obj = (NotifyNotification*)job;
-                notify_notification_show(noti_obj,&err);
-
-                if(err != NULL)
-                {
-                    Warning("Unable to show notification: %s",err->message);
-                    g_error_free(err);
-                }
-                else
-                {
-                    g_object_unref(G_OBJECT(noti_obj));
-                }
+                g_object_unref(G_OBJECT(noti_obj));
             }
         }
-        return NULL;
     }
-    
-    //////////////////
-    
-    Notify::Notify() : 
-       timeout(0),
-       use_notify(false),
-       extra(false),
-       async_queue(g_async_queue_new())
+    return NULL;
+}
+
+//////////////////
+
+Notify::Notify() :
+    timeout(0),
+    use_notify(false),
+    extra(false),
+    async_queue(g_async_queue_new())
+{
+    GError * err = NULL;
+    g_thread_create(send_notify_signal,async_queue,false,&err);
+    if(err != NULL)
     {
-        GError * err = NULL;
-        g_thread_create(send_notify_signal,async_queue,false,&err);
-        if(err != NULL)
-        {
-            Warning("Cannot create Notify Thread: %s",err->message);
-            g_error_free(err);
-        }
+        Warning("Cannot create Notify Thread: %s",err->message);
+        g_error_free(err);
     }
+}
 
-    //////////////////
-    
-    Notify::~Notify()
+//////////////////
+
+Notify::~Notify()
+{
+    g_async_queue_push(async_queue,THREAD_TERMINATOR);
+}
+
+//////////////////
+
+void Notify::do_init()
+{
+    timeout = CONFIG_GET_AS_INT("settings.libnotify.timeout");
+    use_notify = CONFIG_GET_AS_INT("settings.libnotify.signal");
+    if(use_notify && notify_is_initted() == false)
     {
-        g_async_queue_push(async_queue,THREAD_TERMINATOR);
+        notify_init("Freya");
+        atexit(notify_uninit);
     }
-    
-    //////////////////
+}
 
-    void Notify::do_init()
+
+//////////////////
+
+void Notify::_send(const char * summary, const char  * msg, const char * icon_name)
+{
+    if(summary == NULL)
     {
-        timeout = CONFIG_GET_AS_INT("settings.libnotify.timeout");
-        use_notify = CONFIG_GET_AS_INT("settings.libnotify.signal");
-        if(use_notify && notify_is_initted() == false)
-        {
-            notify_init("Freya");
-            atexit(notify_uninit);
-        }
+        Warning("Notify::_send() requires at least a summary.");
+        return;
     }
-    
-
-    //////////////////
-
-    void Notify::_send(const char * summary, const char  * msg, const char * icon_name)
+    do_init();
+    if(use_notify == false)
+        return;
+    NotifyNotification * noti_obj = notify_notification_new(summary,msg,icon_name);
+    if(noti_obj != NULL)
     {
-        if(summary == NULL)
-        {
-            Warning("Notify::_send() requires at least a summary.");
-            return;
-        }
-
-        do_init();
-
-        if(use_notify == false)
-            return;
-
-        NotifyNotification * noti_obj = notify_notification_new(summary,msg,icon_name);
-        if(noti_obj != NULL)
-        {
-            /*
-             * For some reason showing the notification 
-             * is rather expensive, we do it in a separate thread
-             * therefore.
-             */
-            g_async_queue_push(async_queue,noti_obj);
-        }
+        /*
+         * For some reason showing the notification
+         * is rather expensive, we do it in a separate thread
+         * therefore.
+         */
+        g_async_queue_push(async_queue,noti_obj);
     }
+}
 
-    //////////////////
+//////////////////
 
-    void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
-    {
-        _send(hl.c_str(),msg.c_str(),NULL);
-    }
+void Notify::send_big(Glib::ustring hl, Glib::ustring msg)
+{
+    _send(hl.c_str(),msg.c_str(),NULL);
+}
 
-    //////////////////
+//////////////////
 
-    void Notify::send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf)
-    {
-        _send(hl.c_str(),msg.c_str(),NULL);
-    }
+void Notify::send_full(Glib::ustring hl, Glib::ustring msg, GdkPixbuf * pixbuf)
+{
+    _send(hl.c_str(),msg.c_str(),NULL);
+}
 
-    //////////////////
+//////////////////
 
-    void Notify::set_next_extra()
-    {
-        extra = true;
-    }
+void Notify::set_next_extra()
+{
+    extra = true;
+}
 
-    //////////////////
+//////////////////
 
-    void Notify::set_stock_icon(const char* name)
-    {
-        icon_name = Glib::ustring(name);
-    }
+void Notify::set_stock_icon(const char* name)
+{
+    icon_name = Glib::ustring(name);
+}
 
-    //////////////////
+//////////////////
 }

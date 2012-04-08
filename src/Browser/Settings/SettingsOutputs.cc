@@ -36,135 +36,130 @@
 namespace Browser
 {
 
-    SettingsOutputs::SettingsOutputs(MPD::Client &client,Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett)
-        : AbstractClientUser(client), running(false)
+SettingsOutputs::SettingsOutputs(MPD::Client &client,Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett)
+    : AbstractClientUser(client), running(false)
+{
+    this->sett = sett;
+    BUILDER_GET(builder,"output_treeView",treeViewPtr);
+    treeModel = Gtk::ListStore::create(treeColumns);
+    treeViewPtr->set_model(treeModel);
+    treeViewPtr->set_headers_visible(false);
+    treeViewPtr->append_column_editable("",treeColumns.colActive);
+    treeViewPtr->append_column("",treeColumns.colName);
+    Gtk::CellRendererToggle *cell = (Gtk::CellRendererToggle*) treeViewPtr->get_column_cell_renderer(0);
+    cell->set_activatable(true);
+    cell->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsOutputs::on_toggle));
+    treeViewPtr->get_selection()->set_select_function(sigc::mem_fun(*this,&Browser::SettingsOutputs::on_select));
+}
+
+/* ------------------------------- */
+
+SettingsOutputs::~SettingsOutputs()
+{
+    clear();
+}
+
+/* ------------------------------- */
+
+void SettingsOutputs::clear()
+{
+    typedef Gtk::TreeModel::Children type_children;
+    type_children children = treeModel->children();
+    for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
     {
-        this->sett = sett;
-        BUILDER_GET(builder,"output_treeView",treeViewPtr);
-
-        treeModel = Gtk::ListStore::create(treeColumns);
-        treeViewPtr->set_model(treeModel);
-        treeViewPtr->set_headers_visible(false);
-
-        treeViewPtr->append_column_editable("",treeColumns.colActive);
-        treeViewPtr->append_column("",treeColumns.colName);
-
-        Gtk::CellRendererToggle *cell = (Gtk::CellRendererToggle*) treeViewPtr->get_column_cell_renderer(0);
-        cell->set_activatable(true);
-        cell->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsOutputs::on_toggle));
-        treeViewPtr->get_selection()->set_select_function( sigc::mem_fun(*this,&Browser::SettingsOutputs::on_select));
+        delete(*iter)[treeColumns.colOutput];
     }
+    treeModel->clear();
+}
 
-    /* ------------------------------- */
+/* ------------------------------- */
 
-    SettingsOutputs::~SettingsOutputs()
+void SettingsOutputs::on_toggle(const Glib::ustring& path)
+{
+    sett->settings_changed();
+}
+
+/* ------------------------------- */
+
+bool SettingsOutputs::on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool)
+{
+    return false;
+}
+
+/* ------------------------------- */
+
+void SettingsOutputs::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
+{
+    if(!running && (event & (MPD_IDLE_OUTPUT)))
     {
         clear();
-    }
-
-    /* ------------------------------- */
-
-    void SettingsOutputs::clear()
-    {
-        typedef Gtk::TreeModel::Children type_children;
-        type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
-        {
-            delete (*iter)[treeColumns.colOutput];
-        }
-        treeModel->clear();
-    }
-
-    /* ------------------------------- */
-
-    void SettingsOutputs::on_toggle(const Glib::ustring& path)
-    {
-        sett->settings_changed();
-    }
-
-    /* ------------------------------- */
-
-    bool SettingsOutputs::on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool)
-    {
-        return false;
-    }
-
-    /* ------------------------------- */
-
-    void SettingsOutputs::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
-    {
-        if(!running && (event & (MPD_IDLE_OUTPUT)))
-        {
-            clear();
-            mp_Client->fill_outputs(*this);
-        }
-    }
-
-    /* ------------------------------- */
-
-    void SettingsOutputs::on_connection_change(bool server_changed, bool is_connected)
-    {
-        treeViewPtr->set_sensitive(is_connected);
-    }
-
-    /* ------------------------------- */
-
-    void SettingsOutputs::decline_new_settings()
-    {
-        reset_settings();
-    }
-
-    /* ------------------------------- */
-
-    void SettingsOutputs::accept_new_settings()
-    {
-        running = true;
-        typedef Gtk::TreeModel::Children type_children;
-        type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
-        {
-            Gtk::TreeModel::Row row = *iter;
-            MPD::AudioOutput * output = row[treeColumns.colOutput];
-            bool is_active = row[treeColumns.colActive];
-            g_assert(output);
-
-            /* Activate previously not enabled output */
-            if(is_active && !output->get_enabled())
-                output->enable();
-            else
-                /* Deactivate previously enabled output */
-                if(!is_active && output->get_enabled())
-                    output->disable();
-        }
-        treeModel->clear();
         mp_Client->fill_outputs(*this);
-
-        running = false;
     }
+}
 
-    /* ------------------------------- */
+/* ------------------------------- */
 
-    void SettingsOutputs::reset_settings()
+void SettingsOutputs::on_connection_change(bool server_changed, bool is_connected)
+{
+    treeViewPtr->set_sensitive(is_connected);
+}
+
+/* ------------------------------- */
+
+void SettingsOutputs::decline_new_settings()
+{
+    reset_settings();
+}
+
+/* ------------------------------- */
+
+void SettingsOutputs::accept_new_settings()
+{
+    running = true;
+    typedef Gtk::TreeModel::Children type_children;
+    type_children children = treeModel->children();
+    for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
     {
-        running = true;
-        typedef Gtk::TreeModel::Children type_children;
-        type_children children = treeModel->children();
-        for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
-        {
-            Gtk::TreeModel::Row row = *iter;
-            row[treeColumns.colActive] = (*(row[treeColumns.colOutput])).get_enabled();
-        }
-        running = false;
+        Gtk::TreeModel::Row row = *iter;
+        MPD::AudioOutput * output = row[treeColumns.colOutput];
+        bool is_active = row[treeColumns.colActive];
+        g_assert(output);
+        /* Activate previously not enabled output */
+        if(is_active && !output->get_enabled())
+            output->enable();
+        else
+            /* Deactivate previously enabled output */
+            if(!is_active && output->get_enabled())
+                output->disable();
     }
+    treeModel->clear();
+    mp_Client->fill_outputs(*this);
+    running = false;
+}
 
-    /* ------------------------------- */
+/* ------------------------------- */
 
-    void SettingsOutputs::add_item(MPD::AbstractComposite * item)
+void SettingsOutputs::reset_settings()
+{
+    running = true;
+    typedef Gtk::TreeModel::Children type_children;
+    type_children children = treeModel->children();
+    for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
     {
-        MPD::AudioOutput* a_item = static_cast<MPD::AudioOutput*>(item);
-        Gtk::TreeModel::Row row = *(treeModel->append());
-        row[treeColumns.colName] = a_item->get_name();
-        row[treeColumns.colActive] = a_item->get_enabled();
-        row[treeColumns.colOutput] = a_item;
+        Gtk::TreeModel::Row row = *iter;
+        row[treeColumns.colActive] = (*(row[treeColumns.colOutput])).get_enabled();
     }
+    running = false;
+}
+
+/* ------------------------------- */
+
+void SettingsOutputs::add_item(MPD::AbstractComposite * item)
+{
+    MPD::AudioOutput* a_item = static_cast<MPD::AudioOutput*>(item);
+    Gtk::TreeModel::Row row = *(treeModel->append());
+    row[treeColumns.colName] = a_item->get_name();
+    row[treeColumns.colActive] = a_item->get_enabled();
+    row[treeColumns.colOutput] = a_item;
+}
 }

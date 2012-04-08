@@ -8,26 +8,26 @@
 
 namespace Browser
 {
-    class CoverArtMgr : public Gtk::Expander, public Glyr::UpdateInterface
-    {
-        public:
-            CoverArtMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
-            ~CoverArtMgr();
+class CoverArtMgr : public Gtk::Expander, public Glyr::UpdateInterface
+{
+public:
+    CoverArtMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+    ~CoverArtMgr();
 
-        protected:
+protected:
 
-            void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
-            void on_deliver(GlyrMemCache * list);
+    void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
+    void on_deliver(GlyrMemCache * list);
 
-        private:
+private:
 
-            Gtk::Label * mp_ArtistLabel, 
-                * mp_AlbumLabel,
-                * mp_TitleLabel,
-                * mp_YearLabel;
+    Gtk::Label * mp_ArtistLabel,
+        * mp_AlbumLabel,
+        * mp_TitleLabel,
+        * mp_YearLabel;
 
-            EventImage * coverArt;
-    };
+    EventImage * coverArt;
+};
 }
 
 #endif /* end of include guard: FREYA_COVERARTMGR_HH */

@@ -36,21 +36,21 @@
 
 namespace GManager
 {
-    /**
-     * @brief Manages Notifications that are triggered on player events
-     *
-     * It does not offer any relevant public methods
-     */
-    class NotifyManager : public MPD::AbstractClientUser
-    {
-    public:
-        NotifyManager(MPD::Client& client);
+/**
+ * @brief Manages Notifications that are triggered on player events
+ *
+ * It does not offer any relevant public methods
+ */
+class NotifyManager : public MPD::AbstractClientUser
+{
+public:
+    NotifyManager(MPD::Client& client);
 
-    private:
+private:
 
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-    };
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
+};
 }
 
 #endif /* end of include guard: FREYA_NOTIFY_MANAGER_GUARD */

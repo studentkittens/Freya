@@ -1,7 +1,7 @@
 #include "CairoSlider.hh"
 #include <cairomm/context.h>
 
-CairoSlider::CairoSlider() : 
+CairoSlider::CairoSlider() :
     m_volPos(INT_MAX),
     currPerc(0.0),
     isDragging(false),
@@ -11,9 +11,9 @@ CairoSlider::CairoSlider() :
     col_inactive(NULL)
 {
     set_events(Gdk::BUTTON_PRESS_MASK
-            | Gdk::BUTTON_RELEASE_MASK
-            | Gdk::POINTER_MOTION_MASK
-            | Gdk::SCROLL_MASK);
+               | Gdk::BUTTON_RELEASE_MASK
+               | Gdk::POINTER_MOTION_MASK
+               | Gdk::SCROLL_MASK);
 }
 
 /////////////////////////
@@ -25,30 +25,30 @@ int CairoSlider::get_border()
 
 /////////////////////////
 
-/* 
- * Change the color separator accordingly 
+/*
+ * Change the color separator accordingly
  * and calculate the percentage value of the volume
  */
 void CairoSlider::recalculate(double x, int step)
 {
     int width = get_allocation().get_width();
-
-    if(step == 0) {
+    if(step == 0)
+    {
         m_volPos = CLAMP(x,0,width);
-    } else {
+    }
+    else
+    {
         int next = m_volPos + step;
         m_volPos = CLAMP(next,0,width);
     }
     queue_draw();
-   
-    currPerc = (100.0 * m_volPos) / width; 
-
-    if(m_Timerguard.elapsed() > get_update_timeout()) {
+    currPerc = (100.0 * m_volPos) / width;
+    if(m_Timerguard.elapsed() > get_update_timeout())
+    {
         // Gets executed once nothing importent happens
         Glib::signal_idle().connect_once(
-                sigc::mem_fun(*this,&CairoSlider::on_percent_change),
-                Glib::PRIORITY_LOW);
-
+            sigc::mem_fun(*this,&CairoSlider::on_percent_change),
+            Glib::PRIORITY_LOW);
         m_Timerguard.reset();
     }
 }
@@ -74,13 +74,14 @@ void CairoSlider::set_percentage(double p)
 //////// SIGNALS ////////
 /////////////////////////
 
-/* 
+/*
  * Triggered when moving the mouse pointer while being in the widget
  * Used to 'drag' the volume slider
  */
 bool CairoSlider::on_motion_notify_event(GdkEventMotion * ev)
 {
-    if(isDragging) {
+    if(isDragging)
+    {
         recalculate(ev->x,0);
     }
     return true;
@@ -95,7 +96,8 @@ bool CairoSlider::on_motion_notify_event(GdkEventMotion * ev)
  */
 bool CairoSlider::on_button_release_event(GdkEventButton * ev)
 {
-    if(ev != NULL) { // This is actually just to get rid of a warning :(
+    if(ev != NULL)   // This is actually just to get rid of a warning :(
+    {
         isDragging = false;
     }
     return true;
@@ -110,7 +112,7 @@ bool CairoSlider::on_button_release_event(GdkEventButton * ev)
 bool CairoSlider::on_button_press_event(GdkEventButton * ev)
 {
     recalculate(ev->x,0);
-    isDragging = true; 
+    isDragging = true;
     return true;
 }
 
@@ -132,12 +134,12 @@ bool CairoSlider::on_scroll_event(GdkEventScroll * ev)
 
 Gdk::RGBA& CairoSlider::get_active_color()
 {
-    if(!col_active_set) {
+    if(!col_active_set)
+    {
         Glib::RefPtr<Gtk::StyleContext> ctx = get_style_context();
         col_active = new Gdk::RGBA(ctx->get_background_color(Gtk::STATE_FLAG_SELECTED));
         col_active_set = true;
     }
-
     return *col_active;
 }
 
@@ -145,12 +147,12 @@ Gdk::RGBA& CairoSlider::get_active_color()
 
 Gdk::RGBA& CairoSlider::get_inactive_color()
 {
-    if(!col_inactive_set) {
+    if(!col_inactive_set)
+    {
         Glib::RefPtr<Gtk::StyleContext> ctx = get_style_context();
         col_inactive = new Gdk::RGBA(ctx->get_color(Gtk::STATE_FLAG_NORMAL));
         col_inactive_set = true;
     }
-
     return *col_inactive;
 }
 

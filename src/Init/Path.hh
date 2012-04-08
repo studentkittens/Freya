@@ -36,56 +36,56 @@
 namespace Init
 {
 
+/**
+ * @brief Get the path to files Freya will write to (Config/Log)
+ */
+class Path
+{
+public:
+    Path();
+    ~Path();
+
     /**
-     * @brief Get the path to files Freya will write to (Config/Log)
+     * @brief returns absolute path to config dir e.g. /home/user/.config/freya
+     *
+     * @return config dir path as ustring
      */
-    class Path
-    {
-    public:
-        Path ();
-        ~Path ();
+    Glib::ustring get_config_dir();
 
-        /**
-         * @brief returns absolute path to config dir e.g. /home/user/.config/freya
-         *
-         * @return config dir path as ustring
-         */
-        Glib::ustring get_config_dir();
+    /**
+     * @brief returns absolute path to config file e.g. /home/user/.config/freya/config.xml
+     *
+     * @return config file path as ustring
+     */
+    Glib::ustring path_to_config();
 
-        /**
-         * @brief returns absolute path to config file e.g. /home/user/.config/freya/config.xml
-         *
-         * @return config file path as ustring
-         */
-        Glib::ustring path_to_config();
+    /**
+     * @brief returns absolute path to log file e.g. ~/.config/freya/log.txt
+     *
+     * @return log file path as ustring
+     */
+    Glib::ustring path_to_log();
 
-        /**
-         * @brief returns absolute path to log file e.g. ~/.config/freya/log.txt
-         *
-         * @return log file path as ustring
-         */
-        Glib::ustring path_to_log();
-    
-        /**
-         * @brief returns absolute path to metadata.db of libglyr 
-         *
-         * @return db path as ustring
-         */
-        Glib::ustring path_to_metadata_db();
+    /**
+     * @brief returns absolute path to metadata.db of libglyr
+     *
+     * @return db path as ustring
+     */
+    Glib::ustring path_to_metadata_db();
 
-        /**
-         * @brief returns absolute path to style.css
-         *
-         * @return css file path as ustring
-         */
-        Glib::ustring path_to_css();
+    /**
+     * @brief returns absolute path to style.css
+     *
+     * @return css file path as ustring
+     */
+    Glib::ustring path_to_css();
 
-    private:
-        void create_config();
-        void create_dir();
-        void dir_is_avaiable();
-        char* configfile;
-        char* configdir;
-    };
+private:
+    void create_config();
+    void create_dir();
+    void dir_is_avaiable();
+    char* configfile;
+    char* configdir;
+};
 }
 #endif /* end of include guard: INIT_SP0811FS */

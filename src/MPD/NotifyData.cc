@@ -33,156 +33,143 @@
 
 namespace MPD
 {
-    NotifyData::NotifyData(MPD::Connection& p_conn)
+NotifyData::NotifyData(MPD::Connection& p_conn)
+{
+    mp_Conn = &p_conn;
+    mp_Status = NULL;
+    mp_Statistics = NULL;
+    mp_Song = NULL;
+    mp_NextSong = NULL;
+}
+
+//------------------
+
+NotifyData::~NotifyData()
+{
+    delete mp_Statistics;
+    delete mp_Status;
+    delete mp_Song;
+    delete mp_NextSong;
+}
+
+//------------------
+
+/* Since libmpdclient does not support the next-song-id,
+ * we habe to improvise a little bit.
+ */
+Status * NotifyData::recv_status_own()
+{
+    struct mpd_status * status = NULL;
+    struct mpd_connection * conn = NULL;
+    struct mpd_pair *pair = NULL;
+    Status * retv_status = NULL;
+    unsigned long NextSongID = 0;
+    if(mp_Conn->is_connected())
     {
-        mp_Conn = &p_conn;
-        mp_Status = NULL;
-        mp_Statistics = NULL;
-        mp_Song = NULL;
-        mp_NextSong = NULL;
-    }
-
-    //------------------
-
-    NotifyData::~NotifyData()
-    {
-        delete mp_Statistics;
-        delete mp_Status;
-        delete mp_Song;
-        delete mp_NextSong;
-    }
-
-    //------------------
-
-    /* Since libmpdclient does not support the next-song-id,
-     * we habe to improvise a little bit.
-     */
-    Status * NotifyData::recv_status_own()
-    {
-        struct mpd_status * status = NULL;
-        struct mpd_connection * conn = NULL;
-        struct mpd_pair *pair = NULL;
-        Status * retv_status = NULL;
-        unsigned long NextSongID = 0;
-
-        if(mp_Conn->is_connected())
+        conn = mp_Conn->get_connection();
+        status = mpd_status_begin();
+        if(status != NULL)
         {
-            conn = mp_Conn->get_connection();
-            status = mpd_status_begin();
-            if(status != NULL)
+            while((pair = mpd_recv_pair(conn)) != NULL)
             {
-                while ((pair = mpd_recv_pair(conn)) != NULL)
+                if(!g_ascii_strcasecmp(pair->name,"nextsongid"))
                 {
-                    if(!g_ascii_strcasecmp(pair->name,"nextsongid"))
-                    {
-                        NextSongID = g_ascii_strtoll(pair->value,NULL,10);
-                    }
-                    else
-                    {
-                        mpd_status_feed(status, pair);
-                    }
-                    mpd_return_pair(conn, pair);
+                    NextSongID = g_ascii_strtoll(pair->value,NULL,10);
                 }
-            }
-
-            if(status != NULL)
-            {
-                retv_status = new Status(*status,NextSongID);
-            }
-
-            if(mp_NextSong != NULL)
-            {
-                delete mp_NextSong;
-                mp_NextSong = NULL;
-            }
-
-            mpd_song * c_next_song = mpd_run_get_queue_song_id(conn,NextSongID);
-            if(c_next_song != NULL)
-            {
-                mp_NextSong = new Song(*c_next_song);
-            }
-            else
-            {
-                mp_Conn->clear_error();
+                else
+                {
+                    mpd_status_feed(status, pair);
+                }
+                mpd_return_pair(conn, pair);
             }
         }
-        return retv_status;
-    }
-
-    //------------------
-
-    Status& NotifyData::get_status()
-    {
-        /* This should never be NULL. */
-        g_assert(mp_Status);
-        return *(mp_Status);
-    }
-
-    //------------------
-
-    Statistics& NotifyData::get_statistics()
-    {
-        /* This should never be NULL. */
-        g_assert(mp_Statistics);
-        return *(mp_Statistics);
-    }
-
-    //------------------
-
-    Song * NotifyData::get_song()
-    {
-        return mp_Song;
-    }
-
-    //------------------
-
-    Song * NotifyData::get_next_song()
-    {
-        return mp_NextSong;
-    }
-
-    //------------------
-
-    void NotifyData::update_all(unsigned event)
-    {
-        if(mp_Conn->is_connected())
+        if(status != NULL)
         {
-            mpd_connection * mpd_conn = mp_Conn->get_connection();
-
-            /*-------------------------------*/
-
-            if(event & MPD_IDLE_PLAYER)
-            {
-                delete mp_Song;
-                mp_Song = NULL;
-
-                mpd_song * c_song = mpd_run_current_song(mpd_conn);
-                if(c_song)
-                    mp_Song = new Song(*c_song);
-            }
-
-            /*-------------------------------*/
-
-            if(event & (MPD_IDLE_DATABASE|MPD_IDLE_UPDATE))
-            {
-                delete mp_Statistics;
-                mp_Statistics = NULL;
-
-                mpd_stats * c_stats = mpd_run_stats(mpd_conn);
-                if(c_stats)
-                    mp_Statistics = new Statistics(*c_stats);
-            }
-
-            /*-------------------------------*/
-
-            if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS|MPD_IDLE_MIXER|MPD_IDLE_OUTPUT|MPD_IDLE_QUEUE))
-            {
-                delete mp_Status;
-                mp_Status = NULL;
-
-                mpd_send_status(mpd_conn);
-                mp_Status = recv_status_own();
-            }
+            retv_status = new Status(*status,NextSongID);
+        }
+        if(mp_NextSong != NULL)
+        {
+            delete mp_NextSong;
+            mp_NextSong = NULL;
+        }
+        mpd_song * c_next_song = mpd_run_get_queue_song_id(conn,NextSongID);
+        if(c_next_song != NULL)
+        {
+            mp_NextSong = new Song(*c_next_song);
+        }
+        else
+        {
+            mp_Conn->clear_error();
         }
     }
+    return retv_status;
+}
+
+//------------------
+
+Status& NotifyData::get_status()
+{
+    /* This should never be NULL. */
+    g_assert(mp_Status);
+    return *(mp_Status);
+}
+
+//------------------
+
+Statistics& NotifyData::get_statistics()
+{
+    /* This should never be NULL. */
+    g_assert(mp_Statistics);
+    return *(mp_Statistics);
+}
+
+//------------------
+
+Song * NotifyData::get_song()
+{
+    return mp_Song;
+}
+
+//------------------
+
+Song * NotifyData::get_next_song()
+{
+    return mp_NextSong;
+}
+
+//------------------
+
+void NotifyData::update_all(unsigned event)
+{
+    if(mp_Conn->is_connected())
+    {
+        mpd_connection * mpd_conn = mp_Conn->get_connection();
+        /*-------------------------------*/
+        if(event & MPD_IDLE_PLAYER)
+        {
+            delete mp_Song;
+            mp_Song = NULL;
+            mpd_song * c_song = mpd_run_current_song(mpd_conn);
+            if(c_song)
+                mp_Song = new Song(*c_song);
+        }
+        /*-------------------------------*/
+        if(event & (MPD_IDLE_DATABASE|MPD_IDLE_UPDATE))
+        {
+            delete mp_Statistics;
+            mp_Statistics = NULL;
+            mpd_stats * c_stats = mpd_run_stats(mpd_conn);
+            if(c_stats)
+                mp_Statistics = new Statistics(*c_stats);
+        }
+        /*-------------------------------*/
+        if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS|MPD_IDLE_MIXER|MPD_IDLE_OUTPUT|MPD_IDLE_QUEUE))
+        {
+            delete mp_Status;
+            mp_Status = NULL;
+            mpd_send_status(mpd_conn);
+            mp_Status = recv_status_own();
+        }
+    }
+}
 }

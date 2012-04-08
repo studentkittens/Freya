@@ -11,50 +11,52 @@
  * it later.
  */
 #define ADD_MANAGER(builder, name, interface)        \
-        BUILDER_GET_DERIVED(builder,name,interface); \
-        managerList.push_back(interface);            \
-
-namespace Browser 
+    BUILDER_GET_DERIVED(builder,name,interface); \
+    managerList.push_back(interface);            \
+     
+namespace Browser
 {
-    typedef std::vector<Glyr::UpdateInterface*> ManagerVector;
+typedef std::vector<Glyr::UpdateInterface*> ManagerVector;
 
-    class TextItemsMgr : public Gtk::Expander, public Glyr::UpdateInterface
+class TextItemsMgr : public Gtk::Expander, public Glyr::UpdateInterface
+{
+public:
+
+    TextItemsMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+    void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
+
+protected:
+
+    void on_type_combo_changed();
+    void add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, GLYR_GET_TYPE type, const char * name, Gtk::StockID icon);
+
+private:
+
+    Gtk::Notebook * mp_NBook;
+    Gtk::ComboBox * mp_TypeSelection;
+
+    /*
+     * Text pages
+     */
+    ManagerVector managerList;
+
+    /*
+     * Model for the combobox
+     */
+    class TypeModelColumns : public Gtk::TreeModel::ColumnRecord
     {
-        public:
-
-            TextItemsMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
-            void update(MPD::Client& client, mpd_idle event, MPD::NotifyData& data);
-
-        protected:
-
-            void on_type_combo_changed();
-            void add_txtview_page(const Glib::RefPtr<Gtk::Builder>& builder, GLYR_GET_TYPE type, const char * name, Gtk::StockID icon);
-
-        private:
-
-            Gtk::Notebook * mp_NBook;
-            Gtk::ComboBox * mp_TypeSelection;
-
-            /* 
-             * Text pages
-             */
-            ManagerVector managerList;
-
-            /* 
-             * Model for the combobox
-             */
-            class TypeModelColumns : public Gtk::TreeModel::ColumnRecord {
-                public:
-                    TypeModelColumns() {
-                        add(m_col_id);
-                        add(m_col_icon);
-                    }
-                    Gtk::TreeModelColumn<Glib::ustring> m_col_id;
-                    Gtk::TreeModelColumn< Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
-            };
-            TypeModelColumns m_TypeColumns;
-            Glib::RefPtr<Gtk::ListStore> m_TypeModel;
+    public:
+        TypeModelColumns()
+        {
+            add(m_col_id);
+            add(m_col_icon);
+        }
+        Gtk::TreeModelColumn<Glib::ustring> m_col_id;
+        Gtk::TreeModelColumn< Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
     };
+    TypeModelColumns m_TypeColumns;
+    Glib::RefPtr<Gtk::ListStore> m_TypeModel;
+};
 }
 
 #endif /* end of include guard: FREYA_TEXTITEMSMGR_HH*/

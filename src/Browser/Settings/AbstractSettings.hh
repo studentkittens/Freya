@@ -33,19 +33,19 @@
 
 namespace Browser
 {
-    /**
-     * @brief Abstract base class for every Tab in the Settingsbrowser.
-     */
-    class AbstractSettings
-    {
-    public:
-        AbstractSettings() {};
-        virtual ~AbstractSettings() {};
+/**
+ * @brief Abstract base class for every Tab in the Settingsbrowser.
+ */
+class AbstractSettings
+{
+public:
+    AbstractSettings() {};
+    virtual ~AbstractSettings() {};
 
-        virtual void accept_new_settings()=0;
-        virtual void decline_new_settings()=0;
-        virtual void reset_settings()=0;
-    };
+    virtual void accept_new_settings()=0;
+    virtual void decline_new_settings()=0;
+    virtual void reset_settings()=0;
+};
 
 }
 

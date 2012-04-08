@@ -36,22 +36,22 @@
 
 namespace Browser
 {
-    /**
-     * @brief The Column Definition of the Outputlist inside of the Settingsbrowser
-     */
-    class OutputsModelColumns : public Gtk::TreeModel::ColumnRecord
+/**
+ * @brief The Column Definition of the Outputlist inside of the Settingsbrowser
+ */
+class OutputsModelColumns : public Gtk::TreeModel::ColumnRecord
+{
+public:
+    OutputsModelColumns()
     {
-    public:
-        OutputsModelColumns()
-        {
-            add(colName);
-            add(colActive);
-            add(colOutput);
-        }
-        Gtk::TreeModelColumn<Glib::ustring> colName;
-        Gtk::TreeModelColumn<bool> colActive;
-        Gtk::TreeModelColumn<MPD::AudioOutput*> colOutput;
-    };
+        add(colName);
+        add(colActive);
+        add(colOutput);
+    }
+    Gtk::TreeModelColumn<Glib::ustring> colName;
+    Gtk::TreeModelColumn<bool> colActive;
+    Gtk::TreeModelColumn<MPD::AudioOutput*> colOutput;
+};
 
 }
 

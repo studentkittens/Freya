@@ -35,55 +35,53 @@
 
 namespace GManager
 {
-    Gtk::Window * Window::current_main_window = NULL;
-    
-    /*-------------------------*/
+Gtk::Window * Window::current_main_window = NULL;
 
-    Gtk::Window * Window::get_current_window()
+/*-------------------------*/
+
+Gtk::Window * Window::get_current_window()
+{
+    return current_main_window;
+}
+
+
+/*-------------------------*/
+
+Window::Window(const Glib::RefPtr<Gtk::Builder> &builder)
+{
+    main_window=NULL;
+    BUILDER_GET_NO_MANAGE(builder,"FreyaMainWindow",main_window);
+    main_window->signal_delete_event().connect(
+        sigc::mem_fun(*this,&Window::on_delete_event));
+    current_main_window = main_window;
+}
+
+/*-------------------------*/
+
+Window::~Window()
+{
+    delete main_window;
+}
+
+/*-------------------------*/
+
+bool Window::on_delete_event(GdkEventAny* event)
+{
+    if(CONFIG_GET_AS_INT("settings.trayicon.totrayonclose"))
     {
-        return current_main_window;
+        main_window->hide();
     }
-
-
-    /*-------------------------*/
-
-    Window::Window(const Glib::RefPtr<Gtk::Builder> &builder)
+    else
     {
-        main_window=NULL;
-        BUILDER_GET_NO_MANAGE(builder,"FreyaMainWindow",main_window);
-
-        main_window->signal_delete_event().connect(
-                sigc::mem_fun(*this,&Window::on_delete_event));
-
-        current_main_window = main_window;
+        Gtk::Main::quit();
     }
+    return true;
+}
 
-    /*-------------------------*/
+/*-------------------------*/
 
-    Window::~Window()
-    {
-        delete main_window;
-    }
-
-    /*-------------------------*/
-
-    bool Window::on_delete_event(GdkEventAny* event)
-    {
-        if(CONFIG_GET_AS_INT("settings.trayicon.totrayonclose"))
-        {
-            main_window->hide();
-        }
-        else
-        {
-            Gtk::Main::quit();
-        }
-        return true;
-    }
-
-    /*-------------------------*/
-
-    Gtk::Window* Window::get_window()
-    {
-        return this->main_window;
-    }
+Gtk::Window* Window::get_window()
+{
+    return this->main_window;
+}
 }

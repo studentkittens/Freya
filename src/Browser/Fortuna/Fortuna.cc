@@ -37,70 +37,66 @@
 
 namespace Browser
 {
-    Fortuna::Fortuna(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
-        AbstractBrowser(list,"Fortuna",
-                false, /* Needs connection? */
-                true,  /* Is visible?       */
-                Gtk::Stock::DIALOG_QUESTION)
+Fortuna::Fortuna(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list) :
+    AbstractBrowser(list,"Fortuna",
+                    false, /* Needs connection? */
+                    true,  /* Is visible?       */
+                    Gtk::Stock::DIALOG_QUESTION)
+{
+    BUILDER_ADD(builder,"ui/Startscreen.glade");
+    BUILDER_GET(builder,"fortune_scrolledwindow",mp_FortuneScroll);
+    BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
+    BUILDER_GET(builder,"fortune_refresh",mp_FortuneRefresh);
+    mp_FortuneRefresh->signal_clicked().connect(
+        sigc::mem_fun(*this,&Fortuna::on_refresh_fortune));
+    on_refresh_fortune();
+}
+
+/*-----------------------*/
+
+Gtk::Widget * Fortuna::get_container()
+{
+    return mp_FortuneScroll;
+}
+
+/*-----------------------*/
+
+void Fortuna::on_refresh_fortune()
+{
+    Glib::ustring fortune = get_fortune();
+    if(!fortune.empty())
     {
-        BUILDER_ADD(builder,"ui/Startscreen.glade");
-        BUILDER_GET(builder,"fortune_scrolledwindow",mp_FortuneScroll);
-        BUILDER_GET(builder,"fortune_label",mp_FortuneLabel);
-        BUILDER_GET(builder,"fortune_refresh",mp_FortuneRefresh);
-
-        mp_FortuneRefresh->signal_clicked().connect(
-            sigc::mem_fun(*this,&Fortuna::on_refresh_fortune));
-
-        on_refresh_fortune();
+        mp_FortuneLabel->set_markup(fortune);
     }
+}
 
-    /*-----------------------*/
+/*-----------------------*/
 
-    Gtk::Widget * Fortuna::get_container()
+Glib::ustring Fortuna::get_fortune()
+{
+    Glib::ustring retv = "";
+    /* Open a pipe to the fortune command and read from it,
+     * if it isn't installed we will get a string containing
+     * "fortune:" - in this case the old text stays.
+     */
+    FILE * pipe = NULL;
+    if((pipe = popen(FORTUNE_COMMAND,"r")))
     {
-        return mp_FortuneScroll;
-    }
-
-    /*-----------------------*/
-
-    void Fortuna::on_refresh_fortune()
-    {
-        Glib::ustring fortune = get_fortune();
-        if(!fortune.empty())
+        char fortune_buf[FORTUNE_BUF_SIZE] = {0 };
+        int bytes = fread(fortune_buf,1,FORTUNE_BUF_SIZE,pipe);
+        if(bytes != 0 && !strstr(fortune_buf,"fortune:"))
         {
-            mp_FortuneLabel->set_markup(fortune);
+            /* Chomp last string */
+            char * last_newline = strrchr(fortune_buf,'\n');
+            if(last_newline != NULL)
+                last_newline[0] = 0;
+            /* Build markup'd string */
+            retv = Glib::Markup::escape_text(fortune_buf);
+            retv.insert(0,"<b><span color='#111111' font='10.5'>");
+            retv.append("</span></b>");
         }
+        pclose(pipe);
     }
-
-    /*-----------------------*/
-
-    Glib::ustring Fortuna::get_fortune()
-    {
-        Glib::ustring retv = "";
-
-        /* Open a pipe to the fortune command and read from it,
-         * if it isn't installed we will get a string containing
-         * "fortune:" - in this case the old text stays.
-         */
-        FILE * pipe = NULL;
-        if((pipe = popen(FORTUNE_COMMAND,"r")))
-        {
-            char fortune_buf[FORTUNE_BUF_SIZE] = {0};
-            int bytes = fread(fortune_buf,1,FORTUNE_BUF_SIZE,pipe);
-            if(bytes != 0 && !strstr(fortune_buf,"fortune:"))
-            {
-                /* Chomp last string */
-                char * last_newline = strrchr(fortune_buf,'\n');
-                if(last_newline != NULL)
-                    last_newline[0] = 0;
-
-                /* Build markup'd string */
-                retv = Glib::Markup::escape_text(fortune_buf);
-                retv.insert(0,"<b><span color='#111111' font='10.5'>");
-                retv.append("</span></b>");
-            }
-            pclose(pipe);
-        }
-        return retv;
-    }
+    return retv;
+}
 }

@@ -38,7 +38,6 @@ int main()
     Error("Some error.");
     Critical("This is fatal..");
     Debug("Debug message");
-
     Log::Writer::instance().clear();
     return 0;
 }

@@ -36,43 +36,43 @@
 
 namespace Browser
 {
+/**
+ * @brief The Column Definition of Browser::Queue
+ *
+ * This is a separate (as opposed to a local nested class) because
+ * it is also needed by Browser::QueueMerger
+ */
+class QueueModelColumns : public Gtk::TreeModel::ColumnRecord
+{
+public:
+
+    QueueModelColumns();
+
     /**
-     * @brief The Column Definition of Browser::Queue
+     * @brief The ID of the Song
      *
-     * This is a separate (as opposed to a local nested class) because
-     * it is also needed by Browser::QueueMerger
+     * Needed for some commands
      */
-    class QueueModelColumns : public Gtk::TreeModel::ColumnRecord
-    {
-    public:
-
-        QueueModelColumns();
-
-        /**
-         * @brief The ID of the Song
-         *
-         * Needed for some commands
-         */
-        Gtk::TreeModelColumn<unsigned>      m_col_id;
-        /**
-         * @brief The Position of the Song in the Queue
-         *
-         * Needed for some commands and for merging
-         */
-        Gtk::TreeModelColumn<unsigned>      m_col_pos;
-        /**
-         * @brief Titlestring
-         */
-        Gtk::TreeModelColumn<Glib::ustring> m_col_title;
-        /**
-         * @brief Albumstring
-         */
-        Gtk::TreeModelColumn<Glib::ustring> m_col_album;
-        /**
-         * @brief Artiststring
-         */
-        Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
-    };
+    Gtk::TreeModelColumn<unsigned>      m_col_id;
+    /**
+     * @brief The Position of the Song in the Queue
+     *
+     * Needed for some commands and for merging
+     */
+    Gtk::TreeModelColumn<unsigned>      m_col_pos;
+    /**
+     * @brief Titlestring
+     */
+    Gtk::TreeModelColumn<Glib::ustring> m_col_title;
+    /**
+     * @brief Albumstring
+     */
+    Gtk::TreeModelColumn<Glib::ustring> m_col_album;
+    /**
+     * @brief Artiststring
+     */
+    Gtk::TreeModelColumn<Glib::ustring> m_col_artist;
+};
 }
 
 #endif /* end of include guard: FREYA_QUEUEMODELCOLUMNS_GUARD */

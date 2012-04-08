@@ -33,87 +33,84 @@
 
 namespace Browser
 {
-    PlaylistAddDialog::PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder) :
-        AbstractClientUser(client),
-        is_running(false),
-        mp_Dialog(NULL)
+PlaylistAddDialog::PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder) :
+    AbstractClientUser(client),
+    is_running(false),
+    mp_Dialog(NULL)
+{
+    mp_Client = &client;
+    BUILDER_ADD(builder,"ui/PlaylistAddDialog.glade");
+    BUILDER_GET_NO_MANAGE(builder,"playlist_add_dialog",mp_Dialog);
+    BUILDER_GET(builder,"playlist_cancel",mp_CancelButton);
+    BUILDER_GET(builder,"playlist_add",mp_ApplyButton);
+    BUILDER_GET(builder,"playlist_name_entry",mp_PlaylistEntry);
+    mp_CancelButton->signal_clicked().connect(
+        sigc::mem_fun(*this,&PlaylistAddDialog::on_cancel_clicked));
+    mp_ApplyButton->signal_clicked().connect(
+        sigc::mem_fun(*this,&PlaylistAddDialog::on_add_clicked));
+    mp_PlaylistEntry->signal_changed().connect(
+        sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_change));
+    mp_PlaylistEntry->signal_activate().connect(
+        sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_activate));
+}
+
+/* ----------------------- */
+
+PlaylistAddDialog::~PlaylistAddDialog()
+{
+    delete mp_Dialog;
+}
+
+/* ----------------------- */
+
+void PlaylistAddDialog::on_add_clicked()
+{
+    Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
+    mp_Client->playlist_save(new_pl_name.c_str());
+    on_cancel_clicked();
+}
+
+/* ----------------------- */
+
+void PlaylistAddDialog::on_cancel_clicked()
+{
+    mp_Dialog->hide();
+    is_running = false;
+}
+
+/* ----------------------- */
+
+void PlaylistAddDialog::run()
+{
+    if(is_running == false)
     {
-        mp_Client = &client;
-        BUILDER_ADD(builder,"ui/PlaylistAddDialog.glade");
-        BUILDER_GET_NO_MANAGE(builder,"playlist_add_dialog",mp_Dialog);
-
-        BUILDER_GET(builder,"playlist_cancel",mp_CancelButton);
-        BUILDER_GET(builder,"playlist_add",mp_ApplyButton);
-        BUILDER_GET(builder,"playlist_name_entry",mp_PlaylistEntry);
-
-        mp_CancelButton->signal_clicked().connect(
-            sigc::mem_fun(*this,&PlaylistAddDialog::on_cancel_clicked));
-        mp_ApplyButton->signal_clicked().connect(
-            sigc::mem_fun(*this,&PlaylistAddDialog::on_add_clicked));
-        mp_PlaylistEntry->signal_changed().connect(
-            sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_change));
-        mp_PlaylistEntry->signal_activate().connect(
-            sigc::mem_fun(*this,&PlaylistAddDialog::on_entry_activate));
-
+        is_running = true;
+        mp_Dialog->show();
     }
+}
 
-    /* ----------------------- */
+/* ----------------------- */
 
-    PlaylistAddDialog::~PlaylistAddDialog()
-    {
-        delete mp_Dialog;
-    }
+void PlaylistAddDialog::on_entry_change()
+{
+    /* Get length of Text */
+    mp_ApplyButton->set_sensitive(mp_PlaylistEntry->get_text_length() > 0);
+}
 
-    /* ----------------------- */
+/* ----------------------- */
 
-    void PlaylistAddDialog::on_add_clicked()
-    {
-        Glib::ustring new_pl_name = mp_PlaylistEntry->get_text();
-        mp_Client->playlist_save(new_pl_name.c_str());
-        on_cancel_clicked();
-    }
+void PlaylistAddDialog::on_entry_activate()
+{
+    on_add_clicked();
+}
 
-    /* ----------------------- */
+/* ----------------------- */
 
-    void PlaylistAddDialog::on_cancel_clicked()
-    {
-        mp_Dialog->hide();
-        is_running = false;
-    }
+void PlaylistAddDialog::on_client_update(mpd_idle event, MPD::NotifyData& data)
+{}
 
-    /* ----------------------- */
+/* ----------------------- */
 
-    void PlaylistAddDialog::run()
-    {
-        if(is_running == false)
-        {
-            is_running = true;
-            mp_Dialog->show();
-        }
-    }
-
-    /* ----------------------- */
-
-    void PlaylistAddDialog::on_entry_change()
-    {
-        /* Get length of Text */
-        mp_ApplyButton->set_sensitive(mp_PlaylistEntry->get_text_length() > 0);
-    }
-
-    /* ----------------------- */
-
-    void PlaylistAddDialog::on_entry_activate()
-    {
-        on_add_clicked();
-    }
-
-    /* ----------------------- */
-
-    void PlaylistAddDialog::on_client_update(mpd_idle event, MPD::NotifyData& data)
-    {}
-
-    /* ----------------------- */
-
-    void PlaylistAddDialog::on_connection_change(bool server_changed, bool is_connected)
-    {}
+void PlaylistAddDialog::on_connection_change(bool server_changed, bool is_connected)
+{}
 }

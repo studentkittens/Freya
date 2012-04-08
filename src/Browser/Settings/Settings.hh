@@ -48,37 +48,37 @@ using namespace std;
 
 namespace Browser
 {
+/**
+ * @brief The Settingsbrowser shown in the sidebar
+ */
+class Settings : public AbstractBrowser
+{
+public:
+    Settings(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray,GManager::BrowserList& list);
+    ~Settings();
+
     /**
-     * @brief The Settingsbrowser shown in the sidebar
+     * @brief Implemented from AbstractBrowser
+     *
+     * @return
      */
-    class Settings : public AbstractBrowser
-    {
-    public:
-        Settings(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, GManager::Trayicon * tray,GManager::BrowserList& list);
-        ~Settings();
+    Gtk::Widget* get_container();
+    /**
+     * @brief Called when saving the Config (makes ok/cancel insensitive)
+     */
+    void settings_changed();
 
-        /**
-         * @brief Implemented from AbstractBrowser
-         *
-         * @return
-         */
-        Gtk::Widget* get_container();
-        /**
-         * @brief Called when saving the Config (makes ok/cancel insensitive)
-         */
-        void settings_changed();
+private:
+    void on_button_ok();
+    void on_button_cancel();
+    void on_button_reset();
+    vector<AbstractSettings*> sub_sections;
 
-    private:
-        void on_button_ok();
-        void on_button_cancel();
-        void on_button_reset();
-        vector<AbstractSettings*> sub_sections;
+    /* Widgets */
+    Gtk::Button *ok_button, *cancel_button, *reset_button;
+    Gtk::Box *settings_main;
 
-        /* Widgets */
-        Gtk::Button *ok_button, *cancel_button, *reset_button;
-        Gtk::Box *settings_main;
-
-    };
+};
 }
 
 #endif

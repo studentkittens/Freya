@@ -38,111 +38,109 @@
 
 namespace Init
 {
-    Path::Path()
+Path::Path()
+{
+    /* setting configdir member */
+    configdir = g_strdup_printf("%s",(char*)get_config_dir().c_str());
+    /* setting configfile member */
+    configfile = g_strdup_printf("%s",(char*)path_to_config().c_str());
+    dir_is_avaiable();
+}
+
+
+Path::~Path()
+{
+    g_free(configdir);
+    g_free(configfile);
+}
+
+
+/* return config dir path as ustring */
+Glib::ustring Path::get_config_dir()
+{
+    Glib::ustring retv = Glib::ustring(g_get_user_config_dir()) + G_DIR_SEPARATOR_S + "freya";
+    return retv;
+}
+
+/* return path to config */
+Glib::ustring Path::path_to_config()
+{
+    Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "config.xml";
+    return retv;
+}
+
+/* return path to log */
+Glib::ustring Path::path_to_log()
+{
+    Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "log.txt";
+    return retv;
+}
+
+Glib::ustring Path::path_to_metadata_db()
+{
+    Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + GLYR_DB_FILENAME;
+    return retv;
+}
+
+Glib::ustring Path::path_to_css()
+{
+    Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "style.css";
+    return retv;
+}
+
+/*check if config dir an file is avaiable, if not, try to create */
+void Path::dir_is_avaiable()
+{
+    if(g_file_test(configdir, G_FILE_TEST_EXISTS) && g_file_test(configdir, G_FILE_TEST_IS_DIR))
     {
-        /* setting configdir member */
-        configdir = g_strdup_printf("%s",(char*)get_config_dir().c_str());
-
-        /* setting configfile member */
-        configfile = g_strdup_printf("%s",(char*)path_to_config().c_str());
-
-        dir_is_avaiable();
-    }
-
-
-    Path::~Path()
-    {
-        g_free(configdir);
-        g_free(configfile);
-    }
-
-
-    /* return config dir path as ustring */
-    Glib::ustring Path::get_config_dir()
-    {
-        Glib::ustring retv = Glib::ustring(g_get_user_config_dir()) + G_DIR_SEPARATOR_S + "freya";
-        return retv;
-    }
-
-    /* return path to config */
-    Glib::ustring Path::path_to_config()
-    {
-        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "config.xml";
-        return retv;
-    }
-
-    /* return path to log */
-    Glib::ustring Path::path_to_log()
-    {
-        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "log.txt";
-        return retv;
-    }
-    
-    Glib::ustring Path::path_to_metadata_db()
-    {
-        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + GLYR_DB_FILENAME;
-        return retv;
-    }
-    
-    Glib::ustring Path::path_to_css()
-    {
-        Glib::ustring retv = Glib::ustring(get_config_dir()) + G_DIR_SEPARATOR_S + "style.css";
-        return retv;
-    }
-
-    /*check if config dir an file is avaiable, if not, try to create */
-    void Path::dir_is_avaiable()
-    {
-        if (g_file_test(configdir, G_FILE_TEST_EXISTS) && g_file_test(configdir, G_FILE_TEST_IS_DIR))
+        if(g_file_test(configfile, G_FILE_TEST_IS_REGULAR))
         {
-            if (g_file_test(configfile, G_FILE_TEST_IS_REGULAR))
+            if(g_access(configfile,W_OK|R_OK))
             {
-                if (g_access( configfile,W_OK|R_OK))
-                {
-                    g_warning("%s probably a permission problem.",configfile);
-                }
-            }
-            else
-            {
-                create_config();
+                g_warning("%s probably a permission problem.",configfile);
             }
         }
         else
         {
-            create_dir();
             create_config();
         }
     }
-
-
-    /*creates config.xml inside config dir */
-    void Path::create_config()
+    else
     {
-        FILE * file = fopen ( configfile , "w" );
-        if (NULL!=file)
-        {
-            fwrite(Config::defaultconfig.c_str(), 1, Config::defaultconfig.size(), file );
-            fclose(file);
-            g_message("config %s created.", configfile);
-        }
-        else
-        {
-            g_warning("unable to write %s.",configfile);
-        }
+        create_dir();
+        create_config();
     }
+}
 
 
-    /* creates dir for config.xml */
-    void Path::create_dir()
+/*creates config.xml inside config dir */
+void Path::create_config()
+{
+    FILE * file = fopen(configfile , "w");
+    if(NULL!=file)
     {
-        if (!g_mkdir_with_parents(configdir,0755))
-        {
-            g_message("dir %s, succesfully created.",configdir);
-        }
-        else
-        {
-            g_warning("cannot create ~/.config/freya %s",strerror(errno));
-        }
+        fwrite(Config::defaultconfig.c_str(), 1, Config::defaultconfig.size(), file);
+        fclose(file);
+        g_message("config %s created.", configfile);
     }
+    else
+    {
+        g_warning("unable to write %s.",configfile);
+    }
+}
+
+
+/* creates dir for config.xml */
+void Path::create_dir()
+{
+    if(!g_mkdir_with_parents(configdir,0755))
+    {
+        g_message("dir %s, succesfully created.",configdir);
+    }
+    else
+    {
+        g_warning("cannot create ~/.config/freya %s",strerror(errno));
+    }
+}
 }
 

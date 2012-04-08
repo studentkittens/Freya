@@ -34,217 +34,213 @@
 
 namespace MPD
 {
-    BaseClient::BaseClient() :
-        m_Conn(),
-        mp_Listener(NULL),
-        m_ListBegun(false)
-    {
-        /* Call handle_errors on any found error */
-        m_Conn.signal_error().connect(
-                sigc::mem_fun(*this,&BaseClient::handle_errors));
-    }
+BaseClient::BaseClient() :
+    m_Conn(),
+    mp_Listener(NULL),
+    m_ListBegun(false)
+{
+    /* Call handle_errors on any found error */
+    m_Conn.signal_error().connect(
+        sigc::mem_fun(*this,&BaseClient::handle_errors));
+}
 
-    /////////////////////////////////
+/////////////////////////////////
 
-    bool BaseClient::__connect()
+bool BaseClient::__connect()
+{
+    if(m_Conn.is_connected() == false)
     {
-        if(m_Conn.is_connected() == false)
+        if(m_Conn.connect())
         {
-            if(m_Conn.connect())
-            {
-                mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
-                Debug("Entering initial Idle mode");
-                go_idle();
-                Debug("Forcing update on GUI...");
-                force_update();
-                Debug("Fully connected.");
-            }
-            m_Conn.emit_connection_change();
-        }
-        return is_connected();
-    }
-
-    /////////////////////////////////
-
-    bool BaseClient::__disconnect()
-    {
-        if(m_Conn.is_connected())
-        {
-            if(mp_Listener)
-            {
-                if(mp_Listener != NULL)
-                {
-                    mp_Listener->leave();
-                    delete mp_Listener;
-                    mp_Listener = NULL;
-                }
-            }
-            m_Conn.disconnect();
-            m_Conn.emit_connection_change();
-        }
-        return is_connected();
-    }
-
-    /////////////////////////////////
-
-    void BaseClient::go_idle()
-    {
-        m_Conn.check_error();
-        if(mp_Listener && mp_Listener->is_idling() == false)
-        {
-            mp_Listener->enter();
-        }
-    }
-
-    /////////////////////////////////
-
-    void BaseClient::go_busy()
-    {
-        if(mp_Listener && mp_Listener->is_idling() == true)
-        {
-            mp_Listener->leave();
-        }
-        m_Conn.check_error();
-    }
-
-    /////////////////////////////////
-
-    Connection& BaseClient::get_connection()
-    {
-        return m_Conn;
-    }
-
-    /////////////////////////////////
-
-    bool BaseClient::is_connected()
-    {
-        return m_Conn.is_connected();
-    }
-
-    /////////////////////////////////
-
-    void BaseClient::begin()
-    {
-        if(is_connected())
-        {
-            go_busy();
-            m_ListBegun = true;
-            mpd_command_list_begin(m_Conn.get_connection(),true);
-        }
-    }
-
-    /////////////////////////////////
-
-    void BaseClient::commit()
-    {
-        if(is_connected())
-        {
-            mpd_connection * conn = m_Conn.get_connection();
-            mpd_command_list_end(conn);
-            mpd_response_finish(conn);
-            m_ListBegun = false;
+            mp_Listener = new MPD::Listener(&m_Notifier,m_Conn);
+            Debug("Entering initial Idle mode");
             go_idle();
+            Debug("Forcing update on GUI...");
+            force_update();
+            Debug("Fully connected.");
         }
+        m_Conn.emit_connection_change();
     }
+    return is_connected();
+}
 
-    //--------------------
+/////////////////////////////////
 
-    Status * BaseClient::get_status()
+bool BaseClient::__disconnect()
+{
+    if(m_Conn.is_connected())
     {
-        if(m_Conn.is_connected())
+        if(mp_Listener)
         {
-            return &(mp_Listener->get_data().get_status());
+            if(mp_Listener != NULL)
+            {
+                mp_Listener->leave();
+                delete mp_Listener;
+                mp_Listener = NULL;
+            }
         }
-        return NULL;
+        m_Conn.disconnect();
+        m_Conn.emit_connection_change();
     }
+    return is_connected();
+}
 
-    //--------------------
+/////////////////////////////////
 
-    EventNotifier& BaseClient::signal_client_update()
+void BaseClient::go_idle()
+{
+    m_Conn.check_error();
+    if(mp_Listener && mp_Listener->is_idling() == false)
     {
-        return m_Notifier;
+        mp_Listener->enter();
     }
+}
 
-    //--------------------
+/////////////////////////////////
 
-    ConnectionNotifier& BaseClient::signal_connection_change()
+void BaseClient::go_busy()
+{
+    if(mp_Listener && mp_Listener->is_idling() == true)
     {
-        return m_Conn.signal_connection_change();
+        mp_Listener->leave();
     }
+    m_Conn.check_error();
+}
 
-    //--------------------
+/////////////////////////////////
 
-    void BaseClient::force_update()
+Connection& BaseClient::get_connection()
+{
+    return m_Conn;
+}
+
+/////////////////////////////////
+
+bool BaseClient::is_connected()
+{
+    return m_Conn.is_connected();
+}
+
+/////////////////////////////////
+
+void BaseClient::begin()
+{
+    if(is_connected())
     {
-        if(m_Conn.is_connected())
-            mp_Listener->force_update();
+        go_busy();
+        m_ListBegun = true;
+        mpd_command_list_begin(m_Conn.get_connection(),true);
     }
+}
 
-    /////////////////////////////////
+/////////////////////////////////
 
-    gboolean BaseClient::timeout_reconnect()
+void BaseClient::commit()
+{
+    if(is_connected())
     {
-        Info("Trying to stand up");
-        gboolean retv = __connect();
-        Info("Sigh.");
-
-        if(retv)
-        {
-            Info("Succesfully reconnected.");
-        }
-        return (retv == false);
+        mpd_connection * conn = m_Conn.get_connection();
+        mpd_command_list_end(conn);
+        mpd_response_finish(conn);
+        m_ListBegun = false;
+        go_idle();
     }
+}
 
-    /////////////////////////////////
+//--------------------
 
-    void BaseClient::handle_errors(bool is_fatal, mpd_error err)
+Status * BaseClient::get_status()
+{
+    if(m_Conn.is_connected())
     {
-        switch(err)
-        {
-            case MPD_ERROR_SUCCESS:
-                {
-                    break;
-                }
-            case MPD_ERROR_CLOSED:
-                {
-                    /* Make sure to be disconnected first */
-                    __disconnect();
-
-                    /* Get the reconnectinterval in seconds */
-                    int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval") * 1000;
-
-                    /* Schedule reconnect */
-                    Glib::signal_timeout().connect(
-                            sigc::mem_fun(*this, &BaseClient::timeout_reconnect),
-                            interval,G_PRIORITY_DEFAULT_IDLE);
-
-                    Info("Starting reconnect campaign. Will try again every %d seconds.",interval);
-                    break;
-                }
-            case MPD_ERROR_SERVER:
-            case MPD_ERROR_OOM:
-            case MPD_ERROR_ARGUMENT:
-            case MPD_ERROR_STATE:
-            case MPD_ERROR_TIMEOUT:
-            case MPD_ERROR_SYSTEM:
-            case MPD_ERROR_RESOLVER:
-            case MPD_ERROR_MALFORMED:
-            default:
-                break;
-        }
+        return &(mp_Listener->get_data().get_status());
     }
-    
-    /////////////////////////////////
+    return NULL;
+}
 
-    Query * BaseClient::create_db_songs_query(bool exact)
+//--------------------
+
+EventNotifier& BaseClient::signal_client_update()
+{
+    return m_Notifier;
+}
+
+//--------------------
+
+ConnectionNotifier& BaseClient::signal_connection_change()
+{
+    return m_Conn.signal_connection_change();
+}
+
+//--------------------
+
+void BaseClient::force_update()
+{
+    if(m_Conn.is_connected())
+        mp_Listener->force_update();
+}
+
+/////////////////////////////////
+
+gboolean BaseClient::timeout_reconnect()
+{
+    Info("Trying to stand up");
+    gboolean retv = __connect();
+    Info("Sigh.");
+    if(retv)
     {
-        return new Query(*this,QUERY_SONGS,(int)exact);
+        Info("Succesfully reconnected.");
     }
-    
-    /////////////////////////////////
-        
-    Query * BaseClient::create_db_tag_query(mpd_tag_type tag)
+    return (retv == false);
+}
+
+/////////////////////////////////
+
+void BaseClient::handle_errors(bool is_fatal, mpd_error err)
+{
+    switch(err)
     {
-        return new Query(*this,QUERY_TAGS,(int)tag);
+    case MPD_ERROR_SUCCESS:
+    {
+        break;
     }
+    case MPD_ERROR_CLOSED:
+    {
+        /* Make sure to be disconnected first */
+        __disconnect();
+        /* Get the reconnectinterval in seconds */
+        int interval = CONFIG_GET_AS_INT("settings.connection.reconnectinterval") * 1000;
+        /* Schedule reconnect */
+        Glib::signal_timeout().connect(
+            sigc::mem_fun(*this, &BaseClient::timeout_reconnect),
+            interval,G_PRIORITY_DEFAULT_IDLE);
+        Info("Starting reconnect campaign. Will try again every %d seconds.",interval);
+        break;
+    }
+    case MPD_ERROR_SERVER:
+    case MPD_ERROR_OOM:
+    case MPD_ERROR_ARGUMENT:
+    case MPD_ERROR_STATE:
+    case MPD_ERROR_TIMEOUT:
+    case MPD_ERROR_SYSTEM:
+    case MPD_ERROR_RESOLVER:
+    case MPD_ERROR_MALFORMED:
+    default:
+        break;
+    }
+}
+
+/////////////////////////////////
+
+Query * BaseClient::create_db_songs_query(bool exact)
+{
+    return new Query(*this,QUERY_SONGS,(int)exact);
+}
+
+/////////////////////////////////
+
+Query * BaseClient::create_db_tag_query(mpd_tag_type tag)
+{
+    return new Query(*this,QUERY_TAGS,(int)tag);
+}
 }

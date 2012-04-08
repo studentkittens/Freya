@@ -39,38 +39,38 @@
 namespace Browser
 {
 
+/**
+ * @brief A simple representation of the current MPD::Statistics
+ *
+ * No more, no less :)
+ */
+class StatBrowser : public Gtk::Frame, public AbstractBrowser
+{
+public:
+    StatBrowser(MPD::Client&, Glib::RefPtr<Gtk::Builder>&,GManager::BrowserList& list);
+    ~StatBrowser();
+
     /**
-     * @brief A simple representation of the current MPD::Statistics
+     * @brief implemented from AbstractBrowser
      *
-     * No more, no less :)
+     * @return topcontainer of this browser
      */
-    class StatBrowser : public Gtk::Frame, public AbstractBrowser
-    {
-    public:
-        StatBrowser (MPD::Client&, Glib::RefPtr<Gtk::Builder>&,GManager::BrowserList& list);
-        ~StatBrowser ();
+    Gtk::Widget * get_container();
 
-        /**
-         * @brief implemented from AbstractBrowser
-         *
-         * @return topcontainer of this browser
-         */
-        Gtk::Widget * get_container();
+private:
 
-    private:
+    /* label members for statistics*/
+    Gtk::Label *noofartist,
+        *noofalbums,
+        *noofsongs,
+        *dbplaytime,
+        *playtime,
+        *dbupdate,
+        *uptime;
 
-        /* label members for statistics*/
-        Gtk::Label *noofartist,
-            *noofalbums,
-            *noofsongs,
-            *dbplaytime,
-            *playtime,
-            *dbupdate,
-            *uptime;
-
-        /* Will be updated on every database update  (MPD_IDLE_DATABASE) */
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-    };
+    /* Will be updated on every database update  (MPD_IDLE_DATABASE) */
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+};
 }
 #endif /* end of include guard: STATBROWSER_H0M8CVQP */
 

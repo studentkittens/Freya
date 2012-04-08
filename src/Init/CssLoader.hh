@@ -4,14 +4,14 @@
 
 namespace Init
 {
-    /**
-     * @brief Load a custome css file
-     */
-    class CssLoader 
-    {
-        public:
-            CssLoader();
-    };
+/**
+ * @brief Load a custome css file
+ */
+class CssLoader
+{
+public:
+    CssLoader();
+};
 }
 
 #endif /* end of include guard: FREYA_CSSLOADER_HH */

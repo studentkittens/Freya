@@ -45,49 +45,49 @@
 
 namespace Browser
 {
-    class NowPlaying : public AbstractBrowser, public MPD::AbstractClientUser
-    {
-        public:
+class NowPlaying : public AbstractBrowser, public MPD::AbstractClientUser
+{
+public:
 
-            /**
-             * @brief Builds itself once being passed a builder reference
-             *
-             * @param builder
-             */
-            NowPlaying(MPD::Client &client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
+    /**
+     * @brief Builds itself once being passed a builder reference
+     *
+     * @param builder
+     */
+    NowPlaying(MPD::Client &client, Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
 
-            /**
-             * @brief Implemented by AbstractBrowser
-             *
-             * @return
-             */
-            Gtk::Widget * get_container();
+    /**
+     * @brief Implemented by AbstractBrowser
+     *
+     * @return
+     */
+    Gtk::Widget * get_container();
 
-        private:
+private:
 
-            // Client
+    // Client
 
-            void on_client_update(mpd_idle, MPD::NotifyData&);
-            void on_connection_change(bool, bool);
-    
-            void on_expander_changed(Glyr::UpdateInterface * intf);
-            void on_getting_active();
+    void on_client_update(mpd_idle, MPD::NotifyData&);
+    void on_connection_change(bool, bool);
 
-            // Vars
+    void on_expander_changed(Glyr::UpdateInterface * intf);
+    void on_getting_active();
 
-            ManagerVector managerList;
-            Gtk::ScrolledWindow * mp_NPScroll;
-            MPD::NotifyData * lastData;
+    // Vars
 
-            // Managers
+    ManagerVector managerList;
+    Gtk::ScrolledWindow * mp_NPScroll;
+    MPD::NotifyData * lastData;
 
-            ArtistPhotosMgr  * mp_ArtistPhotos;
-            RelatedLinksMgr * mp_RelatedLinks;
-            OtherAlbumsMgr * mp_OtherAlbums;
-            TracklistMgr  * mp_Tracklist;
-            TextItemsMgr * mp_Textitems;
-            CoverArtMgr * mp_CoverArt;
-    };
+    // Managers
+
+    ArtistPhotosMgr  * mp_ArtistPhotos;
+    RelatedLinksMgr * mp_RelatedLinks;
+    OtherAlbumsMgr * mp_OtherAlbums;
+    TracklistMgr  * mp_Tracklist;
+    TextItemsMgr * mp_Textitems;
+    CoverArtMgr * mp_CoverArt;
+};
 }
 
 

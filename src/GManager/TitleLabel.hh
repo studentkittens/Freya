@@ -37,30 +37,30 @@
 
 namespace GManager
 {
-    /**
-     * @brief Updates the top titlelabel, and the down nextsong label in the sidebar
-     *
-     * Formats the song and updates on the Player/Option events.
-     */
-    class TitleLabel : public MPD::AbstractClientUser
-    {
-    public:
+/**
+ * @brief Updates the top titlelabel, and the down nextsong label in the sidebar
+ *
+ * Formats the song and updates on the Player/Option events.
+ */
+class TitleLabel : public MPD::AbstractClientUser
+{
+public:
 
-        TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+    TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-    private:
+private:
 
-        void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-        void update_next_song_widget(MPD::NotifyData& data);
-        void stash_next_title();
+    void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
+    void update_next_song_widget(MPD::NotifyData& data);
+    void stash_next_title();
 
-        /* Widgets */
-        Gtk::Label * mp_TopLabel,
-                   * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
+    /* Widgets */
+    Gtk::Label * mp_TopLabel,
+        * mp_NextSongArtistLabel, * mp_NextSongTitleLabel;
 
-        MPD::Client * mp_Client;
-    };
+    MPD::Client * mp_Client;
+};
 }
 
 #endif

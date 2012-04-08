@@ -32,29 +32,29 @@
 
 namespace MPD
 {
-    Directory::Directory(mpd_directory& dir) :
-        AbstractComposite(false)
+Directory::Directory(mpd_directory& dir) :
+    AbstractComposite(false)
+{
+    mp_Dir = &dir;
+}
+
+/* ----------------------------- */
+
+Directory::~Directory()
+{
+    if(mp_Dir != NULL)
     {
-        mp_Dir = &dir;
+        mpd_directory_free(mp_Dir);
+        mp_Dir = NULL;
     }
+}
 
-    /* ----------------------------- */
+/* ---------------------------- */
 
-    Directory::~Directory()
-    {
-        if(mp_Dir != NULL)
-        {
-            mpd_directory_free(mp_Dir);
-            mp_Dir = NULL;
-        }
-    }
+const char * Directory::get_path()
+{
+    return mpd_directory_get_path(mp_Dir);
+}
 
-    /* ---------------------------- */
-
-    const char * Directory::get_path()
-    {
-        return mpd_directory_get_path(mp_Dir);
-    }
-
-    /* ---------------------------- */
+/* ---------------------------- */
 }

@@ -33,449 +33,400 @@
 
 namespace MPD
 {
-    /* Typdefs for the lazy */
-    typedef struct mpd_connection mpd_connection;
-    typedef struct mpd_status mpd_status;
-    typedef struct mpd_entity mpd_entity;
+/* Typdefs for the lazy */
+typedef struct mpd_connection mpd_connection;
+typedef struct mpd_status mpd_status;
+typedef struct mpd_entity mpd_entity;
 
-    /* Map appropiate Glib::IO events to MPD Async events,
-     * and other way round.
+/* Map appropiate Glib::IO events to MPD Async events,
+ * and other way round.
+ */
+static const int map_IOCondtion_MPDASync[][2] =
+{
+    {Glib::IO_IN,  MPD_ASYNC_EVENT_READ },
+    {Glib::IO_OUT, MPD_ASYNC_EVENT_WRITE },
+    {Glib::IO_HUP, MPD_ASYNC_EVENT_HUP },
+    {Glib::IO_ERR, MPD_ASYNC_EVENT_ERROR }
+};
+
+
+/* Number of rows in above table */
+static const unsigned map_IOAsync_size = (sizeof(map_IOCondtion_MPDASync)/sizeof(const int)/2);
+
+///////////////////////////
+
+Listener::Listener(EventNotifier * notifier, Connection& sync_conn) : m_NData(sync_conn)
+{
+    /* No idle events, nor io events on startup,
+     * call force_update() if you want to init
+     * your registered classes */
+    idle_events  = 0;
+    io_eventmask = (mpd_async_event)0;
+    /* No idling  -> client has to call enter() itself
+     * No leaving -> see above
+     * No forced  -> forced is called once all observers are built
+     * No working -> Callback will be called first (mostly) by force_update()
      */
-    static const int map_IOCondtion_MPDASync[][2] =
+    is_idle = false;
+    is_leaving = false;
+    is_forced = false;
+    is_working = false;
+    /* Save a pointer to sigc::signal */
+    g_assert(notifier);
+    mp_Notifier = notifier;
+    /* Always make sure we have a valid status etc. */
+    g_assert(sync_conn.get_connection());
+    m_NData.update_all();
+    /* Save a pointer so we can send sync commands
+     * like "noidle" */
+    mp_Conn = &sync_conn;
+    /* Parser is used to parse the incoming events:
+     * changed: player
+     * changed: mixer
+     * ...
+     * and to convert them to appropiate enum values
+     */
+    mp_Parser = mpd_parser_new();
+    /* We need a non-blocking connection. */
+    async_conn = mpd_connection_get_async(sync_conn.get_connection());
+    async_socket_fd = mpd_async_get_fd(async_conn);
+}
+
+///////////////////////////
+
+Listener::~Listener()
+{
+    leave();
+    if(mp_Parser!= NULL)
+        mpd_parser_free(mp_Parser);
+}
+
+///////////////////////////
+
+bool Listener::is_idling()
+{
+    return is_idle;
+}
+
+///////////////////////////
+///////////////////////////
+///////////////////////////
+
+/* Check if a error occured */
+bool Listener::check_async_error()
+{
+    g_assert(async_conn);
+    bool result = false;
+    if(mpd_async_get_error(async_conn) != MPD_ERROR_SUCCESS)
     {
-        {Glib::IO_IN,  MPD_ASYNC_EVENT_READ},
-        {Glib::IO_OUT, MPD_ASYNC_EVENT_WRITE},
-        {Glib::IO_HUP, MPD_ASYNC_EVENT_HUP},
-        {Glib::IO_ERR, MPD_ASYNC_EVENT_ERROR}
-    };
-
-
-    /* Number of rows in above table */
-    static const unsigned map_IOAsync_size = (sizeof(map_IOCondtion_MPDASync)/sizeof(const int)/2);
-
-    ///////////////////////////
-
-    Listener::Listener(EventNotifier * notifier, Connection& sync_conn) : m_NData(sync_conn)
-    {
-
-        /* No idle events, nor io events on startup,
-         * call force_update() if you want to init
-         * your registered classes */
-        idle_events  = 0;
         io_eventmask = (mpd_async_event)0;
-
-        /* No idling  -> client has to call enter() itself
-         * No leaving -> see above
-         * No forced  -> forced is called once all observers are built
-         * No working -> Callback will be called first (mostly) by force_update()
-         */
-        is_idle = false;
-        is_leaving = false;
-        is_forced = false;
-        is_working = false;
-
-        /* Save a pointer to sigc::signal */
-        g_assert(notifier);
-        mp_Notifier = notifier;
-
-        /* Always make sure we have a valid status etc. */
-        g_assert(sync_conn.get_connection());
-        m_NData.update_all();
-
-        /* Save a pointer so we can send sync commands
-         * like "noidle" */
-        mp_Conn = &sync_conn;
-
-        /* Parser is used to parse the incoming events:
-         * changed: player
-         * changed: mixer
-         * ...
-         * and to convert them to appropiate enum values
-         */
-        mp_Parser = mpd_parser_new();
-
-        /* We need a non-blocking connection. */
-        async_conn = mpd_connection_get_async(sync_conn.get_connection());
-        async_socket_fd = mpd_async_get_fd(async_conn);
+        Warning("AsyncError: %s",mpd_async_get_error_message(async_conn));
+        result = true;
     }
+    return result;
+}
 
-    ///////////////////////////
+///////////////////////////
 
-    Listener::~Listener()
+void Listener::invoke_user_callback()
+{
+    if(idle_events != 0 || is_forced)
     {
+        /* Leave for callback - which is gonna be active */
         leave();
-
-        if(mp_Parser!= NULL)
-            mpd_parser_free(mp_Parser);
-    }
-
-    ///////////////////////////
-
-    bool Listener::is_idling()
-    {
-        return is_idle;
-    }
-
-    ///////////////////////////
-    ///////////////////////////
-    ///////////////////////////
-
-    /* Check if a error occured */
-    bool Listener::check_async_error()
-    {
-        g_assert(async_conn);
-
-        bool result = false;
-        if(mpd_async_get_error(async_conn) != MPD_ERROR_SUCCESS)
+        /* Do not allow to call enter() in this period */
+        is_working = true;
+        if(is_forced)
         {
-            io_eventmask = (mpd_async_event)0;
-            Warning("AsyncError: %s",mpd_async_get_error_message(async_conn));
-            result = true;
+            /* Trigger all events (0xFFFFFF) */
+            idle_events = UINT_MAX;
         }
-        return result;
-    }
-
-    ///////////////////////////
-
-    void Listener::invoke_user_callback()
-    {
-        if(idle_events != 0 || is_forced)
+        m_NData.update_all(idle_events);
+        /* Iterare over the enum (this is weird) */
+        for(unsigned mask = 1; /* empty */; mask <<= 1)
         {
-            /* Leave for callback - which is gonna be active */
-            leave();
-
-            /* Do not allow to call enter() in this period */
-            is_working = true;
-
-            if(is_forced)
+            const char * event_name = mpd_idle_name((mpd_idle)mask);
+            /* We assume the end of the 'enum' here */
+            if(event_name == NULL)
+                break;
+            unsigned actual_event = (idle_events & mask);
+            if(actual_event != 0)
             {
-                /* Trigger all events (0xFFFFFF) */
-                idle_events = UINT_MAX;
+                Debug("  :%s",event_name);
+                /* Notify observers */
+                mp_Notifier->emit((mpd_idle)actual_event,m_NData);
             }
-
-            m_NData.update_all(idle_events);
-
-            /* Iterare over the enum (this is weird) */
-            for(unsigned mask = 1; /* empty */; mask <<= 1)
-            {
-                const char * event_name = mpd_idle_name((mpd_idle)mask);
-
-                /* We assume the end of the 'enum' here */
-                if(event_name == NULL)
-                    break;
-
-                unsigned actual_event = (idle_events & mask);
-                if(actual_event != 0)
-                {
-                    Debug("  :%s",event_name);
-
-                    /* Notify observers */
-                    mp_Notifier->emit((mpd_idle)actual_event,m_NData);
-                }
-            }
-
-            /* Delete old events */
-            idle_events = 0;
-
-            /* Callback finished, needs
-             * to be set to false to re-enter
-             */
-            is_working = false;
-
-            /* Re-enter idle mode */
-            enter();
         }
+        /* Delete old events */
+        idle_events = 0;
+        /* Callback finished, needs
+         * to be set to false to re-enter
+         */
+        is_working = false;
+        /* Re-enter idle mode */
+        enter();
     }
+}
 
-    ///////////////////////////
+///////////////////////////
 
-    /*
-     * Parse a respone and add every occured event
-     * to the idle_events bitmask, in case of errors
-     * the parsing is aborted, on success the client
-     * -callback is called.
-     */
-    bool Listener::parse_response(char *line)
+/*
+ * Parse a respone and add every occured event
+ * to the idle_events bitmask, in case of errors
+ * the parsing is aborted, on success the client
+ * -callback is called.
+ */
+bool Listener::parse_response(char *line)
+{
+    mpd_parser_result result;
+    result = mpd_parser_feed(mp_Parser, line);
+    switch(result)
     {
-        mpd_parser_result result;
-        result = mpd_parser_feed(mp_Parser, line);
-
-        switch (result)
+    case MPD_PARSER_ERROR:
+    {
+        io_eventmask = (mpd_async_event)0;
+        check_async_error();
+        Error("ParserError: %d - %s",
+              mpd_parser_get_server_error(mp_Parser),
+              mpd_parser_get_message(mp_Parser));
+        return false;
+    }
+    case MPD_PARSER_PAIR:
+    {
+        const char * name = NULL;
+        if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
         {
-            case MPD_PARSER_ERROR:
-                {
-                    io_eventmask = (mpd_async_event)0;
-                    check_async_error();
-                    Error("ParserError: %d - %s",
-                            mpd_parser_get_server_error(mp_Parser),
-                            mpd_parser_get_message(mp_Parser));
-
-                    return false;
-                }
-            case MPD_PARSER_PAIR:
-                {
-                    const char * name = NULL;
-                    if(g_strcmp0((name = mpd_parser_get_name(mp_Parser)),"changed") == 0)
-                    {
-                        const char * value = mpd_parser_get_value(mp_Parser);
-                        idle_events |= mpd_idle_name_parse(value);
-                    }
-                    break;
-                }
-            case MPD_PARSER_MALFORMED:
-                {
-                    io_eventmask = (mpd_async_event)0;
-                    check_async_error();
-                    return false;
-                }
-            case MPD_PARSER_SUCCESS:
-                {
-                    io_eventmask = (mpd_async_event)0;
-                    invoke_user_callback();
-                    return true;
-                }
+            const char * value = mpd_parser_get_value(mp_Parser);
+            idle_events |= mpd_idle_name_parse(value);
         }
+        break;
+    }
+    case MPD_PARSER_MALFORMED:
+    {
+        io_eventmask = (mpd_async_event)0;
+        check_async_error();
+        return false;
+    }
+    case MPD_PARSER_SUCCESS:
+    {
+        io_eventmask = (mpd_async_event)0;
+        invoke_user_callback();
         return true;
     }
-
-    ///////////////////////////
-
-    /* Reads respone from server line by line,
-     * till OK comes in, or an error is occured
-     *    changed: player
-     *    changed: mixer
-     *    ....
-     *    OK
-     *
-     */
-    bool Listener::recv_parseable()
-    {
-        char * line = NULL;
-        bool retval = true;
-
-        while ((line = mpd_async_recv_line(async_conn)) != NULL)
-        {
-            if(parse_response(line) == false)
-            {
-                retval = false;
-                break;
-            }
-        }
-
-        check_async_error();
-        return retval;
     }
+    return true;
+}
 
-    ///////////////////////////
+///////////////////////////
 
-    /* Create the watchdog on the socket */
-    void Listener::create_watch(mpd_async_event events)
+/* Reads respone from server line by line,
+ * till OK comes in, or an error is occured
+ *    changed: player
+ *    changed: mixer
+ *    ....
+ *    OK
+ *
+ */
+bool Listener::recv_parseable()
+{
+    char * line = NULL;
+    bool retval = true;
+    while((line = mpd_async_recv_line(async_conn)) != NULL)
     {
-        /* Convert mpd events to glib events */
-        Glib::IOCondition condition = Listener::MPDAsyncEvent_to_GIOCondition(events);
-
-        /* Disconnect old connection */
-        if(io_functor.connected())
+        if(parse_response(line) == false)
         {
-            io_functor.disconnect();
+            retval = false;
+            break;
         }
-
-        /* Add a watch for this, io_callback() gets called whenever data is available */
-        io_functor = Glib::signal_io().connect(sigc::mem_fun(this,&Listener::io_callback), async_socket_fd,condition, Glib::PRIORITY_HIGH);
     }
+    check_async_error();
+    return retval;
+}
 
-    ///////////////////////////
+///////////////////////////
 
-    /* Called once data comes into the socket */
-    gboolean Listener::io_callback(Glib::IOCondition condition)
+/* Create the watchdog on the socket */
+void Listener::create_watch(mpd_async_event events)
+{
+    /* Convert mpd events to glib events */
+    Glib::IOCondition condition = Listener::MPDAsyncEvent_to_GIOCondition(events);
+    /* Disconnect old connection */
+    if(io_functor.connected())
+    {
+        io_functor.disconnect();
+    }
+    /* Add a watch for this, io_callback() gets called whenever data is available */
+    io_functor = Glib::signal_io().connect(sigc::mem_fun(this,&Listener::io_callback), async_socket_fd,condition, Glib::PRIORITY_HIGH);
+}
+
+///////////////////////////
+
+/* Called once data comes into the socket */
+gboolean Listener::io_callback(Glib::IOCondition condition)
+{
+    check_async_error();
+    mpd_async_event actual_event = GIOCondition_to_MPDAsyncEvent(condition);
+    /* Tell libmpdclient that it should do the IO now */
+    if(mpd_async_io(async_conn, actual_event) == false)
     {
         check_async_error();
-        mpd_async_event actual_event = GIOCondition_to_MPDAsyncEvent(condition);
+        return false;
+    }
+    /* There is incoming data - receive them */
+    if(condition & G_IO_IN)
+    {
+        if(recv_parseable() == false)
+        {
+            Error("Could not parse response.");
+            return false;
+        }
+    }
+    /* Returning false disconnects watchdog */
+    mpd_async_event events = mpd_async_events(async_conn);
+    if(events == 0)
+    {
+        Debug("no events -> removing watch");
+        /* no events - disable watch */
+        io_eventmask = (mpd_async_event)0;
+        return false;
+    }
+    else if(events != io_eventmask)
+    {
+        /* different event mask: make new watch */
+        create_watch(events);
+        io_eventmask = events;
+        return false;
+    }
+    return true;
+}
 
-        /* Tell libmpdclient that it should do the IO now */
-        if(mpd_async_io(async_conn, actual_event) == false)
+///////////////////////////
+
+bool Listener::enter()
+{
+    if(is_idling() == false)
+    {
+        if(is_leaving || is_working)
+            return false;
+        Debug("Putting connection into 'idle' state.");
+        if(mpd_async_send_command(async_conn, "idle", NULL) == false)
         {
             check_async_error();
             return false;
         }
-
-        /* There is incoming data - receive them */
-        if(condition & G_IO_IN)
-        {
-            if(recv_parseable() == false)
-            {
-                Error("Could not parse response.");
-                return false;
-            }
-        }
-
-        /* Returning false disconnects watchdog */
+        /* Get a bitmask of events that needs to be watched */
         mpd_async_event events = mpd_async_events(async_conn);
-        if(events == 0)
+        /* Indicate we get into idlemode */
+        is_idle = true;
+        Glib::RefPtr<Glib::MainContext> mctx = Glib::MainContext::get_default();
+        if(mctx)
         {
-            Debug("no events -> removing watch");
-
-            /* no events - disable watch */
-            io_eventmask = (mpd_async_event)0;
-            return false;
-        }
-        else if(events != io_eventmask)
-        {
-            /* different event mask: make new watch */
+            /* Add a watch on the socket */
             create_watch(events);
-            io_eventmask = events;
-            return false;
+            /* Let the Mainloop spin a bit..
+             * there are often events waiting at this point
+             */
+            while(mctx->pending())
+            {
+                mctx->iteration(false);
+            }
         }
         return true;
     }
-
-    ///////////////////////////
-
-    bool Listener::enter()
+    else
     {
-        if(is_idling() == false)
-        {
-            if(is_leaving || is_working)
-                return false;
+        Debug("Cannot enter idling mode: Already idling.");
+        return false;
+    }
+}
 
-            Debug("Putting connection into 'idle' state.");
-            if(mpd_async_send_command(async_conn, "idle", NULL) == false)
+///////////////////////////
+
+void Listener::leave()
+{
+    if(is_idling() && mp_Conn->is_connected())
+    {
+        if(io_functor.connected())
+        {
+            bool is_fatal = false;
+            is_idle = false;
+            /* New game - new dices */
+            io_eventmask = (mpd_async_event)0;
+            mpd_idle events = (mpd_idle)0;
+            /* Make sure no idling is running */
+            if(idle_events == 0)
             {
-                check_async_error();
-                return false;
+                events = mpd_run_noidle(mp_Conn->get_connection());
             }
-
-            /* Get a bitmask of events that needs to be watched */
-            mpd_async_event events = mpd_async_events(async_conn);
-
-            /* Indicate we get into idlemode */
-            is_idle = true;
-
-            Glib::RefPtr<Glib::MainContext> mctx = Glib::MainContext::get_default();
-            if(mctx) 
+            is_leaving = true;
+            /* Check for errors that may happened shortly */
+            mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
+            if(err != MPD_ERROR_SUCCESS)
             {
-                /* Add a watch on the socket */
-                create_watch(events);
-
-                /* Let the Mainloop spin a bit.. 
-                 * there are often events waiting at this point
-                 */
-                while(mctx->pending()) {
-                    mctx->iteration(false);
-                }
-
+                Warning("Error#%d while leaving idle mode: %s",err,
+                        mpd_connection_get_error_message(mp_Conn->get_connection()));
+                is_fatal = mp_Conn->clear_error();
             }
-
-            return true;
-        }
-        else
-        {
-            Debug("Cannot enter idling mode: Already idling.");
-            return false;
-        }
-    }
-
-    ///////////////////////////
-
-    void Listener::leave()
-    {
-        if(is_idling() && mp_Conn->is_connected())
-        {
-            if(io_functor.connected())
+            /* Finish up */
+            if(is_fatal == false)
             {
-                bool is_fatal = false;
-                is_idle = false;
-
-                /* New game - new dices */
-                io_eventmask = (mpd_async_event)0;
-
-                mpd_idle events = (mpd_idle)0;
-
-                /* Make sure no idling is running */
-                if(idle_events == 0)
+                idle_events |= events;
+                if(is_forced == false)
                 {
-                    events = mpd_run_noidle(mp_Conn->get_connection());
+                    invoke_user_callback();
                 }
-
-                is_leaving = true;
-
-                /* Check for errors that may happened shortly */
-                mpd_error err = mpd_connection_get_error(mp_Conn->get_connection());
-                if(err != MPD_ERROR_SUCCESS)
-                {
-                    Warning("Error#%d while leaving idle mode: %s",err,
-                            mpd_connection_get_error_message(mp_Conn->get_connection()));
-
-                    is_fatal = mp_Conn->clear_error();
-                }
-
-                /* Finish up */
-                if(is_fatal == false)
-                {
-                    idle_events |= events;
-
-                    if(is_forced == false)
-                    {
-                        invoke_user_callback();
-                    }
-
-                    /* Disconnect the watchdog for now */
-                    io_functor.disconnect();
-                }
-
-                is_leaving = false;
+                /* Disconnect the watchdog for now */
+                io_functor.disconnect();
             }
+            is_leaving = false;
         }
     }
+}
 
-    ///////////////////////////
+///////////////////////////
 
-    NotifyData& Listener::get_data()
+NotifyData& Listener::get_data()
+{
+    return m_NData;
+}
+
+///////////////////////////
+
+void Listener::force_update()
+{
+    idle_events = (mpd_idle)1;
+    if(is_idling())
     {
-        return m_NData;
+        mpd_run_noidle(mp_Conn->get_connection());
     }
+    /* Inform watchers about events */
+    is_forced = true;
+    invoke_user_callback();
+    is_forced = false;
+}
 
-    ///////////////////////////
+///////////////////////////
+///////////////////////////
 
-    void Listener::force_update()
-    {
-        idle_events = (mpd_idle)1;
-        if(is_idling())
-        {
-            mpd_run_noidle(mp_Conn->get_connection());
-        }
+mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
+{
+    int events = 0;
+    for(unsigned i = 0; i < map_IOAsync_size; i++)
+        if(condition & map_IOCondtion_MPDASync[i][0])
+            events |= map_IOCondtion_MPDASync[i][1];
+    return (mpd_async_event)events;
+}
 
+///////////////////////////
 
-        /* Inform watchers about events */
-        is_forced = true;
-        invoke_user_callback();
-        is_forced = false;
-    }
-
-    ///////////////////////////
-    ///////////////////////////
-
-    mpd_async_event Listener::GIOCondition_to_MPDAsyncEvent(Glib::IOCondition condition)
-    {
-        int events = 0;
-        for(unsigned i = 0; i < map_IOAsync_size; i++)
-            if(condition & map_IOCondtion_MPDASync[i][0])
-                events |= map_IOCondtion_MPDASync[i][1];
-
-        return (mpd_async_event)events;
-    }
-
-    ///////////////////////////
-
-    /* Convert MPD's Async event to Glib's IO Socket events by a table */
-    Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(mpd_async_event events)
-    {
-        int condition = 0;
-        for(unsigned i = 0; i < map_IOAsync_size; i++)
-            if(events & map_IOCondtion_MPDASync[i][1])
-                condition |= map_IOCondtion_MPDASync[i][0];
-
-        return (Glib::IOCondition)condition;
-    }
+/* Convert MPD's Async event to Glib's IO Socket events by a table */
+Glib::IOCondition Listener::MPDAsyncEvent_to_GIOCondition(mpd_async_event events)
+{
+    int condition = 0;
+    for(unsigned i = 0; i < map_IOAsync_size; i++)
+        if(events & map_IOCondtion_MPDASync[i][1])
+            condition |= map_IOCondtion_MPDASync[i][0];
+    return (Glib::IOCondition)condition;
+}
 
 } // namespace MPD

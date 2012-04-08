@@ -34,105 +34,101 @@
 
 namespace Browser
 {
-    /* ----------------------------- */
+/* ----------------------------- */
 
-    DatabaseCache::DatabaseCache(MPD::Client& client) :
-        AbstractClientUser(client),
-        lastVec(NULL),
-        isFirstStart(true),
-        serverChanged(false)
-    {}
+DatabaseCache::DatabaseCache(MPD::Client& client) :
+    AbstractClientUser(client),
+    lastVec(NULL),
+    isFirstStart(true),
+    serverChanged(false)
+{}
 
-    /* ------------------------------ */
+/* ------------------------------ */
 
-    DatabaseCache::~DatabaseCache()
-    {
+DatabaseCache::~DatabaseCache()
+{
+    clear_cache();
+}
+
+/* ------------------------------ */
+
+void DatabaseCache::fill_filelist(AbstractItemlist& data_model, const char * Path)
+{
+    /* Get it from the hashmap */
+    Glib::ustring peristentPath = Path;
+    const CacheVectorType& v = cacheMap[peristentPath];
+    if(serverChanged)
         clear_cache();
-    }
-
-    /* ------------------------------ */
-
-    void DatabaseCache::fill_filelist(AbstractItemlist& data_model, const char * Path)
+    /* Read in data from client, if not cached yet */
+    if(v.empty())
     {
-        /* Get it from the hashmap */
-        Glib::ustring peristentPath = Path;
-        const CacheVectorType& v = cacheMap[peristentPath];
+        /* Get files from the server */
+        lastVec = const_cast<CacheVectorType*>(&v);
+        mp_Client->fill_filelist(*this,Path);
+    }
+    /* Iterare over the requested stuff, call data_model's add */
+    if(!v.empty())
+    {
+        CacheVectorType::const_iterator iter;
+        for(iter = v.begin(); iter != v.end(); iter++)
+        {
+            const CachePairType& m = (*iter);
+            data_model.add_item(m);
+        }
+    }
+}
 
-        if(serverChanged)
+/* ------------------------------ */
+/*            PRIVATE             */
+/* ------------------------------ */
+
+void DatabaseCache::on_client_update(mpd_idle event, MPD::NotifyData& data)
+{
+    if(event & MPD_IDLE_DATABASE)
+    {
+        if(!isFirstStart)
+        {
+            /* We have no way to check what exactly changed */
             clear_cache();
-
-        /* Read in data from client, if not cached yet */
-        if(v.empty())
-        {
-            /* Get files from the server */
-            lastVec = const_cast<CacheVectorType*>(&v);
-            mp_Client->fill_filelist(*this,Path);
-        }
-
-        /* Iterare over the requested stuff, call data_model's add */
-        if(!v.empty())
-        {
-            CacheVectorType::const_iterator iter;
-            for(iter = v.begin(); iter != v.end(); iter++)
-            {
-                const CachePairType& m = (*iter);
-                data_model.add_item(m);
-            }
         }
     }
+}
 
-    /* ------------------------------ */
-    /*            PRIVATE             */
-    /* ------------------------------ */
+/* ------------------------------ */
 
-    void DatabaseCache::on_client_update(mpd_idle event, MPD::NotifyData& data)
+void DatabaseCache::on_connection_change(bool server_changed, bool is_connected)
+{
+    serverChanged = (isFirstStart) ? false : server_changed;
+    isFirstStart = false;
+}
+
+/* ------------------------------ */
+/*             LOGIC              */
+/* ------------------------------ */
+
+void DatabaseCache::add_item(MPD::AbstractComposite * pItem)
+{
+    lastVec->push_back(pItem);
+}
+
+/* ------------------------------ */
+
+void DatabaseCache::clear_cache()
+{
+    CacheMapType::const_iterator iter;
+    for(iter = cacheMap.begin(); iter != cacheMap.end(); iter++)
     {
-        if(event & MPD_IDLE_DATABASE)
+        const CacheVectorType& v = iter->second;
+        CacheVectorType::const_iterator vec_iter;
+        for(vec_iter = v.begin(); vec_iter != v.end(); vec_iter++)
         {
-            if(!isFirstStart)
-            {
-                /* We have no way to check what exactly changed */
-                clear_cache();
-            }
+            const CachePairType& m = (*vec_iter);
+            delete m;
         }
     }
+    lastVec = NULL;
+    cacheMap.clear();
+}
 
-    /* ------------------------------ */
-
-    void DatabaseCache::on_connection_change(bool server_changed, bool is_connected)
-    {
-        serverChanged = (isFirstStart) ? false : server_changed;
-        isFirstStart = false;
-    }
-
-    /* ------------------------------ */
-    /*             LOGIC              */
-    /* ------------------------------ */
-
-    void DatabaseCache::add_item(MPD::AbstractComposite * pItem)
-    {
-        lastVec->push_back(pItem);
-    }
-
-    /* ------------------------------ */
-
-    void DatabaseCache::clear_cache()
-    {
-        CacheMapType::const_iterator iter;
-        for(iter = cacheMap.begin(); iter != cacheMap.end(); iter++)
-        {
-            const CacheVectorType& v = iter->second;
-            CacheVectorType::const_iterator vec_iter;
-
-            for(vec_iter = v.begin(); vec_iter != v.end(); vec_iter++)
-            {
-                const CachePairType& m = (*vec_iter);
-                delete m;
-            }
-        }
-        lastVec = NULL;
-        cacheMap.clear();
-    }
-
-    /* ------------------------------ */
+/* ------------------------------ */
 }

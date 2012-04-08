@@ -6,22 +6,22 @@
 
 namespace Browser
 {
-    class TextPageMgr : public Gtk::ScrolledWindow, public Glyr::UpdateInterface
-    {
-        public: 
-            TextPageMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
-            
-            void update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data);
+class TextPageMgr : public Gtk::ScrolledWindow, public Glyr::UpdateInterface
+{
+public:
+    TextPageMgr(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
 
-            void set_request_type(GLYR_GET_TYPE type);
-    
-            void on_deliver(GlyrMemCache * list);
+    void update(MPD::Client& client, mpd_idle events, MPD::NotifyData& data);
 
-        private:
-            Gtk::TextView * textView;
-            GLYR_GET_TYPE type;
+    void set_request_type(GLYR_GET_TYPE type);
 
-    };
+    void on_deliver(GlyrMemCache * list);
+
+private:
+    Gtk::TextView * textView;
+    GLYR_GET_TYPE type;
+
+};
 }
 
 #endif /* end of include guard: FREYA_TEXTPAGEMGR_HH */

@@ -38,49 +38,49 @@
 
 namespace GManager
 {
-    /**
-     * @brief The Manager for the Topmenus
-     *
-     * Also defines quite some keybindings, but no releveant public methods.
-     */
-    class MenuList : public MPD::AbstractClientUser
-    {
-    public:
+/**
+ * @brief The Manager for the Topmenus
+ *
+ * Also defines quite some keybindings, but no releveant public methods.
+ */
+class MenuList : public MPD::AbstractClientUser
+{
+public:
 
-        MenuList(MPD::Client &client, Glib::RefPtr<Gtk::Builder> &builder);
-        ~MenuList();
+    MenuList(MPD::Client &client, Glib::RefPtr<Gtk::Builder> &builder);
+    ~MenuList();
 
-    private:
+private:
 
-        void on_connection_change(bool server_changed, bool is_connected);
-        void on_client_update(enum mpd_idle event, MPD::NotifyData &data);
+    void on_connection_change(bool server_changed, bool is_connected);
+    void on_client_update(enum mpd_idle event, MPD::NotifyData &data);
 
-        void on_menu_connect();
-        void on_menu_disconnect();
-        void on_menu_quit();
+    void on_menu_connect();
+    void on_menu_disconnect();
+    void on_menu_quit();
 
-        void on_menu_play();
-        void on_menu_stop();
-        void on_menu_prev();
-        void on_menu_next();
+    void on_menu_play();
+    void on_menu_stop();
+    void on_menu_prev();
+    void on_menu_next();
 
-        void on_menu_random();
-        void on_menu_repeat();
-        void on_menu_single();
-        void on_menu_consume();
+    void on_menu_random();
+    void on_menu_repeat();
+    void on_menu_single();
+    void on_menu_consume();
 
-        void on_menu_about();
+    void on_menu_about();
 
-        bool running;
+    bool running;
 
-        /* Widgets */
-        Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,
-            *menu_play, *menu_stop, *menu_prev, *menu_next,
-            *menu_playback,  *menu_about;
+    /* Widgets */
+    Gtk::MenuItem *menu_connect, *menu_disconnect, *menu_quit,
+        *menu_play, *menu_stop, *menu_prev, *menu_next,
+        *menu_playback,  *menu_about;
 
-        Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume;
-        Gtk::AboutDialog * window_about;
-    };
+    Gtk::CheckMenuItem *menu_random, *menu_repeat, *menu_single, *menu_consume;
+    Gtk::AboutDialog * window_about;
+};
 
 }
 

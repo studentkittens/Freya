@@ -37,109 +37,106 @@
 
 namespace Config
 {
-    /*reads file from hdd*/
-    Model::Model()
+/*reads file from hdd*/
+Model::Model()
+{
+    Init::Path path;
+    Glib::ustring pfad(path.path_to_config());
+    setpath((char*)pfad.c_str());
+    this->load(pathtofile);
+    /* loads default document to memory */
+    this->loadDefaultDoc();
+}
+
+/* ----------------------------------------- */
+
+/*saves config file on exit*/
+Model::~Model()
+{
+    this->save();
+    xmlFreeDoc(defaultDoc);
+    xmlFreeDoc(fileDoc);
+    g_free(pathtofile);
+}
+
+/* ----------------------------------------- */
+
+/*returns the doc pointer of users config.xml*/
+xmlDocPtr Model::getDocPtr()
+{
+    return fileDoc;
+}
+
+xmlDocPtr Model::getDefaultDocPtr()
+{
+    return defaultDoc;
+}
+
+/* ----------------------------------------- */
+
+/*xml file reader*/
+void Model::load(char* file)
+{
+    /* try loading config.xml from hdd */
+    fileDoc = xmlParseFile(file);
+    xmlNodePtr curNode;
+    if(NULL != fileDoc)
     {
-        Init::Path path;
-        Glib::ustring pfad(path.path_to_config());
-        setpath((char*)pfad.c_str());
-        this->load(pathtofile);
-        /* loads default document to memory */
-        this->loadDefaultDoc();
-    }
-
-    /* ----------------------------------------- */
-
-    /*saves config file on exit*/
-    Model::~Model()
-    {
-        this->save();
-        xmlFreeDoc(defaultDoc);
-        xmlFreeDoc(fileDoc);
-        g_free(pathtofile);
-
-    }
-
-    /* ----------------------------------------- */
-
-    /*returns the doc pointer of users config.xml*/
-    xmlDocPtr Model::getDocPtr()
-    {
-        return fileDoc;
-    }
-
-    xmlDocPtr Model::getDefaultDocPtr()
-    {
-        return defaultDoc;
-    }
-
-    /* ----------------------------------------- */
-
-    /*xml file reader*/
-    void Model::load(char* file)
-    {
-        /* try loading config.xml from hdd */
-        fileDoc = xmlParseFile(file);
-        xmlNodePtr curNode;
-
-        if(NULL != fileDoc)
+        curNode = xmlDocGetRootElement(fileDoc);
+        if(NULL != curNode)
         {
-            curNode = xmlDocGetRootElement(fileDoc);
-            if (NULL != curNode)
+            if(!(xmlStrcmp(curNode->name, (const xmlChar*) "freya")))
             {
-                if (!(xmlStrcmp(curNode->name, (const xmlChar*) "freya")))
-                {
-                    Success("Config succesfully read.");
-                }
-                else
-                {
-                    Error("File does not look like a Freya config file.");
-                    xmlFreeDoc(fileDoc);
-                    fileDoc = NULL;
-                    curNode = NULL;
-                }
+                Success("Config succesfully read.");
             }
             else
             {
-                Error("Empty config file / invalid XML");
+                Error("File does not look like a Freya config file.");
                 xmlFreeDoc(fileDoc);
                 fileDoc = NULL;
+                curNode = NULL;
             }
         }
         else
         {
-            Error("config.xml file not found.");
+            Error("Empty config file / invalid XML");
+            xmlFreeDoc(fileDoc);
+            fileDoc = NULL;
         }
-
     }
-
-    /* ----------------------------------------- */
-
-    /* loads default document */
-    void Model::loadDefaultDoc()
+    else
     {
-        const char* tmp = defaultconfig.c_str();
-        defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
+        Error("config.xml file not found.");
     }
+}
 
-    /* ----------------------------------------- */
+/* ----------------------------------------- */
 
-    /*save default config aka Mr fileDoc*/
-    void Model::save()
-    {
-        save(pathtofile, fileDoc);
-    }
+/* loads default document */
+void Model::loadDefaultDoc()
+{
+    const char* tmp = defaultconfig.c_str();
+    defaultDoc =  xmlParseMemory(tmp, strlen(tmp));
+}
+
+/* ----------------------------------------- */
+
+/*save default config aka Mr fileDoc*/
+void Model::save()
+{
+    save(pathtofile, fileDoc);
+}
 
 
-    /*save alternative config*/
-    void Model::save(char* altfile,xmlDocPtr doc)
-    {
-        xmlSaveFile(altfile,doc);
-    }
+/*save alternative config*/
+void Model::save(char* altfile,xmlDocPtr doc)
+{
+    xmlSaveFile(altfile,doc);
+}
 
-    void Model::setpath(char* path)
-    {
-        pathtofile = g_strdup_printf("%s",path);
-    }
+void Model::setpath(char* path)
+{
+    pathtofile = g_strdup_printf("%s",path);
+}
 
 }

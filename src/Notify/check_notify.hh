@@ -37,22 +37,22 @@ class NotifyTestSuite : public CxxTest::TestSuite
 
 public:
 
-    void testsend_big( void )
+    void testsend_big(void)
     {
         TS_ASSERT(0==0);
     }
 
-    void testsend_full( void )
+    void testsend_full(void)
     {
         TS_ASSERT(0==0);
     }
 
-    void testset_stock_icon( void )
+    void testset_stock_icon(void)
     {
         TS_ASSERT(0==0);
     }
 
-    void testset_next_extra( void )
+    void testset_next_extra(void)
     {
         TS_ASSERT(0==0);
     }

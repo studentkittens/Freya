@@ -38,32 +38,32 @@
 
 namespace Browser
 {
-    class Settings;
+class Settings;
 
-    /**
-     * @brief Network Settings Tab.
-     */
-    class SettingsNetwork : public AbstractSettings
-    {
-    public:
-        SettingsNetwork(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
-        ~SettingsNetwork();
+/**
+ * @brief Network Settings Tab.
+ */
+class SettingsNetwork : public AbstractSettings
+{
+public:
+    SettingsNetwork(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett);
+    ~SettingsNetwork();
 
-        void accept_new_settings();
-        void decline_new_settings();
-        void reset_settings();
+    void accept_new_settings();
+    void decline_new_settings();
+    void reset_settings();
 
-    private:
-        void show_avahi(Browser::Settings * sett);
-        void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port);
-        Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
+private:
+    void show_avahi(Browser::Settings * sett);
+    void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring name, unsigned int port);
+    Glib::ustring ip_name, port_name, timeout_name, autoconnect_name;
 
-        /* Widgets */
-        Gtk::Entry *ip;
-        Gtk::SpinButton *port, *recon_timeout;
-        Gtk::Button *avahi;
-        Gtk::CheckButton *autoconnect;
-        Gtk::MessageDialog *avahi_warning;
-    };
+    /* Widgets */
+    Gtk::Entry *ip;
+    Gtk::SpinButton *port, *recon_timeout;
+    Gtk::Button *avahi;
+    Gtk::CheckButton *autoconnect;
+    Gtk::MessageDialog *avahi_warning;
+};
 }
 #endif

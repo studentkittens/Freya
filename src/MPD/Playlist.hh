@@ -40,65 +40,65 @@
 
 namespace MPD
 {
+/**
+ * @brief A Wrapper for mpd_playlist, also implements own client commands
+ */
+class Playlist : public AbstractClientExtension,
+    public AbstractComposite,
+    public UseMemPool<Playlist>
+{
+public:
+    Playlist(MPD::BaseClient& base_client, mpd_playlist& c_playlist);
+    Playlist(const Playlist& copy_this);
+    virtual ~Playlist();
+
     /**
-     * @brief A Wrapper for mpd_playlist, also implements own client commands
+     * Returns the path name of this playlist file.  It does not begin
+     * with a slash.
      */
-    class Playlist : public AbstractClientExtension,
-                     public AbstractComposite,
-                     public UseMemPool<Playlist>
-    {
-    public:
-        Playlist(MPD::BaseClient& base_client, mpd_playlist& c_playlist);
-        Playlist(const Playlist& copy_this);
-        virtual ~Playlist();
+    const char * get_path();
 
-        /**
-         * Returns the path name of this playlist file.  It does not begin
-         * with a slash.
-         */
-        const char * get_path();
+    /**
+     * @return the POSIX UTC time stamp of the last modification, or 0 if
+     * that is unknown
+     */
+    time_t get_last_modified();
 
-        /**
-         * @return the POSIX UTC time stamp of the last modification, or 0 if
-         * that is unknown
-         */
-        time_t get_last_modified();
+    /**
+     * @brief Remove this Playlist from MPD
+     */
+    void remove();
 
-        /**
-         * @brief Remove this Playlist from MPD
-         */
-        void remove();
+    /**
+     * @brief load this playlist into the queue (add to end)
+     */
+    void load();
 
-        /**
-         * @brief load this playlist into the queue (add to end)
-         */
-        void load();
+    /**
+     * @brief Rename playlist
+     *
+     * @param new_name The new name as string
+     */
+    void rename(const char * new_name);
 
-        /**
-         * @brief Rename playlist
-         *
-         * @param new_name The new name as string
-         */
-        void rename(const char * new_name);
+    /**
+     * @brief Add song identified with path uri to this playlist
+     *
+     * @param uri a path to a song in the DB
+     */
+    void add_song(const char * uri);
 
-        /**
-         * @brief Add song identified with path uri to this playlist
-         *
-         * @param uri a path to a song in the DB
-         */
-        void add_song(const char * uri);
+    /**
+     * @brief Add song to this playlist
+     *
+     * @param song a valid MPD::Song
+     */
+    void add_song(MPD::Song& song);
 
-        /**
-         * @brief Add song to this playlist
-         *
-         * @param song a valid MPD::Song
-         */
-        void add_song(MPD::Song& song);
+private:
+    mpd_playlist * mpc_playlist;
 
-    private:
-        mpd_playlist * mpc_playlist;
-
-    };
+};
 }
 
 #endif /* end of include guard: FREYA_PLAYLIST_GUARD */

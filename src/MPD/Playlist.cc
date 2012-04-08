@@ -33,106 +33,106 @@
 
 namespace MPD
 {
-    /* See Playlist as some sort of file, not as container */
-    Playlist::Playlist(MPD::BaseClient& base_client, mpd_playlist& playlist) :
-        AbstractClientExtension(base_client),
-        AbstractComposite(true)
+/* See Playlist as some sort of file, not as container */
+Playlist::Playlist(MPD::BaseClient& base_client, mpd_playlist& playlist) :
+    AbstractClientExtension(base_client),
+    AbstractComposite(true)
+{
+    mpc_playlist = &playlist;
+}
+
+//---------------------------
+
+Playlist::Playlist(const Playlist& copy_this) :
+    AbstractClientExtension(*mp_BaseClient),
+    AbstractComposite(true)
+{
+    if(copy_this.mpc_playlist != NULL)
     {
-        mpc_playlist = &playlist;
+        mpc_playlist = mpd_playlist_dup(copy_this.mpc_playlist);
     }
+}
 
-    //---------------------------
+//---------------------------
 
-    Playlist::Playlist(const Playlist& copy_this) :
-        AbstractClientExtension(*mp_BaseClient),
-        AbstractComposite(true)
+Playlist::~Playlist()
+{
+    if(mpc_playlist != NULL)
+        mpd_playlist_free(mpc_playlist);
+}
+
+//---------------------------
+
+const char * Playlist::get_path()
+{
+    return mpd_playlist_get_path(mpc_playlist);
+}
+
+//---------------------------
+
+time_t Playlist::get_last_modified()
+{
+    return mpd_playlist_get_last_modified(mpc_playlist);
+}
+
+//---------------------------
+// CLIENT EXTENSIONS
+//---------------------------
+
+void Playlist::remove()
+{
+    EXTERNAL_GET_BUSY
     {
-        if(copy_this.mpc_playlist != NULL)
-        {
-            mpc_playlist = mpd_playlist_dup(copy_this.mpc_playlist);
-        }
+        mpd_run_rm(conn,get_path());
     }
+    EXTERNAL_GET_LAID
+}
 
-    //---------------------------
+//---------------------------
 
-    Playlist::~Playlist()
+void Playlist::load()
+{
+    EXTERNAL_GET_BUSY
     {
-        if(mpc_playlist != NULL)
-            mpd_playlist_free(mpc_playlist);
+        mpd_run_load(conn,get_path());
     }
+    EXTERNAL_GET_LAID
+}
 
-    //---------------------------
+//---------------------------
 
-    const char * Playlist::get_path()
-    {
-        return mpd_playlist_get_path(mpc_playlist);
-    }
-
-    //---------------------------
-
-    time_t Playlist::get_last_modified()
-    {
-        return mpd_playlist_get_last_modified(mpc_playlist);
-    }
-
-    //---------------------------
-    // CLIENT EXTENSIONS
-    //---------------------------
-
-    void Playlist::remove()
+void Playlist::rename(const char * new_name)
+{
+    if(new_name != NULL)
     {
         EXTERNAL_GET_BUSY
         {
-            mpd_run_rm(conn,get_path());
+            mpd_run_rename(conn,get_path(),new_name);
         }
         EXTERNAL_GET_LAID
     }
+}
 
-    //---------------------------
+//---------------------------
 
-    void Playlist::load()
+void Playlist::add_song(const char * uri)
+{
+    if(uri != NULL)
     {
         EXTERNAL_GET_BUSY
         {
-            mpd_run_load(conn,get_path());
+            mpd_run_playlist_add(conn,get_path(),uri);
         }
         EXTERNAL_GET_LAID
     }
+}
 
-    //---------------------------
+//---------------------------
 
-    void Playlist::rename(const char * new_name)
-    {
-        if(new_name != NULL)
-        {
-            EXTERNAL_GET_BUSY
-            {
-                mpd_run_rename(conn,get_path(),new_name);
-            }
-            EXTERNAL_GET_LAID
-        }
-    }
+void Playlist::add_song(MPD::Song& song)
+{
+    add_song(song.get_path());
+}
 
-    //---------------------------
-
-    void Playlist::add_song(const char * uri)
-    {
-        if(uri != NULL)
-        {
-            EXTERNAL_GET_BUSY
-            {
-                mpd_run_playlist_add(conn,get_path(),uri);
-            }
-            EXTERNAL_GET_LAID
-        }
-    }
-
-    //---------------------------
-
-    void Playlist::add_song(MPD::Song& song)
-    {
-        add_song(song.get_path());
-    }
-
-    //---------------------------
+//---------------------------
 }

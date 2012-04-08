@@ -34,106 +34,95 @@
 
 namespace Browser
 {
-    SettingsGeneral::SettingsGeneral(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon * trayptr) :
-        notify("settings.libnotify.signal"),
-        tray("settings.trayicon.tray"),
-        timeout("settings.libnotify.timeout"),
-        to_tray("settings.trayicon.totrayonclose")
+SettingsGeneral::SettingsGeneral(Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett, GManager::Trayicon * trayptr) :
+    notify("settings.libnotify.signal"),
+    tray("settings.trayicon.tray"),
+    timeout("settings.libnotify.timeout"),
+    to_tray("settings.trayicon.totrayonclose")
+{
+    this->sett=sett;
+    this->trayptr=trayptr;
+    BUILDER_GET(builder,"libnotify_checkbox",libnotify);
+    BUILDER_GET(builder,"trayicon_checkbox",trayicon);
+    BUILDER_GET(builder,"notification_timeout",notify_timeout);
+    BUILDER_GET(builder,"notify_box",notify_box);
+    BUILDER_GET(builder,"tray_box",tray_box);
+    BUILDER_GET(builder,"totray_on_close",close_to_tray);
+    libnotify->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+    libnotify->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsGeneral::on_notify_toggled));
+    notify_timeout->signal_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+    on_notify_toggled();
+    trayicon->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+    trayicon->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsGeneral::on_tray_toggled));
+    close_to_tray->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+    on_tray_toggled();
+}
+
+
+SettingsGeneral::~SettingsGeneral() {}
+
+//----------------------------
+
+void SettingsGeneral::accept_new_settings()
+{
+    bool notify_value =  libnotify->get_active();
+    bool tray_value =  trayicon->get_active();
+    bool to_tray_value =  close_to_tray->get_active();
+    if(!tray_value)
+        to_tray_value = false;
+    int timeout_value =(int)notify_timeout->get_value();
+    trayptr->set_visible(tray_value);
+    CONFIG_SET_AS_INT(notify,notify_value?1:0);
+    CONFIG_SET_AS_INT(tray,tray_value?1:0);
+    CONFIG_SET_AS_INT(to_tray,to_tray_value?1:0);
+    CONFIG_SET_AS_INT(timeout,timeout_value?timeout_value*1000:-1);
+}
+
+//----------------------------
+
+void SettingsGeneral::decline_new_settings()
+{
+    int libnot, trayic, timeout_value, to_tray_value;
+    libnot = CONFIG_GET_AS_INT(notify);
+    trayic = CONFIG_GET_AS_INT(tray);
+    to_tray_value = CONFIG_GET_AS_INT(to_tray);
+    timeout_value = CONFIG_GET_AS_INT(timeout);
+    if(!trayic)
     {
-        this->sett=sett;
-        this->trayptr=trayptr;
-        BUILDER_GET(builder,"libnotify_checkbox",libnotify);
-        BUILDER_GET(builder,"trayicon_checkbox",trayicon);
-        BUILDER_GET(builder,"notification_timeout",notify_timeout);
-        BUILDER_GET(builder,"notify_box",notify_box);
-        BUILDER_GET(builder,"tray_box",tray_box);
-        BUILDER_GET(builder,"totray_on_close",close_to_tray);
-
-        libnotify->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-        libnotify->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsGeneral::on_notify_toggled));
-        notify_timeout->signal_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-
-        on_notify_toggled();
-
-        trayicon->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-        trayicon->signal_toggled().connect(sigc::mem_fun(*this,&Browser::SettingsGeneral::on_tray_toggled));
-        close_to_tray->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-
-        on_tray_toggled();
+        to_tray_value = 0;
     }
+    notify_timeout->set_value((double)(timeout_value ==- 1 ? 0 : ((double)timeout_value)/1000));
+    libnotify->set_active(libnot == 1);
+    close_to_tray->set_active(to_tray_value == 1);
+    trayicon->set_active(trayic == 1);
+}
 
+//----------------------------
 
-    SettingsGeneral::~SettingsGeneral() {}
+void SettingsGeneral::reset_settings()
+{
+    int libnot, trayic, timeout_value, to_tray_value;
+    libnot = CONFIG_GET_DEFAULT_AS_INT(notify);
+    trayic = CONFIG_GET_DEFAULT_AS_INT(tray);
+    timeout_value = CONFIG_GET_DEFAULT_AS_INT(timeout);
+    to_tray_value = CONFIG_GET_DEFAULT_AS_INT(to_tray);
+    if(!trayic)
+        to_tray_value = 0;
+    libnotify->set_active(libnot==1);
+    trayicon->set_active(trayic==1);
+    close_to_tray->set_active(to_tray_value==1);
+    notify_timeout->set_value((double)(timeout_value==-1?0:((double)timeout_value)/1000));
+}
 
-    //----------------------------
+//----------------------------
 
-    void SettingsGeneral::accept_new_settings()
-    {
-        bool notify_value =  libnotify->get_active();
-        bool tray_value =  trayicon->get_active();
-        bool to_tray_value =  close_to_tray->get_active();
-
-        if(!tray_value)
-            to_tray_value = false;
-
-        int timeout_value =(int)notify_timeout->get_value();
-
-        trayptr->set_visible(tray_value);
-
-        CONFIG_SET_AS_INT(notify,notify_value?1:0);
-        CONFIG_SET_AS_INT(tray,tray_value?1:0);
-        CONFIG_SET_AS_INT(to_tray,to_tray_value?1:0);
-        CONFIG_SET_AS_INT(timeout,timeout_value?timeout_value*1000:-1);
-    }
-
-    //----------------------------
-
-    void SettingsGeneral::decline_new_settings()
-    {
-        int libnot, trayic, timeout_value, to_tray_value;
-        libnot = CONFIG_GET_AS_INT(notify);
-        trayic = CONFIG_GET_AS_INT(tray);
-        to_tray_value = CONFIG_GET_AS_INT(to_tray);
-        timeout_value = CONFIG_GET_AS_INT(timeout);
-
-        if(!trayic) {
-            to_tray_value = 0;
-        }
-
-        notify_timeout->set_value((double)(timeout_value ==- 1 ? 0 : ((double)timeout_value)/1000));
-        libnotify->set_active(libnot == 1);
-        close_to_tray->set_active(to_tray_value == 1);
-        trayicon->set_active(trayic == 1);
-    }
-
-    //----------------------------
-
-    void SettingsGeneral::reset_settings()
-    {
-        int libnot, trayic, timeout_value, to_tray_value;
-        libnot = CONFIG_GET_DEFAULT_AS_INT(notify);
-        trayic = CONFIG_GET_DEFAULT_AS_INT(tray);
-        timeout_value = CONFIG_GET_DEFAULT_AS_INT(timeout);
-        to_tray_value = CONFIG_GET_DEFAULT_AS_INT(to_tray);
-
-        if(!trayic)
-            to_tray_value = 0;
-
-        libnotify->set_active(libnot==1);
-        trayicon->set_active(trayic==1);
-        close_to_tray->set_active(to_tray_value==1);
-        notify_timeout->set_value((double)(timeout_value==-1?0:((double)timeout_value)/1000) );
-    }
-
-    //----------------------------
-
-    void SettingsGeneral::on_notify_toggled()
-    {
-        notify_box->set_visible(libnotify->get_active());
-    }
-    //----------------------------
-    void SettingsGeneral::on_tray_toggled()
-    {
-        tray_box->set_visible(trayicon->get_active());
-    }
+void SettingsGeneral::on_notify_toggled()
+{
+    notify_box->set_visible(libnotify->get_active());
+}
+//----------------------------
+void SettingsGeneral::on_tray_toggled()
+{
+    tray_box->set_visible(trayicon->get_active());
+}
 }

@@ -41,37 +41,37 @@
 
 namespace Browser
 {
-    class Settings;
+class Settings;
 
-    /**
-     * @brief Outputlist Tab
-     */
-    class SettingsOutputs : public AbstractSettings, public MPD::AbstractItemlist, public MPD::AbstractClientUser
-    {
-    public:
-        SettingsOutputs(MPD::Client &client,Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
-        ~SettingsOutputs();
+/**
+ * @brief Outputlist Tab
+ */
+class SettingsOutputs : public AbstractSettings, public MPD::AbstractItemlist, public MPD::AbstractClientUser
+{
+public:
+    SettingsOutputs(MPD::Client &client,Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+    ~SettingsOutputs();
 
-        void accept_new_settings();
-        void decline_new_settings();
-        void reset_settings();
-        void add_item(MPD::AbstractComposite *item);
+    void accept_new_settings();
+    void decline_new_settings();
+    void reset_settings();
+    void add_item(MPD::AbstractComposite *item);
 
-    protected:
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool,bool);
-        void on_toggle(const Glib::ustring& path);
-        bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
-        void clear();
+protected:
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool,bool);
+    void on_toggle(const Glib::ustring& path);
+    bool on_select(const Glib::RefPtr<Gtk::TreeModel>& model,const Gtk::TreeModel::Path& path, bool);
+    void clear();
 
-    private:
-        Glib::RefPtr<Gtk::ListStore> treeModel;
-        Gtk::TreeView * treeViewPtr;
-        OutputsModelColumns treeColumns;
-        MPD::Client* client;
-        Settings *sett;
-        bool running;
-    };
+private:
+    Glib::RefPtr<Gtk::ListStore> treeModel;
+    Gtk::TreeView * treeViewPtr;
+    OutputsModelColumns treeColumns;
+    MPD::Client* client;
+    Settings *sett;
+    bool running;
+};
 
 
 }

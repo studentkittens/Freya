@@ -39,29 +39,29 @@
 
 namespace GManager
 {
-    /**
-     * @brief Manager for the statusbar
-     *
-     * Updates the statusbar every 0.5 seconds
-     */
-    class Statusbar : public MPD::AbstractClientUser
-    {
-    public:
+/**
+ * @brief Manager for the statusbar
+ *
+ * Updates the statusbar every 0.5 seconds
+ */
+class Statusbar : public MPD::AbstractClientUser
+{
+public:
 
-        Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
-        ~Statusbar();
+    Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+    ~Statusbar();
 
-    private:
-        void on_client_update(enum mpd_idle, MPD::NotifyData& data);
-        void on_heartbeat(double time);
-        void format_time(unsigned time, char buffer[]);
-        void do_update_message(MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
+private:
+    void on_client_update(enum mpd_idle, MPD::NotifyData& data);
+    void on_heartbeat(double time);
+    void format_time(unsigned time, char buffer[]);
+    void do_update_message(MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        MPD::NotifyData * mp_Lastdata;
-        Gtk::Label * m_Statusbar;
-        Heartbeat * mp_Heartbeat;
-        gchar * mp_Message;
-    };
+    MPD::NotifyData * mp_Lastdata;
+    Gtk::Label * m_Statusbar;
+    Heartbeat * mp_Heartbeat;
+    gchar * mp_Message;
+};
 }
 #endif

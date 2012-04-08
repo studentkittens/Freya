@@ -35,65 +35,63 @@
 
 namespace Browser
 {
-    SettingsPlayback::SettingsPlayback(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
-        AbstractClientUser(client),
-        stoponexit_name("settings.playback.stoponexit")
-    {
-        BUILDER_GET(builder,"crossfade_spinbutton",crossfade);
-        BUILDER_GET(builder,"stoponexit_checkbox",stoponexit);
-        crossfade->signal_value_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-        stoponexit->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
-    }
+SettingsPlayback::SettingsPlayback(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder,Browser::Settings * sett) :
+    AbstractClientUser(client),
+    stoponexit_name("settings.playback.stoponexit")
+{
+    BUILDER_GET(builder,"crossfade_spinbutton",crossfade);
+    BUILDER_GET(builder,"stoponexit_checkbox",stoponexit);
+    crossfade->signal_value_changed().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+    stoponexit->signal_toggled().connect(sigc::mem_fun(*sett,&Browser::Settings::settings_changed));
+}
 
 
-    SettingsPlayback::~SettingsPlayback() {}
-
-//----------------------------
-
-    void SettingsPlayback::accept_new_settings()
-    {
-        unsigned crossfade_value = crossfade->get_value_as_int();
-        bool stoponexit_value =  stoponexit->get_active();
-
-        mp_Client->playback_crossfade(crossfade_value);
-        CONFIG_SET_AS_INT(stoponexit_name,stoponexit_value?1:0);
-    }
+SettingsPlayback::~SettingsPlayback() {}
 
 //----------------------------
 
-    void SettingsPlayback::decline_new_settings()
-    {
-        MPD::Status * status = mp_Client->get_status();
-        if(status != NULL)
-            crossfade->set_value(status->get_crossfade());
-
-        stoponexit->set_active(CONFIG_GET_AS_INT(stoponexit_name)==1);
-    }
-
-//----------------------------
-
-    void SettingsPlayback::reset_settings()
-    {
-        crossfade->set_value(0);
-        stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);
-    }
+void SettingsPlayback::accept_new_settings()
+{
+    unsigned crossfade_value = crossfade->get_value_as_int();
+    bool stoponexit_value =  stoponexit->get_active();
+    mp_Client->playback_crossfade(crossfade_value);
+    CONFIG_SET_AS_INT(stoponexit_name,stoponexit_value?1:0);
+}
 
 //----------------------------
 
-    void SettingsPlayback::on_client_update(mpd_idle event, MPD::NotifyData& data)
-    {
-        if(event & MPD_IDLE_OPTIONS)
-        {
-            crossfade->set_value(data.get_status().get_crossfade());
-        }
-    }
+void SettingsPlayback::decline_new_settings()
+{
+    MPD::Status * status = mp_Client->get_status();
+    if(status != NULL)
+        crossfade->set_value(status->get_crossfade());
+    stoponexit->set_active(CONFIG_GET_AS_INT(stoponexit_name)==1);
+}
 
 //----------------------------
 
-    void SettingsPlayback::on_connection_change(bool server_changed, bool is_connected)
+void SettingsPlayback::reset_settings()
+{
+    crossfade->set_value(0);
+    stoponexit->set_active(CONFIG_GET_DEFAULT_AS_INT(stoponexit_name)==1);
+}
+
+//----------------------------
+
+void SettingsPlayback::on_client_update(mpd_idle event, MPD::NotifyData& data)
+{
+    if(event & MPD_IDLE_OPTIONS)
     {
-        crossfade->set_sensitive(is_connected);
+        crossfade->set_value(data.get_status().get_crossfade());
     }
+}
+
+//----------------------------
+
+void SettingsPlayback::on_connection_change(bool server_changed, bool is_connected)
+{
+    crossfade->set_sensitive(is_connected);
+}
 
 //----------------------------
 }

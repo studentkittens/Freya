@@ -50,95 +50,95 @@
 
 namespace Log
 {
-    /**
-     * @brief Log severity, influencing the color.
+/**
+ * @brief Log severity, influencing the color.
+ */
+enum LOGLEVEL
+{
+    LOG_CRITICAL = 1,
+    LOG_ERROR,
+    LOG_WARN,
+    LOG_OK,
+    LOG_INFO,
+    LOG_DEBUG,
+    LOG_NUMS_OF_LEVEL
+};
+
+class Writer
+{
+    /* Make this class a singleton,
+     * this implicitely defines a ctor,
+     * Just the dtor is defined expl. below.
      */
-    enum LOGLEVEL
-    {
-        LOG_CRITICAL = 1,
-        LOG_ERROR,
-        LOG_WARN,
-        LOG_OK,
-        LOG_INFO,
-        LOG_DEBUG,
-        LOG_NUMS_OF_LEVEL
-    };
+    DEF_SINGLETON(Writer);
 
-    class Writer
-    {
-        /* Make this class a singleton,
-         * this implicitely defines a ctor,
-         * Just the dtor is defined expl. below.
-         */
-        DEF_SINGLETON(Writer);
+public:
 
-    public:
+    /**
+     * @brief Closes the Log also properly. It is not fatal when not being called.
+     */
+    ~Writer();
 
-        /**
-         * @brief Closes the Log also properly. It is not fatal when not being called.
-         */
-        ~Writer();
+    /**
+     * @brief Actual instance method called. Do not use directly!
+     *
+     * @param file Passed by the macro.
+     * @param domain Log domain (e.g. Glib) or NULL for auto
+     * @param line Passed by the macro.
+     * @param level Severitylevel
+     * @param msg Actual message
+     * @param ... a va_list to allow printf style logging
+     */
+    void message(const char *file, const char * domain, int line, LOGLEVEL level, const char *msg, ...);
 
-        /**
-         * @brief Actual instance method called. Do not use directly!
-         *
-         * @param file Passed by the macro.
-         * @param domain Log domain (e.g. Glib) or NULL for auto
-         * @param line Passed by the macro.
-         * @param level Severitylevel
-         * @param msg Actual message
-         * @param ... a va_list to allow printf style logging
-         */
-        void message(const char *file, const char * domain, int line, LOGLEVEL level, const char *msg, ...);
+    /**
+     * @brief Set the max. verbosity
+     *
+     * LOG_DEBUG is the highest level, LOG_FATAL_ERROR the lowest,
+     * the priority can be read from the LOGLEVEL enum above,
+     * to diasable logging completely you may pass 0.
+     *
+     * @param v a member of the LOGLEVEL enum
+     */
+    void set_verbosity(LOGLEVEL v);
 
-        /**
-         * @brief Set the max. verbosity
-         *
-         * LOG_DEBUG is the highest level, LOG_FATAL_ERROR the lowest,
-         * the priority can be read from the LOGLEVEL enum above,
-         * to diasable logging completely you may pass 0.
-         * 
-         * @param v a member of the LOGLEVEL enum
-         */
-        void set_verbosity(LOGLEVEL v);
+    /**
+     * @brief Get the currently set verbosity level
+     *
+     * @return a member of the LOGLEVEL enum
+     */
+    LOGLEVEL get_verbosity();
 
-        /**
-         * @brief Get the currently set verbosity level
-         *
-         * @return a member of the LOGLEVEL enum
-         */
-        LOGLEVEL get_verbosity();
+    /**
+     * @brief Clear the logfile (but keep it open)
+     */
+    void clear();
 
-        /**
-         * @brief Clear the logfile (but keep it open)
-         */
-        void clear();
+private:
 
-    private:
+    /**
+     * @brief Path to logfile
+     */
+    Glib::ustring m_Logpath;
+    /**
+     * @brief Filehandle
+     */
+    FILE * m_Logfile;
 
-        /**
-         * @brief Path to logfile
-         */
-        Glib::ustring m_Logpath;
-        /**
-         * @brief Filehandle
-         */
-        FILE * m_Logfile;
+    /**
+     * @brief Max. verbosity
+     */
+    LOGLEVEL m_Verbosity;
 
-        /**
-         * @brief Max. verbosity
-         */
-        LOGLEVEL m_Verbosity; 
+    /**
+     * @brief get current time as timestamp
+     *
+     * @param buffer[] output argument, must be at least 20 bytes in size
+     */
+    void get_current_time(char buffer[]);
 
-        /**
-         * @brief get current time as timestamp
-         *
-         * @param buffer[] output argument, must be at least 20 bytes in size
-         */
-        void get_current_time(char buffer[]);
-    
-        void write_out(std::stringstream& stream);
-    };
+    void write_out(std::stringstream& stream);
+};
 }
 
 #endif

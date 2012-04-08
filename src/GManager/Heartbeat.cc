@@ -35,109 +35,108 @@
 
 namespace GManager
 {
-    Heartbeat::Heartbeat(MPD::Client& client) :
-        AbstractClientUser(client),
-        mp_LastNotifyData(NULL)
-    {
-        timer = 0.0;
-        count_up = true;
+Heartbeat::Heartbeat(MPD::Client& client) :
+    AbstractClientUser(client),
+    mp_LastNotifyData(NULL)
+{
+    timer = 0.0;
+    count_up = true;
+    /* Timeout signal */
+    Glib::signal_timeout().connect(sigc::mem_fun(*this,&Heartbeat::on_interval),INTERVAL);
+}
 
-        /* Timeout signal */
-        Glib::signal_timeout().connect(sigc::mem_fun(*this,&Heartbeat::on_interval),INTERVAL);
+// -------------
+
+Heartbeat::~Heartbeat()
+{}
+
+// -------------
+
+gboolean Heartbeat::on_interval()
+{
+    if(count_up)
+    {
+        timer += STEPSIZE;
+        signal_proxy.emit(timer);
     }
+    return TRUE;
+}
 
-    // -------------
+// -------------
 
-    Heartbeat::~Heartbeat()
-    {}
+void Heartbeat::reset()
+{
+    timer = 0.0;
+}
 
-    // -------------
+// -------------
 
-    gboolean Heartbeat::on_interval()
+void Heartbeat::pause()
+{
+    count_up = false;
+}
+
+// -------------
+
+void Heartbeat::play()
+{
+    count_up = true;
+}
+
+// -------------
+
+void Heartbeat::set(double val)
+{
+    timer = val;
+}
+
+// -------------
+
+double Heartbeat::get()
+{
+    return timer;
+}
+
+// -------------
+
+TimerNotifier& Heartbeat::signal_client_update()
+{
+    return signal_proxy;
+}
+
+// -------------
+
+void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
+{
+    if(is_connected && mp_LastNotifyData)
+        signal_proxy.emit(mp_LastNotifyData->get_status().get_elapsed_ms() / 1000.0);
+    else
+        pause();
+}
+
+// -------------
+
+/* Implemented from AbstractClientUser, but empty in this case */
+void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+{
+    mp_LastNotifyData = &data;
+    if(event & (MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
     {
-        if(count_up)
+        MPD::Status& status = data.get_status();
+        set(status.get_elapsed_ms() / 1000.0);
+        switch(status.get_state())
         {
-            timer += STEPSIZE;
-            signal_proxy.emit(timer);
-        }
-        return TRUE;
-    }
-
-    // -------------
-
-    void Heartbeat::reset()
-    {
-        timer = 0.0;
-    }
-
-    // -------------
-
-    void Heartbeat::pause()
-    {
-        count_up = false;
-    }
-
-    // -------------
-
-    void Heartbeat::play()
-    {
-        count_up = true;
-    }
-
-    // -------------
-
-    void Heartbeat::set(double val)
-    {
-        timer = val;
-    }
-
-    // -------------
-
-    double Heartbeat::get()
-    {
-        return timer;
-    }
-
-    // -------------
-
-    TimerNotifier& Heartbeat::signal_client_update()
-    {
-        return signal_proxy;
-    }
-
-    // -------------
-
-    void Heartbeat::on_connection_change(bool server_changed, bool is_connected)
-    {
-        if(is_connected && mp_LastNotifyData)
-            signal_proxy.emit(mp_LastNotifyData->get_status().get_elapsed_ms() / 1000.0);
-        else
+        case MPD_STATE_PLAY:
+            play();
+            break;
+        case MPD_STATE_STOP:
+        case MPD_STATE_PAUSE:
             pause();
-    }
-
-    // -------------
-
-    /* Implemented from AbstractClientUser, but empty in this case */
-    void Heartbeat::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
-    {
-        mp_LastNotifyData = &data;
-        if(event & (MPD_IDLE_OUTPUT | MPD_IDLE_PLAYER | MPD_IDLE_OPTIONS))
-        {
-            MPD::Status& status = data.get_status();
-            set(status.get_elapsed_ms() / 1000.0);
-            switch(status.get_state())
-            {
-                case MPD_STATE_PLAY:
-                    play();
-                    break;
-                case MPD_STATE_STOP:
-                case MPD_STATE_PAUSE:
-                    pause();
-                    break;
-                case MPD_STATE_UNKNOWN:
-                default:
-                    break;
-            }
+            break;
+        case MPD_STATE_UNKNOWN:
+        default:
+            break;
         }
     }
+}
 }

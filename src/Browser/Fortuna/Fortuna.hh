@@ -36,44 +36,44 @@
 
 namespace Browser
 {
+/**
+ * @brief A little easteregg browser
+ *
+ * Shows a kittenhead and a speechbubble which shows a random fortune,
+ * that is read from the 'fortune' utility. If fortune does not seem to be
+ * installed the predefined glade string is not modified.
+ *
+ * Usually this browser only shown on startup, else it's hidden.
+ */
+class Fortuna : public AbstractBrowser
+{
+public:
+
     /**
-     * @brief A little easteregg browser
+     * @brief Builds itself once being passed a builder reference
      *
-     * Shows a kittenhead and a speechbubble which shows a random fortune,
-     * that is read from the 'fortune' utility. If fortune does not seem to be
-     * installed the predefined glade string is not modified.
-     *
-     * Usually this browser only shown on startup, else it's hidden.
+     * @param builder
      */
-    class Fortuna : public AbstractBrowser
-    {
-    public:
+    Fortuna(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
 
-        /**
-         * @brief Builds itself once being passed a builder reference
-         *
-         * @param builder
-         */
-        Fortuna(Glib::RefPtr<Gtk::Builder>& builder,GManager::BrowserList& list);
+    /**
+     * @brief Implemented by AbstractBrowser
+     *
+     * @return
+     */
+    Gtk::Widget * get_container();
 
-        /**
-         * @brief Implemented by AbstractBrowser
-         *
-         * @return
-         */
-        Gtk::Widget * get_container();
+private:
 
-    private:
+    /* Workers */
+    Glib::ustring get_fortune();
+    void on_refresh_fortune();
 
-        /* Workers */
-        Glib::ustring get_fortune();
-        void on_refresh_fortune();
-
-        /* Widgets */
-        Gtk::ScrolledWindow * mp_FortuneScroll;
-        Gtk::Label * mp_FortuneLabel;
-        Gtk::Button * mp_FortuneRefresh;
-    };
+    /* Widgets */
+    Gtk::ScrolledWindow * mp_FortuneScroll;
+    Gtk::Label * mp_FortuneLabel;
+    Gtk::Button * mp_FortuneRefresh;
+};
 }
 
 

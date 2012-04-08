@@ -38,35 +38,35 @@
 
 namespace GManager
 {
-    /**
-     * @brief Manager for the Timeslide in the topbar
-     *
-     * Updates the time every 500ms according to the Heartbeat.
-     */
-    class Timeslide : public MPD::AbstractClientUser, public CairoSlider
-    {
-    public:
-        Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+/**
+ * @brief Manager for the Timeslide in the topbar
+ *
+ * Updates the time every 500ms according to the Heartbeat.
+ */
+class Timeslide : public MPD::AbstractClientUser, public CairoSlider
+{
+public:
+    Timeslide(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-    private:
-        void tick(double time);
+private:
+    void tick(double time);
 
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-        
-        bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
-        void on_percent_change();
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        // Vars:
+    bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
+    void on_percent_change();
 
-        // Heartbeat-giver (ticks every 0.5 seconds)
-        GManager::Heartbeat * mp_Heartbeat;
+    // Vars:
 
-        // Currently played song
-        MPD::Song * currSong;
+    // Heartbeat-giver (ticks every 0.5 seconds)
+    GManager::Heartbeat * mp_Heartbeat;
 
-        // Draw the full line, or just an empty shell
-        bool drawFullLine;
-    };
+    // Currently played song
+    MPD::Song * currSong;
+
+    // Draw the full line, or just an empty shell
+    bool drawFullLine;
+};
 }
 #endif

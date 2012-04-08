@@ -36,22 +36,22 @@
 
 namespace Browser
 {
-    /**
-     * @brief The popup that shows up when rightclickin an icon
-     *
-     * See Browser::BasePopup for more detailed description.
-     */
-    class DatabasePopup : public BasePopup
-    {
-    public:
-        DatabasePopup(Gtk::Widget& to_register);
+/**
+ * @brief The popup that shows up when rightclickin an icon
+ *
+ * See Browser::BasePopup for more detailed description.
+ */
+class DatabasePopup : public BasePopup
+{
+public:
+    DatabasePopup(Gtk::Widget& to_register);
 
-    private:
-        Glib::RefPtr<Gtk::Action> m_ActionAdd;
-        Glib::RefPtr<Gtk::Action> m_ActionAddAll;
-        Glib::RefPtr<Gtk::Action> m_ActionReplace;
-        Glib::RefPtr<Gtk::Action> m_ActionUpdate;
-        Glib::RefPtr<Gtk::Action> m_ActionRescan;
-    };
+private:
+    Glib::RefPtr<Gtk::Action> m_ActionAdd;
+    Glib::RefPtr<Gtk::Action> m_ActionAddAll;
+    Glib::RefPtr<Gtk::Action> m_ActionReplace;
+    Glib::RefPtr<Gtk::Action> m_ActionUpdate;
+    Glib::RefPtr<Gtk::Action> m_ActionRescan;
+};
 }
 #endif /* end of include guard: FREYA_DATABASE_POPUP_GUARD */

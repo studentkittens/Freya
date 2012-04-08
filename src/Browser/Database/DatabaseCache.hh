@@ -37,100 +37,100 @@
 
 namespace Browser
 {
+/**
+ * @brief Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data
+ *
+ * Note: It is actually a Proxy FOR MPD::Client, but used by Browser::Database.
+ *
+ * Once the Database requests a list of files for a certain path, a hashmap is looked up if it's already
+ * cached, if not DatabaseCache asks the client for the filelist.
+ *
+ * As Hashmap a std::map was used, with the Path as key and a vector of values as Hashvalue.
+ */
+class DatabaseCache :
+    public MPD::AbstractClientUser,
+    public MPD::AbstractItemlist,
+    public MPD::AbstractItemGenerator
+{
+public:
+
+    DatabaseCache(MPD::Client& client);
+    virtual ~DatabaseCache();
+
     /**
-     * @brief Acts as a Proxy betwenn Browser::Database and MPD::Client, but caches requested data
+     * @brief Same as MPD::Client::fill_filelist(), but gets locally cached data
      *
-     * Note: It is actually a Proxy FOR MPD::Client, but used by Browser::Database.
-     *
-     * Once the Database requests a list of files for a certain path, a hashmap is looked up if it's already
-     * cached, if not DatabaseCache asks the client for the filelist.
-     *
-     * As Hashmap a std::map was used, with the Path as key and a vector of values as Hashvalue.
+     * @param data_model
+     * @param path
      */
-    class DatabaseCache :
-        public MPD::AbstractClientUser,
-        public MPD::AbstractItemlist,
-        public MPD::AbstractItemGenerator
-    {
-    public:
+    void fill_filelist(MPD::AbstractItemlist& data_model, const char * path);
 
-        DatabaseCache(MPD::Client& client);
-        virtual ~DatabaseCache();
+    /**
+     * @brief Implemented from AbstractItemlist
+     *
+     * You are not supposed to call this yourself.
+     *
+     * @param pItem
+     */
+    void add_item(MPD::AbstractComposite * pItem);
 
-        /**
-         * @brief Same as MPD::Client::fill_filelist(), but gets locally cached data
-         *
-         * @param data_model
-         * @param path
-         */
-        void fill_filelist(MPD::AbstractItemlist& data_model, const char * path);
-
-        /**
-         * @brief Implemented from AbstractItemlist
-         *
-         * You are not supposed to call this yourself.
-         *
-         * @param pItem
-         */
-        void add_item(MPD::AbstractComposite * pItem);
-
-        /* Method stubs .. */
-        void fill_queue(MPD::AbstractItemlist& data_model) {}
-        void fill_queue_changes(MPD::AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
-        void fill_playlists(MPD::AbstractItemlist& data_model) {}
-        void fill_outputs(MPD::AbstractItemlist& data_model) {}
+    /* Method stubs .. */
+    void fill_queue(MPD::AbstractItemlist& data_model) {}
+    void fill_queue_changes(MPD::AbstractItemlist& data_model, unsigned last_version, unsigned& first_pos) {}
+    void fill_playlists(MPD::AbstractItemlist& data_model) {}
+    void fill_outputs(MPD::AbstractItemlist& data_model) {}
 
 
-    private:
+private:
 
-        /**
-         * @brief The actual value
-         *
-         * First bool is true if it's a file,
-         * void* points to the actual data. Cast when necessary.
-         */
-        typedef MPD::AbstractComposite* CachePairType;
-        /**
-         * @brief The list of actual values
-         */
-        typedef std::vector<CachePairType> CacheVectorType;
-        /**
-         * @brief The Hashmap, The path is used as key value, default comparator is used
-         */
-        typedef std::map<Glib::ustring,CacheVectorType> CacheMapType;
+    /**
+     * @brief The actual value
+     *
+     * First bool is true if it's a file,
+     * void* points to the actual data. Cast when necessary.
+     */
+    typedef MPD::AbstractComposite* CachePairType;
+    /**
+     * @brief The list of actual values
+     */
+    typedef std::vector<CachePairType> CacheVectorType;
+    /**
+     * @brief The Hashmap, The path is used as key value, default comparator is used
+     */
+    typedef std::map<Glib::ustring,CacheVectorType> CacheMapType;
 
-        /* -------------------------------- */
+    /* -------------------------------- */
 
-        /**
-         * @brief Implemented from AbstractClientUser
-         *
-         * @param event
-         * @param data
-         */
-        void on_client_update(mpd_idle event, MPD::NotifyData& data);
-        /**
-         * @brief Implemented from AbstractClientUser
-         *
-         * @param server_changed
-         * @param is_connected
-         */
-        void on_connection_change(bool server_changed, bool is_connected);
+    /**
+     * @brief Implemented from AbstractClientUser
+     *
+     * @param event
+     * @param data
+     */
+    void on_client_update(mpd_idle event, MPD::NotifyData& data);
+    /**
+     * @brief Implemented from AbstractClientUser
+     *
+     * @param server_changed
+     * @param is_connected
+     */
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        /* Logic */
-        void clear_cache();
+    /* Logic */
+    void clear_cache();
 
-        /* ------------------------------- */
+    /* ------------------------------- */
 
-        /* Path is the key, value the song or dir */
-        CacheMapType cacheMap;
+    /* Path is the key, value the song or dir */
+    CacheMapType cacheMap;
 
-        /* The last vector used by fill_filelist */
-        CacheVectorType * lastVec;
+    /* The last vector used by fill_filelist */
+    CacheVectorType * lastVec;
 
-        /* Do not clear on first start.. */
-        bool isFirstStart;
-        bool serverChanged;
-    };
+    /* Do not clear on first start.. */
+    bool isFirstStart;
+    bool serverChanged;
+};
 }
 
 #endif /* end of include guard: FREYA_DATABASE_CACHE */

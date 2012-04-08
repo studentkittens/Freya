@@ -41,65 +41,65 @@ typedef sigc::signal<void,double> TimerNotifier;
 
 namespace GManager
 {
+/**
+ * @brief A software clock that emits a signal every 500ms
+ *
+ * It is used for all classes that need to show the current time,
+ * Freya does not requery the MPD Status like other clients do.
+ */
+class Heartbeat : public MPD::AbstractClientUser
+{
+public:
+
+    Heartbeat(MPD::Client& client);
+    ~Heartbeat();
     /**
-     * @brief A software clock that emits a signal every 500ms
+     * @brief Register to the hearbeat signal
      *
-     * It is used for all classes that need to show the current time,
-     * Freya does not requery the MPD Status like other clients do.
+     * The prototype is void on_heartbeat(double time)
+     *
+     * @return A sigc::connection, call connect() on it
      */
-    class Heartbeat : public MPD::AbstractClientUser
-    {
-    public:
+    TimerNotifier& signal_client_update();
 
-        Heartbeat(MPD::Client& client);
-        ~Heartbeat();
-        /**
-         * @brief Register to the hearbeat signal
-         *
-         * The prototype is void on_heartbeat(double time)
-         *
-         * @return A sigc::connection, call connect() on it
-         */
-        TimerNotifier& signal_client_update();
+    /**
+     * @brief Start incrementing
+     */
+    void play();
+    /**
+     * @brief Pause incrementing
+     */
+    void pause();
+    /**
+     * @brief Reset value to 0
+     */
+    void reset();
+    /**
+     * @brief Set the current value
+     *
+     * @param val
+     */
+    void set(double val);
+    /**
+     * @brief Get the current value
+     *
+     * @return
+     */
+    double get();
 
-        /**
-         * @brief Start incrementing
-         */
-        void play();
-        /**
-         * @brief Pause incrementing
-         */
-        void pause();
-        /**
-         * @brief Reset value to 0
-         */
-        void reset();
-        /**
-         * @brief Set the current value
-         *
-         * @param val
-         */
-        void set(double val);
-        /**
-         * @brief Get the current value
-         *
-         * @return
-         */
-        double get();
+private:
 
-    private:
+    double timer;
+    bool count_up;
 
-        double timer;
-        bool count_up;
+    gboolean on_interval();
+    TimerNotifier signal_proxy;
 
-        gboolean on_interval();
-        TimerNotifier signal_proxy;
+    void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        void on_client_update(enum mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
-
-        MPD::NotifyData * mp_LastNotifyData;
-    };
+    MPD::NotifyData * mp_LastNotifyData;
+};
 }
 
 #endif

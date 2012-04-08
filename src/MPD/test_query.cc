@@ -40,60 +40,49 @@ using namespace MPD;
 int main(int argc, char *argv[])
 {
     LogSetVerbosity(Log::LOG_CRITICAL);
-
     setlocale(LC_ALL,"");
-    
     Glib::Timer watch;
     watch.stop();
-
-    if(argc > 3) {
-            
+    if(argc > 3)
+    {
         Client freya;
         Query * query = NULL;
         freya.connect();
-
-        if(strcasecmp(argv[1],"songs") == 0) {
-
+        if(strcasecmp(argv[1],"songs") == 0)
+        {
             query = freya.create_db_songs_query();
             std::vector<MPD::Song*> songlist;
-
-            for(int i = 2; i < argc; i += 2) {
+            for(int i = 2; i < argc; i += 2)
+            {
                 query->add_tag_constraint(argv[i],argv[i+1]);
             }
-
             watch.start();
             query->commit(songlist);
             watch.stop();
-
-            for(std::vector<MPD::Song*>::iterator it = songlist.begin(); it != songlist.end(); it++) {
+            for(std::vector<MPD::Song*>::iterator it = songlist.begin(); it != songlist.end(); it++)
+            {
                 g_print("%s\n",(*it)->get_path());
                 delete *it;
             }
-
             delete query;
-
-        } 
-        else 
-        if(strcasecmp(argv[1],"tags") == 0) {
-
+        }
+        else if(strcasecmp(argv[1],"tags") == 0)
+        {
             mpd_tag_type tag = mpd_tag_name_iparse(argv[2]);
-
             query = freya.create_db_tag_query(tag);
             std::vector<char *> taglist;
-            
-            for(int i = 3; i < argc; i += 2) {
+            for(int i = 3; i < argc; i += 2)
+            {
                 query->add_tag_constraint(argv[i],argv[i+1]);
             }
-
             watch.start();
             query->commit(taglist);
             watch.stop();
-            
-            for(std::vector<char*>::iterator it = taglist.begin(); it != taglist.end(); it++) {
+            for(std::vector<char*>::iterator it = taglist.begin(); it != taglist.end(); it++)
+            {
                 g_print("%s\n",(*it));
                 g_free((*it));
             }
-
             delete query;
         }
     }

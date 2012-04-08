@@ -39,30 +39,30 @@
 
 namespace Browser
 {
-    class Settings;
+class Settings;
 
-    /**
-     * @brief Playback Settings Tab
-     */
-    class SettingsPlayback : public AbstractSettings, public MPD::AbstractClientUser
-    {
-    public:
-        SettingsPlayback(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
-        ~SettingsPlayback();
+/**
+ * @brief Playback Settings Tab
+ */
+class SettingsPlayback : public AbstractSettings, public MPD::AbstractClientUser
+{
+public:
+    SettingsPlayback(MPD::Client& client, Glib::RefPtr<Gtk::Builder> &builder, Browser::Settings * sett);
+    ~SettingsPlayback();
 
-        void accept_new_settings();
-        void decline_new_settings();
-        void reset_settings();
+    void accept_new_settings();
+    void decline_new_settings();
+    void reset_settings();
 
-    private:
+private:
 
-        void on_client_update(mpd_idle event, MPD::NotifyData& data);
-        void on_connection_change(bool server_changed, bool is_connected);
+    void on_client_update(mpd_idle event, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
 
-        Glib::ustring name, stoponexit_name;
-        /* Widgets */
-        Gtk::SpinButton *crossfade;
-        Gtk::CheckButton *stoponexit;
-    };
+    Glib::ustring name, stoponexit_name;
+    /* Widgets */
+    Gtk::SpinButton *crossfade;
+    Gtk::CheckButton *stoponexit;
+};
 }
 #endif

@@ -36,20 +36,20 @@
 
 namespace Browser
 {
-    /**
-     * @brief The Popup for Browser::Queue
-     *
-     * See Browser::BasePopup for a more detailed description.
-     */
-    class QueuePopup : public BasePopup
-    {
-    public:
-        QueuePopup(Gtk::Widget& to_register);
+/**
+ * @brief The Popup for Browser::Queue
+ *
+ * See Browser::BasePopup for a more detailed description.
+ */
+class QueuePopup : public BasePopup
+{
+public:
+    QueuePopup(Gtk::Widget& to_register);
 
-    private:
-        Glib::RefPtr<Gtk::Action> m_ActionDel;
-        Glib::RefPtr<Gtk::Action> m_ActionPlAdd;
-        Glib::RefPtr<Gtk::Action> m_ActionClear;
-    };
+private:
+    Glib::RefPtr<Gtk::Action> m_ActionDel;
+    Glib::RefPtr<Gtk::Action> m_ActionPlAdd;
+    Glib::RefPtr<Gtk::Action> m_ActionClear;
+};
 }
 #endif /* end of include guard: FREYA_QUEUE_POPUP_GUARD */

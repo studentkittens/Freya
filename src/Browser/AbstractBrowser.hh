@@ -39,107 +39,105 @@
  */
 class AbstractBrowser
 {
-    public:
+public:
 
-        friend class GManager::BrowserList;
+    friend class GManager::BrowserList;
 
-        /**
-         * @brief Inherit from this class to be able to add this browser to the browserlist
-         *
-         * @param list a ref to the browserlistmanager
-         * @param name The name shown in the list
-         * @param is_visible if it is visible in the list (most likely true)
-         * @param needs_connection false if this browser works withouth a connection
-         * @param icon the icon shown lefthand to the name
-         */
-        AbstractBrowser(
-                GManager::BrowserList& list,
-                const char * name,
-                bool is_visible,
-                bool needs_connection,
-                Gtk::StockID icon)
-            :
-                m_ListRef(list),
-                m_Name(name),
-                m_IconId(icon),
-                m_NeedsConnection(needs_connection),
-                m_IsVisible(is_visible),
-                m_IsActive(false)
+    /**
+     * @brief Inherit from this class to be able to add this browser to the browserlist
+     *
+     * @param list a ref to the browserlistmanager
+     * @param name The name shown in the list
+     * @param is_visible if it is visible in the list (most likely true)
+     * @param needs_connection false if this browser works withouth a connection
+     * @param icon the icon shown lefthand to the name
+     */
+    AbstractBrowser(
+        GManager::BrowserList& list,
+        const char * name,
+        bool is_visible,
+        bool needs_connection,
+        Gtk::StockID icon)
+        :
+        m_ListRef(list),
+        m_Name(name),
+        m_IconId(icon),
+        m_NeedsConnection(needs_connection),
+        m_IsVisible(is_visible),
+        m_IsActive(false)
     {}
 
-        /**
-         * @brief Tell BrowserList which element to manage
-         *
-         * You are supposed to override this.
-         *
-         * @return A reference to the containing widget of the browser
-         */
-        virtual Gtk::Widget * get_container() = 0; /* No Impl. */
+    /**
+     * @brief Tell BrowserList which element to manage
+     *
+     * You are supposed to override this.
+     *
+     * @return A reference to the containing widget of the browser
+     */
+    virtual Gtk::Widget * get_container() = 0; /* No Impl. */
 
-        /**
-         * @brief Get the name of the browser (shown in the browserlist)
-         *
-         * Note: You do NOT need to override this.
-         *
-         * @return a reference to a ustring
-         */
-        Glib::ustring& get_name()
-        {
-            return m_Name;
-        }
+    /**
+     * @brief Get the name of the browser (shown in the browserlist)
+     *
+     * Note: You do NOT need to override this.
+     *
+     * @return a reference to a ustring
+     */
+    Glib::ustring& get_name()
+    {
+        return m_Name;
+    }
 
-        /**
-         * @brief Returns the set icon for this browser
-         *
-         * @return See above.
-         */
-        Gtk::StockID get_icon_stock_id()
-        {
-            return m_IconId;
-        }
+    /**
+     * @brief Returns the set icon for this browser
+     *
+     * @return See above.
+     */
+    Gtk::StockID get_icon_stock_id()
+    {
+        return m_IconId;
+    }
 
-        /**
-         * @brief Tells if browser is visible in browserlist
-         *
-         * @return a boolean
-         */
-        bool is_visible()
-        {
-            return m_IsVisible;
-        }
+    /**
+     * @brief Tells if browser is visible in browserlist
+     *
+     * @return a boolean
+     */
+    bool is_visible()
+    {
+        return m_IsVisible;
+    }
 
-        /**
-         * @brief If this browser works without a connection (if false)
-         *
-         * @return a boolean
-         */
-        bool needs_connection()
-        {
-            return m_NeedsConnection;
-        }
+    /**
+     * @brief If this browser works without a connection (if false)
+     *
+     * @return a boolean
+     */
+    bool needs_connection()
+    {
+        return m_NeedsConnection;
+    }
 
-        bool is_active()
-        {
-            return m_IsActive;
-        }
+    bool is_active()
+    {
+        return m_IsActive;
+    }
 
-        void on_getting_active() 
-        {
-        }
+    void on_getting_active() {}
 
-        GManager::BrowserList& get_browser_list()
-        {
-            return m_ListRef;
-        }
+    GManager::BrowserList& get_browser_list()
+    {
+        return m_ListRef;
+    }
 
-    private:
+private:
 
-        GManager::BrowserList& m_ListRef;
-        Glib::ustring m_Name;
-        Gtk::StockID m_IconId;
-        bool m_NeedsConnection;
-        bool m_IsVisible;
-        bool m_IsActive;
+    GManager::BrowserList& m_ListRef;
+    Glib::ustring m_Name;
+    Gtk::StockID m_IconId;
+    bool m_NeedsConnection;
+    bool m_IsVisible;
+    bool m_IsActive;
 };
 
 #endif

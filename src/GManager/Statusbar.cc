@@ -40,89 +40,83 @@
 
 namespace GManager
 {
-    Statusbar::Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
-        AbstractClientUser(client)
-    {
-        BUILDER_GET(builder,"statusbar",m_Statusbar);
+Statusbar::Statusbar(Heartbeat& tproxy, MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder) :
+    AbstractClientUser(client)
+{
+    BUILDER_GET(builder,"statusbar",m_Statusbar);
+    mp_Message = NULL;
+    mp_Lastdata = NULL;
+    mp_Heartbeat = &tproxy;
+    mp_Heartbeat->signal_client_update().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
+}
 
-        mp_Message = NULL;
+/* ------------------ */
+
+Statusbar::~Statusbar()
+{
+    g_free(mp_Message);
+}
+
+/* ------------------ */
+
+void Statusbar::on_connection_change(bool server_changed, bool is_connected)
+{
+    if(is_connected == false)
+    {
         mp_Lastdata = NULL;
-
-        mp_Heartbeat = &tproxy;
-        mp_Heartbeat->signal_client_update().connect(sigc::mem_fun(*this,&Statusbar::on_heartbeat));
+        m_Statusbar->set_text("Not connected");
     }
+}
 
-    /* ------------------ */
+/* ------------------ */
 
-    Statusbar::~Statusbar()
+void Statusbar::format_time(unsigned time, char buffer[])
+{
+    g_sprintf(buffer,"%d:%02d",time/60,time%60);
+}
+
+/* ------------------ */
+
+void Statusbar::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+{
+    mp_Lastdata = &data;
+    do_update_message(data);
+}
+
+/* ------------------ */
+
+void Statusbar::on_heartbeat(double time)
+{
+    if(mp_Lastdata != NULL)
     {
-        g_free(mp_Message);
+        do_update_message(*mp_Lastdata);
     }
+}
 
-    /* ------------------ */
+/* ------------------ */
 
-    void Statusbar::on_connection_change(bool server_changed, bool is_connected)
-    {
-        if(is_connected == false) {
-            mp_Lastdata = NULL;
-            m_Statusbar->set_text("Not connected");
-        }
-    }
-
-    /* ------------------ */
-
-    void Statusbar::format_time(unsigned time, char buffer[])
-    {
-        g_sprintf(buffer,"%d:%02d",time/60,time%60);
-    }
-
-    /* ------------------ */
-
-    void Statusbar::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
-    {
-        mp_Lastdata = &data;
-        do_update_message(data);
-    }
-
-    /* ------------------ */
-
-    void Statusbar::on_heartbeat(double time)
-    {
-        if(mp_Lastdata != NULL)
-        {
-            do_update_message(*mp_Lastdata);
-        }
-    }
-
-    /* ------------------ */
-
-    void Statusbar::do_update_message(MPD::NotifyData& data)
-    {
-        MPD::Status& status = data.get_status();
-        MPD::Statistics& stats = data.get_statistics();
-
-        char elapsed[MAX_TIME_BUF] = {0};
-        char totaltm[MAX_TIME_BUF] = {0};
-
-        format_time((unsigned)mp_Heartbeat->get(),elapsed);
-        format_time(status.get_total_time(), totaltm);
-
-        /* Free previous message, does nothing on NULL */
-        g_free(mp_Message);
-
-        Glib::ustring db_play_time = Utils::seconds_to_duration(stats.get_db_play_time());
-        mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s total playtime | %u%% volume",
-                                     status.get_audio_sample_rate(),
-                                     status.get_audio_bits(),
-                                     status.get_kbit_rate(),
-                                     status.get_audio_channels() == 1 ? "Mono" : "Stereo",
-                                     elapsed,
-                                     totaltm,
-                                     stats.get_number_of_songs(),
-                                     db_play_time.c_str(),
-                                     CLAMP(status.get_volume(),0,100)
-                                    );
-
-        m_Statusbar->set_text(mp_Message);
-    }
+void Statusbar::do_update_message(MPD::NotifyData& data)
+{
+    MPD::Status& status = data.get_status();
+    MPD::Statistics& stats = data.get_statistics();
+    char elapsed[MAX_TIME_BUF] = {0 };
+    char totaltm[MAX_TIME_BUF] = {0 };
+    format_time((unsigned)mp_Heartbeat->get(),elapsed);
+    format_time(status.get_total_time(), totaltm);
+    /* Free previous message, does nothing on NULL */
+    g_free(mp_Message);
+    Glib::ustring db_play_time = Utils::seconds_to_duration(stats.get_db_play_time());
+    mp_Message = g_strdup_printf("%uHz | %ubit | %dkbit | %s | %s/%s | %u songs | %s total playtime | %u%% volume",
+                                 status.get_audio_sample_rate(),
+                                 status.get_audio_bits(),
+                                 status.get_kbit_rate(),
+                                 status.get_audio_channels() == 1 ? "Mono" : "Stereo",
+                                 elapsed,
+                                 totaltm,
+                                 stats.get_number_of_songs(),
+                                 db_play_time.c_str(),
+                                 CLAMP(status.get_volume(),0,100)
+                                );
+    m_Statusbar->set_text(mp_Message);
+}
 }

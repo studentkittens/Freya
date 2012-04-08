@@ -34,74 +34,73 @@
 
 namespace GManager
 {
-    TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
-        : AbstractClientUser(client)
+TitleLabel::TitleLabel(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder)
+    : AbstractClientUser(client)
+{
+    BUILDER_GET(builder,"top_label",mp_TopLabel);
+    BUILDER_GET(builder,"next_song_artist",mp_NextSongArtistLabel);
+    BUILDER_GET(builder,"next_song_title",mp_NextSongTitleLabel);
+}
+
+//----------------
+
+void TitleLabel::stash_next_title()
+{
+    mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
+    mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+}
+
+//----------------
+
+void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
+{
+    MPD::Song * current_song = data.get_next_song();
+    if(current_song != NULL)
     {
-        BUILDER_GET(builder,"top_label",mp_TopLabel);
-        BUILDER_GET(builder,"next_song_artist",mp_NextSongArtistLabel);
-        BUILDER_GET(builder,"next_song_title",mp_NextSongTitleLabel);
+        mp_NextSongArtistLabel->set_markup(current_song->song_format("<small>${title}</small>"));
+        mp_NextSongTitleLabel->set_markup(current_song->song_format("<small>${artist}</small>"));
     }
-
-    //----------------
-
-    void TitleLabel::stash_next_title()
+    else
     {
-        mp_NextSongArtistLabel->set_markup("<small>No next Artist</small>");
-        mp_NextSongTitleLabel->set_markup("<small>No next Title</small>");
+        stash_next_title();
     }
+}
 
-    //----------------
+//----------------
 
-    void TitleLabel::update_next_song_widget(MPD::NotifyData& data)
+void TitleLabel::on_connection_change(bool server_changed, bool is_connected)
+{
+    if(!is_connected)
     {
-        MPD::Song * current_song = data.get_next_song();
+        mp_TopLabel->set_markup("<b>Not connected you are.</b>");
+        stash_next_title();
+    }
+}
+
+//----------------
+
+void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
+{
+    if(event & (MPD_IDLE_PLAYER))
+    {
+        MPD::Song * current_song = data.get_song();
         if(current_song != NULL)
         {
-            mp_NextSongArtistLabel->set_markup(current_song->song_format("<small>${title}</small>"));
-            mp_NextSongTitleLabel->set_markup(current_song->song_format("<small>${artist}</small>"));
+            mp_TopLabel->set_markup(current_song->song_format(
+                                        " <b>${title}</b> [Track ${track}]"
+                                        " <i>by</i> "
+                                        "${artist} <i>on</i> "
+                                        "${album} (${date})"
+                                    ));
         }
         else
         {
-            stash_next_title();
+            mp_TopLabel->set_markup("<b>Not Playing</b>");
         }
     }
-
-    //----------------
-
-    void TitleLabel::on_connection_change(bool server_changed, bool is_connected)
+    if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS))
     {
-        if(!is_connected)
-        {
-            mp_TopLabel->set_markup("<b>Not connected you are.</b>");
-            stash_next_title();
-        }
+        update_next_song_widget(data);
     }
-
-    //----------------
-
-    void TitleLabel::on_client_update(enum mpd_idle event, MPD::NotifyData& data)
-    {
-        if(event & (MPD_IDLE_PLAYER))
-        {
-            MPD::Song * current_song = data.get_song();
-            if(current_song != NULL)
-            {
-                mp_TopLabel->set_markup(current_song->song_format(
-                            " <b>${title}</b> [Track ${track}]"
-                            " <i>by</i> "
-                            "${artist} <i>on</i> "
-                            "${album} (${date})"
-                            ));
-            }
-            else
-            {
-                mp_TopLabel->set_markup("<b>Not Playing</b>");
-            }
-        }
-
-        if(event & (MPD_IDLE_PLAYER|MPD_IDLE_OPTIONS))
-        {
-            update_next_song_widget(data);
-        }
-    }
+}
 }

@@ -33,50 +33,50 @@
 
 namespace MPD
 {
-    class BaseClient;
+class BaseClient;
+
+/**
+ * @brief Abstract base class for classes that want to implement spefic MPD Commands.
+ */
+class AbstractClientExtension
+{
+public:
 
     /**
-     * @brief Abstract base class for classes that want to implement spefic MPD Commands.
+     * @brief ClientExtensions need a reference to the Client.
+     *
+     * @param base_client a reference to the MPD::Client
      */
-    class AbstractClientExtension
+    AbstractClientExtension(BaseClient& base_client)
     {
-    public:
+        mp_BaseClient = &base_client;
+    }
 
-        /**
-         * @brief ClientExtensions need a reference to the Client.
-         *
-         * @param base_client a reference to the MPD::Client
-         */
-        AbstractClientExtension(BaseClient& base_client)
-        {
-            mp_BaseClient = &base_client;
-        }
+protected:
 
-    protected:
-
-        BaseClient * mp_BaseClient;
-    };
+    BaseClient * mp_BaseClient;
+};
 
 /* Get the mpd_connection */
-#define get_c_connection()                                 \
-        (mp_BaseClient->is_connected()) ?                  \
-        mp_BaseClient->get_connection().get_connection() : \
-        NULL
+#define get_c_connection()                             \
+    (mp_BaseClient->is_connected()) ?                  \
+    mp_BaseClient->get_connection().get_connection() : \
+    NULL
 
 /* Go into active mode */
-#define EXTERNAL_GET_BUSY                     \
-            if(mp_BaseClient->is_connected()) \
-            {                                 \
-                mp_BaseClient->go_busy();     \
-                mpd_connection * conn =       \
-                get_c_connection();           \
-                if(conn != NULL) {
+#define EXTERNAL_GET_BUSY             \
+    if(mp_BaseClient->is_connected()) \
+    {                                 \
+        mp_BaseClient->go_busy();     \
+        mpd_connection * conn =       \
+         get_c_connection();          \
+        if(conn != NULL) {
 
 /* Go back idling, *never* forget this */
-#define EXTERNAL_GET_LAID                 \
-                }                         \
-                mp_BaseClient->go_idle(); \
-            }
+#define EXTERNAL_GET_LAID     \
+    }                         \
+    mp_BaseClient->go_idle(); \
+    }
 
 }
 

@@ -42,24 +42,20 @@ void selected_callback(Glib::ustring ip,Glib::ustring hostname,Glib::ustring nam
     CONFIG_SET_AS_INT("settings.connection.port",port);
     cerr << ip << endl << hostname << endl << name << endl << port << endl;
 }
-#endif 
+#endif
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 #if 0
     Gtk::Main kit(argc, argv);
-
     /* Build Browser */
     Avahi::Browser handle;
-
     if(handle.is_connected())
     {
         handle.signal_selection_done().connect(sigc::ptr_fun(selected_callback));
-
         /* Start the GLIB Main Loop */
         Gtk::Main::run(handle.get_window());
     }
-
 #endif
     /* Goodbye */
     return EXIT_SUCCESS;

@@ -38,29 +38,29 @@
 
 namespace GManager
 {
-    /**
-     * @brief Manages the VolumeSlider
-     *
-     * Updates on the mixer event, only updates every 0.05 seconds to prevent high ressource-usage.
-     * Also schedules an Glib::signal_idle() event instead of executing it directly.
-     */
-    class VolumeSlider : public MPD::AbstractClientUser, public CairoSlider 
-    {
-        public:
-            VolumeSlider(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
+/**
+ * @brief Manages the VolumeSlider
+ *
+ * Updates on the mixer event, only updates every 0.05 seconds to prevent high ressource-usage.
+ * Also schedules an Glib::signal_idle() event instead of executing it directly.
+ */
+class VolumeSlider : public MPD::AbstractClientUser, public CairoSlider
+{
+public:
+    VolumeSlider(MPD::Client& client, const Glib::RefPtr<Gtk::Builder>& builder);
 
-        private:
+private:
 
-            void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
-            void on_connection_change(bool server_changed, bool is_connected);
-            void volume_notify(int curVol);
-            void do_volume_step();
+    void on_client_update(enum mpd_idle type, MPD::NotifyData& data);
+    void on_connection_change(bool server_changed, bool is_connected);
+    void volume_notify(int curVol);
+    void do_volume_step();
 
-        protected:
+protected:
 
-            bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
-            void on_percent_change();
-    };
+    bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
+    void on_percent_change();
+};
 }
 
 #endif

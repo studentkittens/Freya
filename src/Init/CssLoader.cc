@@ -38,43 +38,45 @@
 
 #include "../Log/Writer.hh"
 
-namespace Init 
+namespace Init
 {
-    CssLoader::CssLoader()
+CssLoader::CssLoader()
+{
+    Init::Path cfg;
+    Glib::ustring cssPath = cfg.path_to_css();
+    Glib::RefPtr<Gtk::CssProvider> cssProv = Gtk::CssProvider::create();
+    Glib::RefPtr<Gtk::StyleContext> ctx = Gtk::StyleContext::create();
+    try
     {
-        Init::Path cfg;
-        Glib::ustring cssPath = cfg.path_to_css();
-
-        Glib::RefPtr<Gtk::CssProvider> cssProv = Gtk::CssProvider::create();
-        Glib::RefPtr<Gtk::StyleContext> ctx = Gtk::StyleContext::create();
-
-        try {
-            cssProv->load_from_path(cssPath);
-        } catch(...) {
-            /* 
-             * Try to write a default css file 
-             * to the location, which resembles
-             * the default css. 
-             * It will be read on the next start
-             */
-            FILE * overlay = fopen(cssPath.c_str(),"w");
-            if(overlay != NULL) {
-                Info("Wrote default css-style to %s",cssPath.c_str());
-                fprintf(overlay,Init::defaultcss_inl.c_str());
-                fclose(overlay);
-            } else {
-                Warning("No css-style loaded from %s",cssPath.c_str());
-            }
-
-            /* 
-             * Load from the defaultcss
-             * string data for now.
-             *
-             * Retry on next start
-             */ 
-            cssProv->load_from_data(Init::defaultcss_inl);
-        }
-
-        ctx->add_provider_for_screen(Gdk::Screen::get_default(),cssProv,INT_MAX);
+        cssProv->load_from_path(cssPath);
     }
+    catch(...)
+    {
+        /*
+         * Try to write a default css file
+         * to the location, which resembles
+         * the default css.
+         * It will be read on the next start
+         */
+        FILE * overlay = fopen(cssPath.c_str(),"w");
+        if(overlay != NULL)
+        {
+            Info("Wrote default css-style to %s",cssPath.c_str());
+            fprintf(overlay,Init::defaultcss_inl.c_str());
+            fclose(overlay);
+        }
+        else
+        {
+            Warning("No css-style loaded from %s",cssPath.c_str());
+        }
+        /*
+         * Load from the defaultcss
+         * string data for now.
+         *
+         * Retry on next start
+         */
+        cssProv->load_from_data(Init::defaultcss_inl);
+    }
+    ctx->add_provider_for_screen(Gdk::Screen::get_default(),cssProv,INT_MAX);
+}
 }

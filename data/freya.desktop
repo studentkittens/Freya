@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Freya
+Exec=Freya %u
+Icon=freya
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;Music;

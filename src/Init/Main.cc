@@ -32,6 +32,8 @@
 
 #include "../../config.h"
 
+#include "cmdoptions.hh"
+
 #include "../GManager/Window.hh"
 #include "../GManager/PlaybackButtons.hh"
 #include "../GManager/BrowserList.hh"
@@ -76,15 +78,15 @@ int main(int argc, char *argv[])
     Glib::thread_init(NULL);
     setlocale(LC_ALL,"");
 
-    Gtk::Main kit(argc,argv);
+    // TODO: Change this to Gtk::Application once available
+    Gtk::Main app(argc,argv);
 
     try
     {
-        /* Check if debug output enabled */
-        if(argc > 1 && !strcmp("-v",argv[1]))
-            LogSetVerbosity(Log::LOG_DEBUG);
-        else
-            LogSetVerbosity(Log::LOG_INFO);
+        // Parse arguments (this may call exit() if 
+        // parsing got wrong, so no important Init 
+        // was done till here
+        Init::parse_and_handle_arguments(argc,argv);
 
 #if USE_GLYR
         /* Metadata System */
@@ -171,7 +173,7 @@ int main(int argc, char *argv[])
 
         Debug("Entering Mainloop!");
 
-        kit.run();
+        app.run();
 
         /*------ END ---------- */
 

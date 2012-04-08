@@ -169,3 +169,5 @@ MESSAGE("      * (-DUSE_LIBNOTIFY) Use libnotify (For notifcations) :  ${USE_LIB
 MESSAGE("      * (-DUSE_AVAHI)     Use Avahi (Built-in Serverlist)  :  ${USE_AVAHI}     ")
 MESSAGE("                                                                               ")
 
+ADD_SUBDIRECTORY(data)
+

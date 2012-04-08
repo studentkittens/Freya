@@ -1,0 +1,2 @@
+ADD_LIBRARY(FreyaBrowserPlaylistLib STATIC PlaylistManager.cc PlaylistManagerPopup.cc)
+TARGET_LINK_LIBRARIES(FreyaBrowserPlaylistLib ${GTKMM3_PACKAGE_LIBRARIES})

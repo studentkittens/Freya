@@ -35,24 +35,34 @@
 
 namespace GManager
 {
+    Gtk::Window * Window::current_main_window = NULL;
+    
+    /*-------------------------*/
+
+    Gtk::Window * Window::get_current_window()
+    {
+        return current_main_window;
+    }
+
+
+    /*-------------------------*/
+
     Window::Window(const Glib::RefPtr<Gtk::Builder> &builder)
     {
         main_window=NULL;
         BUILDER_GET_NO_MANAGE(builder,"FreyaMainWindow",main_window);
 
-        main_window->signal_delete_event().connect(sigc::mem_fun(*this,&Window::on_delete_event));
+        main_window->signal_delete_event().connect(
+                sigc::mem_fun(*this,&Window::on_delete_event));
 
+        current_main_window = main_window;
     }
 
     /*-------------------------*/
 
     Window::~Window()
     {
-        if(main_window!=NULL)
-        {
-            delete main_window;
-            main_window=NULL;
-        }
+        delete main_window;
     }
 
     /*-------------------------*/

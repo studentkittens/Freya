@@ -1,0 +1,2 @@
+ADD_LIBRARY(FreyaBrowserFortunaLib STATIC Fortuna.cc)
+TARGET_LINK_LIBRARIES(FreyaBrowserFortunaLib ${GTKMM3_PACKAGE_LIBRARIES})

@@ -71,6 +71,11 @@ void parse_and_handle_arguments(int argc, char *argv[])
         {
             LogSetVerbosity(Log::LOG_DEBUG);
         }
+        else
+        {
+            LogSetVerbosity(Log::LOG_INFO);
+        }
+
         while(override_opt && *override_opt)
         {
             gchar * key = g_strdup(*override_opt);

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Freya
 Exec=Freya %u
-Icon=freya
+Icon=media-cdrom
 Terminal=false
 Type=Application
 StartupNotify=true

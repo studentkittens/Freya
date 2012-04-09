@@ -47,7 +47,7 @@ class PlaylistAddDialog : public MPD::AbstractClientUser
 {
 public:
     PlaylistAddDialog(MPD::Client& client, Glib::RefPtr<Gtk::Builder> builder);
-    ~PlaylistAddDialog();
+    virtual ~PlaylistAddDialog();
 
     /**
      * @brief Show the dialog (closes itself)

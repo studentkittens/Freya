@@ -151,6 +151,8 @@ protected:
      */
     BaseClient();
 
+    virtual ~BaseClient() {}
+
     /**
      * @brief This is called internally by MPD::Client and does the actual connect work
      *

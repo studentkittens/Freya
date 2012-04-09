@@ -132,12 +132,12 @@ int main(int argc, char *argv[])
         Browser::Settings settings_browser(client,builder,&tray,browser_list);
         browser_list.add(settings_browser);
 #if USE_AVAHI
-        Browser::ServerList server_list(builder,browser_list);
-        browser_list.add(server_list);
+        //Browser::ServerList server_list(builder,browser_list);
+        //browser_list.add(server_list);
 #endif
         browser_list.set(queue_browser);
-        main_window.get_window()->show();
         Debug("Setting up GUI done.");
+        main_window.get_window()->show();
         ///////////////////
         /* Send a good morning to all widgets */
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
@@ -148,6 +148,7 @@ int main(int argc, char *argv[])
         Debug("Entering Mainloop!");
         app.run();
         /*------ END ---------- */
+        main_window.get_window()->hide();
         if(CONFIG_GET_AS_INT("settings.playback.stoponexit"))
         {
             client.playback_stop();

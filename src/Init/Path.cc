@@ -32,6 +32,7 @@
 
 #include "../Config/defaultcfg.inl"
 
+#include <unistd.h>
 #include <string.h>
 #include <glib/gstdio.h>
 #include <glyr/cache.h>

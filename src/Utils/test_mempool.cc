@@ -1,4 +1,5 @@
 #include "UseMemPool.hh"
+#include <glib.h>
 
 ////////////////////////////////////////
 
@@ -18,6 +19,7 @@ class SomeClassWithoutMemPool
 
 int main()
 {
+#if !FREYA_DEBUG
     double t1, t2;
     const int iterations = 500000;
     GTimer * watch = g_timer_new();
@@ -59,4 +61,8 @@ int main()
     g_timer_stop(watch);
     g_print("%f seconds to clean up\n",g_timer_elapsed(watch,NULL));
     g_timer_destroy(watch);
+#else
+    g_message("Not compiled with MemPool Support => No testing possible.");
+
+#endif
 }

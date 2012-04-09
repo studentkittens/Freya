@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
         MPD::Song::prealloc(10000);
         atexit(MPD::Song::disposeAll);
         /* Instance the client */
-        MPD::Client client;
+        MPD::Client * client = new MPD::Client;
         /* Try to laod the css file */
         Init::CssLoader css;
         /* Get the glade file */
@@ -103,38 +103,43 @@ int main(int argc, char *argv[])
         BUILDER_ADD(builder,"ui/Freya.glade");
         /* Instanmce gui elements */
         GManager::Window main_window(builder);
-        GManager::Heartbeat proxy(client);
-        GManager::Timeslide timeslide(proxy,client,builder);
-        GManager::VolumeSlider vol_button(client,builder);
-        GManager::Statusbar statusbar(proxy,client,builder);
-        GManager::PlaybackButtons buttons(client,builder);
-        GManager::TitleLabel title_label(client,builder);
-        GManager::Statusicons status_icons(client,builder);
-        GManager::MenuList menu_list(client,builder);
-        GManager::Trayicon tray(client,*main_window.get_window());
+        GManager::Heartbeat * heartbeat = new GManager::Heartbeat(*client);
+        GManager::Timeslide timeslide(*heartbeat,*client,builder);
+        GManager::VolumeSlider vol_button(*client,builder);
+        GManager::Statusbar statusbar(*heartbeat,*client,builder);
+        GManager::PlaybackButtons buttons(*client,builder);
+        GManager::TitleLabel title_label(*client,builder);
+        GManager::Statusicons status_icons(*client,builder);
+        GManager::MenuList menu_list(*client,builder);
+        GManager::Trayicon tray(*client,*main_window.get_window());
 #if USE_LIBNOTIFY
-        GManager::NotifyManager notify_mgr(client);
+        GManager::NotifyManager notify_mgr(*client);
 #endif
-        GManager::BrowserList browser_list(client,builder);
+        GManager::BrowserList browser_list(*client,builder);
         /* Instance browsers */
 #if USE_GLYR
-        Browser::NowPlaying np_browser(client,builder,browser_list);
+        Browser::NowPlaying np_browser(*client,builder,browser_list);
         browser_list.add(np_browser);
 #endif
-        Browser::Queue queue_browser(client,builder,browser_list);
+        Browser::Queue queue_browser(*client,builder,browser_list);
         browser_list.add(queue_browser);
-        Browser::PlaylistManager playlists_browser(client,builder,browser_list);
+        Browser::PlaylistManager playlists_browser(*client,builder,browser_list);
         browser_list.add(playlists_browser);
-        Browser::Database db_browser(client,builder,browser_list);
-        browser_list.add(db_browser);
-        Browser::StatBrowser stat_browser(client,builder,browser_list);
+        
+        Browser::Database * db_browser = new Browser::Database(*client,builder,browser_list);
+        browser_list.add(*db_browser);
+        
+        Browser::StatBrowser stat_browser(*client,builder,browser_list);
         browser_list.add(stat_browser);
-        Browser::Settings settings_browser(client,builder,&tray,browser_list);
+        
+        Browser::Settings settings_browser(*client,builder,&tray,browser_list);
         browser_list.add(settings_browser);
+        
 #if USE_AVAHI
-        Browser::ServerList server_list(builder,browser_list);
-        browser_list.add(server_list);
+        Browser::ServerList * server_list = new Browser::ServerList(builder,browser_list);
+        browser_list.add(*server_list);
 #endif
+        
         browser_list.set(queue_browser);
         main_window.get_window()->show();
         Debug("Setting up GUI done.");
@@ -142,21 +147,26 @@ int main(int argc, char *argv[])
         /* Send a good morning to all widgets */
         if(CONFIG_GET_AS_INT("settings.connection.autoconnect"))
         {
-            client.connect();
+            client->connect();
         }
         /* ------START -------- */
         Debug("Entering Mainloop!");
         app.run();
+
+
         /*------ END ---------- */
         if(CONFIG_GET_AS_INT("settings.playback.stoponexit"))
         {
-            client.playback_stop();
+            client->playback_stop();
         }
 #if USE_GLYR
         // Do this before disconnecting, since it may take some time.
         Glyr::Stack::instance().destroy();
 #endif
-        client.disconnect();
+        client->disconnect();
+        
+        // TODO: Do proper free's here.. 
+        delete db_browser;
     }
     catch(const Gtk::BuilderError& e)
     {

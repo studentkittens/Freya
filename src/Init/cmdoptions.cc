@@ -5,11 +5,45 @@
 
 #include "../Log/Writer.hh"
 #include "../Config/Handler.hh"
+#include "../Init/Path.hh"
 
 #include "../../config.h"
 
 namespace Init
 {
+
+static void do_print_version(void)
+{
+    g_print("Version %d.%d.%d (%s) of [%s] compiled at [%s]\n",
+            FREYA_VERSION_MAJOR_INT,
+            FREYA_VERSION_MINOR_INT,
+            FREYA_VERSION_MICRO_INT,
+            FREYA_VERSION_NAME,
+            __DATE__,
+            __TIME__
+           );
+}
+
+static void do_print_bug_report(void)
+{
+    g_print("Please include this information when reporting a crash,       \n"
+            "or other weird behaviour which is clearly not a feature.      \n"
+            "\nThanks a lot in advance. (especially when using Pastebin :))\n"
+            "\nProgram version:\n");
+            
+    do_print_version(); 
+
+    g_print("\nWill print configuration and a portion of the log.\n");
+
+    Init::Path get_cfg_dir;
+    Glib::ustring command =
+        "cat " + get_cfg_dir.path_to_config() + ";"
+        "echo '\n\n/////////////////\n\n';" 
+        "cat " + get_cfg_dir.path_to_log() + " | tail -n 70;"
+        ;
+
+    system(command.c_str());
+}
 
 /*
  * A simple C-Style commandline parser,
@@ -50,19 +84,12 @@ void parse_and_handle_arguments(int argc, char *argv[])
     {
         if(print_bug_report)
         {
-            g_message("..there are no bugs..\n");
+            do_print_bug_report();
             exit(0);
         }
         if(print_version)
         {
-            g_print("Version %d.%d.%d (%s) of [%s] compiled at [%s]\n",
-                    FREYA_VERSION_MAJOR_INT,
-                    FREYA_VERSION_MINOR_INT,
-                    FREYA_VERSION_MICRO_INT,
-                    FREYA_VERSION_NAME,
-                    __DATE__,
-                    __TIME__
-                   );
+            do_print_version();
             // Ealry calls to exit is okay here,
             // since nothing was reall written to config/log
             exit(0);

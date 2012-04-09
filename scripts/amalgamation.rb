@@ -66,7 +66,7 @@ eos
 def read_in_content file_path
     content = "\n"
     File.open(file_path).each do |line|
-        content += ((" " * 20) + "\"" + line.chomp!.gsub(/\\/,"\\\\").gsub(/"/,'\"') + "\"\n")
+        content += ((" " * 20) + "\"" + line.chomp!.gsub(/\\/,"\\\\").gsub(/"/,'\"') + "\\n\"\n")
     end
     return content
 end

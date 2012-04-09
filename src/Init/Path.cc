@@ -93,14 +93,7 @@ void Path::dir_is_avaiable()
 {
     if(g_file_test(configdir, G_FILE_TEST_EXISTS) && g_file_test(configdir, G_FILE_TEST_IS_DIR))
     {
-        if(g_file_test(configfile, G_FILE_TEST_IS_REGULAR))
-        {
-            if(g_access(configfile,W_OK|R_OK))
-            {
-                g_warning("%s probably a permission problem.",configfile);
-            }
-        }
-        else
+        if(g_file_test(configfile, G_FILE_TEST_IS_REGULAR) == false)
         {
             create_config();
         }

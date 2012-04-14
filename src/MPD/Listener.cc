@@ -142,7 +142,9 @@ void Listener::invoke_user_callback()
             idle_events = UINT_MAX;
         }
         m_NData.update_all(idle_events);
-        /* Iterare over the enum (this is weird) */
+
+#if FREYA_DEBUG
+        /* Iterare over the enum and print it's names (this is weird) */
         for(unsigned mask = 1; /* empty */; mask <<= 1)
         {
             const char * event_name = mpd_idle_name((mpd_idle)mask);
@@ -153,10 +155,13 @@ void Listener::invoke_user_callback()
             if(actual_event != 0)
             {
                 Debug("  :%s",event_name);
-                /* Notify observers */
-                mp_Notifier->emit((mpd_idle)actual_event,m_NData);
             }
         }
+#endif
+
+        /* Now go and notify every observer */
+        mp_Notifier->emit((mpd_idle)idle_events,m_NData);
+
         /* Delete old events */
         idle_events = 0;
         /* Callback finished, needs
@@ -326,10 +331,11 @@ bool Listener::enter()
             /* Let the Mainloop spin a bit..
              * there are often events waiting at this point
              */
-            while(mctx->pending())
-            {
-                mctx->iteration(false);
-            }
+
+            /* Note:
+             * In earlier versions the mainloop was given some iterations here.
+             * this has proven impracticable, and less debuggable
+             */
         }
         return true;
     }

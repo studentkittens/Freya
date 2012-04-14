@@ -125,10 +125,10 @@ static void textcolor(FILE * stream, termattribute attr, termcolor fg)
 
 static void glib_logging(const gchar *log_domain,GLogLevelFlags log_level,const gchar *message, gpointer user_data)
 {
-#define GTK_FORWARD(level,str_level,msg)                \
-    {                                                 \
+    #define GTK_FORWARD(level,str_level,msg)            \
+    {                                                   \
         char * actual_domain = g_strdup_printf("%s-%s", \
-                                               log_domain,str_level);  \
+                                log_domain,str_level);  \
         _MSG(level,actual_domain,"%s",msg);             \
         g_free(actual_domain);                          \
     }
@@ -174,7 +174,7 @@ static void register_log_domains(const char * domain)
 
 Writer::Writer() : m_Verbosity(LOG_DEBUG)
 {
-    Init::Path path_getter;
+    Init::Path &path_getter = Init::Path::instance();
     m_Logpath = path_getter.path_to_log();
     m_Logfile = fopen(m_Logpath.c_str(),"a");
     if(m_Logfile != NULL)
@@ -193,6 +193,11 @@ Writer::Writer() : m_Verbosity(LOG_DEBUG)
         perror("Cannot write to logfile");
         g_error("Tried to write it at: %s",m_Logpath.c_str());
     }
+
+    /* 
+     * Output errors/warnings from Glib/Gtk etc. 
+     * in one unified interface
+     */
     register_log_domains("GLib");
     register_log_domains("GLib-GObject");
     register_log_domains("Gdk");

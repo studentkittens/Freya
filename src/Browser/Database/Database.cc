@@ -41,7 +41,7 @@ Database::Database(MPD::Client& client, Glib::RefPtr<Gtk::Builder>& builder,GMan
     mp_SearchEntry(NULL)
 {
     /* Instance the Database Cache, a sort of Proxy of MPD::Client */
-    mp_Cache = new DatabaseCache(client);
+    mp_Cache = new DatabaseCache(client); 
     BUILDER_ADD(builder,"ui/Database.glade");
     BUILDER_GET(builder,"filebrowser_mainbox",mp_ParentBox);
     BUILDER_GET(builder,"filebrowser_iconview",mp_IView);
@@ -255,6 +255,7 @@ void Database::focus_item_starting_with(const char * prefix)
 {
     if(prefix == NULL)
         return;
+
     unsigned cursor  = 0;
     Glib::ustring strPrefix(prefix);
     strPrefix = strPrefix.lowercase();

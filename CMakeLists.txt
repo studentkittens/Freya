@@ -145,10 +145,11 @@ configure_file(
 ADD_CUSTOM_TARGET(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 
 # --------------------------
-# dest target
+# amalgamate 
 # --------------------------
 
-ADD_CUSTOM_TARGET(release COMMAND "ruby" "scripts/amalgamation.rb > ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils/CompileSymbols.cc")
+# Not sure if this is portable..
+ADD_CUSTOM_COMMAND(TARGET install PRE_BUILD COMMAND ruby scripts/amalgamation.rb > ${CMAKE_SOURCE_DIR}/src/Utils/CompileSymbols.cc)
 
 # --------------------------
 # dest target

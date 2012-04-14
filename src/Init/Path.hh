@@ -31,6 +31,7 @@
 #ifndef INIT_PATH_GUARD
 #define INIT_PATH_GUARD
 
+#include "../Utils/Singleton.hh"
 #include <glibmm/ustring.h>
 
 namespace Init
@@ -41,9 +42,9 @@ namespace Init
  */
 class Path
 {
-public:
-    Path();
-    ~Path();
+    DEF_SINGLETON(Path);
+
+    public:
 
     /**
      * @brief returns absolute path to config dir e.g. /home/user/.config/freya
@@ -51,6 +52,13 @@ public:
      * @return config dir path as ustring
      */
     Glib::ustring get_config_dir();
+
+    /**
+     * @brief Returns $XDG_CACHE_HOME/freya, e.g. /home/user.cache/freya
+     *
+     * @return cache dir path as ustring
+     */
+    Glib::ustring get_cache_dir();
 
     /**
      * @brief returns absolute path to config file e.g. /home/user/.config/freya/config.xml
@@ -80,12 +88,18 @@ public:
      */
     Glib::ustring path_to_css();
 
+    /**
+     * @brief Create file at path @file if it doesn't exist yet with content @content of length @len
+     *
+     * @param file
+     * @param content
+     * @param len
+     */
+    void create_file_if_missing(Glib::ustring& file, const char * content = NULL, gsize len = 0);
+
 private:
-    void create_config();
-    void create_dir();
-    void dir_is_avaiable();
-    char* configfile;
-    char* configdir;
+    void create_dir(Glib::ustring& dir);
+    void create_dir_if_missing(Glib::ustring& dir);
 };
 }
 #endif /* end of include guard: INIT_SP0811FS */

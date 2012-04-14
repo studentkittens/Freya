@@ -1,11 +1,12 @@
 #ifndef FREYA_USEMEMPOOL_HH
 #define FREYA_USEMEMPOOL_HH
 
+#include <glib.h>
+#include <algorithm>
+
 #include "../../config.h"
 
 #if !FREYA_DEBUG
-#include <glib.h>
-#include <algorithm>
 
 template<class StorageClass>
 class UseMemPool
@@ -62,18 +63,19 @@ private:
 template<class StorageClass>
 GTrashStack * UseMemPool<StorageClass>::memstack = NULL;
 
-#else
-#include <string.h>
+#else // Debug version, does nothing
 
 template<class StorageClass>
 class UseMemPool
 {
 public:
-        // Empty class for debugging purpose
-        static void disposeAll() {}
-        static void prealloc(size_t n_iterations = 128) {}
+    static void prealloc(size_t n_iterations = 128)
+    {}
+
+    static void disposeAll()
+    {}
 };
 
-#endif // FREYA_DEBUG
+#endif // !FREYA_DEBUG
 
 #endif /* end of include guard: FREYA_USEMEMPOOL_HH */

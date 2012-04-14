@@ -32,6 +32,7 @@
 #define FREYA_CONFIG_MODEL_ATB3SUAE
 
 #include <libxml/parser.h>
+#include <glibmm/ustring.h>
 
 #define outputfile "./config.xml"
 
@@ -52,7 +53,7 @@ public:
      *
      * @param char*,  path to config.xml file as char ptr
      */
-    void load(char*);
+    void load(const char*);
 
 
     /**
@@ -71,7 +72,7 @@ public:
      * @param char*, alternative path for saving config file
      * @param xmlDocPtr, alternative ptr to xmlDoc you want to save
      */
-    void save(char*, xmlDocPtr);
+    void save(const char*, xmlDocPtr);
 
 
     /**
@@ -92,8 +93,7 @@ private:
     /*xml document and xml node member*/
     xmlDocPtr fileDoc;
     xmlDocPtr defaultDoc;
-    void setpath(char*);
-    char* pathtofile;
+    Glib::ustring pathtofile;
 };
 }
 

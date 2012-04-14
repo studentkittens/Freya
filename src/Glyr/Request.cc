@@ -15,7 +15,7 @@ Stack::Stack() :
     /*
      * Find out path and create DB
      */
-    Init::Path cfgpath;
+    Init::Path &cfgpath = Init::Path::instance();
     Debug("Writing metadata.db to: %s",cfgpath.path_to_metadata_db().c_str());
     dbConnection = glyr_db_init(cfgpath.get_config_dir().c_str());
     if(dbConnection == NULL)

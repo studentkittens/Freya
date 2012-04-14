@@ -94,10 +94,16 @@ void parse_and_handle_arguments(int argc, char *argv[])
             // since nothing was reall written to config/log
             exit(0);
         }
+
         if(inc_verbosity)
         {
             LogSetVerbosity(Log::LOG_DEBUG);
         }
+        else
+        {
+            LogSetVerbosity(Log::LOG_INFO);
+        }
+
         while(override_opt && *override_opt)
         {
             gchar * key = g_strdup(*override_opt);

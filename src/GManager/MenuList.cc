@@ -32,13 +32,14 @@
 
 #include "../Log/Writer.hh"
 #include "../Utils/Utils.hh"
+#include "../../config.h"
 
 namespace GManager
 {
 MenuList::MenuList(MPD::Client &client, Glib::RefPtr<Gtk::Builder> &builder) :
-    AbstractClientUser(client)
+    AbstractClientUser(client),
+    running(false)
 {
-    running = false;
     BUILDER_GET(builder,"menu_item_connect", menu_connect);
     BUILDER_GET(builder,"menu_item_disconnect", menu_disconnect);
     BUILDER_GET(builder,"menu_item_quit", menu_quit);
@@ -54,30 +55,53 @@ MenuList::MenuList(MPD::Client &client, Glib::RefPtr<Gtk::Builder> &builder) :
     BUILDER_GET(builder,"playback_menuitem",menu_playback);
     BUILDER_ADD(builder,"ui/About.glade");
     BUILDER_GET_NO_MANAGE(builder,"about_main",window_about);
-    Glib::RefPtr<Gdk::Pixbuf> logo = Utils::pixbuf_internal_fetch("ui/gfx/Freya_about.jpg",-1,-1);
-    window_about->set_logo(logo);
-    menu_connect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_connect));
-    menu_disconnect->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_disconnect));
-    menu_quit->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_quit));
-    menu_play->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_play));
-    menu_stop->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_stop));
-    menu_prev->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_prev));
-    menu_next->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_next));
-    menu_random->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_random));
-    menu_repeat->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_repeat));
-    menu_single->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_single));
-    menu_consume->signal_toggled().connect(sigc::mem_fun(*this,&MenuList::on_menu_consume));
-    menu_about->signal_activate().connect(sigc::mem_fun(*this,&MenuList::on_menu_about));
+
+    /*
+     * Fetch about dialog preferrably from memory
+     */
+    window_about->set_logo(Utils::pixbuf_internal_fetch("ui/gfx/Freya_about.jpg",-1,-1));
+
+    /*
+     * Update actual version
+     */
+    Glib::ustring version_string = Glib::ustring("Version ") +
+        (FREYA_VERSION_MAJOR"."
+         FREYA_VERSION_MINOR"."
+         FREYA_VERSION_MICRO" "
+         FREYA_VERSION_NAME);
+
+    window_about->set_version(version_string);
+
+    menu_connect->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_connect));
+    menu_disconnect->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_disconnect));
+    menu_quit->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_quit));
+    menu_play->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_play));
+    menu_stop->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_stop));
+    menu_prev->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_prev));
+    menu_next->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_next));
+    menu_random->signal_toggled().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_random));
+    menu_repeat->signal_toggled().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_repeat));
+    menu_single->signal_toggled().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_single));
+    menu_consume->signal_toggled().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_consume));
+    menu_about->signal_activate().connect(
+            sigc::mem_fun(*this,&MenuList::on_menu_about));
 }
 
 //-----------------------------
 MenuList::~MenuList()
 {
-    if(window_about!=NULL)
-    {
-        delete window_about;
-        window_about=NULL;
-    }
+    delete window_about;
 }
 //-----------------------------
 void MenuList::on_menu_connect()
@@ -130,13 +154,13 @@ void MenuList::on_client_update(enum mpd_idle event, MPD::NotifyData &data)
 {
     if((event & MPD_IDLE_OPTIONS) && !running)
     {
-        running=true;
+        running = true;
         MPD::Status &stat = data.get_status();
         menu_random->set_active(stat.get_random());
         menu_repeat->set_active(stat.get_repeat());
         menu_single->set_active(stat.get_single());
         menu_consume->set_active(stat.get_consume());
-        running=false;
+        running = false;
     }
 }
 

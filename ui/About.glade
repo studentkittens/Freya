@@ -10,26 +10,23 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">Freya</property>
-    <property name="version">Version 1.0 "Compiling Cat"</property>
+    <property name="version">[version is added during compile]</property>
     <property name="copyright" translatable="yes">Copyleft [2011-2012]</property>
     <property name="comments" translatable="yes">A free Gtk3 MPD Client</property>
     <property name="website">https://github.com/studentkittens/Freya</property>
     <property name="website_label" translatable="yes">Github Page</property>
-    <property name="license" translatable="yes">Freya Version 1.0 "Compiling Cat" License:
-
-Freya is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+    <property name="license" translatable="yes">Freya is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 Freya is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License along with Freya. If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
-    <property name="authors">\n
-Christopher "sahib" Pahl, sahib@online.de\n
-Christoph "kitteh" Piechula, christoph@nullcat.de\n
-Eduard "eddY" Schneider, eduard.schneider@hof-university.de\n</property>
-    <property name="documenters">\n
-Christopher "sahib" Pahl, sahib@online.de\n
-Christoph "kitteh" Piechula, christoph@nullcat.de\n
-Eduard "eddY" Schneider, eduard.schneider@hof-university.de\n</property>
+    <property name="authors">
+Christopher "sahib" Pahl, sahib@online.de
+Christoph "kitteh" Piechula, christoph@nullcat.de
+Eduard "eddY" Schneider, eduard.schneider@hof-university.de</property>
+    <property name="documenters">
+Christopher "sahib" Pahl, sahib@online.de
+Christoph "kitteh" Piechula, christoph@nullcat.de
+Eduard "eddY" Schneider, eduard.schneider@hof-university.de</property>
     <property name="wrap_license">True</property>
     <property name="license_type">custom</property>
     <child internal-child="vbox">
@@ -42,12 +39,6 @@ Eduard "eddY" Schneider, eduard.schneider@hof-university.de\n</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
         </child>
       </object>
     </child>

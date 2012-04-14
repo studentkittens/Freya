@@ -40,11 +40,12 @@ namespace Config
 /*reads file from hdd*/
 Model::Model()
 {
-    Init::Path path;
-    Glib::ustring pfad(path.path_to_config());
-    setpath((char*)pfad.c_str());
-    this->load(pathtofile);
-    /* loads default document to memory */
+    /* Create Default config if not yet present */
+    Init::Path &ston = Init::Path::instance();
+    pathtofile = ston.path_to_config();
+    ston.create_file_if_missing(pathtofile,Config::defaultconfig.c_str(),Config::defaultconfig.size());
+
+    this->load(pathtofile.c_str());
     this->loadDefaultDoc();
 }
 
@@ -56,7 +57,6 @@ Model::~Model()
     this->save();
     xmlFreeDoc(defaultDoc);
     xmlFreeDoc(fileDoc);
-    g_free(pathtofile);
 }
 
 /* ----------------------------------------- */
@@ -75,7 +75,7 @@ xmlDocPtr Model::getDefaultDocPtr()
 /* ----------------------------------------- */
 
 /*xml file reader*/
-void Model::load(char* file)
+void Model::load(const char* file)
 {
     /* try loading config.xml from hdd */
     fileDoc = xmlParseFile(file);
@@ -124,19 +124,14 @@ void Model::loadDefaultDoc()
 /*save default config aka Mr fileDoc*/
 void Model::save()
 {
-    save(pathtofile, fileDoc);
+    save(pathtofile.c_str(), fileDoc);
 }
 
+/* ----------------------------------------- */
 
 /*save alternative config*/
-void Model::save(char* altfile,xmlDocPtr doc)
+void Model::save(const char* altfile, xmlDocPtr doc)
 {
     xmlSaveFile(altfile,doc);
 }
-
-void Model::setpath(char* path)
-{
-    pathtofile = g_strdup_printf("%s",path);
-}
-
 }

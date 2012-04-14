@@ -36,7 +36,7 @@
 //test
 int main()
 {
-    Init::Path bla;
+    Init::Path::instance();
     return EXIT_SUCCESS;
 }
 

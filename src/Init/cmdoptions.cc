@@ -35,7 +35,7 @@ static void do_print_bug_report(void)
 
     g_print("\nWill print configuration and a portion of the log.\n");
 
-    Init::Path get_cfg_dir;
+    Init::Path &get_cfg_dir = Init::Path::instance();
     Glib::ustring command =
         "cat " + get_cfg_dir.path_to_config() + ";"
         "echo '\n\n/////////////////\n\n';" 

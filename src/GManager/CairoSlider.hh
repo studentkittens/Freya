@@ -3,6 +3,7 @@
 
 #include <gtkmm/eventbox.h>
 #include <gtkmm/drawingarea.h>
+#include <glibmm.h>
 
 class CairoSlider : public Gtk::DrawingArea
 {

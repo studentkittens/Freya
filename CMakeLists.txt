@@ -62,7 +62,7 @@ PKG_CHECK_MODULES(LIBMPDCLIENT REQUIRED libmpdclient)
 PKG_CHECK_MODULES(LIBXML2_PACKAGE REQUIRED libxml-2.0)
 
 # Optional Feature: Notifcations 
-PKG_CHECK_MODULES(LIBNOTIFY_PACKAGE OPTIONAL libnotify)
+PKG_CHECK_MODULES(LIBNOTIFY_PACKAGE libnotify)
 if(NOT LIBNOTIFY_PACKAGE_FOUND)
     MESSAGE("Disabling libnotify support, since deps were not found.")
     SET(USE_LIBNOTIFY false)

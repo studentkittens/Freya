@@ -44,7 +44,7 @@ public:
     /* some blackbox testing of log::writer */
     void testLogWriter(void)
     {
-        Init::Path path;
+        Init::Path &path = Init::Path::instance();
         Glib::ustring LogPath = path.path_to_log();
         int aval = 0;
         long fsize_a,fsize_b = 0;

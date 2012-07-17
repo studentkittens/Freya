@@ -3,6 +3,23 @@ h1. Freya
 A fun and slim Client for the MPD Server. 
 Started as some student's homework..
 
+h2. Compiling
+
+Getting the Source:
+@git clone git://github.com/studentkittens/Freya.git@
+
+Required:
+@yaourt -S glibmm gtkmm libmpdclient libxml2@
+
+Optional:
+@yaourt -S libnotify glyr-git avahi@
+
+Actual compiling:
+@cmake . -DCMAKE_INSTALL_PREFIX=/usr@
+@ruby scripts/amalgamation.rb  > src/Utils/CompileSymbols.cc@
+@make -j4@
+@sudo make install@
+
 h2. Debugging
 
 When using valgrind use it with the following command to kill a lot warnings caused by gtk3:
